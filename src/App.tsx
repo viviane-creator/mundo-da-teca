@@ -95,15 +95,15 @@ const discoveryCards: CardItem[] = [
   },
   {
     id: "colecoes",
-    title: "Coleções leves",
-    text: "folhas, flores, pedras, sementes e tesouros",
+    title: "Coleções",
+    text: "folhas, flores, pedras, sementes...",
     image: "/cards/descobertas/colecoes.png",
   },
   {
-    id: "coisas-raras",
-    title: "Coisas raras",
+    id: "tesouros",
+    title: "Tesouros",
     text: "achados especiais que aparecem de vez em quando",
-    image: "/cards/descobertas/coisas-raras.png",
+    image: "/cards/descobertas/tesouros.png",
   },
 ]
 
