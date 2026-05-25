@@ -659,9 +659,9 @@ const styles: Record<string, React.CSSProperties> = {
 
   coverImage: {
     width: "100%",
-    height: "100%",
+    borderRadius: 28,
     objectFit: "cover",
-    display: "block",
+    marginBottom: 34,
   },
 
   smallLogo: {
@@ -693,8 +693,8 @@ const styles: Record<string, React.CSSProperties> = {
 
   pageTitle: {
     textAlign: "center",
-    fontSize: "56px",
-    lineHeight: "0.95",
+    fontSize: "38px",
+    lineHeight: "1.2",
     color: "#5f4738",
     fontFamily: "'Caveat', cursive",
     fontWeight: 500,
@@ -709,6 +709,44 @@ const styles: Record<string, React.CSSProperties> = {
     textAlign: "center",
     margin: "0 8px 26px",
     lineHeight: "1.4",
+  },
+
+  discoveryButton: {
+    marginTop: 28,
+    border: "none",
+    background: "#c88757",
+    color: "#fffdf8",
+    padding: "14px 28px",
+    borderRadius: 999,
+    fontSize: "18px",
+    fontFamily: "'Nunito', sans-serif",
+    cursor: "pointer",
+    boxShadow: "0 6px 18px rgba(0,0,0,0.08)",
+    transition: "all 0.2s ease",
+    alignSelf: "center",
+  },
+
+  tipBox: {
+    background: "#f7efe6",
+    borderRadius: 20,
+    padding: "14px 18px",
+    marginTop: 12,
+    color: "#6a4f3c",
+    fontSize: "15px",
+    lineHeight: 1.5,
+    border: "1px solid #ead8c5",
+    boxShadow: "0 2px 8px rgba(0,0,0,0.03)",
+  },
+
+  rewardBox: {
+    marginTop: 28,
+    background: "#f7efe6",
+    borderRadius: 28,
+    padding: "26px 22px",
+    textAlign: "center",
+    color: "#6a4f3c",
+    border: "1px solid #ead8c5",
+    boxShadow: "0 8px 24px rgba(0,0,0,0.05)",
   },
 
   note: {
@@ -895,7 +933,7 @@ function DiscoveryDay({
         onClick={() => setScreen("descobertas")}
         style={styles.backButton}
       >
-        ← voltar
+        ← descobertas
       </button>
 
       <img
