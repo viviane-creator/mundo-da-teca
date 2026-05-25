@@ -44,7 +44,7 @@ const pageData = {
   },
   clube: {
     title: "Clube da Teca",
-    intro: "um cantinho especial para quem faz parte desse universo.",
+    intro: "para famílias do Mundo da Teca.",
     cover: "/covers/clube.png",
   },
 }
@@ -243,32 +243,20 @@ const clubCards: CardItem[] = [
   {
     id: "correio",
     title: "Correio da Teca",
-    text: "cartinhas e pequenas surpresas",
+    text: "cartas, envios e pequenas surpresas",
     image: "/cards/clube/correio.png",
   },
   {
-    id: "conquistas",
-    title: "Conquistas",
-    text: "pequenas marcas do caminho",
-    image: "/cards/clube/conquistas.png",
-  },
-  {
-    id: "colecoes",
+    id: "colecoes-especiais",
     title: "Coleções especiais",
-    text: "tesouros para membros do clube",
-    image: "/cards/clube/colecoes.png",
+    text: "tesouros e conteúdos para membros",
+    image: "/cards/clube/colecoes-especiais.png",
   },
   {
     id: "assinatura",
     title: "Assinatura",
-    text: "conteúdos e vantagens desbloqueadas",
+    text: "planos e acesso ao universo completo",
     image: "/cards/clube/assinatura.png",
-  },
-  {
-    id: "vantagens",
-    title: "Vantagens",
-    text: "benefícios para quem faz parte",
-    image: "/cards/clube/vantagens.png",
   },
 ]
 
