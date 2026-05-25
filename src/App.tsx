@@ -1,7 +1,13 @@
 import { useState } from "react"
 import "./fonts.css"
 
-type Screen = "home" | "descobertas" | "brincadeiras" | "atelie" | "clube"
+type Screen =
+  | "home"
+  | "descobertas"
+  | "descoberta-do-dia"
+  | "brincadeiras"
+  | "atelie"
+  | "clube"
 
 type CardItem = {
   id: string
@@ -86,6 +92,7 @@ const discoveryCards: CardItem[] = [
     title: "Descoberta do dia",
     text: "um convite para observar o mundo real com calma",
     image: "/cards/descobertas/descoberta-do-dia.png",
+    target: "descoberta-do-dia",
   },
   {
     id: "minhas-descobertas",
@@ -146,7 +153,7 @@ const playCards: CardItem[] = [
   },
   {
     id: "linha",
-    title: "Experimentos com linha",
+    title: "Fios e linhas",
     text: "fios, nós e invenções",
     image: "/cards/brincadeiras/linha.png",
   },
@@ -269,11 +276,16 @@ export default function App() {
         {screen === "home" && <Home setScreen={setScreen} />}
 
         {screen === "descobertas" && (
-          <Page
-            data={pageData.descobertas}
-            cards={discoveryCards}
-          />
-        )}
+  <Page
+    data={pageData.descobertas}
+    cards={discoveryCards}
+    setScreen={setScreen}
+  />
+)}
+
+{screen === "descoberta-do-dia" && (
+  <DiscoveryDay setScreen={setScreen} />
+)}
 
         {screen === "brincadeiras" && (
           <Page
@@ -362,11 +374,14 @@ function Home({
 function Page({
   data,
   cards,
+  setScreen,
 }: {
   data: { title: string; intro: string; cover: string }
   cards: CardItem[]
+  setScreen: (screen: Screen) => void
 }) {
   return (
+
     <>
       <PageCover data={data} />
 
@@ -376,7 +391,11 @@ function Page({
 
         <div style={styles.gridTwo}>
           {cards.map((card) => (
-            <FeatureCard key={card.id} card={card} />
+            <FeatureCard
+            key={card.id}
+            card={card}
+            onClick={() => card.target && setScreen(card.target)}
+          />
           ))}
         </div>
       </section>
@@ -406,7 +425,11 @@ function ClubPage({
 
         <div style={styles.gridTwo}>
           {cards.map((card) => (
-            <FeatureCard key={card.id} card={card} />
+            <FeatureCard
+            key={card.id}
+            card={card}
+            onClick={() => card.target && setScreen(card.target)}
+          />
           ))}
         </div>
 
@@ -858,4 +881,71 @@ const styles: Record<string, React.CSSProperties> = {
     lineHeight: "1.05",
     fontFamily: "'Caveat', cursive",
   },
+}
+function DiscoveryDay({
+  setScreen,
+}: {
+  setScreen: (screen: Screen) => void
+}) {
+  const [found, setFound] = useState(false)
+
+  return (
+    <div style={styles.page}>
+      <button
+        onClick={() => setScreen("descobertas")}
+        style={styles.backButton}
+      >
+        ← voltar
+      </button>
+
+      <img
+        src="/cards/descobertas/descoberta-do-dia.png"
+        alt="Descoberta do dia"
+        style={styles.coverImage}
+      />
+
+      <div style={styles.pageIntroBlock}>
+        <h1 style={styles.pageTitle}>
+          hoje encontre algo que o vento mexe
+        </h1>
+
+        <p style={styles.pageIntro}>
+          observe devagar. talvez esteja perto das árvores.
+        </p>
+      </div>
+
+      <div style={styles.tipBox}>
+        🍃 escute o movimento
+      </div>
+
+      <div style={styles.tipBox}>
+        🍃 talvez esteja escondido
+      </div>
+
+      <div style={styles.tipBox}>
+        🍃 procure algo leve
+      </div>
+
+      {!found ? (
+        <button
+          style={styles.discoveryButton}
+          onClick={() => setFound(true)}
+        >
+          eu encontrei
+        </button>
+      ) : (
+        <div style={styles.rewardBox}>
+          ✨ figurinha desbloqueada
+
+          <div style={{ marginTop: 10 }}>
+            folha dançando
+          </div>
+
+          <div style={{ marginTop: 14, fontSize: 13 }}>
+            guardado no seu álbum
+          </div>
+        </div>
+      )}
+    </div>
+  )
 }
