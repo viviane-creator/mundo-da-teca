@@ -58,6 +58,25 @@ type CardItem = {
   target?: Screen
 }
 
+type PlayCategory =
+  | "brincar-na-rua"
+  | "brincar-sozinho"
+  | "dias-de-chuva"
+  | "cozinha"
+  | "laboratorio"
+  | "oficina"
+  | "linha"
+  | "faz-de-conta"
+  | "construcoes"
+  | "natureza"
+
+type PlayActivity = {
+  id: string
+  title: string
+  poetic: string
+  image: string
+}
+
 const theme = {
   text: "#6a4f3c",
   muted: "#8b7668",
@@ -335,6 +354,571 @@ const clubCards: CardItem[] = [
   },
 ]
 
+const playCategoryCovers: Record<PlayCategory, string> = {
+  "brincar-na-rua": "/cards/brincadeiras/brincar-na-rua.png",
+  "brincar-sozinho": "/cards/brincadeiras/brincar-sozinho.png",
+  "dias-de-chuva": "/cards/brincadeiras/dias-de-chuva.png",
+  cozinha: "/cards/brincadeiras/cozinha.png",
+  laboratorio: "/cards/brincadeiras/laboratorio.png",
+  oficina: "/cards/brincadeiras/oficina.png",
+  linha: "/cards/brincadeiras/linha.png",
+  "faz-de-conta": "/cards/brincadeiras/faz-de-conta.png",
+  construcoes: "/cards/brincadeiras/construcoes.png",
+  natureza: "/cards/brincadeiras/natureza.png",
+}
+
+function playActivityImage(category: PlayCategory, id: string): string {
+  return `/cards/brincadeiras/atividades/${category}/${id}.png`
+}
+
+function placeholderPlayActivities(
+  category: PlayCategory,
+  ideas: { id: string; title: string; poetic: string }[]
+): PlayActivity[] {
+  const fallback = playCategoryCovers[category]
+  return ideas.map((idea) => ({
+    ...idea,
+    image: fallback,
+  }))
+}
+
+const playActivities: Record<PlayCategory, PlayActivity[]> = {
+  "brincar-na-rua": [
+    {
+      id: "caca-ao-vento",
+      title: "caça ao vento",
+      poetic: "siga um papel ou uma folha até ela parar. o vento escolhe o caminho.",
+      image: playActivityImage("brincar-na-rua", "caca-ao-vento"),
+    },
+    {
+      id: "sombras-no-chao",
+      title: "sombras no chão",
+      poetic: "deite-se na calçada e desenhe com o corpo a luz da tarde.",
+      image: playActivityImage("brincar-na-rua", "sombras-no-chao"),
+    },
+    {
+      id: "pedras-especiais",
+      title: "pedras especiais",
+      poetic: "escolha três pedras diferentes. uma lisa, uma áspera, uma surpresa.",
+      image: playActivityImage("brincar-na-rua", "pedras-especiais"),
+    },
+    {
+      id: "giz-gigante",
+      title: "giz gigante",
+      poetic: "desenhe um mapa enorme no chão. casas, rios, caminhos secretos.",
+      image: playActivityImage("brincar-na-rua", "giz-gigante"),
+    },
+    {
+      id: "escuta-do-bairro",
+      title: "escuta do bairro",
+      poetic: "feche os olhos por um minuto. quantos sons consegue nomear?",
+      image: playActivityImage("brincar-na-rua", "escuta-do-bairro"),
+    },
+    {
+      id: "mapa-da-calcada",
+      title: "mapa da calçada",
+      poetic: "siga rachaduras e bordas como se fossem rios em um mapa antigo.",
+      image: playActivityImage("brincar-na-rua", "mapa-da-calcada"),
+    },
+    {
+      id: "bolhas-ao-vento",
+      title: "bolhas ao vento",
+      poetic: "sopre bolhas e veja para onde elas vão. talvez encontrem uma árvore.",
+      image: playActivityImage("brincar-na-rua", "bolhas-ao-vento"),
+    },
+    {
+      id: "mensagem-no-alto",
+      title: "mensagem no alto",
+      poetic: "deixe um desenho ou um bilhete onde o vento possa encontrar.",
+      image: playActivityImage("brincar-na-rua", "mensagem-no-alto"),
+    },
+    {
+      id: "piquenique-minimo",
+      title: "piquenique mínimo",
+      poetic: "um lanche simples num degrau. comer devagar também é brincadeira.",
+      image: playActivityImage("brincar-na-rua", "piquenique-minimo"),
+    },
+    {
+      id: "fila-de-pegadas",
+      title: "fila de pegadas",
+      poetic: "ande só na sombra, ou só nas pedras, como se houvesse uma regra secreta.",
+      image: playActivityImage("brincar-na-rua", "fila-de-pegadas"),
+    },
+  ],
+  "brincar-sozinho": placeholderPlayActivities("brincar-sozinho", [
+    {
+      id: "quarto-sem-pressa",
+      title: "quarto sem pressa",
+      poetic: "um canto quieto, um objeto, tempo suficiente para inventar.",
+    },
+    {
+      id: "desenho-do-silencio",
+      title: "desenho do silêncio",
+      poetic: "desenhe o que o silêncio parece hoje, sem mostrar para ninguém.",
+    },
+    {
+      id: "caixa-de-historias",
+      title: "caixa de histórias",
+      poetic: "três objetos dentro de uma caixa. eles decidem o começo da história.",
+    },
+    {
+      id: "espelho-de-pensamentos",
+      title: "espelho de pensamentos",
+      poetic: "olhe-se devagar e invente um apelido novo só para hoje.",
+    },
+    {
+      id: "caminho-de-meias",
+      title: "caminho de meias",
+      poetic: "ande pelo quarto como se cada passo fosse uma página.",
+    },
+    {
+      id: "janela-para-dentro",
+      title: "janela para dentro",
+      poetic: "observe o que muda na casa quando ninguém fala.",
+    },
+    {
+      id: "ritual-de-arrumar",
+      title: "ritual de arrumar",
+      poetic: "organize um canto pequeno. cuidar também é brincar.",
+    },
+    {
+      id: "voz-baixinha",
+      title: "voz baixinha",
+      poetic: "conte uma história tão baixa que só você escute.",
+    },
+    {
+      id: "mapa-do-travesseiro",
+      title: "mapa do travesseiro",
+      poetic: "monte montanhas com tecidos e viaje sem sair do quarto.",
+    },
+    {
+      id: "guardiao-do-tempo",
+      title: "guardião do tempo",
+      poetic: "escolha um relógio ou uma luz e acompanhe o dia mudar.",
+    },
+  ]),
+  "dias-de-chuva": placeholderPlayActivities("dias-de-chuva", [
+    {
+      id: "gotas-na-vidraça",
+      title: "gotas na vidraça",
+      poetic: "siga uma gota até ela sumir. cada uma tem um caminho.",
+    },
+    {
+      id: "barco-de-papel",
+      title: "barco de papel",
+      poetic: "dobre um barco e veja se ele aguenta uma poça pequena.",
+    },
+    {
+      id: "chuva-desenhada",
+      title: "chuva desenhada",
+      poetic: "desenhe a chuva com lápis ou dedo, sem pressa de acertar.",
+    },
+    {
+      id: "som-da-telhado",
+      title: "som da telhado",
+      poetic: "escute a chuva bater e invente uma palavra para esse som.",
+    },
+    {
+      id: "janela-de-nevoa",
+      title: "janela de névoa",
+      poetic: "sopre devagar no vidro e desenhe antes que a névoa vá embora.",
+    },
+    {
+      id: "casa-de-cobertor",
+      title: "casa de cobertor",
+      poetic: "monte um abrigo baixo. dentro, o mundo fica menor e mais quente.",
+    },
+    {
+      id: "livro-lento",
+      title: "livro lento",
+      poetic: "leia poucas páginas com voz calma, como quem conta segredo.",
+    },
+    {
+      id: "cha-de-ervas",
+      title: "chá de ervas",
+      poetic: "cheire, espere, segure a xícara com as duas mãos.",
+    },
+    {
+      id: "corredor-de-luz",
+      title: "corredor de luz",
+      poetic: "ande pela casa devagar, como quem visita um museu pequeno.",
+    },
+    {
+      id: "lista-de-cores",
+      title: "lista de cores",
+      poetic: "encontre cinco tons de cinza na casa. a chuva traz matizes.",
+    },
+  ]),
+  cozinha: placeholderPlayActivities("cozinha", [
+    {
+      id: "mistura-lenta",
+      title: "mistura lenta",
+      poetic: "mexa devagar e observe como a textura muda.",
+    },
+    {
+      id: "cheiro-secreto",
+      title: "cheiro secreto",
+      poetic: "feche os olhos e adivinhe o que está no pote só pelo cheiro.",
+    },
+    {
+      id: "bolinha-de-massa",
+      title: "bolinha de massa",
+      poetic: "forme uma bolinha e deixe marcas com os dedos.",
+    },
+    {
+      id: "semente-no-pao",
+      title: "semente no pão",
+      poetic: "espalhe sementes como se fossem estrelas em céu de farinha.",
+    },
+    {
+      id: "copo-de-agua",
+      title: "copo de água",
+      poetic: "veja o que flutua e o que afunda, sem explicar tudo.",
+    },
+    {
+      id: "fruta-desenhada",
+      title: "fruta desenhada",
+      poetic: "corte ao meio e desenhe o interior que apareceu.",
+    },
+    {
+      id: "mesa-posta",
+      title: "mesa posta",
+      poetic: "arrume um prato bonito para uma refeição pequena.",
+    },
+    {
+      id: "receita-sussurrada",
+      title: "receita sussurrada",
+      poetic: "invente uma receita com três ingredientes e um nome poético.",
+    },
+    {
+      id: "gelo-misterioso",
+      title: "gelo misterioso",
+      poetic: "observe o gelo derreter na mão, gota por gota.",
+    },
+    {
+      id: "guardar-o-restinho",
+      title: "guardar o restinho",
+      poetic: "sobrou um pouco? guarde com carinho para outro momento.",
+    },
+  ]),
+  laboratorio: placeholderPlayActivities("laboratorio", [
+    {
+      id: "agua-colorida",
+      title: "água colorida",
+      poetic: "misture cores devagar e veja como a água se transforma.",
+    },
+    {
+      id: "bolha-de-sabao",
+      title: "bolha de sabão",
+      poetic: "qual bolha dura mais? observe sem competir.",
+    },
+    {
+      id: "ima-curioso",
+      title: "ímã curioso",
+      poetic: "o que o ímã chama para perto? o que prefere ficar longe?",
+    },
+    {
+      id: "luz-e-sombra",
+      title: "luz e sombra",
+      poetic: "aponte uma lanterna e veja como a sombra dança.",
+    },
+    {
+      id: "papel-que-absorve",
+      title: "papel que absorve",
+      poetic: "gota a gota, veja o papel mudar de cor e forma.",
+    },
+    {
+      id: "som-do-vidro",
+      title: "som do vidro",
+      poetic: "toque copos com cuidado e escute tons diferentes.",
+    },
+    {
+      id: "terra-em-pote",
+      title: "terra em pote",
+      poetic: "enterre uma semente e espere sem ansiedade.",
+    },
+    {
+      id: "vento-na-bandeja",
+      title: "vento na bandeja",
+      poetic: "sopre confete de papel e veja o padrão que ele faz.",
+    },
+    {
+      id: "gelatina-tremula",
+      title: "gelatina trêmula",
+      poetic: "observe algo mole balançar. o tempo também treme.",
+    },
+    {
+      id: "pergunta-no-caderno",
+      title: "pergunta no caderno",
+      poetic: "escreva uma pergunta pequena e deixe o dia responder.",
+    },
+  ]),
+  oficina: placeholderPlayActivities("oficina", [
+    {
+      id: "recorte-lento",
+      title: "recorte lento",
+      poetic: "corte formas simples sem pressa de ficar perfeito.",
+    },
+    {
+      id: "colagem-suave",
+      title: "colagem suave",
+      poetic: "cole pedaços como quem monta um sonho fragmentado.",
+    },
+    {
+      id: "pincel-de-dedo",
+      title: "pincel de dedo",
+      poetic: "pinte com o dedo manchas que parecem nuvens.",
+    },
+    {
+      id: "carimbo-caseiro",
+      title: "carimbo caseiro",
+      poetic: "use batata, esponja ou papelão para marcar histórias.",
+    },
+    {
+      id: "fita-colorida",
+      title: "fita colorida",
+      poetic: "crie caminhos na folha com fita que depois será revelada.",
+    },
+    {
+      id: "mini-escultura",
+      title: "mini escultura",
+      poetic: "modele algo pequeno que caiba na palma da mão.",
+    },
+    {
+      id: "ferramenta-leve",
+      title: "ferramenta leve",
+      poetic: "use tesoura e cola com adulto perto e gestos calmos.",
+    },
+    {
+      id: "caixa-surpresa",
+      title: "caixa surpresa",
+      poetic: "transforme uma caixa em casa com janela e porta.",
+    },
+    {
+      id: "tecido-dobrado",
+      title: "tecido dobrado",
+      poetic: "dobre pano como se fosse roupa de personagem pequeno.",
+    },
+    {
+      id: "mesa-de-restos",
+      title: "mesa de restos",
+      poetic: "junte sobras bonitas e monte um painel novo.",
+    },
+  ]),
+  linha: placeholderPlayActivities("linha", [
+    {
+      id: "no-desajeitado",
+      title: "nó desajeitado",
+      poetic: "amarre um nó e observe. imperfeito também serve.",
+    },
+    {
+      id: "caminho-de-barbante",
+      title: "caminho de barbante",
+      poetic: "estenda um fio pelo chão como mapa de viagem.",
+    },
+    {
+      id: "pulseira-lenta",
+      title: "pulseira lenta",
+      poetic: "trança simples, feita com calma, para dar ou guardar.",
+    },
+    {
+      id: "linha-no-papel",
+      title: "linha no papel",
+      poetic: "costure furinhos com lã e agulha de plástico.",
+    },
+    {
+      id: "rede-entre-cadeiras",
+      title: "rede entre cadeiras",
+      poetic: "teça uma rede baixa entre duas cadeiras.",
+    },
+    {
+      id: "fantoche-de-meia",
+      title: "fantoche de meia",
+      poetic: "dê olhos e voz a um pano que já tinha história.",
+    },
+    {
+      id: "espiral-de-la",
+      title: "espiral de lã",
+      poetic: "enrole lã em círculos até parecer uma flor.",
+    },
+    {
+      id: "ponte-minuscula",
+      title: "ponte minúscula",
+      poetic: "ligue dois objetos com um fio e invente o motivo.",
+    },
+    {
+      id: "bandeira-de-pano",
+      title: "bandeira de pano",
+      poetic: "uma tira de tecido que marca um território imaginário.",
+    },
+    {
+      id: "colecao-de-nos",
+      title: "coleção de nós",
+      poetic: "aprenda três nós diferentes e guarde os nomes.",
+    },
+  ]),
+  "faz-de-conta": placeholderPlayActivities("faz-de-conta", [
+    {
+      id: "loja-vazia",
+      title: "loja vazia",
+      poetic: "objetos na mesa, preços inventados, moedas de folha.",
+    },
+    {
+      id: "consultorio-de-boneca",
+      title: "consultório de boneca",
+      poetic: "cure com carinho o que não está realmente doente.",
+    },
+    {
+      id: "viagem-de-onibus",
+      title: "viagem de ônibus",
+      poetic: "cadeiras em fila, bilhete desenhado, paisagem na janela.",
+    },
+    {
+      id: "restaurante-minimo",
+      title: "restaurante mínimo",
+      poetic: "sirva algo simples como se fosse banquete.",
+    },
+    {
+      id: "radio-imaginario",
+      title: "rádio imaginário",
+      poetic: "anuncie notícias do dia com voz baixa e séria.",
+    },
+    {
+      id: "telefone-de-barbante",
+      title: "telefone de barbante",
+      poetic: "uma conversa longa com alguém que está no outro cômodo.",
+    },
+    {
+      id: "museu-da-sala",
+      title: "museu da sala",
+      poetic: "escolha três objetos e apresente como obras raras.",
+    },
+    {
+      id: "jornal-da-tarde",
+      title: "jornal da tarde",
+      poetic: "escreva três notícias que aconteceram hoje em casa.",
+    },
+    {
+      id: "festa-surpresa",
+      title: "festa surpresa",
+      poetic: "prepare uma celebração pequena para ninguém em especial.",
+    },
+    {
+      id: "mapa-do-reino",
+      title: "mapa do reino",
+      poetic: "desenhe um reino onde tudo é possível e nada é urgente.",
+    },
+  ]),
+  construcoes: placeholderPlayActivities("construcoes", [
+    {
+      id: "torre-de-caixa",
+      title: "torre de caixa",
+      poetic: "empilhe sem medo de cair. cair também ensina.",
+    },
+    {
+      id: "ponte-de-papelao",
+      title: "ponte de papelão",
+      poetic: "ligue duas mesas com uma ponte que aguente um carrinho.",
+    },
+    {
+      id: "tunel-baixo",
+      title: "túnel baixo",
+      poetic: "entre por um túnel e saia em outro lugar da casa.",
+    },
+    {
+      id: "cidade-no-chao",
+      title: "cidade no chão",
+      poetic: "ruas com fita, prédios com caixa, carros de tampinha.",
+    },
+    {
+      id: "casa-com-janela",
+      title: "casa com janela",
+      poetic: "recorte uma janela e veja a luz entrar.",
+    },
+    {
+      id: "escada-para-o-ceu",
+      title: "escada para o céu",
+      poetic: "uma escada de degraus imaginários até onde der.",
+    },
+    {
+      id: "fortaleza-quente",
+      title: "fortaleza quente",
+      poetic: "cobertores e travesseiros formam muralhas macias.",
+    },
+    {
+      id: "parque-de-palitos",
+      title: "parque de palitos",
+      poetic: "palitos de sorvete viram cerca, banco, árvore.",
+    },
+    {
+      id: "muro-de-livros",
+      title: "muro de livros",
+      poetic: "livros em fila separam reinos sem brigas.",
+    },
+    {
+      id: "demolicao-calma",
+      title: "demolição calma",
+      poetic: "desmonte devagar e guarde peças para outro dia.",
+    },
+  ]),
+  natureza: placeholderPlayActivities("natureza", [
+    {
+      id: "bolsa-de-folhas",
+      title: "bolsa de folhas",
+      poetic: "colete folhas de formatos diferentes, como um museu pequeno.",
+    },
+    {
+      id: "rio-de-pedras",
+      title: "rio de pedras",
+      poetic: "faça um caminho de pedras que serpenteia no chão.",
+    },
+    {
+      id: "ninho-imaginado",
+      title: "ninho imaginado",
+      poetic: "monte um ninho com gravetos sem tirar ninguém de casa de verdade.",
+    },
+    {
+      id: "cheiro-da-terra",
+      title: "cheiro da terra",
+      poetic: "cheire terra úmida e lembre onde a chuva passou.",
+    },
+    {
+      id: "semente-no-vaso",
+      title: "semente no vaso",
+      poetic: "plante e volte amanhã. a espera faz parte.",
+    },
+    {
+      id: "nuvem-contada",
+      title: "nuvem contada",
+      poetic: "deite-se e diga o que a nuvem parece agora.",
+    },
+    {
+      id: "jardim-de-pedra",
+      title: "jardim de pedra",
+      poetic: "arrume pedras pequenas como se fossem um jardim zen.",
+    },
+    {
+      id: "barulho-da-arvore",
+      title: "barulho da árvore",
+      poetic: "encoste o ouvido no tronco e escute o silêncio por dentro.",
+    },
+    {
+      id: "lago-de-pau",
+      title: "lago de pau",
+      poetic: "uma bacia com água, gravetos como peixes, calma total.",
+    },
+    {
+      id: "presente-para-passaro",
+      title: "presente para o passarinho",
+      poetic: "deixe sementes num prato e observe de longe.",
+    },
+  ]),
+}
+
+function isPlayCategory(screen: Screen): screen is PlayCategory {
+  return screen in playActivities
+}
+
 const subPageData: Record<SimpleSubScreen, SubPageContent> = {
   diario: {
     parent: "descobertas",
@@ -591,6 +1175,7 @@ export default function App() {
         {isSimpleSubScreen(screen) && (
           <SimpleSubPage
             setScreen={setScreen}
+            screen={screen}
             content={subPageData[screen]}
             backLabel={parentLabels[subPageData[screen].parent]}
           />
@@ -830,15 +1415,62 @@ function SoftNote({
   )
 }
 
+function PlayActivityCard({
+  activity,
+  selected,
+  fallbackImage,
+  onSelect,
+}: {
+  activity: PlayActivity
+  selected: boolean
+  fallbackImage: string
+  onSelect: () => void
+}) {
+  const [imageSrc, setImageSrc] = useState(activity.image)
+
+  return (
+    <button onClick={onSelect} style={styles.playCardButton}>
+      <article
+        style={{
+          ...styles.playActivityCard,
+          ...(selected ? styles.playActivityCardSelected : {}),
+        }}
+      >
+        <img
+          src={imageSrc}
+          alt={activity.title}
+          style={styles.playActivityImage}
+          onError={() => {
+            if (imageSrc !== fallbackImage) setImageSrc(fallbackImage)
+          }}
+        />
+
+        <div style={styles.playActivityTextWrap}>
+          <h3 style={styles.playActivityTitle}>{activity.title}</h3>
+          <p style={styles.playActivityPoetic}>{activity.poetic}</p>
+        </div>
+      </article>
+    </button>
+  )
+}
+
 function SimpleSubPage({
   setScreen,
+  screen,
   content,
   backLabel,
 }: {
   setScreen: (screen: Screen) => void
+  screen: SimpleSubScreen
   content: SubPageContent
   backLabel: string
 }) {
+  const [openedId, setOpenedId] = useState<string | null>(null)
+  const showPlayCollection =
+    content.parent === "brincadeiras" && isPlayCategory(screen)
+  const activities = showPlayCollection ? playActivities[screen] : []
+  const openedActivity = activities.find((item) => item.id === openedId)
+
   return (
     <section style={styles.subPage}>
       <button
@@ -860,6 +1492,37 @@ function SimpleSubPage({
       </div>
 
       <SoftNote label={content.noteLabel}>{content.noteText}</SoftNote>
+
+      {showPlayCollection && (
+        <section style={styles.playCollection}>
+          <h2 style={styles.playCollectionTitle}>caderno desta coleção</h2>
+          <p style={styles.playCollectionIntro}>
+            dez ideias pequenas para escolher com calma, uma de cada vez.
+          </p>
+
+          <div style={styles.playCollectionGrid}>
+            {activities.map((activity) => (
+              <PlayActivityCard
+                key={activity.id}
+                activity={activity}
+                selected={openedId === activity.id}
+                fallbackImage={playCategoryCovers[screen]}
+                onSelect={() =>
+                  setOpenedId((current) =>
+                    current === activity.id ? null : activity.id
+                  )
+                }
+              />
+            ))}
+          </div>
+
+          {openedActivity && (
+            <SoftNote label="esta ideia">
+              {openedActivity.poetic}
+            </SoftNote>
+          )}
+        </section>
+      )}
     </section>
   )
 }
@@ -1186,6 +1849,95 @@ const styles: Record<string, React.CSSProperties> = {
     display: "grid",
     gridTemplateColumns: "repeat(2, minmax(0, 1fr))",
     gap: "18px",
+  },
+
+  playCollection: {
+    marginTop: "8px",
+  },
+
+  playCollectionTitle: {
+    textAlign: "center",
+    color: "#8a6f5d",
+    margin: "6px 0 8px",
+    fontSize: "28px",
+    fontFamily: "'Caveat', cursive",
+    fontWeight: 400,
+  },
+
+  playCollectionIntro: {
+    textAlign: "center",
+    color: theme.muted,
+    fontFamily: "'Cormorant Garamond', serif",
+    fontStyle: "italic",
+    fontSize: "17px",
+    lineHeight: 1.45,
+    margin: "0 4px 20px",
+  },
+
+  playCollectionGrid: {
+    display: "grid",
+    gridTemplateColumns: "repeat(2, minmax(0, 1fr))",
+    gap: "14px",
+  },
+
+  playCardButton: {
+    border: "none",
+    background: "transparent",
+    padding: 0,
+    cursor: "pointer",
+    width: "100%",
+    textAlign: "left",
+  },
+
+  playActivityCard: {
+    background:
+      "linear-gradient(180deg, #fffdf9 0%, #f9f2ea 100%)",
+    borderRadius: "22px",
+    overflow: "hidden",
+    border: `1px solid ${theme.line}`,
+    boxShadow: "0 6px 18px rgba(120,90,60,0.04)",
+    minHeight: "100%",
+    transition: "box-shadow 0.2s ease, transform 0.2s ease",
+  },
+
+  playActivityCardSelected: {
+    border: "1px solid #dcc3aa",
+    boxShadow: "0 8px 22px rgba(120,90,60,0.08)",
+    transform: "translateY(-1px)",
+  },
+
+  playActivityImage: {
+    width: "100%",
+    aspectRatio: "5 / 4",
+    objectFit: "cover",
+    display: "block",
+    opacity: 0.94,
+  },
+
+  playActivityTextWrap: {
+    padding: "10px 10px 12px",
+  },
+
+  playActivityTitle: {
+    margin: 0,
+    fontFamily: "'Caveat', cursive",
+    fontSize: "24px",
+    lineHeight: 1,
+    color: theme.text,
+    fontWeight: 400,
+  },
+
+  playActivityPoetic: {
+    margin: "6px 0 0",
+    fontFamily: "'Cormorant Garamond', serif",
+    fontStyle: "italic",
+    fontSize: "13px",
+    lineHeight: 1.35,
+    color: theme.muted,
+    display: "-webkit-box",
+    WebkitLineClamp: 2,
+    WebkitBoxOrient: "vertical",
+    overflow: "hidden",
   },
 
   cardButton: {
