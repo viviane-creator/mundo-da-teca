@@ -95,10 +95,10 @@ const discoveryCards: CardItem[] = [
     target: "descoberta-do-dia",
   },
   {
-    id: "minhas-descobertas",
-    title: "Minhas descobertas",
+    id: "diario",
+    title: "Diário",
     text: "pequenas coisas que já foram guardadas",
-    image: "/cards/descobertas/minhas-descobertas.png",
+    image: "/cards/descobertas/diario.png",
   },
   {
     id: "colecoes",
@@ -716,7 +716,7 @@ const styles: Record<string, React.CSSProperties> = {
     border: "none",
     background: "#c88757",
     color: "#fffdf8",
-    padding: "14px 28px",
+    padding: "16px 34px",
     borderRadius: 999,
     fontSize: "18px",
     fontFamily: "'Nunito', sans-serif",
