@@ -7,12 +7,12 @@ import {
   type PlayUniverse,
 } from "./playData"
 import {
+  atelierCoverImage,
+  atelierGoods,
   formatBRL,
-  getPaperGoodStatus,
-  paperGoods,
-  papelariaCoverImage,
-  type PaperGood,
-} from "./paperData"
+  getAtelierGoodStatus,
+  type AtelierGood,
+} from "./atelierShopData"
 
 type Screen =
   | "home"
@@ -59,7 +59,6 @@ type SimpleSubScreen = Exclude<
   | "laboratorio"
   | "cozinha"
   | "atelie"
-  | "papelaria"
   | "minha-caixa"
   | "clube"
 >
@@ -226,79 +225,6 @@ const playCards: CardItem[] = [
   },
 ]
 
-const atelierCards: CardItem[] = [
-  {
-    id: "papel-de-carta",
-    title: "Papel de carta",
-    text: "folhas delicadas para escrever e guardar",
-    image: "/cards/atelie/papel-de-carta.png",
-    target: "papel-de-carta",
-  },
-  {
-    id: "album",
-    title: "Álbum de figurinhas",
-    text: "coleções para completar devagar",
-    image: "/cards/atelie/album.png",
-    target: "album",
-  },
-  {
-    id: "bonequinhas",
-    title: "Bonequinhas da Teca",
-    text: "personagens, roupinhas e recortes",
-    image: "/cards/atelie/bonequinhas.png",
-    target: "bonequinhas",
-  },
-  {
-    id: "origami",
-    title: "Origami",
-    text: "dobras simples e poéticas",
-    image: "/cards/atelie/origami.png",
-    target: "origami",
-  },
-  {
-    id: "imprimiveis",
-    title: "Imprimíveis",
-    text: "atividades e materiais para imprimir",
-    image: "/cards/atelie/imprimiveis.png",
-    target: "imprimiveis",
-  },
-  {
-    id: "cartoes",
-    title: "Cartões",
-    text: "pequenas mensagens para entregar",
-    image: "/cards/atelie/cartoes.png",
-    target: "cartoes",
-  },
-  {
-    id: "adesivos",
-    title: "Adesivos",
-    text: "detalhes para decorar cartas e diários",
-    image: "/cards/atelie/adesivos.png",
-    target: "adesivos",
-  },
-  {
-    id: "carimbos",
-    title: "Carimbos",
-    text: "marcas, símbolos e selos do universo",
-    image: "/cards/atelie/carimbos.png",
-    target: "carimbos",
-  },
-  {
-    id: "bau",
-    title: "Baú da Teca",
-    text: "um lugar para guardar tesouros de verdade",
-    image: "/cards/atelie/bau.png",
-    target: "bau",
-  },
-  {
-    id: "papelaria",
-    title: "Papelaria",
-    text: "coleções afetivas para tocar e guardar",
-    image: "/cards/atelie/papelaria.png",
-    target: "papelaria",
-  },
-]
-
 const clubCards: CardItem[] = [
   {
     id: "carteirinha",
@@ -427,6 +353,15 @@ const subPageData: Record<SimpleSubScreen, SubPageContent> = {
     noteLabel: "ateliê",
     noteText: "abrir o baú pode ser ritual: lento, cuidadoso, cheio de expectativa.",
   },
+  papelaria: {
+    parent: "atelie",
+    title: "papelaria",
+    poetic: "uma gaveta de tesouros — papéis, fitas e coleções que pedem tempo.",
+    image: "/cards/atelie/papelaria.png",
+    noteLabel: "ateliê",
+    noteText:
+      "a papelaria não é outra loja: é um canto do ateliê. para levar algo pra casa, volte à página principal do ateliê.",
+  },
   carteirinha: {
     parent: "clube",
     title: "carteirinha da teca",
@@ -477,9 +412,9 @@ function isSimpleSubScreen(screen: Screen): screen is SimpleSubScreen {
 
 export default function App() {
   const [screen, setScreen] = useState<Screen>("home")
-  const [box, setBox] = useState<PaperGood[]>([])
+  const [box, setBox] = useState<AtelierGood[]>([])
 
-  const addToBox = (good: PaperGood) => {
+  const addToBox = (good: AtelierGood) => {
     setBox((current) => {
       if (current.some((item) => item.id === good.id)) return current
       return [...current, good]
@@ -518,14 +453,6 @@ export default function App() {
           />
         )}
 
-        {screen === "papelaria" && (
-          <PapelariaPage
-            setScreen={setScreen}
-            box={box}
-            onAddToBox={addToBox}
-          />
-        )}
-
         {screen === "minha-caixa" && (
           <MinhaCaixaPage setScreen={setScreen} box={box} />
         )}
@@ -539,10 +466,10 @@ export default function App() {
         )}
 
         {screen === "atelie" && (
-          <Page
-            data={pageData.atelie}
-            cards={atelierCards}
+          <AtelierShopPage
             setScreen={setScreen}
+            box={box}
+            onAddToBox={addToBox}
           />
         )}
 
@@ -764,21 +691,23 @@ function SoftNote({
   )
 }
 
-function PaperGoodCard({
+function AtelierGoodCard({
   good,
   inBox,
   expanded,
   onToggleExpand,
   onAddToBox,
+  onOpenPoetic,
 }: {
-  good: PaperGood
+  good: AtelierGood
   inBox: boolean
   expanded: boolean
   onToggleExpand: () => void
   onAddToBox: () => void
+  onOpenPoetic?: () => void
 }) {
   const [imageSrc, setImageSrc] = useState(good.image)
-  const status = getPaperGoodStatus(good)
+  const status = getAtelierGoodStatus(good)
 
   return (
     <article style={styles.paperCard}>
@@ -787,7 +716,7 @@ function PaperGoodCard({
         alt={good.title}
         style={styles.paperCardImage}
         onError={() => {
-          if (imageSrc !== papelariaCoverImage) setImageSrc(papelariaCoverImage)
+          if (imageSrc !== atelierCoverImage) setImageSrc(atelierCoverImage)
         }}
       />
 
@@ -829,39 +758,43 @@ function PaperGoodCard({
         </button>
 
         {expanded && (
-          <p style={styles.paperCardDescription}>{good.description}</p>
+          <>
+            <p style={styles.paperCardDescription}>{good.description}</p>
+            {onOpenPoetic && (
+              <button
+                type="button"
+                onClick={onOpenPoetic}
+                style={styles.paperPoeticLink}
+              >
+                conhecer a história desta gaveta
+              </button>
+            )}
+          </>
         )}
       </div>
     </article>
   )
 }
 
-function PapelariaPage({
+function AtelierShopPage({
   setScreen,
   box,
   onAddToBox,
 }: {
   setScreen: (screen: Screen) => void
-  box: PaperGood[]
-  onAddToBox: (good: PaperGood) => void
+  box: AtelierGood[]
+  onAddToBox: (good: AtelierGood) => void
 }) {
   const [expandedId, setExpandedId] = useState<string | null>(null)
   const boxCount = box.length
 
   return (
     <section style={styles.subPage}>
-      <div style={styles.paperHeaderRow}>
-        <button
-          onClick={() => setScreen("atelie")}
-          style={styles.backButton}
-        >
-          ← ateliê
-        </button>
-
+      <div style={styles.atelierTopBar}>
         <button
           type="button"
           onClick={() => setScreen("minha-caixa")}
-          style={styles.minhaCaixaLink}
+          style={styles.minhaCaixaLinkMain}
         >
           <span style={styles.minhaCaixaIcon}>✉</span>
           minha caixa
@@ -872,34 +805,34 @@ function PapelariaPage({
       </div>
 
       <img
-        src={papelariaCoverImage}
-        alt="Papelaria"
+        src={atelierCoverImage}
+        alt="Ateliê"
         style={styles.subPageImage}
       />
 
       <div style={styles.pageIntroBlock}>
-        <h1 style={styles.pageTitle}>papelaria</h1>
+        <h1 style={styles.pageTitle}>ateliê</h1>
         <p style={styles.pageIntro}>
-          coleções afetivas para tocar, cheirar e guardar perto — como uma
-          gaveta de tesouros que não tem pressa.
+          {pageData.atelie.intro} — objetos para tocar, guardar e levar pra casa
+          com calma.
         </p>
       </div>
 
       <SoftNote label="clube da teca" highlight>
         quem pertence ao clube tem 30% de cuidado a menos no preço — um
-        desconto fixo em toda a papelaria, sem barulho de promoção.
+        desconto fixo em todo o ateliê, sem barulho de promoção.
       </SoftNote>
 
       <section style={styles.paperCatalog}>
-        <h2 style={styles.paperCatalogTitle}>objetos da coleção</h2>
+        <h2 style={styles.paperCatalogTitle}>objetos do ateliê</h2>
         <p style={styles.paperCatalogIntro}>
           escolha devagar. cada peça foi pensada para continuar o universo da
           Teca em casa.
         </p>
 
         <div style={styles.paperStack}>
-          {paperGoods.map((good) => (
-            <PaperGoodCard
+          {atelierGoods.map((good) => (
+            <AtelierGoodCard
               key={good.id}
               good={good}
               inBox={box.some((item) => item.id === good.id)}
@@ -910,6 +843,11 @@ function PapelariaPage({
                 )
               }
               onAddToBox={() => onAddToBox(good)}
+              onOpenPoetic={
+                good.id === "papelaria"
+                  ? () => setScreen("papelaria")
+                  : undefined
+              }
             />
           ))}
         </div>
@@ -923,15 +861,15 @@ function MinhaCaixaPage({
   box,
 }: {
   setScreen: (screen: Screen) => void
-  box: PaperGood[]
+  box: AtelierGood[]
 }) {
   return (
     <section style={styles.subPage}>
       <button
-        onClick={() => setScreen("papelaria")}
+        onClick={() => setScreen("atelie")}
         style={styles.backButton}
       >
-        ← papelaria
+        ← ateliê
       </button>
 
       <div style={styles.minhaCaixaHero}>
@@ -944,7 +882,7 @@ function MinhaCaixaPage({
 
       {box.length === 0 ? (
         <SoftNote label="vazia por enquanto">
-          nenhum tesouro ainda. volte à papelaria e escolha com calma.
+          nenhum tesouro ainda. volte ao ateliê e escolha com calma.
         </SoftNote>
       ) : (
         <>
@@ -969,7 +907,7 @@ function MinhaCaixaPage({
 
       <button
         type="button"
-        onClick={() => setScreen("papelaria")}
+        onClick={() => setScreen("atelie")}
         style={styles.paperBackToShopButton}
       >
         continuar escolhendo
@@ -1641,12 +1579,28 @@ const styles: Record<string, React.CSSProperties> = {
     color: "#7a6254",
   },
 
-  paperHeaderRow: {
+  atelierTopBar: {
     display: "flex",
-    alignItems: "flex-start",
-    justifyContent: "space-between",
-    gap: "12px",
-    marginBottom: "4px",
+    justifyContent: "center",
+    marginBottom: "18px",
+  },
+
+  minhaCaixaLinkMain: {
+    border: "none",
+    background: "rgba(255, 253, 249, 0.75)",
+    borderRadius: "999px",
+    padding: "10px 20px",
+    cursor: "pointer",
+    display: "flex",
+    alignItems: "center",
+    gap: "8px",
+    fontFamily: "'Caveat', cursive",
+    fontSize: "24px",
+    color: "#8a6f5d",
+    borderWidth: "1px",
+    borderStyle: "solid",
+    borderColor: theme.line,
+    boxShadow: "0 4px 14px rgba(120,90,60,0.05)",
   },
 
   minhaCaixaLink: {
@@ -1838,6 +1792,19 @@ const styles: Record<string, React.CSSProperties> = {
     fontSize: "16px",
     lineHeight: 1.55,
     color: "#7a6254",
+  },
+
+  paperPoeticLink: {
+    marginTop: "12px",
+    border: "none",
+    background: "transparent",
+    padding: 0,
+    fontFamily: "'Caveat', cursive",
+    fontSize: "20px",
+    color: "#9a7f6d",
+    cursor: "pointer",
+    textDecoration: "underline",
+    textUnderlineOffset: "4px",
   },
 
   minhaCaixaHero: {
