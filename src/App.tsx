@@ -6,6 +6,13 @@ import {
   type PlayExperience,
   type PlayUniverse,
 } from "./playData"
+import {
+  formatBRL,
+  getPaperGoodStatus,
+  paperGoods,
+  papelariaCoverImage,
+  type PaperGood,
+} from "./paperData"
 
 type Screen =
   | "home"
@@ -32,6 +39,7 @@ type Screen =
   | "carimbos"
   | "bau"
   | "papelaria"
+  | "minha-caixa"
   | "clube"
   | "carteirinha"
   | "correio"
@@ -51,6 +59,8 @@ type SimpleSubScreen = Exclude<
   | "laboratorio"
   | "cozinha"
   | "atelie"
+  | "papelaria"
+  | "minha-caixa"
   | "clube"
 >
 
@@ -417,14 +427,6 @@ const subPageData: Record<SimpleSubScreen, SubPageContent> = {
     noteLabel: "ateliê",
     noteText: "abrir o baú pode ser ritual: lento, cuidadoso, cheio de expectativa.",
   },
-  papelaria: {
-    parent: "atelie",
-    title: "papelaria",
-    poetic: "coleções afetivas para tocar, cheirar e guardar perto.",
-    image: "/cards/atelie/papelaria.png",
-    noteLabel: "ateliê",
-    noteText: "papel também guarda memória quando se escolhe com carinho.",
-  },
   carteirinha: {
     parent: "clube",
     title: "carteirinha da teca",
@@ -475,6 +477,14 @@ function isSimpleSubScreen(screen: Screen): screen is SimpleSubScreen {
 
 export default function App() {
   const [screen, setScreen] = useState<Screen>("home")
+  const [box, setBox] = useState<PaperGood[]>([])
+
+  const addToBox = (good: PaperGood) => {
+    setBox((current) => {
+      if (current.some((item) => item.id === good.id)) return current
+      return [...current, good]
+    })
+  }
 
   return (
     <main style={styles.main}>
@@ -506,6 +516,18 @@ export default function App() {
             content={subPageData[screen]}
             backLabel={parentLabels[subPageData[screen].parent]}
           />
+        )}
+
+        {screen === "papelaria" && (
+          <PapelariaPage
+            setScreen={setScreen}
+            box={box}
+            onAddToBox={addToBox}
+          />
+        )}
+
+        {screen === "minha-caixa" && (
+          <MinhaCaixaPage setScreen={setScreen} box={box} />
         )}
 
         {screen === "brincadeiras" && (
@@ -739,6 +761,220 @@ function SoftNote({
       <p style={styles.tag}>{label}</p>
       <p style={styles.noteText}>{children}</p>
     </article>
+  )
+}
+
+function PaperGoodCard({
+  good,
+  inBox,
+  expanded,
+  onToggleExpand,
+  onAddToBox,
+}: {
+  good: PaperGood
+  inBox: boolean
+  expanded: boolean
+  onToggleExpand: () => void
+  onAddToBox: () => void
+}) {
+  const [imageSrc, setImageSrc] = useState(good.image)
+  const status = getPaperGoodStatus(good)
+
+  return (
+    <article style={styles.paperCard}>
+      <img
+        src={imageSrc}
+        alt={good.title}
+        style={styles.paperCardImage}
+        onError={() => {
+          if (imageSrc !== papelariaCoverImage) setImageSrc(papelariaCoverImage)
+        }}
+      />
+
+      <div style={styles.paperCardBody}>
+        <div style={styles.paperCardTopRow}>
+          <p style={styles.paperCollectionTag}>{good.collection}</p>
+          {status && (
+            <span style={styles.paperStatusSeal}>{status.label}</span>
+          )}
+        </div>
+
+        <button
+          type="button"
+          onClick={onToggleExpand}
+          style={styles.paperCardTitleButton}
+        >
+          <h3 style={styles.paperCardTitle}>{good.title}</h3>
+        </button>
+
+        <p style={styles.paperCardPoetic}>{good.poetic}</p>
+
+        <div style={styles.paperPriceBlock}>
+          <p style={styles.paperPrice}>{formatBRL(good.price)}</p>
+          <p style={styles.paperClubPrice}>
+            membros do clube levam por {formatBRL(good.clubPrice)}
+          </p>
+        </div>
+
+        <button
+          type="button"
+          onClick={onAddToBox}
+          style={{
+            ...styles.paperTakeHomeButton,
+            ...(inBox ? styles.paperTakeHomeButtonDone : {}),
+          }}
+          disabled={inBox}
+        >
+          {inBox ? "já está na sua caixa" : "levar pra casa"}
+        </button>
+
+        {expanded && (
+          <p style={styles.paperCardDescription}>{good.description}</p>
+        )}
+      </div>
+    </article>
+  )
+}
+
+function PapelariaPage({
+  setScreen,
+  box,
+  onAddToBox,
+}: {
+  setScreen: (screen: Screen) => void
+  box: PaperGood[]
+  onAddToBox: (good: PaperGood) => void
+}) {
+  const [expandedId, setExpandedId] = useState<string | null>(null)
+  const boxCount = box.length
+
+  return (
+    <section style={styles.subPage}>
+      <div style={styles.paperHeaderRow}>
+        <button
+          onClick={() => setScreen("atelie")}
+          style={styles.backButton}
+        >
+          ← ateliê
+        </button>
+
+        <button
+          type="button"
+          onClick={() => setScreen("minha-caixa")}
+          style={styles.minhaCaixaLink}
+        >
+          <span style={styles.minhaCaixaIcon}>✉</span>
+          minha caixa
+          {boxCount > 0 && (
+            <span style={styles.minhaCaixaCount}>{boxCount}</span>
+          )}
+        </button>
+      </div>
+
+      <img
+        src={papelariaCoverImage}
+        alt="Papelaria"
+        style={styles.subPageImage}
+      />
+
+      <div style={styles.pageIntroBlock}>
+        <h1 style={styles.pageTitle}>papelaria</h1>
+        <p style={styles.pageIntro}>
+          coleções afetivas para tocar, cheirar e guardar perto — como uma
+          gaveta de tesouros que não tem pressa.
+        </p>
+      </div>
+
+      <SoftNote label="clube da teca" highlight>
+        quem pertence ao clube tem 30% de cuidado a menos no preço — um
+        desconto fixo em toda a papelaria, sem barulho de promoção.
+      </SoftNote>
+
+      <section style={styles.paperCatalog}>
+        <h2 style={styles.paperCatalogTitle}>objetos da coleção</h2>
+        <p style={styles.paperCatalogIntro}>
+          escolha devagar. cada peça foi pensada para continuar o universo da
+          Teca em casa.
+        </p>
+
+        <div style={styles.paperStack}>
+          {paperGoods.map((good) => (
+            <PaperGoodCard
+              key={good.id}
+              good={good}
+              inBox={box.some((item) => item.id === good.id)}
+              expanded={expandedId === good.id}
+              onToggleExpand={() =>
+                setExpandedId((current) =>
+                  current === good.id ? null : good.id
+                )
+              }
+              onAddToBox={() => onAddToBox(good)}
+            />
+          ))}
+        </div>
+      </section>
+    </section>
+  )
+}
+
+function MinhaCaixaPage({
+  setScreen,
+  box,
+}: {
+  setScreen: (screen: Screen) => void
+  box: PaperGood[]
+}) {
+  return (
+    <section style={styles.subPage}>
+      <button
+        onClick={() => setScreen("papelaria")}
+        style={styles.backButton}
+      >
+        ← papelaria
+      </button>
+
+      <div style={styles.minhaCaixaHero}>
+        <span style={styles.minhaCaixaHeroIcon}>✉</span>
+        <h1 style={styles.pageTitle}>minha caixa</h1>
+        <p style={styles.pageIntro}>
+          um canto quieto para o que você escolheu levar pra casa.
+        </p>
+      </div>
+
+      {box.length === 0 ? (
+        <SoftNote label="vazia por enquanto">
+          nenhum tesouro ainda. volte à papelaria e escolha com calma.
+        </SoftNote>
+      ) : (
+        <>
+          <div style={styles.paperStack}>
+            {box.map((good) => (
+              <article key={good.id} style={styles.boxItem}>
+                <p style={styles.boxItemTitle}>{good.title}</p>
+                <p style={styles.boxItemPoetic}>{good.poetic}</p>
+                <p style={styles.boxItemPrice}>
+                  {formatBRL(good.price)} · clube {formatBRL(good.clubPrice)}
+                </p>
+              </article>
+            ))}
+          </div>
+
+          <SoftNote label="em breve">
+            o caminho até a sua casa ainda está sendo costurado com carinho.
+            por enquanto, guarde aqui o que deseja levar.
+          </SoftNote>
+        </>
+      )}
+
+      <button
+        type="button"
+        onClick={() => setScreen("papelaria")}
+        style={styles.paperBackToShopButton}
+      >
+        continuar escolhendo
+      </button>
+    </section>
   )
 }
 
@@ -1403,6 +1639,258 @@ const styles: Record<string, React.CSSProperties> = {
     fontSize: "16px",
     lineHeight: 1.5,
     color: "#7a6254",
+  },
+
+  paperHeaderRow: {
+    display: "flex",
+    alignItems: "flex-start",
+    justifyContent: "space-between",
+    gap: "12px",
+    marginBottom: "4px",
+  },
+
+  minhaCaixaLink: {
+    border: "none",
+    background: "rgba(255, 253, 249, 0.6)",
+    borderRadius: "999px",
+    padding: "8px 14px",
+    cursor: "pointer",
+    display: "flex",
+    alignItems: "center",
+    gap: "6px",
+    fontFamily: "'Caveat', cursive",
+    fontSize: "20px",
+    color: "#8a6f5d",
+    borderWidth: "1px",
+    borderStyle: "solid",
+    borderColor: theme.line,
+    flexShrink: 0,
+  },
+
+  minhaCaixaIcon: {
+    fontSize: "16px",
+    opacity: 0.85,
+  },
+
+  minhaCaixaCount: {
+    fontFamily: "'Nunito', sans-serif",
+    fontSize: "11px",
+    background: "#efe0d0",
+    color: "#8a6f5d",
+    borderRadius: "999px",
+    padding: "2px 7px",
+    minWidth: "18px",
+    textAlign: "center",
+  },
+
+  paperCatalog: {
+    marginTop: "6px",
+  },
+
+  paperCatalogTitle: {
+    textAlign: "center",
+    color: "#8a6f5d",
+    margin: "0 0 8px",
+    fontSize: "28px",
+    fontFamily: "'Caveat', cursive",
+    fontWeight: 400,
+  },
+
+  paperCatalogIntro: {
+    textAlign: "center",
+    color: theme.muted,
+    fontFamily: "'Cormorant Garamond', serif",
+    fontStyle: "italic",
+    fontSize: "17px",
+    lineHeight: 1.5,
+    margin: "0 2px 24px",
+  },
+
+  paperStack: {
+    display: "flex",
+    flexDirection: "column",
+    gap: "28px",
+  },
+
+  paperCard: {
+    background:
+      "linear-gradient(180deg, #fffdf9 0%, #f8efe5 100%)",
+    borderRadius: "28px",
+    overflow: "hidden",
+    border: `1px solid ${theme.line}`,
+    boxShadow: "0 10px 28px rgba(120,90,60,0.05)",
+  },
+
+  paperCardImage: {
+    width: "100%",
+    aspectRatio: "4 / 3",
+    objectFit: "cover",
+    display: "block",
+  },
+
+  paperCardBody: {
+    padding: "18px 20px 22px",
+  },
+
+  paperCardTopRow: {
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "flex-start",
+    gap: "10px",
+    marginBottom: "10px",
+  },
+
+  paperCollectionTag: {
+    margin: 0,
+    fontSize: "10px",
+    letterSpacing: "2px",
+    textTransform: "uppercase",
+    color: "#b3815f",
+    fontFamily: "'Nunito', sans-serif",
+    fontWeight: 600,
+  },
+
+  paperStatusSeal: {
+    fontSize: "9px",
+    letterSpacing: "1.5px",
+    textTransform: "uppercase",
+    color: "#9a7f6d",
+    border: "1px solid #e8d8c8",
+    borderRadius: "999px",
+    padding: "4px 8px",
+    background: "rgba(248, 240, 232, 0.8)",
+    fontFamily: "'Nunito', sans-serif",
+    textAlign: "right",
+    lineHeight: 1.3,
+  },
+
+  paperCardTitleButton: {
+    border: "none",
+    background: "transparent",
+    padding: 0,
+    cursor: "pointer",
+    textAlign: "left",
+    width: "100%",
+  },
+
+  paperCardTitle: {
+    margin: "0 0 8px",
+    fontFamily: "'Caveat', cursive",
+    fontSize: "34px",
+    lineHeight: 1,
+    color: theme.text,
+    fontWeight: 400,
+  },
+
+  paperCardPoetic: {
+    margin: "0 0 16px",
+    fontFamily: "'Cormorant Garamond', serif",
+    fontStyle: "italic",
+    fontSize: "19px",
+    lineHeight: 1.45,
+    color: theme.muted,
+  },
+
+  paperPriceBlock: {
+    marginBottom: "16px",
+  },
+
+  paperPrice: {
+    margin: "0 0 4px",
+    fontFamily: "'Cormorant Garamond', serif",
+    fontSize: "22px",
+    color: theme.text,
+  },
+
+  paperClubPrice: {
+    margin: 0,
+    fontFamily: "'Cormorant Garamond', serif",
+    fontStyle: "italic",
+    fontSize: "16px",
+    color: "#a67c52",
+  },
+
+  paperTakeHomeButton: {
+    width: "100%",
+    border: `1px solid ${theme.line}`,
+    background: "linear-gradient(180deg, #f3e6d8 0%, #e8d5c3 100%)",
+    borderRadius: "999px",
+    padding: "14px 20px",
+    fontFamily: "'Caveat', cursive",
+    fontSize: "26px",
+    color: theme.text,
+    cursor: "pointer",
+    boxShadow: "0 4px 14px rgba(120,90,60,0.06)",
+  },
+
+  paperTakeHomeButtonDone: {
+    opacity: 0.72,
+    cursor: "default",
+    background: "#f5ebe2",
+  },
+
+  paperCardDescription: {
+    margin: "16px 0 0",
+    paddingTop: "14px",
+    borderTop: `1px solid ${theme.line}`,
+    fontFamily: "'Cormorant Garamond', serif",
+    fontStyle: "italic",
+    fontSize: "16px",
+    lineHeight: 1.55,
+    color: "#7a6254",
+  },
+
+  minhaCaixaHero: {
+    textAlign: "center",
+    marginBottom: "8px",
+  },
+
+  minhaCaixaHeroIcon: {
+    display: "block",
+    fontSize: "28px",
+    marginBottom: "8px",
+    opacity: 0.7,
+  },
+
+  boxItem: {
+    background: "linear-gradient(180deg, #fffdf9 0%, #f8efe5 100%)",
+    borderRadius: "22px",
+    padding: "16px 18px",
+    border: `1px solid ${theme.line}`,
+  },
+
+  boxItemTitle: {
+    margin: "0 0 6px",
+    fontFamily: "'Caveat', cursive",
+    fontSize: "28px",
+    color: theme.text,
+  },
+
+  boxItemPoetic: {
+    margin: "0 0 8px",
+    fontFamily: "'Cormorant Garamond', serif",
+    fontStyle: "italic",
+    fontSize: "16px",
+    color: theme.muted,
+  },
+
+  boxItemPrice: {
+    margin: 0,
+    fontSize: "13px",
+    color: "#9a8475",
+    fontFamily: "'Nunito', sans-serif",
+  },
+
+  paperBackToShopButton: {
+    marginTop: "20px",
+    width: "100%",
+    border: "none",
+    background: "transparent",
+    fontFamily: "'Caveat', cursive",
+    fontSize: "24px",
+    color: "#9a7f6d",
+    cursor: "pointer",
+    padding: "12px",
   },
 
   cardButton: {
