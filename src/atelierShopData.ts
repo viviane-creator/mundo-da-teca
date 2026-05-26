@@ -1,9 +1,29 @@
+import type { AtelierPoeticScreen } from "./atelierSubPages"
+
 export type AtelierCollection =
+  | "Álbum das Descobertas"
+  | "Pacotinho — Folhas do Mundo"
+  | "Pacotinho — Coisas da Chuva"
+  | "Pacotinho — Quintal"
+  | "Pacotinho — Céu e Vento"
   | "Coleção Chuva"
   | "Coleção Quintal"
   | "Coleção Correio"
   | "Coleção Vento"
   | "Gaveta do Ateliê"
+  | "ABUH × Mundo da Teca"
+
+export type AtelierSectionId =
+  | "figurinhas"
+  | "colecoes"
+  | "papelaria"
+  | "especiais"
+
+export type AtelierVisualKind =
+  | "standard"
+  | "envelope"
+  | "album"
+  | "collab"
 
 export type AtelierGood = {
   id: string
@@ -18,6 +38,17 @@ export type AtelierGood = {
   collection: AtelierCollection
   isClubExclusive: boolean
   description: string
+  section: AtelierSectionId
+  visualKind: AtelierVisualKind
+  collabPartner?: string
+  poeticScreen?: AtelierPoeticScreen
+  poeticLinkLabel?: string
+}
+
+export type AtelierSection = {
+  id: AtelierSectionId
+  title: string
+  intro: string
 }
 
 export type AtelierGoodStatusKind =
@@ -32,6 +63,27 @@ export type AtelierGoodStatus = {
 }
 
 export const atelierCoverImage = "/covers/atelie.png"
+
+export const atelierSections: AtelierSection[] = [
+  {
+    id: "colecoes",
+    title: "coleções do ateliê",
+    intro:
+      "pequenas séries que chegam em tiragens quietas, como achados de uma gaveta antiga.",
+  },
+  {
+    id: "papelaria",
+    title: "papelaria",
+    intro:
+      "papéis e mensagens para escrever, dobrar e entregar sem pressa.",
+  },
+  {
+    id: "especiais",
+    title: "objetos especiais",
+    intro:
+      "peças raras e encontros delicados — coisas que merecem um lugar na mesa.",
+  },
+]
 
 export function atelierGoodImage(id: string): string {
   return `/cards/atelie/${id}.png`
@@ -49,7 +101,7 @@ export function clubPriceFrom(price: number): number {
 }
 
 export function getAtelierGoodStatus(
-  good: AtelierGood
+  good: AtelierGood,
 ): AtelierGoodStatus | null {
   if (good.isClubExclusive) {
     return { kind: "club-collection", label: "coleção do clube" }
@@ -66,96 +118,129 @@ export function getAtelierGoodStatus(
   return null
 }
 
+export function getFigurinhasGoods(): AtelierGood[] {
+  return atelierGoods.filter((good) => good.section === "figurinhas")
+}
+
+export function getFigurinhasSeasonalTeasers() {
+  return [
+    {
+      id: "sazonal-outono",
+      title: "coleções sazonais",
+      poetic: "novos pacotinhos chegam devagar, como estações que passam sem pressa.",
+    },
+  ]
+}
+
+export function getAtelierCatalogSections() {
+  return atelierSections
+    .map((section) => ({
+      ...section,
+      goods: atelierGoods.filter((good) => good.section === section.id),
+    }))
+    .filter((section) => section.goods.length > 0)
+}
+
 export const atelierGoods: AtelierGood[] = [
   {
-    id: "papel-de-carta",
-    title: "papel de carta",
-    poetic: "folhas delicadas esperam palavras que não precisam ser perfeitas.",
-    image: atelierGoodImage("papel-de-carta"),
-    price: 34,
-    clubPrice: 24,
-    isLimited: false,
-    stock: 14,
+    id: "album-descobertas",
+    title: "álbum das descobertas",
+    poetic:
+      "um lugar grosso de papel para guardar figurinhas como quem prende folhas entre páginas.",
+    image: atelierGoodImage("album"),
+    price: 58,
+    clubPrice: clubPriceFrom(58),
+    isLimited: true,
+    stock: 6,
     madeToOrder: false,
-    collection: "Coleção Correio",
+    collection: "Álbum das Descobertas",
     isClubExclusive: false,
     description:
-      "pacote com folhas vergê e algodão, textura macia, bordas levemente irregulares. para cartas escritas à mão.",
+      "álbum com páginas texturizadas, elástico de linho e divisórias suaves. feito para colar devagar o que o caminho trouxe — sem pressa de completar.",
+    section: "figurinhas",
+    visualKind: "album",
+    poeticScreen: "album-descobertas",
+    poeticLinkLabel: "folhear o álbum das descobertas",
   },
   {
-    id: "album",
-    title: "álbum de figurinhas",
-    poetic: "completar devagar é outra forma de cuidar do tempo.",
-    image: atelierGoodImage("album"),
-    price: 52,
-    clubPrice: 36,
+    id: "pacotinho-folhas",
+    title: "pacotinho — folhas do mundo",
+    poetic:
+      "pequenas imagens para guardar descobertas do caminho, como quem encontra folhas dentro de um caderno antigo.",
+    image: atelierGoodImage("pacotinho-folhas"),
+    price: 28,
+    clubPrice: clubPriceFrom(28),
+    isLimited: true,
+    stock: 4,
+    madeToOrder: false,
+    collection: "Pacotinho — Folhas do Mundo",
+    isClubExclusive: false,
+    description:
+      "envelope de papel kraft com selo de cera ilustrado. dentro, figurinhas em papel fosco — veias, bordas e formas de folhas vistas de perto.",
+    section: "figurinhas",
+    visualKind: "envelope",
+    poeticScreen: "pacotinho-folhas",
+    poeticLinkLabel: "conhecer este pacotinho",
+  },
+  {
+    id: "pacotinho-chuva",
+    title: "pacotinho — coisas da chuva",
+    poetic:
+      "figurinhas que parecem ter sido encontradas depois da chuva miúda, ainda com cheiro de terra molhada.",
+    image: atelierGoodImage("pacotinho-chuva"),
+    price: 28,
+    clubPrice: clubPriceFrom(28),
+    isLimited: false,
+    stock: 9,
+    madeToOrder: false,
+    collection: "Pacotinho — Coisas da Chuva",
+    isClubExclusive: false,
+    description:
+      "pacotinho surpresa com gotas, nuvens e pequenos objetos de dia cinza. para colar no álbum ou guardar na gaveta.",
+    section: "figurinhas",
+    visualKind: "envelope",
+    poeticScreen: "pacotinho-chuva",
+    poeticLinkLabel: "conhecer este pacotinho",
+  },
+  {
+    id: "pacotinho-quintal",
+    title: "pacotinho — quintal",
+    poetic:
+      "um punhado de imagens do quintal — pedras, galhos, flores caídas — como tesouros de tarde calma.",
+    image: atelierGoodImage("pacotinho-quintal"),
+    price: 28,
+    clubPrice: clubPriceFrom(28),
     isLimited: true,
     stock: 5,
     madeToOrder: false,
-    collection: "Coleção Quintal",
+    collection: "Pacotinho — Quintal",
     isClubExclusive: false,
     description:
-      "álbum com páginas grossas e elástico de linho. espaço para figurinhas do mundo real e do universo da Teca.",
+      "envelope artesanal com ilustrações do quintal e da calçada. cada pacote traz uma combinação um pouco diferente.",
+    section: "figurinhas",
+    visualKind: "envelope",
+    poeticScreen: "pacotinho-quintal",
+    poeticLinkLabel: "conhecer este pacotinho",
   },
   {
-    id: "bonequinhas",
-    title: "bonequinhas da teca",
-    poetic: "personagens de papel também precisam de silêncio para existir.",
-    image: atelierGoodImage("bonequinhas"),
-    price: 44,
-    clubPrice: 31,
-    isLimited: false,
-    stock: 10,
-    madeToOrder: false,
-    collection: "Gaveta do Ateliê",
-    isClubExclusive: false,
-    description:
-      "recortes e figurinos em papel cartão, roupinhas de tecido leve. para histórias inventadas em voz baixa.",
-  },
-  {
-    id: "origami",
-    title: "origami",
-    poetic: "uma dobra de cada vez, até o papel ganhar asas.",
-    image: atelierGoodImage("origami"),
+    id: "pacotinho-ceu",
+    title: "pacotinho — céu e vento",
+    poetic:
+      "figurinhas leves de nuvens, pipas e brisa — para quem olha o céu sem pressa de nomear tudo.",
+    image: atelierGoodImage("pacotinho-ceu"),
     price: 28,
-    clubPrice: 20,
+    clubPrice: clubPriceFrom(28),
     isLimited: false,
-    stock: 16,
+    stock: 11,
     madeToOrder: false,
-    collection: "Coleção Vento",
+    collection: "Pacotinho — Céu e Vento",
     isClubExclusive: false,
     description:
-      "papel quadrado em tons naturais e guia ilustrado de dobras simples. sem pressa de acertar o primeiro.",
-  },
-  {
-    id: "imprimiveis",
-    title: "imprimíveis",
-    poetic: "materiais para imprimir e continuar o mundo da teca em casa.",
-    image: atelierGoodImage("imprimiveis"),
-    price: 22,
-    clubPrice: 15,
-    isLimited: false,
-    stock: 30,
-    madeToOrder: false,
-    collection: "Gaveta do Ateliê",
-    isClubExclusive: false,
-    description:
-      "arquivo digital com atividades calmas para imprimir em casa. papel comum já basta.",
-  },
-  {
-    id: "cartoes",
-    title: "cartões",
-    poetic: "mensagens pequenas atravessam distâncias sem fazer barulho.",
-    image: atelierGoodImage("cartoes"),
-    price: 26,
-    clubPrice: 18,
-    isLimited: false,
-    stock: 18,
-    madeToOrder: false,
-    collection: "Coleção Correio",
-    isClubExclusive: false,
-    description:
-      "cartões em branco com envelopes delicados. para entregar na mão ou deixar na porta.",
+      "pacotinho com selo de vento. figurinhas em tons suaves de céu, para trocar ou guardar entre as páginas do álbum.",
+    section: "figurinhas",
+    visualKind: "envelope",
+    poeticScreen: "pacotinho-ceu",
+    poeticLinkLabel: "conhecer este pacotinho",
   },
   {
     id: "adesivos",
@@ -163,7 +248,7 @@ export const atelierGoods: AtelierGood[] = [
     poetic: "detalhes coloridos para marcar páginas e sorrisos.",
     image: atelierGoodImage("adesivos"),
     price: 30,
-    clubPrice: 21,
+    clubPrice: clubPriceFrom(30),
     isLimited: false,
     stock: 20,
     madeToOrder: false,
@@ -171,6 +256,42 @@ export const atelierGoods: AtelierGood[] = [
     isClubExclusive: false,
     description:
       "lâminas de adesivos em papel fosco, motivos do céu e da terra. colagem lenta e feliz.",
+    section: "colecoes",
+    visualKind: "standard",
+  },
+  {
+    id: "bonequinhas",
+    title: "bonequinhas da teca",
+    poetic: "personagens de papel também precisam de silêncio para existir.",
+    image: atelierGoodImage("bonequinhas"),
+    price: 44,
+    clubPrice: clubPriceFrom(44),
+    isLimited: false,
+    stock: 10,
+    madeToOrder: false,
+    collection: "Coleção Quintal",
+    isClubExclusive: false,
+    description:
+      "recortes e figurinos em papel cartão, roupinhas de tecido leve. para histórias inventadas em voz baixa.",
+    section: "colecoes",
+    visualKind: "standard",
+  },
+  {
+    id: "origami",
+    title: "origami",
+    poetic: "uma dobra de cada vez, até o papel ganhar asas.",
+    image: atelierGoodImage("origami"),
+    price: 28,
+    clubPrice: clubPriceFrom(28),
+    isLimited: false,
+    stock: 16,
+    madeToOrder: false,
+    collection: "Coleção Vento",
+    isClubExclusive: false,
+    description:
+      "papel quadrado em tons naturais e guia ilustrado de dobras simples. sem pressa de acertar o primeiro.",
+    section: "colecoes",
+    visualKind: "standard",
   },
   {
     id: "carimbos",
@@ -178,7 +299,7 @@ export const atelierGoods: AtelierGood[] = [
     poetic: "marcas repetidas deixam rastro de quem esteve ali.",
     image: atelierGoodImage("carimbos"),
     price: 40,
-    clubPrice: 28,
+    clubPrice: clubPriceFrom(40),
     isLimited: false,
     stock: 7,
     madeToOrder: false,
@@ -186,21 +307,59 @@ export const atelierGoods: AtelierGood[] = [
     isClubExclusive: true,
     description:
       "conjunto de carimbos de madeira com símbolos da Teca. tinta à parte, escolha a cor do dia.",
+    section: "colecoes",
+    visualKind: "standard",
   },
   {
-    id: "bau",
-    title: "baú da teca",
-    poetic: "um lugar quieto para guardar o que não cabe em gavetas comuns.",
-    image: atelierGoodImage("bau"),
-    price: 72,
-    clubPrice: 50,
-    isLimited: true,
-    stock: 0,
-    madeToOrder: true,
+    id: "papel-de-carta",
+    title: "papel de carta",
+    poetic: "folhas delicadas esperam palavras que não precisam ser perfeitas.",
+    image: atelierGoodImage("papel-de-carta"),
+    price: 34,
+    clubPrice: clubPriceFrom(34),
+    isLimited: false,
+    stock: 14,
+    madeToOrder: false,
+    collection: "Coleção Correio",
+    isClubExclusive: false,
+    description:
+      "pacote com folhas vergê e algodão, textura macia, bordas levemente irregulares. para cartas escritas à mão.",
+    section: "papelaria",
+    visualKind: "standard",
+  },
+  {
+    id: "cartoes",
+    title: "cartões",
+    poetic: "mensagens pequenas atravessam distâncias sem fazer barulho.",
+    image: atelierGoodImage("cartoes"),
+    price: 26,
+    clubPrice: clubPriceFrom(26),
+    isLimited: false,
+    stock: 18,
+    madeToOrder: false,
+    collection: "Coleção Correio",
+    isClubExclusive: false,
+    description:
+      "cartões em branco com envelopes delicados. para entregar na mão ou deixar na porta.",
+    section: "papelaria",
+    visualKind: "standard",
+  },
+  {
+    id: "imprimiveis",
+    title: "imprimíveis",
+    poetic: "materiais para imprimir e continuar o mundo da teca em casa.",
+    image: atelierGoodImage("imprimiveis"),
+    price: 22,
+    clubPrice: clubPriceFrom(22),
+    isLimited: false,
+    stock: 30,
+    madeToOrder: false,
     collection: "Gaveta do Ateliê",
     isClubExclusive: false,
     description:
-      "baú de papelão reforçado, fecho de barbante, interior forrado. preparado sob encomenda.",
+      "arquivo digital com atividades calmas para imprimir em casa. papel comum já basta.",
+    section: "papelaria",
+    visualKind: "standard",
   },
   {
     id: "papelaria",
@@ -208,7 +367,7 @@ export const atelierGoods: AtelierGood[] = [
     poetic: "coleções afetivas para tocar, cheirar e guardar perto.",
     image: atelierGoodImage("papelaria"),
     price: 38,
-    clubPrice: 27,
+    clubPrice: clubPriceFrom(38),
     isLimited: false,
     stock: 12,
     madeToOrder: false,
@@ -216,5 +375,47 @@ export const atelierGoods: AtelierGood[] = [
     isClubExclusive: false,
     description:
       "kit surpresa com papéis, fitas e detalhes de coleção. cada caixa é um pouco diferente.",
+    section: "papelaria",
+    visualKind: "standard",
+    poeticScreen: "papelaria",
+    poeticLinkLabel: "conhecer a história desta gaveta",
+  },
+  {
+    id: "bau",
+    title: "baú da teca",
+    poetic: "um lugar quieto para guardar o que não cabe em gavetas comuns.",
+    image: atelierGoodImage("bau"),
+    price: 72,
+    clubPrice: clubPriceFrom(72),
+    isLimited: true,
+    stock: 0,
+    madeToOrder: true,
+    collection: "Gaveta do Ateliê",
+    isClubExclusive: false,
+    description:
+      "baú de papelão reforçado, fecho de barbante, interior forrado. preparado sob encomenda.",
+    section: "especiais",
+    visualKind: "standard",
+  },
+  {
+    id: "calendario-abuh",
+    title: "calendário de pequenas coisas",
+    poetic:
+      "dias pequenos também merecem ser guardados — um calendário para acompanhar o ano devagar.",
+    image: atelierGoodImage("calendario-abuh"),
+    price: 68,
+    clubPrice: clubPriceFrom(68),
+    isLimited: true,
+    stock: 8,
+    madeToOrder: false,
+    collection: "ABUH × Mundo da Teca",
+    isClubExclusive: false,
+    description:
+      "calendário de mesa com imagens contemplativas, papel espesso e argola de linho. um encontro quieto entre dois universos que acreditam em olhar devagar.",
+    section: "especiais",
+    visualKind: "collab",
+    collabPartner: "ABUH × Mundo da Teca",
+    poeticScreen: "calendario-abuh",
+    poeticLinkLabel: "conhecer este encontro",
   },
 ]

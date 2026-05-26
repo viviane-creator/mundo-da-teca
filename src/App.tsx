@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, type CSSProperties } from "react"
 import "./fonts.css"
 import {
   isPlayUniverseScreen,
@@ -6,20 +6,47 @@ import {
   type PlayExperience,
   type PlayUniverse,
 } from "./playData"
+import { formatBRL, type AtelierGood } from "./atelierShopData"
+import { AtelierShopPage } from "./atelierPages"
+import { FigurinhasPage } from "./figurinhasPage"
 import {
-  atelierCoverImage,
-  atelierGoods,
-  formatBRL,
-  getAtelierGoodStatus,
-  type AtelierGood,
-} from "./atelierShopData"
+  WorldPortalLayout,
+  portalPages,
+} from "./worldPortal"
+import {
+  tecaColors,
+  tecaFont,
+  tecaObjects,
+  tecaRadius,
+  tecaRadiusAt,
+  tecaTilt,
+  tecaType,
+} from "./tecaVisual"
+import {
+  atelierPoeticPages,
+  type AtelierPoeticScreen,
+} from "./atelierSubPages"
+import {
+  initialDiaryEntries,
+  isCollectionDetailScreen,
+  type CollectionDetailScreen,
+  type DiaryEntry,
+} from "./discoveryData"
+import {
+  CollectionDetailPage,
+  CollectionsPage,
+  DiaryNewEntryPage,
+  DiaryPage,
+} from "./discoveryPages"
 
 type Screen =
   | "home"
   | "descobertas"
   | "descoberta-do-dia"
   | "diario"
+  | "diario-guardar"
   | "colecoes"
+  | CollectionDetailScreen
   | "tesouros"
   | "brincadeiras"
   | "brincar-na-rua"
@@ -29,8 +56,9 @@ type Screen =
   | "laboratorio"
   | "cozinha"
   | "atelie"
+  | "figurinhas"
   | "papel-de-carta"
-  | "album"
+  | AtelierPoeticScreen
   | "bonequinhas"
   | "origami"
   | "imprimiveis"
@@ -38,13 +66,8 @@ type Screen =
   | "adesivos"
   | "carimbos"
   | "bau"
-  | "papelaria"
   | "minha-caixa"
   | "clube"
-  | "carteirinha"
-  | "correio"
-  | "colecoes-especiais"
-  | "assinatura"
 
 type SimpleSubScreen = Exclude<
   Screen,
@@ -59,12 +82,13 @@ type SimpleSubScreen = Exclude<
   | "laboratorio"
   | "cozinha"
   | "atelie"
+  | "figurinhas"
   | "minha-caixa"
   | "clube"
 >
 
 type SubPageContent = {
-  parent: "descobertas" | "brincadeiras" | "atelie" | "clube"
+  parent: "descobertas" | "brincadeiras" | "atelie" | "figurinhas" | "clube"
   title: string
   poetic: string
   image: string
@@ -108,7 +132,7 @@ const pageData = {
   },
   atelie: {
     title: "Ateliê",
-    intro: "papéis, coleções, tesouros e coisinhas para guardar.",
+    intro: "figurinhas, papéis, coleções e pequenos tesouros para guardar.",
     cover: "/covers/atelie.png",
   },
   clube: {
@@ -136,7 +160,7 @@ const homeCards: CardItem[] = [
   {
     id: "atelie",
     title: "Ateliê",
-    text: "papéis e tesouros",
+    text: "figurinhas e tesouros",
     image: "/cards/home/atelie.png",
     target: "atelie",
   },
@@ -225,54 +249,7 @@ const playCards: CardItem[] = [
   },
 ]
 
-const clubCards: CardItem[] = [
-  {
-    id: "carteirinha",
-    title: "Carteirinha",
-    text: "a entrada oficial no Clube da Teca",
-    image: "/cards/clube/carteirinha.png",
-    target: "carteirinha",
-  },
-  {
-    id: "correio",
-    title: "Correio da Teca",
-    text: "cartas, envios e pequenas surpresas",
-    image: "/cards/clube/correio.png",
-    target: "correio",
-  },
-  {
-    id: "colecoes-especiais",
-    title: "Coleções especiais",
-    text: "tesouros e conteúdos para membros",
-    image: "/cards/clube/colecoes-especiais.png",
-    target: "colecoes-especiais",
-  },
-  {
-    id: "assinatura",
-    title: "Assinatura",
-    text: "planos e acesso ao universo completo",
-    image: "/cards/clube/assinatura.png",
-    target: "assinatura",
-  },
-]
-
 const subPageData: Record<SimpleSubScreen, SubPageContent> = {
-  diario: {
-    parent: "descobertas",
-    title: "diário de pequenas descobertas",
-    poetic: "o que já foi visto e guardado com carinho pode voltar em outro dia.",
-    image: "/cards/descobertas/diario.png",
-    noteLabel: "janela da teca",
-    noteText: "folheie devagar. cada página guarda um pedaço de atenção.",
-  },
-  colecoes: {
-    parent: "descobertas",
-    title: "coleções do mundo real",
-    poetic: "folhas, flores, pedras e sementes esperam um lugar quieto para ficar.",
-    image: "/cards/descobertas/colecoes.png",
-    noteLabel: "janela da teca",
-    noteText: "não precisa completar tudo de uma vez. cole com calma.",
-  },
   tesouros: {
     parent: "descobertas",
     title: "tesouros que aparecem de repente",
@@ -289,14 +266,7 @@ const subPageData: Record<SimpleSubScreen, SubPageContent> = {
     noteLabel: "ateliê",
     noteText: "escreva devagar, como quem conversa com alguém querido.",
   },
-  album: {
-    parent: "atelie",
-    title: "álbum de figurinhas",
-    poetic: "completar devagar é outra forma de cuidar do tempo.",
-    image: "/cards/atelie/album.png",
-    noteLabel: "ateliê",
-    noteText: "cada figurinha guarda um dia que valeu a pena lembrar.",
-  },
+  ...atelierPoeticPages,
   bonequinhas: {
     parent: "atelie",
     title: "bonequinhas da teca",
@@ -353,47 +323,6 @@ const subPageData: Record<SimpleSubScreen, SubPageContent> = {
     noteLabel: "ateliê",
     noteText: "abrir o baú pode ser ritual: lento, cuidadoso, cheio de expectativa.",
   },
-  papelaria: {
-    parent: "atelie",
-    title: "papelaria",
-    poetic: "uma gaveta de tesouros — papéis, fitas e coleções que pedem tempo.",
-    image: "/cards/atelie/papelaria.png",
-    noteLabel: "ateliê",
-    noteText:
-      "a papelaria não é outra loja: é um canto do ateliê. para levar algo pra casa, volte à página principal do ateliê.",
-  },
-  carteirinha: {
-    parent: "clube",
-    title: "carteirinha da teca",
-    poetic: "a entrada suave para quem quer pertencer a este universo.",
-    image: "/cards/clube/carteirinha.png",
-    noteLabel: "clube",
-    noteText: "pertencer não é pressa: é presença, cuidado e continuidade.",
-  },
-  correio: {
-    parent: "clube",
-    title: "correio da teca",
-    poetic: "cartas e surpresas que atravessam o tempo até a sua casa.",
-    image: "/cards/clube/correio.png",
-    noteLabel: "clube",
-    noteText: "esperar o correio também é parte da magia.",
-  },
-  "colecoes-especiais": {
-    parent: "clube",
-    title: "coleções especiais",
-    poetic: "tesouros reservados para quem caminha junto com a teca.",
-    image: "/cards/clube/colecoes-especiais.png",
-    noteLabel: "clube",
-    noteText: "conteúdos que chegam em capítulos, não de uma vez só.",
-  },
-  assinatura: {
-    parent: "clube",
-    title: "assinatura",
-    poetic: "planos para continuar recebendo o universo em pedaços cuidadosos.",
-    image: "/cards/clube/assinatura.png",
-    noteLabel: "clube",
-    noteText: "escolha o ritmo da família. o mundo da teca não tem pressa.",
-  },
 }
 
 const parentLabels: Record<
@@ -403,6 +332,7 @@ const parentLabels: Record<
   descobertas: "descobertas",
   brincadeiras: "brincadeiras",
   atelie: "ateliê",
+  figurinhas: "figurinhas",
   clube: "clube",
 }
 
@@ -410,9 +340,20 @@ function isSimpleSubScreen(screen: Screen): screen is SimpleSubScreen {
   return screen in subPageData
 }
 
+function isDiscoveryFlowScreen(screen: Screen): boolean {
+  return (
+    screen === "diario" ||
+    screen === "diario-guardar" ||
+    screen === "colecoes" ||
+    isCollectionDetailScreen(screen)
+  )
+}
+
 export default function App() {
   const [screen, setScreen] = useState<Screen>("home")
   const [box, setBox] = useState<AtelierGood[]>([])
+  const [diaryEntries, setDiaryEntries] =
+    useState<DiaryEntry[]>(initialDiaryEntries)
 
   const addToBox = (good: AtelierGood) => {
     setBox((current) => {
@@ -427,12 +368,12 @@ export default function App() {
         {screen === "home" && <Home setScreen={setScreen} />}
 
         {screen === "descobertas" && (
-  <Page
-    data={pageData.descobertas}
-    cards={discoveryCards}
-    setScreen={setScreen}
-  />
-)}
+          <Page
+            portalKey="descobertas"
+            cards={discoveryCards}
+            setScreen={setScreen}
+          />
+        )}
 
 {screen === "descoberta-do-dia" && (
           <DiscoveryDay setScreen={setScreen} />
@@ -443,6 +384,26 @@ export default function App() {
             setScreen={setScreen}
             universe={playUniverses[screen]}
           />
+        )}
+
+        {isDiscoveryFlowScreen(screen) && (
+          <>
+            {screen === "diario" && (
+              <DiaryPage setScreen={setScreen} entries={diaryEntries} />
+            )}
+            {screen === "diario-guardar" && (
+              <DiaryNewEntryPage
+                setScreen={setScreen}
+                onSave={(entry) =>
+                  setDiaryEntries((current) => [entry, ...current])
+                }
+              />
+            )}
+            {screen === "colecoes" && <CollectionsPage setScreen={setScreen} />}
+            {isCollectionDetailScreen(screen) && (
+              <CollectionDetailPage setScreen={setScreen} screen={screen} />
+            )}
+          </>
         )}
 
         {isSimpleSubScreen(screen) && (
@@ -459,7 +420,7 @@ export default function App() {
 
         {screen === "brincadeiras" && (
           <Page
-            data={pageData.brincadeiras}
+            portalKey="brincadeiras"
             cards={playCards}
             setScreen={setScreen}
           />
@@ -473,15 +434,20 @@ export default function App() {
           />
         )}
 
-        {screen === "clube" && (
-          <ClubPage
-            data={pageData.clube}
-            cards={clubCards}
+        {screen === "figurinhas" && (
+          <FigurinhasPage
             setScreen={setScreen}
+            box={box}
+            onAddToBox={addToBox}
           />
         )}
 
-        <BottomNav active={screen} setScreen={setScreen} />
+        {screen === "clube" && <ClubPage />}
+
+        <BottomNav
+          active={screen === "figurinhas" ? "atelie" : screen}
+          setScreen={setScreen}
+        />
       </section>
     </main>
   )
@@ -491,167 +457,148 @@ function Home({
 }: {
   setScreen: (screen: Screen) => void
 }) {
+  const portal = portalPages.home
+
   return (
-    <>
-      <div style={styles.homeHeroWrap}>
-        <img
-          src="/characters/teca-estrelinha-praia.png"
-          alt="Teca brincando na praia"
-          style={styles.homeHeroImage}
-        />
-
-        <img
-          src="/logo/logo.png"
-          alt="Mundo da Teca"
-          style={styles.homeLogo}
-        />
-
-        <div style={styles.heroFade} />
-      </div>
-
-      <section style={styles.homeContent}>
-        <p style={styles.kicker}>observa • cria • imagina</p>
-
-        <h1 style={styles.homeTitle}>
-          uma tecnologia que convida a sair das telas
-        </h1>
-
-        <p style={styles.homeIntro}>
-          descobertas, brincadeiras, papelaria, coleções e pequenas memórias
-          para uma infância mais lenta, criativa e viva.
-        </p>
-
+  <WorldPortalLayout {...portal} variant="home">
         <SoftNote label="janela da teca" highlight>
           encontre uma pequena coisa que parecia invisível antes.
         </SoftNote>
 
-        <h2 style={styles.sectionTitle}>
-          por onde vamos começar?
-        </h2>
+        <p style={styles.homeSectionLead}>por onde vamos começar?</p>
 
         <div style={styles.gridTwo}>
-          {homeCards.map((card) => (
+          {homeCards.map((card, index) => (
             <FeatureCard
               key={card.id}
               card={card}
               compact
+              tilt={index % 2 === 0 ? 0.25 : -0.3}
+              radiusKey={index % 4}
               onClick={() => card.target && setScreen(card.target)}
             />
           ))}
         </div>
-      </section>
-    </>
+  </WorldPortalLayout>
   )
 }
 
 function Page({
-  data,
+  portalKey,
   cards,
   setScreen,
 }: {
-  data: { title: string; intro: string; cover: string }
+  portalKey: keyof typeof portalPages
   cards: CardItem[]
   setScreen: (screen: Screen) => void
 }) {
+  const portal = portalPages[portalKey]
+
   return (
-
-    <>
-      <PageCover data={data} />
-
-      <section style={styles.pageContent}>
-        <h1 style={styles.pageTitle}>{data.title}</h1>
-        <p style={styles.pageIntro}>{data.intro}</p>
-
-        <div style={styles.gridTwo}>
-          {cards.map((card) => (
-            <FeatureCard
+    <WorldPortalLayout {...portal} compactTitle>
+      <div style={styles.gridTwo}>
+        {cards.map((card) => (
+          <FeatureCard
             key={card.id}
             card={card}
             onClick={() => card.target && setScreen(card.target)}
           />
-          ))}
-        </div>
-      </section>
-    </>
+        ))}
+      </div>
+    </WorldPortalLayout>
   )
 }
 
-function ClubPage({
-  data,
-  cards,
-  setScreen,
-}: {
-  data: { title: string; intro: string; cover: string }
-  cards: CardItem[]
-  setScreen: (screen: Screen) => void
-}) {
+function ClubPage() {
+  const [childName, setChildName] = useState("teca")
+  const [birthday, setBirthday] = useState("12 de abril")
+  const [memberSince, setMemberSince] = useState("maio de 2026")
+  const portal = portalPages.clube
+
   return (
-    <>
-      <PageCover data={data} />
+    <WorldPortalLayout {...portal} compactTitle breath="large">
+      <article style={{ ...styles.clubMemberCard, ...tecaTilt(-0.35) }}>
+        <div style={styles.clubMemberCardTop}>
+          <span style={styles.clubSealBadge}>teca</span>
+          <p style={styles.clubMemberNumber}>carteirinha nº 024</p>
+        </div>
 
-      <section style={styles.pageContent}>
-        <h1 style={styles.pageTitle}>{data.title}</h1>
-        <p style={styles.pageIntro}>{data.intro}</p>
+        <h2 style={styles.clubMemberCardTitle}>carteirinha da teca</h2>
+        <p style={styles.clubFichaHint}>ficha de pertencimento — preencha com calma</p>
 
-        <SoftNote label="clube" highlight>
-          cartas, coleções, vantagens e pequenas surpresas para continuar o
-          universo da Teca em casa.
-        </SoftNote>
-
-        <div style={styles.gridTwo}>
-          {cards.map((card) => (
-            <FeatureCard
-            key={card.id}
-            card={card}
-            onClick={() => card.target && setScreen(card.target)}
+        <div style={styles.clubField}>
+          <p style={styles.clubFieldLabel}>nome da criança</p>
+          <input
+            type="text"
+            value={childName}
+            onChange={(e) => setChildName(e.target.value)}
+            style={styles.clubFieldLine}
+            aria-label="nome da criança"
           />
-          ))}
         </div>
 
-        <button style={styles.primaryButton}>
-          entrar para o clube
-        </button>
-      </section>
-    </>
-  )
-}
+        <div style={styles.clubField}>
+          <p style={styles.clubFieldLabel}>aniversário</p>
+          <input
+            type="text"
+            value={birthday}
+            onChange={(e) => setBirthday(e.target.value)}
+            style={styles.clubFieldLine}
+            aria-label="aniversário"
+          />
+        </div>
 
-function PageCover({
-  data,
-}: {
-  data: { title: string; intro: string; cover: string }
-}) {
-  return (
-    <div style={styles.coverWrap}>
-      <img
-        src={data.cover}
-        alt={data.title}
-        style={styles.coverImage}
-      />
+        <div style={styles.clubField}>
+          <p style={styles.clubFieldLabel}>membro desde</p>
+          <input
+            type="text"
+            value={memberSince}
+            onChange={(e) => setMemberSince(e.target.value)}
+            style={styles.clubFieldLine}
+            aria-label="membro desde"
+          />
+        </div>
+      </article>
 
-      <img
-        src="/logo/logo.png"
-        alt="Mundo da Teca"
-        style={styles.smallLogo}
-      />
+      <article style={styles.clubBelongingCard}>
+        <p style={styles.clubBelongingLead}>
+          membros do clube têm 30% de desconto em todos os tesouros do
+          ateliê.
+        </p>
+        <p style={styles.clubBelongingText}>
+          também acessam as brincadeiras completas do Mundo da Teca.
+        </p>
+      </article>
 
-      <div style={styles.coverFade} />
-    </div>
+      <button type="button" style={styles.clubJoinButton}>
+        quero fazer parte
+      </button>
+    </WorldPortalLayout>
   )
 }
 
 function FeatureCard({
   card,
   compact = false,
+  tilt = 0,
+  radiusKey = 0,
   onClick,
 }: {
   card: CardItem
   compact?: boolean
+  tilt?: number
+  radiusKey?: number
   onClick?: () => void
 }) {
   return (
     <button onClick={onClick} style={styles.cardButton}>
-      <article style={styles.featureCard}>
+      <article
+        style={{
+          ...styles.featureCard,
+          borderRadius: tecaRadiusAt(radiusKey),
+          ...tecaTilt(tilt),
+        }}
+      >
         <img
           src={card.image}
           alt={card.title}
@@ -664,9 +611,7 @@ function FeatureCard({
           </h3>
 
           {card.text && (
-            <p style={styles.cardText}>
-              {card.text}
-            </p>
+            <p style={styles.cardText}>{card.text}</p>
           )}
         </div>
       </article>
@@ -684,175 +629,16 @@ function SoftNote({
   highlight?: boolean
 }) {
   return (
-    <article style={highlight ? styles.noteHighlight : styles.note}>
+    <article
+      style={
+        highlight
+          ? { ...tecaObjects.noteHighlight(), marginBottom: "22px", textAlign: "left" }
+          : { ...tecaObjects.note(tecaRadius.lg), marginBottom: "18px", textAlign: "left" }
+      }
+    >
       <p style={styles.tag}>{label}</p>
       <p style={styles.noteText}>{children}</p>
     </article>
-  )
-}
-
-function AtelierGoodCard({
-  good,
-  inBox,
-  expanded,
-  onToggleExpand,
-  onAddToBox,
-  onOpenPoetic,
-}: {
-  good: AtelierGood
-  inBox: boolean
-  expanded: boolean
-  onToggleExpand: () => void
-  onAddToBox: () => void
-  onOpenPoetic?: () => void
-}) {
-  const [imageSrc, setImageSrc] = useState(good.image)
-  const status = getAtelierGoodStatus(good)
-
-  return (
-    <article style={styles.paperCard}>
-      <img
-        src={imageSrc}
-        alt={good.title}
-        style={styles.paperCardImage}
-        onError={() => {
-          if (imageSrc !== atelierCoverImage) setImageSrc(atelierCoverImage)
-        }}
-      />
-
-      <div style={styles.paperCardBody}>
-        <div style={styles.paperCardTopRow}>
-          <p style={styles.paperCollectionTag}>{good.collection}</p>
-          {status && (
-            <span style={styles.paperStatusSeal}>{status.label}</span>
-          )}
-        </div>
-
-        <button
-          type="button"
-          onClick={onToggleExpand}
-          style={styles.paperCardTitleButton}
-        >
-          <h3 style={styles.paperCardTitle}>{good.title}</h3>
-        </button>
-
-        <p style={styles.paperCardPoetic}>{good.poetic}</p>
-
-        <div style={styles.paperPriceBlock}>
-          <p style={styles.paperPrice}>{formatBRL(good.price)}</p>
-          <p style={styles.paperClubPrice}>
-            membros do clube levam por {formatBRL(good.clubPrice)}
-          </p>
-        </div>
-
-        <button
-          type="button"
-          onClick={onAddToBox}
-          style={{
-            ...styles.paperTakeHomeButton,
-            ...(inBox ? styles.paperTakeHomeButtonDone : {}),
-          }}
-          disabled={inBox}
-        >
-          {inBox ? "já está na sua caixa" : "levar pra casa"}
-        </button>
-
-        {expanded && (
-          <>
-            <p style={styles.paperCardDescription}>{good.description}</p>
-            {onOpenPoetic && (
-              <button
-                type="button"
-                onClick={onOpenPoetic}
-                style={styles.paperPoeticLink}
-              >
-                conhecer a história desta gaveta
-              </button>
-            )}
-          </>
-        )}
-      </div>
-    </article>
-  )
-}
-
-function AtelierShopPage({
-  setScreen,
-  box,
-  onAddToBox,
-}: {
-  setScreen: (screen: Screen) => void
-  box: AtelierGood[]
-  onAddToBox: (good: AtelierGood) => void
-}) {
-  const [expandedId, setExpandedId] = useState<string | null>(null)
-  const boxCount = box.length
-
-  return (
-    <section style={styles.subPage}>
-      <div style={styles.atelierTopBar}>
-        <button
-          type="button"
-          onClick={() => setScreen("minha-caixa")}
-          style={styles.minhaCaixaLinkMain}
-        >
-          <span style={styles.minhaCaixaIcon}>✉</span>
-          minha caixa
-          {boxCount > 0 && (
-            <span style={styles.minhaCaixaCount}>{boxCount}</span>
-          )}
-        </button>
-      </div>
-
-      <img
-        src={atelierCoverImage}
-        alt="Ateliê"
-        style={styles.subPageImage}
-      />
-
-      <div style={styles.pageIntroBlock}>
-        <h1 style={styles.pageTitle}>ateliê</h1>
-        <p style={styles.pageIntro}>
-          {pageData.atelie.intro} — objetos para tocar, guardar e levar pra casa
-          com calma.
-        </p>
-      </div>
-
-      <SoftNote label="clube da teca" highlight>
-        quem pertence ao clube tem 30% de cuidado a menos no preço — um
-        desconto fixo em todo o ateliê, sem barulho de promoção.
-      </SoftNote>
-
-      <section style={styles.paperCatalog}>
-        <h2 style={styles.paperCatalogTitle}>objetos do ateliê</h2>
-        <p style={styles.paperCatalogIntro}>
-          escolha devagar. cada peça foi pensada para continuar o universo da
-          Teca em casa.
-        </p>
-
-        <div style={styles.paperStack}>
-          {atelierGoods.map((good) => (
-            <AtelierGoodCard
-              key={good.id}
-              good={good}
-              inBox={box.some((item) => item.id === good.id)}
-              expanded={expandedId === good.id}
-              onToggleExpand={() =>
-                setExpandedId((current) =>
-                  current === good.id ? null : good.id
-                )
-              }
-              onAddToBox={() => onAddToBox(good)}
-              onOpenPoetic={
-                good.id === "papelaria"
-                  ? () => setScreen("papelaria")
-                  : undefined
-              }
-            />
-          ))}
-        </div>
-      </section>
-    </section>
   )
 }
 
@@ -873,9 +659,9 @@ function MinhaCaixaPage({
       </button>
 
       <div style={styles.minhaCaixaHero}>
-        <span style={styles.minhaCaixaHeroIcon}>✉</span>
+        <span style={styles.minhaCaixaBadge}>caixa</span>
         <h1 style={styles.pageTitle}>minha caixa</h1>
-        <p style={styles.pageIntro}>
+        <p style={{ ...styles.pageIntro, textAlign: "left" }}>
           um canto quieto para o que você escolheu levar pra casa.
         </p>
       </div>
@@ -1076,7 +862,7 @@ function SimpleSubPage({
   return (
     <section style={styles.subPage}>
       <button
-        onClick={() => setScreen(content.parent)}
+        onClick={() => setScreen(content.parent as Screen)}
         style={styles.backButton}
       >
         ← {backLabel}
@@ -1141,11 +927,10 @@ function BottomNav({
   )
 }
 
-const styles: Record<string, React.CSSProperties> = {
+const styles: Record<string, CSSProperties> = {
   main: {
     minHeight: "100vh",
-    background:
-      "radial-gradient(circle at top left, #f7dfcf 0%, transparent 34%), linear-gradient(180deg, #e8e0d5 0%, #ded6cb 100%)",
+    background: "#e8e0d5",
     display: "flex",
     justifyContent: "center",
     padding: "24px 16px",
@@ -1156,8 +941,7 @@ const styles: Record<string, React.CSSProperties> = {
     width: "100%",
     maxWidth: "520px",
     minHeight: "92vh",
-    background:
-      "radial-gradient(circle at 20% 20%, rgba(255,255,255,0.45) 0%, transparent 22%), radial-gradient(circle at 80% 0%, rgba(245,215,190,0.35) 0%, transparent 28%), linear-gradient(180deg, #fbf4eb 0%, #f6ede2 100%)",
+    background: tecaColors.shell,
     borderRadius: "42px",
     overflow: "hidden",
     border: "1px solid rgba(232, 210, 190, 0.8)",
@@ -1215,22 +999,16 @@ const styles: Record<string, React.CSSProperties> = {
 
   homeTitle: {
     textAlign: "center",
-    color: theme.text,
-    fontFamily: "'Caveat', cursive",
     fontSize: "44px",
-    lineHeight: "0.95",
-    fontWeight: 400,
     margin: "0 0 12px",
+    ...tecaFont.portalTitle,
   },
 
   homeIntro: {
     textAlign: "center",
-    color: theme.muted,
-    fontFamily: "'Cormorant Garamond', serif",
-    fontStyle: "italic",
     fontSize: "20px",
-    lineHeight: "1.45",
     margin: "0 10px 22px",
+    ...tecaFont.poetic,
   },
 
   coverWrap: {
@@ -1276,21 +1054,15 @@ const styles: Record<string, React.CSSProperties> = {
   pageTitle: {
     textAlign: "center",
     fontSize: "38px",
-    lineHeight: "1.2",
-    color: "#5f4738",
-    fontFamily: "'Caveat', cursive",
-    fontWeight: 500,
     margin: "0 0 8px",
+    ...tecaFont.portalTitle,
   },
 
   pageIntro: {
-    color: theme.muted,
     fontSize: "20px",
-    fontFamily: "'Cormorant Garamond', serif",
-    fontStyle: "italic",
-    textAlign: "center",
-    margin: "0 8px 26px",
-    lineHeight: "1.4",
+    textAlign: "left",
+    margin: "0 0 26px",
+    ...tecaFont.poetic,
   },
 
   subPage: {
@@ -1301,11 +1073,11 @@ const styles: Record<string, React.CSSProperties> = {
     border: "none",
     background: "transparent",
     color: "#9a7f6d",
-    fontFamily: "'Caveat', cursive",
-    fontSize: "24px",
+    fontSize: "17px",
     cursor: "pointer",
     padding: "0 0 18px",
     textAlign: "left",
+    ...tecaFont.poetic,
   },
 
   pageIntroBlock: {
@@ -1330,80 +1102,78 @@ const styles: Record<string, React.CSSProperties> = {
 
   discoveryButton: {
     marginTop: 28,
-    border: "none",
-    background: "#c88757",
-    color: "#fffdf8",
-    padding: "16px 34px",
-    borderRadius: 999,
-    fontSize: "18px",
-    fontFamily: "'Nunito', sans-serif",
+    width: "100%",
+    ...tecaObjects.buttonPrimary(),
+    padding: "16px 24px",
+    fontSize: "20px",
     cursor: "pointer",
-    boxShadow: "0 6px 18px rgba(0,0,0,0.08)",
-    transition: "all 0.2s ease",
-    alignSelf: "center",
   },
 
   tipBox: {
-    background: "#f7efe6",
-    borderRadius: 20,
-    padding: "14px 18px",
+    display: "flex",
+    alignItems: "flex-start",
+    gap: "12px",
+    background: tecaColors.paperNote,
+    borderRadius: tecaRadius.sm,
+    padding: "14px 16px",
     marginTop: 12,
     color: "#6a4f3c",
-    fontSize: "15px",
+    fontSize: "16px",
     lineHeight: 1.5,
-    border: "1px solid #ead8c5",
-    boxShadow: "0 2px 8px rgba(0,0,0,0.03)",
+    border: `1px solid ${theme.line}`,
+    boxShadow: "0 2px 8px rgba(120,90,60,0.03)",
+    fontFamily: "'Cormorant Garamond', serif",
+    fontStyle: "italic",
+    textAlign: "left",
+  },
+
+  tipDot: {
+    ...tecaObjects.dot(),
+    marginTop: "6px",
   },
 
   rewardBox: {
     marginTop: 28,
-    background: "#f7efe6",
-    borderRadius: 28,
-    padding: "26px 22px",
-    textAlign: "center",
+    background: tecaColors.paperWarm,
+    borderRadius: tecaRadius.lg,
+    padding: "22px 18px",
+    textAlign: "left",
     color: "#6a4f3c",
-    border: "1px solid #ead8c5",
-    boxShadow: "0 8px 24px rgba(0,0,0,0.05)",
+    border: `1px solid ${theme.line}`,
+    boxShadow: "0 8px 22px rgba(120,90,60,0.05)",
   },
 
-  note: {
-    background:
-      "linear-gradient(180deg, #fffdf9 0%, #f8efe5 100%)",
-    borderRadius: "28px",
-    padding: "22px",
-    marginBottom: "18px",
-    border: `1px solid ${theme.line}`,
-    boxShadow: "0 8px 24px rgba(120,90,60,0.05)",
+  rewardTitle: {
+    margin: "0 0 10px",
+    fontSize: "26px",
+    ...tecaFont.heading,
   },
 
-  noteHighlight: {
-    background:
-      "linear-gradient(180deg, #f8ecdf 0%, #efe0d0 100%)",
-    borderRadius: "30px",
-    padding: "24px",
-    marginBottom: "22px",
-    border: `1px solid ${theme.line}`,
-    boxShadow: "0 8px 24px rgba(120,90,60,0.05)",
+  rewardItem: {
+    margin: "0 0 8px",
+    fontFamily: "'Cormorant Garamond', serif",
+    fontStyle: "italic",
+    fontSize: "18px",
+  },
+
+  rewardNote: {
+    margin: 0,
+    fontSize: "13px",
+    letterSpacing: "1px",
+    textTransform: "uppercase",
+    color: "#9a8475",
+    fontFamily: "'Nunito', sans-serif",
+    fontWeight: 600,
   },
 
   tag: {
-    color: "#b3815f",
-    fontSize: "10px",
-    letterSpacing: "3px",
-    textTransform: "uppercase",
-    margin: "0 0 10px",
-    fontWeight: 700,
-    textAlign: "center",
+    ...tecaType.labelSmall,
   },
 
   noteText: {
-    color: "#7a6254",
-    lineHeight: "1.75",
-    fontSize: "20px",
-    margin: 0,
-    textAlign: "center",
-    fontFamily: "'Cormorant Garamond', serif",
-    fontStyle: "italic",
+    ...tecaType.bodyPoetic,
+    fontSize: "19px",
+    lineHeight: 1.75,
   },
 
   sectionTitle: {
@@ -1416,10 +1186,20 @@ const styles: Record<string, React.CSSProperties> = {
     fontWeight: 400,
   },
 
+  homeSectionLead: {
+    textAlign: "left",
+    color: "#8a6f5d",
+    marginTop: "4px",
+    marginBottom: "22px",
+    fontSize: "24px",
+    lineHeight: 1.15,
+    ...tecaFont.heading,
+  },
+
   gridTwo: {
     display: "grid",
     gridTemplateColumns: "repeat(2, minmax(0, 1fr))",
-    gap: "18px",
+    gap: "20px",
   },
 
   experienceCollection: {
@@ -1467,9 +1247,8 @@ const styles: Record<string, React.CSSProperties> = {
   },
 
   experienceCard: {
-    background:
-      "linear-gradient(180deg, #fffdf9 0%, #f8efe5 100%)",
-    borderRadius: "26px",
+    background: tecaColors.paper,
+    borderRadius: tecaRadius.md,
     overflow: "hidden",
     border: `1px solid ${theme.line}`,
     boxShadow: "0 8px 24px rgba(120,90,60,0.05)",
@@ -1543,8 +1322,8 @@ const styles: Record<string, React.CSSProperties> = {
   },
 
   experienceDetail: {
-    background: "linear-gradient(180deg, #f8ecdf 0%, #f3e4d4 100%)",
-    borderRadius: "22px",
+    background: tecaColors.paperWarm,
+    borderRadius: tecaRadius.sm,
     padding: "18px 16px",
     border: `1px solid ${theme.line}`,
   },
@@ -1812,16 +1591,15 @@ const styles: Record<string, React.CSSProperties> = {
     marginBottom: "8px",
   },
 
-  minhaCaixaHeroIcon: {
-    display: "block",
-    fontSize: "28px",
-    marginBottom: "8px",
-    opacity: 0.7,
+  minhaCaixaBadge: {
+    ...tecaObjects.etiqueta(),
+    marginBottom: "10px",
+    display: "inline-block",
   },
 
   boxItem: {
-    background: "linear-gradient(180deg, #fffdf9 0%, #f8efe5 100%)",
-    borderRadius: "22px",
+    background: tecaColors.paper,
+    borderRadius: tecaRadius.md,
     padding: "16px 18px",
     border: `1px solid ${theme.line}`,
   },
@@ -1860,6 +1638,271 @@ const styles: Record<string, React.CSSProperties> = {
     padding: "12px",
   },
 
+  clubPage: {
+    padding: "28px 24px 32px",
+    maxWidth: "100%",
+  },
+
+  clubHeroImage: {
+    width: "100%",
+    maxWidth: "220px",
+    display: "block",
+    margin: "0 auto 24px",
+    borderRadius: "20px",
+    opacity: 0.92,
+  },
+
+  clubHeader: {
+    textAlign: "center",
+    marginBottom: "32px",
+  },
+
+  clubTitle: {
+    margin: "0 0 10px",
+    fontFamily: "'Caveat', cursive",
+    fontSize: "42px",
+    fontWeight: 400,
+    color: theme.text,
+    lineHeight: 1,
+  },
+
+  clubTagline: {
+    margin: 0,
+    fontFamily: "'Cormorant Garamond', serif",
+    fontStyle: "italic",
+    fontSize: "20px",
+    lineHeight: 1.45,
+    color: theme.muted,
+  },
+
+  clubMemberCard: {
+    ...tecaObjects.ficha(tecaRadius.lg),
+    marginBottom: "24px",
+    borderTop: `3px solid ${tecaColors.lineSoft}`,
+  },
+
+  clubFichaHint: {
+    margin: "-8px 0 16px",
+    fontSize: "14px",
+    ...tecaFont.poetic,
+    color: "#9a8475",
+  },
+
+  clubMemberCardTop: {
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    marginBottom: "16px",
+  },
+
+  clubSealBadge: {
+    ...tecaObjects.seal(),
+  },
+
+  clubMemberNumber: {
+    margin: 0,
+    fontFamily: "'Cormorant Garamond', serif",
+    fontStyle: "italic",
+    fontSize: "15px",
+    color: "#9a8475",
+  },
+
+  clubMemberCardTitle: {
+    margin: "0 0 6px",
+    textAlign: "left",
+    fontSize: "32px",
+    ...tecaFont.portalTitle,
+  },
+
+  clubField: {
+    marginBottom: "14px",
+  },
+
+  clubFieldLabel: {
+    ...tecaType.labelSmall,
+  },
+
+  clubFieldLine: {
+    ...tecaType.fichaLine,
+  },
+
+  clubBelongingCard: {
+    ...tecaObjects.note(tecaRadius.md),
+    marginBottom: "28px",
+    textAlign: "left",
+  },
+
+  clubBelongingLead: {
+    margin: "0 0 10px",
+    fontFamily: "'Nunito', sans-serif",
+    fontSize: "16px",
+    lineHeight: 1.55,
+    color: theme.text,
+    fontWeight: 600,
+  },
+
+  clubBelongingText: {
+    margin: 0,
+    fontFamily: "'Cormorant Garamond', serif",
+    fontStyle: "italic",
+    fontSize: "17px",
+    lineHeight: 1.45,
+    color: theme.muted,
+    textAlign: "left",
+  },
+
+  clubJoinButton: {
+    width: "100%",
+    ...tecaObjects.buttonPrimary(),
+    padding: "18px 24px",
+    fontSize: "28px",
+    ...tecaFont.accentHand,
+  },
+
+  diaryStack: {
+    display: "flex",
+    flexDirection: "column",
+    gap: "14px",
+    marginBottom: "18px",
+  },
+
+  diaryEntryCard: {
+    background: "linear-gradient(180deg, #fffdf9 0%, #f8efe5 100%)",
+    borderRadius: "22px",
+    border: `1px solid ${theme.line}`,
+    padding: "14px 16px",
+  },
+
+  diaryEntryHeader: {
+    display: "flex",
+    alignItems: "center",
+    gap: "8px",
+    marginBottom: "6px",
+  },
+
+  diaryEntryIcon: {
+    fontSize: "16px",
+  },
+
+  diaryEntryDate: {
+    margin: 0,
+    fontSize: "11px",
+    letterSpacing: "1.5px",
+    textTransform: "uppercase",
+    color: "#b3815f",
+    fontWeight: 700,
+  },
+
+  diaryEntryTitle: {
+    margin: "0 0 6px",
+    fontFamily: "'Caveat', cursive",
+    fontSize: "28px",
+    color: theme.text,
+    fontWeight: 400,
+  },
+
+  diaryEntryText: {
+    margin: 0,
+    fontFamily: "'Cormorant Garamond', serif",
+    fontStyle: "italic",
+    color: theme.muted,
+    fontSize: "17px",
+    lineHeight: 1.45,
+  },
+
+  collectionsStack: {
+    display: "flex",
+    flexDirection: "column",
+    gap: "16px",
+  },
+
+  collectionCard: {
+    background: "linear-gradient(180deg, #fffdf9 0%, #f8efe5 100%)",
+    borderRadius: "24px",
+    border: `1px solid ${theme.line}`,
+    padding: "14px 14px 16px",
+  },
+
+  collectionTop: {
+    display: "flex",
+    gap: "12px",
+    alignItems: "center",
+    marginBottom: "10px",
+  },
+
+  collectionThumb: {
+    width: "66px",
+    height: "66px",
+    borderRadius: "14px",
+    objectFit: "cover",
+    border: `1px solid ${theme.line}`,
+  },
+
+  collectionTitle: {
+    margin: "0 0 4px",
+    fontFamily: "'Caveat', cursive",
+    fontSize: "30px",
+    lineHeight: 1,
+    color: theme.text,
+    fontWeight: 400,
+  },
+
+  collectionPoetic: {
+    margin: 0,
+    fontFamily: "'Cormorant Garamond', serif",
+    fontStyle: "italic",
+    fontSize: "16px",
+    color: theme.muted,
+  },
+
+  collectionProgressRow: {
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    gap: "10px",
+    marginBottom: "12px",
+  },
+
+  collectionDots: {
+    display: "flex",
+    flexWrap: "wrap",
+    gap: "6px",
+    maxWidth: "62%",
+  },
+
+  collectionDot: {
+    width: "10px",
+    height: "10px",
+    borderRadius: "999px",
+    border: `1px solid ${theme.line}`,
+    background: "#fffdf9",
+  },
+
+  collectionDotFilled: {
+    background: "#e7c8a8",
+    borderColor: "#d8b590",
+  },
+
+  collectionCount: {
+    margin: 0,
+    fontFamily: "'Cormorant Garamond', serif",
+    fontStyle: "italic",
+    fontSize: "16px",
+    color: "#8a6f5d",
+  },
+
+  collectionButton: {
+    width: "100%",
+    border: `1px solid ${theme.line}`,
+    background: "rgba(255,253,249,0.8)",
+    borderRadius: "999px",
+    padding: "10px 16px",
+    fontFamily: "'Caveat', cursive",
+    fontSize: "24px",
+    color: theme.text,
+    cursor: "pointer",
+  },
+
   cardButton: {
     border: "none",
     background: "transparent",
@@ -1869,13 +1912,11 @@ const styles: Record<string, React.CSSProperties> = {
   },
 
   featureCard: {
-    background:
-      "linear-gradient(180deg, #fffdf9 0%, #f8efe5 100%)",
-    borderRadius: "30px",
-    overflow: "hidden",
+    background: tecaColors.paper,
     border: `1px solid ${theme.line}`,
-    boxShadow: "0 10px 28px rgba(120,90,60,0.06)",
+    boxShadow: "0 8px 22px rgba(120,90,60,0.05), inset 0 1px 0 rgba(255,255,255,0.6)",
     minHeight: "100%",
+    overflow: "hidden",
   },
 
   cardImage: {
@@ -1886,35 +1927,27 @@ const styles: Record<string, React.CSSProperties> = {
   },
 
   cardTextWrap: {
-    padding: "14px 12px 16px",
-    textAlign: "center",
+    padding: "14px 14px 16px",
+    textAlign: "left",
   },
 
   cardTitle: {
-    fontFamily: "'Caveat', cursive",
-    fontSize: "32px",
-    color: theme.text,
+    fontSize: "26px",
     margin: 0,
-    lineHeight: "0.98",
-    fontWeight: 400,
+    ...tecaFont.heading,
   },
 
   cardTitleCompact: {
-    fontFamily: "'Caveat', cursive",
-    fontSize: "32px",
-    color: theme.text,
+    fontSize: "22px",
     margin: 0,
-    lineHeight: "0.98",
-    fontWeight: 400,
+    ...tecaFont.heading,
   },
 
   cardText: {
     margin: "8px 0 0 0",
-    fontSize: "15px",
-    lineHeight: "1.35",
-    color: theme.muted,
-    fontFamily: "'Cormorant Garamond', serif",
-    fontStyle: "italic",
+    fontSize: "14px",
+    textAlign: "left",
+    ...tecaFont.poetic,
   },
 
   primaryButton: {
@@ -1934,19 +1967,16 @@ const styles: Record<string, React.CSSProperties> = {
 
   bottomNav: {
     position: "absolute",
-    left: "18px",
-    right: "18px",
-    bottom: "18px",
-    height: "66px",
+    left: "16px",
+    right: "16px",
+    bottom: "16px",
+    height: "68px",
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
-    backgroundColor: "rgba(255, 253, 249, 0.78)",
-    backdropFilter: "blur(14px)",
-    borderRadius: "999px",
-    border: "1px solid rgba(234, 216, 197, 0.85)",
-    boxShadow: "0 12px 28px rgba(90, 60, 38, 0.12)",
-    padding: "0 12px",
+    ...tecaObjects.navStrip(),
+    borderRadius: "22px",
+    padding: "0 10px",
     zIndex: 20,
   },
 
@@ -1970,9 +2000,8 @@ const styles: Record<string, React.CSSProperties> = {
   },
 
   navLabel: {
-    fontSize: "11px",
+    ...tecaFont.navLabel,
     lineHeight: "1.05",
-    fontFamily: "'Caveat', cursive",
   },
 }
 function DiscoveryDay({
@@ -2008,15 +2037,18 @@ function DiscoveryDay({
       </div>
 
       <div style={styles.tipBox}>
-        🍃 escute o movimento
+        <span style={styles.tipDot} />
+        <span>escute o movimento</span>
       </div>
 
       <div style={styles.tipBox}>
-        🍃 talvez esteja escondido
+        <span style={styles.tipDot} />
+        <span>talvez esteja escondido</span>
       </div>
 
       <div style={styles.tipBox}>
-        🍃 procure algo leve
+        <span style={styles.tipDot} />
+        <span>procure algo leve</span>
       </div>
 
       {!found ? (
@@ -2024,19 +2056,13 @@ function DiscoveryDay({
           style={styles.discoveryButton}
           onClick={() => setFound(true)}
         >
-          eu encontrei
+          quero guardar isso
         </button>
       ) : (
         <div style={styles.rewardBox}>
-          ✨ figurinha desbloqueada
-
-          <div style={{ marginTop: 10 }}>
-            folha dançando
-          </div>
-
-          <div style={{ marginTop: 14, fontSize: 13 }}>
-            guardado no seu álbum
-          </div>
+          <p style={styles.rewardTitle}>mais uma descoberta guardada</p>
+          <p style={styles.rewardItem}>folha dançando</p>
+          <p style={styles.rewardNote}>guardado no seu álbum</p>
         </div>
       )}
     </section>
