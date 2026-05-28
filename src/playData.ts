@@ -1,7 +1,7 @@
 export type PlayUniverseId =
-  | "brincar-na-rua"
-  | "dias-de-chuva"
-  | "faz-de-conta"
+  | "natureza"
+  | "arte"
+  | "movimento"
   | "oficina"
   | "laboratorio"
   | "cozinha"
@@ -48,16 +48,16 @@ type ExperienceSeed = {
 }
 
 const universeCovers: Record<PlayUniverseId, string> = {
-  "brincar-na-rua": "/cards/brincadeiras/brincar-na-rua.png",
-  "dias-de-chuva": "/cards/brincadeiras/dias-de-chuva.png",
-  "faz-de-conta": "/cards/brincadeiras/faz-de-conta.png",
-  oficina: "/cards/brincadeiras/oficina.png",
-  laboratorio: "/cards/brincadeiras/laboratorio.png",
-  cozinha: "/cards/brincadeiras/cozinha.png",
+  laboratorio: "/images/universos/laboratorio-capa.png",
+  cozinha: "/images/universos/cozinha-capa.png",
+  oficina: "/images/universos/oficina-capa.png",
+  natureza: "/images/universos/natureza-capa.png",
+  arte: "/images/universos/arte-capa.png",
+  movimento: "/images/universos/movimento-capa.png",
 }
 
 function experienceImage(universeId: PlayUniverseId, experienceId: string): string {
-  return `/cards/brincadeiras/experiencias/${universeId}/${experienceId}.png`
+  return `/images/${universeId}/${experienceId}.png`
 }
 
 function placeholderDetail(seed: ExperienceSeed): PlayExperienceDetail {
@@ -823,32 +823,32 @@ const cozinhaSeeds: ExperienceSeed[] = [
 ]
 
 export const playUniverses: Record<PlayUniverseId, PlayUniverse> = {
-  "brincar-na-rua": {
-    id: "brincar-na-rua",
-    title: "brincar na rua",
-    intro: "aventuras do lado de fora",
-    poetic: "o lado de fora guarda aventuras que não cabem na tela.",
-    image: universeCovers["brincar-na-rua"],
-    noteText: "saia sem pressa. o bairro também é um mapa.",
-    experiences: buildExperiences("brincar-na-rua", brincarNaRuaSeeds),
+  natureza: {
+    id: "natureza",
+    title: "natureza",
+    intro: "o lado de fora e seus pequenos tesouros",
+    poetic: "folhas, vento e chão vivo para brincar com o que já existe.",
+    image: universeCovers.natureza,
+    noteText: "observe devagar: a natureza já começa no caminho de casa.",
+    experiences: buildExperiences("natureza", brincarNaRuaSeeds),
   },
-  "dias-de-chuva": {
-    id: "dias-de-chuva",
-    title: "dias de chuva",
-    intro: "brincadeiras para dentro de casa",
-    poetic: "quando a chuva bate na janela, a casa vira outro mundo.",
-    image: universeCovers["dias-de-chuva"],
-    noteText: "luz baixa, passos lentos, brincadeiras que cabem no quarto.",
-    experiences: buildExperiences("dias-de-chuva", diasDeChuvaSeeds),
+  arte: {
+    id: "arte",
+    title: "arte",
+    intro: "imaginação em páginas, recortes e histórias",
+    poetic: "uma coleção de gestos criativos para inventar mundos delicados.",
+    image: universeCovers.arte,
+    noteText: "sem perfeição: mãos curiosas fazem a arte aparecer.",
+    experiences: buildExperiences("arte", fazDeContaSeeds),
   },
-  "faz-de-conta": {
-    id: "faz-de-conta",
-    title: "faz de conta",
-    intro: "mundos imaginários e histórias inventadas",
-    poetic: "mundos inventados nascem de objetos comuns e voz baixa.",
-    image: universeCovers["faz-de-conta"],
-    noteText: "deixe a criança conduzir a história, você só acompanha.",
-    experiences: buildExperiences("faz-de-conta", fazDeContaSeeds),
+  movimento: {
+    id: "movimento",
+    title: "movimento",
+    intro: "corpo, ritmo e presença",
+    poetic: "brincadeiras para mexer o corpo e escutar o tempo da tarde.",
+    image: universeCovers.movimento,
+    noteText: "movimento também pode ser suave, silencioso e brincante.",
+    experiences: buildExperiences("movimento", diasDeChuvaSeeds),
   },
   oficina: {
     id: "oficina",
