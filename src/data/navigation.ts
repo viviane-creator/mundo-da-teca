@@ -1,7 +1,23 @@
-export const navItems = [
+export type NavItem = {
+  label: string
+  screen: string
+  icon: string
+  secondary?: boolean
+}
+
+export const navItems: NavItem[] = [
   { label: "Início", screen: "home", icon: "/icons/estrela.png" },
-  { label: "Descobertas", screen: "descobertas", icon: "/icons/lupa.png" },
-  { label: "Brincadeiras", screen: "brincadeiras", icon: "/icons/pipa.png" },
-  { label: "Ateliê", screen: "atelie", icon: "/icons/bau.png" },
   { label: "Clube", screen: "clube", icon: "/icons/carteirinha.png" },
-] as const
+  { label: "Brincadeiras", screen: "brincadeiras", icon: "/icons/pipa.png" },
+  {
+    label: "Minha Coleção",
+    screen: "minha-colecao",
+    icon: "/cards/descobertas/colecoes.png",
+  },
+  {
+    label: "Ateliê",
+    screen: "atelie",
+    icon: "/icons/bau.png",
+    secondary: true,
+  },
+]

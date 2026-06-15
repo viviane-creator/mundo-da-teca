@@ -101,6 +101,29 @@ const figurinhasPortalStyles: Record<string, CSSProperties> = {
     color: "#8b7668",
     textAlign: "left",
   },
+  atelierTreasuresNote: {
+    ...tecaObjects.noteHighlight(),
+    marginBottom: "24px",
+    textAlign: "left",
+  },
+  atelierTreasuresTitle: {
+    margin: "0 0 8px",
+    fontFamily: "'Cormorant Garamond', serif",
+    fontSize: "22px",
+    fontWeight: 500,
+    color: tecaColors.text,
+    lineHeight: 1.2,
+    textAlign: "left",
+  },
+  atelierTreasuresText: {
+    margin: 0,
+    fontFamily: "'Cormorant Garamond', serif",
+    fontStyle: "italic",
+    fontSize: "17px",
+    lineHeight: 1.45,
+    color: "#8b7668",
+    textAlign: "left",
+  },
   paperStack: {
     display: "flex",
     flexDirection: "column",
@@ -237,6 +260,16 @@ export function AtelierShopPage({
           tagline={portal.tagline}
           breath="large"
         />
+
+        <article style={figurinhasPortalStyles.atelierTreasuresNote}>
+          <p style={figurinhasPortalStyles.atelierTreasuresTitle}>
+            Tesouros do Mundo da Teca
+          </p>
+          <p style={figurinhasPortalStyles.atelierTreasuresText}>
+            Pequenas coisas para guardar, trocar, colecionar e continuar brincando
+            longe das telas.
+          </p>
+        </article>
 
         <WorldPortalSectionIntro
           title="objetos do ateliê"

@@ -40,11 +40,15 @@ import {
   DiaryPage,
 } from "./discoveryPages"
 import { pageData } from "./data/pageData"
+import { brincadeirasCards } from "./data/brincadeirasCards"
 import { FeatureCard } from "./components/FeatureCard"
 import { SoftNote } from "./components/SoftNote"
 import { BottomNav } from "./components/BottomNav"
 import { PlayExperienceCard } from "./components/PlayExperienceCard"
 import { PlayExperienceDetailPanel } from "./components/PlayExperienceDetailPanel"
+import { Home } from "./pages/Home"
+import { ClubPage } from "./pages/ClubPage"
+import { MinhaColecaoPage } from "./pages/MinhaColecaoPage"
 
 type Screen =
   | "home"
@@ -74,6 +78,7 @@ type Screen =
   | "carimbos"
   | "bau"
   | "minha-caixa"
+  | "minha-colecao"
   | "clube"
 
 type SimpleSubScreen = Exclude<
@@ -91,6 +96,7 @@ type SimpleSubScreen = Exclude<
   | "atelie"
   | "figurinhas"
   | "minha-caixa"
+  | "minha-colecao"
   | "clube"
 >
 
@@ -117,37 +123,6 @@ const theme = {
   line: "#ead8c5",
   accent: "#c88757",
 }
-
-const homeCards: CardItem[] = [
-  {
-    id: "descobertas",
-    title: "Descobertas",
-    text: "olhar o mundo com calma",
-    image: "/cards/home/descobertas.png",
-    target: "descobertas",
-  },
-  {
-    id: "brincadeiras",
-    title: "Brincadeiras",
-    text: "ideias para sair da tela",
-    image: "/cards/home/brincadeiras.png",
-    target: "brincadeiras",
-  },
-  {
-    id: "atelie",
-    title: "Ateliê",
-    text: "figurinhas e tesouros",
-    image: "/cards/home/atelie.png",
-    target: "atelie",
-  },
-  {
-    id: "clube",
-    title: "Clube",
-    text: "pertencer ao universo",
-    image: "/cards/home/clube.png",
-    target: "clube",
-  },
-]
 
 const discoveryCards: CardItem[] = [
   {
@@ -177,51 +152,6 @@ const discoveryCards: CardItem[] = [
     text: "achados especiais que aparecem de vez em quando",
     image: "/cards/descobertas/tesouros.png",
     target: "tesouros",
-  },
-]
-
-const playCards: CardItem[] = [
-  {
-    id: "laboratorio",
-    title: "Laboratório",
-    text: "experiências suaves e curiosas",
-    image: "/images/universos/laboratorio-capa.png",
-    target: "laboratorio",
-  },
-  {
-    id: "cozinha",
-    title: "Cozinha",
-    text: "misturas e descobertas",
-    image: "/images/universos/cozinha-capa.png",
-    target: "cozinha",
-  },
-  {
-    id: "oficina",
-    title: "Oficina",
-    text: "coisas feitas com as mãos",
-    image: "/images/universos/oficina-capa.png",
-    target: "oficina",
-  },
-  {
-    id: "natureza",
-    title: "Natureza",
-    text: "folhas, vento e caminho",
-    image: "/images/universos/natureza-capa.png",
-    target: "natureza",
-  },
-  {
-    id: "arte",
-    title: "Arte",
-    text: "recortes, histórias e imaginação",
-    image: "/images/universos/arte-capa.png",
-    target: "arte",
-  },
-  {
-    id: "movimento",
-    title: "Movimento",
-    text: "corpo, ritmo e presença",
-    image: "/images/universos/movimento-capa.png",
-    target: "movimento",
   },
 ]
 
@@ -325,6 +255,32 @@ function isDiscoveryFlowScreen(screen: Screen): boolean {
   )
 }
 
+function resolveNavActive(screen: Screen): string {
+  if (screen === "figurinhas" || screen === "minha-caixa") return "atelie"
+
+  if (isSimpleSubScreen(screen)) {
+    const parent = subPageData[screen].parent
+    if (parent === "atelie" || parent === "figurinhas") return "atelie"
+    if (parent === "descobertas") return "minha-colecao"
+    if (parent === "brincadeiras") return "brincadeiras"
+    if (parent === "clube") return "clube"
+  }
+
+  if (isPlayUniverseScreen(screen)) return "brincadeiras"
+
+  if (isDiscoveryFlowScreen(screen)) return "minha-colecao"
+
+  if (
+    screen === "descobertas" ||
+    screen === "descoberta-do-dia" ||
+    screen === "tesouros"
+  ) {
+    return "minha-colecao"
+  }
+
+  return screen
+}
+
 export default function App() {
   const [screen, setScreen] = useState<Screen>("home")
   const [box, setBox] = useState<AtelierGood[]>([])
@@ -397,7 +353,7 @@ export default function App() {
         {screen === "brincadeiras" && (
           <Page
             portalKey="brincadeiras"
-            cards={playCards}
+            cards={brincadeirasCards}
             sectionTitle="Mundos de Brincar"
             horizontalCards
             setScreen={setScreen}
@@ -422,56 +378,13 @@ export default function App() {
 
         {screen === "clube" && <ClubPage />}
 
-        <BottomNav
-          active={screen === "figurinhas" ? "atelie" : screen}
-          setScreen={setScreen}
-        />
+        {screen === "minha-colecao" && (
+          <MinhaColecaoPage setScreen={setScreen} />
+        )}
+
+        <BottomNav active={resolveNavActive(screen)} setScreen={setScreen} />
       </section>
     </main>
-  )
-}
-function Home({
-  setScreen,
-}: {
-  setScreen: (screen: Screen) => void
-}) {
-  const portal = portalPages.home
-
-  return (
-    <WorldPortalLayout {...portal} variant="home">
-      <SoftNote label="janela da teca" highlight>
-        escolha um caminho e comece a brincar.
-      </SoftNote>
-
-      <section style={styles.homeSectionBlock}>
-        <h2 style={styles.homeSectionHeading}>escolha um caminho</h2>
-        <div style={styles.homePathGrid}>
-          {homeCards.map((card) => (
-            <button
-              key={card.id}
-              type="button"
-              style={styles.homePathButton}
-              onClick={() => card.target && setScreen(card.target)}
-            >
-              <article
-                style={{
-                  ...styles.homePathCard,
-                  backgroundImage: `url(${card.image})`,
-                }}
-                aria-label={card.title}
-              >
-                <div style={styles.homePathOverlay}>
-                  <div style={styles.homePathBody}>
-                  <p style={styles.homePathLabel}>{card.title}</p>
-                  {card.text && <p style={styles.homePathText}>{card.text}</p>}
-                  </div>
-                </div>
-              </article>
-            </button>
-          ))}
-        </div>
-      </section>
-    </WorldPortalLayout>
   )
 }
 
@@ -506,74 +419,6 @@ function Page({
           />
         ))}
       </div>
-    </WorldPortalLayout>
-  )
-}
-
-function ClubPage() {
-  const [childName, setChildName] = useState("teca")
-  const [birthday, setBirthday] = useState("12 de abril")
-  const [memberSince, setMemberSince] = useState("maio de 2026")
-  const portal = portalPages.clube
-
-  return (
-    <WorldPortalLayout {...portal} compactTitle breath="large">
-      <article style={{ ...styles.clubMemberCard, ...tecaTilt(-0.35) }}>
-        <div style={styles.clubMemberCardTop}>
-          <span style={styles.clubSealBadge}>teca</span>
-          <p style={styles.clubMemberNumber}>carteirinha nº 024</p>
-        </div>
-
-        <h2 style={styles.clubMemberCardTitle}>carteirinha da teca</h2>
-        <p style={styles.clubFichaHint}>ficha de pertencimento — preencha com calma</p>
-
-        <div style={styles.clubField}>
-          <p style={styles.clubFieldLabel}>nome da criança</p>
-          <input
-            type="text"
-            value={childName}
-            onChange={(e) => setChildName(e.target.value)}
-            style={styles.clubFieldLine}
-            aria-label="nome da criança"
-          />
-        </div>
-
-        <div style={styles.clubField}>
-          <p style={styles.clubFieldLabel}>aniversário</p>
-          <input
-            type="text"
-            value={birthday}
-            onChange={(e) => setBirthday(e.target.value)}
-            style={styles.clubFieldLine}
-            aria-label="aniversário"
-          />
-        </div>
-
-        <div style={styles.clubField}>
-          <p style={styles.clubFieldLabel}>membro desde</p>
-          <input
-            type="text"
-            value={memberSince}
-            onChange={(e) => setMemberSince(e.target.value)}
-            style={styles.clubFieldLine}
-            aria-label="membro desde"
-          />
-        </div>
-      </article>
-
-      <article style={styles.clubBelongingCard}>
-        <p style={styles.clubBelongingLead}>
-          membros do clube têm 30% de desconto em todos os tesouros do
-          ateliê.
-        </p>
-        <p style={styles.clubBelongingText}>
-          também acessam as brincadeiras completas do Mundo da Teca.
-        </p>
-      </article>
-
-      <button type="button" style={styles.clubJoinButton}>
-        quero fazer parte
-      </button>
     </WorldPortalLayout>
   )
 }

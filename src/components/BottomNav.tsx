@@ -12,19 +12,24 @@ export function BottomNav({
     <nav style={styles.bottomNav}>
       {navItems.map((item) => {
         const isActive = active === item.screen
+        const isSecondary = item.secondary === true
 
         return (
           <button
             key={item.screen}
             onClick={() => setScreen(item.screen)}
-            style={styles.navButton}
+            style={{
+              ...styles.navButton,
+              ...(isSecondary ? styles.navButtonSecondary : {}),
+            }}
           >
             <img
               src={item.icon}
               alt={item.label}
               style={{
                 ...styles.navIcon,
-                opacity: isActive ? 1 : 0.62,
+                ...(isSecondary ? styles.navIconSecondary : {}),
+                opacity: isActive ? 1 : isSecondary ? 0.5 : 0.62,
                 transform: isActive ? "translateY(-2px)" : "none",
               }}
             />
@@ -32,6 +37,7 @@ export function BottomNav({
             <span
               style={{
                 ...styles.navLabel,
+                ...(isSecondary ? styles.navLabelSecondary : {}),
                 color: isActive ? "#c88757" : "#7a6858",
               }}
             >

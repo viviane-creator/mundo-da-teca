@@ -56,6 +56,13 @@ export const portalPages = {
     title: "clube da teca",
     tagline: "um lugar para continuar guardando infância devagar.",
   },
+  minhaColecao: {
+    cover: "/covers/descobertas.png",
+    coverAlt: "Meu Fichário",
+    title: "meu fichário",
+    tagline:
+      "um lugar para guardar descobertas, experiências e pequenas coleções.",
+  },
 } as const
 
 const p: Record<string, CSSProperties> = {

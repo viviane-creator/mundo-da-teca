@@ -307,6 +307,61 @@ export const styles: Record<string, CSSProperties> = {
       "linear-gradient(90deg, rgba(194,165,141,0) 0%, rgba(194,165,141,0.55) 30%, rgba(194,165,141,0.55) 70%, rgba(194,165,141,0) 100%)",
   },
 
+  planCardsStack: {
+    display: "flex",
+    flexDirection: "column",
+    gap: "16px",
+    marginTop: "14px",
+  },
+
+  planCard: {
+    padding: "20px 18px 18px",
+    textAlign: "left",
+  },
+
+  planCardTitle: {
+    margin: "0 0 12px",
+    fontFamily: "'Cormorant Garamond', serif",
+    fontSize: "26px",
+    fontWeight: 600,
+    color: "#6a4f3c",
+    lineHeight: 1.1,
+  },
+
+  planBenefitsList: {
+    margin: "0 0 18px",
+    padding: "0 0 0 18px",
+    listStyle: "none",
+  },
+
+  planBenefitItem: {
+    position: "relative",
+    marginBottom: "8px",
+    paddingLeft: "4px",
+    fontFamily: "'Cormorant Garamond', serif",
+    fontStyle: "italic",
+    fontSize: "17px",
+    lineHeight: 1.4,
+    color: "#8b7668",
+  },
+
+  planCardButton: {
+    width: "100%",
+    ...tecaObjects.buttonPrimary(),
+    padding: "14px 20px",
+    fontSize: "24px",
+    ...tecaFont.accentHand,
+  },
+
+  homeBrincadeirasButton: {
+    width: "100%",
+    marginTop: "4px",
+    ...tecaObjects.buttonPrimary(),
+    padding: "14px 20px",
+    fontSize: "24px",
+    ...tecaFont.accentHand,
+  },
+
   homePathGrid: {
     display: "grid",
     gridTemplateColumns: "repeat(2, minmax(0, 1fr))",
@@ -953,6 +1008,287 @@ export const styles: Record<string, CSSProperties> = {
     ...tecaFont.accentHand,
   },
 
+  clubPlansSection: {
+    marginBottom: "8px",
+  },
+
+  clubCarteirinhaSection: {
+    marginTop: "8px",
+    opacity: 0.92,
+  },
+
+  clubSecondaryLabel: {
+    margin: "0 0 14px",
+    fontFamily: "'Cormorant Garamond', serif",
+    fontStyle: "italic",
+    fontSize: "17px",
+    color: "#9a8475",
+    textAlign: "left",
+    letterSpacing: "0.3px",
+  },
+
+  ficharioUniversosSection: {
+    marginTop: "4px",
+  },
+
+  ficharioSectionLabel: {
+    margin: "0 0 6px",
+    fontFamily: "'Cormorant Garamond', serif",
+    fontSize: "24px",
+    fontWeight: 500,
+    color: "#7a6254",
+    textAlign: "left",
+    lineHeight: 1.1,
+  },
+
+  ficharioSectionIntro: {
+    margin: "0 0 20px",
+    fontFamily: "'Cormorant Garamond', serif",
+    fontStyle: "italic",
+    fontSize: "17px",
+    lineHeight: 1.45,
+    color: "#8b7668",
+    textAlign: "left",
+  },
+
+  ficharioUniversosStack: {
+    display: "flex",
+    flexDirection: "column",
+    gap: "14px",
+  },
+
+  ficharioUniversePanel: {
+    display: "flex",
+    flexDirection: "column",
+    gap: "10px",
+  },
+
+  ficharioUniverseHeaderButton: {
+    border: "none",
+    background: "transparent",
+    padding: 0,
+    margin: 0,
+    width: "100%",
+    cursor: "pointer",
+    textAlign: "left",
+  },
+
+  ficharioUniverseHeader: {
+    display: "flex",
+    alignItems: "center",
+    gap: "14px",
+    padding: "14px",
+    width: "100%",
+    boxSizing: "border-box",
+  },
+
+  ficharioUniverseHeaderOpen: {
+    borderColor: "rgba(200, 135, 87, 0.35)",
+  },
+
+  ficharioUniverseThumb: {
+    width: "72px",
+    height: "54px",
+    objectFit: "cover",
+    borderRadius: "14px",
+    border: `1px solid ${theme.line}`,
+    flexShrink: 0,
+  },
+
+  ficharioUniverseHeaderBody: {
+    flex: 1,
+    minWidth: 0,
+  },
+
+  ficharioUniverseTitle: {
+    margin: "0 0 4px",
+    fontFamily: "'Cormorant Garamond', serif",
+    fontSize: "22px",
+    fontWeight: 600,
+    color: theme.text,
+    lineHeight: 1.1,
+  },
+
+  ficharioUniversePoetic: {
+    margin: "0 0 6px",
+    fontFamily: "'Cormorant Garamond', serif",
+    fontStyle: "italic",
+    fontSize: "15px",
+    lineHeight: 1.35,
+    color: theme.muted,
+  },
+
+  ficharioProgressSecondary: {
+    margin: 0,
+    fontFamily: "'Nunito', sans-serif",
+    fontSize: "12px",
+    color: "#9a8475",
+    letterSpacing: "0.2px",
+  },
+
+  ficharioUniverseChevron: {
+    fontFamily: "'Caveat', cursive",
+    fontSize: "28px",
+    color: "#b3815f",
+    lineHeight: 1,
+    flexShrink: 0,
+    opacity: 0.85,
+  },
+
+  ficharioSlotsStack: {
+    display: "flex",
+    flexDirection: "column",
+    gap: "10px",
+    padding: "0 4px 6px",
+  },
+
+  ficharioSlot: {
+    padding: "14px 16px",
+    borderRadius: "18px",
+    border: `1px solid ${theme.line}`,
+    textAlign: "left",
+  },
+
+  ficharioSlotConcluida: {
+    background: "#fdfaf6",
+    boxShadow: "inset 0 1px 0 rgba(255,255,255,0.7)",
+  },
+
+  ficharioSlotRecebida: {
+    background: "#f9f3ec",
+    borderStyle: "dashed",
+  },
+
+  ficharioSlotAguardando: {
+    background: "rgba(255,253,249,0.55)",
+    borderStyle: "dotted",
+    opacity: 0.88,
+  },
+
+  ficharioSlotHeader: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between",
+    marginBottom: "8px",
+  },
+
+  ficharioSlotIndex: {
+    fontFamily: "'Cormorant Garamond', serif",
+    fontSize: "14px",
+    color: "#9a8475",
+    letterSpacing: "1px",
+  },
+
+  ficharioSlotSeal: {
+    ...tecaObjects.etiqueta(),
+    fontSize: "10px",
+    padding: "3px 8px",
+  },
+
+  ficharioSlotTitle: {
+    margin: "0 0 4px",
+    fontFamily: "'Cormorant Garamond', serif",
+    fontSize: "20px",
+    fontWeight: 500,
+    color: theme.text,
+    lineHeight: 1.2,
+  },
+
+  ficharioSlotNote: {
+    margin: 0,
+    fontFamily: "'Cormorant Garamond', serif",
+    fontStyle: "italic",
+    fontSize: "15px",
+    lineHeight: 1.4,
+    color: theme.muted,
+  },
+
+  ficharioSlotEmptyFrame: {
+    height: "28px",
+    marginBottom: "10px",
+    borderRadius: "10px",
+    border: `1px dashed rgba(234, 216, 197, 0.95)`,
+    background:
+      "repeating-linear-gradient(135deg, rgba(248,239,228,0.35) 0 6px, rgba(255,253,249,0.2) 6px 12px)",
+  },
+
+  ficharioSlotEmptyText: {
+    margin: 0,
+    fontFamily: "'Cormorant Garamond', serif",
+    fontStyle: "italic",
+    fontSize: "15px",
+    lineHeight: 1.4,
+    color: "#a89486",
+  },
+
+  ficharioComplementsSection: {
+    marginTop: "4px",
+    marginBottom: "8px",
+  },
+
+  ficharioComplementsLabel: {
+    margin: "0 0 14px",
+    fontFamily: "'Cormorant Garamond', serif",
+    fontStyle: "italic",
+    fontSize: "18px",
+    color: "#9a8475",
+    textAlign: "left",
+  },
+
+  ficharioComplementsStack: {
+    display: "flex",
+    flexDirection: "column",
+    gap: "12px",
+  },
+
+  ficharioComplementButton: {
+    border: "none",
+    background: "transparent",
+    padding: 0,
+    margin: 0,
+    width: "100%",
+    cursor: "pointer",
+    textAlign: "left",
+  },
+
+  ficharioComplementCard: {
+    ...tecaObjects.note(tecaRadius.md),
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between",
+    gap: "12px",
+    padding: "16px 18px",
+  },
+
+  ficharioComplementBody: {
+    flex: 1,
+    minWidth: 0,
+  },
+
+  ficharioComplementTitle: {
+    margin: "0 0 4px",
+    fontFamily: "'Cormorant Garamond', serif",
+    fontSize: "20px",
+    fontWeight: 500,
+    color: theme.text,
+  },
+
+  ficharioComplementText: {
+    margin: 0,
+    fontFamily: "'Cormorant Garamond', serif",
+    fontStyle: "italic",
+    fontSize: "15px",
+    lineHeight: 1.35,
+    color: theme.muted,
+  },
+
+  ficharioComplementArrow: {
+    fontFamily: "'Caveat', cursive",
+    fontSize: "26px",
+    color: "#b3815f",
+    flexShrink: 0,
+  },
+
   diaryStack: {
     display: "flex",
     flexDirection: "column",
@@ -1205,6 +1541,20 @@ export const styles: Record<string, CSSProperties> = {
   navLabel: {
     ...tecaFont.navLabel,
     lineHeight: "1.05",
+  },
+
+  navButtonSecondary: {
+    opacity: 0.72,
+  },
+
+  navIconSecondary: {
+    width: "34px",
+    height: "34px",
+  },
+
+  navLabelSecondary: {
+    fontSize: "10px",
+    opacity: 0.85,
   },
 }
 
