@@ -1,7 +1,7 @@
 export type PlayUniverseId =
-  | "natureza"
-  | "arte"
-  | "movimento"
+  | "quintal"
+  | "faz-de-conta"
+  | "observatorio"
   | "oficina"
   | "laboratorio"
   | "cozinha"
@@ -51,9 +51,9 @@ const universeCovers: Record<PlayUniverseId, string> = {
   laboratorio: "/images/universos/laboratorio-capa.png",
   cozinha: "/images/universos/cozinha-capa.png",
   oficina: "/images/universos/oficina-capa.png",
-  natureza: "/images/universos/natureza-capa.png",
-  arte: "/images/universos/arte-capa.png",
-  movimento: "/images/universos/movimento-capa.png",
+  quintal: "/images/universos/natureza-capa.png",
+  "faz-de-conta": "/images/universos/arte-capa.png",
+  observatorio: "/images/universos/movimento-capa.png",
 }
 
 function experienceImage(universeId: PlayUniverseId, experienceId: string): string {
@@ -76,10 +76,10 @@ function buildExperiences(
   universeId: PlayUniverseId,
   seeds: ExperienceSeed[]
 ): PlayExperience[] {
-  return seeds.map((seed, index) => ({
+  return seeds.map((seed) => ({
     ...seed,
     image: experienceImage(universeId, seed.id),
-    isFree: index < 3,
+    isFree: true,
     detail: placeholderDetail(seed),
   }))
 }
@@ -823,36 +823,36 @@ const cozinhaSeeds: ExperienceSeed[] = [
 ]
 
 export const playUniverses: Record<PlayUniverseId, PlayUniverse> = {
-  natureza: {
-    id: "natureza",
-    title: "natureza",
+  quintal: {
+    id: "quintal",
+    title: "Quintal",
     intro: "o lado de fora e seus pequenos tesouros",
-    poetic: "folhas, vento e chão vivo para brincar com o que já existe.",
-    image: universeCovers.natureza,
-    noteText: "observe devagar: a natureza já começa no caminho de casa.",
-    experiences: buildExperiences("natureza", brincarNaRuaSeeds),
+    poetic: "folhas, vento e chão vivo para explorar o que já existe.",
+    image: universeCovers.quintal,
+    noteText: "observe devagar: o quintal começa no caminho de casa.",
+    experiences: buildExperiences("quintal", brincarNaRuaSeeds),
   },
-  arte: {
-    id: "arte",
-    title: "arte",
+  "faz-de-conta": {
+    id: "faz-de-conta",
+    title: "Faz de Conta",
     intro: "imaginação em páginas, recortes e histórias",
-    poetic: "uma coleção de gestos criativos para inventar mundos delicados.",
-    image: universeCovers.arte,
-    noteText: "sem perfeição: mãos curiosas fazem a arte aparecer.",
-    experiences: buildExperiences("arte", fazDeContaSeeds),
+    poetic: "um conjunto de gestos criativos para inventar mundos delicados.",
+    image: universeCovers["faz-de-conta"],
+    noteText: "sem pressa: a imaginação aparece quando encontra espaço.",
+    experiences: buildExperiences("faz-de-conta", fazDeContaSeeds),
   },
-  movimento: {
-    id: "movimento",
-    title: "movimento",
-    intro: "corpo, ritmo e presença",
-    poetic: "brincadeiras para mexer o corpo e escutar o tempo da tarde.",
-    image: universeCovers.movimento,
-    noteText: "movimento também pode ser suave, silencioso e brincante.",
-    experiences: buildExperiences("movimento", diasDeChuvaSeeds),
+  observatorio: {
+    id: "observatorio",
+    title: "Observatório",
+    intro: "céu, janela e perguntas curiosas",
+    poetic: "convites para olhar com calma, perceber sinais e imaginar longe.",
+    image: universeCovers.observatorio,
+    noteText: "observar também é descobrir: céu, chuva, luz e pequenos sinais.",
+    experiences: buildExperiences("observatorio", diasDeChuvaSeeds),
   },
   oficina: {
     id: "oficina",
-    title: "oficina",
+    title: "Oficina",
     intro: "coisas feitas com as mãos",
     poetic: "fazer com as próprias mãos deixa a tarde mais presente.",
     image: universeCovers.oficina,
@@ -861,7 +861,7 @@ export const playUniverses: Record<PlayUniverseId, PlayUniverse> = {
   },
   laboratorio: {
     id: "laboratorio",
-    title: "laboratório",
+    title: "Laboratório",
     intro: "experiências suaves e curiosas",
     poetic: "perguntas pequenas merecem experimentos suaves.",
     image: universeCovers.laboratorio,
@@ -870,7 +870,7 @@ export const playUniverses: Record<PlayUniverseId, PlayUniverse> = {
   },
   cozinha: {
     id: "cozinha",
-    title: "cozinha",
+    title: "Cozinha",
     intro: "misturas e descobertas",
     poetic: "misturar, cheirar e esperar ensina paciência nas mãos.",
     image: universeCovers.cozinha,

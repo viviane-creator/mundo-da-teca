@@ -21,7 +21,7 @@ export const portalPages = {
     coverAlt: "Teca no mundo real",
     title: "coisas pequenas para imaginar, brincar e guardar",
     tagline:
-      "descobertas, brincadeiras, papelaria, coleções e pequenas memórias para uma infância mais lenta, criativa e viva.",
+      "universos, papelaria, coleções e pequenas memórias para uma infância mais lenta, criativa e viva.",
     kicker: "observa • cria • imagina",
   },
   descobertas: {
@@ -30,11 +30,11 @@ export const portalPages = {
     title: "descobertas",
     tagline: "pequenas coisas que o mundo esconde para quem olha devagar.",
   },
-  brincadeiras: {
+  universos: {
     cover: "/covers/brincadeiras.png",
-    coverAlt: "Brincadeiras",
-    title: "brincadeiras",
-    tagline: "ideias para sair da tela e entrar no mundo real.",
+    coverAlt: "Universos",
+    title: "Universos",
+    tagline: "áreas de exploração para sair da tela e entrar no mundo real.",
   },
   atelie: {
     cover: "/covers/atelie.png",
@@ -56,12 +56,11 @@ export const portalPages = {
     title: "clube da teca",
     tagline: "um lugar para continuar guardando infância devagar.",
   },
-  minhaColecao: {
+  meuMundo: {
     cover: "/covers/descobertas.png",
-    coverAlt: "Meu Fichário",
-    title: "meu fichário",
-    tagline:
-      "um lugar para guardar descobertas, experiências e pequenas coleções.",
+    coverAlt: "Meu Mundo",
+    title: "Meu Mundo",
+    tagline: "Aqui vivem suas descobertas, coleções e registros.",
   },
 } as const
 
