@@ -1,13 +1,9 @@
 import { HomeExploreMap } from "../components/HomeExploreMap"
+import { EditorialDecor } from "../components/EditorialDecor"
 import { ParticipationSection } from "../components/ParticipationSection"
+import { editorialDecorMapCorners } from "../data/editorialDecorPresets"
 import { styles } from "../styles/appStyles"
 import { WorldPortalLayout, portalPages } from "../worldPortal"
-
-const homeManifesto = [
-  "Acreditamos que existe um mundo inteiro de coisas incríveis fora das telas.",
-  "Um mundo de transformações, coleções, perguntas, invenções e descobertas.",
-  "O Mundo da Teca nasceu para ajudar crianças a encontrarem esse mundo novamente.",
-] as const
 
 const atelierCabinetDecor = [
   { src: "/cards/atelie/album.png", w: 72, h: 48, top: "8%", right: "6%", rotate: 12 },
@@ -28,32 +24,20 @@ export function Home({
   return (
     <WorldPortalLayout {...portal} variant="home">
       <div style={styles.homeV2Journey}>
-        <section style={styles.homeV2Manifesto}>
-          <p style={styles.homeV2SectionKicker}>manifesto</p>
-          <h2 style={styles.homeSectionHeading}>O Mundo da Teca</h2>
-          {homeManifesto.map((paragraph) => (
-            <p key={paragraph} style={styles.homeSectionPoetic}>
-              {paragraph}
-            </p>
-          ))}
-        </section>
-
-        <div style={styles.homeEditorialDivider} />
-
         <section style={styles.homeSectionBlock}>
           <p style={styles.homeV2SectionKicker}>mapa de exploração</p>
           <h2 style={styles.homeSectionHeading}>
             Escolha por onde começar.
           </h2>
-          <p style={styles.homeSectionPoetic}>
-            Cada universo guarda um tipo diferente de descoberta.
-          </p>
 
           <div style={styles.homeV2UniversosWrap}>
-            <HomeExploreMap onSelect={setScreen} />
-            <p style={styles.homeV2TrailEnd}>
-              · · · a trilha encontra seu lugar · · ·
-            </p>
+            <EditorialDecor items={editorialDecorMapCorners} />
+            <div style={styles.editorialDecorContent}>
+              <HomeExploreMap onSelect={setScreen} />
+              <p style={styles.homeV2TrailEnd}>
+                · · · a trilha encontra seu lugar · · ·
+              </p>
+            </div>
           </div>
         </section>
 
@@ -97,10 +81,6 @@ export function Home({
             <h2 style={styles.homeV2DestinationHeading}>Meu Mundo</h2>
             <p style={styles.homeV2DestinationPromise}>
               Toda descoberta precisa de um lugar para morar.
-            </p>
-            <p style={styles.homeSectionPoetic}>
-              Registre, guarde e colecione tudo aquilo que despertou sua
-              curiosidade.
             </p>
 
             <button
@@ -175,10 +155,6 @@ export function Home({
             <h2 style={styles.homeSectionHeading}>Ateliê</h2>
             <p style={styles.homeV2CabinetLead}>
               Alguns tesouros insistem em vir para casa.
-            </p>
-            <p style={styles.homeSectionPoetic}>
-              Figurinhas, papelaria, colecionáveis e pequenas descobertas para
-              continuar explorando.
             </p>
             <button
               type="button"

@@ -1,7 +1,9 @@
-import type { FicharioUniverse } from "../data/minhaColecaoMock"
+import {
+  getUniverseArchiveLabel,
+  type FicharioUniverse,
+} from "../data/minhaColecaoMock"
 import { CollectionPageSlot } from "./CollectionPageSlot"
 import { styles } from "../styles/appStyles"
-import { tecaObjects } from "../tecaVisual"
 
 export function FicharioUniversePanel({
   universe,
@@ -12,6 +14,8 @@ export function FicharioUniversePanel({
   expanded: boolean
   onToggle: () => void
 }) {
+  const archiveLabel = getUniverseArchiveLabel(universe.slots)
+
   return (
     <section style={styles.ficharioUniversePanel}>
       <button
@@ -23,25 +27,26 @@ export function FicharioUniversePanel({
         <article
           style={{
             ...styles.ficharioUniverseHeader,
-            ...tecaObjects.card("md"),
             ...(expanded ? styles.ficharioUniverseHeaderOpen : {}),
           }}
         >
+          <span style={styles.ficharioUniverseIcon} aria-hidden="true">
+            {universe.icon}
+          </span>
+
           <img
             src={universe.image}
-            alt={universe.title}
+            alt=""
             style={styles.ficharioUniverseThumb}
           />
 
           <div style={styles.ficharioUniverseHeaderBody}>
             <h3 style={styles.ficharioUniverseTitle}>{universe.title}</h3>
             <p style={styles.ficharioUniversePoetic}>{universe.poetic}</p>
-            <p style={styles.ficharioProgressSecondary}>
-              {universe.progressLabel}
-            </p>
+            <p style={styles.ficharioArchiveLabel}>{archiveLabel}</p>
           </div>
 
-          <span style={styles.ficharioUniverseChevron}>
+          <span style={styles.ficharioUniverseChevron} aria-hidden="true">
             {expanded ? "−" : "+"}
           </span>
         </article>
@@ -49,9 +54,16 @@ export function FicharioUniversePanel({
 
       {expanded && (
         <div style={styles.ficharioSlotsStack}>
-          {universe.slots.map((slot, index) => (
-            <CollectionPageSlot key={slot.id} slot={slot} index={index} />
-          ))}
+          {universe.slots
+            .filter((slot) => slot.status !== "aguardando")
+            .map((slot, index) => (
+              <CollectionPageSlot key={slot.id} slot={slot} index={index} />
+            ))}
+          {universe.slots.some((slot) => slot.status === "aguardando") && (
+            <p style={styles.ficharioDrawerHint}>
+              · · · gavetas ainda vazias, prontas para guardar · · ·
+            </p>
+          )}
         </div>
       )}
     </section>

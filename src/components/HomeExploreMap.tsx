@@ -20,13 +20,28 @@ const TRAIL_PATH_SKETCH =
 function MapDecorations() {
   return (
     <>
-      {/* manchas de aquarela */}
       <ellipse cx="72" cy="248" rx="34" ry="26" fill="#d9c4ad" opacity={0.11} />
       <ellipse cx="252" cy="118" rx="26" ry="20" fill="#c9b39a" opacity={0.09} />
       <ellipse cx="228" cy="340" rx="30" ry="22" fill="#dcc9b4" opacity={0.1} />
       <ellipse cx="58" cy="420" rx="22" ry="18" fill="#e8dccf" opacity={0.12} />
 
-      {/* rabiscos e marcas de lápis */}
+      {homeUniversePortals.map((portal, index) => {
+        const point = TRAIL_POINTS[index]
+        return (
+          <text
+            key={`wm-${portal.id}`}
+            x={point.x}
+            y={point.y + 8}
+            textAnchor="middle"
+            fontSize="96"
+            opacity={0.07}
+            style={{ pointerEvents: "none" }}
+          >
+            {portal.icon}
+          </text>
+        )
+      })}
+
       <path
         d="M 24 520 Q 38 508, 52 518 T 68 512"
         fill="none"
@@ -68,7 +83,6 @@ function MapDecorations() {
         strokeLinecap="round"
       />
 
-      {/* folhas */}
       <path
         d="M 28 96 Q 34 88, 40 96 Q 34 104, 28 96"
         fill="#b8c4a0"
@@ -85,7 +99,6 @@ function MapDecorations() {
         opacity={0.1}
       />
 
-      {/* estrelas e pontos de observação */}
       <text x="236" y="52" fill="#b8987a" fontSize="9" opacity={0.22}>
         ✦
       </text>
@@ -100,7 +113,6 @@ function MapDecorations() {
       <circle cx="292" cy="188" r="6" fill="none" stroke="#c4a58d" strokeWidth="0.45" opacity={0.18} />
       <circle cx="292" cy="188" r="1.2" fill="#c4a58d" opacity={0.22} />
 
-      {/* carimbos discretos */}
       <circle cx="42" cy="548" r="9" fill="none" stroke="#c4a58d" strokeWidth="0.6" strokeDasharray="2 3" opacity={0.24} />
       <text x="42" y="551" textAnchor="middle" fill="#b8987a" fontSize="7" opacity={0.28}>
         ✦
@@ -110,11 +122,9 @@ function MapDecorations() {
         ◎
       </text>
 
-      {/* marcas de canto — diário */}
       <path d="M 18 18 L 18 42 M 18 18 L 42 18" stroke="#c4a58d" strokeWidth="0.8" opacity={0.28} strokeLinecap="round" />
       <path d="M 302 18 L 302 42 M 302 18 L 278 18" stroke="#c4a58d" strokeWidth="0.8" opacity={0.28} strokeLinecap="round" />
 
-      {/* trilhas */}
       <path
         d={TRAIL_PATH_SKETCH}
         fill="none"
@@ -143,22 +153,20 @@ function MapDecorations() {
             textAnchor="middle"
             fill="#b8987a"
             fontSize="7"
-            fontFamily="'Cormorant Garamond', serif"
-            fontStyle="italic"
-            opacity={0.4}
+            fontFamily="'Nunito', sans-serif"
+            letterSpacing="1"
+            opacity={0.45}
           >
             {index + 1}
           </text>
         </g>
       ))}
 
-      {/* selos */}
       <ellipse cx="156" cy="534" rx="12" ry="8" fill="none" stroke="#c4a58d" strokeWidth="0.5" opacity={0.2} transform="rotate(-12 156 534)" />
       <text x="156" y="536" textAnchor="middle" fill="#b8987a" fontSize="5" opacity={0.24} transform="rotate(-12 156 534)">
         EXP
       </text>
 
-      {/* Teca — silhueta exploradora (easter egg) */}
       <g opacity={0.085} transform="translate(108, 252) rotate(-6)">
         <circle cx="7" cy="5" r="4.5" fill="none" stroke="#6a4f3c" strokeWidth="0.75" />
         <path
@@ -193,11 +201,18 @@ function MapDecorations() {
 
 export function HomeExploreMap({
   onSelect,
+  variant = "home",
 }: {
   onSelect: (target: string) => void
+  variant?: "home" | "full"
 }) {
   return (
-    <div style={styles.homeExploreMap}>
+    <div
+      style={{
+        ...styles.homeExploreMap,
+        ...(variant === "full" ? styles.homeExploreMapFull : {}),
+      }}
+    >
       <svg
         style={styles.homeExploreMapSvg}
         viewBox="0 0 320 580"

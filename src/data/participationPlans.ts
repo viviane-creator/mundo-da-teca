@@ -64,7 +64,7 @@ export const homeParticipationJourneys: Record<
 export const clubParticipationPlans: ParticipationPlan[] = [
   {
     id: "explorador",
-    title: "Explorador",
+    title: "Plano Explorador",
     benefits: [
       "plano digital",
       "Universos, experiências e Meu Mundo digital",
@@ -74,7 +74,7 @@ export const clubParticipationPlans: ParticipationPlan[] = [
   },
   {
     id: "colecionador",
-    title: "Colecionador",
+    title: "Plano Colecionador",
     benefits: [
       "plano físico + digital",
       "tudo do Explorador",
@@ -84,12 +84,3 @@ export const clubParticipationPlans: ParticipationPlan[] = [
     ctaLabel: "Receber em casa",
   },
 ]
-
-export const clubIntroText =
-  "O Clube é a forma de participar do Mundo da Teca — um convite para descobrir, registrar e colecionar o mundo real, longe de telas e sem pressa."
-
-export const collectionConceptNote =
-  "a coleção cresce devagar: experiências vividas, páginas guardadas e pequenas memórias construídas com as mãos e com o tempo."
-
-export const clubAtelierNote =
-  "assinantes do Clube têm desconto no Ateliê — onde ficam figurinhas, papelaria, produtos físicos e o Meu Mundo de Tesouros."

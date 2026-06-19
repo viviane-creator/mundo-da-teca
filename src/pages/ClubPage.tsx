@@ -1,12 +1,6 @@
 import { useState } from "react"
-import {
-  clubAtelierNote,
-  clubIntroText,
-  clubParticipationPlans,
-  collectionConceptNote,
-} from "../data/participationPlans"
+import { clubParticipationPlans } from "../data/participationPlans"
 import { PlanCard } from "../components/PlanCard"
-import { SoftNote } from "../components/SoftNote"
 import { styles } from "../styles/appStyles"
 import { tecaTilt } from "../tecaVisual"
 import { WorldPortalLayout, portalPages } from "../worldPortal"
@@ -22,11 +16,9 @@ export function ClubPage({
   const portal = portalPages.clube
 
   return (
-    <WorldPortalLayout {...portal} compactTitle breath="large">
+    <WorldPortalLayout {...portal} breath="large">
       <section style={styles.clubPlansSection}>
-        <p style={styles.clubBelongingText}>{clubIntroText}</p>
-
-        <h2 style={styles.homeSectionHeading}>como participar</h2>
+        <h2 style={styles.clubEntryHeading}>Como Participar</h2>
 
         <div style={styles.planCardsStack}>
           {clubParticipationPlans.map((plan, index) => (
@@ -39,18 +31,6 @@ export function ClubPage({
           ))}
         </div>
       </section>
-
-      <SoftNote label="a coleção">{collectionConceptNote}</SoftNote>
-
-      <SoftNote label="ateliê">{clubAtelierNote}</SoftNote>
-
-      <button
-        type="button"
-        style={styles.clubJoinButton}
-        onClick={() => setScreen("atelie")}
-      >
-        Conhecer o Ateliê
-      </button>
 
       <div style={styles.homeEditorialDivider} />
 

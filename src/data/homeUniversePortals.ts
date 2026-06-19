@@ -50,3 +50,9 @@ export const homeUniversePortals: HomeUniversePortal[] = [
     target: "observatorio",
   },
 ]
+
+export function getUniverseEmblem(universeId: string): string {
+  return (
+    homeUniversePortals.find((portal) => portal.id === universeId)?.icon ?? "✦"
+  )
+}

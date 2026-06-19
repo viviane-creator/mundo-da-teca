@@ -41,9 +41,6 @@ export function CollectionPageSlot({
       ) : (
         <>
           <div style={styles.ficharioSlotHeader}>
-            <span style={styles.ficharioSlotIndex}>
-              {String(index + 1).padStart(2, "0")}
-            </span>
             {seal && <span style={styles.ficharioSlotSeal}>{seal}</span>}
           </div>
           <h4 style={styles.ficharioSlotTitle}>{slot.title}</h4>

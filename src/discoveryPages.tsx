@@ -1,19 +1,26 @@
 import { useRef, useState, type CSSProperties } from "react"
 import {
   buildDiaryDescription,
-  discoveryCollections,
   formatPoeticDate,
   getCollectionDetail,
   type CollectionDetailScreen,
   type DiaryEntry,
 } from "./discoveryData"
 import {
+  ficharioDefaultExpandedId,
+  ficharioUniverses,
+} from "./data/minhaColecaoMock"
+import { FicharioUniversePanel } from "./components/FicharioUniversePanel"
+import { styles } from "./styles/appStyles"
+import {
   diaryMarkerChoices,
   displayMarker,
   tecaColors,
   tecaFont,
+  tecaHierarchy,
   tecaObjects,
   tecaRadius,
+  tecaSpacing,
   tecaTilt,
   tecaType,
 } from "./tecaVisual"
@@ -32,7 +39,7 @@ const s: Record<string, CSSProperties> = {
   backButton: {
     border: "none",
     background: "transparent",
-    fontFamily: "'Caveat', cursive",
+    fontFamily: "'Cormorant Garamond', serif",
     fontSize: "26px",
     color: "#9a7f6d",
     cursor: "pointer",
@@ -54,18 +61,44 @@ const s: Record<string, CSSProperties> = {
     marginBottom: "22px",
   },
   pageTitle: {
-    margin: "0 0 8px",
-    fontSize: "40px",
-    ...tecaFont.portalTitle,
+    ...tecaHierarchy.l1PageTitle,
   },
   pageIntro: {
-    margin: 0,
-    fontFamily: "'Cormorant Garamond', serif",
-    fontStyle: "italic",
-    fontSize: "19px",
-    lineHeight: 1.45,
-    color: theme.muted,
+    ...tecaHierarchy.l2Poetic,
     textAlign: "left",
+    marginLeft: 0,
+    marginRight: 0,
+    marginBottom: `${tecaSpacing.poeticToSection}px`,
+  },
+  colecoesHero: {
+    position: "relative",
+    margin: "0 auto 20px",
+    maxWidth: "220px",
+    padding: "8px 0",
+  },
+  colecoesHeroImage: {
+    width: "100%",
+    borderRadius: "20px",
+    objectFit: "cover",
+    display: "block",
+    border: `1px solid ${theme.line}`,
+    boxShadow: "0 12px 28px rgba(120,90,60,0.1)",
+    transform: "rotate(-2deg)",
+  },
+  colecoesKicker: {
+    ...tecaHierarchy.l6Micro,
+    textAlign: "left",
+  },
+  colecoesTitle: {
+    ...tecaHierarchy.l1PageTitle,
+    textAlign: "left",
+    marginBottom: `${tecaSpacing.titleToPoetic}px`,
+  },
+  colecoesSectionLabel: {
+    ...tecaHierarchy.l3SectionTitle,
+    ...tecaHierarchy.l3SectionTitleFlush,
+    textAlign: "left",
+    marginBottom: `${tecaSpacing.subtitleToContent}px`,
   },
   notebookSheet: {
     ...tecaObjects.note(tecaRadius.md),
@@ -76,7 +109,6 @@ const s: Record<string, CSSProperties> = {
     margin: "0 0 18px",
     textAlign: "left",
     fontFamily: "'Cormorant Garamond', serif",
-    fontStyle: "italic",
     fontSize: "17px",
     color: "#9a8475",
   },
@@ -86,7 +118,6 @@ const s: Record<string, CSSProperties> = {
   fieldLabel: {
     margin: "0 0 6px",
     fontFamily: "'Cormorant Garamond', serif",
-    fontStyle: "italic",
     fontSize: "18px",
     color: theme.text,
     lineHeight: 1.35,
@@ -97,7 +128,7 @@ const s: Record<string, CSSProperties> = {
     borderBottom: `1px solid rgba(234, 216, 197, 0.95)`,
     background: "transparent",
     padding: "6px 0 8px",
-    fontFamily: "'Caveat', cursive",
+    fontFamily: "'Cormorant Garamond', serif",
     fontSize: "26px",
     color: theme.text,
     outline: "none",
@@ -110,7 +141,6 @@ const s: Record<string, CSSProperties> = {
     background: "rgba(255,253,249,0.65)",
     padding: "12px 14px",
     fontFamily: "'Cormorant Garamond', serif",
-    fontStyle: "italic",
     fontSize: "18px",
     lineHeight: 1.45,
     color: theme.text,
@@ -135,7 +165,6 @@ const s: Record<string, CSSProperties> = {
   imageFrameHint: {
     margin: 0,
     fontFamily: "'Cormorant Garamond', serif",
-    fontStyle: "italic",
     fontSize: "16px",
     color: theme.muted,
     textAlign: "center",
@@ -159,7 +188,6 @@ const s: Record<string, CSSProperties> = {
     borderRadius: "999px",
     padding: "6px 12px",
     fontFamily: "'Cormorant Garamond', serif",
-    fontStyle: "italic",
     fontSize: "15px",
     color: theme.muted,
     cursor: "pointer",
@@ -228,7 +256,6 @@ const s: Record<string, CSSProperties> = {
   diaryEntryText: {
     margin: 0,
     fontFamily: "'Cormorant Garamond', serif",
-    fontStyle: "italic",
     color: theme.muted,
     fontSize: "17px",
     lineHeight: 1.45,
@@ -266,7 +293,6 @@ const s: Record<string, CSSProperties> = {
   collectionPoetic: {
     margin: 0,
     fontFamily: "'Cormorant Garamond', serif",
-    fontStyle: "italic",
     fontSize: "16px",
     color: theme.muted,
   },
@@ -296,7 +322,6 @@ const s: Record<string, CSSProperties> = {
   collectionCount: {
     margin: 0,
     fontFamily: "'Cormorant Garamond', serif",
-    fontStyle: "italic",
     fontSize: "16px",
     color: "#8a6f5d",
   },
@@ -306,7 +331,7 @@ const s: Record<string, CSSProperties> = {
     background: "rgba(255,253,249,0.8)",
     borderRadius: "999px",
     padding: "10px 16px",
-    fontFamily: "'Caveat', cursive",
+    fontFamily: "'Cormorant Garamond', serif",
     fontSize: "24px",
     color: theme.text,
     cursor: "pointer",
@@ -359,7 +384,6 @@ const s: Record<string, CSSProperties> = {
   albumItemNote: {
     margin: "0 0 6px",
     fontFamily: "'Cormorant Garamond', serif",
-    fontStyle: "italic",
     fontSize: "14px",
     lineHeight: 1.4,
     color: theme.muted,
@@ -376,7 +400,6 @@ const s: Record<string, CSSProperties> = {
   albumWaitingText: {
     margin: 0,
     fontFamily: "'Cormorant Garamond', serif",
-    fontStyle: "italic",
     fontSize: "15px",
     color: "#b9a594",
     textAlign: "center",
@@ -386,7 +409,6 @@ const s: Record<string, CSSProperties> = {
     margin: "0 0 16px",
     textAlign: "center",
     fontFamily: "'Cormorant Garamond', serif",
-    fontStyle: "italic",
     fontSize: "17px",
     color: theme.muted,
   },
@@ -641,6 +663,10 @@ export function CollectionsPage({
 }: {
   setScreen: SetScreen
 }) {
+  const [expandedId, setExpandedId] = useState<string | null>(
+    ficharioDefaultExpandedId,
+  )
+
   return (
     <section style={s.subPage}>
       <button
@@ -651,62 +677,36 @@ export function CollectionsPage({
         ← meu mundo
       </button>
 
-      <img
-        src="/cards/descobertas/colecoes.png"
-        alt="Coleções"
-        style={s.subPageImage}
-      />
+      <div style={s.colecoesHero}>
+        <img
+          src="/cards/descobertas/colecoes.png"
+          alt=""
+          style={s.colecoesHeroImage}
+          aria-hidden="true"
+        />
+      </div>
 
       <div style={s.pageIntroBlock}>
-        <h1 style={s.pageTitle}>coleções</h1>
+        <p style={s.colecoesKicker}>acervo</p>
+        <h1 style={s.colecoesTitle}>Coleções</h1>
         <p style={s.pageIntro}>
-          um álbum em andamento, com espaços vazios esperando novos achados.
+          Fichas reunidas e descobertas guardadas — um acervo que cresce
+          devagar, como uma gaveta de curiosidades.
         </p>
       </div>
 
-      <div style={s.collectionsStack}>
-        {discoveryCollections.map((collection) => (
-          <article key={collection.id} style={s.collectionCard}>
-            <div style={s.collectionTop}>
-              <img
-                src={collection.image}
-                alt={collection.name}
-                style={s.collectionThumb}
-              />
-              <div>
-                <h3 style={s.collectionTitle}>{collection.name}</h3>
-                <p style={s.collectionPoetic}>{collection.poetic}</p>
-              </div>
-            </div>
+      <p style={s.colecoesSectionLabel}>Universos da Teca</p>
 
-            <div style={s.collectionProgressRow}>
-              <div style={s.collectionDots}>
-                {Array.from({ length: collection.total }).map((_, idx) => {
-                  const filled = idx < collection.found
-                  return (
-                    <span
-                      key={`${collection.id}-${idx}`}
-                      style={{
-                        ...s.collectionDot,
-                        ...(filled ? s.collectionDotFilled : {}),
-                      }}
-                    />
-                  )
-                })}
-              </div>
-              <p style={s.collectionCount}>
-                {collection.found} de {collection.total} guardadas
-              </p>
-            </div>
-
-            <button
-              type="button"
-              style={s.collectionButton}
-              onClick={() => setScreen(collection.screen)}
-            >
-              ver coleção
-            </button>
-          </article>
+      <div style={styles.ficharioUniversosStack}>
+        {ficharioUniverses.map((universe) => (
+          <FicharioUniversePanel
+            key={universe.id}
+            universe={universe}
+            expanded={expandedId === universe.id}
+            onToggle={() =>
+              setExpandedId(expandedId === universe.id ? null : universe.id)
+            }
+          />
         ))}
       </div>
     </section>

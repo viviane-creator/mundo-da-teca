@@ -1,5 +1,5 @@
 import type { CSSProperties, ReactNode } from "react"
-import { tecaColors, tecaFont } from "./tecaVisual"
+import { tecaColors, tecaFont, tecaHierarchy, tecaSpacing } from "./tecaVisual"
 
 const theme = {
   text: tecaColors.text,
@@ -32,8 +32,8 @@ export const portalPages = {
   universos: {
     cover: "/covers/brincadeiras.png",
     coverAlt: "Universos",
-    title: "universos",
-    tagline: "seis mundos para explorar experiências e sair da tela.",
+    title: "Universos",
+    tagline: "Seis trilhas. Seis jeitos de descobrir o mundo.",
   },
   atelie: {
     cover: "/covers/atelie.png",
@@ -52,16 +52,15 @@ export const portalPages = {
   clube: {
     cover: "/covers/clube.png",
     coverAlt: "Clube da Teca",
-    title: "clube da teca",
-    tagline:
-      "a forma de participar do Mundo da Teca — descobrir, registrar e colecionar com calma.",
+    title: "Clube da Teca",
+    tagline: "Descobrir. Registrar. Colecionar.",
   },
   meuMundo: {
-    cover: "/covers/descobertas.png",
+    cover: "/cards/descobertas/diario.png",
     coverAlt: "Meu Mundo",
     title: "Meu Mundo",
-    tagline:
-      "Aqui vivem suas descobertas, registros, coleções e materiais para imprimir.",
+    tagline: "Toda descoberta precisa de um lugar para morar.",
+    kicker: "seu fichário de descobertas",
   },
 } as const
 
@@ -127,48 +126,39 @@ const p: Record<string, CSSProperties> = {
   },
   header: {
     textAlign: "center",
-    marginBottom: "4px",
+    marginBottom: 0,
   },
   kicker: {
-    ...tecaFont.label,
-    letterSpacing: "4px",
-    textAlign: "center",
-    margin: "0 0 16px",
+    ...tecaHierarchy.l6Micro,
     opacity: 0.85,
   },
   title: {
-    margin: "0 0 14px",
-    fontSize: "48px",
-    ...tecaFont.portalTitle,
+    ...tecaHierarchy.l1PageTitle,
   },
   titleCompact: {
-    fontSize: "44px",
+    fontSize: "48px",
   },
   tagline: {
-    margin: "0 auto",
-    maxWidth: "340px",
-    fontSize: "21px",
-    ...tecaFont.poetic,
-    textAlign: "center",
+    ...tecaHierarchy.l2Poetic,
   },
   breath: {
-    height: "32px",
+    ...tecaHierarchy.pageHeroBreath,
   },
   breathLarge: {
-    height: "40px",
+    height: `${tecaSpacing.poeticToSection}px`,
   },
   sectionLabel: {
+    ...tecaHierarchy.l3SectionTitle,
+    ...tecaHierarchy.l3SectionTitleFlush,
     textAlign: "left",
-    margin: "0 0 8px",
-    fontSize: "22px",
-    ...tecaFont.heading,
-    color: "#8a6f5d",
+    marginBottom: `${tecaSpacing.sectionTitleToSubtitle}px`,
   },
   sectionIntro: {
+    ...tecaHierarchy.l4Subtitle,
     textAlign: "left",
-    margin: "0 0 28px",
-    fontSize: "17px",
-    ...tecaFont.poetic,
+    marginTop: 0,
+    marginLeft: 0,
+    marginRight: 0,
     padding: "0 2px",
   },
 }

@@ -34,7 +34,7 @@ export function ParticipationSection({
 
   return (
     <section style={styles.homeSectionBlock}>
-      <h2 style={styles.homeSectionHeading}>Como Participar</h2>
+      <h2 style={styles.sectionHeading}>Como Participar</h2>
 
       <div style={styles.planCardsStack}>
         {participationPlans.map((plan, index) => (

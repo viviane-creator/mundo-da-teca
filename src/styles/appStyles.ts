@@ -1,5 +1,5 @@
 import type { CSSProperties } from "react"
-import { tecaColors, tecaFont, tecaObjects, tecaRadius, tecaType } from "../tecaVisual"
+import { tecaColors, tecaFont, tecaHierarchy, tecaObjects, tecaRadius, tecaSpacing, tecaType } from "../tecaVisual"
 
 const theme = {
   text: "#6a4f3c",
@@ -79,7 +79,7 @@ export const styles: Record<string, CSSProperties> = {
 
   homeTitle: {
     textAlign: "center",
-    fontSize: "44px",
+    fontSize: "48px",
     margin: "0 0 12px",
     ...tecaFont.portalTitle,
   },
@@ -88,7 +88,7 @@ export const styles: Record<string, CSSProperties> = {
     textAlign: "center",
     fontSize: "20px",
     margin: "0 10px 22px",
-    ...tecaFont.poetic,
+    ...tecaFont.prose,
   },
 
   coverWrap: {
@@ -132,17 +132,34 @@ export const styles: Record<string, CSSProperties> = {
   },
 
   pageTitle: {
+    ...tecaHierarchy.l1PageTitle,
+  },
+
+  pageHeroBlock: {
     textAlign: "center",
-    fontSize: "38px",
-    margin: "0 0 8px",
-    ...tecaFont.portalTitle,
+    paddingTop: "8px",
+    marginBottom: 0,
+  },
+
+  pageHeroTitle: {
+    ...tecaHierarchy.l1PageTitle,
+  },
+
+  pageHeroPoetic: {
+    ...tecaHierarchy.l2Poetic,
+  },
+
+  pageHeroSubtitle: {
+    ...tecaHierarchy.l4Subtitle,
+    marginTop: `${tecaSpacing.sectionTitleToSubtitle}px`,
+    marginBottom: 0,
   },
 
   pageIntro: {
-    fontSize: "20px",
+    fontSize: "17px",
     textAlign: "left",
     margin: "0 0 26px",
-    ...tecaFont.poetic,
+    ...tecaHierarchy.l5Body,
   },
 
   subPage: {
@@ -157,7 +174,7 @@ export const styles: Record<string, CSSProperties> = {
     cursor: "pointer",
     padding: "0 0 18px",
     textAlign: "left",
-    ...tecaFont.poetic,
+    ...tecaFont.prose,
   },
 
   pageIntroBlock: {
@@ -172,6 +189,65 @@ export const styles: Record<string, CSSProperties> = {
     marginBottom: "22px",
     border: `1px solid ${theme.line}`,
     boxShadow: "0 10px 28px rgba(120,90,60,0.06)",
+  },
+
+  playUniverseChapterHero: {
+    position: "relative",
+    marginBottom: "8px",
+    padding: "48px 20px 32px",
+    textAlign: "center",
+    overflow: "hidden",
+    borderRadius: "30px",
+    border: `1px dashed rgba(196, 165, 141, 0.45)`,
+    background:
+      "radial-gradient(ellipse at 50% 42%, rgba(217,196,173,0.14) 0%, transparent 58%), linear-gradient(168deg, #fffdf9 0%, #f7efe5 52%, #efe3d4 100%)",
+    boxShadow:
+      "0 14px 36px rgba(120,90,60,0.06), inset 0 1px 0 rgba(255,255,255,0.88)",
+  },
+
+  playUniverseCoverFade: {
+    position: "absolute",
+    inset: 0,
+    width: "100%",
+    height: "100%",
+    objectFit: "cover",
+    opacity: 0.14,
+    filter: "saturate(0.75) sepia(0.25) contrast(0.92)",
+    pointerEvents: "none",
+    zIndex: 0,
+  },
+
+  playUniverseEmblemWatermark: {
+    position: "absolute",
+    left: "50%",
+    top: "44%",
+    transform: "translate(-50%, -50%)",
+    fontSize: "min(300px, 72vw)",
+    lineHeight: 1,
+    opacity: 0.14,
+    filter: "grayscale(0.2) sepia(0.35) contrast(0.85)",
+    pointerEvents: "none",
+    userSelect: "none",
+    zIndex: 0,
+  },
+
+  playUniverseTitle: {
+    position: "relative",
+    zIndex: 1,
+    ...tecaHierarchy.l1PageTitle,
+    marginBottom: `${tecaSpacing.titleToPoetic}px`,
+  },
+
+  playUniversePoetic: {
+    position: "relative",
+    zIndex: 1,
+    ...tecaHierarchy.l2Poetic,
+  },
+
+  playUniverseInviteWrap: {
+    margin: `${tecaSpacing.poeticToSection}px 0 0`,
+    paddingTop: "0",
+    borderTop: "none",
   },
 
   page: {
@@ -203,7 +279,6 @@ export const styles: Record<string, CSSProperties> = {
     border: `1px solid ${theme.line}`,
     boxShadow: "0 2px 8px rgba(120,90,60,0.03)",
     fontFamily: "'Cormorant Garamond', serif",
-    fontStyle: "italic",
     textAlign: "left",
   },
 
@@ -232,7 +307,6 @@ export const styles: Record<string, CSSProperties> = {
   rewardItem: {
     margin: "0 0 8px",
     fontFamily: "'Cormorant Garamond', serif",
-    fontStyle: "italic",
     fontSize: "18px",
   },
 
@@ -248,12 +322,19 @@ export const styles: Record<string, CSSProperties> = {
 
   tag: {
     ...tecaType.labelSmall,
+    textAlign: "center",
   },
 
   noteText: {
-    ...tecaType.bodyPoetic,
-    fontSize: "19px",
+    ...tecaType.bodyProse,
     lineHeight: 1.75,
+    textAlign: "center",
+  },
+
+  noteTextLong: {
+    ...tecaType.bodyProse,
+    lineHeight: 1.75,
+    textAlign: "left",
   },
 
   sectionTitle: {
@@ -262,7 +343,7 @@ export const styles: Record<string, CSSProperties> = {
     marginTop: "24px",
     marginBottom: "18px",
     fontSize: "30px",
-    fontFamily: "'Caveat', cursive",
+    fontFamily: "'Cormorant Garamond', serif",
     fontWeight: 400,
   },
 
@@ -277,27 +358,30 @@ export const styles: Record<string, CSSProperties> = {
   },
 
   homeSectionBlock: {
-    marginTop: "4px",
+    marginTop: `${tecaSpacing.poeticToSection}px`,
   },
 
   homeSectionHeading: {
-    margin: "0 0 6px",
-    fontFamily: "'Cormorant Garamond', serif",
-    fontSize: "30px",
-    fontWeight: 500,
-    color: "#705a4d",
-    textAlign: "left",
-    lineHeight: 1.05,
+    ...tecaHierarchy.l3SectionTitle,
+    ...tecaHierarchy.l3SectionTitleFlush,
+    marginBottom: `${tecaSpacing.sectionTitleToSubtitle}px`,
   },
 
   homeSectionPoetic: {
     margin: "0 0 18px",
-    fontFamily: "'Cormorant Garamond', serif",
-    fontStyle: "italic",
-    fontSize: "18px",
-    color: "#8b7668",
-    lineHeight: 1.45,
+    ...tecaHierarchy.l5Body,
     textAlign: "left",
+  },
+
+  homeSectionSubtitle: {
+    ...tecaHierarchy.l4Subtitle,
+    marginTop: 0,
+  },
+
+  sectionHeading: {
+    ...tecaHierarchy.l3SectionTitle,
+    ...tecaHierarchy.l3SectionTitleFlush,
+    marginBottom: `${tecaSpacing.subtitleToContent}px`,
   },
 
   homeEditorialDivider: {
@@ -339,7 +423,6 @@ export const styles: Record<string, CSSProperties> = {
     marginBottom: "8px",
     paddingLeft: "4px",
     fontFamily: "'Cormorant Garamond', serif",
-    fontStyle: "italic",
     fontSize: "17px",
     lineHeight: 1.4,
     color: "#8b7668",
@@ -350,8 +433,8 @@ export const styles: Record<string, CSSProperties> = {
     ...tecaObjects.buttonPrimary(),
     padding: "14px 20px",
     fontSize: "24px",
-    ...tecaFont.accentHand,
-  },
+    textAlign: "center",
+      },
 
   homeBrincadeirasButton: {
     width: "100%",
@@ -359,8 +442,7 @@ export const styles: Record<string, CSSProperties> = {
     ...tecaObjects.buttonPrimary(),
     padding: "14px 20px",
     fontSize: "24px",
-    ...tecaFont.accentHand,
-  },
+      },
 
   homeUniversosButton: {
     width: "100%",
@@ -368,8 +450,7 @@ export const styles: Record<string, CSSProperties> = {
     ...tecaObjects.buttonPrimary(),
     padding: "14px 20px",
     fontSize: "24px",
-    ...tecaFont.accentHand,
-  },
+      },
 
   homePathGrid: {
     display: "grid",
@@ -411,7 +492,7 @@ export const styles: Record<string, CSSProperties> = {
 
   homePathLabel: {
     margin: "0",
-    fontFamily: "'Caveat', cursive",
+    fontFamily: "'Cormorant Garamond', serif",
     fontSize: "30px",
     lineHeight: 1,
     color: "#6a4f3c",
@@ -432,20 +513,10 @@ export const styles: Record<string, CSSProperties> = {
   homePathText: {
     margin: 0,
     fontFamily: "'Cormorant Garamond', serif",
-    fontStyle: "italic",
     fontSize: "14px",
     lineHeight: 1.2,
     color: "#7f6a5c",
     textAlign: "center",
-  },
-
-  sectionHeading: {
-    margin: "0 0 14px",
-    fontFamily: "'Cormorant Garamond', serif",
-    fontSize: "24px",
-    fontWeight: 500,
-    color: "#7a6254",
-    letterSpacing: "0.2px",
   },
 
   gridTwo: {
@@ -491,7 +562,7 @@ export const styles: Record<string, CSSProperties> = {
   homePortalTitle: {
     margin: "0 0 6px",
     fontFamily: "'Cormorant Garamond', serif",
-    fontSize: "19px",
+    fontSize: "17px",
     fontWeight: 500,
     color: theme.text,
     lineHeight: 1.15,
@@ -500,7 +571,6 @@ export const styles: Record<string, CSSProperties> = {
   homePortalPhrase: {
     margin: 0,
     fontFamily: "'Cormorant Garamond', serif",
-    fontStyle: "italic",
     fontSize: "13px",
     lineHeight: 1.35,
     color: theme.muted,
@@ -510,7 +580,29 @@ export const styles: Record<string, CSSProperties> = {
     position: "relative",
   },
 
+  editorialDecorLayer: {
+    position: "absolute",
+    inset: 0,
+    overflow: "hidden",
+    pointerEvents: "none",
+    zIndex: 0,
+  },
+
+  editorialDecorImage: {
+    position: "absolute",
+    objectFit: "cover",
+    filter: "sepia(0.42) saturate(0.52) contrast(0.84) brightness(1.04)",
+    mixBlendMode: "multiply",
+  },
+
+  editorialDecorContent: {
+    position: "relative",
+    zIndex: 1,
+  },
+
   homeV2Manifesto: {
+    position: "relative",
+    overflow: "hidden",
     ...tecaObjects.note(tecaRadius.lg),
     borderLeft: "2px dashed rgba(195, 165, 141, 0.55)",
     padding: "22px 20px 22px 22px",
@@ -519,17 +611,12 @@ export const styles: Record<string, CSSProperties> = {
   },
 
   homeV2SectionKicker: {
-    margin: "0 0 10px",
-    fontSize: "9px",
-    letterSpacing: "2.5px",
-    textTransform: "uppercase",
-    color: "#b3815f",
-    fontWeight: 700,
-    fontFamily: "'Nunito', sans-serif",
+    ...tecaHierarchy.l6Micro,
   },
 
   homeV2UniversosWrap: {
     position: "relative",
+    overflow: "hidden",
     marginTop: "8px",
     padding: "12px 8px 16px",
     borderRadius: "24px",
@@ -542,6 +629,19 @@ export const styles: Record<string, CSSProperties> = {
     width: "100%",
     minHeight: "760px",
     marginTop: "4px",
+  },
+
+  homeExploreMapFull: {
+    minHeight: "820px",
+  },
+
+  universosExploreSection: {
+    marginTop: "0",
+  },
+
+  universosExploreKicker: {
+    ...tecaHierarchy.l6Micro,
+    marginBottom: "8px",
   },
 
   homeExploreMapSvg: {
@@ -591,8 +691,8 @@ export const styles: Record<string, CSSProperties> = {
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    width: "138px",
-    height: "138px",
+    width: "158px",
+    height: "158px",
   },
 
   homeExploreMarkerRingOuter: {
@@ -613,26 +713,23 @@ export const styles: Record<string, CSSProperties> = {
 
   homeExploreMarkerIcon: {
     position: "relative",
-    fontSize: "69px",
+    fontSize: "80px",
     lineHeight: 1,
     zIndex: 1,
-    filter: "drop-shadow(0 1px 0 rgba(255,253,249,0.5))",
+    filter: "drop-shadow(0 2px 4px rgba(120,90,60,0.08))",
   },
 
   homeExploreStopTitle: {
-    fontFamily: "'Cormorant Garamond', serif",
-    fontSize: "26px",
-    fontWeight: 500,
-    color: theme.text,
-    lineHeight: 1.08,
-    letterSpacing: "0.25px",
+    ...tecaFont.portalTitle,
+    fontSize: "28px",
+    lineHeight: 1,
+    letterSpacing: "0.2px",
   },
 
   homeV2TrailEnd: {
     textAlign: "center",
     margin: "8px 0 0",
     fontFamily: "'Cormorant Garamond', serif",
-    fontStyle: "italic",
     fontSize: "14px",
     color: "#a89486",
     letterSpacing: "0.3px",
@@ -673,7 +770,6 @@ export const styles: Record<string, CSSProperties> = {
     textAlign: "center",
     margin: "0 0 16px",
     fontFamily: "'Cormorant Garamond', serif",
-    fontStyle: "italic",
     fontSize: "17px",
     color: "#b3815f",
     letterSpacing: "0.8px",
@@ -722,23 +818,13 @@ export const styles: Record<string, CSSProperties> = {
   },
 
   homeV2DestinationHeading: {
-    margin: "0 0 12px",
-    fontFamily: "'Caveat', cursive",
-    fontSize: "56px",
-    fontWeight: 400,
-    color: "#6a4f3c",
-    lineHeight: 0.9,
-    textAlign: "left",
+    ...tecaHierarchy.l1PageTitle,
+    marginBottom: `${tecaSpacing.titleToPoetic}px`,
   },
 
   homeV2DestinationPromise: {
-    margin: "0 0 12px",
-    fontFamily: "'Cormorant Garamond', serif",
-    fontStyle: "italic",
-    fontSize: "24px",
-    lineHeight: 1.32,
-    color: "#7a6254",
-    textAlign: "left",
+    ...tecaHierarchy.l2Poetic,
+    marginBottom: `${tecaSpacing.sectionTitleToSubtitle}px`,
   },
 
   homeV2DestinationTags: {
@@ -765,8 +851,8 @@ export const styles: Record<string, CSSProperties> = {
     fontSize: "30px",
     color: theme.text,
     cursor: "pointer",
-    ...tecaFont.accentHand,
-    boxShadow: "0 6px 16px rgba(120,90,60,0.07)",
+    textAlign: "center",
+        boxShadow: "0 6px 16px rgba(120,90,60,0.07)",
   },
 
   homeV2SoftButton: {
@@ -779,8 +865,8 @@ export const styles: Record<string, CSSProperties> = {
     fontSize: "26px",
     color: theme.text,
     cursor: "pointer",
-    ...tecaFont.accentHand,
-    boxShadow: "0 4px 12px rgba(120,90,60,0.05)",
+    textAlign: "center",
+        boxShadow: "0 4px 12px rgba(120,90,60,0.05)",
   },
 
   homeV2PathSection: {
@@ -790,23 +876,18 @@ export const styles: Record<string, CSSProperties> = {
     border: "none",
     background:
       "linear-gradient(180deg, rgba(255,253,249,0.45) 0%, rgba(248,239,228,0.25) 100%)",
+    textAlign: "center",
   },
 
   homeV2PathQuestion: {
-    margin: "0 0 12px",
-    fontFamily: "'Cormorant Garamond', serif",
-    fontSize: "26px",
-    fontWeight: 500,
-    fontStyle: "italic",
-    lineHeight: 1.25,
-    color: theme.text,
-    textAlign: "left",
+    ...tecaHierarchy.l3SectionTitle,
+    ...tecaHierarchy.l3SectionTitleFlush,
+    marginBottom: `${tecaSpacing.sectionTitleToSubtitle}px`,
   },
 
   homeV2PathIntro: {
     margin: "0 0 16px",
     fontFamily: "'Cormorant Garamond', serif",
-    fontStyle: "italic",
     fontSize: "18px",
     lineHeight: 1.45,
     color: theme.muted,
@@ -814,14 +895,9 @@ export const styles: Record<string, CSSProperties> = {
   },
 
   homeV2PathFork: {
-    textAlign: "center",
-    margin: "0 0 22px",
-    fontFamily: "'Cormorant Garamond', serif",
-    fontStyle: "italic",
-    fontSize: "14px",
-    color: "#b8987a",
-    letterSpacing: "0.8px",
-    opacity: 0.85,
+    ...tecaHierarchy.l4Subtitle,
+    marginTop: 0,
+    opacity: 0.92,
   },
 
   homeV2PathStack: {
@@ -832,7 +908,7 @@ export const styles: Record<string, CSSProperties> = {
 
   homeV2PathCard: {
     padding: "22px 18px 20px",
-    textAlign: "left",
+    textAlign: "center",
     background: "transparent",
     borderRadius: "24px",
     border: `1px dashed rgba(196, 165, 141, 0.42)`,
@@ -842,6 +918,7 @@ export const styles: Record<string, CSSProperties> = {
   homeV2PathJourneyHeader: {
     display: "flex",
     alignItems: "center",
+    justifyContent: "center",
     gap: "10px",
     marginBottom: "6px",
   },
@@ -854,7 +931,7 @@ export const styles: Record<string, CSSProperties> = {
 
   homeV2PathJourneyTitle: {
     margin: 0,
-    fontFamily: "'Caveat', cursive",
+    fontFamily: "'Cormorant Garamond', serif",
     fontSize: "38px",
     fontWeight: 400,
     color: theme.text,
@@ -875,7 +952,6 @@ export const styles: Record<string, CSSProperties> = {
   homeV2PathJourneyPoetic: {
     margin: "0 0 8px",
     fontFamily: "'Cormorant Garamond', serif",
-    fontStyle: "italic",
     fontSize: "15px",
     lineHeight: 1.4,
     color: "#a89486",
@@ -885,7 +961,6 @@ export const styles: Record<string, CSSProperties> = {
   homeV2PathBenefitsHint: {
     margin: "0 0 16px",
     fontFamily: "'Cormorant Garamond', serif",
-    fontStyle: "italic",
     fontSize: "13px",
     lineHeight: 1.4,
     color: "#b5a090",
@@ -920,7 +995,6 @@ export const styles: Record<string, CSSProperties> = {
   homeV2PathBenefitItem: {
     marginBottom: "6px",
     fontFamily: "'Cormorant Garamond', serif",
-    fontStyle: "italic",
     fontSize: "16px",
     lineHeight: 1.4,
     color: theme.muted,
@@ -935,9 +1009,8 @@ export const styles: Record<string, CSSProperties> = {
     fontSize: "24px",
     color: "#a06840",
     cursor: "pointer",
-    textAlign: "left",
-    ...tecaFont.accentHand,
-    textDecoration: "underline",
+    textAlign: "center",
+        textDecoration: "underline",
     textDecorationColor: "rgba(200, 135, 87, 0.35)",
     textUnderlineOffset: "4px",
   },
@@ -981,15 +1054,12 @@ export const styles: Record<string, CSSProperties> = {
   homeV2CabinetInner: {
     position: "relative",
     zIndex: 2,
+    textAlign: "center",
   },
 
   homeV2CabinetLead: {
-    margin: "0 0 10px",
-    fontFamily: "'Cormorant Garamond', serif",
-    fontStyle: "italic",
-    fontSize: "22px",
-    lineHeight: 1.35,
-    color: "#7a6254",
+    ...tecaHierarchy.l2Poetic,
+    marginBottom: `${tecaSpacing.sectionTitleToSubtitle}px`,
   },
 
   homeV2CabinetShelf: {
@@ -1022,38 +1092,28 @@ export const styles: Record<string, CSSProperties> = {
   },
 
   experienceCollection: {
-    marginTop: "10px",
+    marginTop: 0,
+    paddingTop: 0,
   },
 
   experienceCollectionTitle: {
-    textAlign: "center",
-    color: "#8a6f5d",
-    margin: "4px 0 8px",
+    ...tecaFont.portalTitle,
     fontSize: "28px",
-    fontFamily: "'Caveat', cursive",
-    fontWeight: 400,
-  },
-
-  experienceCollectionIntro: {
     textAlign: "center",
-    color: theme.muted,
-    fontFamily: "'Cormorant Garamond', serif",
-    fontStyle: "italic",
-    fontSize: "17px",
-    lineHeight: 1.5,
-    margin: "0 2px 22px",
+    margin: "0 0 20px",
+    lineHeight: 1,
   },
 
   experienceStack: {
     display: "flex",
     flexDirection: "column",
-    gap: "20px",
+    gap: "26px",
   },
 
   experienceStackItem: {
     display: "flex",
     flexDirection: "column",
-    gap: "12px",
+    gap: "14px",
   },
 
   experienceCardButton: {
@@ -1066,28 +1126,28 @@ export const styles: Record<string, CSSProperties> = {
   },
 
   experienceCard: {
-    background: tecaColors.paper,
-    borderRadius: tecaRadius.md,
+    background: "rgba(255, 253, 249, 0.72)",
+    borderRadius: tecaRadius.lg,
     overflow: "hidden",
-    border: `1px solid ${theme.line}`,
-    boxShadow: "0 8px 24px rgba(120,90,60,0.05)",
-    transition: "box-shadow 0.2s ease",
+    border: `1px dashed rgba(196, 165, 141, 0.42)`,
+    boxShadow: "none",
+    transition: "border-color 0.2s ease",
   },
 
   experienceCardSelected: {
-    border: "1px solid #dcc3aa",
-    boxShadow: "0 10px 28px rgba(120,90,60,0.08)",
+    border: "1px solid rgba(196, 165, 141, 0.55)",
+    boxShadow: "0 8px 22px rgba(120,90,60,0.06)",
   },
 
   experienceCardImage: {
     width: "100%",
-    aspectRatio: "16 / 9",
+    aspectRatio: "5 / 3",
     objectFit: "cover",
     display: "block",
   },
 
   experienceCardBody: {
-    padding: "16px 18px 18px",
+    padding: "14px 16px 16px",
   },
 
   experienceCardHeader: {
@@ -1095,16 +1155,17 @@ export const styles: Record<string, CSSProperties> = {
     alignItems: "flex-start",
     justifyContent: "space-between",
     gap: "10px",
-    marginBottom: "6px",
+    marginBottom: "10px",
   },
 
   experienceCardTitle: {
     margin: 0,
-    fontFamily: "'Caveat', cursive",
-    fontSize: "30px",
-    lineHeight: 1,
+    fontFamily: "'Cormorant Garamond', serif",
+    fontSize: "36px",
+    lineHeight: 0.95,
     color: theme.text,
     fontWeight: 400,
+    letterSpacing: "0.2px",
   },
 
   clubeSeal: {
@@ -1122,35 +1183,37 @@ export const styles: Record<string, CSSProperties> = {
   },
 
   experienceCardInvite: {
-    margin: "0 0 12px",
+    margin: "0 0 10px",
     fontFamily: "'Cormorant Garamond', serif",
-    fontStyle: "italic",
-    fontSize: "18px",
+    fontSize: "15px",
     lineHeight: 1.45,
-    color: theme.muted,
+    color: "#9a8475",
   },
 
   experienceCardMeta: {
     display: "flex",
     flexDirection: "column",
-    gap: "4px",
-    fontSize: "12px",
-    lineHeight: 1.4,
-    color: "#9a8475",
-    fontFamily: "'Nunito', sans-serif",
+    gap: "3px",
+    fontSize: "11px",
+    lineHeight: 1.38,
+    color: "#b5a090",
+    fontFamily: "'Cormorant Garamond', serif",
+    opacity: 0.88,
+    paddingTop: "2px",
   },
 
   experienceDetail: {
-    background: tecaColors.paperWarm,
-    borderRadius: tecaRadius.sm,
-    padding: "18px 16px",
-    border: `1px solid ${theme.line}`,
+    background: "transparent",
+    borderRadius: tecaRadius.lg,
+    padding: "12px 4px 4px",
+    border: "none",
+    borderTop: `1px dashed rgba(196, 165, 141, 0.35)`,
   },
 
   experienceDetailTitle: {
     margin: "0 0 14px",
     textAlign: "center",
-    fontFamily: "'Caveat', cursive",
+    fontFamily: "'Cormorant Garamond', serif",
     fontSize: "26px",
     color: theme.text,
   },
@@ -1171,7 +1234,6 @@ export const styles: Record<string, CSSProperties> = {
   experienceDetailText: {
     margin: 0,
     fontFamily: "'Cormorant Garamond', serif",
-    fontStyle: "italic",
     fontSize: "16px",
     lineHeight: 1.5,
     color: "#7a6254",
@@ -1183,6 +1245,85 @@ export const styles: Record<string, CSSProperties> = {
     marginBottom: "18px",
   },
 
+  atelierIntroArea: {
+    position: "relative",
+    overflow: "hidden",
+    marginBottom: 0,
+    paddingBottom: 0,
+  },
+
+  atelierShopHero: {
+    position: "relative",
+    textAlign: "center",
+    marginBottom: 0,
+  },
+
+  atelierShopTitle: {
+    ...tecaHierarchy.l1PageTitle,
+  },
+
+  atelierShopLead: {
+    ...tecaHierarchy.l2Poetic,
+  },
+
+  atelierShopComplement: {
+    ...tecaHierarchy.l4Subtitle,
+    marginTop: `${tecaSpacing.sectionTitleToSubtitle}px`,
+    marginBottom: 0,
+  },
+
+  atelierCategoryNav: {
+    display: "flex",
+    flexWrap: "wrap",
+    justifyContent: "center",
+    gap: "8px",
+    marginTop: "16px",
+    marginBottom: 0,
+  },
+
+  atelierCategoryPill: {
+    border: `1px dashed rgba(196, 165, 141, 0.45)`,
+    background: "rgba(255, 253, 249, 0.82)",
+    borderRadius: "999px",
+    padding: "8px 14px",
+    fontFamily: "'Cormorant Garamond', serif",
+    fontSize: "22px",
+    color: theme.text,
+    cursor: "pointer",
+    WebkitTapHighlightColor: "transparent",
+  },
+
+  atelierClubNote: {
+    margin: "0 auto 24px",
+    maxWidth: "320px",
+    fontFamily: "'Cormorant Garamond', serif",
+    fontSize: "14px",
+    lineHeight: 1.4,
+    color: "#b5a090",
+    textAlign: "center",
+  },
+
+  atelierCatalogSection: {
+    marginBottom: "28px",
+    scrollMarginTop: "12px",
+  },
+
+  atelierCatalogSectionFirst: {
+    marginTop: `${tecaSpacing.poeticToSection}px`,
+  },
+
+  atelierCatalogSectionTitle: {
+    ...tecaHierarchy.l3SectionTitle,
+    ...tecaHierarchy.l3SectionTitleFlush,
+    marginBottom: `${tecaSpacing.subtitleToContent}px`,
+  },
+
+  atelierCatalogStack: {
+    display: "flex",
+    flexDirection: "column",
+    gap: "20px",
+  },
+
   minhaCaixaLinkMain: {
     border: "none",
     background: "rgba(255, 253, 249, 0.75)",
@@ -1192,7 +1333,7 @@ export const styles: Record<string, CSSProperties> = {
     display: "flex",
     alignItems: "center",
     gap: "8px",
-    fontFamily: "'Caveat', cursive",
+    fontFamily: "'Cormorant Garamond', serif",
     fontSize: "24px",
     color: "#8a6f5d",
     borderWidth: "1px",
@@ -1210,7 +1351,7 @@ export const styles: Record<string, CSSProperties> = {
     display: "flex",
     alignItems: "center",
     gap: "6px",
-    fontFamily: "'Caveat', cursive",
+    fontFamily: "'Cormorant Garamond', serif",
     fontSize: "20px",
     color: "#8a6f5d",
     borderWidth: "1px",
@@ -1244,7 +1385,7 @@ export const styles: Record<string, CSSProperties> = {
     color: "#8a6f5d",
     margin: "0 0 8px",
     fontSize: "28px",
-    fontFamily: "'Caveat', cursive",
+    fontFamily: "'Cormorant Garamond', serif",
     fontWeight: 400,
   },
 
@@ -1252,7 +1393,6 @@ export const styles: Record<string, CSSProperties> = {
     textAlign: "center",
     color: theme.muted,
     fontFamily: "'Cormorant Garamond', serif",
-    fontStyle: "italic",
     fontSize: "17px",
     lineHeight: 1.5,
     margin: "0 2px 24px",
@@ -1327,7 +1467,7 @@ export const styles: Record<string, CSSProperties> = {
 
   paperCardTitle: {
     margin: "0 0 8px",
-    fontFamily: "'Caveat', cursive",
+    fontFamily: "'Cormorant Garamond', serif",
     fontSize: "34px",
     lineHeight: 1,
     color: theme.text,
@@ -1337,8 +1477,7 @@ export const styles: Record<string, CSSProperties> = {
   paperCardPoetic: {
     margin: "0 0 16px",
     fontFamily: "'Cormorant Garamond', serif",
-    fontStyle: "italic",
-    fontSize: "19px",
+    fontSize: "17px",
     lineHeight: 1.45,
     color: theme.muted,
   },
@@ -1357,7 +1496,6 @@ export const styles: Record<string, CSSProperties> = {
   paperClubPrice: {
     margin: 0,
     fontFamily: "'Cormorant Garamond', serif",
-    fontStyle: "italic",
     fontSize: "16px",
     color: "#a67c52",
   },
@@ -1368,7 +1506,7 @@ export const styles: Record<string, CSSProperties> = {
     background: "linear-gradient(180deg, #f3e6d8 0%, #e8d5c3 100%)",
     borderRadius: "999px",
     padding: "14px 20px",
-    fontFamily: "'Caveat', cursive",
+    fontFamily: "'Cormorant Garamond', serif",
     fontSize: "26px",
     color: theme.text,
     cursor: "pointer",
@@ -1386,7 +1524,6 @@ export const styles: Record<string, CSSProperties> = {
     paddingTop: "14px",
     borderTop: `1px solid ${theme.line}`,
     fontFamily: "'Cormorant Garamond', serif",
-    fontStyle: "italic",
     fontSize: "16px",
     lineHeight: 1.55,
     color: "#7a6254",
@@ -1397,7 +1534,7 @@ export const styles: Record<string, CSSProperties> = {
     border: "none",
     background: "transparent",
     padding: 0,
-    fontFamily: "'Caveat', cursive",
+    fontFamily: "'Cormorant Garamond', serif",
     fontSize: "20px",
     color: "#9a7f6d",
     cursor: "pointer",
@@ -1425,7 +1562,7 @@ export const styles: Record<string, CSSProperties> = {
 
   boxItemTitle: {
     margin: "0 0 6px",
-    fontFamily: "'Caveat', cursive",
+    fontFamily: "'Cormorant Garamond', serif",
     fontSize: "28px",
     color: theme.text,
   },
@@ -1433,7 +1570,6 @@ export const styles: Record<string, CSSProperties> = {
   boxItemPoetic: {
     margin: "0 0 8px",
     fontFamily: "'Cormorant Garamond', serif",
-    fontStyle: "italic",
     fontSize: "16px",
     color: theme.muted,
   },
@@ -1450,11 +1586,200 @@ export const styles: Record<string, CSSProperties> = {
     width: "100%",
     border: "none",
     background: "transparent",
-    fontFamily: "'Caveat', cursive",
+    fontFamily: "'Cormorant Garamond', serif",
     fontSize: "24px",
     color: "#9a7f6d",
     cursor: "pointer",
     padding: "12px",
+  },
+
+  minhaCaixaSummary: {
+    margin: "8px 0 0",
+    fontFamily: "'Cormorant Garamond', serif",
+    fontSize: "18px",
+    color: "#8b7668",
+    textAlign: "center",
+  },
+
+  minhaCaixaExpeditionButton: {
+    marginTop: "24px",
+    width: "100%",
+    border: "none",
+    borderRadius: "999px",
+    padding: "16px 24px",
+    background: "linear-gradient(135deg, #c88757 0%, #b8734a 100%)",
+    color: "#fffaf5",
+    fontFamily: "'Cormorant Garamond', serif",
+    fontSize: "28px",
+    cursor: "pointer",
+    boxShadow: "0 8px 20px rgba(195,133,87,0.18)",
+  },
+
+  boxItemOpenButton: {
+    display: "flex",
+    gap: "14px",
+    alignItems: "flex-start",
+    width: "100%",
+    border: "none",
+    background: "transparent",
+    padding: 0,
+    cursor: "pointer",
+    textAlign: "left",
+  },
+
+  boxItemThumb: {
+    width: "72px",
+    height: "72px",
+    objectFit: "cover",
+    borderRadius: tecaRadius.md,
+    flexShrink: 0,
+    border: `1px solid ${theme.line}`,
+  },
+
+  boxItemContent: {
+    flex: 1,
+    minWidth: 0,
+  },
+
+  atelierProduct: {
+    display: "flex",
+    flexDirection: "column",
+    gap: "20px",
+  },
+
+  atelierProductImageWrap: {
+    borderRadius: tecaRadius.lg,
+    overflow: "hidden",
+    border: `1px solid ${theme.line}`,
+    boxShadow: "0 12px 32px rgba(120,90,60,0.06)",
+  },
+
+  atelierProductImage: {
+    width: "100%",
+    aspectRatio: "4 / 3",
+    objectFit: "cover",
+    display: "block",
+  },
+
+  atelierProductBody: {
+    padding: "0 4px",
+  },
+
+  atelierProductMeta: {
+    display: "flex",
+    flexWrap: "wrap",
+    alignItems: "center",
+    gap: "8px 12px",
+    marginBottom: "12px",
+  },
+
+  atelierProductCategory: {
+    margin: 0,
+    fontSize: "10px",
+    letterSpacing: "2px",
+    textTransform: "uppercase",
+    color: "#9a7f6d",
+    fontFamily: "'Nunito', sans-serif",
+    fontWeight: 600,
+  },
+
+  atelierProductCollection: {
+    margin: 0,
+    fontSize: "10px",
+    letterSpacing: "1.5px",
+    textTransform: "uppercase",
+    color: "#b3815f",
+    fontFamily: "'Nunito', sans-serif",
+    fontWeight: 600,
+  },
+
+  atelierProductStatus: {
+    fontSize: "9px",
+    letterSpacing: "1.5px",
+    textTransform: "uppercase",
+    color: "#9a7f6d",
+    border: "1px solid #e8d8c8",
+    borderRadius: "999px",
+    padding: "4px 8px",
+    background: "rgba(248, 240, 232, 0.8)",
+    fontFamily: "'Nunito', sans-serif",
+  },
+
+  atelierProductTitle: {
+    margin: "0 0 10px",
+    fontFamily: "'Cormorant Garamond', serif",
+    fontSize: "36px",
+    color: theme.text,
+    lineHeight: 1.15,
+  },
+
+  atelierProductPoetic: {
+    margin: "0 0 16px",
+    fontFamily: "'Cormorant Garamond', serif",
+    fontSize: "17px",
+    lineHeight: 1.45,
+    color: theme.muted,
+  },
+
+  atelierProductDescription: {
+    margin: "0 0 20px",
+    fontFamily: "'Cormorant Garamond', serif",
+    fontSize: "17px",
+    lineHeight: 1.55,
+    color: "#7a6254",
+  },
+
+  atelierProductPriceBlock: {
+    marginBottom: "20px",
+  },
+
+  atelierProductPrice: {
+    margin: "0 0 4px",
+    fontFamily: "'Nunito', sans-serif",
+    fontSize: "20px",
+    color: theme.text,
+    fontWeight: 600,
+  },
+
+  atelierProductClubPrice: {
+    margin: 0,
+    fontFamily: "'Cormorant Garamond', serif",
+    fontSize: "16px",
+    color: "#9a8475",
+  },
+
+  atelierProductSaveButton: {
+    width: "100%",
+    border: "none",
+    borderRadius: "999px",
+    padding: "16px 24px",
+    background: "linear-gradient(135deg, #c88757 0%, #b8734a 100%)",
+    color: "#fffaf5",
+    fontFamily: "'Cormorant Garamond', serif",
+    fontSize: "28px",
+    cursor: "pointer",
+    boxShadow: "0 8px 20px rgba(195,133,87,0.18)",
+  },
+
+  atelierProductSaveButtonDone: {
+    background: "rgba(248, 240, 232, 0.95)",
+    color: "#9a8475",
+    boxShadow: "none",
+    cursor: "default",
+  },
+
+  atelierProductPoeticLink: {
+    marginTop: "16px",
+    border: "none",
+    background: "transparent",
+    fontSize: "17px",
+    color: "#9a7f6d",
+    cursor: "pointer",
+    padding: 0,
+    display: "block",
+    fontFamily: "'Cormorant Garamond', serif",
+    textDecoration: "underline",
+    textUnderlineOffset: "4px",
   },
 
   clubPage: {
@@ -1478,7 +1803,7 @@ export const styles: Record<string, CSSProperties> = {
 
   clubTitle: {
     margin: "0 0 10px",
-    fontFamily: "'Caveat', cursive",
+    fontFamily: "'Cormorant Garamond', serif",
     fontSize: "42px",
     fontWeight: 400,
     color: theme.text,
@@ -1488,7 +1813,6 @@ export const styles: Record<string, CSSProperties> = {
   clubTagline: {
     margin: 0,
     fontFamily: "'Cormorant Garamond', serif",
-    fontStyle: "italic",
     fontSize: "20px",
     lineHeight: 1.45,
     color: theme.muted,
@@ -1503,7 +1827,7 @@ export const styles: Record<string, CSSProperties> = {
   clubFichaHint: {
     margin: "-8px 0 16px",
     fontSize: "14px",
-    ...tecaFont.poetic,
+    ...tecaFont.prose,
     color: "#9a8475",
   },
 
@@ -1521,7 +1845,6 @@ export const styles: Record<string, CSSProperties> = {
   clubMemberNumber: {
     margin: 0,
     fontFamily: "'Cormorant Garamond', serif",
-    fontStyle: "italic",
     fontSize: "15px",
     color: "#9a8475",
   },
@@ -1561,13 +1884,9 @@ export const styles: Record<string, CSSProperties> = {
   },
 
   clubBelongingText: {
-    margin: 0,
-    fontFamily: "'Cormorant Garamond', serif",
-    fontStyle: "italic",
-    fontSize: "17px",
-    lineHeight: 1.45,
-    color: theme.muted,
-    textAlign: "left",
+    ...tecaHierarchy.l5Body,
+    ...tecaHierarchy.l5BodyCentered,
+    margin: `0 auto ${tecaSpacing.poeticToSection}px`,
   },
 
   clubJoinButton: {
@@ -1575,11 +1894,19 @@ export const styles: Record<string, CSSProperties> = {
     ...tecaObjects.buttonPrimary(),
     padding: "18px 24px",
     fontSize: "28px",
-    ...tecaFont.accentHand,
-  },
+    textAlign: "center",
+      },
 
   clubPlansSection: {
     marginBottom: "8px",
+    textAlign: "center",
+  },
+
+  clubEntryHeading: {
+    ...tecaHierarchy.l3SectionTitle,
+    ...tecaHierarchy.l3SectionTitleFlush,
+    fontSize: "28px",
+    marginBottom: "28px",
   },
 
   clubCarteirinhaSection: {
@@ -1588,13 +1915,9 @@ export const styles: Record<string, CSSProperties> = {
   },
 
   clubSecondaryLabel: {
-    margin: "0 0 14px",
-    fontFamily: "'Cormorant Garamond', serif",
-    fontStyle: "italic",
-    fontSize: "17px",
-    color: "#9a8475",
-    textAlign: "left",
-    letterSpacing: "0.3px",
+    ...tecaHierarchy.l6Micro,
+    fontStyle: "normal",
+    marginBottom: "14px",
   },
 
   ficharioUniversosSection: {
@@ -1602,23 +1925,19 @@ export const styles: Record<string, CSSProperties> = {
   },
 
   ficharioSectionLabel: {
-    margin: "0 0 6px",
-    fontFamily: "'Cormorant Garamond', serif",
-    fontSize: "24px",
-    fontWeight: 500,
-    color: "#7a6254",
+    ...tecaHierarchy.l3SectionTitle,
+    ...tecaHierarchy.l3SectionTitleFlush,
     textAlign: "left",
-    lineHeight: 1.1,
+    marginBottom: `${tecaSpacing.sectionTitleToSubtitle}px`,
   },
 
   ficharioSectionIntro: {
-    margin: "0 0 20px",
-    fontFamily: "'Cormorant Garamond', serif",
-    fontStyle: "italic",
-    fontSize: "17px",
-    lineHeight: 1.45,
-    color: "#8b7668",
+    ...tecaHierarchy.l4Subtitle,
     textAlign: "left",
+    marginTop: 0,
+    marginLeft: 0,
+    marginRight: 0,
+    marginBottom: `${tecaSpacing.subtitleToContent}px`,
   },
 
   ficharioUniversosStack: {
@@ -1646,23 +1965,38 @@ export const styles: Record<string, CSSProperties> = {
   ficharioUniverseHeader: {
     display: "flex",
     alignItems: "center",
-    gap: "14px",
-    padding: "14px",
+    gap: "12px",
+    padding: "16px 14px",
     width: "100%",
     boxSizing: "border-box",
+    borderRadius: "22px",
+    border: `1px dashed rgba(196, 165, 141, 0.42)`,
+    background:
+      "linear-gradient(180deg, rgba(255,253,249,0.95) 0%, rgba(248,239,228,0.78) 100%)",
+    boxShadow: "0 4px 14px rgba(120,90,60,0.05)",
   },
 
   ficharioUniverseHeaderOpen: {
-    borderColor: "rgba(200, 135, 87, 0.35)",
+    borderColor: "rgba(200, 135, 87, 0.38)",
+    background:
+      "linear-gradient(180deg, #fffdf9 0%, #f7efe5 55%, #f0e4d6 100%)",
+  },
+
+  ficharioUniverseIcon: {
+    fontSize: "28px",
+    lineHeight: 1,
+    flexShrink: 0,
+    filter: "drop-shadow(0 1px 0 rgba(255,253,249,0.5))",
   },
 
   ficharioUniverseThumb: {
-    width: "72px",
-    height: "54px",
+    width: "52px",
+    height: "52px",
     objectFit: "cover",
-    borderRadius: "14px",
+    borderRadius: "12px",
     border: `1px solid ${theme.line}`,
     flexShrink: 0,
+    opacity: 0.92,
   },
 
   ficharioUniverseHeaderBody: {
@@ -1671,33 +2005,52 @@ export const styles: Record<string, CSSProperties> = {
   },
 
   ficharioUniverseTitle: {
-    margin: "0 0 4px",
-    fontFamily: "'Cormorant Garamond', serif",
-    fontSize: "22px",
-    fontWeight: 600,
+    margin: "0 0 3px",
+    fontFamily: "'Caveat', cursive",
+    fontSize: "28px",
+    fontWeight: 400,
     color: theme.text,
-    lineHeight: 1.1,
+    lineHeight: 1,
   },
 
   ficharioUniversePoetic: {
-    margin: "0 0 6px",
+    margin: "0 0 5px",
     fontFamily: "'Cormorant Garamond', serif",
-    fontStyle: "italic",
-    fontSize: "15px",
+    fontSize: "14px",
     lineHeight: 1.35,
     color: theme.muted,
   },
 
-  ficharioProgressSecondary: {
+  ficharioArchiveLabel: {
     margin: 0,
-    fontFamily: "'Nunito', sans-serif",
-    fontSize: "12px",
+    fontFamily: "'Cormorant Garamond', serif",
+    fontSize: "14px",
     color: "#9a8475",
     letterSpacing: "0.2px",
   },
 
+  ficharioProgressSecondary: {
+    margin: 0,
+    fontFamily: "'Cormorant Garamond', serif",
+    fontSize: "14px",
+    color: "#9a8475",
+    letterSpacing: "0.2px",
+  },
+
+  ficharioDrawerHint: {
+    margin: "4px 0 0",
+    padding: "8px 4px 2px",
+    fontFamily: "'Cormorant Garamond', serif",
+    fontSize: "13px",
+    lineHeight: 1.4,
+    color: "#b5a090",
+    textAlign: "center",
+    letterSpacing: "0.4px",
+    opacity: 0.85,
+  },
+
   ficharioUniverseChevron: {
-    fontFamily: "'Caveat', cursive",
+    fontFamily: "'Cormorant Garamond', serif",
     fontSize: "28px",
     color: "#b3815f",
     lineHeight: 1,
@@ -1738,8 +2091,8 @@ export const styles: Record<string, CSSProperties> = {
   ficharioSlotHeader: {
     display: "flex",
     alignItems: "center",
-    justifyContent: "space-between",
-    marginBottom: "8px",
+    justifyContent: "flex-end",
+    marginBottom: "6px",
   },
 
   ficharioSlotIndex: {
@@ -1751,14 +2104,16 @@ export const styles: Record<string, CSSProperties> = {
 
   ficharioSlotSeal: {
     ...tecaObjects.etiqueta(),
-    fontSize: "10px",
+    fontSize: "9px",
     padding: "3px 8px",
+    letterSpacing: "1.2px",
+    opacity: 0.9,
   },
 
   ficharioSlotTitle: {
     margin: "0 0 4px",
     fontFamily: "'Cormorant Garamond', serif",
-    fontSize: "20px",
+    fontSize: "17px",
     fontWeight: 500,
     color: theme.text,
     lineHeight: 1.2,
@@ -1767,7 +2122,6 @@ export const styles: Record<string, CSSProperties> = {
   ficharioSlotNote: {
     margin: 0,
     fontFamily: "'Cormorant Garamond', serif",
-    fontStyle: "italic",
     fontSize: "15px",
     lineHeight: 1.4,
     color: theme.muted,
@@ -1785,7 +2139,6 @@ export const styles: Record<string, CSSProperties> = {
   ficharioSlotEmptyText: {
     margin: 0,
     fontFamily: "'Cormorant Garamond', serif",
-    fontStyle: "italic",
     fontSize: "15px",
     lineHeight: 1.4,
     color: "#a89486",
@@ -1799,7 +2152,6 @@ export const styles: Record<string, CSSProperties> = {
   ficharioComplementsLabel: {
     margin: "0 0 14px",
     fontFamily: "'Cormorant Garamond', serif",
-    fontStyle: "italic",
     fontSize: "18px",
     color: "#9a8475",
     textAlign: "left",
@@ -1846,14 +2198,13 @@ export const styles: Record<string, CSSProperties> = {
   ficharioComplementText: {
     margin: 0,
     fontFamily: "'Cormorant Garamond', serif",
-    fontStyle: "italic",
     fontSize: "15px",
     lineHeight: 1.35,
     color: theme.muted,
   },
 
   ficharioComplementArrow: {
-    fontFamily: "'Caveat', cursive",
+    fontFamily: "'Cormorant Garamond', serif",
     fontSize: "26px",
     color: "#b3815f",
     flexShrink: 0,
@@ -1862,6 +2213,167 @@ export const styles: Record<string, CSSProperties> = {
   meuMundoIntroSection: {
     marginTop: "4px",
     marginBottom: "8px",
+  },
+
+  meuMundoHero: {
+    position: "relative",
+    margin: "0 0 28px",
+    padding: "28px 20px 24px 26px",
+    borderRadius: "32px",
+    border: `1px solid ${theme.line}`,
+    background:
+      "radial-gradient(ellipse at 12% 18%, rgba(217,196,173,0.18) 0%, transparent 48%), radial-gradient(ellipse at 88% 72%, rgba(201,179,154,0.12) 0%, transparent 42%), linear-gradient(168deg, #fffdf9 0%, #f7efe5 45%, #efe3d4 100%)",
+    boxShadow:
+      "0 16px 40px rgba(120,90,60,0.08), inset 0 1px 0 rgba(255,255,255,0.85)",
+    overflow: "hidden",
+  },
+
+  meuMundoHeroSpine: {
+    position: "absolute",
+    left: 0,
+    top: "10%",
+    bottom: "10%",
+    width: "9px",
+    borderRadius: "0 5px 5px 0",
+    background:
+      "linear-gradient(180deg, #dcc9b4 0%, #c9b39a 50%, #dcc9b4 100%)",
+    boxShadow: "inset -1px 0 0 rgba(255,255,255,0.35)",
+    opacity: 0.82,
+  },
+
+  meuMundoHeroDecorSvg: {
+    position: "absolute",
+    inset: 0,
+    width: "100%",
+    height: "100%",
+    pointerEvents: "none",
+    opacity: 0.9,
+  },
+
+  meuMundoFicharioIllustration: {
+    position: "relative",
+    height: "196px",
+    margin: "0 auto 20px",
+    maxWidth: "300px",
+  },
+
+  meuMundoFicharioPage: {
+    position: "absolute",
+    width: "138px",
+    height: "138px",
+    objectFit: "cover",
+    borderRadius: "16px",
+    border: `1px solid ${theme.line}`,
+    boxShadow: "0 10px 26px rgba(120,90,60,0.12)",
+  },
+
+  meuMundoFicharioPageBack: {
+    left: "6%",
+    top: "20px",
+    transform: "rotate(-9deg)",
+    opacity: 0.9,
+    zIndex: 1,
+  },
+
+  meuMundoFicharioPageMid: {
+    left: "50%",
+    top: "4px",
+    transform: "translateX(-50%) rotate(2deg)",
+    zIndex: 2,
+    width: "152px",
+    height: "152px",
+  },
+
+  meuMundoFicharioPageFront: {
+    right: "4%",
+    top: "24px",
+    transform: "rotate(8deg)",
+    opacity: 0.92,
+    zIndex: 3,
+  },
+
+  meuMundoHeroComplement: {
+    ...tecaHierarchy.l4Subtitle,
+    marginTop: `${tecaSpacing.sectionTitleToSubtitle}px`,
+    marginBottom: 0,
+  },
+
+  meuMundoChoicesSection: {
+    position: "relative",
+    overflow: "hidden",
+    marginTop: `${tecaSpacing.poeticToSection}px`,
+    padding: "20px 14px 12px",
+    borderRadius: "28px",
+    border: `1px solid ${theme.line}`,
+    background:
+      "linear-gradient(180deg, rgba(255,253,249,0.88) 0%, rgba(248,239,228,0.62) 100%)",
+  },
+
+  meuMundoChoicesHeading: {
+    ...tecaHierarchy.l3SectionTitle,
+    ...tecaHierarchy.l3SectionTitleFlush,
+    marginBottom: `${tecaSpacing.subtitleToContent}px`,
+  },
+
+  meuMundoChoicesStack: {
+    display: "flex",
+    flexDirection: "column",
+    gap: "12px",
+  },
+
+  meuMundoChoice: {
+    display: "flex",
+    alignItems: "center",
+    gap: "14px",
+    width: "100%",
+    padding: "18px 16px 18px 18px",
+    border: `1px dashed rgba(196, 165, 141, 0.45)`,
+    borderRadius: "22px",
+    background:
+      "linear-gradient(180deg, rgba(255,253,249,0.92) 0%, rgba(248,239,228,0.72) 100%)",
+    boxShadow: "0 4px 14px rgba(120,90,60,0.05)",
+    cursor: "pointer",
+    textAlign: "left",
+    WebkitTapHighlightColor: "transparent",
+  },
+
+  meuMundoChoiceIcon: {
+    fontSize: "32px",
+    lineHeight: 1,
+    flexShrink: 0,
+    filter: "drop-shadow(0 1px 0 rgba(255,253,249,0.6))",
+  },
+
+  meuMundoChoiceBody: {
+    flex: 1,
+    minWidth: 0,
+    display: "flex",
+    flexDirection: "column",
+    gap: "3px",
+  },
+
+  meuMundoChoiceTitle: {
+    fontFamily: "'Cormorant Garamond', serif",
+    fontSize: "32px",
+    fontWeight: 400,
+    color: theme.text,
+    lineHeight: 1,
+  },
+
+  meuMundoChoiceHint: {
+    fontFamily: "'Cormorant Garamond', serif",
+    fontSize: "14px",
+    lineHeight: 1.35,
+    color: "#a89486",
+    opacity: 0.88,
+  },
+
+  meuMundoChoiceArrow: {
+    fontFamily: "'Cormorant Garamond', serif",
+    fontSize: "24px",
+    color: "#b3815f",
+    flexShrink: 0,
+    opacity: 0.65,
   },
 
   meuMundoSectionsStack: {
@@ -1885,6 +2397,220 @@ export const styles: Record<string, CSSProperties> = {
     borderRadius: "14px",
     border: `1px solid ${theme.line}`,
     flexShrink: 0,
+  },
+
+  bibliotecaHero: {
+    position: "relative",
+    margin: "0 0 22px",
+    padding: "24px 18px 20px 24px",
+    borderRadius: "28px",
+    border: `1px solid ${theme.line}`,
+    background:
+      "radial-gradient(ellipse at 14% 20%, rgba(217,196,173,0.16) 0%, transparent 50%), linear-gradient(168deg, #fffdf9 0%, #f7efe5 50%, #efe3d4 100%)",
+    boxShadow: "0 14px 36px rgba(120,90,60,0.07)",
+    overflow: "hidden",
+  },
+
+  bibliotecaHeroSpine: {
+    position: "absolute",
+    left: 0,
+    top: "12%",
+    bottom: "12%",
+    width: "8px",
+    borderRadius: "0 4px 4px 0",
+    background:
+      "linear-gradient(180deg, #dcc9b4 0%, #c9b39a 50%, #dcc9b4 100%)",
+    opacity: 0.8,
+  },
+
+  bibliotecaHeroDecorSvg: {
+    position: "absolute",
+    inset: 0,
+    width: "100%",
+    height: "100%",
+    pointerEvents: "none",
+  },
+
+  bibliotecaPagesIllustration: {
+    position: "relative",
+    height: "160px",
+    maxWidth: "280px",
+    margin: "0 auto",
+  },
+
+  bibliotecaPageSheet: {
+    position: "absolute",
+    width: "118px",
+    height: "118px",
+    objectFit: "cover",
+    borderRadius: "14px",
+    border: `1px solid ${theme.line}`,
+    boxShadow: "0 8px 22px rgba(120,90,60,0.1)",
+  },
+
+  bibliotecaPageSheetBack: {
+    left: "8%",
+    top: "16px",
+    transform: "rotate(-8deg)",
+    opacity: 0.88,
+    zIndex: 1,
+  },
+
+  bibliotecaPageSheetMid: {
+    left: "50%",
+    top: "2px",
+    transform: "translateX(-50%) rotate(1deg)",
+    zIndex: 2,
+    width: "128px",
+    height: "128px",
+  },
+
+  bibliotecaPageSheetFront: {
+    right: "6%",
+    top: "18px",
+    transform: "rotate(7deg)",
+    opacity: 0.92,
+    zIndex: 3,
+  },
+
+  bibliotecaKicker: {
+    margin: "0 0 8px",
+    fontSize: "9px",
+    letterSpacing: "2.5px",
+    textTransform: "uppercase",
+    color: "#b3815f",
+    fontWeight: 700,
+    fontFamily: "'Nunito', sans-serif",
+    textAlign: "left",
+  },
+
+  bibliotecaTitle: {
+    margin: "0 0 10px",
+    fontFamily: "'Caveat', cursive",
+    fontSize: "48px",
+    fontWeight: 400,
+    color: theme.text,
+    lineHeight: 0.95,
+    textAlign: "left",
+  },
+
+  bibliotecaIntro: {
+    margin: 0,
+    fontFamily: "'Cormorant Garamond', serif",
+    fontSize: "17px",
+    lineHeight: 1.45,
+    color: theme.muted,
+    textAlign: "left",
+  },
+
+  bibliotecaShelfLabel: {
+    margin: "0 0 14px",
+    fontFamily: "'Cormorant Garamond', serif",
+    fontSize: "20px",
+    fontWeight: 500,
+    color: "#8a6f5d",
+    textAlign: "left",
+  },
+
+  bibliotecaShelf: {
+    position: "relative",
+    display: "flex",
+    flexDirection: "column",
+    gap: "12px",
+    marginBottom: "22px",
+    paddingBottom: "10px",
+  },
+
+  bibliotecaShelfBoard: {
+    position: "absolute",
+    left: "-4px",
+    right: "-4px",
+    bottom: "0",
+    height: "6px",
+    borderRadius: "3px",
+    background:
+      "linear-gradient(180deg, #dcc9b4 0%, #c9b39a 55%, #b8987a 100%)",
+    boxShadow: "0 2px 6px rgba(120,90,60,0.08)",
+    opacity: 0.55,
+  },
+
+  bibliotecaShelfItem: {
+    position: "relative",
+    display: "flex",
+    alignItems: "center",
+    gap: "14px",
+    padding: "14px 16px",
+    borderRadius: "20px",
+    border: `1px dashed rgba(196, 165, 141, 0.42)`,
+    background:
+      "linear-gradient(180deg, rgba(255,253,249,0.94) 0%, rgba(248,239,228,0.76) 100%)",
+    boxShadow: "0 4px 12px rgba(120,90,60,0.04)",
+  },
+
+  bibliotecaShelfThumb: {
+    width: "52px",
+    height: "52px",
+    objectFit: "cover",
+    borderRadius: "10px",
+    border: `1px solid ${theme.line}`,
+    flexShrink: 0,
+    opacity: 0.9,
+  },
+
+  bibliotecaShelfBody: {
+    flex: 1,
+    minWidth: 0,
+  },
+
+  bibliotecaShelfIcon: {
+    display: "block",
+    fontSize: "18px",
+    lineHeight: 1,
+    marginBottom: "4px",
+    opacity: 0.85,
+  },
+
+  bibliotecaShelfTitle: {
+    margin: "0 0 4px",
+    fontFamily: "'Cormorant Garamond', serif",
+    fontSize: "28px",
+    fontWeight: 400,
+    color: theme.text,
+    lineHeight: 1,
+  },
+
+  bibliotecaShelfText: {
+    margin: 0,
+    fontFamily: "'Cormorant Garamond', serif",
+    fontSize: "14px",
+    lineHeight: 1.38,
+    color: "#a89486",
+  },
+
+  bibliotecaQuietNote: {
+    padding: "18px 16px",
+    borderRadius: "22px",
+    border: `1px solid ${theme.line}`,
+    background: "rgba(255,253,249,0.72)",
+    textAlign: "left",
+  },
+
+  bibliotecaQuietLabel: {
+    margin: "0 0 8px",
+    fontSize: "9px",
+    letterSpacing: "2px",
+    textTransform: "uppercase",
+    color: "#b3815f",
+    fontWeight: 600,
+    fontFamily: "'Nunito', sans-serif",
+  },
+
+  bibliotecaQuietText: {
+    margin: 0,
+    fontFamily: "'Cormorant Garamond', serif",
+    fontSize: "16px",
+    lineHeight: 1.45,
+    color: theme.muted,
   },
 
   diaryStack: {
@@ -1923,7 +2649,7 @@ export const styles: Record<string, CSSProperties> = {
 
   diaryEntryTitle: {
     margin: "0 0 6px",
-    fontFamily: "'Caveat', cursive",
+    fontFamily: "'Cormorant Garamond', serif",
     fontSize: "28px",
     color: theme.text,
     fontWeight: 400,
@@ -1932,7 +2658,6 @@ export const styles: Record<string, CSSProperties> = {
   diaryEntryText: {
     margin: 0,
     fontFamily: "'Cormorant Garamond', serif",
-    fontStyle: "italic",
     color: theme.muted,
     fontSize: "17px",
     lineHeight: 1.45,
@@ -1968,7 +2693,7 @@ export const styles: Record<string, CSSProperties> = {
 
   collectionTitle: {
     margin: "0 0 4px",
-    fontFamily: "'Caveat', cursive",
+    fontFamily: "'Cormorant Garamond', serif",
     fontSize: "30px",
     lineHeight: 1,
     color: theme.text,
@@ -1978,7 +2703,6 @@ export const styles: Record<string, CSSProperties> = {
   collectionPoetic: {
     margin: 0,
     fontFamily: "'Cormorant Garamond', serif",
-    fontStyle: "italic",
     fontSize: "16px",
     color: theme.muted,
   },
@@ -2014,7 +2738,6 @@ export const styles: Record<string, CSSProperties> = {
   collectionCount: {
     margin: 0,
     fontFamily: "'Cormorant Garamond', serif",
-    fontStyle: "italic",
     fontSize: "16px",
     color: "#8a6f5d",
   },
@@ -2025,7 +2748,7 @@ export const styles: Record<string, CSSProperties> = {
     background: "rgba(255,253,249,0.8)",
     borderRadius: "999px",
     padding: "10px 16px",
-    fontFamily: "'Caveat', cursive",
+    fontFamily: "'Cormorant Garamond', serif",
     fontSize: "24px",
     color: theme.text,
     cursor: "pointer",
@@ -2084,7 +2807,7 @@ export const styles: Record<string, CSSProperties> = {
     margin: "8px 0 0 0",
     fontSize: "14px",
     textAlign: "left",
-    ...tecaFont.poetic,
+    ...tecaFont.prose,
   },
 
   primaryButton: {
@@ -2095,9 +2818,9 @@ export const styles: Record<string, CSSProperties> = {
     borderRadius: "999px",
     padding: "20px",
     color: "#fffaf5",
-    fontSize: "32px",
+    fontSize: "20px",
     marginTop: "28px",
-    fontFamily: "'Caveat', cursive",
+    ...tecaObjects.buttonPrimary(),
     cursor: "pointer",
     boxShadow: "0 10px 20px rgba(195,133,87,0.18)",
   },

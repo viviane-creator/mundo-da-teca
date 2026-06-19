@@ -31,7 +31,7 @@ const shadow = {
   inset: "inset 0 1px 0 rgba(255,255,255,0.65)",
 }
 
-/** Caveat só em títulos de portal e detalhes afetivos pontuais */
+/** Caveat só em títulos de portal e nomes de universos */
 export const tecaFont = {
   portalTitle: {
     fontFamily: "'Caveat', cursive",
@@ -40,9 +40,10 @@ export const tecaFont = {
     color: tecaColors.text,
   } satisfies CSSProperties,
 
+  /** @deprecated Preferir Cormorant via buttonPrimary / heading em CTAs */
   accentHand: {
-    fontFamily: "'Caveat', cursive",
-    fontWeight: 400,
+    fontFamily: "'Cormorant Garamond', serif",
+    fontWeight: 500,
     color: tecaColors.text,
   } satisfies CSSProperties,
 
@@ -53,12 +54,21 @@ export const tecaFont = {
     lineHeight: 1.1,
   } satisfies CSSProperties,
 
-  headingItalic: {
+  /** Corpo e descrições — romano por padrão */
+  prose: {
+    fontFamily: "'Cormorant Garamond', serif",
+    fontWeight: 400,
+    color: tecaColors.muted,
+    lineHeight: 1.55,
+  } satisfies CSSProperties,
+
+  /** Frase poética de abertura — itálico reservado */
+  poetic: {
     fontFamily: "'Cormorant Garamond', serif",
     fontStyle: "italic",
     fontWeight: 400,
-    color: tecaColors.text,
-    lineHeight: 1.2,
+    color: tecaColors.muted,
+    lineHeight: 1.45,
   } satisfies CSSProperties,
 
   body: {
@@ -68,16 +78,9 @@ export const tecaFont = {
     lineHeight: 1.5,
   } satisfies CSSProperties,
 
-  poetic: {
-    fontFamily: "'Cormorant Garamond', serif",
-    fontStyle: "italic",
-    color: tecaColors.muted,
-    lineHeight: 1.55,
-  } satisfies CSSProperties,
-
   label: {
     fontFamily: "'Nunito', sans-serif",
-    fontSize: "9px",
+    fontSize: "10px",
     letterSpacing: "2px",
     textTransform: "uppercase",
     color: "#b3815f",
@@ -91,14 +94,98 @@ export const tecaFont = {
     fontWeight: 500,
   } satisfies CSSProperties,
 
-  /** linhas de ficha / carteirinha — manuscrito editorial, não planner */
+  /** Nível 6 — microtextos / etiquetas editoriais */
+  micro: {
+    fontFamily: "'Nunito', sans-serif",
+    fontSize: "10px",
+    letterSpacing: "2.5px",
+    textTransform: "uppercase",
+    color: "#b3815f",
+    fontWeight: 700,
+  } satisfies CSSProperties,
+
+  /** linhas de ficha / carteirinha */
   handLine: {
     fontFamily: "'Cormorant Garamond', serif",
-    fontStyle: "italic",
-    fontSize: "24px",
-    fontWeight: 500,
+    fontSize: "20px",
+    fontWeight: 400,
     color: tecaColors.text,
     lineHeight: 1.2,
+  } satisfies CSSProperties,
+}
+
+/** Ritmo vertical compartilhado entre páginas */
+export const tecaSpacing = {
+  titleToPoetic: 28,
+  poeticToSection: 48,
+  sectionTop: 48,
+  sectionTitleToSubtitle: 10,
+  subtitleToContent: 20,
+} as const
+
+/** Hierarquia tipográfica global — um livro, uma escala */
+export const tecaHierarchy = {
+  l1PageTitle: {
+    ...tecaFont.portalTitle,
+    fontSize: "48px",
+    textAlign: "center",
+    margin: `8px 0 ${tecaSpacing.titleToPoetic}px`,
+  } satisfies CSSProperties,
+
+  l2Poetic: {
+    ...tecaFont.poetic,
+    fontSize: "20px",
+    textAlign: "center",
+    margin: "0 auto",
+    maxWidth: "340px",
+    lineHeight: 1.45,
+  } satisfies CSSProperties,
+
+  l3SectionTitle: {
+    ...tecaFont.heading,
+    fontSize: "28px",
+    fontWeight: 500,
+    color: "#705a4d",
+    textAlign: "center",
+    margin: `${tecaSpacing.sectionTop}px 0 0`,
+    lineHeight: 1.1,
+  } satisfies CSSProperties,
+
+  l3SectionTitleFlush: {
+    marginTop: 0,
+  } satisfies CSSProperties,
+
+  l4Subtitle: {
+    ...tecaFont.prose,
+    fontSize: "15px",
+    textAlign: "center",
+    margin: `${tecaSpacing.sectionTitleToSubtitle}px auto ${tecaSpacing.subtitleToContent}px`,
+    maxWidth: "340px",
+    lineHeight: 1.45,
+    color: tecaColors.muted,
+  } satisfies CSSProperties,
+
+  l5Body: {
+    ...tecaFont.prose,
+    fontSize: "17px",
+    lineHeight: 1.55,
+    color: tecaColors.ink,
+  } satisfies CSSProperties,
+
+  l5BodyCentered: {
+    textAlign: "center",
+    maxWidth: "340px",
+    margin: "0 auto",
+  } satisfies CSSProperties,
+
+  l6Micro: {
+    ...tecaFont.micro,
+    textAlign: "center",
+    margin: "0 0 12px",
+  } satisfies CSSProperties,
+
+  pageHeroBreath: {
+    height: `${tecaSpacing.poeticToSection}px`,
   } satisfies CSSProperties,
 }
 
@@ -162,7 +249,7 @@ export const tecaObjects = {
 
   etiqueta: (): CSSProperties => ({
     display: "inline-block",
-    fontSize: "9px",
+    fontSize: "10px",
     letterSpacing: "2px",
     textTransform: "uppercase",
     color: "#b3815f",
@@ -184,7 +271,6 @@ export const tecaObjects = {
     border: `1px solid ${tecaColors.line}`,
     background: tecaColors.paper,
     fontFamily: "'Cormorant Garamond', serif",
-    fontStyle: "italic",
     fontSize: "12px",
     color: "#b3815f",
     letterSpacing: "0.8px",
@@ -202,8 +288,7 @@ export const tecaObjects = {
 
   marker: (): CSSProperties => ({
     fontFamily: "'Cormorant Garamond', serif",
-    fontStyle: "italic",
-    fontSize: "14px",
+    fontSize: "15px",
     color: "#9a8475",
     letterSpacing: "0.3px",
   }),
@@ -217,6 +302,7 @@ export const tecaObjects = {
     boxShadow: "0 5px 14px rgba(195,133,87,0.12)",
     fontFamily: "'Cormorant Garamond', serif",
     fontWeight: 500,
+    fontSize: "20px",
     letterSpacing: "0.3px",
   }),
 
@@ -232,9 +318,16 @@ export const tecaType = {
   editorialLeft: {
     textAlign: "left" as const,
   },
+  bodyProse: {
+    ...tecaFont.prose,
+    fontSize: "17px",
+    textAlign: "left" as const,
+    margin: 0,
+  },
+  /** @deprecated use bodyProse */
   bodyPoetic: {
-    ...tecaFont.poetic,
-    fontSize: "18px",
+    ...tecaFont.prose,
+    fontSize: "17px",
     textAlign: "left" as const,
     margin: 0,
   },

@@ -40,13 +40,17 @@ export function PlayExperienceCard({
             )}
           </div>
 
-          <p style={styles.experienceCardInvite}>{experience.invite}</p>
+          {selected && (
+            <>
+              <p style={styles.experienceCardInvite}>{experience.invite}</p>
 
-          <div style={styles.experienceCardMeta}>
-            <span>{experience.materials}</span>
-            <span>{experience.people}</span>
-            <span>{experience.place}</span>
-          </div>
+              <div style={styles.experienceCardMeta}>
+                <span>{experience.materials}</span>
+                <span>{experience.people}</span>
+                <span>{experience.place}</span>
+              </div>
+            </>
+          )}
         </div>
       </article>
     </button>

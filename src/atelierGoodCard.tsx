@@ -42,6 +42,14 @@ const s: Record<string, CSSProperties> = {
   imageWrap: {
     position: "relative",
   },
+  paperCardImageButton: {
+    display: "block",
+    width: "100%",
+    border: "none",
+    padding: 0,
+    background: "transparent",
+    cursor: "pointer",
+  },
   paperCardImage: {
     width: "100%",
     aspectRatio: "4 / 3",
@@ -70,7 +78,6 @@ const s: Record<string, CSSProperties> = {
     borderTop: `1px solid ${theme.line}`,
     textAlign: "center",
     fontFamily: "'Cormorant Garamond', serif",
-    fontStyle: "italic",
     fontSize: "13px",
     color: "#9a8475",
   },
@@ -109,10 +116,9 @@ const s: Record<string, CSSProperties> = {
   collabLine: {
     margin: "0 0 8px",
     textAlign: "center",
-    fontFamily: "'Cormorant Garamond', serif",
-    fontStyle: "italic",
     fontSize: "15px",
     color: "#9a8475",
+    ...tecaFont.prose,
   },
   paperCardTitleButton: {
     border: "none",
@@ -124,16 +130,15 @@ const s: Record<string, CSSProperties> = {
   },
   paperCardTitle: {
     margin: "0 0 8px",
-    fontSize: "24px",
+    fontSize: "20px",
     ...tecaFont.heading,
   },
   paperCardPoetic: {
     margin: "0 0 14px",
-    fontFamily: "'Cormorant Garamond', serif",
-    fontStyle: "italic",
-    fontSize: "17px",
+    fontSize: "15px",
     lineHeight: 1.45,
     color: theme.muted,
+    ...tecaFont.prose,
   },
   paperPriceBlock: {
     marginBottom: "14px",
@@ -147,38 +152,33 @@ const s: Record<string, CSSProperties> = {
   },
   paperClubPrice: {
     margin: 0,
-    fontFamily: "'Cormorant Garamond', serif",
-    fontStyle: "italic",
     fontSize: "15px",
     color: "#9a8475",
+    ...tecaFont.prose,
   },
-  paperTakeHomeButton: {
+  paperCardActions: {
+    display: "flex",
+    flexDirection: "column",
+    gap: "10px",
+  },
+  paperSaveButton: {
     width: "100%",
     ...tecaObjects.buttonPrimary(),
     borderRadius: "999px",
     padding: "14px 20px",
     color: "#fffaf5",
-    fontFamily: "'Caveat', cursive",
-    fontSize: "26px",
+    fontFamily: "'Cormorant Garamond', serif",
+    fontSize: "20px",
     cursor: "pointer",
     boxShadow: "0 6px 16px rgba(195,133,87,0.12)",
   },
-  paperTakeHomeButtonDone: {
+  paperSaveButtonDone: {
     background: "rgba(248, 240, 232, 0.95)",
     color: "#9a8475",
     boxShadow: "none",
     cursor: "default",
   },
-  paperCardDescription: {
-    margin: "14px 0 0",
-    fontFamily: "'Cormorant Garamond', serif",
-    fontStyle: "italic",
-    fontSize: "16px",
-    lineHeight: 1.5,
-    color: "#7a6254",
-  },
-  paperPoeticLink: {
-    marginTop: "12px",
+  paperOpenProductLink: {
     border: "none",
     background: "transparent",
     fontSize: "17px",
@@ -186,7 +186,9 @@ const s: Record<string, CSSProperties> = {
     cursor: "pointer",
     padding: 0,
     display: "block",
-    ...tecaFont.poetic,
+    ...tecaFont.prose,
+    textDecoration: "underline",
+    textUnderlineOffset: "4px",
   },
 }
 
@@ -200,17 +202,15 @@ function cardVariantStyle(visualKind: AtelierVisualKind): CSSProperties {
 export function AtelierGoodCard({
   good,
   inBox,
-  expanded,
-  onToggleExpand,
   onAddToBox,
+  onOpenProduct,
   onOpenPoetic,
   poeticLinkLabel,
 }: {
   good: AtelierGood
   inBox: boolean
-  expanded: boolean
-  onToggleExpand: () => void
   onAddToBox: () => void
+  onOpenProduct: () => void
   onOpenPoetic?: () => void
   poeticLinkLabel?: string
 }) {
@@ -228,17 +228,24 @@ export function AtelierGoodCard({
       }}
     >
       <div style={s.imageWrap}>
-        <img
-          src={imageSrc}
-          alt={good.title}
-          style={{
-            ...s.paperCardImage,
-            ...(isEnvelope ? s.paperCardImageEnvelope : {}),
-          }}
-          onError={() => {
-            if (imageSrc !== atelierCoverImage) setImageSrc(atelierCoverImage)
-          }}
-        />
+        <button
+          type="button"
+          onClick={onOpenProduct}
+          style={s.paperCardImageButton}
+          aria-label={`Ver ${good.title}`}
+        >
+          <img
+            src={imageSrc}
+            alt={good.title}
+            style={{
+              ...s.paperCardImage,
+              ...(isEnvelope ? s.paperCardImageEnvelope : {}),
+            }}
+            onError={() => {
+              if (imageSrc !== atelierCoverImage) setImageSrc(atelierCoverImage)
+            }}
+          />
+        </button>
         {isEnvelope && <span style={s.envelopeSeal}>selo</span>}
         {isEnvelope && (
           <p style={s.envelopeRibbon}>pacotinho surpresa</p>
@@ -259,7 +266,7 @@ export function AtelierGoodCard({
 
         <button
           type="button"
-          onClick={onToggleExpand}
+          onClick={onOpenProduct}
           style={s.paperCardTitleButton}
         >
           <h3 style={s.paperCardTitle}>{good.title}</h3>
@@ -274,32 +281,37 @@ export function AtelierGoodCard({
           </p>
         </div>
 
-        <button
-          type="button"
-          onClick={onAddToBox}
-          style={{
-            ...s.paperTakeHomeButton,
-            ...(inBox ? s.paperTakeHomeButtonDone : {}),
-          }}
-          disabled={inBox}
-        >
-          {inBox ? "já está na sua caixa" : "levar pra casa"}
-        </button>
+        <div style={s.paperCardActions}>
+          <button
+            type="button"
+            onClick={onAddToBox}
+            style={{
+              ...s.paperSaveButton,
+              ...(inBox ? s.paperSaveButtonDone : {}),
+            }}
+            disabled={inBox}
+          >
+            {inBox ? "Adicionado" : "Adicionar"}
+          </button>
 
-        {expanded && (
-          <>
-            <p style={s.paperCardDescription}>{good.description}</p>
-            {onOpenPoetic && (
-              <button
-                type="button"
-                onClick={onOpenPoetic}
-                style={s.paperPoeticLink}
-              >
-                {poeticLinkLabel ?? "conhecer com calma"}
-              </button>
-            )}
-          </>
-        )}
+          <button
+            type="button"
+            onClick={onOpenProduct}
+            style={s.paperOpenProductLink}
+          >
+            ver tesouro
+          </button>
+
+          {onOpenPoetic && (
+            <button
+              type="button"
+              onClick={onOpenPoetic}
+              style={s.paperOpenProductLink}
+            >
+              {poeticLinkLabel ?? "conhecer com calma"}
+            </button>
+          )}
+        </div>
       </div>
     </article>
   )

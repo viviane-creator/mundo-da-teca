@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import "./fonts.css"
 import {
   isPlayUniverseScreen,
@@ -6,7 +6,13 @@ import {
   type PlayExperience,
   type PlayUniverse,
 } from "./playData"
-import { formatBRL, type AtelierGood } from "./atelierShopData"
+import { getAtelierGoodById, type AtelierGood } from "./atelierShopData"
+import {
+  getAtelierProductId,
+  isAtelierProductScreen,
+  toAtelierProductScreen,
+  type AtelierProductScreen,
+} from "./atelierNavigation"
 import { AtelierShopPage } from "./atelierPages"
 import { FigurinhasPage } from "./figurinhasPage"
 import {
@@ -40,7 +46,8 @@ import {
   DiaryPage,
 } from "./discoveryPages"
 import { pageData } from "./data/pageData"
-import { universosCards } from "./data/universosCards"
+import { getUniverseEmblem } from "./data/homeUniversePortals"
+import { UniversosPage } from "./pages/UniversosPage"
 import { FeatureCard } from "./components/FeatureCard"
 import { SoftNote } from "./components/SoftNote"
 import { BottomNav } from "./components/BottomNav"
@@ -50,6 +57,8 @@ import { Home } from "./pages/Home"
 import { ClubPage } from "./pages/ClubPage"
 import { MeuMundoPage } from "./pages/MeuMundoPage"
 import { BibliotecaPage } from "./pages/BibliotecaPage"
+import { AtelierProductPage } from "./pages/AtelierProductPage"
+import { MinhaCaixaPage } from "./pages/MinhaCaixaPage"
 
 type Screen =
   | "home"
@@ -80,6 +89,7 @@ type Screen =
   | "carimbos"
   | "bau"
   | "minha-caixa"
+  | AtelierProductScreen
   | "meu-mundo"
   | "clube"
 
@@ -259,7 +269,13 @@ function isDiscoveryFlowScreen(screen: Screen): boolean {
 }
 
 function resolveNavActive(screen: Screen): string {
-  if (screen === "figurinhas" || screen === "minha-caixa") return "atelie"
+  if (
+    screen === "figurinhas" ||
+    screen === "minha-caixa" ||
+    isAtelierProductScreen(screen)
+  ) {
+    return "atelie"
+  }
 
   if (isSimpleSubScreen(screen)) {
     const parent = subPageData[screen].parent
@@ -298,6 +314,10 @@ export default function App() {
       return [...current, good]
     })
   }
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "instant" })
+  }, [screen])
 
   return (
     <main style={styles.main}>
@@ -356,13 +376,7 @@ export default function App() {
         )}
 
         {screen === "universos" && (
-          <Page
-            portalKey="universos"
-            cards={universosCards}
-            sectionTitle="seis universos para explorar"
-            horizontalCards
-            setScreen={setScreen}
-          />
+          <UniversosPage setScreen={setScreen} />
         )}
 
         {screen === "atelie" && (
@@ -370,14 +384,48 @@ export default function App() {
             setScreen={setScreen}
             box={box}
             onAddToBox={addToBox}
+            onOpenProduct={(good) =>
+              setScreen(toAtelierProductScreen(good.id))
+            }
           />
         )}
+
+        {isAtelierProductScreen(screen) && (() => {
+          const good = getAtelierGoodById(getAtelierProductId(screen))
+          if (!good) {
+            return (
+              <section style={styles.subPage}>
+                <button
+                  type="button"
+                  onClick={() => setScreen("atelie")}
+                  style={styles.backButton}
+                >
+                  ← ateliê
+                </button>
+                <SoftNote label="sumiu do caminho">
+                  este tesouro não foi encontrado. volte ao ateliê.
+                </SoftNote>
+              </section>
+            )
+          }
+          return (
+            <AtelierProductPage
+              setScreen={setScreen}
+              good={good}
+              inBox={box.some((item) => item.id === good.id)}
+              onAddToBox={() => addToBox(good)}
+            />
+          )
+        })()}
 
         {screen === "figurinhas" && (
           <FigurinhasPage
             setScreen={setScreen}
             box={box}
             onAddToBox={addToBox}
+            onOpenProduct={(good) =>
+              setScreen(toAtelierProductScreen(good.id))
+            }
           />
         )}
 
@@ -428,66 +476,6 @@ function Page({
   )
 }
 
-function MinhaCaixaPage({
-  setScreen,
-  box,
-}: {
-  setScreen: (screen: Screen) => void
-  box: AtelierGood[]
-}) {
-  return (
-    <section style={styles.subPage}>
-      <button
-        onClick={() => setScreen("atelie")}
-        style={styles.backButton}
-      >
-        ← ateliê
-      </button>
-
-      <div style={styles.minhaCaixaHero}>
-        <span style={styles.minhaCaixaBadge}>caixa</span>
-        <h1 style={styles.pageTitle}>minha caixa</h1>
-        <p style={{ ...styles.pageIntro, textAlign: "left" }}>
-          um canto quieto para o que você escolheu levar pra casa.
-        </p>
-      </div>
-
-      {box.length === 0 ? (
-        <SoftNote label="vazia por enquanto">
-          nenhum tesouro ainda. volte ao ateliê e escolha com calma.
-        </SoftNote>
-      ) : (
-        <>
-          <div style={styles.paperStack}>
-            {box.map((good) => (
-              <article key={good.id} style={styles.boxItem}>
-                <p style={styles.boxItemTitle}>{good.title}</p>
-                <p style={styles.boxItemPoetic}>{good.poetic}</p>
-                <p style={styles.boxItemPrice}>
-                  {formatBRL(good.price)} · clube {formatBRL(good.clubPrice)}
-                </p>
-              </article>
-            ))}
-          </div>
-
-          <SoftNote label="em breve">
-            o caminho até a sua casa ainda está sendo costurado com carinho.
-            por enquanto, guarde aqui o que deseja levar.
-          </SoftNote>
-        </>
-      )}
-
-      <button
-        type="button"
-        onClick={() => setScreen("atelie")}
-        style={styles.paperBackToShopButton}
-      >
-        continuar escolhendo
-      </button>
-    </section>
-  )
-}
-
 function PlayUniversePage({
   setScreen,
   universe,
@@ -509,25 +497,24 @@ function PlayUniversePage({
         ← universos
       </button>
 
-      <img
-        src={universe.image}
-        alt={universe.title}
-        style={styles.subPageImage}
-      />
-
-      <div style={styles.pageIntroBlock}>
-        <h1 style={styles.pageTitle}>{universe.title}</h1>
-        <p style={styles.pageIntro}>{universe.poetic}</p>
-      </div>
-
-      <SoftNote label="convite">{universe.noteText}</SoftNote>
+      <header style={styles.playUniverseChapterHero}>
+        <img
+          src={universe.image}
+          alt=""
+          style={styles.playUniverseCoverFade}
+          aria-hidden="true"
+        />
+        <span style={styles.playUniverseEmblemWatermark} aria-hidden="true">
+          {getUniverseEmblem(universe.id)}
+        </span>
+        <h1 style={styles.playUniverseTitle}>{universe.title}</h1>
+        <p style={styles.playUniversePoetic}>{universe.poetic}</p>
+      </header>
 
       <section style={styles.experienceCollection}>
-        <h2 style={styles.experienceCollectionTitle}>fichas deste universo</h2>
-        <p style={styles.experienceCollectionIntro}>
-          quinze convites para escolher devagar. as três primeiras estão
-          abertas; as demais aguardam no clube.
-        </p>
+        <h2 style={styles.experienceCollectionTitle}>
+          Descobertas deste universo
+        </h2>
 
         <div style={styles.experienceStack}>
           {universe.experiences.map((experience) => (
@@ -550,6 +537,10 @@ function PlayUniversePage({
           ))}
         </div>
       </section>
+
+      <div style={styles.playUniverseInviteWrap}>
+        <SoftNote label="convite">{universe.noteText}</SoftNote>
+      </div>
     </section>
   )
 }
@@ -578,9 +569,11 @@ function SimpleSubPage({
         style={styles.subPageImage}
       />
 
-      <div style={styles.pageIntroBlock}>
-        <h1 style={styles.pageTitle}>{content.title}</h1>
-        <p style={styles.pageIntro}>{content.poetic}</p>
+      <div style={styles.pageHeroBlock}>
+        <h1 style={styles.pageHeroTitle}>{content.title}</h1>
+        <p style={{ ...styles.pageHeroPoetic, textAlign: "left", marginLeft: 0, marginRight: 0 }}>
+          {content.poetic}
+        </p>
       </div>
 
       <SoftNote label={content.noteLabel}>{content.noteText}</SoftNote>

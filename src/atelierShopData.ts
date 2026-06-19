@@ -66,22 +66,24 @@ export const atelierCoverImage = "/covers/atelie.png"
 
 export const atelierSections: AtelierSection[] = [
   {
-    id: "colecoes",
-    title: "Tesouros",
-    intro:
-      "peças especiais para guardar, trocar e colecionar — objetos que prolongam a descoberta em casa.",
+    id: "figurinhas",
+    title: "Figurinhas",
+    intro: "",
   },
   {
     id: "papelaria",
     title: "Papelaria",
-    intro:
-      "papéis, cartões e mensagens para escrever, dobrar e entregar sem pressa.",
+    intro: "",
+  },
+  {
+    id: "colecoes",
+    title: "Colecionáveis",
+    intro: "",
   },
   {
     id: "especiais",
     title: "Edições Especiais",
-    intro:
-      "lançamentos raros, colaborações e peças que merecem um lugar na mesa.",
+    intro: "",
   },
 ]
 
@@ -139,6 +141,14 @@ export function getAtelierCatalogSections() {
       goods: atelierGoods.filter((good) => good.section === section.id),
     }))
     .filter((section) => section.goods.length > 0)
+}
+
+export function getAtelierGoodById(id: string): AtelierGood | undefined {
+  return atelierGoods.find((good) => good.id === id)
+}
+
+export function getAtelierSectionTitle(sectionId: AtelierSectionId): string {
+  return atelierSections.find((section) => section.id === sectionId)?.title ?? ""
 }
 
 export const atelierGoods: AtelierGood[] = [

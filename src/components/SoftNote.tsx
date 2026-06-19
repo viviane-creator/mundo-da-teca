@@ -5,11 +5,15 @@ export function SoftNote({
   label,
   children,
   highlight = false,
+  centered = false,
 }: {
   label: string
   children: string
   highlight?: boolean
+  centered?: boolean
 }) {
+  const textAlign = centered ? "center" : "left"
+
   return (
     <article
       style={
@@ -17,17 +21,19 @@ export function SoftNote({
           ? {
               ...tecaObjects.noteHighlight(),
               marginBottom: "22px",
-              textAlign: "left",
+              textAlign,
             }
           : {
               ...tecaObjects.note(tecaRadius.lg),
               marginBottom: "18px",
-              textAlign: "left",
+              textAlign,
             }
       }
     >
       <p style={styles.tag}>{label}</p>
-      <p style={styles.noteText}>{children}</p>
+      <p style={centered ? styles.noteText : styles.noteTextLong}>
+        {children}
+      </p>
     </article>
   )
 }

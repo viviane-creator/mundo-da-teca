@@ -1,4 +1,3 @@
-import { useState } from "react"
 import {
   getFigurinhasGoods,
   getFigurinhasSeasonalTeasers,
@@ -19,12 +18,13 @@ export function FigurinhasPage({
   setScreen,
   box,
   onAddToBox,
+  onOpenProduct,
 }: {
   setScreen: SetScreen
   box: { id: string }[]
   onAddToBox: (good: AtelierGood) => void
+  onOpenProduct: (good: AtelierGood) => void
 }) {
-  const [expandedId, setExpandedId] = useState<string | null>(null)
   const goods = getFigurinhasGoods()
   const teasers = getFigurinhasSeasonalTeasers()
   const portal = portalPages.figurinhas
@@ -41,7 +41,7 @@ export function FigurinhasPage({
             border: "none",
             background: "transparent",
             fontSize: "17px",
-            ...tecaFont.poetic,
+            ...tecaFont.prose,
             color: "#9a7f6d",
             cursor: "pointer",
             padding: "0 0 12px",
@@ -62,7 +62,7 @@ export function FigurinhasPage({
             textAlign: "left",
             margin: "0 0 28px",
             fontSize: "17px",
-            ...tecaFont.poetic,
+            ...tecaFont.prose,
             lineHeight: 1.5,
             color: "#8b7668",
             padding: "0 4px",
@@ -78,13 +78,8 @@ export function FigurinhasPage({
               key={good.id}
               good={good}
               inBox={box.some((item) => item.id === good.id)}
-              expanded={expandedId === good.id}
-              onToggleExpand={() =>
-                setExpandedId((current) =>
-                  current === good.id ? null : good.id,
-                )
-              }
               onAddToBox={() => onAddToBox(good)}
+              onOpenProduct={() => onOpenProduct(good)}
               onOpenPoetic={
                 good.poeticScreen
                   ? () => setScreen(good.poeticScreen!)
@@ -134,8 +129,7 @@ export function FigurinhasPage({
                   style={{
                     margin: 0,
                     fontFamily: "'Cormorant Garamond', serif",
-                    fontStyle: "italic",
-                    fontSize: "16px",
+                    fontSize: "15px",
                     color: "#b9a594",
                   }}
                 >
