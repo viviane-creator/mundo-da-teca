@@ -81,24 +81,17 @@ type Screen =
   | "meu-mundo"
   | "clube"
 
-type SimpleSubScreen = Exclude<
-  Screen,
-  | "home"
-  | "descobertas"
-  | "descoberta-do-dia"
-  | "universos"
-  | "quintal"
-  | "faz-de-conta"
-  | "observatorio"
-  | "oficina"
-  | "laboratorio"
-  | "cozinha"
-  | "atelie"
-  | "figurinhas"
-  | "minha-caixa"
-  | "meu-mundo"
-  | "clube"
->
+type SimpleSubScreen =
+  | "tesouros"
+  | "papel-de-carta"
+  | AtelierPoeticScreen
+  | "bonequinhas"
+  | "origami"
+  | "imprimiveis"
+  | "cartoes"
+  | "adesivos"
+  | "carimbos"
+  | "bau"
 
 type SubPageContent = {
   parent: "descobertas" | "universos" | "atelie" | "figurinhas" | "clube"
@@ -287,6 +280,10 @@ export default function App() {
   const [diaryEntries, setDiaryEntries] =
     useState<DiaryEntry[]>(initialDiaryEntries)
 
+  const setAppScreen = (nextScreen: string) => {
+    setScreen(nextScreen as Screen)
+  }
+
   const addToBox = (good: AtelierGood) => {
     setBox((current) => {
       if (current.some((item) => item.id === good.id)) return current
@@ -297,7 +294,7 @@ export default function App() {
   return (
     <main style={styles.main}>
       <section style={styles.appShell}>
-        {screen === "home" && <Home setScreen={setScreen} />}
+        {screen === "home" && <Home setScreen={setAppScreen} />}
 
         {screen === "descobertas" && (
           <Page
@@ -321,19 +318,19 @@ export default function App() {
         {isDiscoveryFlowScreen(screen) && (
           <>
             {screen === "diario" && (
-              <DiaryPage setScreen={setScreen} entries={diaryEntries} />
+              <DiaryPage setScreen={setAppScreen} entries={diaryEntries} />
             )}
             {screen === "diario-guardar" && (
               <DiaryNewEntryPage
-                setScreen={setScreen}
+                setScreen={setAppScreen}
                 onSave={(entry) =>
                   setDiaryEntries((current) => [entry, ...current])
                 }
               />
             )}
-            {screen === "colecoes" && <CollectionsPage setScreen={setScreen} />}
+            {screen === "colecoes" && <CollectionsPage setScreen={setAppScreen} />}
             {isCollectionDetailScreen(screen) && (
-              <CollectionDetailPage setScreen={setScreen} screen={screen} />
+              <CollectionDetailPage setScreen={setAppScreen} screen={screen} />
             )}
           </>
         )}
@@ -362,7 +359,7 @@ export default function App() {
 
         {screen === "atelie" && (
           <AtelierShopPage
-            setScreen={setScreen}
+            setScreen={setAppScreen}
             box={box}
             onAddToBox={addToBox}
           />
@@ -370,7 +367,7 @@ export default function App() {
 
         {screen === "figurinhas" && (
           <FigurinhasPage
-            setScreen={setScreen}
+            setScreen={setAppScreen}
             box={box}
             onAddToBox={addToBox}
           />
@@ -379,10 +376,10 @@ export default function App() {
         {screen === "clube" && <ClubPage />}
 
         {screen === "meu-mundo" && (
-          <MeuMundoPage setScreen={setScreen} />
+          <MeuMundoPage setScreen={setAppScreen} />
         )}
 
-        <BottomNav active={resolveNavActive(screen)} setScreen={setScreen} />
+        <BottomNav active={resolveNavActive(screen)} setScreen={setAppScreen} />
       </section>
     </main>
   )
