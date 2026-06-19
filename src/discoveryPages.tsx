@@ -439,10 +439,10 @@ export function DiaryPage({
     <section style={s.subPage}>
       <button
         type="button"
-        onClick={() => setScreen("descobertas")}
+        onClick={() => setScreen("meu-mundo")}
         style={s.backButton}
       >
-        ← descobertas
+        ← meu mundo
       </button>
 
       <img
@@ -645,10 +645,10 @@ export function CollectionsPage({
     <section style={s.subPage}>
       <button
         type="button"
-        onClick={() => setScreen("descobertas")}
+        onClick={() => setScreen("meu-mundo")}
         style={s.backButton}
       >
-        ← descobertas
+        ← meu mundo
       </button>
 
       <img

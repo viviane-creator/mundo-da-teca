@@ -35,9 +35,6 @@ export function PlayExperienceCard({
         <div style={styles.experienceCardBody}>
           <div style={styles.experienceCardHeader}>
             <h3 style={styles.experienceCardTitle}>{experience.title}</h3>
-            {!experience.isFree && (
-              <span style={styles.clubeSeal}>clube da teca</span>
-            )}
           </div>
 
           <p style={styles.experienceCardInvite}>{experience.invite}</p>

@@ -4,9 +4,9 @@ export const pageData = {
     intro: "pequenas coisas que o mundo esconde para quem olha devagar.",
     cover: "/covers/descobertas.png",
   },
-  brincadeiras: {
-    title: "Brincadeiras",
-    intro: "ideias para sair da tela e entrar no mundo real.",
+  universos: {
+    title: "Universos",
+    intro: "áreas de exploração para sair da tela e entrar no mundo real.",
     cover: "/covers/brincadeiras.png",
   },
   atelie: {

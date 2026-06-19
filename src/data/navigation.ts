@@ -7,13 +7,13 @@ export type NavItem = {
 
 export const navItems: NavItem[] = [
   { label: "Início", screen: "home", icon: "/icons/estrela.png" },
-  { label: "Clube", screen: "clube", icon: "/icons/carteirinha.png" },
-  { label: "Brincadeiras", screen: "brincadeiras", icon: "/icons/pipa.png" },
+  { label: "Universos", screen: "universos", icon: "/icons/pipa.png" },
   {
-    label: "Minha Coleção",
-    screen: "minha-colecao",
+    label: "Meu Mundo",
+    screen: "meu-mundo",
     icon: "/cards/descobertas/colecoes.png",
   },
+  { label: "Clube", screen: "clube", icon: "/icons/carteirinha.png" },
   {
     label: "Ateliê",
     screen: "atelie",

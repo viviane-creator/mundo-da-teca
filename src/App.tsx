@@ -40,7 +40,7 @@ import {
   DiaryPage,
 } from "./discoveryPages"
 import { pageData } from "./data/pageData"
-import { brincadeirasCards } from "./data/brincadeirasCards"
+import { universosCards } from "./data/universosCards"
 import { FeatureCard } from "./components/FeatureCard"
 import { SoftNote } from "./components/SoftNote"
 import { BottomNav } from "./components/BottomNav"
@@ -48,7 +48,7 @@ import { PlayExperienceCard } from "./components/PlayExperienceCard"
 import { PlayExperienceDetailPanel } from "./components/PlayExperienceDetailPanel"
 import { Home } from "./pages/Home"
 import { ClubPage } from "./pages/ClubPage"
-import { MinhaColecaoPage } from "./pages/MinhaColecaoPage"
+import { MeuMundoPage } from "./pages/MeuMundoPage"
 
 type Screen =
   | "home"
@@ -59,10 +59,10 @@ type Screen =
   | "colecoes"
   | CollectionDetailScreen
   | "tesouros"
-  | "brincadeiras"
-  | "natureza"
-  | "arte"
-  | "movimento"
+  | "universos"
+  | "quintal"
+  | "faz-de-conta"
+  | "observatorio"
   | "oficina"
   | "laboratorio"
   | "cozinha"
@@ -78,30 +78,23 @@ type Screen =
   | "carimbos"
   | "bau"
   | "minha-caixa"
-  | "minha-colecao"
+  | "meu-mundo"
   | "clube"
 
-type SimpleSubScreen = Exclude<
-  Screen,
-  | "home"
-  | "descobertas"
-  | "descoberta-do-dia"
-  | "brincadeiras"
-  | "natureza"
-  | "arte"
-  | "movimento"
-  | "oficina"
-  | "laboratorio"
-  | "cozinha"
-  | "atelie"
-  | "figurinhas"
-  | "minha-caixa"
-  | "minha-colecao"
-  | "clube"
->
+type SimpleSubScreen =
+  | "tesouros"
+  | "papel-de-carta"
+  | AtelierPoeticScreen
+  | "bonequinhas"
+  | "origami"
+  | "imprimiveis"
+  | "cartoes"
+  | "adesivos"
+  | "carimbos"
+  | "bau"
 
 type SubPageContent = {
-  parent: "descobertas" | "brincadeiras" | "atelie" | "figurinhas" | "clube"
+  parent: "descobertas" | "universos" | "atelie" | "figurinhas" | "clube"
   title: string
   poetic: string
   image: string
@@ -236,7 +229,7 @@ const parentLabels: Record<
   string
 > = {
   descobertas: "descobertas",
-  brincadeiras: "brincadeiras",
+  universos: "universos",
   atelie: "ateliê",
   figurinhas: "figurinhas",
   clube: "clube",
@@ -261,21 +254,21 @@ function resolveNavActive(screen: Screen): string {
   if (isSimpleSubScreen(screen)) {
     const parent = subPageData[screen].parent
     if (parent === "atelie" || parent === "figurinhas") return "atelie"
-    if (parent === "descobertas") return "minha-colecao"
-    if (parent === "brincadeiras") return "brincadeiras"
+    if (parent === "descobertas") return "meu-mundo"
+    if (parent === "universos") return "universos"
     if (parent === "clube") return "clube"
   }
 
-  if (isPlayUniverseScreen(screen)) return "brincadeiras"
+  if (isPlayUniverseScreen(screen)) return "universos"
 
-  if (isDiscoveryFlowScreen(screen)) return "minha-colecao"
+  if (isDiscoveryFlowScreen(screen)) return "meu-mundo"
 
   if (
     screen === "descobertas" ||
     screen === "descoberta-do-dia" ||
     screen === "tesouros"
   ) {
-    return "minha-colecao"
+    return "meu-mundo"
   }
 
   return screen
@@ -287,6 +280,10 @@ export default function App() {
   const [diaryEntries, setDiaryEntries] =
     useState<DiaryEntry[]>(initialDiaryEntries)
 
+  const setAppScreen = (nextScreen: string) => {
+    setScreen(nextScreen as Screen)
+  }
+
   const addToBox = (good: AtelierGood) => {
     setBox((current) => {
       if (current.some((item) => item.id === good.id)) return current
@@ -297,7 +294,7 @@ export default function App() {
   return (
     <main style={styles.main}>
       <section style={styles.appShell}>
-        {screen === "home" && <Home setScreen={setScreen} />}
+        {screen === "home" && <Home setScreen={setAppScreen} />}
 
         {screen === "descobertas" && (
           <Page
@@ -321,19 +318,19 @@ export default function App() {
         {isDiscoveryFlowScreen(screen) && (
           <>
             {screen === "diario" && (
-              <DiaryPage setScreen={setScreen} entries={diaryEntries} />
+              <DiaryPage setScreen={setAppScreen} entries={diaryEntries} />
             )}
             {screen === "diario-guardar" && (
               <DiaryNewEntryPage
-                setScreen={setScreen}
+                setScreen={setAppScreen}
                 onSave={(entry) =>
                   setDiaryEntries((current) => [entry, ...current])
                 }
               />
             )}
-            {screen === "colecoes" && <CollectionsPage setScreen={setScreen} />}
+            {screen === "colecoes" && <CollectionsPage setScreen={setAppScreen} />}
             {isCollectionDetailScreen(screen) && (
-              <CollectionDetailPage setScreen={setScreen} screen={screen} />
+              <CollectionDetailPage setScreen={setAppScreen} screen={screen} />
             )}
           </>
         )}
@@ -350,11 +347,11 @@ export default function App() {
           <MinhaCaixaPage setScreen={setScreen} box={box} />
         )}
 
-        {screen === "brincadeiras" && (
+        {screen === "universos" && (
           <Page
-            portalKey="brincadeiras"
-            cards={brincadeirasCards}
-            sectionTitle="Mundos de Brincar"
+            portalKey="universos"
+            cards={universosCards}
+            sectionTitle="Universos oficiais"
             horizontalCards
             setScreen={setScreen}
           />
@@ -362,7 +359,7 @@ export default function App() {
 
         {screen === "atelie" && (
           <AtelierShopPage
-            setScreen={setScreen}
+            setScreen={setAppScreen}
             box={box}
             onAddToBox={addToBox}
           />
@@ -370,7 +367,7 @@ export default function App() {
 
         {screen === "figurinhas" && (
           <FigurinhasPage
-            setScreen={setScreen}
+            setScreen={setAppScreen}
             box={box}
             onAddToBox={addToBox}
           />
@@ -378,11 +375,11 @@ export default function App() {
 
         {screen === "clube" && <ClubPage />}
 
-        {screen === "minha-colecao" && (
-          <MinhaColecaoPage setScreen={setScreen} />
+        {screen === "meu-mundo" && (
+          <MeuMundoPage setScreen={setAppScreen} />
         )}
 
-        <BottomNav active={resolveNavActive(screen)} setScreen={setScreen} />
+        <BottomNav active={resolveNavActive(screen)} setScreen={setAppScreen} />
       </section>
     </main>
   )
@@ -498,10 +495,10 @@ function PlayUniversePage({
   return (
     <section style={styles.subPage}>
       <button
-        onClick={() => setScreen("brincadeiras")}
+        onClick={() => setScreen("universos")}
         style={styles.backButton}
       >
-        ← brincadeiras
+        ← universos
       </button>
 
       <img
@@ -518,10 +515,9 @@ function PlayUniversePage({
       <SoftNote label="convite">{universe.noteText}</SoftNote>
 
       <section style={styles.experienceCollection}>
-        <h2 style={styles.experienceCollectionTitle}>fichas deste universo</h2>
+        <h2 style={styles.experienceCollectionTitle}>experiências deste universo</h2>
         <p style={styles.experienceCollectionIntro}>
-          quinze convites para escolher devagar. as três primeiras estão
-          abertas; as demais aguardam no clube.
+          escolha um convite para abrir detalhes e continuar descobrindo com calma.
         </p>
 
         <div style={styles.experienceStack}>
@@ -593,10 +589,10 @@ function DiscoveryDay({
   return (
     <section style={styles.subPage}>
       <button
-        onClick={() => setScreen("descobertas")}
+        onClick={() => setScreen("meu-mundo")}
         style={styles.backButton}
       >
-        ← descobertas
+        ← meu mundo
       </button>
 
       <img

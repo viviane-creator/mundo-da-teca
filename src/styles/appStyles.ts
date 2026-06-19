@@ -353,7 +353,7 @@ export const styles: Record<string, CSSProperties> = {
     ...tecaFont.accentHand,
   },
 
-  homeBrincadeirasButton: {
+  homePrimaryButton: {
     width: "100%",
     marginTop: "4px",
     ...tecaObjects.buttonPrimary(),
