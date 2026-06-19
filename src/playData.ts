@@ -1,10 +1,10 @@
 export type PlayUniverseId =
-  | "natureza"
-  | "arte"
-  | "movimento"
-  | "oficina"
   | "laboratorio"
   | "cozinha"
+  | "oficina"
+  | "faz-de-conta"
+  | "quintal"
+  | "observatorio"
 
 export type PlayExperienceDetail = {
   atmosphericVideo: string
@@ -51,13 +51,22 @@ const universeCovers: Record<PlayUniverseId, string> = {
   laboratorio: "/images/universos/laboratorio-capa.png",
   cozinha: "/images/universos/cozinha-capa.png",
   oficina: "/images/universos/oficina-capa.png",
-  natureza: "/images/universos/natureza-capa.png",
-  arte: "/images/universos/arte-capa.png",
-  movimento: "/images/universos/movimento-capa.png",
+  "faz-de-conta": "/images/universos/arte-capa.png",
+  quintal: "/images/universos/natureza-capa.png",
+  observatorio: "/images/universos/movimento-capa.png",
+}
+
+const experienceImageFolder: Record<PlayUniverseId, string> = {
+  laboratorio: "laboratorio",
+  cozinha: "cozinha",
+  oficina: "oficina",
+  "faz-de-conta": "arte",
+  quintal: "natureza",
+  observatorio: "movimento",
 }
 
 function experienceImage(universeId: PlayUniverseId, experienceId: string): string {
-  return `/images/${universeId}/${experienceId}.png`
+  return `/images/${experienceImageFolder[universeId]}/${experienceId}.png`
 }
 
 function placeholderDetail(seed: ExperienceSeed): PlayExperienceDetail {
@@ -823,42 +832,6 @@ const cozinhaSeeds: ExperienceSeed[] = [
 ]
 
 export const playUniverses: Record<PlayUniverseId, PlayUniverse> = {
-  natureza: {
-    id: "natureza",
-    title: "natureza",
-    intro: "o lado de fora e seus pequenos tesouros",
-    poetic: "folhas, vento e chão vivo para brincar com o que já existe.",
-    image: universeCovers.natureza,
-    noteText: "observe devagar: a natureza já começa no caminho de casa.",
-    experiences: buildExperiences("natureza", brincarNaRuaSeeds),
-  },
-  arte: {
-    id: "arte",
-    title: "arte",
-    intro: "imaginação em páginas, recortes e histórias",
-    poetic: "uma coleção de gestos criativos para inventar mundos delicados.",
-    image: universeCovers.arte,
-    noteText: "sem perfeição: mãos curiosas fazem a arte aparecer.",
-    experiences: buildExperiences("arte", fazDeContaSeeds),
-  },
-  movimento: {
-    id: "movimento",
-    title: "movimento",
-    intro: "corpo, ritmo e presença",
-    poetic: "brincadeiras para mexer o corpo e escutar o tempo da tarde.",
-    image: universeCovers.movimento,
-    noteText: "movimento também pode ser suave, silencioso e brincante.",
-    experiences: buildExperiences("movimento", diasDeChuvaSeeds),
-  },
-  oficina: {
-    id: "oficina",
-    title: "oficina",
-    intro: "coisas feitas com as mãos",
-    poetic: "fazer com as próprias mãos deixa a tarde mais presente.",
-    image: universeCovers.oficina,
-    noteText: "ferramentas leves, materiais simples, tempo generoso.",
-    experiences: buildExperiences("oficina", oficinaSeeds),
-  },
   laboratorio: {
     id: "laboratorio",
     title: "laboratório",
@@ -876,6 +849,42 @@ export const playUniverses: Record<PlayUniverseId, PlayUniverse> = {
     image: universeCovers.cozinha,
     noteText: "receitas simples, sem pressa e com adulto por perto.",
     experiences: buildExperiences("cozinha", cozinhaSeeds),
+  },
+  oficina: {
+    id: "oficina",
+    title: "oficina",
+    intro: "coisas feitas com as mãos",
+    poetic: "fazer com as próprias mãos deixa a tarde mais presente.",
+    image: universeCovers.oficina,
+    noteText: "ferramentas leves, materiais simples, tempo generoso.",
+    experiences: buildExperiences("oficina", oficinaSeeds),
+  },
+  "faz-de-conta": {
+    id: "faz-de-conta",
+    title: "faz de conta",
+    intro: "personagens, histórias e mundos inventados",
+    poetic: "uma coleção de gestos criativos para inventar mundos delicados.",
+    image: universeCovers["faz-de-conta"],
+    noteText: "sem pressa de terminar: inventar também é descobrir.",
+    experiences: buildExperiences("faz-de-conta", fazDeContaSeeds),
+  },
+  quintal: {
+    id: "quintal",
+    title: "quintal",
+    intro: "ar livre, calçada e descobertas lá fora",
+    poetic: "folhas, vento e chão vivo para brincar com o que já existe.",
+    image: universeCovers.quintal,
+    noteText: "observe devagar: o quintal já começa no caminho de casa.",
+    experiences: buildExperiences("quintal", brincarNaRuaSeeds),
+  },
+  observatorio: {
+    id: "observatorio",
+    title: "observatório",
+    intro: "céu, curiosidade e olhar atento",
+    poetic: "janela, chuva e tardes de dentro para olhar o mundo devagar.",
+    image: universeCovers.observatorio,
+    noteText: "olhar também pode ser suave, silencioso e curioso.",
+    experiences: buildExperiences("observatorio", diasDeChuvaSeeds),
   },
 }
 

@@ -1,5 +1,7 @@
 import { useState } from "react"
 import {
+  clubAtelierNote,
+  clubIntroText,
   clubParticipationPlans,
   collectionConceptNote,
 } from "../data/participationPlans"
@@ -9,7 +11,11 @@ import { styles } from "../styles/appStyles"
 import { tecaTilt } from "../tecaVisual"
 import { WorldPortalLayout, portalPages } from "../worldPortal"
 
-export function ClubPage() {
+export function ClubPage({
+  setScreen,
+}: {
+  setScreen: (screen: string) => void
+}) {
   const [childName, setChildName] = useState("teca")
   const [birthday, setBirthday] = useState("12 de abril")
   const [memberSince, setMemberSince] = useState("maio de 2026")
@@ -18,7 +24,9 @@ export function ClubPage() {
   return (
     <WorldPortalLayout {...portal} compactTitle breath="large">
       <section style={styles.clubPlansSection}>
-        <h2 style={styles.homeSectionHeading}>escolha seu plano</h2>
+        <p style={styles.clubBelongingText}>{clubIntroText}</p>
+
+        <h2 style={styles.homeSectionHeading}>como participar</h2>
 
         <div style={styles.planCardsStack}>
           {clubParticipationPlans.map((plan, index) => (
@@ -33,6 +41,16 @@ export function ClubPage() {
       </section>
 
       <SoftNote label="a coleção">{collectionConceptNote}</SoftNote>
+
+      <SoftNote label="ateliê">{clubAtelierNote}</SoftNote>
+
+      <button
+        type="button"
+        style={styles.clubJoinButton}
+        onClick={() => setScreen("atelie")}
+      >
+        Conhecer o Ateliê
+      </button>
 
       <div style={styles.homeEditorialDivider} />
 

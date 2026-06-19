@@ -1,7 +1,22 @@
-import { whatIsMundoDaTeca } from "../data/participationPlans"
+import { HomeExploreMap } from "../components/HomeExploreMap"
 import { ParticipationSection } from "../components/ParticipationSection"
 import { styles } from "../styles/appStyles"
 import { WorldPortalLayout, portalPages } from "../worldPortal"
+
+const homeManifesto = [
+  "Acreditamos que existe um mundo inteiro de coisas incríveis fora das telas.",
+  "Um mundo de transformações, coleções, perguntas, invenções e descobertas.",
+  "O Mundo da Teca nasceu para ajudar crianças a encontrarem esse mundo novamente.",
+] as const
+
+const atelierCabinetDecor = [
+  { src: "/cards/atelie/album.png", w: 72, h: 48, top: "8%", right: "6%", rotate: 12 },
+  { src: "/cards/atelie/pacotinho-folhas.png", w: 56, h: 56, bottom: "14%", left: "4%", rotate: -8 },
+  { src: "/cards/atelie/papel-de-carta.png", w: 64, h: 48, top: "38%", left: "8%", rotate: -14 },
+  { src: "/cards/descobertas/tesouros.png", w: 52, h: 52, bottom: "8%", right: "10%", rotate: 6 },
+  { src: "/cards/atelie/bonequinhas.png", w: 48, h: 48, top: "18%", left: "22%", rotate: -5 },
+  { src: "/cards/atelie/papelaria.png", w: 58, h: 44, bottom: "22%", right: "28%", rotate: 10 },
+] as const
 
 export function Home({
   setScreen,
@@ -12,31 +27,169 @@ export function Home({
 
   return (
     <WorldPortalLayout {...portal} variant="home">
-      <section style={styles.homeSectionBlock}>
-        <h2 style={styles.homeSectionHeading}>O que é o Mundo da Teca?</h2>
-        <p style={styles.homeSectionPoetic}>{whatIsMundoDaTeca}</p>
-      </section>
+      <div style={styles.homeV2Journey}>
+        <section style={styles.homeV2Manifesto}>
+          <p style={styles.homeV2SectionKicker}>manifesto</p>
+          <h2 style={styles.homeSectionHeading}>O Mundo da Teca</h2>
+          {homeManifesto.map((paragraph) => (
+            <p key={paragraph} style={styles.homeSectionPoetic}>
+              {paragraph}
+            </p>
+          ))}
+        </section>
 
-      <div style={styles.homeEditorialDivider} />
+        <div style={styles.homeEditorialDivider} />
 
-      <ParticipationSection onGoToClube={() => setScreen("clube")} />
+        <section style={styles.homeSectionBlock}>
+          <p style={styles.homeV2SectionKicker}>mapa de exploração</p>
+          <h2 style={styles.homeSectionHeading}>
+            Escolha por onde começar.
+          </h2>
+          <p style={styles.homeSectionPoetic}>
+            Cada universo guarda um tipo diferente de descoberta.
+          </p>
 
-      <div style={styles.homeEditorialDivider} />
+          <div style={styles.homeV2UniversosWrap}>
+            <HomeExploreMap onSelect={setScreen} />
+            <p style={styles.homeV2TrailEnd}>
+              · · · a trilha encontra seu lugar · · ·
+            </p>
+          </div>
+        </section>
 
-      <section style={styles.homeSectionBlock}>
-        <h2 style={styles.homeSectionHeading}>Conheça as brincadeiras</h2>
-        <p style={styles.homeSectionPoetic}>
-          Veja algumas experiências abertas e descubra como o Mundo da Teca ajuda
-          as crianças a explorar o mundo real longe das telas.
-        </p>
-        <button
-          type="button"
-          style={styles.homeBrincadeirasButton}
-          onClick={() => setScreen("brincadeiras")}
-        >
-          Ver brincadeiras
-        </button>
-      </section>
+        <div style={styles.homeEditorialDivider} />
+
+        <div style={styles.homeV2DestinationWrap}>
+          <section style={styles.homeV2Destination}>
+            <span style={styles.homeV2DestinationSpine} aria-hidden="true" />
+
+            <p style={styles.homeV2DestinationArrow}>
+              ↓ seu destino · onde a trilha encontra casa
+            </p>
+
+            <div style={styles.homeV2FicharioIllustration} aria-hidden="true">
+              <img
+                src="/cards/descobertas/colecoes.png"
+                alt=""
+                style={{
+                  ...styles.homeV2FicharioPage,
+                  ...styles.homeV2FicharioPageBack,
+                }}
+              />
+              <img
+                src="/cards/descobertas/diario.png"
+                alt=""
+                style={{
+                  ...styles.homeV2FicharioPage,
+                  ...styles.homeV2FicharioPageMid,
+                }}
+              />
+              <img
+                src="/cards/descobertas/tesouros.png"
+                alt=""
+                style={{
+                  ...styles.homeV2FicharioPage,
+                  ...styles.homeV2FicharioPageFront,
+                }}
+              />
+            </div>
+
+            <h2 style={styles.homeV2DestinationHeading}>Meu Mundo</h2>
+            <p style={styles.homeV2DestinationPromise}>
+              Toda descoberta precisa de um lugar para morar.
+            </p>
+            <p style={styles.homeSectionPoetic}>
+              Registre, guarde e colecione tudo aquilo que despertou sua
+              curiosidade.
+            </p>
+
+            <button
+              type="button"
+              style={styles.homeV2DestinationButton}
+              onClick={() => setScreen("meu-mundo")}
+            >
+              Abrir Meu Mundo
+            </button>
+          </section>
+        </div>
+
+        <div style={styles.homeEditorialDivider} />
+
+        <div id="home-como-participar">
+          <ParticipationSection
+            variant="home-path"
+            onGoToClube={() => setScreen("clube")}
+          />
+        </div>
+
+        <div style={styles.homeEditorialDivider} />
+
+        <section style={styles.homeV2Cabinet}>
+          <div style={styles.homeV2CabinetDecor} aria-hidden="true">
+            {atelierCabinetDecor.map((item) => (
+              <img
+                key={item.src}
+                src={item.src}
+                alt=""
+                style={{
+                  ...styles.homeV2CabinetDecorImg,
+                  width: `${item.w}px`,
+                  height: `${item.h}px`,
+                  ...(item.top ? { top: item.top } : {}),
+                  ...(item.bottom ? { bottom: item.bottom } : {}),
+                  ...(item.left ? { left: item.left } : {}),
+                  ...(item.right ? { right: item.right } : {}),
+                  transform: `rotate(${item.rotate}deg)`,
+                }}
+              />
+            ))}
+            <span
+              style={{
+                ...styles.homeV2CabinetDecorStamp,
+                top: "22%",
+                right: "18%",
+              }}
+            />
+            <span
+              style={{
+                ...styles.homeV2CabinetDecorStamp,
+                width: "22px",
+                height: "22px",
+                bottom: "28%",
+                right: "6%",
+                opacity: 0.28,
+              }}
+            />
+          </div>
+
+          <div style={styles.homeV2CabinetInner}>
+            <span
+              style={{ ...styles.homeV2CabinetShelf, top: "42%" }}
+              aria-hidden="true"
+            />
+            <span
+              style={{ ...styles.homeV2CabinetShelf, top: "68%" }}
+              aria-hidden="true"
+            />
+            <p style={styles.homeV2SectionKicker}>gabinete de curiosidades</p>
+            <h2 style={styles.homeSectionHeading}>Ateliê</h2>
+            <p style={styles.homeV2CabinetLead}>
+              Alguns tesouros insistem em vir para casa.
+            </p>
+            <p style={styles.homeSectionPoetic}>
+              Figurinhas, papelaria, colecionáveis e pequenas descobertas para
+              continuar explorando.
+            </p>
+            <button
+              type="button"
+              style={styles.homeV2SoftButton}
+              onClick={() => setScreen("atelie")}
+            >
+              Visitar Ateliê
+            </button>
+          </div>
+        </section>
+      </div>
     </WorldPortalLayout>
   )
 }

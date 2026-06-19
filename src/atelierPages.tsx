@@ -1,6 +1,7 @@
 import { useState, type CSSProperties } from "react"
 import { AtelierGoodCard } from "./atelierGoodCard"
 import { getAtelierCatalogSections, type AtelierGood } from "./atelierShopData"
+import { styles } from "./styles/appStyles"
 import {
   tecaColors,
   tecaFont,
@@ -73,6 +74,19 @@ const figurinhasPortalStyles: Record<string, CSSProperties> = {
   },
   featuredCta: {
     margin: 0,
+    fontSize: "17px",
+    letterSpacing: "0.5px",
+    color: "#c88757",
+    ...tecaFont.body,
+    fontWeight: 500,
+  },
+  featuredCtaButton: {
+    margin: "12px 0 0",
+    padding: 0,
+    border: "none",
+    background: "transparent",
+    cursor: "pointer",
+    textAlign: "left",
     fontSize: "17px",
     letterSpacing: "0.5px",
     color: "#c88757",
@@ -204,21 +218,23 @@ function FigurinhasPortalCard({ onOpen }: { onOpen: () => void }) {
         <div style={figurinhasPortalStyles.featuredFade} />
       </div>
       <div style={figurinhasPortalStyles.featuredBody}>
-        <p style={figurinhasPortalStyles.featuredKicker}>coleção principal</p>
+        <p style={figurinhasPortalStyles.featuredKicker}>Figurinhas</p>
         <h3 style={figurinhasPortalStyles.featuredTitle}>figurinhas</h3>
         <p style={figurinhasPortalStyles.featuredPoetic}>
           álbum das descobertas, pacotinhos surpresa e rituais de troca — um
-          universo inteiro para guardar devagar.
+          universo de colecionáveis para guardar devagar.
         </p>
-        <p style={figurinhasPortalStyles.featuredCta}>
-          entrar no universo →
-        </p>
+        <p style={figurinhasPortalStyles.featuredCta}>Ver Figurinhas →</p>
       </div>
     </button>
   )
 }
 
 type SetScreen = (screen: string) => void
+
+function scrollToAtelierSection(sectionId: string) {
+  document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth" })
+}
 
 export function AtelierShopPage({
   setScreen,
@@ -245,8 +261,8 @@ export function AtelierShopPage({
             onClick={() => setScreen("minha-caixa")}
             style={figurinhasPortalStyles.minhaCaixaLinkMain}
           >
-            <span style={tecaObjects.etiqueta()}>caixa</span>
-            minha caixa
+            <span style={tecaObjects.etiqueta()}>tesouros</span>
+            escolhas guardadas
             {boxCount > 0 && (
               <span style={figurinhasPortalStyles.minhaCaixaCount}>
                 {boxCount}
@@ -263,31 +279,68 @@ export function AtelierShopPage({
 
         <article style={figurinhasPortalStyles.atelierTreasuresNote}>
           <p style={figurinhasPortalStyles.atelierTreasuresTitle}>
-            Tesouros do Mundo da Teca
+            Meu Mundo de Tesouros
           </p>
           <p style={figurinhasPortalStyles.atelierTreasuresText}>
-            Pequenas coisas para guardar, trocar, colecionar e continuar brincando
-            longe das telas.
+            O coração físico do Ateliê — tesouros, colecionáveis e peças
+            especiais para guardar, trocar e levar para casa.
           </p>
+          <button
+            type="button"
+            style={figurinhasPortalStyles.featuredCtaButton}
+            onClick={() => scrollToAtelierSection("atelier-tesouros")}
+          >
+            Ver Tesouros →
+          </button>
         </article>
 
         <WorldPortalSectionIntro
-          title="objetos do ateliê"
-          intro="escolha devagar. cada peça foi pensada para continuar o universo da Teca em casa — como achados de uma mesa cheia de descobertas."
+          title="o ateliê da teca"
+          intro="não é uma loja genérica: é o lugar dos tesouros, figurinhas, papelaria, produtos especiais e materiais colecionáveis do Mundo da Teca."
         />
 
         <div style={figurinhasPortalStyles.softNote}>
           <p style={figurinhasPortalStyles.softNoteLabel}>clube da teca</p>
           <p style={figurinhasPortalStyles.softNoteText}>
-            quem pertence ao clube tem 30% de cuidado a menos no preço — um
-            desconto fixo em todo o ateliê, sem barulho de promoção.
+            assinantes do Clube têm desconto no Ateliê. aqui também existem
+            compras avulsas — o Ateliê complementa a jornada do Clube, mas vive
+            por si só.
           </p>
         </div>
 
+        <button
+          type="button"
+          style={{ ...styles.clubJoinButton, marginBottom: "28px" }}
+          onClick={() => setScreen("clube")}
+        >
+          Conhecer o Clube
+        </button>
+
         <FigurinhasPortalCard onOpen={() => setScreen("figurinhas")} />
 
+        <button
+          type="button"
+          style={{
+            ...figurinhasPortalStyles.featuredCtaButton,
+            margin: "0 0 28px",
+          }}
+          onClick={() => scrollToAtelierSection("atelier-papelaria")}
+        >
+          Ver Papelaria →
+        </button>
+
         {catalog.map((section) => (
-          <section key={section.id} style={figurinhasPortalStyles.drawerSection}>
+          <section
+            key={section.id}
+            id={
+              section.id === "colecoes"
+                ? "atelier-tesouros"
+                : section.id === "papelaria"
+                  ? "atelier-papelaria"
+                  : undefined
+            }
+            style={figurinhasPortalStyles.drawerSection}
+          >
             <h2 style={figurinhasPortalStyles.drawerSectionTitle}>
               {section.title}
             </h2>

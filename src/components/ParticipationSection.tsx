@@ -2,10 +2,39 @@ import { participationPlans } from "../data/participationPlans"
 import { styles } from "../styles/appStyles"
 import { PlanCard } from "./PlanCard"
 
-export function ParticipationSection({ onGoToClube }: { onGoToClube: () => void }) {
+export function ParticipationSection({
+  onGoToClube,
+  variant = "default",
+}: {
+  onGoToClube: () => void
+  variant?: "default" | "home-path"
+}) {
+  if (variant === "home-path") {
+    return (
+      <section style={styles.homeV2PathSection}>
+        <p style={styles.homeV2SectionKicker}>escolha de jornada</p>
+        <h2 style={styles.homeV2PathQuestion}>
+          Como você quer explorar?
+        </h2>
+        <p style={styles.homeV2PathFork}>Dois jeitos de seguir viagem.</p>
+
+        <div style={styles.homeV2PathStack}>
+          {participationPlans.map((plan) => (
+            <PlanCard
+              key={plan.id}
+              plan={plan}
+              onCta={onGoToClube}
+              variant="home-path"
+            />
+          ))}
+        </div>
+      </section>
+    )
+  }
+
   return (
     <section style={styles.homeSectionBlock}>
-      <h2 style={styles.homeSectionHeading}>escolha como participar</h2>
+      <h2 style={styles.homeSectionHeading}>Como Participar</h2>
 
       <div style={styles.planCardsStack}>
         {participationPlans.map((plan, index) => (

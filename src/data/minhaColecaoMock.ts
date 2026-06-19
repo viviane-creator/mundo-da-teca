@@ -127,9 +127,9 @@ export const ficharioUniverses: FicharioUniverse[] = [
     ),
   },
   {
-    id: "brincar-na-rua",
-    title: "Brincar na Rua",
-    poetic: "calçada, vento e brincadeiras lá fora",
+    id: "quintal",
+    title: "Quintal",
+    poetic: "ar livre, calçada e descobertas lá fora",
     image: "/images/universos/natureza-capa.png",
     progressLabel: "4 de 12 páginas guardadas",
     slots: padSlots(
@@ -143,9 +143,9 @@ export const ficharioUniverses: FicharioUniverse[] = [
     ),
   },
   {
-    id: "dias-de-chuva",
-    title: "Dias de Chuva",
-    poetic: "janela, chuva e tardes de dentro",
+    id: "observatorio",
+    title: "Observatório",
+    poetic: "céu, curiosidade e olhar atento",
     image: "/images/universos/movimento-capa.png",
     progressLabel: "1 de 12 páginas guardadas",
     slots: padSlots(

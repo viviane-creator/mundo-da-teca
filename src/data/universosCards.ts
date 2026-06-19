@@ -1,4 +1,4 @@
-export type BrincadeirasCard = {
+export type UniversosCard = {
   id: string
   title: string
   text?: string
@@ -6,7 +6,7 @@ export type BrincadeirasCard = {
   target: string
 }
 
-export const brincadeirasCards: BrincadeirasCard[] = [
+export const universosCards: UniversosCard[] = [
   {
     id: "laboratorio",
     title: "Laboratório",
@@ -33,20 +33,20 @@ export const brincadeirasCards: BrincadeirasCard[] = [
     title: "Faz de Conta",
     text: "personagens, histórias e mundos inventados",
     image: "/images/universos/arte-capa.png",
-    target: "arte",
+    target: "faz-de-conta",
   },
   {
-    id: "brincar-na-rua",
-    title: "Brincar na Rua",
-    text: "calçada, vento e brincadeiras lá fora",
+    id: "quintal",
+    title: "Quintal",
+    text: "ar livre, quintal e descobertas lá fora",
     image: "/images/universos/natureza-capa.png",
-    target: "natureza",
+    target: "quintal",
   },
   {
-    id: "dias-de-chuva",
-    title: "Dias de Chuva",
-    text: "janela, chuva e tardes de dentro",
+    id: "observatorio",
+    title: "Observatório",
+    text: "céu, curiosidade e olhar atento",
     image: "/images/universos/movimento-capa.png",
-    target: "movimento",
+    target: "observatorio",
   },
 ]

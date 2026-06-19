@@ -67,21 +67,21 @@ export const atelierCoverImage = "/covers/atelie.png"
 export const atelierSections: AtelierSection[] = [
   {
     id: "colecoes",
-    title: "coleções do ateliê",
+    title: "Tesouros",
     intro:
-      "pequenas séries que chegam em tiragens quietas, como achados de uma gaveta antiga.",
+      "peças especiais para guardar, trocar e colecionar — objetos que prolongam a descoberta em casa.",
   },
   {
     id: "papelaria",
-    title: "papelaria",
+    title: "Papelaria",
     intro:
-      "papéis e mensagens para escrever, dobrar e entregar sem pressa.",
+      "papéis, cartões e mensagens para escrever, dobrar e entregar sem pressa.",
   },
   {
     id: "especiais",
-    title: "objetos especiais",
+    title: "Edições Especiais",
     intro:
-      "peças raras e encontros delicados — coisas que merecem um lugar na mesa.",
+      "lançamentos raros, colaborações e peças que merecem um lugar na mesa.",
   },
 ]
 
@@ -357,7 +357,7 @@ export const atelierGoods: AtelierGood[] = [
     collection: "Gaveta do Ateliê",
     isClubExclusive: false,
     description:
-      "arquivo digital com atividades calmas para imprimir em casa. papel comum já basta.",
+      "arquivo digital com materiais calmos para imprimir em casa e continuar o Mundo da Teca — papel comum já basta.",
     section: "papelaria",
     visualKind: "standard",
   },

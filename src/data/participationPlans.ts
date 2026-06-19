@@ -7,8 +7,10 @@ export type ParticipationPlan = {
   ctaLabel: string
 }
 
-export const whatIsMundoDaTeca =
-  "Mundo da Teca é uma coleção de experiências criativas para crianças explorarem o mundo real, registrarem suas descobertas e construírem sua própria coleção ao longo do tempo."
+export const whatIsMundoDaTeca = [
+  "Mundo da Teca é um ecossistema de descobertas para crianças curiosas.",
+  "Aqui, cada experiência convida a observar, experimentar, registrar e colecionar o mundo de um jeito mais lento, criativo e encantado.",
+] as const
 
 export const participationPlans: ParticipationPlan[] = [
   {
@@ -26,7 +28,7 @@ export const participationPlans: ParticipationPlan[] = [
     title: "Colecionador",
     benefits: [
       "experiência física + digital",
-      "fichário físico",
+      "caderno da coleção",
       "novas páginas mensais",
       "materiais para experiências",
       "coleção física",
@@ -35,31 +37,59 @@ export const participationPlans: ParticipationPlan[] = [
   },
 ]
 
+export const homeParticipationJourneys: Record<
+  ParticipationPlanId,
+  {
+    icon: string
+    journeyTitle: string
+    journeyPoetic: string
+    pathCta: string
+  }
+> = {
+  explorador: {
+    icon: "🌿",
+    journeyTitle: "Explorar Digitalmente",
+    journeyPoetic: "Universos, experiências e Meu Mundo — pelo caminho digital.",
+    pathCta: "Seguir pelo digital",
+  },
+  colecionador: {
+    icon: "📦",
+    journeyTitle: "Receber em Casa",
+    journeyPoetic:
+      "Materiais e tesouros que chegam devagar, para guardar com as mãos.",
+    pathCta: "Seguir com o físico",
+  },
+}
+
 export const clubParticipationPlans: ParticipationPlan[] = [
   {
     id: "explorador",
     title: "Explorador",
     benefits: [
-      "acesso digital",
-      "experiências",
-      "6 universos",
-      "coleção digital",
+      "plano digital",
+      "Universos, experiências e Meu Mundo digital",
+      "Diário, Coleções e Biblioteca de materiais para imprimir",
     ],
-    ctaLabel: "Quero ser Explorador",
+    ctaLabel: "Começar pelo digital",
   },
   {
     id: "colecionador",
     title: "Colecionador",
     benefits: [
+      "plano físico + digital",
       "tudo do Explorador",
-      "fichário físico",
-      "novas páginas para a coleção",
-      "materiais para experiências",
-      "adesivos, selos e pequenos tesouros",
+      "envio do Meu Mundo de Descobertas em casa",
+      "materiais, páginas, fichas, colecionáveis e pequenos tesouros",
     ],
-    ctaLabel: "Quero ser Colecionador",
+    ctaLabel: "Receber em casa",
   },
 ]
 
+export const clubIntroText =
+  "O Clube é a forma de participar do Mundo da Teca — um convite para descobrir, registrar e colecionar o mundo real, longe de telas e sem pressa."
+
 export const collectionConceptNote =
-  "a coleção do Mundo da Teca cresce devagar: experiências vividas, páginas guardadas e pequenas memórias construídas com as mãos e com o tempo."
+  "a coleção cresce devagar: experiências vividas, páginas guardadas e pequenas memórias construídas com as mãos e com o tempo."
+
+export const clubAtelierNote =
+  "assinantes do Clube têm desconto no Ateliê — onde ficam figurinhas, papelaria, produtos físicos e o Meu Mundo de Tesouros."

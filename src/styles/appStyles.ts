@@ -362,6 +362,15 @@ export const styles: Record<string, CSSProperties> = {
     ...tecaFont.accentHand,
   },
 
+  homeUniversosButton: {
+    width: "100%",
+    marginTop: "4px",
+    ...tecaObjects.buttonPrimary(),
+    padding: "14px 20px",
+    fontSize: "24px",
+    ...tecaFont.accentHand,
+  },
+
   homePathGrid: {
     display: "grid",
     gridTemplateColumns: "repeat(2, minmax(0, 1fr))",
@@ -443,6 +452,567 @@ export const styles: Record<string, CSSProperties> = {
     display: "grid",
     gridTemplateColumns: "repeat(2, minmax(0, 1fr))",
     gap: "20px",
+  },
+
+  homePortalsGrid: {
+    display: "grid",
+    gridTemplateColumns: "repeat(2, minmax(0, 1fr))",
+    gap: "14px",
+    marginTop: "6px",
+  },
+
+  homePortalButton: {
+    border: "none",
+    background: "transparent",
+    padding: 0,
+    margin: 0,
+    cursor: "pointer",
+    width: "100%",
+    textAlign: "center",
+  },
+
+  homePortalCard: {
+    ...tecaObjects.note(tecaRadius.md),
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
+    minHeight: "156px",
+    padding: "20px 12px 18px",
+    textAlign: "center",
+  },
+
+  homePortalIcon: {
+    fontSize: "52px",
+    lineHeight: 1,
+    marginBottom: "12px",
+  },
+
+  homePortalTitle: {
+    margin: "0 0 6px",
+    fontFamily: "'Cormorant Garamond', serif",
+    fontSize: "19px",
+    fontWeight: 500,
+    color: theme.text,
+    lineHeight: 1.15,
+  },
+
+  homePortalPhrase: {
+    margin: 0,
+    fontFamily: "'Cormorant Garamond', serif",
+    fontStyle: "italic",
+    fontSize: "13px",
+    lineHeight: 1.35,
+    color: theme.muted,
+  },
+
+  homeV2Journey: {
+    position: "relative",
+  },
+
+  homeV2Manifesto: {
+    ...tecaObjects.note(tecaRadius.lg),
+    borderLeft: "2px dashed rgba(195, 165, 141, 0.55)",
+    padding: "22px 20px 22px 22px",
+    background:
+      "linear-gradient(135deg, rgba(255,253,249,0.98) 0%, rgba(248,239,228,0.92) 100%)",
+  },
+
+  homeV2SectionKicker: {
+    margin: "0 0 10px",
+    fontSize: "9px",
+    letterSpacing: "2.5px",
+    textTransform: "uppercase",
+    color: "#b3815f",
+    fontWeight: 700,
+    fontFamily: "'Nunito', sans-serif",
+  },
+
+  homeV2UniversosWrap: {
+    position: "relative",
+    marginTop: "8px",
+    padding: "12px 8px 16px",
+    borderRadius: "24px",
+    background:
+      "radial-gradient(ellipse at 18% 22%, rgba(217,196,173,0.14) 0%, transparent 52%), radial-gradient(ellipse at 82% 68%, rgba(201,179,154,0.1) 0%, transparent 48%), linear-gradient(180deg, rgba(255,253,249,0.55) 0%, rgba(248,239,228,0.35) 100%)",
+  },
+
+  homeExploreMap: {
+    position: "relative",
+    width: "100%",
+    minHeight: "760px",
+    marginTop: "4px",
+  },
+
+  homeExploreMapSvg: {
+    position: "absolute",
+    inset: 0,
+    width: "100%",
+    height: "100%",
+    pointerEvents: "none",
+    overflow: "visible",
+  },
+
+  homeExploreStop: {
+    position: "absolute",
+    border: "none",
+    background: "transparent",
+    padding: "4px 2px",
+    margin: 0,
+    cursor: "pointer",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    gap: "6px",
+    maxWidth: "148px",
+    zIndex: 2,
+    WebkitTapHighlightColor: "transparent",
+  },
+
+  homeExploreStopCenter: {
+    transform: "translate(-50%, -22%)",
+    textAlign: "center",
+  },
+
+  homeExploreStopLeft: {
+    transform: "translate(-6%, -22%)",
+    textAlign: "left",
+    alignItems: "flex-start",
+  },
+
+  homeExploreStopRight: {
+    transform: "translate(-94%, -22%)",
+    textAlign: "right",
+    alignItems: "flex-end",
+  },
+
+  homeExploreMarker: {
+    position: "relative",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    width: "138px",
+    height: "138px",
+  },
+
+  homeExploreMarkerRingOuter: {
+    position: "absolute",
+    inset: "-4px",
+    width: "calc(100% + 8px)",
+    height: "calc(100% + 8px)",
+    pointerEvents: "none",
+  },
+
+  homeExploreMarkerRing: {
+    position: "absolute",
+    inset: 0,
+    width: "100%",
+    height: "100%",
+    pointerEvents: "none",
+  },
+
+  homeExploreMarkerIcon: {
+    position: "relative",
+    fontSize: "69px",
+    lineHeight: 1,
+    zIndex: 1,
+    filter: "drop-shadow(0 1px 0 rgba(255,253,249,0.5))",
+  },
+
+  homeExploreStopTitle: {
+    fontFamily: "'Cormorant Garamond', serif",
+    fontSize: "26px",
+    fontWeight: 500,
+    color: theme.text,
+    lineHeight: 1.08,
+    letterSpacing: "0.25px",
+  },
+
+  homeV2TrailEnd: {
+    textAlign: "center",
+    margin: "8px 0 0",
+    fontFamily: "'Cormorant Garamond', serif",
+    fontStyle: "italic",
+    fontSize: "14px",
+    color: "#a89486",
+    letterSpacing: "0.3px",
+  },
+
+  homeV2DestinationWrap: {
+    position: "relative",
+    margin: "20px 0 16px",
+    padding: "8px 0",
+  },
+
+  homeV2Destination: {
+    position: "relative",
+    padding: "40px 26px 36px 32px",
+    borderRadius: "36px",
+    border: `1px solid ${theme.line}`,
+    background:
+      "radial-gradient(ellipse at 88% 12%, rgba(217,196,173,0.22) 0%, transparent 42%), linear-gradient(168deg, #fffdf9 0%, #f7efe5 42%, #efe3d4 78%, #e8dccf 100%)",
+    boxShadow:
+      "0 22px 52px rgba(120,90,60,0.12), inset 0 1px 0 rgba(255,255,255,0.9)",
+    overflow: "hidden",
+  },
+
+  homeV2DestinationSpine: {
+    position: "absolute",
+    left: 0,
+    top: "12%",
+    bottom: "12%",
+    width: "10px",
+    borderRadius: "0 6px 6px 0",
+    background:
+      "linear-gradient(180deg, #dcc9b4 0%, #c9b39a 50%, #dcc9b4 100%)",
+    boxShadow: "inset -1px 0 0 rgba(255,255,255,0.35)",
+    opacity: 0.85,
+  },
+
+  homeV2DestinationArrow: {
+    textAlign: "center",
+    margin: "0 0 16px",
+    fontFamily: "'Cormorant Garamond', serif",
+    fontStyle: "italic",
+    fontSize: "17px",
+    color: "#b3815f",
+    letterSpacing: "0.8px",
+  },
+
+  homeV2FicharioIllustration: {
+    position: "relative",
+    height: "220px",
+    margin: "0 auto 28px",
+    maxWidth: "340px",
+  },
+
+  homeV2FicharioPage: {
+    position: "absolute",
+    width: "155px",
+    height: "155px",
+    objectFit: "cover",
+    borderRadius: "18px",
+    border: `1px solid ${theme.line}`,
+    boxShadow: "0 12px 28px rgba(120,90,60,0.13)",
+  },
+
+  homeV2FicharioPageBack: {
+    left: "4%",
+    top: "22px",
+    transform: "rotate(-10deg)",
+    opacity: 0.88,
+    zIndex: 1,
+  },
+
+  homeV2FicharioPageMid: {
+    left: "50%",
+    top: "4px",
+    transform: "translateX(-50%) rotate(2deg)",
+    zIndex: 2,
+    width: "172px",
+    height: "172px",
+  },
+
+  homeV2FicharioPageFront: {
+    right: "2%",
+    top: "26px",
+    transform: "rotate(9deg)",
+    opacity: 0.92,
+    zIndex: 3,
+  },
+
+  homeV2DestinationHeading: {
+    margin: "0 0 12px",
+    fontFamily: "'Caveat', cursive",
+    fontSize: "56px",
+    fontWeight: 400,
+    color: "#6a4f3c",
+    lineHeight: 0.9,
+    textAlign: "left",
+  },
+
+  homeV2DestinationPromise: {
+    margin: "0 0 12px",
+    fontFamily: "'Cormorant Garamond', serif",
+    fontStyle: "italic",
+    fontSize: "24px",
+    lineHeight: 1.32,
+    color: "#7a6254",
+    textAlign: "left",
+  },
+
+  homeV2DestinationTags: {
+    display: "flex",
+    flexWrap: "wrap",
+    gap: "8px",
+    margin: "0 0 20px",
+  },
+
+  homeV2DestinationTag: {
+    ...tecaObjects.etiqueta(),
+    fontSize: "8px",
+    letterSpacing: "1.8px",
+    background: "rgba(255, 253, 249, 0.82)",
+  },
+
+  homeV2DestinationButton: {
+    width: "100%",
+    marginTop: "2px",
+    border: `1px solid rgba(200, 135, 87, 0.4)`,
+    background: "rgba(255, 253, 249, 0.92)",
+    borderRadius: "999px",
+    padding: "16px 22px",
+    fontSize: "30px",
+    color: theme.text,
+    cursor: "pointer",
+    ...tecaFont.accentHand,
+    boxShadow: "0 6px 16px rgba(120,90,60,0.07)",
+  },
+
+  homeV2SoftButton: {
+    width: "100%",
+    marginTop: "4px",
+    border: `1px solid ${theme.line}`,
+    background: "rgba(255, 253, 249, 0.88)",
+    borderRadius: "999px",
+    padding: "14px 20px",
+    fontSize: "26px",
+    color: theme.text,
+    cursor: "pointer",
+    ...tecaFont.accentHand,
+    boxShadow: "0 4px 12px rgba(120,90,60,0.05)",
+  },
+
+  homeV2PathSection: {
+    marginTop: "4px",
+    padding: "26px 20px 24px",
+    borderRadius: "28px",
+    border: "none",
+    background:
+      "linear-gradient(180deg, rgba(255,253,249,0.45) 0%, rgba(248,239,228,0.25) 100%)",
+  },
+
+  homeV2PathQuestion: {
+    margin: "0 0 12px",
+    fontFamily: "'Cormorant Garamond', serif",
+    fontSize: "26px",
+    fontWeight: 500,
+    fontStyle: "italic",
+    lineHeight: 1.25,
+    color: theme.text,
+    textAlign: "left",
+  },
+
+  homeV2PathIntro: {
+    margin: "0 0 16px",
+    fontFamily: "'Cormorant Garamond', serif",
+    fontStyle: "italic",
+    fontSize: "18px",
+    lineHeight: 1.45,
+    color: theme.muted,
+    textAlign: "left",
+  },
+
+  homeV2PathFork: {
+    textAlign: "center",
+    margin: "0 0 22px",
+    fontFamily: "'Cormorant Garamond', serif",
+    fontStyle: "italic",
+    fontSize: "14px",
+    color: "#b8987a",
+    letterSpacing: "0.8px",
+    opacity: 0.85,
+  },
+
+  homeV2PathStack: {
+    display: "flex",
+    flexDirection: "column",
+    gap: "18px",
+  },
+
+  homeV2PathCard: {
+    padding: "22px 18px 20px",
+    textAlign: "left",
+    background: "transparent",
+    borderRadius: "24px",
+    border: `1px dashed rgba(196, 165, 141, 0.42)`,
+    boxShadow: "none",
+  },
+
+  homeV2PathJourneyHeader: {
+    display: "flex",
+    alignItems: "center",
+    gap: "10px",
+    marginBottom: "6px",
+  },
+
+  homeV2PathJourneyIcon: {
+    fontSize: "34px",
+    lineHeight: 1,
+    flexShrink: 0,
+  },
+
+  homeV2PathJourneyTitle: {
+    margin: 0,
+    fontFamily: "'Caveat', cursive",
+    fontSize: "38px",
+    fontWeight: 400,
+    color: theme.text,
+    lineHeight: 1,
+  },
+
+  homeV2PathPlanName: {
+    margin: "0 0 12px",
+    fontSize: "8px",
+    letterSpacing: "1.8px",
+    textTransform: "uppercase",
+    color: "#b5a090",
+    fontWeight: 500,
+    fontFamily: "'Nunito', sans-serif",
+    opacity: 0.75,
+  },
+
+  homeV2PathJourneyPoetic: {
+    margin: "0 0 8px",
+    fontFamily: "'Cormorant Garamond', serif",
+    fontStyle: "italic",
+    fontSize: "15px",
+    lineHeight: 1.4,
+    color: "#a89486",
+    opacity: 0.85,
+  },
+
+  homeV2PathBenefitsHint: {
+    margin: "0 0 16px",
+    fontFamily: "'Cormorant Garamond', serif",
+    fontStyle: "italic",
+    fontSize: "13px",
+    lineHeight: 1.4,
+    color: "#b5a090",
+    opacity: 0.9,
+  },
+
+  homeV2PathLabel: {
+    margin: "0 0 8px",
+    fontSize: "9px",
+    letterSpacing: "2px",
+    textTransform: "uppercase",
+    color: "#b3815f",
+    fontWeight: 700,
+    fontFamily: "'Nunito', sans-serif",
+  },
+
+  homeV2PathCardTitle: {
+    margin: "0 0 10px",
+    fontFamily: "'Cormorant Garamond', serif",
+    fontSize: "24px",
+    fontWeight: 500,
+    color: theme.text,
+    lineHeight: 1.1,
+  },
+
+  homeV2PathBenefits: {
+    margin: "0 0 16px",
+    padding: 0,
+    listStyle: "none",
+  },
+
+  homeV2PathBenefitItem: {
+    marginBottom: "6px",
+    fontFamily: "'Cormorant Garamond', serif",
+    fontStyle: "italic",
+    fontSize: "16px",
+    lineHeight: 1.4,
+    color: theme.muted,
+  },
+
+  homeV2PathButton: {
+    width: "100%",
+    border: "none",
+    background: "transparent",
+    borderRadius: "0",
+    padding: "4px 0 0",
+    fontSize: "24px",
+    color: "#a06840",
+    cursor: "pointer",
+    textAlign: "left",
+    ...tecaFont.accentHand,
+    textDecoration: "underline",
+    textDecorationColor: "rgba(200, 135, 87, 0.35)",
+    textUnderlineOffset: "4px",
+  },
+
+  homeV2Cabinet: {
+    position: "relative",
+    padding: "28px 22px 26px",
+    borderRadius: "28px",
+    border: `1px solid ${theme.line}`,
+    background:
+      "linear-gradient(180deg, #f0e4d6 0%, #e8ddd0 55%, #e2d4c4 100%)",
+    boxShadow: "inset 0 2px 0 rgba(255,255,255,0.35)",
+    overflow: "hidden",
+  },
+
+  homeV2CabinetDecor: {
+    position: "absolute",
+    inset: 0,
+    pointerEvents: "none",
+    overflow: "hidden",
+    zIndex: 0,
+  },
+
+  homeV2CabinetDecorImg: {
+    position: "absolute",
+    objectFit: "cover",
+    borderRadius: "10px",
+    opacity: 0.09,
+    filter: "saturate(0.75) sepia(0.15)",
+  },
+
+  homeV2CabinetDecorStamp: {
+    position: "absolute",
+    width: "28px",
+    height: "28px",
+    borderRadius: "999px",
+    border: "1px dashed rgba(196, 165, 141, 0.35)",
+    opacity: 0.35,
+  },
+
+  homeV2CabinetInner: {
+    position: "relative",
+    zIndex: 2,
+  },
+
+  homeV2CabinetLead: {
+    margin: "0 0 10px",
+    fontFamily: "'Cormorant Garamond', serif",
+    fontStyle: "italic",
+    fontSize: "22px",
+    lineHeight: 1.35,
+    color: "#7a6254",
+  },
+
+  homeV2CabinetShelf: {
+    position: "absolute",
+    left: "12px",
+    right: "12px",
+    height: "1px",
+    background:
+      "linear-gradient(90deg, transparent, rgba(122,98,84,0.22), transparent)",
+  },
+
+  homeV2CabinetTags: {
+    display: "flex",
+    flexWrap: "wrap",
+    gap: "8px",
+    margin: "0 0 18px",
+  },
+
+  homeV2CabinetTag: {
+    ...tecaObjects.etiqueta(),
+    fontSize: "8px",
+    letterSpacing: "1.5px",
+    background: "rgba(255, 253, 249, 0.75)",
   },
 
   worldsStack: {
@@ -1286,6 +1856,34 @@ export const styles: Record<string, CSSProperties> = {
     fontFamily: "'Caveat', cursive",
     fontSize: "26px",
     color: "#b3815f",
+    flexShrink: 0,
+  },
+
+  meuMundoIntroSection: {
+    marginTop: "4px",
+    marginBottom: "8px",
+  },
+
+  meuMundoSectionsStack: {
+    display: "flex",
+    flexDirection: "column",
+    gap: "14px",
+  },
+
+  meuMundoSectionCard: {
+    ...tecaObjects.note(tecaRadius.md),
+    display: "flex",
+    alignItems: "center",
+    gap: "14px",
+    padding: "14px 16px",
+  },
+
+  meuMundoSectionImage: {
+    width: "56px",
+    height: "56px",
+    objectFit: "cover",
+    borderRadius: "14px",
+    border: `1px solid ${theme.line}`,
     flexShrink: 0,
   },
 

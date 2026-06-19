@@ -19,9 +19,8 @@ export const portalPages = {
   home: {
     cover: "/characters/teca-estrelinha-praia.png",
     coverAlt: "Teca no mundo real",
-    title: "coisas pequenas para imaginar, brincar e guardar",
-    tagline:
-      "descobertas, brincadeiras, papelaria, coleções e pequenas memórias para uma infância mais lenta, criativa e viva.",
+    title: "Existe um mundo inteiro esperando para ser descoberto.",
+    tagline: "Observe. Descubra. Colecione.",
     kicker: "observa • cria • imagina",
   },
   descobertas: {
@@ -30,18 +29,18 @@ export const portalPages = {
     title: "descobertas",
     tagline: "pequenas coisas que o mundo esconde para quem olha devagar.",
   },
-  brincadeiras: {
+  universos: {
     cover: "/covers/brincadeiras.png",
-    coverAlt: "Brincadeiras",
-    title: "brincadeiras",
-    tagline: "ideias para sair da tela e entrar no mundo real.",
+    coverAlt: "Universos",
+    title: "universos",
+    tagline: "seis mundos para explorar experiências e sair da tela.",
   },
   atelie: {
     cover: "/covers/atelie.png",
     coverAlt: "Ateliê",
     title: "ateliê",
     tagline:
-      "figurinhas, papéis, coleções e pequenas coisas para guardar.",
+      "a loja do Mundo da Teca — onde o encantamento vira objeto físico ou digital.",
   },
   figurinhas: {
     cover: "/cards/atelie/album.png",
@@ -54,14 +53,15 @@ export const portalPages = {
     cover: "/covers/clube.png",
     coverAlt: "Clube da Teca",
     title: "clube da teca",
-    tagline: "um lugar para continuar guardando infância devagar.",
-  },
-  minhaColecao: {
-    cover: "/covers/descobertas.png",
-    coverAlt: "Meu Fichário",
-    title: "meu fichário",
     tagline:
-      "um lugar para guardar descobertas, experiências e pequenas coleções.",
+      "a forma de participar do Mundo da Teca — descobrir, registrar e colecionar com calma.",
+  },
+  meuMundo: {
+    cover: "/covers/descobertas.png",
+    coverAlt: "Meu Mundo",
+    title: "Meu Mundo",
+    tagline:
+      "Aqui vivem suas descobertas, registros, coleções e materiais para imprimir.",
   },
 } as const
 

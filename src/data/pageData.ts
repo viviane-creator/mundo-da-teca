@@ -4,14 +4,15 @@ export const pageData = {
     intro: "pequenas coisas que o mundo esconde para quem olha devagar.",
     cover: "/covers/descobertas.png",
   },
-  brincadeiras: {
-    title: "Brincadeiras",
-    intro: "ideias para sair da tela e entrar no mundo real.",
+  universos: {
+    title: "Universos",
+    intro: "seis mundos para explorar experiências e sair da tela.",
     cover: "/covers/brincadeiras.png",
   },
   atelie: {
     title: "Ateliê",
-    intro: "figurinhas, papéis, coleções e pequenos tesouros para guardar.",
+    intro:
+      "a loja do Mundo da Teca — tesouros, figurinhas, papelaria e edições especiais.",
     cover: "/covers/atelie.png",
   },
   clube: {
