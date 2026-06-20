@@ -24,6 +24,9 @@ export type PlayExperience = {
   materials: string
   people: string
   place: string
+  time: string
+  mess: string
+  collectible: string
   isFree: boolean
   detail: PlayExperienceDetail
 }
@@ -45,6 +48,66 @@ type ExperienceSeed = {
   materials: string
   people: string
   place: string
+  time?: string
+  mess?: string
+  collectible?: string
+}
+
+function inferDiscoveryMeta(seed: ExperienceSeed): {
+  time: string
+  mess: string
+  collectible: string
+} {
+  const materials = seed.materials.toLowerCase()
+  const messyKeywords = [
+    "tinta",
+    "cola",
+    "massa",
+    "detergente",
+    "espuma",
+    "giz",
+    "areia",
+    "barbante",
+    "fita",
+  ]
+  const slowKeywords = ["congelador", "forno", "esperar", "prensa", "livro pesado"]
+
+  const isMessy = messyKeywords.some((keyword) => materials.includes(keyword))
+  const isSlow =
+    slowKeywords.some((keyword) => materials.includes(keyword)) ||
+    seed.invite.includes("devagar") ||
+    seed.invite.includes("espera")
+
+  return {
+    time: seed.time ?? (isSlow ? "1 dia ou mais" : "20–40 min"),
+    mess: seed.mess ?? (isMessy ? "média" : "baixa"),
+    collectible: seed.collectible ?? "sim",
+  }
+}
+
+export function formatDiscoveryTitle(title: string): string {
+  return title
+    .split(" ")
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ")
+}
+
+const universeFichaPrefix: Record<PlayUniverseId, string> = {
+  laboratorio: "LAB",
+  cozinha: "COZ",
+  oficina: "OFI",
+  "faz-de-conta": "FC",
+  quintal: "QNT",
+  observatorio: "OBS",
+}
+
+/** Código catalográfico da ficha — ex.: LAB-03 */
+export function formatFichaCodigo(
+  universeId: PlayUniverseId,
+  index: number,
+): string {
+  const prefix = universeFichaPrefix[universeId]
+  return `${prefix}-${String(index + 1).padStart(2, "0")}`
 }
 
 const universeCovers: Record<PlayUniverseId, string> = {
@@ -85,12 +148,17 @@ function buildExperiences(
   universeId: PlayUniverseId,
   seeds: ExperienceSeed[]
 ): PlayExperience[] {
-  return seeds.map((seed, index) => ({
-    ...seed,
-    image: experienceImage(universeId, seed.id),
-    isFree: index < 3,
-    detail: placeholderDetail(seed),
-  }))
+  return seeds.map((seed, index) => {
+    const meta = inferDiscoveryMeta(seed)
+
+    return {
+      ...seed,
+      ...meta,
+      image: experienceImage(universeId, seed.id),
+      isFree: index < 3,
+      detail: placeholderDetail(seed),
+    }
+  })
 }
 
 const brincarNaRuaSeeds: ExperienceSeed[] = [

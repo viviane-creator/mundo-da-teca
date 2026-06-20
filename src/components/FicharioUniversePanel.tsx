@@ -1,7 +1,5 @@
-import {
-  getUniverseArchiveLabel,
-  type FicharioUniverse,
-} from "../data/minhaColecaoMock"
+import { getUniverseCollectionSummary } from "../data/minhaColecaoMock"
+import type { FicharioUniverse } from "../data/minhaColecaoMock"
 import { CollectionPageSlot } from "./CollectionPageSlot"
 import { styles } from "../styles/appStyles"
 
@@ -14,7 +12,13 @@ export function FicharioUniversePanel({
   expanded: boolean
   onToggle: () => void
 }) {
-  const archiveLabel = getUniverseArchiveLabel(universe.slots)
+  const collectionSummary = getUniverseCollectionSummary(universe.slots)
+  const guardadas = universe.slots.filter(
+    (slot) => slot.status === "concluida" || slot.status === "recebida"
+  ).length
+  const aguardando = universe.slots.filter(
+    (slot) => slot.status === "aguardando"
+  ).length
 
   return (
     <section style={styles.ficharioUniversePanel}>
@@ -30,20 +34,19 @@ export function FicharioUniversePanel({
             ...(expanded ? styles.ficharioUniverseHeaderOpen : {}),
           }}
         >
-          <span style={styles.ficharioUniverseIcon} aria-hidden="true">
+          <span
+            style={styles.ficharioUniverseEmblemWatermark}
+            aria-hidden="true"
+          >
             {universe.icon}
           </span>
 
-          <img
-            src={universe.image}
-            alt=""
-            style={styles.ficharioUniverseThumb}
-          />
-
           <div style={styles.ficharioUniverseHeaderBody}>
-            <h3 style={styles.ficharioUniverseTitle}>{universe.title}</h3>
+            <h3 style={styles.ficharioUniverseTitle}>
+              {universe.collectionTitle}
+            </h3>
             <p style={styles.ficharioUniversePoetic}>{universe.poetic}</p>
-            <p style={styles.ficharioArchiveLabel}>{archiveLabel}</p>
+            <p style={styles.ficharioArchiveLabel}>{collectionSummary}</p>
           </div>
 
           <span style={styles.ficharioUniverseChevron} aria-hidden="true">
@@ -53,17 +56,22 @@ export function FicharioUniversePanel({
       </button>
 
       {expanded && (
-        <div style={styles.ficharioSlotsStack}>
-          {universe.slots
-            .filter((slot) => slot.status !== "aguardando")
-            .map((slot, index) => (
+        <div style={styles.ficharioAlbumSpread}>
+          <div style={styles.ficharioAlbumLegend}>
+            <span style={styles.ficharioAlbumLegendItem}>
+              {guardadas} fichas guardadas
+            </span>
+            <span style={styles.ficharioAlbumLegendDot}>·</span>
+            <span style={styles.ficharioAlbumLegendItem}>
+              {aguardando} espaços livres
+            </span>
+          </div>
+
+          <div style={styles.ficharioAlbumGrid}>
+            {universe.slots.map((slot, index) => (
               <CollectionPageSlot key={slot.id} slot={slot} index={index} />
             ))}
-          {universe.slots.some((slot) => slot.status === "aguardando") && (
-            <p style={styles.ficharioDrawerHint}>
-              · · · gavetas ainda vazias, prontas para guardar · · ·
-            </p>
-          )}
+          </div>
         </div>
       )}
     </section>

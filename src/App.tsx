@@ -46,7 +46,12 @@ import {
   DiaryPage,
 } from "./discoveryPages"
 import { pageData } from "./data/pageData"
-import { getUniverseEmblem } from "./data/homeUniversePortals"
+import {
+  getUniverseChapterIndex,
+  getUniverseChapterPhrase,
+  getUniverseChapterTitle,
+  getUniverseEmblem,
+} from "./data/homeUniversePortals"
 import { UniversosPage } from "./pages/UniversosPage"
 import { FeatureCard } from "./components/FeatureCard"
 import { SoftNote } from "./components/SoftNote"
@@ -141,28 +146,28 @@ const discoveryCards: CardItem[] = [
   {
     id: "descoberta-do-dia",
     title: "Descoberta do dia",
-    text: "um convite para observar o mundo real com calma",
+    text: "uma ficha para observar o mundo real com calma",
     image: "/cards/descobertas/descoberta-do-dia.png",
     target: "descoberta-do-dia",
   },
   {
     id: "diario",
     title: "Diário",
-    text: "pequenas coisas que já foram guardadas",
+    text: "fichas de memória já guardadas",
     image: "/cards/descobertas/diario.png",
     target: "diario",
   },
   {
     id: "colecoes",
     title: "Coleções",
-    text: "folhas, flores, pedras, sementes...",
+    text: "fichas reunidas por universo",
     image: "/cards/descobertas/colecoes.png",
     target: "colecoes",
   },
   {
     id: "tesouros",
     title: "Tesouros",
-    text: "achados especiais que aparecem de vez em quando",
+    text: "fichas especiais que aparecem de vez em quando",
     image: "/cards/descobertas/tesouros.png",
     target: "tesouros",
   },
@@ -328,6 +333,7 @@ export default function App() {
           <Page
             portalKey="descobertas"
             cards={discoveryCards}
+            sectionTitle="Fichas do caminho"
             setScreen={setScreen}
           />
         )}
@@ -498,29 +504,44 @@ function PlayUniversePage({
       </button>
 
       <header style={styles.playUniverseChapterHero}>
-        <img
-          src={universe.image}
-          alt=""
-          style={styles.playUniverseCoverFade}
-          aria-hidden="true"
-        />
+        <span style={styles.playUniverseChapterSpine} aria-hidden="true" />
+        <p style={styles.playUniverseChapterKicker}>
+          capítulo {getUniverseChapterIndex(universe.id)}
+        </p>
         <span style={styles.playUniverseEmblemWatermark} aria-hidden="true">
           {getUniverseEmblem(universe.id)}
         </span>
-        <h1 style={styles.playUniverseTitle}>{universe.title}</h1>
-        <p style={styles.playUniversePoetic}>{universe.poetic}</p>
+        <h1 style={styles.playUniverseTitle}>
+          {getUniverseChapterTitle(universe.id)}
+        </h1>
+        <p style={styles.playUniverseChapterPhrase}>
+          {getUniverseChapterPhrase(universe.id)}
+        </p>
       </header>
+
+      <div style={styles.playUniverseInviteWrap}>
+        <SoftNote label="convite" centered>
+          {universe.noteText}
+        </SoftNote>
+      </div>
 
       <section style={styles.experienceCollection}>
         <h2 style={styles.experienceCollectionTitle}>
-          Descobertas deste universo
+          Fichas deste universo
         </h2>
+        <p style={styles.experienceCollectionCount}>
+          {universe.experiences.length}{" "}
+          {universe.experiences.length === 1 ? "ficha" : "fichas"} para
+          explorar
+        </p>
 
         <div style={styles.experienceStack}>
-          {universe.experiences.map((experience) => (
+          {universe.experiences.map((experience, index) => (
             <div key={experience.id} style={styles.experienceStackItem}>
               <PlayExperienceCard
                 experience={experience}
+                universeId={universe.id}
+                index={index}
                 fallbackImage={universe.image}
                 selected={openedId === experience.id}
                 onSelect={() =>
@@ -537,10 +558,6 @@ function PlayUniversePage({
           ))}
         </div>
       </section>
-
-      <div style={styles.playUniverseInviteWrap}>
-        <SoftNote label="convite">{universe.noteText}</SoftNote>
-      </div>
     </section>
   )
 }

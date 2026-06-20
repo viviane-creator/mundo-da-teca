@@ -1,14 +1,31 @@
 import { useState } from "react"
-import type { PlayExperience } from "../playData"
-import { styles } from "../styles/appStyles"
+import {
+  formatDiscoveryTitle,
+  formatFichaCodigo,
+  type PlayExperience,
+  type PlayUniverseId,
+} from "../playData"
+import { tecaHierarchy } from "../tecaVisual"
+import { FicharioFicha, FicharioRegistro } from "./fichario"
+
+const discoveryMetaFields = [
+  { label: "Materiais", key: "materials" },
+  { label: "Tempo", key: "time" },
+  { label: "Bagunça", key: "mess" },
+  { label: "Vira coleção", key: "collectible" },
+] as const
 
 export function PlayExperienceCard({
   experience,
+  universeId,
+  index,
   fallbackImage,
   selected,
   onSelect,
 }: {
   experience: PlayExperience
+  universeId: PlayUniverseId
+  index: number
   fallbackImage: string
   selected: boolean
   onSelect: () => void
@@ -16,43 +33,36 @@ export function PlayExperienceCard({
   const [imageSrc, setImageSrc] = useState(experience.image)
 
   return (
-    <button onClick={onSelect} style={styles.experienceCardButton}>
-      <article
+    <FicharioFicha
+      variant="descoberta"
+      codigo={formatFichaCodigo(universeId, index)}
+      title={formatDiscoveryTitle(experience.title)}
+      image={imageSrc}
+      imageAlt={experience.title}
+      seal={!experience.isFree ? "clube da teca" : null}
+      selected={selected}
+      onSelect={onSelect}
+      onImageError={() => {
+        if (imageSrc !== fallbackImage) setImageSrc(fallbackImage)
+      }}
+    >
+      <p
         style={{
-          ...styles.experienceCard,
-          ...(selected ? styles.experienceCardSelected : {}),
+          margin: "0 0 12px",
+          ...tecaHierarchy.l5Body,
+          fontSize: "16px",
+          lineHeight: 1.5,
         }}
       >
-        <img
-          src={imageSrc}
-          alt={experience.title}
-          style={styles.experienceCardImage}
-          onError={() => {
-            if (imageSrc !== fallbackImage) setImageSrc(fallbackImage)
-          }}
-        />
+        {experience.invite}
+      </p>
 
-        <div style={styles.experienceCardBody}>
-          <div style={styles.experienceCardHeader}>
-            <h3 style={styles.experienceCardTitle}>{experience.title}</h3>
-            {!experience.isFree && (
-              <span style={styles.clubeSeal}>clube da teca</span>
-            )}
-          </div>
-
-          {selected && (
-            <>
-              <p style={styles.experienceCardInvite}>{experience.invite}</p>
-
-              <div style={styles.experienceCardMeta}>
-                <span>{experience.materials}</span>
-                <span>{experience.people}</span>
-                <span>{experience.place}</span>
-              </div>
-            </>
-          )}
-        </div>
-      </article>
-    </button>
+      <FicharioRegistro
+        fields={discoveryMetaFields.map((field) => ({
+          label: field.label,
+          value: experience[field.key],
+        }))}
+      />
+    </FicharioFicha>
   )
 }

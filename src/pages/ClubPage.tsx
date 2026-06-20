@@ -18,7 +18,11 @@ export function ClubPage({
   return (
     <WorldPortalLayout {...portal} breath="large">
       <section style={styles.clubPlansSection}>
+        <p style={styles.clubSecondaryLabel}>novas fichas chegando</p>
         <h2 style={styles.clubEntryHeading}>Como Participar</h2>
+        <p style={styles.clubFichaHint}>
+          O clube envia fichas novas para a coleção — online ou em casa.
+        </p>
 
         <div style={styles.planCardsStack}>
           {clubParticipationPlans.map((plan, index) => (

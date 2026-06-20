@@ -1,52 +1,61 @@
-import type { FicharioSlot, FicharioSlotStatus } from "../data/minhaColecaoMock"
-import { styles } from "../styles/appStyles"
-import { tecaTilt } from "../tecaVisual"
-
-const slotSealLabel: Record<FicharioSlotStatus, string | null> = {
-  concluida: "guardada",
-  recebida: "recebida",
-  aguardando: null,
-}
-
-function slotStyle(status: FicharioSlotStatus) {
-  if (status === "concluida") return styles.ficharioSlotConcluida
-  if (status === "recebida") return styles.ficharioSlotRecebida
-  return styles.ficharioSlotAguardando
-}
-
-export function CollectionPageSlot({
-  slot,
-  index,
-}: {
-  slot: FicharioSlot
-  index: number
-}) {
-  const seal = slotSealLabel[slot.status]
-
-  return (
-    <article
-      style={{
-        ...styles.ficharioSlot,
-        ...slotStyle(slot.status),
-        ...tecaTilt(index % 2 === 0 ? 0.12 : -0.12),
-      }}
-    >
-      {slot.status === "aguardando" ? (
-        <>
-          <div style={styles.ficharioSlotEmptyFrame} />
-          <p style={styles.ficharioSlotEmptyText}>
-            espaço reservado para futuras descobertas
-          </p>
-        </>
-      ) : (
-        <>
-          <div style={styles.ficharioSlotHeader}>
-            {seal && <span style={styles.ficharioSlotSeal}>{seal}</span>}
-          </div>
-          <h4 style={styles.ficharioSlotTitle}>{slot.title}</h4>
-          {slot.note && <p style={styles.ficharioSlotNote}>{slot.note}</p>}
-        </>
-      )}
-    </article>
-  )
-}
+import type { FicharioSlot, FicharioSlotStatus } from "../data/minhaColecaoMock"
+import { formatDiscoveryTitle } from "../playData"
+import { FicharioFicha } from "./fichario"
+
+const slotSealLabel: Record<FicharioSlotStatus, string | null> = {
+  concluida: "guardada",
+  recebida: "em construção",
+  aguardando: null,
+}
+
+function slotCodigo(slotId: string): string {
+  return slotId.replace(/-/g, "·").toUpperCase()
+}
+
+export function CollectionPageSlot({
+  slot,
+  index,
+}: {
+  slot: FicharioSlot
+  index: number
+}) {
+  const seal = slotSealLabel[slot.status]
+
+  if (slot.status === "aguardando") {
+    return (
+      <FicharioFicha
+        compact
+        empty
+        variant="descoberta"
+        codigo={slotCodigo(slot.id)}
+        emptyLabel="espaço para nova ficha"
+        tilt={index % 2 === 0 ? 0.08 : -0.08}
+      />
+    )
+  }
+
+  return (
+    <FicharioFicha
+      compact
+      variant="descoberta"
+      codigo={slotCodigo(slot.id)}
+      title={formatDiscoveryTitle(slot.title ?? "")}
+      seal={seal}
+      tilt={index % 2 === 0 ? 0.08 : -0.08}
+    >
+      {slot.note && (
+        <p
+          style={{
+            margin: 0,
+            fontFamily: "'Cormorant Garamond', serif",
+            fontSize: "13px",
+            color: "#9a8475",
+            lineHeight: 1.35,
+          }}
+        >
+          {slot.note}
+        </p>
+      )}
+    </FicharioFicha>
+  )
+}

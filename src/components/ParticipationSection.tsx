@@ -12,11 +12,11 @@ export function ParticipationSection({
   if (variant === "home-path") {
     return (
       <section style={styles.homeV2PathSection}>
-        <p style={styles.homeV2SectionKicker}>escolha de jornada</p>
-        <h2 style={styles.homeV2PathQuestion}>
-          Como você quer explorar?
-        </h2>
-        <p style={styles.homeV2PathFork}>Dois jeitos de seguir viagem.</p>
+        <p style={styles.homeV2SectionKicker}>continuar o fichário</p>
+        <h2 style={styles.homeSectionHeading}>Escolha como começar.</h2>
+        <p style={styles.homeSectionSubtitle}>
+          Novas fichas chegam na caixa — para continuar a coleção em casa.
+        </p>
 
         <div style={styles.homeV2PathStack}>
           {participationPlans.map((plan) => (

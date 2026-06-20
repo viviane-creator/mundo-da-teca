@@ -1,5 +1,5 @@
 import type { CSSProperties } from "react"
-import { tecaColors, tecaFont, tecaHierarchy, tecaObjects, tecaRadius, tecaSpacing, tecaType } from "../tecaVisual"
+import { tecaColors, tecaFichario, tecaFont, tecaHierarchy, tecaObjects, tecaRadius, tecaSpacing, tecaType } from "../tecaVisual"
 
 const theme = {
   text: "#6a4f3c",
@@ -193,39 +193,46 @@ export const styles: Record<string, CSSProperties> = {
 
   playUniverseChapterHero: {
     position: "relative",
-    marginBottom: "8px",
-    padding: "48px 20px 32px",
+    marginBottom: "0",
+    padding: "56px 24px 40px 30px",
     textAlign: "center",
     overflow: "hidden",
-    borderRadius: "30px",
-    border: `1px dashed rgba(196, 165, 141, 0.45)`,
+    borderRadius: "28px",
+    border: `1px dashed rgba(196, 165, 141, 0.38)`,
     background:
-      "radial-gradient(ellipse at 50% 42%, rgba(217,196,173,0.14) 0%, transparent 58%), linear-gradient(168deg, #fffdf9 0%, #f7efe5 52%, #efe3d4 100%)",
-    boxShadow:
-      "0 14px 36px rgba(120,90,60,0.06), inset 0 1px 0 rgba(255,255,255,0.88)",
+      "radial-gradient(ellipse at 50% 40%, rgba(217,196,173,0.08) 0%, transparent 65%), linear-gradient(168deg, #fffdf9 0%, #faf4ec 58%, #f4ebe1 100%)",
+    boxShadow: "inset 0 1px 0 rgba(255,255,255,0.9)",
   },
 
-  playUniverseCoverFade: {
+  playUniverseChapterSpine: {
     position: "absolute",
-    inset: 0,
-    width: "100%",
-    height: "100%",
-    objectFit: "cover",
-    opacity: 0.14,
-    filter: "saturate(0.75) sepia(0.25) contrast(0.92)",
-    pointerEvents: "none",
+    left: 0,
+    top: "14%",
+    bottom: "14%",
+    width: "8px",
+    borderRadius: "0 5px 5px 0",
+    background:
+      "linear-gradient(180deg, rgba(220,201,180,0.55) 0%, rgba(201,179,154,0.45) 50%, rgba(220,201,180,0.55) 100%)",
+    opacity: 0.7,
     zIndex: 0,
+  },
+
+  playUniverseChapterKicker: {
+    position: "relative",
+    zIndex: 1,
+    ...tecaHierarchy.l6Micro,
+    marginBottom: "14px",
   },
 
   playUniverseEmblemWatermark: {
     position: "absolute",
     left: "50%",
-    top: "44%",
+    top: "48%",
     transform: "translate(-50%, -50%)",
-    fontSize: "min(300px, 72vw)",
+    fontSize: "min(380px, 86vw)",
     lineHeight: 1,
-    opacity: 0.14,
-    filter: "grayscale(0.2) sepia(0.35) contrast(0.85)",
+    opacity: 0.07,
+    filter: "grayscale(0.1) sepia(0.15)",
     pointerEvents: "none",
     userSelect: "none",
     zIndex: 0,
@@ -234,18 +241,27 @@ export const styles: Record<string, CSSProperties> = {
   playUniverseTitle: {
     position: "relative",
     zIndex: 1,
-    ...tecaHierarchy.l1PageTitle,
-    marginBottom: `${tecaSpacing.titleToPoetic}px`,
+    ...tecaFont.portalTitle,
+    fontSize: "52px",
+    textAlign: "center",
+    margin: `0 auto ${tecaSpacing.titleToPoetic}px`,
+    lineHeight: 0.95,
   },
 
-  playUniversePoetic: {
+  playUniverseChapterPhrase: {
     position: "relative",
     zIndex: 1,
-    ...tecaHierarchy.l2Poetic,
+    ...tecaHierarchy.l4Subtitle,
+    marginTop: 0,
+    marginBottom: 0,
+    maxWidth: "300px",
+    fontSize: "16px",
+    lineHeight: 1.45,
+    color: theme.muted,
   },
 
   playUniverseInviteWrap: {
-    margin: `${tecaSpacing.poeticToSection}px 0 0`,
+    margin: `${tecaSpacing.poeticToSection}px 0`,
     paddingTop: "0",
     borderTop: "none",
   },
@@ -258,11 +274,12 @@ export const styles: Record<string, CSSProperties> = {
 
   discoveryButton: {
     marginTop: 28,
-    width: "100%",
-    ...tecaObjects.buttonPrimary(),
-    padding: "16px 24px",
-    fontSize: "20px",
+    ...tecaFichario.etiquetaAction(),
     cursor: "pointer",
+  },
+
+  ficharioAction: {
+    ...tecaFichario.etiquetaAction(),
   },
 
   tipBox: {
@@ -361,6 +378,21 @@ export const styles: Record<string, CSSProperties> = {
     marginTop: `${tecaSpacing.poeticToSection}px`,
   },
 
+  homeChapterSection: {
+    marginTop: "4px",
+  },
+
+  homeChapterDivider: {
+    margin: "44px 0 40px",
+    height: "1px",
+    background:
+      "linear-gradient(90deg, rgba(194,165,141,0) 0%, rgba(194,165,141,0.45) 30%, rgba(194,165,141,0.45) 70%, rgba(194,165,141,0) 100%)",
+  },
+
+  homeV2MeuMundo: {
+    display: "contents",
+  },
+
   homeSectionHeading: {
     ...tecaHierarchy.l3SectionTitle,
     ...tecaHierarchy.l3SectionTitleFlush,
@@ -399,8 +431,10 @@ export const styles: Record<string, CSSProperties> = {
   },
 
   planCard: {
-    padding: "20px 18px 18px",
+    padding: "18px 16px 16px",
     textAlign: "left",
+    ...tecaFichario.ficha(),
+    borderStyle: "dashed",
   },
 
   planCardTitle: {
@@ -429,12 +463,10 @@ export const styles: Record<string, CSSProperties> = {
   },
 
   planCardButton: {
-    width: "100%",
-    ...tecaObjects.buttonPrimary(),
-    padding: "14px 20px",
-    fontSize: "24px",
-    textAlign: "center",
-      },
+    ...tecaFichario.etiquetaAction(),
+    marginTop: "8px",
+    fontSize: "18px",
+  },
 
   homeBrincadeirasButton: {
     width: "100%",
@@ -578,6 +610,50 @@ export const styles: Record<string, CSSProperties> = {
 
   homeV2Journey: {
     position: "relative",
+    padding: "8px 4px 4px 14px",
+    borderRadius: "28px",
+    border: `1px dashed rgba(196, 165, 141, 0.32)`,
+    background:
+      "linear-gradient(168deg, #fffdf9 0%, #f8efe5 48%, #f0e4d6 100%)",
+    boxShadow: "inset 0 1px 0 rgba(255,255,255,0.88)",
+    overflow: "hidden",
+  },
+
+  homeFicharioSpine: {
+    ...tecaFichario.divisoriaSpine(),
+    zIndex: 0,
+  },
+
+  homeDivisoria: {
+    ...tecaFichario.divisoria(),
+    position: "relative",
+    zIndex: 1,
+    marginBottom: "14px",
+  },
+
+  homeDivisoriaAba: {
+    ...tecaFichario.aba(),
+  },
+
+  homeDivisoriaAbaIcon: {
+    ...tecaFichario.abaIcon(),
+  },
+
+  homeDivisoriaAbaLabel: {
+    ...tecaFichario.abaLabel(),
+    ...tecaHierarchy.l6Micro,
+  },
+
+  homeDivisoriaCorpo: {
+    ...tecaFichario.divisoriaCorpo(),
+  },
+
+  homePlaceTitle: {
+    ...tecaFont.portalTitle,
+    fontSize: "36px",
+    textAlign: "left",
+    margin: `0 0 ${tecaSpacing.sectionTitleToSubtitle}px`,
+    lineHeight: 0.95,
   },
 
   editorialDecorLayer: {
@@ -657,16 +733,28 @@ export const styles: Record<string, CSSProperties> = {
     position: "absolute",
     border: "none",
     background: "transparent",
-    padding: "4px 2px",
+    padding: "0",
     margin: 0,
     cursor: "pointer",
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    gap: "0",
+    maxWidth: "168px",
+    zIndex: 2,
+    WebkitTapHighlightColor: "transparent",
+  },
+
+  homeExploreStopTab: {
+    ...tecaFichario.abaMapa(),
+  },
+
+  homeExploreStopBody: {
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
     gap: "6px",
-    maxWidth: "148px",
-    zIndex: 2,
-    WebkitTapHighlightColor: "transparent",
+    padding: "4px 2px",
   },
 
   homeExploreStopCenter: {
@@ -835,195 +923,102 @@ export const styles: Record<string, CSSProperties> = {
   },
 
   homeV2DestinationTag: {
-    ...tecaObjects.etiqueta(),
+    ...tecaFichario.etiqueta(),
     fontSize: "8px",
     letterSpacing: "1.8px",
     background: "rgba(255, 253, 249, 0.82)",
   },
 
-  homeV2DestinationButton: {
-    width: "100%",
-    marginTop: "2px",
-    border: `1px solid rgba(200, 135, 87, 0.4)`,
-    background: "rgba(255, 253, 249, 0.92)",
-    borderRadius: "999px",
-    padding: "16px 22px",
-    fontSize: "30px",
-    color: theme.text,
-    cursor: "pointer",
-    textAlign: "center",
-        boxShadow: "0 6px 16px rgba(120,90,60,0.07)",
+  homeV2SoftButton: {
+    ...tecaFichario.etiquetaAction(),
+    marginTop: "6px",
   },
 
-  homeV2SoftButton: {
-    width: "100%",
-    marginTop: "4px",
-    border: `1px solid ${theme.line}`,
-    background: "rgba(255, 253, 249, 0.88)",
-    borderRadius: "999px",
-    padding: "14px 20px",
-    fontSize: "26px",
-    color: theme.text,
-    cursor: "pointer",
-    textAlign: "center",
-        boxShadow: "0 4px 12px rgba(120,90,60,0.05)",
+  homeV2DestinationButton: {
+    ...tecaFichario.etiquetaAction(),
+    marginTop: "2px",
   },
 
   homeV2PathSection: {
-    marginTop: "4px",
-    padding: "26px 20px 24px",
-    borderRadius: "28px",
+    marginTop: "0",
+    padding: 0,
+    borderRadius: 0,
     border: "none",
-    background:
-      "linear-gradient(180deg, rgba(255,253,249,0.45) 0%, rgba(248,239,228,0.25) 100%)",
-    textAlign: "center",
-  },
-
-  homeV2PathQuestion: {
-    ...tecaHierarchy.l3SectionTitle,
-    ...tecaHierarchy.l3SectionTitleFlush,
-    marginBottom: `${tecaSpacing.sectionTitleToSubtitle}px`,
-  },
-
-  homeV2PathIntro: {
-    margin: "0 0 16px",
-    fontFamily: "'Cormorant Garamond', serif",
-    fontSize: "18px",
-    lineHeight: 1.45,
-    color: theme.muted,
+    background: "transparent",
     textAlign: "left",
-  },
-
-  homeV2PathFork: {
-    ...tecaHierarchy.l4Subtitle,
-    marginTop: 0,
-    opacity: 0.92,
   },
 
   homeV2PathStack: {
     display: "flex",
     flexDirection: "column",
-    gap: "18px",
+    gap: "16px",
+    marginTop: "4px",
   },
 
   homeV2PathCard: {
-    padding: "22px 18px 20px",
-    textAlign: "center",
+    position: "relative",
+    overflow: "hidden",
+    padding: "0",
+    textAlign: "left",
     background: "transparent",
-    borderRadius: "24px",
-    border: `1px dashed rgba(196, 165, 141, 0.42)`,
+    borderRadius: 0,
+    border: "none",
     boxShadow: "none",
   },
 
-  homeV2PathJourneyHeader: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    gap: "10px",
-    marginBottom: "6px",
+  homeV2PathCardInner: {
+    position: "relative",
+    zIndex: 1,
+    ...tecaFichario.divisoriaCorpo(),
+    borderRadius: "16px",
+    padding: "18px 16px 16px",
   },
 
-  homeV2PathJourneyIcon: {
-    fontSize: "34px",
-    lineHeight: 1,
-    flexShrink: 0,
+  homeV2PathCardDecor: {
+    position: "absolute",
+    inset: 0,
+    pointerEvents: "none",
+    zIndex: 0,
+  },
+
+  homeV2PathCardDecorImg: {
+    position: "absolute",
+    objectFit: "contain",
+    opacity: 0.42,
+    filter: "saturate(0.85) sepia(0.12)",
   },
 
   homeV2PathJourneyTitle: {
-    margin: 0,
-    fontFamily: "'Cormorant Garamond', serif",
-    fontSize: "38px",
-    fontWeight: 400,
-    color: theme.text,
-    lineHeight: 1,
+    margin: "0 0 10px",
+    ...tecaFont.portalTitle,
+    fontSize: "26px",
+    lineHeight: 1.05,
   },
 
   homeV2PathPlanName: {
+    margin: "0 0 14px",
+    ...tecaHierarchy.l6Micro,
+    fontSize: "10px",
+    opacity: 0.8,
+  },
+
+  homeV2PathJourneyText: {
     margin: "0 0 12px",
-    fontSize: "8px",
-    letterSpacing: "1.8px",
-    textTransform: "uppercase",
-    color: "#b5a090",
-    fontWeight: 500,
-    fontFamily: "'Nunito', sans-serif",
-    opacity: 0.75,
-  },
-
-  homeV2PathJourneyPoetic: {
-    margin: "0 0 8px",
-    fontFamily: "'Cormorant Garamond', serif",
-    fontSize: "15px",
-    lineHeight: 1.4,
-    color: "#a89486",
-    opacity: 0.85,
-  },
-
-  homeV2PathBenefitsHint: {
-    margin: "0 0 16px",
-    fontFamily: "'Cormorant Garamond', serif",
-    fontSize: "13px",
-    lineHeight: 1.4,
-    color: "#b5a090",
-    opacity: 0.9,
-  },
-
-  homeV2PathLabel: {
-    margin: "0 0 8px",
-    fontSize: "9px",
-    letterSpacing: "2px",
-    textTransform: "uppercase",
-    color: "#b3815f",
-    fontWeight: 700,
-    fontFamily: "'Nunito', sans-serif",
-  },
-
-  homeV2PathCardTitle: {
-    margin: "0 0 10px",
-    fontFamily: "'Cormorant Garamond', serif",
-    fontSize: "24px",
-    fontWeight: 500,
-    color: theme.text,
-    lineHeight: 1.1,
-  },
-
-  homeV2PathBenefits: {
-    margin: "0 0 16px",
-    padding: 0,
-    listStyle: "none",
-  },
-
-  homeV2PathBenefitItem: {
-    marginBottom: "6px",
-    fontFamily: "'Cormorant Garamond', serif",
+    ...tecaHierarchy.l5Body,
     fontSize: "16px",
-    lineHeight: 1.4,
+    lineHeight: 1.5,
     color: theme.muted,
+    textAlign: "left",
   },
 
   homeV2PathButton: {
-    width: "100%",
-    border: "none",
-    background: "transparent",
-    borderRadius: "0",
-    padding: "4px 0 0",
-    fontSize: "24px",
-    color: "#a06840",
-    cursor: "pointer",
-    textAlign: "center",
-        textDecoration: "underline",
-    textDecorationColor: "rgba(200, 135, 87, 0.35)",
-    textUnderlineOffset: "4px",
+    ...tecaFichario.etiquetaAction(),
+    marginTop: "4px",
+    fontSize: "18px",
   },
 
   homeV2Cabinet: {
-    position: "relative",
-    padding: "28px 22px 26px",
-    borderRadius: "28px",
-    border: `1px solid ${theme.line}`,
-    background:
-      "linear-gradient(180deg, #f0e4d6 0%, #e8ddd0 55%, #e2d4c4 100%)",
-    boxShadow: "inset 0 2px 0 rgba(255,255,255,0.35)",
-    overflow: "hidden",
+    display: "contents",
   },
 
   homeV2CabinetDecor: {
@@ -1092,16 +1087,25 @@ export const styles: Record<string, CSSProperties> = {
   },
 
   experienceCollection: {
-    marginTop: 0,
-    paddingTop: 0,
+    marginTop: "8px",
+    paddingTop: "0",
   },
 
   experienceCollectionTitle: {
     ...tecaFont.portalTitle,
     fontSize: "28px",
     textAlign: "center",
-    margin: "0 0 20px",
+    margin: "0 0 8px",
     lineHeight: 1,
+  },
+
+  experienceCollectionCount: {
+    margin: "0 0 20px",
+    textAlign: "center",
+    fontFamily: "'Cormorant Garamond', serif",
+    fontSize: "15px",
+    color: theme.muted,
+    letterSpacing: "0.2px",
   },
 
   experienceStack: {
@@ -1117,55 +1121,31 @@ export const styles: Record<string, CSSProperties> = {
   },
 
   experienceCardButton: {
-    border: "none",
-    background: "transparent",
-    padding: 0,
-    cursor: "pointer",
-    width: "100%",
-    textAlign: "left",
+    ...tecaFichario.fichaButton(),
   },
 
   experienceCard: {
-    background: "rgba(255, 253, 249, 0.72)",
-    borderRadius: tecaRadius.lg,
-    overflow: "hidden",
-    border: `1px dashed rgba(196, 165, 141, 0.42)`,
-    boxShadow: "none",
-    transition: "border-color 0.2s ease",
+    ...tecaFichario.ficha(),
   },
 
   experienceCardSelected: {
-    border: "1px solid rgba(196, 165, 141, 0.55)",
-    boxShadow: "0 8px 22px rgba(120,90,60,0.06)",
+    ...tecaFichario.fichaSelected(),
+  },
+
+  experienceCardDiscoveryHeader: {
+    ...tecaFichario.fichaHeader(),
   },
 
   experienceCardImage: {
-    width: "100%",
-    aspectRatio: "5 / 3",
-    objectFit: "cover",
-    display: "block",
+    ...tecaFichario.fichaImage(),
   },
 
   experienceCardBody: {
-    padding: "14px 16px 16px",
-  },
-
-  experienceCardHeader: {
-    display: "flex",
-    alignItems: "flex-start",
-    justifyContent: "space-between",
-    gap: "10px",
-    marginBottom: "10px",
+    ...tecaFichario.fichaBody(),
   },
 
   experienceCardTitle: {
-    margin: 0,
-    fontFamily: "'Cormorant Garamond', serif",
-    fontSize: "36px",
-    lineHeight: 0.95,
-    color: theme.text,
-    fontWeight: 400,
-    letterSpacing: "0.2px",
+    ...tecaFichario.fichaTitle(),
   },
 
   clubeSeal: {
@@ -1180,26 +1160,31 @@ export const styles: Record<string, CSSProperties> = {
     background: "rgba(248, 236, 223, 0.7)",
     fontFamily: "'Nunito', sans-serif",
     fontWeight: 600,
+    marginTop: "4px",
   },
 
   experienceCardInvite: {
-    margin: "0 0 10px",
-    fontFamily: "'Cormorant Garamond', serif",
-    fontSize: "15px",
-    lineHeight: 1.45,
-    color: "#9a8475",
+    margin: "0 0 12px",
+    ...tecaHierarchy.l5Body,
+    fontSize: "16px",
+    lineHeight: 1.5,
+    color: theme.muted,
   },
 
   experienceCardMeta: {
-    display: "flex",
-    flexDirection: "column",
-    gap: "3px",
-    fontSize: "11px",
-    lineHeight: 1.38,
-    color: "#b5a090",
-    fontFamily: "'Cormorant Garamond', serif",
-    opacity: 0.88,
-    paddingTop: "2px",
+    ...tecaFichario.registro(),
+  },
+
+  experienceCardMetaRow: {
+    ...tecaFichario.registroRow(),
+  },
+
+  experienceCardMetaLabel: {
+    ...tecaFichario.registroLabel(),
+  },
+
+  experienceCardMetaValue: {
+    ...tecaFichario.registroValor(),
   },
 
   experienceDetail: {
@@ -1250,6 +1235,12 @@ export const styles: Record<string, CSSProperties> = {
     overflow: "hidden",
     marginBottom: 0,
     paddingBottom: 0,
+  },
+
+  atelierFichaKicker: {
+    ...tecaHierarchy.l6Micro,
+    textAlign: "left",
+    marginBottom: "8px",
   },
 
   atelierShopHero: {
@@ -1890,12 +1881,9 @@ export const styles: Record<string, CSSProperties> = {
   },
 
   clubJoinButton: {
-    width: "100%",
-    ...tecaObjects.buttonPrimary(),
-    padding: "18px 24px",
-    fontSize: "28px",
-    textAlign: "center",
-      },
+    ...tecaFichario.etiquetaAction(),
+    fontSize: "20px",
+  },
 
   clubPlansSection: {
     marginBottom: "8px",
@@ -1963,23 +1951,37 @@ export const styles: Record<string, CSSProperties> = {
   },
 
   ficharioUniverseHeader: {
+    position: "relative",
     display: "flex",
     alignItems: "center",
     gap: "12px",
-    padding: "16px 14px",
+    padding: "18px 14px 18px 16px",
     width: "100%",
     boxSizing: "border-box",
     borderRadius: "22px",
-    border: `1px dashed rgba(196, 165, 141, 0.42)`,
+    border: `1px dashed rgba(196, 165, 141, 0.38)`,
     background:
       "linear-gradient(180deg, rgba(255,253,249,0.95) 0%, rgba(248,239,228,0.78) 100%)",
-    boxShadow: "0 4px 14px rgba(120,90,60,0.05)",
+    boxShadow: "inset 0 1px 0 rgba(255,255,255,0.65)",
+    overflow: "hidden",
   },
 
   ficharioUniverseHeaderOpen: {
     borderColor: "rgba(200, 135, 87, 0.38)",
     background:
       "linear-gradient(180deg, #fffdf9 0%, #f7efe5 55%, #f0e4d6 100%)",
+  },
+
+  ficharioUniverseEmblemWatermark: {
+    position: "absolute",
+    right: "42px",
+    top: "50%",
+    transform: "translateY(-50%)",
+    fontSize: "72px",
+    lineHeight: 1,
+    opacity: 0.07,
+    pointerEvents: "none",
+    userSelect: "none",
   },
 
   ficharioUniverseIcon: {
@@ -2005,28 +2007,34 @@ export const styles: Record<string, CSSProperties> = {
   },
 
   ficharioUniverseTitle: {
-    margin: "0 0 3px",
-    fontFamily: "'Caveat', cursive",
+    position: "relative",
+    zIndex: 1,
+    margin: "0 0 4px",
+    ...tecaFont.portalTitle,
     fontSize: "28px",
-    fontWeight: 400,
-    color: theme.text,
-    lineHeight: 1,
+    lineHeight: 0.95,
+    textAlign: "left",
   },
 
   ficharioUniversePoetic: {
-    margin: "0 0 5px",
-    fontFamily: "'Cormorant Garamond', serif",
-    fontSize: "14px",
-    lineHeight: 1.35,
+    position: "relative",
+    zIndex: 1,
+    margin: "0 0 6px",
+    fontFamily: "'Nunito', sans-serif",
+    fontSize: "13px",
+    lineHeight: 1.4,
     color: theme.muted,
   },
 
   ficharioArchiveLabel: {
+    position: "relative",
+    zIndex: 1,
     margin: 0,
-    fontFamily: "'Cormorant Garamond', serif",
-    fontSize: "14px",
+    fontFamily: "'Nunito', sans-serif",
+    fontSize: "11px",
+    lineHeight: 1.45,
     color: "#9a8475",
-    letterSpacing: "0.2px",
+    letterSpacing: "0.1px",
   },
 
   ficharioProgressSecondary: {
@@ -2037,25 +2045,41 @@ export const styles: Record<string, CSSProperties> = {
     letterSpacing: "0.2px",
   },
 
-  ficharioDrawerHint: {
-    margin: "4px 0 0",
-    padding: "8px 4px 2px",
-    fontFamily: "'Cormorant Garamond', serif",
-    fontSize: "13px",
-    lineHeight: 1.4,
+  ficharioAlbumSpread: {
+    padding: "4px 6px 8px",
+    borderRadius: "0 0 20px 20px",
+    border: `1px dashed rgba(196, 165, 141, 0.28)`,
+    borderTop: "none",
+    background: "rgba(255, 253, 249, 0.55)",
+  },
+
+  ficharioAlbumLegend: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    gap: "8px",
+    margin: "0 0 10px",
+    paddingTop: "4px",
+    fontFamily: "'Nunito', sans-serif",
+    fontSize: "10px",
+    letterSpacing: "1px",
+    textTransform: "uppercase",
     color: "#b5a090",
-    textAlign: "center",
-    letterSpacing: "0.4px",
+  },
+
+  ficharioAlbumLegendItem: {
     opacity: 0.85,
   },
 
-  ficharioUniverseChevron: {
-    fontFamily: "'Cormorant Garamond', serif",
-    fontSize: "28px",
-    color: "#b3815f",
-    lineHeight: 1,
-    flexShrink: 0,
-    opacity: 0.85,
+  ficharioAlbumLegendDot: {
+    opacity: 0.45,
+  },
+
+  ficharioAlbumGrid: {
+    display: "grid",
+    gridTemplateColumns: "repeat(2, minmax(0, 1fr))",
+    gap: "10px",
+    padding: "0 2px 4px",
   },
 
   ficharioSlotsStack: {
@@ -2065,11 +2089,24 @@ export const styles: Record<string, CSSProperties> = {
     padding: "0 4px 6px",
   },
 
+  ficharioUniverseChevron: {
+    position: "relative",
+    zIndex: 1,
+    fontFamily: "'Cormorant Garamond', serif",
+    fontSize: "28px",
+    color: "#b3815f",
+    lineHeight: 1,
+    flexShrink: 0,
+    opacity: 0.85,
+  },
+
   ficharioSlot: {
-    padding: "14px 16px",
-    borderRadius: "18px",
-    border: `1px solid ${theme.line}`,
-    textAlign: "left",
+    ...tecaFichario.fichaCompact(),
+  },
+
+  ficharioSlotGuardada: {
+    background: "#fdfaf6",
+    boxShadow: "inset 0 1px 0 rgba(255,255,255,0.7)",
   },
 
   ficharioSlotConcluida: {
@@ -2112,36 +2149,36 @@ export const styles: Record<string, CSSProperties> = {
 
   ficharioSlotTitle: {
     margin: "0 0 4px",
-    fontFamily: "'Cormorant Garamond', serif",
-    fontSize: "17px",
-    fontWeight: 500,
-    color: theme.text,
-    lineHeight: 1.2,
+    ...tecaFont.portalTitle,
+    fontSize: "22px",
+    lineHeight: 0.95,
   },
 
   ficharioSlotNote: {
     margin: 0,
-    fontFamily: "'Cormorant Garamond', serif",
-    fontSize: "15px",
+    fontFamily: "'Nunito', sans-serif",
+    fontSize: "12px",
     lineHeight: 1.4,
     color: theme.muted,
   },
 
   ficharioSlotEmptyFrame: {
-    height: "28px",
-    marginBottom: "10px",
-    borderRadius: "10px",
-    border: `1px dashed rgba(234, 216, 197, 0.95)`,
-    background:
-      "repeating-linear-gradient(135deg, rgba(248,239,228,0.35) 0 6px, rgba(255,253,249,0.2) 6px 12px)",
+    width: "52px",
+    height: "52px",
+    margin: "0 auto 8px",
+    borderRadius: "12px",
+    border: `1px dashed rgba(196, 165, 141, 0.35)`,
+    background: "rgba(255,253,249,0.55)",
   },
 
   ficharioSlotEmptyText: {
     margin: 0,
-    fontFamily: "'Cormorant Garamond', serif",
-    fontSize: "15px",
+    fontFamily: "'Nunito', sans-serif",
+    fontSize: "10px",
+    letterSpacing: "0.5px",
     lineHeight: 1.4,
-    color: "#a89486",
+    color: "#b5a090",
+    textAlign: "center",
   },
 
   ficharioComplementsSection: {
@@ -2213,6 +2250,166 @@ export const styles: Record<string, CSSProperties> = {
   meuMundoIntroSection: {
     marginTop: "4px",
     marginBottom: "8px",
+  },
+
+  meuMundoFicharioBinder: {
+    position: "relative",
+    marginTop: "4px",
+    padding: "24px 18px 22px 28px",
+    borderRadius: "28px",
+    border: `1px dashed rgba(196, 165, 141, 0.4)`,
+    background:
+      "linear-gradient(168deg, #fffdf9 0%, #f9f3eb 52%, #f2ebe1 100%)",
+    boxShadow: "inset 0 1px 0 rgba(255,255,255,0.9)",
+    overflow: "hidden",
+  },
+
+  meuMundoFicharioSpine: {
+    position: "absolute",
+    left: 0,
+    top: "8%",
+    bottom: "8%",
+    width: "10px",
+    borderRadius: "0 5px 5px 0",
+    background:
+      "linear-gradient(180deg, #dcc9b4 0%, #c9b39a 48%, #dcc9b4 100%)",
+    opacity: 0.75,
+  },
+
+  meuMundoFicharioRings: {
+    position: "absolute",
+    left: "14px",
+    top: "18%",
+    bottom: "18%",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-between",
+    pointerEvents: "none",
+    zIndex: 1,
+  },
+
+  meuMundoFicharioRing: {
+    width: "10px",
+    height: "10px",
+    borderRadius: "999px",
+    border: `1px solid rgba(196, 165, 141, 0.45)`,
+    background: "rgba(255, 253, 249, 0.65)",
+    boxShadow: "inset 0 1px 2px rgba(120,90,60,0.08)",
+  },
+
+  meuMundoFicharioKicker: {
+    ...tecaHierarchy.l6Micro,
+    marginBottom: "16px",
+    textAlign: "left",
+  },
+
+  meuMundoFicharioTabs: {
+    display: "flex",
+    flexDirection: "column",
+    gap: "14px",
+  },
+
+  meuMundoFicharioTab: {
+    display: "flex",
+    alignItems: "stretch",
+    gap: "0",
+    width: "100%",
+    padding: 0,
+    border: "none",
+    background: "transparent",
+    cursor: "pointer",
+    textAlign: "left",
+    WebkitTapHighlightColor: "transparent",
+  },
+
+  meuMundoFicharioTabStrip: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
+    gap: "6px",
+    minWidth: "88px",
+    padding: "14px 10px 12px",
+    borderRadius: "14px 0 0 14px",
+    border: `1px solid rgba(196, 165, 141, 0.35)`,
+    borderRight: "none",
+    boxShadow: "inset 0 1px 0 rgba(255,255,255,0.7)",
+    flexShrink: 0,
+  },
+
+  meuMundoFicharioTabStripDiario: {
+    background:
+      "linear-gradient(180deg, rgba(255,251,245,0.98) 0%, rgba(248,236,220,0.92) 100%)",
+  },
+
+  meuMundoFicharioTabStripColecoes: {
+    background:
+      "linear-gradient(180deg, rgba(255,249,244,0.98) 0%, rgba(245,232,218,0.92) 100%)",
+  },
+
+  meuMundoFicharioTabStripBiblioteca: {
+    background:
+      "linear-gradient(180deg, rgba(250,252,246,0.98) 0%, rgba(236,242,228,0.92) 100%)",
+  },
+
+  meuMundoFicharioTabIcon: {
+    fontSize: "26px",
+    lineHeight: 1,
+  },
+
+  meuMundoFicharioTabTitle: {
+    ...tecaFont.portalTitle,
+    fontSize: "22px",
+    lineHeight: 0.95,
+    writingMode: "horizontal-tb",
+  },
+
+  meuMundoFicharioTabBody: {
+    flex: 1,
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    gap: "10px",
+    padding: "14px 16px 14px 14px",
+    borderRadius: "0 16px 16px 0",
+    border: `1px dashed rgba(196, 165, 141, 0.34)`,
+    background: "rgba(255, 253, 249, 0.72)",
+  },
+
+  meuMundoFicharioTabText: {
+    ...tecaHierarchy.l5Body,
+    fontSize: "15px",
+    lineHeight: 1.45,
+    color: theme.muted,
+  },
+
+  meuMundoFicharioTabStats: {
+    display: "flex",
+    flexWrap: "wrap",
+    gap: "10px 14px",
+  },
+
+  meuMundoFicharioTabStat: {
+    display: "flex",
+    flexDirection: "column",
+    gap: "1px",
+    minWidth: "72px",
+  },
+
+  meuMundoFicharioTabStatValue: {
+    fontFamily: "'Cormorant Garamond', serif",
+    fontSize: "22px",
+    lineHeight: 1,
+    color: theme.text,
+  },
+
+  meuMundoFicharioTabStatLabel: {
+    fontFamily: "'Nunito', sans-serif",
+    fontSize: "9px",
+    letterSpacing: "1.1px",
+    textTransform: "uppercase",
+    color: "#b5a090",
+    opacity: 0.85,
   },
 
   meuMundoHero: {
@@ -2811,18 +3008,9 @@ export const styles: Record<string, CSSProperties> = {
   },
 
   primaryButton: {
-    width: "100%",
-    background:
-      "linear-gradient(180deg, #d9a06e 0%, #c88757 100%)",
-    border: "none",
-    borderRadius: "999px",
-    padding: "20px",
-    color: "#fffaf5",
-    fontSize: "20px",
+    ...tecaFichario.etiquetaAction(),
     marginTop: "28px",
-    ...tecaObjects.buttonPrimary(),
     cursor: "pointer",
-    boxShadow: "0 10px 20px rgba(195,133,87,0.18)",
   },
 
   bottomNav: {

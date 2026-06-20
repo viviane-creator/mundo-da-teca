@@ -11,36 +11,55 @@ export type FicharioUniverse = {
   id: string
   icon: string
   title: string
+  collectionTitle: string
   poetic: string
   image: string
   slots: FicharioSlot[]
 }
 
-export function getUniverseArchiveLabel(slots: FicharioSlot[]): string {
+export function getUniverseCollectionSummary(slots: FicharioSlot[]): string {
   const guardadas = slots.filter((slot) => slot.status === "concluida").length
-  const recebidas = slots.filter((slot) => slot.status === "recebida").length
+  const emConstrucao = slots.filter((slot) => slot.status === "recebida").length
+  const aguardando = slots.filter((slot) => slot.status === "aguardando").length
 
-  if (guardadas === 0 && recebidas === 0) return "Coleção iniciada"
+  if (guardadas === 0 && emConstrucao === 0) {
+    return aguardando > 0
+      ? `Coleção iniciada · ${aguardando} espaços para novas fichas`
+      : "Coleção iniciada"
+  }
 
   const parts: string[] = []
 
   if (guardadas > 0) {
     parts.push(
       guardadas === 1
-        ? "1 descoberta guardada"
-        : `${guardadas} descobertas guardadas`,
+        ? "1 ficha guardada"
+        : `${guardadas} fichas guardadas`,
     )
   }
 
-  if (recebidas > 0) {
+  if (emConstrucao > 0) {
     parts.push(
-      recebidas === 1
-        ? "1 página recebida"
-        : `${recebidas} páginas recebidas`,
+      emConstrucao === 1
+        ? "1 ficha em construção"
+        : `${emConstrucao} fichas em construção`,
+    )
+  }
+
+  if (aguardando > 0) {
+    parts.push(
+      aguardando === 1
+        ? "1 espaço para nova ficha"
+        : `${aguardando} espaços para novas fichas`,
     )
   }
 
   return parts.join(" · ")
+}
+
+/** @deprecated Use getUniverseCollectionSummary */
+export function getUniverseArchiveLabel(slots: FicharioSlot[]): string {
+  return getUniverseCollectionSummary(slots)
 }
 
 function padSlots(
@@ -67,7 +86,8 @@ export const ficharioUniverses: FicharioUniverse[] = [
     id: "laboratorio",
     icon: "⚗️",
     title: "Laboratório",
-    poetic: "experiências suaves e curiosas",
+    collectionTitle: "Coleção do Laboratório",
+    poetic: "Onde as coisas se transformam.",
     image: "/images/universos/laboratorio-capa.png",
     slots: padSlots(
       [
@@ -99,7 +119,8 @@ export const ficharioUniverses: FicharioUniverse[] = [
     id: "cozinha",
     icon: "🥄",
     title: "Cozinha",
-    poetic: "misturas e descobertas",
+    collectionTitle: "Coleção da Cozinha",
+    poetic: "Onde receitas viram descobertas.",
     image: "/images/universos/cozinha-capa.png",
     slots: padSlots(
       [
@@ -120,7 +141,8 @@ export const ficharioUniverses: FicharioUniverse[] = [
     id: "oficina",
     icon: "🔧",
     title: "Oficina",
-    poetic: "coisas feitas com as mãos",
+    collectionTitle: "Coleção da Oficina",
+    poetic: "Onde as mãos constroem ideias.",
     image: "/images/universos/oficina-capa.png",
     slots: padSlots(
       [
@@ -137,7 +159,8 @@ export const ficharioUniverses: FicharioUniverse[] = [
     id: "faz-de-conta",
     icon: "🗝️",
     title: "Faz de Conta",
-    poetic: "personagens, histórias e mundos inventados",
+    collectionTitle: "Coleção do Faz de Conta",
+    poetic: "Onde a imaginação ganha forma.",
     image: "/images/universos/arte-capa.png",
     slots: padSlots(
       [
@@ -157,7 +180,8 @@ export const ficharioUniverses: FicharioUniverse[] = [
     id: "quintal",
     icon: "🪁",
     title: "Quintal",
-    poetic: "ar livre, calçada e descobertas lá fora",
+    collectionTitle: "Coleção do Quintal",
+    poetic: "Onde o mundo lá fora vira aventura.",
     image: "/images/universos/natureza-capa.png",
     slots: padSlots(
       [
@@ -173,7 +197,8 @@ export const ficharioUniverses: FicharioUniverse[] = [
     id: "observatorio",
     icon: "🧭",
     title: "Observatório",
-    poetic: "céu, curiosidade e olhar atento",
+    collectionTitle: "Coleção do Observatório",
+    poetic: "Onde a curiosidade encontra o invisível.",
     image: "/images/universos/movimento-capa.png",
     slots: padSlots(
       [

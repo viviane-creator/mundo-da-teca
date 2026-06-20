@@ -40,24 +40,84 @@ export const participationPlans: ParticipationPlan[] = [
 export const homeParticipationJourneys: Record<
   ParticipationPlanId,
   {
-    icon: string
     journeyTitle: string
-    journeyPoetic: string
+    journeyText: string
     pathCta: string
+    decor: {
+      src: string
+      w: number
+      h: number
+      top?: string
+      bottom?: string
+      left?: string
+      right?: string
+      rotate: number
+    }[]
   }
 > = {
   explorador: {
-    icon: "🌿",
-    journeyTitle: "Explorar Digitalmente",
-    journeyPoetic: "Universos, experiências e Meu Mundo — pelo caminho digital.",
-    pathCta: "Seguir pelo digital",
+    journeyTitle: "Explorar online",
+    journeyText:
+      "Entre nos universos, registre descobertas e monte seu Meu Mundo digital.",
+    pathCta: "Começar online",
+    decor: [
+      {
+        src: "/cards/descobertas/diario.png",
+        w: 46,
+        h: 34,
+        top: "6%",
+        left: "5%",
+        rotate: -11,
+      },
+      {
+        src: "/cards/descobertas/colecoes.png",
+        w: 40,
+        h: 36,
+        bottom: "16%",
+        right: "6%",
+        rotate: 9,
+      },
+      {
+        src: "/cards/descobertas/descoberta-do-dia.png",
+        w: 34,
+        h: 34,
+        top: "18%",
+        right: "8%",
+        rotate: 6,
+      },
+    ],
   },
   colecionador: {
-    icon: "📦",
-    journeyTitle: "Receber em Casa",
-    journeyPoetic:
-      "Materiais e tesouros que chegam devagar, para guardar com as mãos.",
-    pathCta: "Seguir com o físico",
+    journeyTitle: "Receber em casa",
+    journeyText:
+      "Receba páginas, materiais, colecionáveis e pequenos tesouros para guardar com as mãos.",
+    pathCta: "Quero receber",
+    decor: [
+      {
+        src: "/cards/clube/correio.png",
+        w: 50,
+        h: 38,
+        top: "8%",
+        right: "5%",
+        rotate: 7,
+      },
+      {
+        src: "/cards/atelie/pacotinho-folhas.png",
+        w: 44,
+        h: 44,
+        bottom: "12%",
+        left: "4%",
+        rotate: -9,
+      },
+      {
+        src: "/cards/atelie/papel-de-carta.png",
+        w: 42,
+        h: 32,
+        top: "20%",
+        left: "7%",
+        rotate: -13,
+      },
+    ],
   },
 }
 

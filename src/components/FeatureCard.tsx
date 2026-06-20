@@ -1,5 +1,5 @@
 import { styles } from "../styles/appStyles"
-import { tecaRadiusAt, tecaTilt } from "../tecaVisual"
+import { FicharioFicha } from "./fichario"
 
 type FeatureCardItem = {
   id: string
@@ -23,33 +23,21 @@ export function FeatureCard({
   radiusKey?: number
   onClick?: () => void
 }) {
+  void compact
+  void radiusKey
+
   return (
-    <button onClick={onClick} style={styles.cardButton}>
-      <article
-        style={{
-          ...styles.featureCard,
-          ...(horizontal ? styles.featureCardHorizontal : {}),
-          borderRadius: tecaRadiusAt(radiusKey),
-          ...(horizontal ? {} : tecaTilt(tilt)),
-        }}
-      >
-        <img
-          src={card.image}
-          alt={card.title}
-          style={{
-            ...styles.cardImage,
-            ...(horizontal ? styles.cardImageHorizontal : {}),
-          }}
-        />
-
-        <div style={styles.cardTextWrap}>
-          <h3 style={compact ? styles.cardTitleCompact : styles.cardTitle}>
-            {card.title}
-          </h3>
-
-          {card.text && <p style={styles.cardText}>{card.text}</p>}
-        </div>
-      </article>
-    </button>
+    <FicharioFicha
+      variant="referencia"
+      layout={horizontal ? "horizontal" : "vertical"}
+      codigo={card.id.slice(0, 6).toUpperCase()}
+      title={card.title}
+      image={card.image}
+      imageAlt={card.title}
+      onSelect={onClick}
+      tilt={tilt}
+    >
+      {card.text && <p style={styles.cardText}>{card.text}</p>}
+    </FicharioFicha>
   )
 }

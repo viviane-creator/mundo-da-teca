@@ -1,4 +1,5 @@
 import { homeUniversePortals } from "../data/homeUniversePortals"
+import { FicharioAba } from "./fichario"
 import { styles } from "../styles/appStyles"
 
 /** Coordenadas no viewBox 320×580 — trilha serpenteante */
@@ -235,6 +236,7 @@ export function HomeExploreMap({
               ...styles.homeExploreStop,
               left: `${(point.x / 320) * 100}%`,
               top: `${(point.y / 580) * 100}%`,
+              flexDirection: align === "right" ? "row-reverse" : "row",
               ...(align === "left"
                 ? styles.homeExploreStopLeft
                 : align === "right"
@@ -243,46 +245,49 @@ export function HomeExploreMap({
             }}
             onClick={() => onSelect(portal.target)}
           >
-            <span style={styles.homeExploreMarker}>
-              <svg
-                style={styles.homeExploreMarkerRingOuter}
-                viewBox="0 0 100 100"
-                aria-hidden="true"
-              >
-                <ellipse
-                  cx="50"
-                  cy="50"
-                  rx="48"
-                  ry="46"
-                  fill="none"
-                  stroke="#c4a58d"
-                  strokeWidth="0.6"
-                  strokeDasharray="2 12 4 8"
-                  opacity={0.22}
-                  transform={`rotate(${index % 2 === 0 ? -6 : 7} 50 50)`}
-                />
-              </svg>
-              <svg
-                style={styles.homeExploreMarkerRing}
-                viewBox="0 0 100 100"
-                aria-hidden="true"
-              >
-                <ellipse
-                  cx="50"
-                  cy="50"
-                  rx="46"
-                  ry="44"
-                  fill="none"
-                  stroke="#c4a58d"
-                  strokeWidth="1"
-                  strokeDasharray="4 7 2 8 3 6"
-                  opacity={0.42}
-                  transform={`rotate(${index % 2 === 0 ? -4 : 5} 50 50)`}
-                />
-              </svg>
-              <span style={styles.homeExploreMarkerIcon}>{portal.icon}</span>
+            <FicharioAba variant="mapa" icon={portal.icon} />
+            <span style={styles.homeExploreStopBody}>
+              <span style={styles.homeExploreMarker}>
+                <svg
+                  style={styles.homeExploreMarkerRingOuter}
+                  viewBox="0 0 100 100"
+                  aria-hidden="true"
+                >
+                  <ellipse
+                    cx="50"
+                    cy="50"
+                    rx="48"
+                    ry="46"
+                    fill="none"
+                    stroke="#c4a58d"
+                    strokeWidth="0.6"
+                    strokeDasharray="2 12 4 8"
+                    opacity={0.22}
+                    transform={`rotate(${index % 2 === 0 ? -6 : 7} 50 50)`}
+                  />
+                </svg>
+                <svg
+                  style={styles.homeExploreMarkerRing}
+                  viewBox="0 0 100 100"
+                  aria-hidden="true"
+                >
+                  <ellipse
+                    cx="50"
+                    cy="50"
+                    rx="46"
+                    ry="44"
+                    fill="none"
+                    stroke="#c4a58d"
+                    strokeWidth="1"
+                    strokeDasharray="4 7 2 8 3 6"
+                    opacity={0.42}
+                    transform={`rotate(${index % 2 === 0 ? -4 : 5} 50 50)`}
+                  />
+                </svg>
+                <span style={styles.homeExploreMarkerIcon}>{portal.icon}</span>
+              </span>
+              <span style={styles.homeExploreStopTitle}>{portal.title}</span>
             </span>
-            <span style={styles.homeExploreStopTitle}>{portal.title}</span>
           </button>
         )
       })}

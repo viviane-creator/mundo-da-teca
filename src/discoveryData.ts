@@ -411,15 +411,17 @@ export function getCollectionDetail(
 }
 
 export function buildDiaryDescription(parts: {
-  where: string
-  color: string
-  why: string
+  unexpected: string
+  observed: string
+  curious: string
 }): string {
   const lines = [
-    parts.where.trim() && `estava em ${parts.where.trim()}.`,
-    parts.color.trim() && `parecia ter cor de ${parts.color.trim()}.`,
-    parts.why.trim() && `quis guardar porque ${parts.why.trim()}.`,
+    parts.observed.trim() && `observei: ${parts.observed.trim()}.`,
+    parts.unexpected.trim() &&
+      `não esperava: ${parts.unexpected.trim()}.`,
+    parts.curious.trim() &&
+      `agora quero descobrir: ${parts.curious.trim()}.`,
   ].filter(Boolean)
 
-  return lines.join(" ") || "uma pequena descoberta guardada com carinho."
+  return lines.join(" ") || "uma observação guardada com calma."
 }

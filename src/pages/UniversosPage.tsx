@@ -18,7 +18,7 @@ export function UniversosPage({
           <div style={styles.editorialDecorContent}>
             <HomeExploreMap onSelect={setScreen} variant="full" />
             <p style={styles.homeV2TrailEnd}>
-              · · · seis caminhos · seis tipos de descoberta · · ·
+              · · · seis caminhos · seis coleções de fichas · · ·
             </p>
           </div>
         </div>

@@ -1,7 +1,7 @@
 import type { ParticipationPlan } from "../data/participationPlans"
 import { homeParticipationJourneys } from "../data/participationPlans"
 import { styles } from "../styles/appStyles"
-import { tecaObjects, tecaTilt } from "../tecaVisual"
+import { FicharioEtiqueta, FicharioFicha } from "./fichario"
 
 export function PlanCard({
   plan,
@@ -19,34 +19,41 @@ export function PlanCard({
 
     return (
       <article style={styles.homeV2PathCard}>
-        <div style={styles.homeV2PathJourneyHeader}>
-          <span style={styles.homeV2PathJourneyIcon} aria-hidden="true">
-            {journey.icon}
-          </span>
-          <h3 style={styles.homeV2PathJourneyTitle}>{journey.journeyTitle}</h3>
+        <div style={styles.homeV2PathCardDecor} aria-hidden="true">
+          {journey.decor.map((item) => (
+            <img
+              key={item.src}
+              src={item.src}
+              alt=""
+              style={{
+                ...styles.homeV2PathCardDecorImg,
+                width: `${item.w}px`,
+                height: `${item.h}px`,
+                ...(item.top ? { top: item.top } : {}),
+                ...(item.bottom ? { bottom: item.bottom } : {}),
+                ...(item.left ? { left: item.left } : {}),
+                ...(item.right ? { right: item.right } : {}),
+                transform: `rotate(${item.rotate}deg)`,
+              }}
+            />
+          ))}
         </div>
 
-        <p style={styles.homeV2PathJourneyPoetic}>{journey.journeyPoetic}</p>
-
-        <p style={styles.homeV2PathPlanName}>{plan.title}</p>
-
-        <button type="button" style={styles.homeV2PathButton} onClick={onCta}>
-          {journey.pathCta}
-        </button>
+        <div style={styles.homeV2PathCardInner}>
+          <h3 style={styles.homeV2PathJourneyTitle}>{journey.journeyTitle}</h3>
+          <p style={styles.homeV2PathJourneyText}>{journey.journeyText}</p>
+          <p style={styles.homeV2PathPlanName}>{plan.title}</p>
+          <FicharioEtiqueta action onClick={onCta} style={styles.homeV2PathButton}>
+            {journey.pathCta}
+          </FicharioEtiqueta>
+        </div>
       </article>
     )
   }
 
   return (
-    <article
-      style={{
-        ...styles.planCard,
-        ...tecaObjects.card("md"),
-        ...tecaTilt(tilt),
-      }}
-    >
+    <FicharioFicha flat tilt={tilt}>
       <h3 style={styles.planCardTitle}>{plan.title}</h3>
-
       <ul style={styles.planBenefitsList}>
         {plan.benefits.map((benefit) => (
           <li key={benefit} style={styles.planBenefitItem}>
@@ -54,10 +61,9 @@ export function PlanCard({
           </li>
         ))}
       </ul>
-
-      <button type="button" style={styles.planCardButton} onClick={onCta}>
+      <FicharioEtiqueta action onClick={onCta} style={styles.planCardButton}>
         {plan.ctaLabel}
-      </button>
-    </article>
+      </FicharioEtiqueta>
+    </FicharioFicha>
   )
 }

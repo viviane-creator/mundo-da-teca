@@ -6,6 +6,12 @@ import {
   getAtelierSectionTitle,
   type AtelierGood,
 } from "../atelierShopData"
+import {
+  FicharioEtiqueta,
+  FicharioFicha,
+  FicharioRegistro,
+  formatComplementoCodigo,
+} from "../components/fichario"
 import { styles } from "../styles/appStyles"
 
 type SetScreen = (screen: string) => void
@@ -35,76 +41,65 @@ export function AtelierProductPage({
         ← ateliê
       </button>
 
-      <article style={styles.atelierProduct}>
-        <div style={styles.atelierProductImageWrap}>
-          <img
-            src={imageSrc}
-            alt={good.title}
-            style={styles.atelierProductImage}
-            onError={() => {
-              if (imageSrc !== atelierCoverImage) setImageSrc(atelierCoverImage)
-            }}
-          />
-        </div>
+      <FicharioFicha
+        variant="complemento"
+        codigo={formatComplementoCodigo(good.id)}
+        seal={status?.label ?? "complemento"}
+        title={good.title}
+        image={imageSrc}
+        imageAlt={good.title}
+        onImageError={() => {
+          if (imageSrc !== atelierCoverImage) setImageSrc(atelierCoverImage)
+        }}
+      >
+        <FicharioRegistro
+          fields={[
+            { label: "Gaveta", value: category },
+            { label: "Coleção", value: good.collection },
+            { label: "Valor", value: formatBRL(good.price) },
+            {
+              label: "Clube",
+              value: `membros levam por ${formatBRL(good.clubPrice)}`,
+            },
+          ]}
+          style={{ marginBottom: "14px" }}
+        />
 
-        <div style={styles.atelierProductBody}>
-          <div style={styles.atelierProductMeta}>
-            <p style={styles.atelierProductCategory}>{category}</p>
-            {good.collection && (
-              <p style={styles.atelierProductCollection}>{good.collection}</p>
-            )}
-            {status && (
-              <span style={styles.atelierProductStatus}>{status.label}</span>
-            )}
-          </div>
+        <p style={styles.atelierProductDescription}>{good.description}</p>
 
-          <header style={{ ...styles.pageHeroBlock, textAlign: "left" }}>
-            <h1 style={{ ...styles.pageHeroTitle, textAlign: "left" }}>
-              {good.title}
-            </h1>
-            <p
-              style={{
-                ...styles.pageHeroPoetic,
-                textAlign: "left",
-                marginLeft: 0,
-                marginRight: 0,
-              }}
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            gap: "10px",
+            marginTop: "18px",
+          }}
+        >
+          {inBox ? (
+            <FicharioEtiqueta style={{ fontSize: "20px", opacity: 0.75 }}>
+              na gaveta
+            </FicharioEtiqueta>
+          ) : (
+            <FicharioEtiqueta
+              action
+              onClick={onAddToBox}
+              style={{ fontSize: "20px" }}
             >
-              {good.poetic}
-            </p>
-          </header>
-          <p style={styles.atelierProductDescription}>{good.description}</p>
-
-          <div style={styles.atelierProductPriceBlock}>
-            <p style={styles.atelierProductPrice}>{formatBRL(good.price)}</p>
-            <p style={styles.atelierProductClubPrice}>
-              membros do clube levam por {formatBRL(good.clubPrice)}
-            </p>
-          </div>
-
-          <button
-            type="button"
-            onClick={onAddToBox}
-            style={{
-              ...styles.atelierProductSaveButton,
-              ...(inBox ? styles.atelierProductSaveButtonDone : {}),
-            }}
-            disabled={inBox}
-          >
-            {inBox ? "Adicionado" : "Adicionar"}
-          </button>
+              colocar na gaveta →
+            </FicharioEtiqueta>
+          )}
 
           {good.poeticScreen && (
-            <button
-              type="button"
+            <FicharioEtiqueta
+              action
               onClick={() => setScreen(good.poeticScreen!)}
-              style={styles.atelierProductPoeticLink}
+              style={{ fontSize: "17px" }}
             >
-              {good.poeticLinkLabel ?? "conhecer com calma"}
-            </button>
+              {good.poeticLinkLabel ?? "conhecer com calma →"}
+            </FicharioEtiqueta>
           )}
         </div>
-      </article>
+      </FicharioFicha>
     </section>
   )
 }

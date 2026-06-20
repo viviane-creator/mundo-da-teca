@@ -1,5 +1,6 @@
 import { HomeExploreMap } from "../components/HomeExploreMap"
 import { EditorialDecor } from "../components/EditorialDecor"
+import { FicharioDivisoria, FicharioEtiqueta } from "../components/fichario"
 import { ParticipationSection } from "../components/ParticipationSection"
 import { editorialDecorMapCorners } from "../data/editorialDecorPresets"
 import { styles } from "../styles/appStyles"
@@ -24,147 +25,85 @@ export function Home({
   return (
     <WorldPortalLayout {...portal} variant="home">
       <div style={styles.homeV2Journey}>
-        <section style={styles.homeSectionBlock}>
+        <span style={styles.homeFicharioSpine} aria-hidden="true" />
+
+        <FicharioDivisoria abaIcon="🗺️" abaLabel="exploração">
           <p style={styles.homeV2SectionKicker}>mapa de exploração</p>
           <h2 style={styles.homeSectionHeading}>
             Escolha por onde começar.
           </h2>
+          <p style={styles.homeSectionSubtitle}>
+            Seis universos para explorar, criar, imaginar e descobrir.
+          </p>
 
           <div style={styles.homeV2UniversosWrap}>
             <EditorialDecor items={editorialDecorMapCorners} />
             <div style={styles.editorialDecorContent}>
               <HomeExploreMap onSelect={setScreen} />
-              <p style={styles.homeV2TrailEnd}>
-                · · · a trilha encontra seu lugar · · ·
-              </p>
             </div>
           </div>
-        </section>
+        </FicharioDivisoria>
 
-        <div style={styles.homeEditorialDivider} />
+        <FicharioDivisoria abaIcon="📖" abaLabel="meu mundo">
+          <h2 style={styles.homePlaceTitle}>Meu Mundo</h2>
+          <p style={styles.homeSectionSubtitle}>
+            Toda descoberta precisa de um lugar para morar.
+          </p>
+          <FicharioEtiqueta
+            action
+            onClick={() => setScreen("meu-mundo")}
+            style={styles.homeV2SoftButton}
+          >
+            abrir fichário pessoal →
+          </FicharioEtiqueta>
+        </FicharioDivisoria>
 
-        <div style={styles.homeV2DestinationWrap}>
-          <section style={styles.homeV2Destination}>
-            <span style={styles.homeV2DestinationSpine} aria-hidden="true" />
-
-            <p style={styles.homeV2DestinationArrow}>
-              ↓ seu destino · onde a trilha encontra casa
-            </p>
-
-            <div style={styles.homeV2FicharioIllustration} aria-hidden="true">
-              <img
-                src="/cards/descobertas/colecoes.png"
-                alt=""
-                style={{
-                  ...styles.homeV2FicharioPage,
-                  ...styles.homeV2FicharioPageBack,
-                }}
-              />
-              <img
-                src="/cards/descobertas/diario.png"
-                alt=""
-                style={{
-                  ...styles.homeV2FicharioPage,
-                  ...styles.homeV2FicharioPageMid,
-                }}
-              />
-              <img
-                src="/cards/descobertas/tesouros.png"
-                alt=""
-                style={{
-                  ...styles.homeV2FicharioPage,
-                  ...styles.homeV2FicharioPageFront,
-                }}
-              />
+        <FicharioDivisoria abaIcon="✨" abaLabel="gaveta">
+          <div style={{ position: "relative" }}>
+            <div style={styles.homeV2CabinetDecor} aria-hidden="true">
+              {atelierCabinetDecor.map((item) => (
+                <img
+                  key={item.src}
+                  src={item.src}
+                  alt=""
+                  style={{
+                    ...styles.homeV2CabinetDecorImg,
+                    width: `${item.w}px`,
+                    height: `${item.h}px`,
+                    ...(item.top ? { top: item.top } : {}),
+                    ...(item.bottom ? { bottom: item.bottom } : {}),
+                    ...(item.left ? { left: item.left } : {}),
+                    ...(item.right ? { right: item.right } : {}),
+                    transform: `rotate(${item.rotate}deg)`,
+                  }}
+                />
+              ))}
             </div>
 
-            <h2 style={styles.homeV2DestinationHeading}>Meu Mundo</h2>
-            <p style={styles.homeV2DestinationPromise}>
-              Toda descoberta precisa de um lugar para morar.
-            </p>
+            <div style={styles.homeV2CabinetInner}>
+              <p style={styles.homeV2SectionKicker}>gaveta de tesouros</p>
+              <h2 style={styles.homePlaceTitle}>Ateliê</h2>
+              <p style={styles.homeSectionSubtitle}>
+                Complementos das fichas — figurinhas, papelaria e colecionáveis
+                para continuar explorando.
+              </p>
+              <FicharioEtiqueta
+                action
+                onClick={() => setScreen("atelie")}
+                style={styles.homeV2SoftButton}
+              >
+                abrir gaveta →
+              </FicharioEtiqueta>
+            </div>
+          </div>
+        </FicharioDivisoria>
 
-            <button
-              type="button"
-              style={styles.homeV2DestinationButton}
-              onClick={() => setScreen("meu-mundo")}
-            >
-              Abrir Meu Mundo
-            </button>
-          </section>
-        </div>
-
-        <div style={styles.homeEditorialDivider} />
-
-        <div id="home-como-participar">
+        <FicharioDivisoria abaIcon="📬" abaLabel="clube">
           <ParticipationSection
             variant="home-path"
             onGoToClube={() => setScreen("clube")}
           />
-        </div>
-
-        <div style={styles.homeEditorialDivider} />
-
-        <section style={styles.homeV2Cabinet}>
-          <div style={styles.homeV2CabinetDecor} aria-hidden="true">
-            {atelierCabinetDecor.map((item) => (
-              <img
-                key={item.src}
-                src={item.src}
-                alt=""
-                style={{
-                  ...styles.homeV2CabinetDecorImg,
-                  width: `${item.w}px`,
-                  height: `${item.h}px`,
-                  ...(item.top ? { top: item.top } : {}),
-                  ...(item.bottom ? { bottom: item.bottom } : {}),
-                  ...(item.left ? { left: item.left } : {}),
-                  ...(item.right ? { right: item.right } : {}),
-                  transform: `rotate(${item.rotate}deg)`,
-                }}
-              />
-            ))}
-            <span
-              style={{
-                ...styles.homeV2CabinetDecorStamp,
-                top: "22%",
-                right: "18%",
-              }}
-            />
-            <span
-              style={{
-                ...styles.homeV2CabinetDecorStamp,
-                width: "22px",
-                height: "22px",
-                bottom: "28%",
-                right: "6%",
-                opacity: 0.28,
-              }}
-            />
-          </div>
-
-          <div style={styles.homeV2CabinetInner}>
-            <span
-              style={{ ...styles.homeV2CabinetShelf, top: "42%" }}
-              aria-hidden="true"
-            />
-            <span
-              style={{ ...styles.homeV2CabinetShelf, top: "68%" }}
-              aria-hidden="true"
-            />
-            <p style={styles.homeV2SectionKicker}>gabinete de curiosidades</p>
-            <h2 style={styles.homeSectionHeading}>Ateliê</h2>
-            <p style={styles.homeV2CabinetLead}>
-              Alguns tesouros insistem em vir para casa.
-            </p>
-            <button
-              type="button"
-              style={styles.homeV2SoftButton}
-              onClick={() => setScreen("atelie")}
-            >
-              Visitar Ateliê
-            </button>
-          </div>
-        </section>
+        </FicharioDivisoria>
       </div>
     </WorldPortalLayout>
   )

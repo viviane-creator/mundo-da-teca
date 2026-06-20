@@ -94,14 +94,14 @@ export const tecaFont = {
     fontWeight: 500,
   } satisfies CSSProperties,
 
-  /** Nível 6 — microtextos / etiquetas editoriais */
+  /** Microtextos / etiquetas — Cormorant */
   micro: {
-    fontFamily: "'Nunito', sans-serif",
-    fontSize: "10px",
-    letterSpacing: "2.5px",
+    fontFamily: "'Cormorant Garamond', serif",
+    fontSize: "11px",
+    letterSpacing: "2px",
     textTransform: "uppercase",
     color: "#b3815f",
-    fontWeight: 700,
+    fontWeight: 600,
   } satisfies CSSProperties,
 
   /** linhas de ficha / carteirinha */
@@ -193,6 +193,374 @@ export function tecaTilt(degrees = 0.35): CSSProperties {
   return degrees === 0 ? {} : { transform: `rotate(${degrees}deg)` }
 }
 
+/**
+ * Sistema visual do fichário de explorador.
+ *
+ * ÁTOMO CENTRAL: a FICHA — cada descoberta gera uma ficha.
+ * Universos = coleções de fichas · Meu Mundo = fichário de fichas ·
+ * Coleções = agrupamentos · Clube = novas fichas · Ateliê = objetos das fichas.
+ *
+ * Cinco componentes: 1 divisória · 2 aba · 3 ficha · 4 etiqueta · 5 registro
+ */
+const ficharioMaterial = {
+  line: "rgba(196, 165, 141, 0.34)",
+  lineDashed: "rgba(196, 165, 141, 0.38)",
+  lineSoft: "rgba(196, 165, 141, 0.28)",
+  paper: "rgba(255, 253, 249, 0.72)",
+  paperSolid: tecaColors.paperFicha,
+  abaPaper:
+    "linear-gradient(180deg, rgba(255,251,245,0.98) 0%, rgba(248,236,220,0.9) 100%)",
+  etiquetaPaper:
+    "linear-gradient(180deg, rgba(255,253,249,0.98) 0%, rgba(248,239,228,0.88) 100%)",
+  spine:
+    "linear-gradient(180deg, #dcc9b4 0%, #c9b39a 48%, #dcc9b4 100%)",
+} as const
+
+export const tecaFichario = {
+  material: ficharioMaterial,
+
+  /** COMPONENTE 1 — divisória: separa capítulos do fichário */
+  divisoria: (): CSSProperties => ({
+    position: "relative",
+    display: "flex",
+    alignItems: "stretch",
+    gap: 0,
+    marginBottom: "12px",
+    overflow: "hidden",
+  }),
+
+  divisoriaCorpo: (): CSSProperties => ({
+    flex: 1,
+    minWidth: 0,
+    padding: "18px 16px 16px",
+    borderRadius: "0 18px 18px 0",
+    border: `1px dashed ${ficharioMaterial.line}`,
+    background: ficharioMaterial.paper,
+  }),
+
+  divisoriaSpine: (): CSSProperties => ({
+    position: "absolute",
+    left: 0,
+    top: "6%",
+    bottom: "6%",
+    width: "10px",
+    borderRadius: "0 5px 5px 0",
+    background: ficharioMaterial.spine,
+    opacity: 0.72,
+    zIndex: 0,
+  }),
+
+  /** COMPONENTE 2 — aba: destinos e capítulos laterais */
+  aba: (): CSSProperties => ({
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
+    gap: "5px",
+    minWidth: "76px",
+    padding: "14px 8px",
+    borderRadius: "14px 0 0 14px",
+    border: `1px solid ${ficharioMaterial.line}`,
+    borderRight: "none",
+    background: ficharioMaterial.abaPaper,
+    boxShadow: "inset 0 1px 0 rgba(255,255,255,0.75)",
+    flexShrink: 0,
+  }),
+
+  abaMapa: (): CSSProperties => ({
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    width: "28px",
+    minHeight: "72px",
+    marginRight: "-2px",
+    borderRadius: "10px 0 0 10px",
+    border: `1px solid ${ficharioMaterial.line}`,
+    borderRight: "none",
+    background: ficharioMaterial.abaPaper,
+    boxShadow: "inset 0 1px 0 rgba(255,255,255,0.7)",
+    fontSize: "18px",
+    lineHeight: 1,
+    flexShrink: 0,
+  }),
+
+  abaIcon: (): CSSProperties => ({
+    fontSize: "22px",
+    lineHeight: 1,
+  }),
+
+  abaLabel: (): CSSProperties => ({
+    ...tecaFont.micro,
+    fontSize: "9px",
+    letterSpacing: "1.4px",
+    margin: 0,
+    textAlign: "center",
+    lineHeight: 1.2,
+  }),
+
+  /** COMPONENTE 3 — ficha: átomo do sistema (descoberta catalograda) */
+  ficha: (): CSSProperties => ({
+    position: "relative",
+    background: ficharioMaterial.paper,
+    borderRadius: tecaRadius.lg,
+    overflow: "hidden",
+    border: `1px dashed ${ficharioMaterial.lineDashed}`,
+    boxShadow: "none",
+    transition: "border-color 0.2s ease",
+  }),
+
+  fichaPerforacaoWrap: (): CSSProperties => ({
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between",
+    gap: "10px",
+    padding: "7px 14px 6px",
+    borderBottom: `1px dashed ${ficharioMaterial.lineSoft}`,
+    background: "rgba(248,239,228,0.38)",
+  }),
+
+  fichaPerforacao: (): CSSProperties => ({
+    display: "flex",
+    gap: "5px",
+    alignItems: "center",
+    flexShrink: 0,
+  }),
+
+  fichaFuro: (): CSSProperties => ({
+    width: "5px",
+    height: "5px",
+    borderRadius: "999px",
+    border: `1px solid rgba(196, 165, 141, 0.42)`,
+    background: "rgba(255,253,249,0.55)",
+    flexShrink: 0,
+  }),
+
+  fichaCodigo: (): CSSProperties => ({
+    ...tecaFont.micro,
+    fontSize: "9px",
+    letterSpacing: "1.5px",
+    color: "#b5a090",
+    textTransform: "uppercase",
+    whiteSpace: "nowrap",
+  }),
+
+  fichaCodigoCompact: (): CSSProperties => ({
+    ...tecaFont.micro,
+    fontSize: "8px",
+    letterSpacing: "1.3px",
+    color: "#b5a090",
+    textTransform: "uppercase",
+    marginBottom: "6px",
+    display: "block",
+  }),
+
+  fichaReferencia: (): CSSProperties => ({
+    position: "relative",
+    background: ficharioMaterial.paper,
+    borderRadius: tecaRadius.lg,
+    overflow: "hidden",
+    border: `1px dashed ${ficharioMaterial.lineDashed}`,
+    boxShadow: "inset 0 1px 0 rgba(255,255,255,0.75)",
+    minHeight: "100%",
+  }),
+
+  /** Ficha de memória — diário do explorador */
+  fichaMemoria: (): CSSProperties => ({
+    position: "relative",
+    borderRadius: "20px",
+    overflow: "hidden",
+    border: `1px dashed ${ficharioMaterial.line}`,
+    background:
+      "repeating-linear-gradient(180deg, transparent 0 25px, rgba(196,165,141,0.1) 25px 26px), rgba(255,253,249,0.92)",
+    boxShadow: "inset 0 1px 0 rgba(255,255,255,0.85)",
+  }),
+
+  fichaMemoriaBody: (): CSSProperties => ({
+    padding: "12px 16px 16px 22px",
+    position: "relative",
+  }),
+
+  fichaMemoriaSpine: (): CSSProperties => ({
+    position: "absolute",
+    left: 0,
+    top: "14%",
+    bottom: "14%",
+    width: "6px",
+    borderRadius: "0 4px 4px 0",
+    background: "rgba(220,201,180,0.45)",
+    zIndex: 0,
+  }),
+
+  fichaMemoriaTitle: (): CSSProperties => ({
+    margin: "0 0 8px",
+    ...tecaFont.portalTitle,
+    fontSize: "26px",
+    lineHeight: 0.95,
+    textAlign: "left",
+  }),
+
+  /** Ficha complemento — objetos do ateliê ligados às descobertas */
+  fichaComplemento: (): CSSProperties => ({
+    position: "relative",
+    background: ficharioMaterial.paper,
+    borderRadius: tecaRadius.lg,
+    overflow: "hidden",
+    border: `1px dashed ${ficharioMaterial.lineDashed}`,
+    boxShadow: "inset 0 1px 0 rgba(255,255,255,0.8)",
+  }),
+
+  fichaComplementoEnvelope: (): CSSProperties => ({
+    background: "#f3e8dc",
+    borderStyle: "dashed",
+    borderColor: "rgba(195, 150, 110, 0.42)",
+  }),
+
+  fichaComplementoAlbum: (): CSSProperties => ({
+    background: ficharioMaterial.paperSolid,
+    border: `1px solid ${tecaColors.lineSoft}`,
+    boxShadow:
+      "0 10px 28px rgba(120,90,60,0.06), inset 0 0 0 1px rgba(255,253,249,0.5)",
+  }),
+
+  fichaComplementoTitle: (): CSSProperties => ({
+    margin: 0,
+    ...tecaFont.heading,
+    fontSize: "20px",
+    lineHeight: 1.1,
+    textAlign: "left",
+  }),
+
+  fichaSelected: (): CSSProperties => ({
+    border: `1px solid ${ficharioMaterial.line}`,
+    boxShadow: "0 8px 22px rgba(120,90,60,0.06)",
+  }),
+
+  fichaCompact: (): CSSProperties => ({
+    minHeight: "118px",
+    padding: "12px 12px 11px",
+    borderRadius: "16px",
+    border: `1px solid ${tecaColors.line}`,
+    background: ficharioMaterial.paperSolid,
+    boxShadow: "inset 0 1px 0 rgba(255,255,255,0.7)",
+    textAlign: "left",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+  }),
+
+  fichaButton: (): CSSProperties => ({
+    border: "none",
+    background: "transparent",
+    padding: 0,
+    cursor: "pointer",
+    width: "100%",
+    textAlign: "left",
+  }),
+
+  fichaHeader: (): CSSProperties => ({
+    display: "flex",
+    alignItems: "flex-start",
+    justifyContent: "space-between",
+    gap: "10px",
+    padding: "16px 16px 10px",
+  }),
+
+  fichaTitle: (): CSSProperties => ({
+    margin: 0,
+    ...tecaFont.portalTitle,
+    fontSize: "34px",
+    lineHeight: 0.95,
+    textAlign: "left",
+  }),
+
+  fichaImage: (): CSSProperties => ({
+    width: "100%",
+    aspectRatio: "5 / 3",
+    objectFit: "cover",
+    display: "block",
+  }),
+
+  fichaBody: (): CSSProperties => ({
+    padding: "12px 16px 14px",
+  }),
+
+  /** COMPONENTE 4 — etiqueta: ações e marcadores (não é botão de app) */
+  etiqueta: (): CSSProperties => ({
+    display: "inline-block",
+    fontSize: "11px",
+    letterSpacing: "1.6px",
+    textTransform: "uppercase",
+    color: "#b3815f",
+    fontFamily: "'Cormorant Garamond', serif",
+    fontWeight: 600,
+    border: `1px dashed ${tecaColors.lineSoft}`,
+    borderRadius: "4px",
+    padding: "5px 12px",
+    background: tecaColors.paper,
+  }),
+
+  etiquetaAction: (): CSSProperties => ({
+    display: "block",
+    width: "100%",
+    border: `1px dashed rgba(196, 165, 141, 0.48)`,
+    borderRadius: "6px",
+    background: ficharioMaterial.etiquetaPaper,
+    padding: "11px 16px",
+    fontFamily: "'Cormorant Garamond', serif",
+    fontSize: "20px",
+    fontWeight: 500,
+    letterSpacing: "0.35px",
+    color: tecaColors.text,
+    cursor: "pointer",
+    textAlign: "center",
+    boxShadow: "inset 0 1px 0 rgba(255,255,255,0.9)",
+    WebkitTapHighlightColor: "transparent",
+  }),
+
+  /** COMPONENTE 5 — registro: anotações de campo e metadados */
+  registro: (): CSSProperties => ({
+    display: "flex",
+    flexDirection: "column",
+    gap: "4px",
+    paddingTop: "10px",
+    borderTop: `1px dashed ${ficharioMaterial.lineSoft}`,
+  }),
+
+  registroRow: (): CSSProperties => ({
+    margin: 0,
+    display: "flex",
+    gap: "8px",
+    alignItems: "baseline",
+    fontFamily: "'Cormorant Garamond', serif",
+    fontSize: "11px",
+    lineHeight: 1.4,
+    color: "#b5a090",
+  }),
+
+  registroLabel: (): CSSProperties => ({
+    flexShrink: 0,
+    minWidth: "72px",
+    fontSize: "10px",
+    letterSpacing: "1.2px",
+    textTransform: "uppercase",
+    fontWeight: 600,
+    opacity: 0.75,
+  }),
+
+  registroValor: (): CSSProperties => ({
+    opacity: 0.88,
+  }),
+
+  /** @deprecated Usar divisoriaCorpo */
+  corpo: (): CSSProperties => tecaFichario.divisoriaCorpo(),
+
+  /** @deprecated Usar divisoriaSpine */
+  spine: (): CSSProperties => tecaFichario.divisoriaSpine(),
+
+  /** @deprecated Usar etiquetaAction */
+  action: (): CSSProperties => tecaFichario.etiquetaAction(),
+}
+
 export const tecaObjects = {
   paper: (radius: number = tecaRadius.md): CSSProperties => ({
     background: tecaColors.paper,
@@ -239,27 +607,20 @@ export const tecaObjects = {
     boxShadow: shadow.soft,
   }),
 
+  /** @deprecated Usar tecaFichario.ficha() ou fichaCompact() */
   ficha: (radius: number = tecaRadius.md): CSSProperties => ({
-    background: tecaColors.paperFicha,
+    ...tecaFichario.ficha(),
     borderRadius: radius,
     padding: "22px 18px 24px",
     border: `1px solid ${tecaColors.lineSoft}`,
     boxShadow: "0 6px 18px rgba(120,90,60,0.04), inset 0 1px 0 rgba(255,255,255,0.8)",
   }),
 
-  etiqueta: (): CSSProperties => ({
-    display: "inline-block",
-    fontSize: "10px",
-    letterSpacing: "2px",
-    textTransform: "uppercase",
-    color: "#b3815f",
-    fontFamily: "'Nunito', sans-serif",
-    fontWeight: 600,
-    border: `1px solid ${tecaColors.lineSoft}`,
-    borderRadius: "4px",
-    padding: "4px 10px",
-    background: tecaColors.paper,
-  }),
+  /** @deprecated Usar tecaFichario.etiqueta() */
+  etiqueta: (): CSSProperties => tecaFichario.etiqueta(),
+
+  /** @deprecated Usar tecaFichario.etiquetaAction() */
+  buttonPrimary: (): CSSProperties => tecaFichario.etiquetaAction(),
 
   seal: (): CSSProperties => ({
     display: "inline-flex",
@@ -290,19 +651,6 @@ export const tecaObjects = {
     fontFamily: "'Cormorant Garamond', serif",
     fontSize: "15px",
     color: "#9a8475",
-    letterSpacing: "0.3px",
-  }),
-
-  buttonPrimary: (): CSSProperties => ({
-    border: "none",
-    background: tecaColors.accent,
-    borderRadius: "999px",
-    color: "#fffaf5",
-    cursor: "pointer",
-    boxShadow: "0 5px 14px rgba(195,133,87,0.12)",
-    fontFamily: "'Cormorant Garamond', serif",
-    fontWeight: 500,
-    fontSize: "20px",
     letterSpacing: "0.3px",
   }),
 

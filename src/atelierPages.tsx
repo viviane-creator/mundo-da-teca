@@ -37,13 +37,14 @@ export function AtelierShopPage({
 
         <div style={styles.editorialDecorContent}>
           <header style={styles.pageHeroBlock}>
+            <p style={styles.atelierFichaKicker}>complementos das fichas</p>
             <h1 style={styles.pageHeroTitle}>Ateliê</h1>
             <p style={styles.pageHeroPoetic}>
-              Algumas descobertas gostam de ficar por perto.
+              Objetos que continuam o que as fichas começaram.
             </p>
             <p style={styles.pageHeroSubtitle}>
-              Figurinhas, papelaria, colecionáveis e pequenos tesouros do Mundo
-              da Teca.
+              Figurinhas, papelaria e colecionáveis — peças para acompanhar as
+              descobertas.
             </p>
           </header>
 
@@ -74,7 +75,9 @@ export function AtelierShopPage({
             ...(index === 0 ? styles.atelierCatalogSectionFirst : {}),
           }}
         >
-          <h2 style={styles.atelierCatalogSectionTitle}>{section.title}</h2>
+          <h2 style={styles.atelierCatalogSectionTitle}>
+            Fichas complemento — {section.title}
+          </h2>
 
           <div style={styles.atelierCatalogStack}>
             {section.goods.map((good) => (

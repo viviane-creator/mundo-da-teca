@@ -56,3 +56,23 @@ export function getUniverseEmblem(universeId: string): string {
     homeUniversePortals.find((portal) => portal.id === universeId)?.icon ?? "✦"
   )
 }
+
+export function getUniverseChapterTitle(universeId: string): string {
+  return (
+    homeUniversePortals.find((portal) => portal.id === universeId)?.title ??
+    universeId
+  )
+}
+
+export function getUniverseChapterPhrase(universeId: string): string {
+  return (
+    homeUniversePortals.find((portal) => portal.id === universeId)?.phrase ?? ""
+  )
+}
+
+export function getUniverseChapterIndex(universeId: string): number {
+  const index = homeUniversePortals.findIndex(
+    (portal) => portal.id === universeId
+  )
+  return index === -1 ? 0 : index + 1
+}
