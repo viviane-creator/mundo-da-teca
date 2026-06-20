@@ -508,9 +508,12 @@ function PlayUniversePage({
         <p style={styles.playUniverseChapterKicker}>
           capítulo {getUniverseChapterIndex(universe.id)}
         </p>
-        <span style={styles.playUniverseEmblemWatermark} aria-hidden="true">
-          {getUniverseEmblem(universe.id)}
-        </span>
+        <img
+          src={getUniverseEmblem(universe.id)}
+          alt=""
+          aria-hidden
+          style={styles.playUniverseEmblemWatermark}
+        />
         <h1 style={styles.playUniverseTitle}>
           {getUniverseChapterTitle(universe.id)}
         </h1>

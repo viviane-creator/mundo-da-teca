@@ -1,4 +1,5 @@
 import type { CSSProperties } from "react"
+import { isUniverseIconImage, UniverseIcon } from "../UniverseIcon"
 import { tecaFichario } from "../../tecaVisual"
 
 export function FicharioAba({
@@ -22,15 +23,19 @@ export function FicharioAba({
       style={{ ...baseStyle, ...style }}
       aria-hidden={decorative || variant === "mapa" ? true : undefined}
     >
-      <span
-        style={
-          variant === "mapa"
-            ? { fontSize: "18px", lineHeight: 1 }
-            : tecaFichario.abaIcon()
-        }
-      >
-        {icon}
-      </span>
+      {isUniverseIconImage(icon) ? (
+        <UniverseIcon src={icon} variant="aba" />
+      ) : (
+        <span
+          style={
+            variant === "mapa"
+              ? { fontSize: "18px", lineHeight: 1 }
+              : tecaFichario.abaIcon()
+          }
+        >
+          {icon}
+        </span>
+      )}
       {label && variant === "capitulo" && (
         <span style={tecaFichario.abaLabel()}>{label}</span>
       )}

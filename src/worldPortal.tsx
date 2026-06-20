@@ -1,4 +1,5 @@
 import type { CSSProperties, ReactNode } from "react"
+import { HomeHeroMist, HomeHeroTextMist } from "./components/HomeHeroMist"
 import { tecaColors, tecaFont, tecaHierarchy, tecaSpacing } from "./tecaVisual"
 
 const theme = {
@@ -74,8 +75,55 @@ const p: Record<string, CSSProperties> = {
     background: "#e8ddd0",
   },
   coverWrapHome: {
-    minHeight: "min(58vh, 540px)",
-    maxHeight: "580px",
+    minHeight: "min(78vh, 700px)",
+    maxHeight: "780px",
+  },
+  coverImageHome: {
+    objectPosition: "center 36%",
+  },
+  vignetteHome: {
+    background:
+      "radial-gradient(ellipse 96% 88% at 50% 44%, transparent 58%, rgba(72,48,32,0.07) 100%)",
+  },
+  homeHeroTextOverlay: {
+    position: "absolute",
+    left: 0,
+    right: 0,
+    bottom: "72px",
+    zIndex: 4,
+    padding: "14px 22px 0",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    textAlign: "center",
+    pointerEvents: "none",
+    overflow: "hidden",
+  },
+  homeHeroTitle: {
+    ...tecaHierarchy.l1PageTitle,
+    margin: "0 0 10px",
+    fontSize: "clamp(26px, 6.2vw, 40px)",
+    lineHeight: 1.08,
+    textShadow:
+      "0 1px 2px rgba(255,253,249,0.9), 0 2px 18px rgba(255,253,249,0.75)",
+  },
+  homeHeroTagline: {
+    ...tecaHierarchy.l2Poetic,
+    margin: "20px auto 0",
+    fontSize: "clamp(22px, 5.5vw, 26px)",
+    fontWeight: 500,
+    color: tecaColors.text,
+    lineHeight: 1.35,
+    letterSpacing: "0.3px",
+    textAlign: "center",
+    textShadow:
+      "0 1px 1px rgba(255,253,249,0.95), 0 2px 16px rgba(255,253,249,0.88), 0 1px 0 rgba(90,60,30,0.14)",
+  },
+  bodyHome: {
+    position: "relative",
+    zIndex: 6,
+    padding: "56px 24px 32px",
+    marginTop: 0,
   },
   coverImage: {
     width: "100%",
@@ -106,7 +154,12 @@ const p: Record<string, CSSProperties> = {
   },
   logoHome: {
     top: "52px",
-    width: "176px",
+    left: "50%",
+    width: "208px",
+    transform: "translateX(-50%)",
+    opacity: 0.99,
+    filter:
+      "drop-shadow(0 4px 12px rgba(90,60,30,0.17)) contrast(1.08) saturate(0.95) brightness(1.03)",
   },
   fade: {
     position: "absolute",
@@ -167,10 +220,12 @@ export function WorldPortalCover({
   cover,
   alt,
   variant = "default",
+  showFade = true,
 }: {
   cover: string
   alt: string
   variant?: "default" | "home"
+  showFade?: boolean
 }) {
   return (
     <div
@@ -179,7 +234,14 @@ export function WorldPortalCover({
         ...(variant === "home" ? p.coverWrapHome : {}),
       }}
     >
-      <img src={cover} alt={alt} style={p.coverImage} />
+      <img
+        src={cover}
+        alt={alt}
+        style={{
+          ...p.coverImage,
+          ...(variant === "home" ? p.coverImageHome : {}),
+        }}
+      />
       <div style={p.vignette} />
       <img
         src="/logo/logo.png"
@@ -189,7 +251,11 @@ export function WorldPortalCover({
           ...(variant === "home" ? p.logoHome : {}),
         }}
       />
-      <div style={p.fade} />
+      {variant === "home" ? (
+        <HomeHeroMist />
+      ) : (
+        showFade && <div style={p.fade} />
+      )}
     </div>
   )
 }
@@ -255,6 +321,42 @@ export function WorldPortalLayout({
   breath?: "normal" | "large"
   children: ReactNode
 }) {
+  if (variant === "home") {
+    return (
+      <>
+        <div
+          style={{
+            ...p.coverWrap,
+            ...p.coverWrapHome,
+          }}
+        >
+          <img
+            src={cover}
+            alt={coverAlt}
+            style={{ ...p.coverImage, ...p.coverImageHome }}
+          />
+          <div style={{ ...p.vignette, ...p.vignetteHome }} />
+          <img
+            src="/logo/logo.png"
+            alt="Mundo da Teca"
+            style={{ ...p.logo, ...p.logoHome }}
+          />
+          <HomeHeroMist />
+          <div style={p.homeHeroTextOverlay}>
+            <HomeHeroTextMist />
+            <h1 style={{ ...p.homeHeroTitle, position: "relative", zIndex: 1 }}>
+              {title}
+            </h1>
+            <p style={{ ...p.homeHeroTagline, position: "relative", zIndex: 1 }}>
+              {tagline}
+            </p>
+          </div>
+        </div>
+        <section style={p.bodyHome}>{children}</section>
+      </>
+    )
+  }
+
   return (
     <>
       <WorldPortalCover cover={cover} alt={coverAlt} variant={variant} />

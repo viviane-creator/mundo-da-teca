@@ -1,6 +1,7 @@
 import { getUniverseCollectionSummary } from "../data/minhaColecaoMock"
 import type { FicharioUniverse } from "../data/minhaColecaoMock"
 import { CollectionPageSlot } from "./CollectionPageSlot"
+import { UniverseIcon } from "./UniverseIcon"
 import { styles } from "../styles/appStyles"
 
 export function FicharioUniversePanel({
@@ -34,12 +35,11 @@ export function FicharioUniversePanel({
             ...(expanded ? styles.ficharioUniverseHeaderOpen : {}),
           }}
         >
-          <span
+          <UniverseIcon
+            src={universe.icon}
+            variant="panel"
             style={styles.ficharioUniverseEmblemWatermark}
-            aria-hidden="true"
-          >
-            {universe.icon}
-          </span>
+          />
 
           <div style={styles.ficharioUniverseHeaderBody}>
             <h3 style={styles.ficharioUniverseTitle}>

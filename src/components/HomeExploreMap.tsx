@@ -1,4 +1,5 @@
 import { homeUniversePortals } from "../data/homeUniversePortals"
+import { UniverseIcon } from "./UniverseIcon"
 import { FicharioAba } from "./fichario"
 import { styles } from "../styles/appStyles"
 
@@ -29,17 +30,17 @@ function MapDecorations() {
       {homeUniversePortals.map((portal, index) => {
         const point = TRAIL_POINTS[index]
         return (
-          <text
+          <image
             key={`wm-${portal.id}`}
-            x={point.x}
-            y={point.y + 8}
-            textAnchor="middle"
-            fontSize="96"
+            href={portal.icon}
+            x={point.x - 48}
+            y={point.y - 48}
+            width="96"
+            height="96"
             opacity={0.07}
+            preserveAspectRatio="xMidYMid meet"
             style={{ pointerEvents: "none" }}
-          >
-            {portal.icon}
-          </text>
+          />
         )
       })}
 
@@ -284,7 +285,9 @@ export function HomeExploreMap({
                     transform={`rotate(${index % 2 === 0 ? -4 : 5} 50 50)`}
                   />
                 </svg>
-                <span style={styles.homeExploreMarkerIcon}>{portal.icon}</span>
+                <span style={styles.homeExploreMarkerIcon}>
+                  <UniverseIcon src={portal.icon} variant="marker" />
+                </span>
               </span>
               <span style={styles.homeExploreStopTitle}>{portal.title}</span>
             </span>

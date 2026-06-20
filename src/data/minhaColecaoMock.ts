@@ -84,7 +84,7 @@ function padSlots(
 export const ficharioUniverses: FicharioUniverse[] = [
   {
     id: "laboratorio",
-    icon: "⚗️",
+    icon: "/universos/laboratorio.png",
     title: "Laboratório",
     collectionTitle: "Coleção do Laboratório",
     poetic: "Onde as coisas se transformam.",
@@ -117,7 +117,7 @@ export const ficharioUniverses: FicharioUniverse[] = [
   },
   {
     id: "cozinha",
-    icon: "🥄",
+    icon: "/universos/cozinha.png",
     title: "Cozinha",
     collectionTitle: "Coleção da Cozinha",
     poetic: "Onde receitas viram descobertas.",
@@ -139,7 +139,7 @@ export const ficharioUniverses: FicharioUniverse[] = [
   },
   {
     id: "oficina",
-    icon: "🔧",
+    icon: "/universos/oficina.png",
     title: "Oficina",
     collectionTitle: "Coleção da Oficina",
     poetic: "Onde as mãos constroem ideias.",
@@ -157,7 +157,7 @@ export const ficharioUniverses: FicharioUniverse[] = [
   },
   {
     id: "faz-de-conta",
-    icon: "🗝️",
+    icon: "/universos/faz-de-conta.png",
     title: "Faz de Conta",
     collectionTitle: "Coleção do Faz de Conta",
     poetic: "Onde a imaginação ganha forma.",
@@ -178,7 +178,7 @@ export const ficharioUniverses: FicharioUniverse[] = [
   },
   {
     id: "quintal",
-    icon: "🪁",
+    icon: "/universos/quintal.png",
     title: "Quintal",
     collectionTitle: "Coleção do Quintal",
     poetic: "Onde o mundo lá fora vira aventura.",
@@ -195,7 +195,7 @@ export const ficharioUniverses: FicharioUniverse[] = [
   },
   {
     id: "observatorio",
-    icon: "🧭",
+    icon: "/universos/observatorio.png",
     title: "Observatório",
     collectionTitle: "Coleção do Observatório",
     poetic: "Onde a curiosidade encontra o invisível.",

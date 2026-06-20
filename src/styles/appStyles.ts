@@ -229,8 +229,9 @@ export const styles: Record<string, CSSProperties> = {
     left: "50%",
     top: "48%",
     transform: "translate(-50%, -50%)",
-    fontSize: "min(380px, 86vw)",
-    lineHeight: 1,
+    width: "min(380px, 86vw)",
+    height: "min(380px, 86vw)",
+    objectFit: "contain",
     opacity: 0.07,
     filter: "grayscale(0.1) sepia(0.15)",
     pointerEvents: "none",
@@ -801,10 +802,42 @@ export const styles: Record<string, CSSProperties> = {
 
   homeExploreMarkerIcon: {
     position: "relative",
-    fontSize: "80px",
-    lineHeight: 1,
     zIndex: 1,
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    lineHeight: 1,
+  },
+
+  universeIconMarker: {
+    width: "72px",
+    height: "72px",
+    maxWidth: "min(72px, 18vw)",
+    maxHeight: "min(72px, 18vw)",
+    objectFit: "contain",
+    display: "block",
     filter: "drop-shadow(0 2px 4px rgba(120,90,60,0.08))",
+  },
+
+  universeIconAba: {
+    width: "18px",
+    height: "18px",
+    objectFit: "contain",
+    display: "block",
+  },
+
+  universeIconPanel: {
+    width: "72px",
+    height: "72px",
+    objectFit: "contain",
+    display: "block",
+  },
+
+  universeIconEmblem: {
+    width: "min(380px, 86vw)",
+    height: "min(380px, 86vw)",
+    objectFit: "contain",
+    display: "block",
   },
 
   homeExploreStopTitle: {
@@ -1977,8 +2010,9 @@ export const styles: Record<string, CSSProperties> = {
     right: "42px",
     top: "50%",
     transform: "translateY(-50%)",
-    fontSize: "72px",
-    lineHeight: 1,
+    width: "72px",
+    height: "72px",
+    objectFit: "contain",
     opacity: 0.07,
     pointerEvents: "none",
     userSelect: "none",
