@@ -1,7 +1,7 @@
 import type { CSSProperties } from "react"
-import { tecaColors } from "../tecaVisual"
 
 const shellRgb = "246, 237, 226"
+const mistWhiteRgb = "255, 251, 245"
 
 type MistBlob = {
   left: string
@@ -33,42 +33,41 @@ const horizonMistBlobs: MistBlob[] = [
 
 /** ~20% — centro: envolve a menina, sobe devagar em direção ao texto */
 const centerMistBlobs: MistBlob[] = [
-  { left: "14%", bottom: "26%", width: "72%", height: "48%", opacity: 0.17, blur: 92, spread: 86 },
-  { left: "26%", bottom: "32%", width: "56%", height: "42%", opacity: 0.15, blur: 96, rotate: 3, spread: 84 },
-  { left: "38%", bottom: "28%", width: "50%", height: "40%", opacity: 0.14, blur: 90, rotate: -4, spread: 82 },
-  { left: "20%", bottom: "36%", width: "60%", height: "36%", opacity: 0.13, blur: 94, rotate: 5, spread: 80 },
-  { left: "32%", bottom: "40%", width: "48%", height: "32%", opacity: 0.11, blur: 88, rotate: -3 },
-  { left: "46%", bottom: "34%", width: "44%", height: "34%", opacity: 0.12, blur: 92, rotate: 2 },
-  { left: "24%", bottom: "44%", width: "52%", height: "28%", opacity: 0.09, blur: 86, rotate: -5 },
-  { left: "42%", bottom: "42%", width: "46%", height: "26%", opacity: 0.08, blur: 84, rotate: 3 },
+  { left: "14%", bottom: "26%", width: "72%", height: "48%", opacity: 0.15, blur: 92, spread: 86 },
+  { left: "26%", bottom: "32%", width: "56%", height: "42%", opacity: 0.13, blur: 96, rotate: 3, spread: 84 },
+  { left: "38%", bottom: "28%", width: "50%", height: "40%", opacity: 0.12, blur: 90, rotate: -4, spread: 82 },
+  { left: "20%", bottom: "36%", width: "60%", height: "36%", opacity: 0.11, blur: 94, rotate: 5, spread: 80 },
+  { left: "32%", bottom: "40%", width: "48%", height: "32%", opacity: 0.09, blur: 88, rotate: -3 },
+  { left: "46%", bottom: "34%", width: "44%", height: "34%", opacity: 0.1, blur: 92, rotate: 2 },
 ]
 
-/** Ponte menina → texto: névoa que sobe entre figura e tipografia */
+/** Ponte menina → texto */
 const bridgeMistBlobs: MistBlob[] = [
-  { left: "6%", bottom: "18%", width: "88%", height: "46%", opacity: 0.2, blur: 100, spread: 88, originY: "88%" },
-  { left: "20%", bottom: "24%", width: "64%", height: "50%", opacity: 0.18, blur: 96, spread: 90, originY: "92%" },
-  { left: "34%", bottom: "20%", width: "58%", height: "44%", opacity: 0.16, blur: 94, rotate: -2, originY: "90%" },
-  { left: "48%", bottom: "26%", width: "46%", height: "38%", opacity: 0.13, blur: 92, rotate: 4, originY: "86%" },
-  { left: "16%", bottom: "32%", width: "70%", height: "40%", opacity: 0.14, blur: 98, spread: 86, originY: "94%" },
+  { left: "6%", bottom: "14%", width: "88%", height: "42%", opacity: 0.16, blur: 100, spread: 88, originY: "88%" },
+  { left: "20%", bottom: "18%", width: "64%", height: "46%", opacity: 0.14, blur: 96, spread: 90, originY: "92%" },
+  { left: "34%", bottom: "16%", width: "58%", height: "40%", opacity: 0.12, blur: 94, rotate: -2, originY: "90%" },
+  { left: "48%", bottom: "20%", width: "46%", height: "34%", opacity: 0.1, blur: 92, rotate: 4, originY: "86%" },
 ]
 
-/** ~70% — terço inferior: densidade principal, transição suave para o conteúdo */
+/** Terço inferior — sem bordas retas; tudo dissolve para fora da hero */
 const lowerThirdMistBlobs: MistBlob[] = [
-  { left: "-14%", bottom: "-34%", width: "70%", height: "54%", opacity: 0.36, blur: 88, rotate: -5 },
-  { left: "2%", bottom: "-20%", width: "76%", height: "48%", opacity: 0.32, blur: 94, rotate: 3 },
-  { left: "20%", bottom: "-26%", width: "64%", height: "52%", opacity: 0.34, blur: 82, rotate: -3 },
-  { left: "42%", bottom: "-22%", width: "60%", height: "50%", opacity: 0.3, blur: 86, rotate: 5 },
-  { left: "60%", bottom: "-18%", width: "56%", height: "46%", opacity: 0.28, blur: 90, rotate: -2 },
-  { left: "-6%", bottom: "0%", width: "54%", height: "38%", opacity: 0.26, blur: 78, rotate: 4 },
-  { left: "16%", bottom: "4%", width: "58%", height: "36%", opacity: 0.28, blur: 80, rotate: -4 },
-  { left: "36%", bottom: "-2%", width: "56%", height: "40%", opacity: 0.26, blur: 76, rotate: 3 },
-  { left: "56%", bottom: "2%", width: "52%", height: "34%", opacity: 0.24, blur: 84, rotate: -3 },
-  { left: "6%", bottom: "10%", width: "48%", height: "30%", opacity: 0.22, blur: 72, rotate: 2 },
-  { left: "26%", bottom: "8%", width: "50%", height: "32%", opacity: 0.24, blur: 74, rotate: -5 },
-  { left: "48%", bottom: "12%", width: "46%", height: "28%", opacity: 0.2, blur: 78, rotate: 6 },
-  { left: "68%", bottom: "6%", width: "42%", height: "30%", opacity: 0.18, blur: 82, rotate: -2 },
-  { left: "30%", bottom: "16%", width: "44%", height: "26%", opacity: 0.16, blur: 70, rotate: 3, spread: 90 },
-  { left: "52%", bottom: "18%", width: "40%", height: "24%", opacity: 0.14, blur: 68, rotate: -4, spread: 88 },
+  { left: "-14%", bottom: "-38%", width: "72%", height: "58%", opacity: 0.28, blur: 100, rotate: -5 },
+  { left: "2%", bottom: "-24%", width: "78%", height: "52%", opacity: 0.24, blur: 104, rotate: 3 },
+  { left: "20%", bottom: "-30%", width: "66%", height: "56%", opacity: 0.26, blur: 96, rotate: -3 },
+  { left: "42%", bottom: "-26%", width: "62%", height: "54%", opacity: 0.22, blur: 98, rotate: 5 },
+  { left: "60%", bottom: "-20%", width: "58%", height: "50%", opacity: 0.2, blur: 102, rotate: -2 },
+  { left: "-6%", bottom: "-8%", width: "56%", height: "42%", opacity: 0.16, blur: 88, rotate: 4 },
+  { left: "16%", bottom: "-4%", width: "60%", height: "40%", opacity: 0.14, blur: 90, rotate: -4 },
+  { left: "36%", bottom: "-10%", width: "58%", height: "44%", opacity: 0.15, blur: 86, rotate: 3 },
+  { left: "56%", bottom: "-6%", width: "54%", height: "38%", opacity: 0.12, blur: 92, rotate: -3 },
+]
+
+/** Dissolução suave na base — sem linha horizontal */
+const bottomSoftBleedBlobs: MistBlob[] = [
+  { left: "-10%", bottom: "-42%", width: "120%", height: "62%", opacity: 0.2, blur: 110, spread: 98 },
+  { left: "10%", bottom: "-32%", width: "80%", height: "52%", opacity: 0.16, blur: 106, spread: 96 },
+  { left: "28%", bottom: "-24%", width: "68%", height: "46%", opacity: 0.12, blur: 100, spread: 94, rotate: -2 },
+  { left: "44%", bottom: "-34%", width: "76%", height: "54%", opacity: 0.14, blur: 112, spread: 97, rotate: 3 },
 ]
 
 const mistWrap: CSSProperties = {
@@ -88,9 +87,21 @@ const organicShapes = [
   "46% 54% 48% 52% / 40% 46% 54% 60%",
 ]
 
-function MistBlobLayer({ blob, shapeIndex = 0 }: { blob: MistBlob; shapeIndex?: number }) {
+function MistBlobLayer({
+  blob,
+  shapeIndex = 0,
+  whiteTone = false,
+}: {
+  blob: MistBlob
+  shapeIndex?: number
+  whiteTone?: boolean
+}) {
   const originY = blob.originY ?? "100%"
   const spread = blob.spread ?? 84
+  const rgb = whiteTone ? mistWhiteRgb : shellRgb
+  const peak = whiteTone ? 0.58 : 0.36
+  const mid = whiteTone ? 0.24 : 0.14
+  const fade = whiteTone ? 0.07 : 0.04
 
   return (
     <div
@@ -104,10 +115,10 @@ function MistBlobLayer({ blob, shapeIndex = 0 }: { blob: MistBlob; shapeIndex?: 
         borderRadius: blob.shape ?? organicShapes[shapeIndex % organicShapes.length],
         background: `radial-gradient(
           ellipse 95% ${spread}% at 50% ${originY},
-          rgba(${shellRgb}, 0.36) 0%,
-          rgba(${shellRgb}, 0.14) 30%,
-          rgba(${shellRgb}, 0.04) 54%,
-          rgba(${shellRgb}, 0) 72%
+          rgba(${rgb}, ${peak}) 0%,
+          rgba(${rgb}, ${mid}) 28%,
+          rgba(${rgb}, ${fade}) 52%,
+          rgba(${rgb}, 0) 76%
         )`,
         opacity: blob.opacity,
         filter: `blur(${blob.blur}px)`,
@@ -117,7 +128,15 @@ function MistBlobLayer({ blob, shapeIndex = 0 }: { blob: MistBlob; shapeIndex?: 
   )
 }
 
-function MistBlobField({ blobs, offset = 0 }: { blobs: MistBlob[]; offset?: number }) {
+function MistBlobField({
+  blobs,
+  offset = 0,
+  whiteTone = false,
+}: {
+  blobs: MistBlob[]
+  offset?: number
+  whiteTone?: boolean
+}) {
   return (
     <>
       {blobs.map((blob, index) => (
@@ -125,52 +144,21 @@ function MistBlobField({ blobs, offset = 0 }: { blobs: MistBlob[]; offset?: numb
           key={`${offset + index}`}
           blob={blob}
           shapeIndex={offset + index}
+          whiteTone={whiteTone}
         />
       ))}
     </>
   )
 }
 
-function OrganicMistWaves() {
-  return (
-    <svg
-      style={{
-        position: "absolute",
-        left: 0,
-        right: 0,
-        bottom: 0,
-        width: "100%",
-        height: "58%",
-        opacity: 0.72,
-        filter: "blur(20px)",
-      }}
-      viewBox="0 0 400 260"
-      preserveAspectRatio="none"
-      aria-hidden="true"
-    >
-      <path
-        d="M0,118 C34,96 68,126 108,102 C148,78 178,112 218,94 C258,76 302,108 342,88 C366,80 384,92 400,86 L400,260 L0,260 Z"
-        fill={tecaColors.shell}
-        opacity={0.09}
-      />
-      <path
-        d="M0,142 C48,128 90,148 142,130 C194,112 242,140 298,122 C332,112 366,130 400,118 L400,260 L0,260 Z"
-        fill={tecaColors.shell}
-        opacity={0.07}
-      />
-      <path
-        d="M0,168 C42,158 86,172 130,162 C174,152 218,168 262,158 C306,148 350,164 400,154 L400,260 L0,260 Z"
-        fill={tecaColors.shell}
-        opacity={0.05}
-      />
-      <path
-        d="M0,192 C36,184 80,196 124,188 C168,180 212,194 256,186 C300,178 344,192 400,184 L400,260 L0,260 Z"
-        fill={tecaColors.shell}
-        opacity={0.035}
-      />
-    </svg>
-  )
-}
+/** Névoa esbranquiçada onde o texto emerge */
+const textEmergenceMistBlobs: MistBlob[] = [
+  { left: "2%", top: "-130%", width: "96%", height: "220%", opacity: 0.42, blur: 58, spread: 94, originY: "76%" },
+  { left: "14%", top: "-110%", width: "72%", height: "200%", opacity: 0.36, blur: 66, spread: 92, originY: "80%" },
+  { left: "24%", top: "-90%", width: "56%", height: "175%", opacity: 0.3, blur: 74, spread: 90, originY: "84%" },
+  { left: "10%", top: "-55%", width: "80%", height: "145%", opacity: 0.26, blur: 52, spread: 88, originY: "90%" },
+  { left: "30%", top: "-35%", width: "44%", height: "120%", opacity: 0.22, blur: 44, spread: 86, originY: "94%" },
+]
 
 export function HomeHeroMist() {
   return (
@@ -180,28 +168,27 @@ export function HomeHeroMist() {
       <MistBlobField blobs={centerMistBlobs} offset={20} />
       <MistBlobField blobs={bridgeMistBlobs} offset={30} />
       <MistBlobField blobs={lowerThirdMistBlobs} offset={40} />
-      <OrganicMistWaves />
+      <MistBlobField blobs={bottomSoftBleedBlobs} offset={55} />
     </div>
   )
 }
-
-const titleMistBlobs: MistBlob[] = [
-  { left: "14%", bottom: "38%", width: "72%", height: "48%", opacity: 0.1, blur: 42 },
-  { left: "27%", bottom: "44%", width: "46%", height: "40%", opacity: 0.07, blur: 46 },
-]
 
 export function HomeHeroTextMist() {
   return (
     <div
       style={{
         position: "absolute",
-        inset: 0,
+        left: "-14%",
+        right: "-14%",
+        top: "-150%",
+        bottom: "-40%",
         pointerEvents: "none",
-        overflow: "hidden",
+        overflow: "visible",
+        zIndex: 0,
       }}
       aria-hidden="true"
     >
-      <MistBlobField blobs={titleMistBlobs} offset={50} />
+      <MistBlobField blobs={textEmergenceMistBlobs} offset={60} whiteTone />
     </div>
   )
 }
