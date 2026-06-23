@@ -18,9 +18,9 @@ export type WorldPortalConfig = {
 
 export const portalPages = {
   home: {
-    cover: "/characters/teca-estrelinha-praia.png",
-    coverAlt: "Teca no mundo real",
-    title: "Existe um mundo inteiro esperando para ser descoberto.",
+    cover: "/images/hero-home.webp",
+    coverAlt: "Mundo da Teca",
+    title: "Existe um mundo inteiro\nesperando para ser descoberto.",
     tagline: "Observe. Descubra. Colecione.",
     kicker: "observa • cria • imagina",
   },
@@ -89,35 +89,42 @@ const p: Record<string, CSSProperties> = {
     position: "absolute",
     left: 0,
     right: 0,
-    bottom: "72px",
+    bottom: "162px",
     zIndex: 4,
-    padding: "14px 22px 0",
+    padding: "0 clamp(18px, 5vw, 28px) 12px",
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
     textAlign: "center",
     pointerEvents: "none",
-    overflow: "hidden",
+    overflow: "visible",
   },
   homeHeroTitle: {
-    ...tecaHierarchy.l1PageTitle,
-    margin: "0 0 10px",
-    fontSize: "clamp(26px, 6.2vw, 40px)",
-    lineHeight: 1.08,
+    ...tecaFont.heading,
+    fontStyle: "normal",
+    fontWeight: 400,
+    margin: "0 0 14px",
+    fontSize: "clamp(24px, 5.2vw, 36px)",
+    lineHeight: 1.3,
+    letterSpacing: "0.015em",
+    maxWidth: "min(520px, 90vw)",
+    color: tecaColors.text,
     textShadow:
-      "0 1px 2px rgba(255,253,249,0.9), 0 2px 18px rgba(255,253,249,0.75)",
+      "0 1px 2px rgba(255,253,249,0.92), 0 3px 22px rgba(255,253,249,0.78), 0 1px 0 rgba(90,60,30,0.1)",
   },
   homeHeroTagline: {
-    ...tecaHierarchy.l2Poetic,
-    margin: "20px auto 0",
-    fontSize: "clamp(22px, 5.5vw, 26px)",
+    ...tecaFont.prose,
+    fontStyle: "normal",
+    margin: "0 auto",
+    fontSize: "clamp(20px, 4.8vw, 24px)",
     fontWeight: 500,
     color: tecaColors.text,
     lineHeight: 1.35,
-    letterSpacing: "0.3px",
+    letterSpacing: "0.35px",
+    maxWidth: "min(400px, 88vw)",
     textAlign: "center",
     textShadow:
-      "0 1px 1px rgba(255,253,249,0.95), 0 2px 16px rgba(255,253,249,0.88), 0 1px 0 rgba(90,60,30,0.14)",
+      "0 1px 2px rgba(255,253,249,0.96), 0 2px 18px rgba(255,253,249,0.9), 0 1px 0 rgba(90,60,30,0.16)",
   },
   bodyHome: {
     position: "relative",
@@ -153,13 +160,13 @@ const p: Record<string, CSSProperties> = {
     filter: "drop-shadow(0 6px 16px rgba(90,60,30,0.15))",
   },
   logoHome: {
-    top: "52px",
+    top: "clamp(40px, 6vh, 52px)",
     left: "50%",
-    width: "208px",
+    width: "clamp(240px, 58vw, 281px)",
     transform: "translateX(-50%)",
     opacity: 0.99,
     filter:
-      "drop-shadow(0 4px 12px rgba(90,60,30,0.17)) contrast(1.08) saturate(0.95) brightness(1.03)",
+      "drop-shadow(0 4px 14px rgba(90,60,30,0.16)) contrast(1.06) saturate(0.96) brightness(1.02)",
   },
   fade: {
     position: "absolute",
@@ -333,6 +340,11 @@ export function WorldPortalLayout({
           <img
             src={cover}
             alt={coverAlt}
+            width={1000}
+            height={1500}
+            fetchPriority="high"
+            loading="eager"
+            decoding="async"
             style={{ ...p.coverImage, ...p.coverImageHome }}
           />
           <div style={{ ...p.vignette, ...p.vignetteHome }} />
@@ -345,7 +357,12 @@ export function WorldPortalLayout({
           <div style={p.homeHeroTextOverlay}>
             <HomeHeroTextMist />
             <h1 style={{ ...p.homeHeroTitle, position: "relative", zIndex: 1 }}>
-              {title}
+              {title.split("\n").map((line, index, lines) => (
+                <span key={line}>
+                  {line}
+                  {index < lines.length - 1 ? <br /> : null}
+                </span>
+              ))}
             </h1>
             <p style={{ ...p.homeHeroTagline, position: "relative", zIndex: 1 }}>
               {tagline}
