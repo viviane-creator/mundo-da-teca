@@ -3304,16 +3304,19 @@ export const styles: Record<string, CSSProperties> = {
 
   bottomNav: {
     position: "absolute",
-    left: "16px",
-    right: "16px",
-    bottom: "16px",
-    height: "68px",
+    left: "14px",
+    right: "14px",
+    bottom: "14px",
+    height: "62px",
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
-    ...tecaObjects.navStrip(),
-    borderRadius: "22px",
-    padding: "0 10px",
+    background: "#F5EFE5",
+    borderRadius: "20px",
+    border: "1px solid rgba(196, 165, 141, 0.32)",
+    boxShadow:
+      "inset 0 1px 0 rgba(255,255,255,0.72), 0 6px 20px rgba(90,60,38,0.07)",
+    padding: "4px 8px 2px",
     zIndex: 20,
   },
 
@@ -3326,33 +3329,56 @@ export const styles: Record<string, CSSProperties> = {
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
+    justifyContent: "center",
+    gap: "1px",
+    minWidth: 0,
+    WebkitTapHighlightColor: "transparent",
+  },
+
+  navIconWrap: {
+    position: "relative",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    width: "44px",
+    height: "44px",
+  },
+
+  navActiveHalo: {
+    position: "absolute",
+    inset: "-2px",
+    borderRadius: "999px",
+    pointerEvents: "none",
+  },
+
+  navIconFrame: {
+    position: "relative",
+    zIndex: 1,
+    width: "36px",
+    height: "36px",
+    transition: "opacity 0.22s ease, transform 0.22s ease",
   },
 
   navIcon: {
-    width: "40px",
-    height: "40px",
+    width: "36px",
+    height: "36px",
     objectFit: "contain",
-    marginBottom: "2px",
     transition: "0.2s ease",
   },
 
   navLabel: {
-    ...tecaFont.navLabel,
-    lineHeight: "1.05",
-  },
-
-  navButtonSecondary: {
-    opacity: 0.72,
-  },
-
-  navIconSecondary: {
-    width: "34px",
-    height: "34px",
-  },
-
-  navLabelSecondary: {
-    fontSize: "10px",
-    opacity: 0.85,
+    fontFamily: "'Cormorant Garamond', serif",
+    fontSize: "7px",
+    letterSpacing: "0.14em",
+    textTransform: "uppercase",
+    fontWeight: 500,
+    color: "#7A6858",
+    lineHeight: 1,
+    transition: "opacity 0.22s ease",
+    maxWidth: "100%",
+    overflow: "hidden",
+    textOverflow: "ellipsis",
+    whiteSpace: "nowrap",
   },
 
   atlasFooter: {
