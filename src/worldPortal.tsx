@@ -131,7 +131,7 @@ const p: Record<string, CSSProperties> = {
   bodyHome: {
     position: "relative",
     zIndex: 6,
-    padding: "48px 24px 36px",
+    padding: "48px 24px 0",
     marginTop: 0,
   },
   coverImage: {

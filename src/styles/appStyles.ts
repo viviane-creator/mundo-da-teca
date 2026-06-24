@@ -641,13 +641,19 @@ export const styles: Record<string, CSSProperties> = {
 
   homeV2Journey: {
     position: "relative",
-    padding: "6px 2px 4px 8px",
+    padding: "6px 2px 0 8px",
     borderRadius: "24px",
     border: `1px dashed rgba(196, 165, 141, 0.32)`,
     background:
       "linear-gradient(168deg, #fffdf9 0%, #f8efe5 48%, #f0e4d6 100%)",
     boxShadow: "inset 0 1px 0 rgba(255,255,255,0.88)",
     overflow: "hidden",
+  },
+
+  /** Encerramento da Home — respiro antes do menu inferior */
+  homeV2ClubeEnd: {
+    marginBottom: 0,
+    paddingBottom: "clamp(32px, 5vw, 48px)",
   },
 
   homeFicharioSpine: {
@@ -1231,40 +1237,40 @@ export const styles: Record<string, CSSProperties> = {
     position: "relative",
     display: "flex",
     flexDirection: "column",
-    alignItems: "center",
+    justifyContent: "flex-end",
+    alignItems: "stretch",
     gap: 0,
     margin: "20px 0 0",
-    padding: "18px 14px 16px",
+    padding: 0,
     width: "100%",
+    minHeight: "min(360px, 88vw)",
     boxSizing: "border-box",
     borderRadius: "18px",
     border: "1px dashed rgba(196, 165, 141, 0.38)",
-    background:
-      "radial-gradient(ellipse at 18% 82%, rgba(217,196,173,0.16) 0%, transparent 52%), radial-gradient(ellipse at 92% 8%, rgba(217,196,173,0.12) 0%, transparent 44%), rgba(255,253,249,0.94)",
-    boxShadow:
-      "inset 0 1px 0 rgba(255,255,255,0.92), 0 10px 28px rgba(120,90,60,0.06)",
-  },
-
-  homeV2AtelierFeaturedPedestal: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    width: "100%",
-    minHeight: "min(200px, 48vw)",
-    marginBottom: "16px",
-    borderRadius: "14px",
-    background:
-      "radial-gradient(ellipse at 50% 68%, rgba(217,196,173,0.22) 0%, transparent 68%), rgba(248,239,228,0.45)",
-    border: "1px dashed rgba(196, 165, 141, 0.28)",
-    boxShadow: "inset 0 1px 0 rgba(255,255,255,0.75)",
+    boxShadow: "0 10px 28px rgba(120,90,60,0.06)",
+    overflow: "hidden",
   },
 
   homeV2AtelierFeaturedImage: {
-    width: "min(196px, 68vw)",
-    height: "auto",
-    maxHeight: "196px",
-    objectFit: "contain",
-    filter: "drop-shadow(0 10px 20px rgba(120,90,60,0.14))",
+    position: "absolute",
+    inset: 0,
+    display: "block",
+    width: "100%",
+    height: "100%",
+    objectFit: "cover",
+    objectPosition: "center center",
+  },
+
+  homeV2AtelierFeaturedBody: {
+    position: "relative",
+    zIndex: 1,
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    textAlign: "center",
+    padding: "18px 14px 16px",
+    background:
+      "linear-gradient(180deg, rgba(255,253,249,0) 0%, rgba(255,253,249,0.82) 38%, rgba(255,253,249,0.96) 100%)",
   },
 
   homeV2AtelierFeaturedTitle: {

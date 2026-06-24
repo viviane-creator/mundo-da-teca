@@ -1,7 +1,6 @@
 import { HomeExploreMap } from "../components/HomeExploreMap"
 import { FicharioDivisoria, FicharioEtiqueta } from "../components/fichario"
 import { ParticipationSection } from "../components/ParticipationSection"
-import { WorldAtlasFooter } from "../components/WorldAtlasFooter"
 import type { ParticipationPlanId } from "../data/participationPlans"
 import { appRoutes, resolveUniverseRoute } from "../navigation/appRoutes"
 import { styles } from "../styles/appStyles"
@@ -81,37 +80,35 @@ export function Home({
             </p>
 
             <article style={styles.homeV2AtelierFeatured}>
-              <div style={styles.homeV2AtelierFeaturedPedestal} aria-hidden="true">
-                <img
-                  src="/cards/atelie/bau.png"
-                  alt=""
-                  style={styles.homeV2AtelierFeaturedImage}
-                />
+              <img
+                src="/cards/atelie/bau.png"
+                alt="Baú de Tesouros"
+                style={styles.homeV2AtelierFeaturedImage}
+              />
+              <div style={styles.homeV2AtelierFeaturedBody}>
+                <h3 style={styles.homeV2AtelierFeaturedTitle}>Baú de Tesouros</h3>
+                <p style={styles.homeV2AtelierFeaturedText}>
+                  O primeiro grande tesouro do Mundo da Teca.
+                </p>
+                <FicharioEtiqueta
+                  action
+                  onClick={() => setScreen(appRoutes.bauDeTesouros)}
+                  style={styles.homeV2AtelierFeaturedButton}
+                >
+                  Conhecer o Baú
+                </FicharioEtiqueta>
               </div>
-              <h3 style={styles.homeV2AtelierFeaturedTitle}>Baú de Tesouros</h3>
-              <p style={styles.homeV2AtelierFeaturedText}>
-                O primeiro grande tesouro do Mundo da Teca.
-              </p>
-              <FicharioEtiqueta
-                action
-                onClick={() => setScreen(appRoutes.bauDeTesouros)}
-                style={styles.homeV2AtelierFeaturedButton}
-              >
-                Conhecer o Baú
-              </FicharioEtiqueta>
             </article>
           </div>
         </FicharioDivisoria>
 
-        <FicharioDivisoria chapter="clube">
+        <FicharioDivisoria chapter="clube" style={styles.homeV2ClubeEnd}>
           <ParticipationSection
             variant="home-path"
             onGoToClube={onGoToClube}
           />
         </FicharioDivisoria>
       </div>
-
-      <WorldAtlasFooter />
     </WorldPortalLayout>
   )
 }
