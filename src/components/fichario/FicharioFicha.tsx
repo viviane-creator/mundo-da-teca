@@ -72,7 +72,7 @@ export function FicharioFicha({
   tilt?: number
   onSelect?: () => void
   onImageError?: () => void
-  imageVariant?: "default" | "squareCapa"
+  imageVariant?: "default" | "squareCapa" | "editorialCapa"
   children?: ReactNode
   style?: CSSProperties
   empty?: boolean
@@ -91,9 +91,14 @@ export function FicharioFicha({
     variant === "memoria" ||
     variant === "complemento"
 
+  const isEditorialCapa = imageVariant === "editorialCapa"
   const isHorizontal = layout === "horizontal" && !compact
   const titleInHeader =
-    !compact && !isHorizontal && variant !== "memoria" && variant !== "complemento"
+    !compact &&
+    !isHorizontal &&
+    variant !== "memoria" &&
+    variant !== "complemento" &&
+    !isEditorialCapa
 
   const fichaStyle = compact
     ? { ...tecaFichario.fichaCompact(), ...tecaTilt(tilt ?? 0) }
@@ -112,6 +117,7 @@ export function FicharioFicha({
         : variant === "referencia"
           ? {
               ...tecaFichario.fichaReferencia(),
+              ...(isEditorialCapa ? tecaFichario.fichaEditorialCoverCard() : {}),
               ...(isHorizontal
                 ? { display: "flex", flexDirection: "row" as const }
                 : {}),
@@ -162,7 +168,9 @@ export function FicharioFicha({
             border: `1px dashed ${tecaFichario.material.lineSoft}`,
             borderRadius: "12px",
           }
-        : tecaFichario.fichaImage()
+        : imageVariant === "editorialCapa"
+          ? tecaFichario.fichaEditorialCapaImage()
+          : tecaFichario.fichaImage()
 
   const bodyStyle =
     variant === "memoria"
@@ -397,7 +405,8 @@ export function FicharioFicha({
             !compact &&
             !isHorizontal &&
             variant !== "memoria" &&
-            variant !== "complemento" && (
+            variant !== "complemento" &&
+            !isEditorialCapa && (
               <div style={bodyStyle}>{children}</div>
             )}
         </>

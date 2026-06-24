@@ -1,10 +1,6 @@
-export type PlayUniverseId =
-  | "laboratorio"
-  | "cozinha"
-  | "oficina"
-  | "faz-de-conta"
-  | "quintal"
-  | "observatorio"
+import { universeCoverPath, type UniverseId } from "./data/universeAssets"
+
+export type PlayUniverseId = UniverseId
 
 export type PlayExperienceDetail = {
   atmosphericVideo: string
@@ -110,13 +106,13 @@ export function formatFichaCodigo(
   return `${prefix}-${String(index + 1).padStart(2, "0")}`
 }
 
-const universeCovers: Record<PlayUniverseId, string> = {
-  laboratorio: "/images/universos/laboratorio-capa.webp",
-  cozinha: "/images/universos/cozinha-capa.webp",
-  oficina: "/images/universos/oficina-capa.png",
-  "faz-de-conta": "/images/universos/arte-capa.png",
-  quintal: "/images/universos/natureza-capa.png",
-  observatorio: "/images/universos/movimento-capa.png",
+function withUniverseCover(
+  universe: Omit<PlayUniverse, "image">,
+): PlayUniverse {
+  return {
+    ...universe,
+    image: universeCoverPath(universe.id),
+  }
 }
 
 const experienceImageFolder: Record<PlayUniverseId, string> = {
@@ -901,60 +897,54 @@ const cozinhaSeeds: ExperienceSeed[] = [
 ]
 
 export const playUniverses: Record<PlayUniverseId, PlayUniverse> = {
-  laboratorio: {
+  laboratorio: withUniverseCover({
     id: "laboratorio",
     title: "laboratório",
     intro: "experiências suaves e curiosas",
     poetic: "perguntas pequenas merecem experimentos suaves.",
-    image: universeCovers.laboratorio,
     noteText: "observe o que muda devagar, sem querer explicar tudo.",
     experiences: buildExperiences("laboratorio", laboratorioSeeds),
-  },
-  cozinha: {
+  }),
+  cozinha: withUniverseCover({
     id: "cozinha",
     title: "cozinha",
     intro: "misturas e descobertas",
     poetic: "misturar, cheirar e esperar ensina paciência nas mãos.",
-    image: universeCovers.cozinha,
     noteText: "receitas simples, sem pressa e com adulto por perto.",
     experiences: buildExperiences("cozinha", cozinhaSeeds),
-  },
-  oficina: {
+  }),
+  oficina: withUniverseCover({
     id: "oficina",
     title: "oficina",
     intro: "coisas feitas com as mãos",
     poetic: "fazer com as próprias mãos deixa a tarde mais presente.",
-    image: universeCovers.oficina,
     noteText: "ferramentas leves, materiais simples, tempo generoso.",
     experiences: buildExperiences("oficina", oficinaSeeds),
-  },
-  "faz-de-conta": {
+  }),
+  "faz-de-conta": withUniverseCover({
     id: "faz-de-conta",
     title: "faz de conta",
     intro: "personagens, histórias e mundos inventados",
     poetic: "uma coleção de gestos criativos para inventar mundos delicados.",
-    image: universeCovers["faz-de-conta"],
     noteText: "sem pressa de terminar: inventar também é descobrir.",
     experiences: buildExperiences("faz-de-conta", fazDeContaSeeds),
-  },
-  quintal: {
+  }),
+  quintal: withUniverseCover({
     id: "quintal",
     title: "quintal",
     intro: "ar livre, calçada e descobertas lá fora",
     poetic: "folhas, vento e chão vivo para brincar com o que já existe.",
-    image: universeCovers.quintal,
     noteText: "observe devagar: o quintal já começa no caminho de casa.",
     experiences: buildExperiences("quintal", brincarNaRuaSeeds),
-  },
-  observatorio: {
+  }),
+  observatorio: withUniverseCover({
     id: "observatorio",
     title: "observatório",
     intro: "céu, curiosidade e olhar atento",
     poetic: "janela, chuva e tardes de dentro para olhar o mundo devagar.",
-    image: universeCovers.observatorio,
     noteText: "olhar também pode ser suave, silencioso e curioso.",
     experiences: buildExperiences("observatorio", diasDeChuvaSeeds),
-  },
+  }),
 }
 
 export function isPlayUniverseScreen(screen: string): screen is PlayUniverseId {

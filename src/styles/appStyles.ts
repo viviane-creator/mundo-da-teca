@@ -13,7 +13,7 @@ export const styles: Record<string, CSSProperties> = {
     background: "#e8e0d5",
     display: "flex",
     justifyContent: "center",
-    padding: "24px 16px",
+    padding: "12px 8px",
     fontFamily: "'Nunito', sans-serif",
   },
 
@@ -191,89 +191,24 @@ export const styles: Record<string, CSSProperties> = {
     boxShadow: "0 10px 28px rgba(120,90,60,0.06)",
   },
 
-  playUniverseChapterHero: {
-    position: "relative",
-    marginBottom: "0",
-    padding: "56px 24px 40px 30px",
-    textAlign: "center",
-    overflow: "hidden",
-    borderRadius: "28px",
-    border: `1px dashed rgba(196, 165, 141, 0.38)`,
-    background:
-      "radial-gradient(ellipse at 50% 40%, rgba(217,196,173,0.08) 0%, transparent 65%), linear-gradient(168deg, #fffdf9 0%, #faf4ec 58%, #f4ebe1 100%)",
-    boxShadow: "inset 0 1px 0 rgba(255,255,255,0.9)",
-  },
-
-  playUniverseChapterSpine: {
-    position: "absolute",
-    left: 0,
-    top: "14%",
-    bottom: "14%",
-    width: "8px",
-    borderRadius: "0 5px 5px 0",
-    background:
-      "linear-gradient(180deg, rgba(220,201,180,0.55) 0%, rgba(201,179,154,0.45) 50%, rgba(220,201,180,0.55) 100%)",
-    opacity: 0.7,
-    zIndex: 0,
-  },
-
-  playUniverseChapterKicker: {
-    position: "relative",
-    zIndex: 1,
-    ...tecaHierarchy.l6Micro,
-    marginBottom: "14px",
-  },
-
-  playUniverseChapterCover: {
-    position: "relative",
-    zIndex: 1,
-    width: "min(272px, 74vw)",
+  /** Abertura de capítulo — página ilustrada, sem moldura de card */
+  playUniverseChapterOpening: {
+    display: "block",
+    width: "calc(100% + 48px)",
+    maxWidth: "none",
+    margin: "0 -24px",
     aspectRatio: "1 / 1",
     objectFit: "contain",
-    margin: "0 auto 16px",
-    display: "block",
-    filter: "drop-shadow(0 10px 22px rgba(120,90,60,0.1))",
-  },
-
-  playUniverseEmblemWatermark: {
-    position: "absolute",
-    left: "50%",
-    top: "48%",
-    transform: "translate(-50%, -50%)",
-    width: "min(380px, 86vw)",
-    height: "min(380px, 86vw)",
-    objectFit: "contain",
-    opacity: 0.07,
-    filter: "grayscale(0.1) sepia(0.15)",
-    pointerEvents: "none",
-    userSelect: "none",
-    zIndex: 0,
-  },
-
-  playUniverseTitle: {
-    position: "relative",
-    zIndex: 1,
-    ...tecaFont.portalTitle,
-    fontSize: "52px",
-    textAlign: "center",
-    margin: `0 auto ${tecaSpacing.titleToPoetic}px`,
-    lineHeight: 0.95,
-  },
-
-  playUniverseChapterPhrase: {
-    position: "relative",
-    zIndex: 1,
-    ...tecaHierarchy.l4Subtitle,
-    marginTop: 0,
-    marginBottom: 0,
-    maxWidth: "300px",
-    fontSize: "16px",
-    lineHeight: 1.45,
-    color: theme.muted,
+    objectPosition: "center top",
+    background:
+      "linear-gradient(180deg, #faf6f0 0%, #f3ebe2 52%, #ebe3da 100%)",
+    boxShadow: "0 18px 42px rgba(120,90,60,0.07)",
+    border: "none",
+    borderRadius: 0,
   },
 
   playUniverseInviteWrap: {
-    margin: `${tecaSpacing.poeticToSection}px 0`,
+    margin: "24px 0 0",
     paddingTop: "0",
     borderTop: "none",
   },
@@ -408,7 +343,7 @@ export const styles: Record<string, CSSProperties> = {
 
   homeV2MeuMundoInner: {
     position: "relative",
-    padding: "0 0 0 12px",
+    padding: "0",
   },
 
   homeV2MeuMundoSpine: {
@@ -454,8 +389,9 @@ export const styles: Record<string, CSSProperties> = {
     display: "flex",
     alignItems: "flex-start",
     justifyContent: "space-between",
-    gap: "10px",
-    marginBottom: "6px",
+    gap: "8px",
+    marginBottom: "8px",
+    flexWrap: "wrap",
   },
 
   homeV2MeuMundoIdEtiqueta: {
@@ -495,6 +431,8 @@ export const styles: Record<string, CSSProperties> = {
   homeSectionSubtitle: {
     ...tecaHierarchy.l4Subtitle,
     marginTop: 0,
+    lineHeight: 1.5,
+    maxWidth: "36ch",
   },
 
   sectionHeading: {
@@ -697,8 +635,8 @@ export const styles: Record<string, CSSProperties> = {
 
   homeV2Journey: {
     position: "relative",
-    padding: "8px 4px 4px 14px",
-    borderRadius: "28px",
+    padding: "6px 2px 4px 8px",
+    borderRadius: "24px",
     border: `1px dashed rgba(196, 165, 141, 0.32)`,
     background:
       "linear-gradient(168deg, #fffdf9 0%, #f8efe5 48%, #f0e4d6 100%)",
@@ -737,7 +675,7 @@ export const styles: Record<string, CSSProperties> = {
 
   homePlaceTitle: {
     ...tecaFont.portalTitle,
-    fontSize: "36px",
+    fontSize: "clamp(28px, 8vw, 36px)",
     textAlign: "left",
     margin: `0 0 ${tecaSpacing.sectionTitleToSubtitle}px`,
     lineHeight: 0.95,
@@ -780,8 +718,8 @@ export const styles: Record<string, CSSProperties> = {
   homeV2UniversosWrap: {
     position: "relative",
     overflow: "visible",
-    marginTop: "8px",
-    padding: "0 6px 4px",
+    marginTop: "6px",
+    padding: 0,
   },
 
   universosExploreMapWrap: {
@@ -792,9 +730,9 @@ export const styles: Record<string, CSSProperties> = {
 
   /** Página colorida única — cobre título, subtítulo e mapa na Home */
   homeExploreSectionPaper: {
-    margin: "-18px -16px -16px",
-    padding: "18px 16px 16px",
-    borderRadius: "0 18px 18px 0",
+    margin: "-14px -12px -14px",
+    padding: "14px 10px 12px",
+    borderRadius: "0 16px 16px 0",
     background:
       "radial-gradient(ellipse at 20% 16%, rgba(217,196,173,0.14) 0%, transparent 54%), radial-gradient(ellipse at 82% 84%, rgba(210,220,228,0.18) 0%, transparent 50%), linear-gradient(168deg, #faf6f0 0%, #f4ece3 48%, #eef2f5 100%)",
     boxShadow: "inset 0 1px 0 rgba(255,255,255,0.75)",
@@ -816,7 +754,7 @@ export const styles: Record<string, CSSProperties> = {
   },
 
   homeExploreMapStageHome: {
-    padding: "12px 16px 16px",
+    padding: "2px 2px 6px",
   },
 
   homeExploreMapStageFull: {
@@ -884,8 +822,8 @@ export const styles: Record<string, CSSProperties> = {
 
   /** Área clicável compacta — evita sobreposição entre medalhões vizinhos */
   homeExploreStopHit: {
-    width: "118px",
-    height: "118px",
+    width: "104px",
+    height: "104px",
     maxWidth: "none",
   },
 
@@ -1138,7 +1076,10 @@ export const styles: Record<string, CSSProperties> = {
 
   homeV2SoftButton: {
     ...tecaFichario.etiquetaAction(),
-    marginTop: "6px",
+    marginTop: "12px",
+    width: "100%",
+    maxWidth: "100%",
+    boxSizing: "border-box",
   },
 
   homeV2DestinationButton: {
@@ -1237,11 +1178,12 @@ export const styles: Record<string, CSSProperties> = {
   homeV2AtelierFeatured: {
     position: "relative",
     display: "flex",
-    alignItems: "center",
-    gap: "22px",
-    margin: "28px 0 0",
-    padding: "28px 24px 26px",
-    borderRadius: "20px",
+    flexDirection: "column",
+    alignItems: "stretch",
+    gap: 0,
+    margin: "20px 0 0",
+    padding: "18px 14px 16px",
+    borderRadius: "18px",
     border: "1px dashed rgba(196, 165, 141, 0.38)",
     background:
       "radial-gradient(ellipse at 18% 82%, rgba(217,196,173,0.16) 0%, transparent 52%), radial-gradient(ellipse at 92% 8%, rgba(217,196,173,0.12) 0%, transparent 44%), rgba(255,253,249,0.94)",
@@ -1253,10 +1195,10 @@ export const styles: Record<string, CSSProperties> = {
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    flexShrink: 0,
-    width: "148px",
-    height: "148px",
-    borderRadius: "16px",
+    width: "100%",
+    minHeight: "min(200px, 48vw)",
+    marginBottom: "16px",
+    borderRadius: "14px",
     background:
       "radial-gradient(ellipse at 50% 68%, rgba(217,196,173,0.22) 0%, transparent 68%), rgba(248,239,228,0.45)",
     border: "1px dashed rgba(196, 165, 141, 0.28)",
@@ -1264,39 +1206,37 @@ export const styles: Record<string, CSSProperties> = {
   },
 
   homeV2AtelierFeaturedImage: {
-    width: "118px",
-    height: "118px",
+    width: "min(196px, 68vw)",
+    height: "auto",
+    maxHeight: "196px",
     objectFit: "contain",
     filter: "drop-shadow(0 10px 20px rgba(120,90,60,0.14))",
   },
 
-  homeV2AtelierFeaturedBody: {
-    flex: 1,
-    minWidth: 0,
-    paddingTop: "4px",
-  },
-
   homeV2AtelierFeaturedTitle: {
     ...tecaFont.heading,
-    fontSize: "28px",
+    fontSize: "clamp(24px, 6.5vw, 28px)",
     lineHeight: 1.08,
-    margin: "0 0 12px",
-    textAlign: "left",
+    margin: "0 0 10px",
+    textAlign: "center",
   },
 
   homeV2AtelierFeaturedText: {
     ...tecaHierarchy.l5Body,
     fontSize: "16px",
     lineHeight: 1.55,
-    margin: "0 0 20px",
-    textAlign: "left",
-    maxWidth: "28ch",
+    margin: "0 0 16px",
+    textAlign: "center",
+    maxWidth: "none",
   },
 
   homeV2AtelierFeaturedButton: {
     ...tecaFichario.etiquetaAction(),
     marginTop: 0,
     fontSize: "18px",
+    width: "100%",
+    maxWidth: "100%",
+    boxSizing: "border-box",
   },
 
   homeV2Cabinet: {

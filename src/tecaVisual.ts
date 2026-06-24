@@ -232,8 +232,8 @@ export const tecaFichario = {
   divisoriaCorpo: (): CSSProperties => ({
     flex: 1,
     minWidth: 0,
-    padding: "18px 16px 16px",
-    borderRadius: "0 18px 18px 0",
+    padding: "14px 12px 14px",
+    borderRadius: "0 16px 16px 0",
     border: `1px dashed ${ficharioMaterial.line}`,
     background: ficharioMaterial.paper,
   }),
@@ -250,16 +250,18 @@ export const tecaFichario = {
     zIndex: 0,
   }),
 
-  /** COMPONENTE 2 — aba: destinos e capítulos laterais */
+  /** COMPONENTE 2 — aba: identificação vertical compacta (mobile-first) */
   aba: (): CSSProperties => ({
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "center",
-    gap: "5px",
-    minWidth: "76px",
-    padding: "14px 8px",
-    borderRadius: "14px 0 0 14px",
+    gap: "6px",
+    width: "30px",
+    minWidth: "30px",
+    maxWidth: "30px",
+    padding: "12px 3px",
+    borderRadius: "12px 0 0 12px",
     border: `1px solid ${ficharioMaterial.line}`,
     borderRight: "none",
     background: ficharioMaterial.abaPaper,
@@ -285,17 +287,21 @@ export const tecaFichario = {
   }),
 
   abaIcon: (): CSSProperties => ({
-    fontSize: "22px",
+    fontSize: "14px",
     lineHeight: 1,
+    flexShrink: 0,
   }),
 
   abaLabel: (): CSSProperties => ({
     ...tecaFont.micro,
-    fontSize: "9px",
-    letterSpacing: "1.4px",
+    fontSize: "8px",
+    letterSpacing: "0.14em",
     margin: 0,
     textAlign: "center",
-    lineHeight: 1.2,
+    lineHeight: 1.1,
+    writingMode: "vertical-rl",
+    textOrientation: "mixed",
+    whiteSpace: "nowrap",
   }),
 
   /** COMPONENTE 3 — ficha: átomo do sistema (descoberta catalograda) */
@@ -478,6 +484,24 @@ export const tecaFichario = {
     aspectRatio: "5 / 3",
     objectFit: "cover",
     display: "block",
+  }),
+
+  /** Capa editorial — preenche o card inteiro */
+  fichaEditorialCoverCard: (): CSSProperties => ({
+    padding: 0,
+    aspectRatio: "1 / 1",
+    position: "relative",
+    overflow: "hidden",
+  }),
+
+  fichaEditorialCapaImage: (): CSSProperties => ({
+    position: "absolute",
+    inset: 0,
+    width: "100%",
+    height: "100%",
+    objectFit: "cover",
+    display: "block",
+    borderRadius: tecaRadius.lg,
   }),
 
   fichaBody: (): CSSProperties => ({

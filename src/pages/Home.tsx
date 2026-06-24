@@ -93,19 +93,17 @@ export function Home({
                   style={styles.homeV2AtelierFeaturedImage}
                 />
               </div>
-              <div style={styles.homeV2AtelierFeaturedBody}>
-                <h3 style={styles.homeV2AtelierFeaturedTitle}>Baú de Tesouros</h3>
-                <p style={styles.homeV2AtelierFeaturedText}>
-                  O primeiro grande tesouro do Mundo da Teca.
-                </p>
-                <FicharioEtiqueta
-                  action
-                  onClick={() => setScreen(appRoutes.bauDeTesouros)}
-                  style={styles.homeV2AtelierFeaturedButton}
-                >
-                  Conhecer o Baú
-                </FicharioEtiqueta>
-              </div>
+              <h3 style={styles.homeV2AtelierFeaturedTitle}>Baú de Tesouros</h3>
+              <p style={styles.homeV2AtelierFeaturedText}>
+                O primeiro grande tesouro do Mundo da Teca.
+              </p>
+              <FicharioEtiqueta
+                action
+                onClick={() => setScreen(appRoutes.bauDeTesouros)}
+                style={styles.homeV2AtelierFeaturedButton}
+              >
+                Conhecer o Baú
+              </FicharioEtiqueta>
             </article>
           </div>
         </FicharioDivisoria>

@@ -14,6 +14,7 @@ export function FeatureCard({
   horizontal = false,
   tilt = 0,
   radiusKey = 0,
+  editorialCover = false,
   onClick,
 }: {
   card: FeatureCardItem
@@ -21,6 +22,7 @@ export function FeatureCard({
   horizontal?: boolean
   tilt?: number
   radiusKey?: number
+  editorialCover?: boolean
   onClick?: () => void
 }) {
   void compact
@@ -31,18 +33,22 @@ export function FeatureCard({
       variant="referencia"
       layout={horizontal ? "horizontal" : "vertical"}
       codigo={card.id.slice(0, 6).toUpperCase()}
-      title={card.title}
+      title={editorialCover ? undefined : card.title}
       image={card.image}
       imageAlt={card.title}
       imageVariant={
-        card.id === "laboratorio" || card.id === "cozinha"
-          ? "squareCapa"
-          : "default"
+        editorialCover
+          ? "editorialCapa"
+          : card.id === "laboratorio" || card.id === "cozinha"
+            ? "squareCapa"
+            : "default"
       }
       onSelect={onClick}
       tilt={tilt}
     >
-      {card.text && <p style={styles.cardText}>{card.text}</p>}
+      {!editorialCover && card.text && (
+        <p style={styles.cardText}>{card.text}</p>
+      )}
     </FicharioFicha>
   )
 }

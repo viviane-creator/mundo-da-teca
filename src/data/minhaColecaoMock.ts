@@ -1,3 +1,5 @@
+import { universeCoverPath, universeIconPath } from "./universeAssets"
+
 export type FicharioSlotStatus = "concluida" | "recebida" | "aguardando"
 
 export type FicharioSlot = {
@@ -84,11 +86,11 @@ function padSlots(
 export const ficharioUniverses: FicharioUniverse[] = [
   {
     id: "laboratorio",
-    icon: "/universos/laboratorio.png",
+    icon: universeIconPath("laboratorio"),
     title: "Laboratório",
     collectionTitle: "Coleção do Laboratório",
     poetic: "Onde as coisas se transformam.",
-    image: "/images/universos/laboratorio-capa.webp",
+    image: universeCoverPath("laboratorio"),
     slots: padSlots(
       [
         {
@@ -117,11 +119,11 @@ export const ficharioUniverses: FicharioUniverse[] = [
   },
   {
     id: "cozinha",
-    icon: "/universos/cozinha.png",
+    icon: universeIconPath("cozinha"),
     title: "Cozinha",
     collectionTitle: "Coleção da Cozinha",
     poetic: "Onde receitas viram descobertas.",
-    image: "/images/universos/cozinha-capa.webp",
+    image: universeCoverPath("cozinha"),
     slots: padSlots(
       [
         {
@@ -139,11 +141,11 @@ export const ficharioUniverses: FicharioUniverse[] = [
   },
   {
     id: "oficina",
-    icon: "/universos/oficina.png",
+    icon: universeIconPath("oficina"),
     title: "Oficina",
     collectionTitle: "Coleção da Oficina",
     poetic: "Onde as mãos constroem ideias.",
-    image: "/images/universos/oficina-capa.png",
+    image: universeCoverPath("oficina"),
     slots: padSlots(
       [
         {
@@ -157,11 +159,11 @@ export const ficharioUniverses: FicharioUniverse[] = [
   },
   {
     id: "faz-de-conta",
-    icon: "/universos/faz-de-conta.png",
+    icon: universeIconPath("faz-de-conta"),
     title: "Faz de Conta",
     collectionTitle: "Coleção do Faz de Conta",
     poetic: "Onde a imaginação ganha forma.",
-    image: "/images/universos/arte-capa.png",
+    image: universeCoverPath("faz-de-conta"),
     slots: padSlots(
       [
         {
@@ -178,11 +180,11 @@ export const ficharioUniverses: FicharioUniverse[] = [
   },
   {
     id: "quintal",
-    icon: "/universos/quintal.png",
+    icon: universeIconPath("quintal"),
     title: "Quintal",
     collectionTitle: "Coleção do Quintal",
     poetic: "Onde o mundo lá fora vira aventura.",
-    image: "/images/universos/natureza-capa.png",
+    image: universeCoverPath("quintal"),
     slots: padSlots(
       [
         { status: "concluida", title: "caça ao vento" },
@@ -195,11 +197,11 @@ export const ficharioUniverses: FicharioUniverse[] = [
   },
   {
     id: "observatorio",
-    icon: "/universos/observatorio.png",
+    icon: universeIconPath("observatorio"),
     title: "Observatório",
     collectionTitle: "Coleção do Observatório",
     poetic: "Onde a curiosidade encontra o invisível.",
-    image: "/images/universos/movimento-capa.png",
+    image: universeCoverPath("observatorio"),
     slots: padSlots(
       [
         {

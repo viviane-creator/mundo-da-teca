@@ -3,7 +3,6 @@ import "./fonts.css"
 import {
   isPlayUniverseScreen,
   playUniverses,
-  hasSquareUniverseCover,
   type PlayExperience,
   type PlayUniverse,
 } from "./playData"
@@ -47,12 +46,7 @@ import {
   DiaryPage,
 } from "./discoveryPages"
 import { pageData } from "./data/pageData"
-import {
-  getUniverseChapterIndex,
-  getUniverseChapterPhrase,
-  getUniverseChapterTitle,
-  getUniverseEmblem,
-} from "./data/homeUniversePortals"
+import { getUniverseChapterTitle } from "./data/homeUniversePortals"
 import { UniversosPage } from "./pages/UniversosPage"
 import { FeatureCard } from "./components/FeatureCard"
 import { SoftNote } from "./components/SoftNote"
@@ -524,32 +518,11 @@ function PlayUniversePage({
         ← universos
       </button>
 
-      <header style={styles.playUniverseChapterHero}>
-        <span style={styles.playUniverseChapterSpine} aria-hidden="true" />
-        <p style={styles.playUniverseChapterKicker}>
-          capítulo {getUniverseChapterIndex(universe.id)}
-        </p>
-        {hasSquareUniverseCover(universe.id) ? (
-          <img
-            src={universe.image}
-            alt={getUniverseChapterTitle(universe.id)}
-            style={styles.playUniverseChapterCover}
-          />
-        ) : (
-          <img
-            src={getUniverseEmblem(universe.id)}
-            alt=""
-            aria-hidden
-            style={styles.playUniverseEmblemWatermark}
-          />
-        )}
-        <h1 style={styles.playUniverseTitle}>
-          {getUniverseChapterTitle(universe.id)}
-        </h1>
-        <p style={styles.playUniverseChapterPhrase}>
-          {getUniverseChapterPhrase(universe.id)}
-        </p>
-      </header>
+      <img
+        src={universe.image}
+        alt={getUniverseChapterTitle(universe.id)}
+        style={styles.playUniverseChapterOpening}
+      />
 
       <div style={styles.playUniverseInviteWrap}>
         <SoftNote label="convite" centered>
