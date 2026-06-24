@@ -224,6 +224,17 @@ export const styles: Record<string, CSSProperties> = {
     marginBottom: "14px",
   },
 
+  playUniverseChapterCover: {
+    position: "relative",
+    zIndex: 1,
+    width: "min(272px, 74vw)",
+    aspectRatio: "1 / 1",
+    objectFit: "contain",
+    margin: "0 auto 16px",
+    display: "block",
+    filter: "drop-shadow(0 10px 22px rgba(120,90,60,0.1))",
+  },
+
   playUniverseEmblemWatermark: {
     position: "absolute",
     left: "50%",
@@ -390,8 +401,83 @@ export const styles: Record<string, CSSProperties> = {
       "linear-gradient(90deg, rgba(194,165,141,0) 0%, rgba(194,165,141,0.45) 30%, rgba(194,165,141,0.45) 70%, rgba(194,165,141,0) 100%)",
   },
 
-  homeV2MeuMundo: {
-    display: "contents",
+  homeV2MeuMundoCard: {
+    position: "relative",
+    padding: "2px 0 4px",
+  },
+
+  homeV2MeuMundoInner: {
+    position: "relative",
+    padding: "0 0 0 12px",
+  },
+
+  homeV2MeuMundoSpine: {
+    position: "absolute",
+    left: 0,
+    top: "10%",
+    bottom: "16%",
+    width: "5px",
+    borderRadius: "0 3px 3px 0",
+    background: "rgba(220,201,180,0.42)",
+    boxShadow: "inset -1px 0 0 rgba(255,255,255,0.35)",
+  },
+
+  homeV2MeuMundoHeroWash: {
+    position: "absolute",
+    right: "-4px",
+    top: "-10px",
+    width: "108px",
+    height: "72px",
+    pointerEvents: "none",
+    background:
+      "radial-gradient(ellipse at 72% 28%, rgba(246,237,226,0.62) 0%, rgba(246,237,226,0) 68%)",
+    opacity: 0.85,
+  },
+
+  homeV2MeuMundoPerforation: {
+    display: "flex",
+    gap: "5px",
+    margin: "0 0 12px",
+    paddingLeft: "1px",
+  },
+
+  homeV2MeuMundoFuro: {
+    width: "5px",
+    height: "5px",
+    borderRadius: "999px",
+    border: "1px solid rgba(196, 165, 141, 0.42)",
+    background: "rgba(255,253,249,0.55)",
+    flexShrink: 0,
+  },
+
+  homeV2MeuMundoHeader: {
+    display: "flex",
+    alignItems: "flex-start",
+    justifyContent: "space-between",
+    gap: "10px",
+    marginBottom: "6px",
+  },
+
+  homeV2MeuMundoIdEtiqueta: {
+    ...tecaFichario.etiqueta(),
+    fontSize: "8px",
+    letterSpacing: "1.7px",
+    padding: "4px 9px",
+    background: "rgba(255,253,249,0.84)",
+  },
+
+  homeV2MeuMundoStamp: {
+    ...tecaFont.micro,
+    fontSize: "7px",
+    letterSpacing: "1.3px",
+    color: "#b8987a",
+    border: "1px dashed rgba(196,165,141,0.42)",
+    borderRadius: "999px",
+    padding: "5px 9px",
+    transform: "rotate(-7deg)",
+    opacity: 0.7,
+    flexShrink: 0,
+    whiteSpace: "nowrap",
   },
 
   homeSectionHeading: {
@@ -693,23 +779,72 @@ export const styles: Record<string, CSSProperties> = {
 
   homeV2UniversosWrap: {
     position: "relative",
+    overflow: "visible",
+    marginTop: "8px",
+    padding: "0 6px 4px",
+  },
+
+  universosExploreMapWrap: {
+    position: "relative",
     overflow: "hidden",
     marginTop: "8px",
-    padding: "12px 8px 16px",
-    borderRadius: "24px",
+  },
+
+  /** Página colorida única — cobre título, subtítulo e mapa na Home */
+  homeExploreSectionPaper: {
+    margin: "-18px -16px -16px",
+    padding: "18px 16px 16px",
+    borderRadius: "0 18px 18px 0",
     background:
-      "radial-gradient(ellipse at 18% 22%, rgba(217,196,173,0.14) 0%, transparent 52%), radial-gradient(ellipse at 82% 68%, rgba(201,179,154,0.1) 0%, transparent 48%), linear-gradient(180deg, rgba(255,253,249,0.55) 0%, rgba(248,239,228,0.35) 100%)",
+      "radial-gradient(ellipse at 20% 16%, rgba(217,196,173,0.14) 0%, transparent 54%), radial-gradient(ellipse at 82% 84%, rgba(210,220,228,0.18) 0%, transparent 50%), linear-gradient(168deg, #faf6f0 0%, #f4ece3 48%, #eef2f5 100%)",
+    boxShadow: "inset 0 1px 0 rgba(255,255,255,0.75)",
   },
 
   homeExploreMap: {
     position: "relative",
     width: "100%",
-    minHeight: "760px",
-    marginTop: "4px",
+    marginTop: "8px",
+  },
+
+  homeExploreMapStage: {
+    position: "relative",
+    width: "100%",
+    aspectRatio: "320 / 580",
+    margin: "0 auto",
+    overflow: "visible",
+    boxSizing: "border-box",
+  },
+
+  homeExploreMapStageHome: {
+    padding: "12px 16px 16px",
+  },
+
+  homeExploreMapStageFull: {
+    padding: 0,
+    aspectRatio: "864 / 1821",
+  },
+
+  homeExploreMapStops: {
+    position: "absolute",
+    inset: 0,
+    zIndex: 2,
+  },
+
+  /** Arte de fundo do atlas — apenas na página Universos */
+  homeExploreMapAtlasBg: {
+    position: "absolute",
+    inset: 0,
+    zIndex: 0,
+    pointerEvents: "none",
+    backgroundImage:
+      "linear-gradient(rgba(255, 253, 249, 0.08), rgba(255, 253, 249, 0.08)), url(/images/mapa-exploracao.webp)",
+    backgroundSize: "100% 100%",
+    backgroundPosition: "center",
+    backgroundRepeat: "no-repeat",
   },
 
   homeExploreMapFull: {
-    minHeight: "820px",
+    marginTop: 0,
   },
 
   universosExploreSection: {
@@ -728,6 +863,7 @@ export const styles: Record<string, CSSProperties> = {
     height: "100%",
     pointerEvents: "none",
     overflow: "visible",
+    zIndex: 1,
   },
 
   homeExploreStop: {
@@ -738,12 +874,29 @@ export const styles: Record<string, CSSProperties> = {
     margin: 0,
     cursor: "pointer",
     display: "flex",
-    flexDirection: "row",
+    flexDirection: "column",
     alignItems: "center",
-    gap: "0",
-    maxWidth: "168px",
-    zIndex: 2,
+    justifyContent: "center",
+    gap: 0,
+    overflow: "visible",
     WebkitTapHighlightColor: "transparent",
+  },
+
+  /** Área clicável compacta — evita sobreposição entre medalhões vizinhos */
+  homeExploreStopHit: {
+    width: "118px",
+    height: "118px",
+    maxWidth: "none",
+  },
+
+  homeExploreStopHitFull: {
+    width: "146px",
+    height: "146px",
+    maxWidth: "none",
+  },
+
+  homeExploreStopFull: {
+    maxWidth: "none",
   },
 
   homeExploreStopTab: {
@@ -754,25 +907,23 @@ export const styles: Record<string, CSSProperties> = {
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    gap: "6px",
-    padding: "4px 2px",
+    gap: 0,
+    padding: 0,
   },
 
   homeExploreStopCenter: {
-    transform: "translate(-50%, -22%)",
+    transform: "translate(-50%, -50%)",
     textAlign: "center",
   },
 
   homeExploreStopLeft: {
-    transform: "translate(-6%, -22%)",
-    textAlign: "left",
-    alignItems: "flex-start",
+    transform: "translate(-50%, -50%)",
+    textAlign: "center",
   },
 
   homeExploreStopRight: {
-    transform: "translate(-94%, -22%)",
-    textAlign: "right",
-    alignItems: "flex-end",
+    transform: "translate(-50%, -50%)",
+    textAlign: "center",
   },
 
   homeExploreMarker: {
@@ -780,24 +931,34 @@ export const styles: Record<string, CSSProperties> = {
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    width: "158px",
-    height: "158px",
+    width: "287px",
+    height: "287px",
+    pointerEvents: "none",
+  },
+
+  homeExploreMarkerVisual: {
+    position: "absolute",
+    left: "50%",
+    top: "50%",
+    transform: "translate(-50%, -50%)",
+  },
+
+  homeExploreMarkerFull: {
+    width: "359px",
+    height: "359px",
   },
 
   homeExploreMarkerRingOuter: {
-    position: "absolute",
-    inset: "-4px",
-    width: "calc(100% + 8px)",
-    height: "calc(100% + 8px)",
-    pointerEvents: "none",
+    display: "none",
   },
 
   homeExploreMarkerRing: {
     position: "absolute",
-    inset: 0,
-    width: "100%",
-    height: "100%",
+    inset: "-2px",
+    width: "calc(100% + 4px)",
+    height: "calc(100% + 4px)",
     pointerEvents: "none",
+    opacity: 0.85,
   },
 
   homeExploreMarkerIcon: {
@@ -810,13 +971,21 @@ export const styles: Record<string, CSSProperties> = {
   },
 
   universeIconMarker: {
-    width: "72px",
-    height: "72px",
-    maxWidth: "min(72px, 18vw)",
-    maxHeight: "min(72px, 18vw)",
+    width: "132px",
+    height: "132px",
+    maxWidth: "min(132px, 30vw)",
+    maxHeight: "min(132px, 30vw)",
     objectFit: "contain",
     display: "block",
-    filter: "drop-shadow(0 2px 4px rgba(120,90,60,0.08))",
+  },
+
+  universeIconMarkerFull: {
+    width: "165px",
+    height: "165px",
+    maxWidth: "min(165px, 36vw)",
+    maxHeight: "min(165px, 36vw)",
+    objectFit: "contain",
+    display: "block",
   },
 
   universeIconAba: {
@@ -841,10 +1010,15 @@ export const styles: Record<string, CSSProperties> = {
   },
 
   homeExploreStopTitle: {
-    ...tecaFont.portalTitle,
-    fontSize: "28px",
-    lineHeight: 1,
-    letterSpacing: "0.2px",
+    ...tecaFont.prose,
+    fontSize: "14px",
+    fontStyle: "italic",
+    fontWeight: 400,
+    lineHeight: 1.25,
+    letterSpacing: "0.35px",
+    color: "#8a7468",
+    marginTop: "2px",
+    textAlign: "center",
   },
 
   homeV2TrailEnd: {
@@ -1047,6 +1221,81 @@ export const styles: Record<string, CSSProperties> = {
   homeV2PathButton: {
     ...tecaFichario.etiquetaAction(),
     marginTop: "4px",
+    fontSize: "18px",
+  },
+
+  homeV2AtelierShop: {
+    position: "relative",
+    padding: "2px 0 18px",
+  },
+
+  homeV2AtelierKicker: {
+    ...tecaHierarchy.l6Micro,
+    marginBottom: "8px",
+  },
+
+  homeV2AtelierFeatured: {
+    position: "relative",
+    display: "flex",
+    alignItems: "center",
+    gap: "22px",
+    margin: "28px 0 0",
+    padding: "28px 24px 26px",
+    borderRadius: "20px",
+    border: "1px dashed rgba(196, 165, 141, 0.38)",
+    background:
+      "radial-gradient(ellipse at 18% 82%, rgba(217,196,173,0.16) 0%, transparent 52%), radial-gradient(ellipse at 92% 8%, rgba(217,196,173,0.12) 0%, transparent 44%), rgba(255,253,249,0.94)",
+    boxShadow:
+      "inset 0 1px 0 rgba(255,255,255,0.92), 0 10px 28px rgba(120,90,60,0.06)",
+  },
+
+  homeV2AtelierFeaturedPedestal: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    flexShrink: 0,
+    width: "148px",
+    height: "148px",
+    borderRadius: "16px",
+    background:
+      "radial-gradient(ellipse at 50% 68%, rgba(217,196,173,0.22) 0%, transparent 68%), rgba(248,239,228,0.45)",
+    border: "1px dashed rgba(196, 165, 141, 0.28)",
+    boxShadow: "inset 0 1px 0 rgba(255,255,255,0.75)",
+  },
+
+  homeV2AtelierFeaturedImage: {
+    width: "118px",
+    height: "118px",
+    objectFit: "contain",
+    filter: "drop-shadow(0 10px 20px rgba(120,90,60,0.14))",
+  },
+
+  homeV2AtelierFeaturedBody: {
+    flex: 1,
+    minWidth: 0,
+    paddingTop: "4px",
+  },
+
+  homeV2AtelierFeaturedTitle: {
+    ...tecaFont.heading,
+    fontSize: "28px",
+    lineHeight: 1.08,
+    margin: "0 0 12px",
+    textAlign: "left",
+  },
+
+  homeV2AtelierFeaturedText: {
+    ...tecaHierarchy.l5Body,
+    fontSize: "16px",
+    lineHeight: 1.55,
+    margin: "0 0 20px",
+    textAlign: "left",
+    maxWidth: "28ch",
+  },
+
+  homeV2AtelierFeaturedButton: {
+    ...tecaFichario.etiquetaAction(),
+    marginTop: 0,
     fontSize: "18px",
   },
 
@@ -1921,6 +2170,12 @@ export const styles: Record<string, CSSProperties> = {
   clubPlansSection: {
     marginBottom: "8px",
     textAlign: "center",
+  },
+
+  clubPlanCardFocused: {
+    borderRadius: "18px",
+    boxShadow: "0 0 0 1px rgba(200,135,87,0.28), 0 10px 24px rgba(120,90,60,0.08)",
+    transition: "box-shadow 0.35s ease",
   },
 
   clubEntryHeading: {
@@ -3098,6 +3353,78 @@ export const styles: Record<string, CSSProperties> = {
   navLabelSecondary: {
     fontSize: "10px",
     opacity: 0.85,
+  },
+
+  atlasFooter: {
+    position: "relative",
+    overflow: "hidden",
+    marginTop: "18px",
+    padding: "28px 12px 24px",
+    minHeight: "120px",
+    textAlign: "center",
+  },
+
+  atlasFooterDecor: {
+    position: "absolute",
+    inset: 0,
+    width: "100%",
+    height: "100%",
+    pointerEvents: "none",
+    zIndex: 0,
+  },
+
+  atlasFooterInner: {
+    position: "relative",
+    zIndex: 1,
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    gap: "10px",
+  },
+
+  atlasFooterTagline: {
+    ...tecaFont.poetic,
+    fontSize: "17px",
+    lineHeight: 1.4,
+    margin: 0,
+    color: theme.muted,
+  },
+
+  atlasFooterSocial: {
+    ...tecaFont.prose,
+    fontSize: "13px",
+    lineHeight: 1.3,
+    color: theme.text,
+    textDecoration: "none",
+    opacity: 0.82,
+    margin: "2px 0 4px",
+  },
+
+  atlasFooterDivider: {
+    width: "72px",
+    height: "1px",
+    margin: "6px 0 8px",
+    background:
+      "linear-gradient(90deg, rgba(196,165,141,0) 0%, rgba(196,165,141,0.38) 50%, rgba(196,165,141,0) 100%)",
+  },
+
+  atlasFooterCopyright: {
+    ...tecaFont.micro,
+    fontSize: "8px",
+    letterSpacing: "1.3px",
+    margin: 0,
+    color: "#a8886e",
+    opacity: 0.72,
+  },
+
+  atlasFooterPoetic: {
+    ...tecaFont.poetic,
+    fontSize: "13px",
+    lineHeight: 1.5,
+    margin: 0,
+    color: theme.muted,
+    maxWidth: "30ch",
+    opacity: 0.88,
   },
 }
 

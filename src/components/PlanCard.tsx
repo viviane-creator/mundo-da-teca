@@ -40,9 +40,8 @@ export function PlanCard({
         </div>
 
         <div style={styles.homeV2PathCardInner}>
-          <h3 style={styles.homeV2PathJourneyTitle}>{journey.journeyTitle}</h3>
+          <h3 style={styles.homeV2PathJourneyTitle}>{plan.title}</h3>
           <p style={styles.homeV2PathJourneyText}>{journey.journeyText}</p>
-          <p style={styles.homeV2PathPlanName}>{plan.title}</p>
           <FicharioEtiqueta action onClick={onCta} style={styles.homeV2PathButton}>
             {journey.pathCta}
           </FicharioEtiqueta>

@@ -11,13 +11,15 @@ export function UniverseIcon({
   style,
 }: {
   src: string
-  variant?: "marker" | "aba" | "panel" | "emblem"
+  variant?: "marker" | "markerFull" | "aba" | "panel" | "emblem"
   style?: CSSProperties
 }) {
   const variantStyle =
-    variant === "marker"
-      ? styles.universeIconMarker
-      : variant === "aba"
+    variant === "markerFull"
+      ? styles.universeIconMarkerFull
+      : variant === "marker"
+        ? styles.universeIconMarker
+        : variant === "aba"
         ? styles.universeIconAba
         : variant === "panel"
           ? styles.universeIconPanel
@@ -28,7 +30,11 @@ export function UniverseIcon({
       src={src}
       alt=""
       aria-hidden
-      style={{ ...variantStyle, ...style }}
+      style={{
+        ...variantStyle,
+        ...(src.endsWith(".svg") ? { imageRendering: "auto" as const } : {}),
+        ...style,
+      }}
     />
   )
 }

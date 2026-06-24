@@ -3,6 +3,7 @@ import "./fonts.css"
 import {
   isPlayUniverseScreen,
   playUniverses,
+  hasSquareUniverseCover,
   type PlayExperience,
   type PlayUniverse,
 } from "./playData"
@@ -60,6 +61,8 @@ import { PlayExperienceCard } from "./components/PlayExperienceCard"
 import { PlayExperienceDetailPanel } from "./components/PlayExperienceDetailPanel"
 import { Home } from "./pages/Home"
 import { ClubPage } from "./pages/ClubPage"
+import type { ParticipationPlanId } from "./data/participationPlans"
+import { appRoutes } from "./navigation/appRoutes"
 import { MeuMundoPage } from "./pages/MeuMundoPage"
 import { BibliotecaPage } from "./pages/BibliotecaPage"
 import { AtelierProductPage } from "./pages/AtelierProductPage"
@@ -309,6 +312,9 @@ function resolveNavActive(screen: Screen): string {
 
 export default function App() {
   const [screen, setScreen] = useState<Screen>("home")
+  const [clubPlanFocus, setClubPlanFocus] = useState<ParticipationPlanId | null>(
+    null,
+  )
   const [box, setBox] = useState<AtelierGood[]>([])
   const [diaryEntries, setDiaryEntries] =
     useState<DiaryEntry[]>(initialDiaryEntries)
@@ -324,10 +330,23 @@ export default function App() {
     window.scrollTo({ top: 0, left: 0, behavior: "instant" })
   }, [screen])
 
+  useEffect(() => {
+    if (screen !== appRoutes.clube) {
+      setClubPlanFocus(null)
+    }
+  }, [screen])
+
+  const goToClubePlan = (plan: ParticipationPlanId) => {
+    setClubPlanFocus(plan)
+    setScreen(appRoutes.clube)
+  }
+
   return (
     <main style={styles.main}>
       <section style={styles.appShell}>
-        {screen === "home" && <Home setScreen={setScreen} />}
+        {screen === "home" && (
+          <Home setScreen={setScreen} onGoToClube={goToClubePlan} />
+        )}
 
         {screen === "descobertas" && (
           <Page
@@ -435,7 +454,9 @@ export default function App() {
           />
         )}
 
-        {screen === "clube" && <ClubPage setScreen={setScreen} />}
+        {screen === "clube" && (
+          <ClubPage setScreen={setScreen} focusPlan={clubPlanFocus} />
+        )}
 
         {screen === "meu-mundo" && <MeuMundoPage setScreen={setScreen} />}
 
@@ -508,12 +529,20 @@ function PlayUniversePage({
         <p style={styles.playUniverseChapterKicker}>
           capítulo {getUniverseChapterIndex(universe.id)}
         </p>
-        <img
-          src={getUniverseEmblem(universe.id)}
-          alt=""
-          aria-hidden
-          style={styles.playUniverseEmblemWatermark}
-        />
+        {hasSquareUniverseCover(universe.id) ? (
+          <img
+            src={universe.image}
+            alt={getUniverseChapterTitle(universe.id)}
+            style={styles.playUniverseChapterCover}
+          />
+        ) : (
+          <img
+            src={getUniverseEmblem(universe.id)}
+            alt=""
+            aria-hidden
+            style={styles.playUniverseEmblemWatermark}
+          />
+        )}
         <h1 style={styles.playUniverseTitle}>
           {getUniverseChapterTitle(universe.id)}
         </h1>

@@ -1,5 +1,5 @@
 import type { CSSProperties, ReactNode } from "react"
-import { HomeHeroMist, HomeHeroTextMist } from "./components/HomeHeroMist"
+import { HomeHeroTextMist } from "./components/HomeHeroMist"
 import { tecaColors, tecaFont, tecaHierarchy, tecaSpacing } from "./tecaVisual"
 
 const theme = {
@@ -178,6 +178,17 @@ const p: Record<string, CSSProperties> = {
     zIndex: 2,
     pointerEvents: "none",
   },
+  /** Mesmo degradê de névoa da capa Universos — altura proporcional à hero */
+  fadeHome: {
+    position: "absolute",
+    left: 0,
+    right: 0,
+    bottom: 0,
+    height: "clamp(200px, 28vh, 280px)",
+    background: `linear-gradient(180deg, rgba(246,237,226,0) 0%, rgba(246,237,226,0.55) 45%, ${theme.shell} 96%)`,
+    zIndex: 2,
+    pointerEvents: "none",
+  },
   body: {
     position: "relative",
     zIndex: 6,
@@ -251,7 +262,7 @@ export function WorldPortalCover({
       />
       <div style={p.vignette} />
       <img
-        src="/logo/logo.png"
+        src="/logo/logo.webp"
         alt="Mundo da Teca"
         style={{
           ...p.logo,
@@ -259,7 +270,7 @@ export function WorldPortalCover({
         }}
       />
       {variant === "home" ? (
-        <HomeHeroMist />
+        <div style={p.fadeHome} />
       ) : (
         showFade && <div style={p.fade} />
       )}
@@ -349,11 +360,11 @@ export function WorldPortalLayout({
           />
           <div style={{ ...p.vignette, ...p.vignetteHome }} />
           <img
-            src="/logo/logo.png"
+            src="/logo/logo.webp"
             alt="Mundo da Teca"
             style={{ ...p.logo, ...p.logoHome }}
           />
-          <HomeHeroMist />
+          <div style={p.fadeHome} />
           <div style={p.homeHeroTextOverlay}>
             <HomeHeroTextMist />
             <h1 style={{ ...p.homeHeroTitle, position: "relative", zIndex: 1 }}>

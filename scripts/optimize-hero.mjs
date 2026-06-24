@@ -2,34 +2,41 @@ import fs from "node:fs"
 import path from "node:path"
 import sharp from "sharp"
 
-const source = path.resolve("public/characters/teca-estrelinha-praia.png")
-const output = path.resolve("public/images/hero-home.webp")
+const source = path.resolve("public/characters/hero-home-original.png")
+const originalOutput = path.resolve("public/characters/hero-home-original.webp")
+const heroOutput = path.resolve("public/images/hero-home.webp")
 const maxWidth = 1600
-const quality = 80
+const originalQuality = 88
+const heroQuality = 80
+
+if (!fs.existsSync(source)) {
+  console.error(`Source not found: ${source}`)
+  process.exit(1)
+}
 
 const originalBytes = fs.statSync(source).size
 const metadata = await sharp(source).metadata()
+const targetWidth = Math.min(metadata.width ?? maxWidth, maxWidth)
 
-const pipeline = sharp(source).resize({
-  width: Math.min(metadata.width ?? maxWidth, maxWidth),
-  withoutEnlargement: true,
-})
+await sharp(source)
+  .webp({ quality: originalQuality, effort: 6 })
+  .toFile(originalOutput)
 
-await pipeline.webp({ quality, effort: 6 }).toFile(output)
+await sharp(source)
+  .resize({ width: targetWidth, withoutEnlargement: true })
+  .webp({ quality: heroQuality, effort: 6 })
+  .toFile(heroOutput)
 
-const finalBytes = fs.statSync(output).size
-const reduction = ((1 - finalBytes / originalBytes) * 100).toFixed(1)
+const originalWebpBytes = fs.statSync(originalOutput).size
+const heroWebpBytes = fs.statSync(heroOutput).size
+const reduction = ((1 - originalWebpBytes / originalBytes) * 100).toFixed(1)
 const formatKb = (bytes) => `${(bytes / 1024).toFixed(1)} KB`
 
-const outMeta = await sharp(output).metadata()
+const originalMeta = await sharp(originalOutput).metadata()
+const heroMeta = await sharp(heroOutput).metadata()
 
 console.log("Hero image optimization")
-console.log(`  Original: ${formatKb(originalBytes)} (${metadata.width}x${metadata.height})`)
-console.log(`  Final:    ${formatKb(finalBytes)} (${outMeta.width}x${outMeta.height})`)
-console.log(`  Reduction: ${reduction}%`)
-
-if (finalBytes < 400 * 1024 || finalBytes > 900 * 1024) {
-  console.warn(
-    `  Note: final size ${formatKb(finalBytes)} is outside 400–900 KB target; adjust quality if needed.`,
-  )
-}
+console.log(`  PNG source:  ${formatKb(originalBytes)} (${metadata.width}x${metadata.height})`)
+console.log(`  Original:    ${formatKb(originalWebpBytes)} (${originalMeta.width}x${originalMeta.height}) — hero-home-original.webp`)
+console.log(`  Production:  ${formatKb(heroWebpBytes)} (${heroMeta.width}x${heroMeta.height}) — images/hero-home.webp`)
+console.log(`  Reduction (PNG → original.webp): ${reduction}%`)

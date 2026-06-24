@@ -111,8 +111,8 @@ export function formatFichaCodigo(
 }
 
 const universeCovers: Record<PlayUniverseId, string> = {
-  laboratorio: "/images/universos/laboratorio-capa.png",
-  cozinha: "/images/universos/cozinha-capa.png",
+  laboratorio: "/images/universos/laboratorio-capa.webp",
+  cozinha: "/images/universos/cozinha-capa.webp",
   oficina: "/images/universos/oficina-capa.png",
   "faz-de-conta": "/images/universos/arte-capa.png",
   quintal: "/images/universos/natureza-capa.png",
@@ -129,7 +129,8 @@ const experienceImageFolder: Record<PlayUniverseId, string> = {
 }
 
 function experienceImage(universeId: PlayUniverseId, experienceId: string): string {
-  return `/images/${experienceImageFolder[universeId]}/${experienceId}.png`
+  const extension = universeId === "laboratorio" ? "webp" : "png"
+  return `/images/${experienceImageFolder[universeId]}/${experienceId}.${extension}`
 }
 
 function placeholderDetail(seed: ExperienceSeed): PlayExperienceDetail {
@@ -958,4 +959,14 @@ export const playUniverses: Record<PlayUniverseId, PlayUniverse> = {
 
 export function isPlayUniverseScreen(screen: string): screen is PlayUniverseId {
   return screen in playUniverses
+}
+
+const squareUniverseCoverIds = new Set<PlayUniverseId>(["laboratorio", "cozinha"])
+
+export function hasSquareUniverseCover(universeId: PlayUniverseId): boolean {
+  return squareUniverseCoverIds.has(universeId)
+}
+
+export function usesSquareExperienceArt(universeId: PlayUniverseId): boolean {
+  return universeId === "laboratorio"
 }

@@ -34,6 +34,11 @@ export function FeatureCard({
       title={card.title}
       image={card.image}
       imageAlt={card.title}
+      imageVariant={
+        card.id === "laboratorio" || card.id === "cozinha"
+          ? "squareCapa"
+          : "default"
+      }
       onSelect={onClick}
       tilt={tilt}
     >

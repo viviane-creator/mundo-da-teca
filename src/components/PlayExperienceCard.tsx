@@ -4,6 +4,7 @@ import {
   formatFichaCodigo,
   type PlayExperience,
   type PlayUniverseId,
+  usesSquareExperienceArt,
 } from "../playData"
 import { tecaHierarchy } from "../tecaVisual"
 import { FicharioFicha, FicharioRegistro } from "./fichario"
@@ -31,18 +32,35 @@ export function PlayExperienceCard({
   onSelect: () => void
 }) {
   const [imageSrc, setImageSrc] = useState(experience.image)
+  const [hideImage, setHideImage] = useState(false)
 
   return (
     <FicharioFicha
       variant="descoberta"
       codigo={formatFichaCodigo(universeId, index)}
       title={formatDiscoveryTitle(experience.title)}
-      image={imageSrc}
+      image={hideImage ? undefined : imageSrc}
       imageAlt={experience.title}
+      imageVariant={
+        usesSquareExperienceArt(universeId) ? "squareCapa" : "default"
+      }
       seal={!experience.isFree ? "clube da teca" : null}
       selected={selected}
       onSelect={onSelect}
       onImageError={() => {
+        if (universeId === "laboratorio") {
+          const pngFallback = experience.image.replace(/\.webp$/, ".png")
+          if (imageSrc.endsWith(".webp") && pngFallback !== imageSrc) {
+            setImageSrc(pngFallback)
+            return
+          }
+          setHideImage(true)
+          return
+        }
+        if (universeId === "cozinha") {
+          setHideImage(true)
+          return
+        }
         if (imageSrc !== fallbackImage) setImageSrc(fallbackImage)
       }}
     >

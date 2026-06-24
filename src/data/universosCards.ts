@@ -11,14 +11,14 @@ export const universosCards: UniversosCard[] = [
     id: "laboratorio",
     title: "Laboratório",
     text: "experiências suaves e curiosas",
-    image: "/images/universos/laboratorio-capa.png",
+    image: "/images/universos/laboratorio-capa.webp",
     target: "laboratorio",
   },
   {
     id: "cozinha",
     title: "Cozinha",
     text: "misturas e descobertas",
-    image: "/images/universos/cozinha-capa.png",
+    image: "/images/universos/cozinha-capa.webp",
     target: "cozinha",
   },
   {

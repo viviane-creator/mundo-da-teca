@@ -1,3 +1,4 @@
+import type { ParticipationPlanId } from "../data/participationPlans"
 import { participationPlans } from "../data/participationPlans"
 import { styles } from "../styles/appStyles"
 import { PlanCard } from "./PlanCard"
@@ -6,16 +7,16 @@ export function ParticipationSection({
   onGoToClube,
   variant = "default",
 }: {
-  onGoToClube: () => void
+  onGoToClube: (planId: ParticipationPlanId) => void
   variant?: "default" | "home-path"
 }) {
   if (variant === "home-path") {
     return (
       <section style={styles.homeV2PathSection}>
-        <p style={styles.homeV2SectionKicker}>continuar o fichário</p>
-        <h2 style={styles.homeSectionHeading}>Escolha como começar.</h2>
+        <h2 style={styles.homePlaceTitle}>Clube</h2>
+        <p style={styles.homeSectionHeading}>Escolha como deseja explorar.</p>
         <p style={styles.homeSectionSubtitle}>
-          Novas fichas chegam na caixa — para continuar a coleção em casa.
+          Duas formas de participar da expedição.
         </p>
 
         <div style={styles.homeV2PathStack}>
@@ -23,7 +24,7 @@ export function ParticipationSection({
             <PlanCard
               key={plan.id}
               plan={plan}
-              onCta={onGoToClube}
+              onCta={() => onGoToClube(plan.id)}
               variant="home-path"
             />
           ))}
@@ -41,7 +42,7 @@ export function ParticipationSection({
           <PlanCard
             key={plan.id}
             plan={plan}
-            onCta={onGoToClube}
+            onCta={() => onGoToClube(plan.id)}
             tilt={index === 0 ? 0.25 : -0.25}
           />
         ))}

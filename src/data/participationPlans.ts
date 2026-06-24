@@ -56,10 +56,10 @@ export const homeParticipationJourneys: Record<
   }
 > = {
   explorador: {
-    journeyTitle: "Explorar online",
+    journeyTitle: "Explorador",
     journeyText:
-      "Entre nos universos, registre descobertas e monte seu Meu Mundo digital.",
-    pathCta: "Começar online",
+      "Acesse experiências, registre descobertas e monte sua coleção digital.",
+    pathCta: "Explorar online",
     decor: [
       {
         src: "/cards/descobertas/diario.png",
@@ -88,10 +88,10 @@ export const homeParticipationJourneys: Record<
     ],
   },
   colecionador: {
-    journeyTitle: "Receber em casa",
+    journeyTitle: "Colecionador",
     journeyText:
-      "Receba páginas, materiais, colecionáveis e pequenos tesouros para guardar com as mãos.",
-    pathCta: "Quero receber",
+      "Receba páginas, materiais e tesouros para continuar explorando em casa.",
+    pathCta: "Receber em casa",
     decor: [
       {
         src: "/cards/clube/correio.png",

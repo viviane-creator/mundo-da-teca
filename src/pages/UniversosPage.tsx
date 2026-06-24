@@ -14,7 +14,7 @@ export function UniversosPage({
       <section style={styles.universosExploreSection}>
         <p style={styles.universosExploreKicker}>trilha de exploração</p>
 
-        <div style={styles.homeV2UniversosWrap}>
+        <div style={styles.universosExploreMapWrap}>
           <div style={styles.editorialDecorContent}>
             <HomeExploreMap onSelect={setScreen} variant="full" />
             <p style={styles.homeV2TrailEnd}>

@@ -88,7 +88,7 @@ export const ficharioUniverses: FicharioUniverse[] = [
     title: "Laboratório",
     collectionTitle: "Coleção do Laboratório",
     poetic: "Onde as coisas se transformam.",
-    image: "/images/universos/laboratorio-capa.png",
+    image: "/images/universos/laboratorio-capa.webp",
     slots: padSlots(
       [
         {
@@ -121,7 +121,7 @@ export const ficharioUniverses: FicharioUniverse[] = [
     title: "Cozinha",
     collectionTitle: "Coleção da Cozinha",
     poetic: "Onde receitas viram descobertas.",
-    image: "/images/universos/cozinha-capa.png",
+    image: "/images/universos/cozinha-capa.webp",
     slots: padSlots(
       [
         {

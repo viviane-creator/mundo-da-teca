@@ -52,6 +52,7 @@ export function FicharioFicha({
   tilt,
   onSelect,
   onImageError,
+  imageVariant = "default",
   children,
   style,
   empty,
@@ -71,6 +72,7 @@ export function FicharioFicha({
   tilt?: number
   onSelect?: () => void
   onImageError?: () => void
+  imageVariant?: "default" | "squareCapa"
   children?: ReactNode
   style?: CSSProperties
   empty?: boolean
@@ -133,17 +135,34 @@ export function FicharioFicha({
     ? {
         width: "42%",
         minWidth: "120px",
-        aspectRatio: "16 / 7",
-        objectFit: "cover",
+        aspectRatio: imageVariant === "squareCapa" ? "1 / 1" : "16 / 7",
+        objectFit: imageVariant === "squareCapa" ? "contain" : "cover",
         display: "block",
         flexShrink: 0,
+        ...(imageVariant === "squareCapa"
+          ? {
+              background: "rgba(248,239,228,0.55)",
+              border: `1px dashed ${tecaFichario.material.lineSoft}`,
+              borderRadius: "12px",
+            }
+          : {}),
       }
     : variant === "complemento"
       ? {
           ...tecaFichario.fichaImage(),
           aspectRatio: "4 / 3",
         }
-      : tecaFichario.fichaImage()
+      : imageVariant === "squareCapa"
+        ? {
+            width: "100%",
+            aspectRatio: "1 / 1",
+            objectFit: "contain",
+            display: "block",
+            background: "rgba(248,239,228,0.55)",
+            border: `1px dashed ${tecaFichario.material.lineSoft}`,
+            borderRadius: "12px",
+          }
+        : tecaFichario.fichaImage()
 
   const bodyStyle =
     variant === "memoria"

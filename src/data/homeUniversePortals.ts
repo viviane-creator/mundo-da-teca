@@ -9,42 +9,42 @@ export type HomeUniversePortal = {
 export const homeUniversePortals: HomeUniversePortal[] = [
   {
     id: "laboratorio",
-    icon: "/universos/laboratorio.png",
+    icon: "/universos/laboratorio.svg",
     title: "Laboratório",
     phrase: "Onde as coisas se transformam.",
     target: "laboratorio",
   },
   {
     id: "cozinha",
-    icon: "/universos/cozinha.png",
+    icon: "/universos/cozinha.svg",
     title: "Cozinha",
     phrase: "Onde receitas viram descobertas.",
     target: "cozinha",
   },
   {
     id: "oficina",
-    icon: "/universos/oficina.png",
+    icon: "/universos/oficina.svg",
     title: "Oficina",
     phrase: "Onde as mãos constroem ideias.",
     target: "oficina",
   },
   {
     id: "faz-de-conta",
-    icon: "/universos/faz-de-conta.png",
+    icon: "/universos/faz-de-conta.svg",
     title: "Faz de Conta",
     phrase: "Onde a imaginação ganha forma.",
     target: "faz-de-conta",
   },
   {
     id: "quintal",
-    icon: "/universos/quintal.png",
+    icon: "/universos/quintal.svg",
     title: "Quintal",
     phrase: "Onde o mundo lá fora vira aventura.",
     target: "quintal",
   },
   {
     id: "observatorio",
-    icon: "/universos/observatorio.png",
+    icon: "/universos/observatorio.svg",
     title: "Observatório",
     phrase: "Onde a curiosidade encontra o invisível.",
     target: "observatorio",
@@ -54,7 +54,7 @@ export const homeUniversePortals: HomeUniversePortal[] = [
 export function getUniverseEmblem(universeId: string): string {
   return (
     homeUniversePortals.find((portal) => portal.id === universeId)?.icon ??
-    "/universos/laboratorio.png"
+    "/universos/laboratorio.svg"
   )
 }
 

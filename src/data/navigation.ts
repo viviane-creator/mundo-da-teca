@@ -1,3 +1,5 @@
+import { appRoutes } from "../navigation/appRoutes"
+
 export type NavItem = {
   label: string
   screen: string
@@ -6,17 +8,17 @@ export type NavItem = {
 }
 
 export const navItems: NavItem[] = [
-  { label: "Início", screen: "home", icon: "/icons/estrela.png" },
-  { label: "Universos", screen: "universos", icon: "/icons/pipa.png" },
+  { label: "Início", screen: appRoutes.home, icon: "/icons/estrela.png" },
+  { label: "Universos", screen: appRoutes.brincadeiras, icon: "/icons/pipa.png" },
   {
     label: "Meu Mundo",
-    screen: "meu-mundo",
+    screen: appRoutes.minhaColecao,
     icon: "/cards/descobertas/colecoes.png",
   },
-  { label: "Clube", screen: "clube", icon: "/icons/carteirinha.png" },
+  { label: "Clube", screen: appRoutes.clube, icon: "/icons/carteirinha.png" },
   {
     label: "Ateliê",
-    screen: "atelie",
+    screen: appRoutes.atelie,
     icon: "/icons/bau.png",
     secondary: true,
   },

@@ -1,19 +1,35 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { clubParticipationPlans } from "../data/participationPlans"
+import type { ParticipationPlanId } from "../data/participationPlans"
 import { PlanCard } from "../components/PlanCard"
+import { appRoutes } from "../navigation/appRoutes"
 import { styles } from "../styles/appStyles"
 import { tecaTilt } from "../tecaVisual"
 import { WorldPortalLayout, portalPages } from "../worldPortal"
 
 export function ClubPage({
   setScreen,
+  focusPlan = null,
 }: {
   setScreen: (screen: string) => void
+  focusPlan?: ParticipationPlanId | null
 }) {
   const [childName, setChildName] = useState("teca")
   const [birthday, setBirthday] = useState("12 de abril")
   const [memberSince, setMemberSince] = useState("maio de 2026")
   const portal = portalPages.clube
+
+  useEffect(() => {
+    if (!focusPlan) return
+
+    const frame = window.requestAnimationFrame(() => {
+      document
+        .querySelector(`[data-club-plan="${focusPlan}"]`)
+        ?.scrollIntoView({ behavior: "smooth", block: "center" })
+    })
+
+    return () => window.cancelAnimationFrame(frame)
+  }, [focusPlan])
 
   return (
     <WorldPortalLayout {...portal} breath="large">
@@ -26,12 +42,25 @@ export function ClubPage({
 
         <div style={styles.planCardsStack}>
           {clubParticipationPlans.map((plan, index) => (
-            <PlanCard
+            <div
               key={plan.id}
-              plan={plan}
-              onCta={() => {}}
-              tilt={index === 0 ? 0.25 : -0.25}
-            />
+              data-club-plan={plan.id}
+              style={
+                focusPlan === plan.id ? styles.clubPlanCardFocused : undefined
+              }
+            >
+              <PlanCard
+                plan={plan}
+                onCta={() =>
+                  setScreen(
+                    plan.id === "explorador"
+                      ? appRoutes.minhaColecao
+                      : appRoutes.atelie,
+                  )
+                }
+                tilt={index === 0 ? 0.25 : -0.25}
+              />
+            </div>
           ))}
         </div>
       </section>
