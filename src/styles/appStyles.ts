@@ -733,9 +733,8 @@ export const styles: Record<string, CSSProperties> = {
     margin: "-14px -12px -14px",
     padding: "14px 10px 12px",
     borderRadius: "0 16px 16px 0",
-    background:
-      "radial-gradient(ellipse at 20% 16%, rgba(217,196,173,0.14) 0%, transparent 54%), radial-gradient(ellipse at 82% 84%, rgba(210,220,228,0.18) 0%, transparent 50%), linear-gradient(168deg, #faf6f0 0%, #f4ece3 48%, #eef2f5 100%)",
-    boxShadow: "inset 0 1px 0 rgba(255,255,255,0.75)",
+    background: "linear-gradient(180deg, #E6D2AF 0%, #D9C7A6 100%)",
+    boxShadow: "inset 0 1px 0 rgba(255,255,255,0.45)",
   },
 
   homeExploreMap: {
@@ -755,11 +754,15 @@ export const styles: Record<string, CSSProperties> = {
 
   homeExploreMapStageHome: {
     padding: "2px 2px 6px",
+    borderRadius: "10px",
+    boxShadow: "inset 0 0 0 1px rgba(122,98,73,0.14)",
   },
 
   homeExploreMapStageFull: {
     padding: 0,
     aspectRatio: "864 / 1821",
+    borderRadius: "12px",
+    overflow: "hidden",
   },
 
   homeExploreMapStops: {
@@ -768,17 +771,14 @@ export const styles: Record<string, CSSProperties> = {
     zIndex: 2,
   },
 
-  /** Arte de fundo do atlas — apenas na página Universos */
-  homeExploreMapAtlasBg: {
+  /** Fundo pergaminho do mapa — Home e Universos */
+  homeExploreMapParchmentBg: {
     position: "absolute",
     inset: 0,
     zIndex: 0,
     pointerEvents: "none",
-    backgroundImage:
-      "linear-gradient(rgba(255, 253, 249, 0.08), rgba(255, 253, 249, 0.08)), url(/images/mapa-exploracao.webp)",
-    backgroundSize: "100% 100%",
-    backgroundPosition: "center",
-    backgroundRepeat: "no-repeat",
+    background: "linear-gradient(180deg, #E6D2AF 0%, #D9C7A6 100%)",
+    boxShadow: "inset 0 0 0 1px rgba(122,98,73,0.12)",
   },
 
   homeExploreMapFull: {
@@ -869,61 +869,34 @@ export const styles: Record<string, CSSProperties> = {
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    width: "287px",
-    height: "287px",
+    width: "152px",
+    height: "152px",
     pointerEvents: "none",
-  },
-
-  homeExploreMarkerVisual: {
-    position: "absolute",
-    left: "50%",
-    top: "50%",
-    transform: "translate(-50%, -50%)",
   },
 
   homeExploreMarkerFull: {
-    width: "359px",
-    height: "359px",
-  },
-
-  homeExploreMarkerRingOuter: {
-    display: "none",
-  },
-
-  homeExploreMarkerRing: {
-    position: "absolute",
-    inset: "-2px",
-    width: "calc(100% + 4px)",
-    height: "calc(100% + 4px)",
-    pointerEvents: "none",
-    opacity: 0.85,
-  },
-
-  homeExploreMarkerIcon: {
-    position: "relative",
-    zIndex: 1,
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    lineHeight: 1,
+    width: "180px",
+    height: "180px",
   },
 
   universeIconMarker: {
-    width: "132px",
-    height: "132px",
-    maxWidth: "min(132px, 30vw)",
-    maxHeight: "min(132px, 30vw)",
+    width: "144px",
+    height: "144px",
+    maxWidth: "min(144px, 32vw)",
+    maxHeight: "min(144px, 32vw)",
     objectFit: "contain",
     display: "block",
+    filter: "drop-shadow(0 3px 8px rgba(72,48,32,0.14))",
   },
 
   universeIconMarkerFull: {
-    width: "165px",
-    height: "165px",
-    maxWidth: "min(165px, 36vw)",
-    maxHeight: "min(165px, 36vw)",
+    width: "172px",
+    height: "172px",
+    maxWidth: "min(172px, 38vw)",
+    maxHeight: "min(172px, 38vw)",
     objectFit: "contain",
     display: "block",
+    filter: "drop-shadow(0 4px 10px rgba(72,48,32,0.16))",
   },
 
   universeIconAba: {

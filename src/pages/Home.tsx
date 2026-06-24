@@ -1,11 +1,9 @@
 import { HomeExploreMap } from "../components/HomeExploreMap"
-import { EditorialDecor } from "../components/EditorialDecor"
 import { FicharioDivisoria, FicharioEtiqueta } from "../components/fichario"
 import { ParticipationSection } from "../components/ParticipationSection"
 import { WorldAtlasFooter } from "../components/WorldAtlasFooter"
 import type { ParticipationPlanId } from "../data/participationPlans"
 import { appRoutes, resolveUniverseRoute } from "../navigation/appRoutes"
-import { editorialDecorMapCorners } from "../data/editorialDecorPresets"
 import { styles } from "../styles/appStyles"
 import { WorldPortalLayout, portalPages } from "../worldPortal"
 
@@ -34,12 +32,9 @@ export function Home({
             </p>
 
             <div style={styles.homeV2UniversosWrap}>
-              <EditorialDecor items={editorialDecorMapCorners} />
-              <div style={styles.editorialDecorContent}>
-                <HomeExploreMap
-                  onSelect={(target) => setScreen(resolveUniverseRoute(target))}
-                />
-              </div>
+              <HomeExploreMap
+                onSelect={(target) => setScreen(resolveUniverseRoute(target))}
+              />
             </div>
           </div>
         </FicharioDivisoria>

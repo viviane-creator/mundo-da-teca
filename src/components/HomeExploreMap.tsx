@@ -81,110 +81,59 @@ function buildTrailPath(
 }
 
 const TRAIL_PATH_HOME = buildTrailPath(TRAIL_POINTS_HOME)
-const TRAIL_PATH_SKETCH_HOME = buildTrailPath(
-  TRAIL_POINTS_HOME.map((point) => ({ x: point.x + 2, y: point.y + 2 })),
-)
 const TRAIL_PATH_FULL = buildTrailPath(TRAIL_POINTS_FULL)
-const TRAIL_PATH_SKETCH_FULL = buildTrailPath(
-  TRAIL_POINTS_FULL.map((point) => ({ x: point.x + 2, y: point.y + 2 })),
-)
 
-function MapDecorations({
-  points,
-  trailPath,
-  trailPathSketch,
-  showCorners = true,
-}: {
-  points: readonly { x: number; y: number }[]
-  trailPath: string
-  trailPathSketch: string
-  showCorners?: boolean
-}) {
+function MapDecorations({ trailPath }: { trailPath: string }) {
   return (
     <>
-      {showCorners ? (
-        <>
-          <path d="M 18 18 L 18 42 M 18 18 L 42 18" stroke="#a8886e" strokeWidth="0.65" opacity={0.2} strokeLinecap="round" />
-          <path d="M 302 18 L 302 42 M 302 18 L 278 18" stroke="#a8886e" strokeWidth="0.65" opacity={0.2} strokeLinecap="round" />
-        </>
-      ) : null}
+      <path
+        d="M 18 18 L 18 42 M 18 18 L 42 18"
+        stroke="#9a7d62"
+        strokeWidth="0.55"
+        opacity={0.14}
+        strokeLinecap="round"
+      />
+      <path
+        d="M 302 18 L 302 42 M 302 18 L 278 18"
+        stroke="#9a7d62"
+        strokeWidth="0.55"
+        opacity={0.14}
+        strokeLinecap="round"
+      />
+      <path
+        d="M 18 562 L 18 538 M 18 562 L 42 562"
+        stroke="#9a7d62"
+        strokeWidth="0.55"
+        opacity={0.12}
+        strokeLinecap="round"
+      />
+      <path
+        d="M 302 562 L 302 538 M 302 562 L 278 562"
+        stroke="#9a7d62"
+        strokeWidth="0.55"
+        opacity={0.12}
+        strokeLinecap="round"
+      />
 
       <path
         d={trailPath}
         fill="none"
-        stroke="#f6ede2"
-        strokeWidth="3.8"
+        stroke="#f0e4d4"
+        strokeWidth="3.2"
         strokeLinecap="round"
         strokeLinejoin="round"
-        opacity={0.48}
-      />
-      <path
-        d={trailPathSketch}
-        fill="none"
-        stroke="#c4a58d"
-        strokeWidth="1.6"
-        strokeDasharray="2 10 5 8 3 12"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        opacity={0.44}
+        opacity={0.35}
       />
       <path
         d={trailPath}
         fill="none"
-        stroke="#8f7358"
-        strokeWidth="2.2"
+        stroke="#7a6249"
+        strokeWidth="2"
         strokeDasharray="5 7 4 9 6 8 3 11"
         strokeLinecap="round"
         strokeLinejoin="round"
-        opacity={0.84}
+        opacity={0.72}
       />
-
-      {points.map((point, index) => (
-        <g key={`trail-node-${index}`}>
-          <circle
-            cx={point.x}
-            cy={point.y}
-            r="5.5"
-            fill="none"
-            stroke="#c4a58d"
-            strokeWidth="0.9"
-            strokeDasharray="2 3"
-            opacity={0.45}
-          />
-          <circle
-            cx={point.x}
-            cy={point.y}
-            r="2.8"
-            fill="#a8886e"
-            opacity={0.62}
-          />
-        </g>
-      ))}
-
-      {points.slice(0, -1).map((point, index) => {
-        const next = points[index + 1]
-        const midX = (point.x + next.x) / 2
-        const midY = (point.y + next.y) / 2
-        return (
-          <g key={`trail-mid-${index}`} opacity={0.5}>
-            <circle cx={midX} cy={midY} r="1.6" fill="#b8987a" />
-            <circle
-              cx={(point.x + midX) / 2}
-              cy={(point.y + midY) / 2}
-              r="1.1"
-              fill="#c4a58d"
-              opacity={0.7}
-            />
-            <circle
-              cx={(next.x + midX) / 2}
-              cy={(next.y + midY) / 2}
-              r="1.1"
-              fill="#c4a58d"
-              opacity={0.7}
-            />
-          </g>
-        )
-      })}
     </>
   )
 }
@@ -198,8 +147,6 @@ export function HomeExploreMap({
 }) {
   const trailPoints = variant === "full" ? TRAIL_POINTS_FULL : TRAIL_POINTS_HOME
   const trailPath = variant === "full" ? TRAIL_PATH_FULL : TRAIL_PATH_HOME
-  const trailPathSketch =
-    variant === "full" ? TRAIL_PATH_SKETCH_FULL : TRAIL_PATH_SKETCH_HOME
 
   return (
     <div
@@ -220,7 +167,7 @@ export function HomeExploreMap({
         {variant === "full" ? (
           <div
             data-atlas-background=""
-            style={styles.homeExploreMapAtlasBg}
+            style={styles.homeExploreMapParchmentBg}
             aria-hidden="true"
           />
         ) : null}
@@ -233,12 +180,7 @@ export function HomeExploreMap({
           }
           aria-hidden="true"
         >
-          <MapDecorations
-            points={trailPoints}
-            trailPath={trailPath}
-            trailPathSketch={trailPathSketch}
-            showCorners={variant !== "full"}
-          />
+          <MapDecorations trailPath={trailPath} />
         </svg>
 
         <div style={styles.homeExploreMapStops}>
@@ -281,34 +223,13 @@ export function HomeExploreMap({
               <span
                 style={{
                   ...styles.homeExploreMarker,
-                  ...styles.homeExploreMarkerVisual,
                   ...(variant === "full" ? styles.homeExploreMarkerFull : {}),
                 }}
               >
-                <svg
-                  style={styles.homeExploreMarkerRing}
-                  viewBox="0 0 100 100"
-                  aria-hidden="true"
-                >
-                  <ellipse
-                    cx="50"
-                    cy="50"
-                    rx="47"
-                    ry="45"
-                    fill="none"
-                    stroke="#a8886e"
-                    strokeWidth="0.75"
-                    strokeDasharray="4 8 3 10 5 7"
-                    opacity={0.32}
-                    transform={`rotate(${index % 2 === 0 ? -5 : 6} 50 50)`}
-                  />
-                </svg>
-                <span style={styles.homeExploreMarkerIcon}>
-                  <UniverseIcon
-                    src={portal.icon}
-                    variant={variant === "full" ? "markerFull" : "marker"}
-                  />
-                </span>
+                <UniverseIcon
+                  src={portal.icon}
+                  variant={variant === "full" ? "markerFull" : "marker"}
+                />
               </span>
             </span>
           </button>
