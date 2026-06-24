@@ -1,5 +1,5 @@
 import type { CSSProperties, ReactNode } from "react"
-import { HomeHeroTextMist } from "./components/HomeHeroMist"
+import { HomeHeroMist, HomeHeroTextMist } from "./components/HomeHeroMist"
 import { tecaColors, tecaFont, tecaHierarchy, tecaSpacing } from "./tecaVisual"
 
 const theme = {
@@ -80,21 +80,23 @@ const p: Record<string, CSSProperties> = {
   },
   coverImageHome: {
     objectPosition: "center 36%",
+    filter: "saturate(0.86) contrast(0.92) brightness(1.04)",
   },
   vignetteHome: {
     background:
-      "radial-gradient(ellipse 96% 88% at 50% 44%, transparent 58%, rgba(72,48,32,0.07) 100%)",
+      "radial-gradient(ellipse 96% 88% at 50% 44%, transparent 58%, rgba(72,48,32,0.05) 100%)",
   },
   homeHeroTextOverlay: {
     position: "absolute",
     left: 0,
     right: 0,
-    top: "62%",
+    bottom: "clamp(32px, 6vh, 52px)",
     zIndex: 4,
     padding: "0 clamp(18px, 5vw, 28px)",
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
+    justifyContent: "flex-end",
     textAlign: "center",
     pointerEvents: "none",
     overflow: "visible",
@@ -110,7 +112,7 @@ const p: Record<string, CSSProperties> = {
     maxWidth: "min(520px, 90vw)",
     color: tecaColors.text,
     textShadow:
-      "0 1px 2px rgba(255,253,249,0.92), 0 3px 22px rgba(255,253,249,0.78), 0 1px 0 rgba(90,60,30,0.1)",
+      "0 1px 3px rgba(255,253,249,0.9), 0 4px 26px rgba(255,253,249,0.84), 0 1px 0 rgba(90,60,30,0.07)",
   },
   homeHeroTagline: {
     ...tecaFont.prose,
@@ -124,12 +126,12 @@ const p: Record<string, CSSProperties> = {
     maxWidth: "min(400px, 88vw)",
     textAlign: "center",
     textShadow:
-      "0 1px 2px rgba(255,253,249,0.96), 0 2px 18px rgba(255,253,249,0.9), 0 1px 0 rgba(90,60,30,0.16)",
+      "0 1px 3px rgba(255,253,249,0.94), 0 3px 22px rgba(255,253,249,0.88), 0 1px 0 rgba(90,60,30,0.1)",
   },
   bodyHome: {
     position: "relative",
     zIndex: 6,
-    padding: "56px 24px 32px",
+    padding: "48px 24px 36px",
     marginTop: 0,
   },
   coverImage: {
@@ -160,13 +162,13 @@ const p: Record<string, CSSProperties> = {
     filter: "drop-shadow(0 6px 16px rgba(90,60,30,0.15))",
   },
   logoHome: {
-    top: "clamp(40px, 6vh, 52px)",
+    top: "clamp(88px, 11vh, 108px)",
     left: "50%",
-    width: "clamp(240px, 58vw, 281px)",
+    width: "clamp(200px, 48vw, 234px)",
     transform: "translateX(-50%)",
-    opacity: 0.99,
+    opacity: 0.98,
     filter:
-      "drop-shadow(0 4px 14px rgba(90,60,30,0.16)) contrast(1.06) saturate(0.96) brightness(1.02)",
+      "drop-shadow(0 4px 14px rgba(90,60,30,0.13)) contrast(1.02) saturate(0.94) brightness(1.02)",
   },
   fade: {
     position: "absolute",
@@ -184,9 +186,9 @@ const p: Record<string, CSSProperties> = {
     left: 0,
     right: 0,
     bottom: 0,
-    height: "clamp(200px, 28vh, 280px)",
-    background: `linear-gradient(180deg, rgba(246,237,226,0) 0%, rgba(246,237,226,0.55) 45%, ${theme.shell} 96%)`,
-    zIndex: 2,
+    height: "clamp(300px, 40vh, 380px)",
+    background: `linear-gradient(180deg, rgba(246,237,226,0) 0%, rgba(255,251,245,0.28) 22%, rgba(246,237,226,0.62) 52%, ${theme.shell} 96%)`,
+    zIndex: 3,
     pointerEvents: "none",
   },
   body: {
@@ -359,6 +361,7 @@ export function WorldPortalLayout({
             style={{ ...p.coverImage, ...p.coverImageHome }}
           />
           <div style={{ ...p.vignette, ...p.vignetteHome }} />
+          <HomeHeroMist />
           <img
             src="/logo/logo.webp"
             alt="Mundo da Teca"

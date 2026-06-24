@@ -41,25 +41,25 @@ const centerMistBlobs: MistBlob[] = [
   { left: "46%", bottom: "34%", width: "44%", height: "34%", opacity: 0.1, blur: 92, rotate: 2 },
 ]
 
-/** Ponte menina → texto */
+/** Ponte menina → texto — sobe mais cedo */
 const bridgeMistBlobs: MistBlob[] = [
-  { left: "6%", bottom: "14%", width: "88%", height: "42%", opacity: 0.16, blur: 100, spread: 88, originY: "88%" },
-  { left: "20%", bottom: "18%", width: "64%", height: "46%", opacity: 0.14, blur: 96, spread: 90, originY: "92%" },
-  { left: "34%", bottom: "16%", width: "58%", height: "40%", opacity: 0.12, blur: 94, rotate: -2, originY: "90%" },
-  { left: "48%", bottom: "20%", width: "46%", height: "34%", opacity: 0.1, blur: 92, rotate: 4, originY: "86%" },
+  { left: "4%", bottom: "22%", width: "92%", height: "48%", opacity: 0.2, blur: 100, spread: 88, originY: "88%" },
+  { left: "16%", bottom: "26%", width: "70%", height: "50%", opacity: 0.18, blur: 96, spread: 90, originY: "92%" },
+  { left: "30%", bottom: "24%", width: "62%", height: "44%", opacity: 0.16, blur: 94, rotate: -2, originY: "90%" },
+  { left: "44%", bottom: "28%", width: "50%", height: "38%", opacity: 0.14, blur: 92, rotate: 4, originY: "86%" },
 ]
 
-/** Terço inferior — sem bordas retas; tudo dissolve para fora da hero */
+/** Terço inferior — transição mais alta e suave */
 const lowerThirdMistBlobs: MistBlob[] = [
-  { left: "-14%", bottom: "-38%", width: "72%", height: "58%", opacity: 0.28, blur: 100, rotate: -5 },
-  { left: "2%", bottom: "-24%", width: "78%", height: "52%", opacity: 0.24, blur: 104, rotate: 3 },
-  { left: "20%", bottom: "-30%", width: "66%", height: "56%", opacity: 0.26, blur: 96, rotate: -3 },
-  { left: "42%", bottom: "-26%", width: "62%", height: "54%", opacity: 0.22, blur: 98, rotate: 5 },
-  { left: "60%", bottom: "-20%", width: "58%", height: "50%", opacity: 0.2, blur: 102, rotate: -2 },
-  { left: "-6%", bottom: "-8%", width: "56%", height: "42%", opacity: 0.16, blur: 88, rotate: 4 },
-  { left: "16%", bottom: "-4%", width: "60%", height: "40%", opacity: 0.14, blur: 90, rotate: -4 },
-  { left: "36%", bottom: "-10%", width: "58%", height: "44%", opacity: 0.15, blur: 86, rotate: 3 },
-  { left: "56%", bottom: "-6%", width: "54%", height: "38%", opacity: 0.12, blur: 92, rotate: -3 },
+  { left: "-14%", bottom: "-22%", width: "72%", height: "58%", opacity: 0.32, blur: 100, rotate: -5 },
+  { left: "2%", bottom: "-10%", width: "78%", height: "52%", opacity: 0.28, blur: 104, rotate: 3 },
+  { left: "20%", bottom: "-16%", width: "66%", height: "56%", opacity: 0.3, blur: 96, rotate: -3 },
+  { left: "42%", bottom: "-12%", width: "62%", height: "54%", opacity: 0.26, blur: 98, rotate: 5 },
+  { left: "60%", bottom: "-6%", width: "58%", height: "50%", opacity: 0.24, blur: 102, rotate: -2 },
+  { left: "-6%", bottom: "4%", width: "56%", height: "42%", opacity: 0.2, blur: 88, rotate: 4 },
+  { left: "16%", bottom: "8%", width: "60%", height: "40%", opacity: 0.18, blur: 90, rotate: -4 },
+  { left: "36%", bottom: "2%", width: "58%", height: "44%", opacity: 0.19, blur: 86, rotate: 3 },
+  { left: "56%", bottom: "6%", width: "54%", height: "38%", opacity: 0.16, blur: 92, rotate: -3 },
 ]
 
 /** Dissolução suave na base — sem linha horizontal */
@@ -99,9 +99,9 @@ function MistBlobLayer({
   const originY = blob.originY ?? "100%"
   const spread = blob.spread ?? 84
   const rgb = whiteTone ? mistWhiteRgb : shellRgb
-  const peak = whiteTone ? 0.58 : 0.36
-  const mid = whiteTone ? 0.24 : 0.14
-  const fade = whiteTone ? 0.07 : 0.04
+  const peak = whiteTone ? 0.66 : 0.36
+  const mid = whiteTone ? 0.3 : 0.14
+  const fade = whiteTone ? 0.1 : 0.04
 
   return (
     <div
@@ -153,11 +153,11 @@ function MistBlobField({
 
 /** Névoa esbranquiçada onde o texto emerge */
 const textEmergenceMistBlobs: MistBlob[] = [
-  { left: "2%", top: "-130%", width: "96%", height: "220%", opacity: 0.42, blur: 58, spread: 94, originY: "76%" },
-  { left: "14%", top: "-110%", width: "72%", height: "200%", opacity: 0.36, blur: 66, spread: 92, originY: "80%" },
-  { left: "24%", top: "-90%", width: "56%", height: "175%", opacity: 0.3, blur: 74, spread: 90, originY: "84%" },
-  { left: "10%", top: "-55%", width: "80%", height: "145%", opacity: 0.26, blur: 52, spread: 88, originY: "90%" },
-  { left: "30%", top: "-35%", width: "44%", height: "120%", opacity: 0.22, blur: 44, spread: 86, originY: "94%" },
+  { left: "0%", top: "-200%", width: "100%", height: "280%", opacity: 0.56, blur: 64, spread: 94, originY: "70%" },
+  { left: "10%", top: "-170%", width: "80%", height: "250%", opacity: 0.48, blur: 70, spread: 92, originY: "74%" },
+  { left: "20%", top: "-140%", width: "64%", height: "220%", opacity: 0.4, blur: 76, spread: 90, originY: "78%" },
+  { left: "8%", top: "-95%", width: "84%", height: "175%", opacity: 0.34, blur: 56, spread: 88, originY: "86%" },
+  { left: "26%", top: "-65%", width: "48%", height: "145%", opacity: 0.28, blur: 48, spread: 86, originY: "92%" },
 ]
 
 export function HomeHeroMist() {
@@ -178,10 +178,10 @@ export function HomeHeroTextMist() {
     <div
       style={{
         position: "absolute",
-        left: "-14%",
-        right: "-14%",
-        top: "-150%",
-        bottom: "-40%",
+        left: "-20%",
+        right: "-20%",
+        top: "-220%",
+        bottom: "-12%",
         pointerEvents: "none",
         overflow: "visible",
         zIndex: 0,
