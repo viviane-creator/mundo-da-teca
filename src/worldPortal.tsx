@@ -1,5 +1,5 @@
 import type { CSSProperties, ReactNode } from "react"
-import { HomeHeroMist, HomeHeroTextMist } from "./components/HomeHeroMist"
+import { HomeHeroMist, HomeHeroTextMist, homeHeroMistZoneStyle } from "./components/HomeHeroMist"
 import { tecaColors, tecaFont, tecaHierarchy, tecaSpacing } from "./tecaVisual"
 
 const theme = {
@@ -186,10 +186,12 @@ const p: Record<string, CSSProperties> = {
     left: 0,
     right: 0,
     bottom: 0,
-    height: "clamp(300px, 40vh, 380px)",
-    background: `linear-gradient(180deg, rgba(246,237,226,0) 0%, rgba(255,251,245,0.28) 22%, rgba(246,237,226,0.62) 52%, ${theme.shell} 96%)`,
+    height: "50%",
+    background: `linear-gradient(180deg, rgba(246,237,226,0) 0%, rgba(255,251,245,0.32) 38%, rgba(246,237,226,0.68) 72%, ${theme.shell} 100%)`,
     zIndex: 3,
     pointerEvents: "none",
+    WebkitMaskImage: "linear-gradient(to top, #000 0%, #000 48%, transparent 100%)",
+    maskImage: "linear-gradient(to top, #000 0%, #000 48%, transparent 100%)",
   },
   body: {
     position: "relative",
@@ -361,7 +363,10 @@ export function WorldPortalLayout({
             style={{ ...p.coverImage, ...p.coverImageHome }}
           />
           <div style={{ ...p.vignette, ...p.vignetteHome }} />
-          <HomeHeroMist />
+          <div style={homeHeroMistZoneStyle}>
+            <HomeHeroMist />
+            <HomeHeroTextMist />
+          </div>
           <img
             src="/logo/logo.webp"
             alt="Mundo da Teca"
@@ -369,7 +374,6 @@ export function WorldPortalLayout({
           />
           <div style={p.fadeHome} />
           <div style={p.homeHeroTextOverlay}>
-            <HomeHeroTextMist />
             <h1 style={{ ...p.homeHeroTitle, position: "relative", zIndex: 1 }}>
               {title.split("\n").map((line, index, lines) => (
                 <span key={line}>
