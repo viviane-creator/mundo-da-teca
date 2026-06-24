@@ -728,13 +728,12 @@ export const styles: Record<string, CSSProperties> = {
     marginTop: "8px",
   },
 
-  /** Página colorida única — cobre título, subtítulo e mapa na Home */
+  /** Seção de exploração — título e texto sobre o fichário */
   homeExploreSectionPaper: {
     margin: "-14px -12px -14px",
     padding: "14px 10px 12px",
     borderRadius: "0 16px 16px 0",
-    background: "linear-gradient(180deg, #E6D2AF 0%, #D9C7A6 100%)",
-    boxShadow: "inset 0 1px 0 rgba(255,255,255,0.45)",
+    background: "transparent",
   },
 
   homeExploreMap: {
@@ -753,9 +752,9 @@ export const styles: Record<string, CSSProperties> = {
   },
 
   homeExploreMapStageHome: {
-    padding: "2px 2px 6px",
+    padding: 0,
     borderRadius: "10px",
-    boxShadow: "inset 0 0 0 1px rgba(122,98,73,0.14)",
+    overflow: "hidden",
   },
 
   homeExploreMapStageFull: {
@@ -771,14 +770,16 @@ export const styles: Record<string, CSSProperties> = {
     zIndex: 2,
   },
 
-  /** Fundo pergaminho do mapa — Home e Universos */
-  homeExploreMapParchmentBg: {
+  /** Arte do mapa aprovado — fundo integral atrás dos medalhões */
+  homeExploreMapAtlasBg: {
     position: "absolute",
     inset: 0,
     zIndex: 0,
     pointerEvents: "none",
-    background: "linear-gradient(180deg, #E6D2AF 0%, #D9C7A6 100%)",
-    boxShadow: "inset 0 0 0 1px rgba(122,98,73,0.12)",
+    backgroundImage: "url(/images/mapa-exploracao.webp)",
+    backgroundSize: "100% 100%",
+    backgroundPosition: "center",
+    backgroundRepeat: "no-repeat",
   },
 
   homeExploreMapFull: {

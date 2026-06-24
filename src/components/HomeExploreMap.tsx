@@ -87,35 +87,6 @@ function MapDecorations({ trailPath }: { trailPath: string }) {
   return (
     <>
       <path
-        d="M 18 18 L 18 42 M 18 18 L 42 18"
-        stroke="#9a7d62"
-        strokeWidth="0.55"
-        opacity={0.14}
-        strokeLinecap="round"
-      />
-      <path
-        d="M 302 18 L 302 42 M 302 18 L 278 18"
-        stroke="#9a7d62"
-        strokeWidth="0.55"
-        opacity={0.14}
-        strokeLinecap="round"
-      />
-      <path
-        d="M 18 562 L 18 538 M 18 562 L 42 562"
-        stroke="#9a7d62"
-        strokeWidth="0.55"
-        opacity={0.12}
-        strokeLinecap="round"
-      />
-      <path
-        d="M 302 562 L 302 538 M 302 562 L 278 562"
-        stroke="#9a7d62"
-        strokeWidth="0.55"
-        opacity={0.12}
-        strokeLinecap="round"
-      />
-
-      <path
         d={trailPath}
         fill="none"
         stroke="#f0e4d4"
@@ -164,13 +135,11 @@ export function HomeExploreMap({
             : styles.homeExploreMapStageHome),
         }}
       >
-        {variant === "full" ? (
-          <div
-            data-atlas-background=""
-            style={styles.homeExploreMapParchmentBg}
-            aria-hidden="true"
-          />
-        ) : null}
+        <div
+          data-atlas-background=""
+          style={styles.homeExploreMapAtlasBg}
+          aria-hidden="true"
+        />
 
         <svg
           style={styles.homeExploreMapSvg}
