@@ -13,9 +13,9 @@ export function ParticipationSection({
   if (variant === "home-path") {
     return (
       <section style={styles.homeV2PathSection}>
-        <h2 style={styles.homePlaceTitle}>Clube</h2>
-        <p style={styles.homeSectionHeading}>Escolha como deseja explorar.</p>
-        <p style={styles.homeSectionSubtitle}>
+        <h2 style={styles.homeV2ChapterPlaceTitle}>Clube</h2>
+        <p style={styles.homeV2ChapterSectionHeading}>Escolha como deseja explorar.</p>
+        <p style={styles.homeV2ChapterSubtitle}>
           Duas formas de participar da expedição.
         </p>
 

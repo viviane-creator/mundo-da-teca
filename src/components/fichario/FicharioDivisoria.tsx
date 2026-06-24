@@ -1,21 +1,20 @@
 import type { CSSProperties, ReactNode } from "react"
+import type { FicharioChapterId } from "../../tecaVisual"
 import { tecaFichario } from "../../tecaVisual"
 import { FicharioAba } from "./FicharioAba"
 
 export function FicharioDivisoria({
-  abaIcon,
-  abaLabel,
+  chapter,
   children,
   style,
 }: {
-  abaIcon: string
-  abaLabel: string
+  chapter: FicharioChapterId
   children: ReactNode
   style?: CSSProperties
 }) {
   return (
     <section style={{ ...tecaFichario.divisoria(), ...style }}>
-      <FicharioAba variant="capitulo" icon={abaIcon} label={abaLabel} decorative />
+      <FicharioAba variant="capitulo" chapter={chapter} decorative />
       <div style={tecaFichario.divisoriaCorpo()}>{children}</div>
     </section>
   )

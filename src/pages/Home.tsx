@@ -21,7 +21,7 @@ export function Home({
       <div style={styles.homeV2Journey}>
         <span style={styles.homeFicharioSpine} aria-hidden="true" />
 
-        <FicharioDivisoria abaIcon="🗺️" abaLabel="exploração">
+        <FicharioDivisoria chapter="exploracao">
           <div style={styles.homeExploreSectionPaper}>
             <p style={styles.homeV2SectionKicker}>mapa de exploração</p>
             <h2 style={styles.homeSectionHeading}>
@@ -39,7 +39,7 @@ export function Home({
           </div>
         </FicharioDivisoria>
 
-        <FicharioDivisoria abaIcon="📖" abaLabel="meu mundo">
+        <FicharioDivisoria chapter="meuMundo">
           <div style={styles.homeV2MeuMundoCard}>
             <div style={styles.homeV2MeuMundoHeroWash} aria-hidden="true" />
             <div style={styles.homeV2MeuMundoInner}>
@@ -57,14 +57,14 @@ export function Home({
                   exp · 01
                 </span>
               </div>
-              <h2 style={styles.homePlaceTitle}>Meu Mundo</h2>
-              <p style={styles.homeSectionSubtitle}>
+              <h2 style={styles.homeV2ChapterPlaceTitle}>Meu Mundo</h2>
+              <p style={styles.homeV2ChapterSubtitle}>
                 O lugar onde suas descobertas ganham uma casa.
               </p>
               <FicharioEtiqueta
                 action
                 onClick={() => setScreen(appRoutes.minhaColecao)}
-                style={styles.homeV2SoftButton}
+                style={styles.homeV2ChapterCta}
               >
                 Abrir Minha Coleção
               </FicharioEtiqueta>
@@ -72,11 +72,11 @@ export function Home({
           </div>
         </FicharioDivisoria>
 
-        <FicharioDivisoria abaIcon="✦" abaLabel="ateliê">
+        <FicharioDivisoria chapter="atelie">
           <div style={styles.homeV2AtelierShop}>
-            <p style={styles.homeV2AtelierKicker}>CURADORIA</p>
-            <h2 style={styles.homePlaceTitle}>Ateliê</h2>
-            <p style={styles.homeSectionSubtitle}>
+            <p style={styles.homeV2ChapterKicker}>CURADORIA</p>
+            <h2 style={styles.homeV2ChapterPlaceTitle}>Ateliê</h2>
+            <p style={styles.homeV2ChapterSubtitle}>
               Tesouros criados para continuar explorando.
             </p>
 
@@ -103,7 +103,7 @@ export function Home({
           </div>
         </FicharioDivisoria>
 
-        <FicharioDivisoria abaIcon="📬" abaLabel="clube">
+        <FicharioDivisoria chapter="clube">
           <ParticipationSection
             variant="home-path"
             onGoToClube={onGoToClube}

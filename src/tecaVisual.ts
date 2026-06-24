@@ -216,6 +216,19 @@ const ficharioMaterial = {
     "linear-gradient(180deg, #dcc9b4 0%, #c9b39a 48%, #dcc9b4 100%)",
 } as const
 
+export type FicharioChapterId = "exploracao" | "meuMundo" | "atelie" | "clube"
+
+/** Marcadores de capítulo — abas laterais da Home */
+export const ficharioChapterAba = {
+  exploracao: { label: "exploração", background: "#7F95A6" },
+  meuMundo: { label: "meu mundo", background: "#8A9870" },
+  atelie: { label: "ateliê", background: "#B47A63" },
+  clube: { label: "clube", background: "#B99B5C" },
+} as const satisfies Record<
+  FicharioChapterId,
+  { label: string; background: string }
+>
+
 export const tecaFichario = {
   material: ficharioMaterial,
 
@@ -250,7 +263,42 @@ export const tecaFichario = {
     zIndex: 0,
   }),
 
-  /** COMPONENTE 2 — aba: identificação vertical compacta (mobile-first) */
+  /** COMPONENTE 2 — aba capítulo: bloco sólido editorial (sem ícone) */
+  abaCapitulo: (background: string): CSSProperties => ({
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
+    alignSelf: "stretch",
+    width: "34px",
+    minWidth: "34px",
+    maxWidth: "34px",
+    padding: "16px 4px",
+    borderRadius: "12px 0 0 12px",
+    border: "1px solid rgba(72, 48, 32, 0.1)",
+    borderRight: "none",
+    background,
+    boxShadow: "inset -1px 0 0 rgba(255,255,255,0.08)",
+    flexShrink: 0,
+  }),
+
+  abaCapituloLabel: (): CSSProperties => ({
+    fontFamily: "'Cormorant Garamond', serif",
+    fontSize: "11px",
+    fontWeight: 500,
+    fontStyle: "normal",
+    letterSpacing: "0.22em",
+    textTransform: "uppercase",
+    color: "#F8F4EE",
+    margin: 0,
+    textAlign: "center",
+    lineHeight: 1.15,
+    writingMode: "vertical-rl",
+    textOrientation: "mixed",
+    whiteSpace: "nowrap",
+  }),
+
+  /** @deprecated Preferir abaCapitulo — aba papelada legada */
   aba: (): CSSProperties => ({
     display: "flex",
     flexDirection: "column",

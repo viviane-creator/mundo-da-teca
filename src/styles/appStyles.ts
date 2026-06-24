@@ -344,6 +344,10 @@ export const styles: Record<string, CSSProperties> = {
   homeV2MeuMundoInner: {
     position: "relative",
     padding: "0",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    textAlign: "center",
   },
 
   homeV2MeuMundoSpine: {
@@ -372,8 +376,9 @@ export const styles: Record<string, CSSProperties> = {
   homeV2MeuMundoPerforation: {
     display: "flex",
     gap: "5px",
+    justifyContent: "center",
     margin: "0 0 12px",
-    paddingLeft: "1px",
+    paddingLeft: 0,
   },
 
   homeV2MeuMundoFuro: {
@@ -387,11 +392,12 @@ export const styles: Record<string, CSSProperties> = {
 
   homeV2MeuMundoHeader: {
     display: "flex",
-    alignItems: "flex-start",
-    justifyContent: "space-between",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
     gap: "8px",
     marginBottom: "8px",
-    flexWrap: "wrap",
+    width: "100%",
   },
 
   homeV2MeuMundoIdEtiqueta: {
@@ -679,6 +685,56 @@ export const styles: Record<string, CSSProperties> = {
     textAlign: "left",
     margin: `0 0 ${tecaSpacing.sectionTitleToSubtitle}px`,
     lineHeight: 0.95,
+  },
+
+  /** Conteúdo centralizado — Meu Mundo, Ateliê e Clube na Home */
+  homeV2ChapterCardContent: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    textAlign: "center",
+  },
+
+  homeV2ChapterPlaceTitle: {
+    ...tecaFont.portalTitle,
+    fontSize: "clamp(28px, 8vw, 36px)",
+    textAlign: "center",
+    width: "100%",
+    margin: `0 0 ${tecaSpacing.sectionTitleToSubtitle}px`,
+    lineHeight: 0.95,
+  },
+
+  homeV2ChapterSectionHeading: {
+    ...tecaHierarchy.l3SectionTitle,
+    ...tecaHierarchy.l3SectionTitleFlush,
+    textAlign: "center",
+    width: "100%",
+    marginBottom: `${tecaSpacing.sectionTitleToSubtitle}px`,
+  },
+
+  homeV2ChapterSubtitle: {
+    ...tecaHierarchy.l4Subtitle,
+    marginTop: 0,
+    lineHeight: 1.5,
+    maxWidth: "36ch",
+    textAlign: "center",
+    marginLeft: "auto",
+    marginRight: "auto",
+  },
+
+  homeV2ChapterKicker: {
+    ...tecaHierarchy.l6Micro,
+    textAlign: "center",
+    width: "100%",
+    marginBottom: "8px",
+  },
+
+  homeV2ChapterCta: {
+    ...tecaFichario.etiquetaAction(),
+    marginTop: "12px",
+    alignSelf: "center",
+    maxWidth: "100%",
+    boxSizing: "border-box",
   },
 
   editorialDecorLayer: {
@@ -1067,25 +1123,31 @@ export const styles: Record<string, CSSProperties> = {
     borderRadius: 0,
     border: "none",
     background: "transparent",
-    textAlign: "left",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    textAlign: "center",
   },
 
   homeV2PathStack: {
     display: "flex",
     flexDirection: "column",
+    alignItems: "center",
     gap: "16px",
     marginTop: "4px",
+    width: "100%",
   },
 
   homeV2PathCard: {
     position: "relative",
     overflow: "hidden",
     padding: "0",
-    textAlign: "left",
+    textAlign: "center",
     background: "transparent",
     borderRadius: 0,
     border: "none",
     boxShadow: "none",
+    width: "100%",
   },
 
   homeV2PathCardInner: {
@@ -1094,6 +1156,10 @@ export const styles: Record<string, CSSProperties> = {
     ...tecaFichario.divisoriaCorpo(),
     borderRadius: "16px",
     padding: "18px 16px 16px",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    textAlign: "center",
   },
 
   homeV2PathCardDecor: {
@@ -1115,6 +1181,8 @@ export const styles: Record<string, CSSProperties> = {
     ...tecaFont.portalTitle,
     fontSize: "26px",
     lineHeight: 1.05,
+    textAlign: "center",
+    width: "100%",
   },
 
   homeV2PathPlanName: {
@@ -1122,41 +1190,53 @@ export const styles: Record<string, CSSProperties> = {
     ...tecaHierarchy.l6Micro,
     fontSize: "10px",
     opacity: 0.8,
+    textAlign: "center",
+    width: "100%",
   },
 
   homeV2PathJourneyText: {
-    margin: "0 0 12px",
+    margin: "0 auto 12px",
     ...tecaHierarchy.l5Body,
     fontSize: "16px",
     lineHeight: 1.5,
     color: theme.muted,
-    textAlign: "left",
+    textAlign: "center",
+    maxWidth: "36ch",
   },
 
   homeV2PathButton: {
     ...tecaFichario.etiquetaAction(),
     marginTop: "4px",
     fontSize: "18px",
+    alignSelf: "center",
   },
 
   homeV2AtelierShop: {
     position: "relative",
     padding: "2px 0 18px",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    textAlign: "center",
   },
 
   homeV2AtelierKicker: {
     ...tecaHierarchy.l6Micro,
     marginBottom: "8px",
+    textAlign: "center",
+    width: "100%",
   },
 
   homeV2AtelierFeatured: {
     position: "relative",
     display: "flex",
     flexDirection: "column",
-    alignItems: "stretch",
+    alignItems: "center",
     gap: 0,
     margin: "20px 0 0",
     padding: "18px 14px 16px",
+    width: "100%",
+    boxSizing: "border-box",
     borderRadius: "18px",
     border: "1px dashed rgba(196, 165, 141, 0.38)",
     background:
@@ -1208,7 +1288,7 @@ export const styles: Record<string, CSSProperties> = {
     ...tecaFichario.etiquetaAction(),
     marginTop: 0,
     fontSize: "18px",
-    width: "100%",
+    alignSelf: "center",
     maxWidth: "100%",
     boxSizing: "border-box",
   },
