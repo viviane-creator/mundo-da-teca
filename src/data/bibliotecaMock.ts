@@ -1,23 +1,42 @@
-export const bibliotecaShelfItems = [
+export type BibliotecaShelfGlyph =
+  | "paginas"
+  | "fichas"
+  | "caderno"
+  | "colecoes"
+
+export const bibliotecaShelfItems: {
+  id: string
+  glyph: BibliotecaShelfGlyph
+  etiqueta: string
+  title: string
+  text: string
+}[] = [
   {
     id: "paginas",
-    icon: "📄",
-    title: "Páginas do mundo",
-    text: "Folhas para colorir, observar e levar para a mesa.",
-    image: "/cards/descobertas/diario.png",
+    glyph: "paginas",
+    etiqueta: "PAG · 01",
+    title: "Páginas para Explorar",
+    text: "Folhas para observar, colorir, registrar e continuar descobrindo.",
   },
   {
     id: "fichas",
-    icon: "🗂️",
-    title: "Fichas de coleção",
-    text: "Pequenas fichas para registrar o que foi encontrado.",
-    image: "/cards/descobertas/colecoes.png",
+    glyph: "fichas",
+    etiqueta: "FCH · 02",
+    title: "Fichas de Descoberta",
+    text: "Pequenos registros para guardar observações e experiências.",
   },
   {
-    id: "registros",
-    icon: "✎",
-    title: "Registros para imprimir",
-    text: "Materiais de exploração para continuar a jornada em casa.",
-    image: "/cards/descobertas/tesouros.png",
+    id: "caderno",
+    glyph: "caderno",
+    etiqueta: "CAM · 03",
+    title: "Caderno de Campo",
+    text: "Folhas livres para desenhar, escrever e colecionar ideias.",
   },
-] as const
+  {
+    id: "colecoes",
+    glyph: "colecoes",
+    etiqueta: "COL · 04",
+    title: "Coleções para Imprimir",
+    text: "Materiais especiais para acompanhar suas coleções.",
+  },
+]

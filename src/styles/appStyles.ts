@@ -3646,11 +3646,11 @@ export const styles: Record<string, CSSProperties> = {
   bibliotecaHero: {
     position: "relative",
     margin: "0 0 22px",
-    padding: "24px 18px 20px 24px",
+    padding: "12px 12px 8px 20px",
     borderRadius: "28px",
     border: `1px solid ${theme.line}`,
     background:
-      "radial-gradient(ellipse at 14% 20%, rgba(217,196,173,0.16) 0%, transparent 50%), linear-gradient(168deg, #fffdf9 0%, #f7efe5 50%, #efe3d4 100%)",
+      "radial-gradient(ellipse at 14% 20%, rgba(217,196,173,0.12) 0%, transparent 50%), linear-gradient(168deg, #fffdf9 0%, #f7efe5 50%, #efe3d4 100%)",
     boxShadow: "0 14px 36px rgba(120,90,60,0.07)",
     overflow: "hidden",
   },
@@ -3665,6 +3665,14 @@ export const styles: Record<string, CSSProperties> = {
     background:
       "linear-gradient(180deg, #dcc9b4 0%, #c9b39a 50%, #dcc9b4 100%)",
     opacity: 0.8,
+  },
+
+  bibliotecaMesaSvg: {
+    display: "block",
+    width: "100%",
+    maxWidth: "320px",
+    height: "auto",
+    margin: "0 auto",
   },
 
   bibliotecaHeroDecorSvg: {
@@ -3738,6 +3746,16 @@ export const styles: Record<string, CSSProperties> = {
     textAlign: "left",
   },
 
+  bibliotecaIntroLead: {
+    margin: "0 0 8px",
+    fontFamily: "'Cormorant Garamond', serif",
+    fontSize: "19px",
+    lineHeight: 1.4,
+    color: theme.text,
+    textAlign: "left",
+    fontWeight: 500,
+  },
+
   bibliotecaIntro: {
     margin: 0,
     fontFamily: "'Cormorant Garamond', serif",
@@ -3758,11 +3776,14 @@ export const styles: Record<string, CSSProperties> = {
 
   bibliotecaShelf: {
     position: "relative",
-    display: "flex",
-    flexDirection: "column",
-    gap: "12px",
     marginBottom: "22px",
-    paddingBottom: "10px",
+    paddingBottom: "14px",
+  },
+
+  bibliotecaShelfGrid: {
+    display: "grid",
+    gridTemplateColumns: "repeat(2, minmax(0, 1fr))",
+    gap: "12px",
   },
 
   bibliotecaShelfBoard: {
@@ -3781,14 +3802,41 @@ export const styles: Record<string, CSSProperties> = {
   bibliotecaShelfItem: {
     position: "relative",
     display: "flex",
-    alignItems: "center",
-    gap: "14px",
-    padding: "14px 16px",
-    borderRadius: "20px",
+    flexDirection: "column",
+    alignItems: "flex-start",
+    gap: "8px",
+    padding: "14px 12px 16px",
+    borderRadius: "18px",
     border: `1px dashed rgba(196, 165, 141, 0.42)`,
     background:
-      "linear-gradient(180deg, rgba(255,253,249,0.94) 0%, rgba(248,239,228,0.76) 100%)",
-    boxShadow: "0 4px 12px rgba(120,90,60,0.04)",
+      "linear-gradient(180deg, rgba(255,253,249,0.96) 0%, rgba(248,239,228,0.82) 100%)",
+    boxShadow:
+      "inset 0 1px 0 rgba(255,255,255,0.85), 0 4px 12px rgba(120,90,60,0.04)",
+  },
+
+  bibliotecaShelfEtiqueta: {
+    fontSize: "8px",
+    letterSpacing: "1.8px",
+    textTransform: "uppercase",
+    color: "#b3815f",
+    fontWeight: 600,
+    fontFamily: "'Nunito', sans-serif",
+    opacity: 0.88,
+  },
+
+  bibliotecaShelfGlyphWrap: {
+    width: "100%",
+    padding: "4px 0 2px",
+    borderRadius: "14px",
+    border: `1px solid rgba(234, 216, 197, 0.55)`,
+    background:
+      "radial-gradient(ellipse at 50% 30%, rgba(255,253,249,0.95) 0%, rgba(247,239,229,0.55) 100%)",
+  },
+
+  bibliotecaShelfGlyphSvg: {
+    display: "block",
+    width: "100%",
+    height: "auto",
   },
 
   bibliotecaShelfThumb: {
@@ -3815,28 +3863,39 @@ export const styles: Record<string, CSSProperties> = {
   },
 
   bibliotecaShelfTitle: {
-    margin: "0 0 4px",
+    margin: 0,
     fontFamily: "'Cormorant Garamond', serif",
-    fontSize: "28px",
-    fontWeight: 400,
+    fontSize: "22px",
+    fontWeight: 500,
     color: theme.text,
-    lineHeight: 1,
+    lineHeight: 1.08,
   },
 
   bibliotecaShelfText: {
     margin: 0,
     fontFamily: "'Cormorant Garamond', serif",
-    fontSize: "14px",
+    fontSize: "13px",
     lineHeight: 1.38,
     color: "#a89486",
   },
 
   bibliotecaQuietNote: {
-    padding: "18px 16px",
+    padding: "20px 18px",
     borderRadius: "22px",
-    border: `1px solid ${theme.line}`,
-    background: "rgba(255,253,249,0.72)",
+    border: `1px dashed rgba(196, 165, 141, 0.38)`,
+    background:
+      "linear-gradient(168deg, rgba(255,253,249,0.92) 0%, rgba(248,239,228,0.68) 100%)",
     textAlign: "left",
+    boxShadow: "inset 0 1px 0 rgba(255,255,255,0.8)",
+  },
+
+  bibliotecaQuietTitle: {
+    margin: "0 0 10px",
+    fontFamily: "'Cormorant Garamond', serif",
+    fontSize: "24px",
+    fontWeight: 500,
+    color: theme.text,
+    lineHeight: 1.1,
   },
 
   bibliotecaQuietLabel: {
@@ -3853,7 +3912,7 @@ export const styles: Record<string, CSSProperties> = {
     margin: 0,
     fontFamily: "'Cormorant Garamond', serif",
     fontSize: "16px",
-    lineHeight: 1.45,
+    lineHeight: 1.5,
     color: theme.muted,
   },
 
