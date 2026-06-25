@@ -1,5 +1,5 @@
 import type { CSSProperties } from "react"
-import { meuMundoSections } from "../data/meuMundoMock"
+import { meuMundoClubSeal, meuMundoSections } from "../data/meuMundoMock"
 import { styles } from "../styles/appStyles"
 import { WorldPortalLayout, portalPages } from "../worldPortal"
 
@@ -28,6 +28,9 @@ export function MeuMundoPage({
             onClick={() => setScreen(section.screen)}
           >
             <article className="meu-mundo-portal-card" style={styles.meuMundoPortalCard}>
+              <span style={styles.meuMundoPortalClubSeal} aria-hidden="true">
+                {meuMundoClubSeal}
+              </span>
               <span
                 aria-hidden
                 style={{

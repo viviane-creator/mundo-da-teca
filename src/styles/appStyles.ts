@@ -3285,6 +3285,27 @@ export const styles: Record<string, CSSProperties> = {
     transition: "border-color 0.22s ease",
   },
 
+  meuMundoPortalClubSeal: {
+    position: "absolute",
+    top: "12px",
+    right: "14px",
+    zIndex: 2,
+    maxWidth: "86px",
+    padding: "4px 7px",
+    borderRadius: "7px",
+    border: "1px solid rgba(196, 165, 141, 0.42)",
+    background: "rgba(249, 243, 228, 0.94)",
+    fontFamily: "'Nunito', sans-serif",
+    fontSize: "6.5px",
+    letterSpacing: "0.14em",
+    lineHeight: 1.35,
+    textTransform: "uppercase",
+    fontWeight: 700,
+    color: "#8A7348",
+    textAlign: "center",
+    pointerEvents: "none",
+  },
+
   meuMundoPortalSpine: {
     position: "absolute",
     left: 0,
@@ -3300,6 +3321,7 @@ export const styles: Record<string, CSSProperties> = {
     justifyContent: "center",
     gap: "10px",
     width: "100%",
+    paddingRight: "84px",
   },
 
   meuMundoPortalTitle: {
@@ -3755,7 +3777,7 @@ export const styles: Record<string, CSSProperties> = {
   },
 
   bibliotecaIntro: {
-    margin: 0,
+    margin: "0 0 24px",
     fontFamily: "'Cormorant Garamond', serif",
     fontSize: "17px",
     lineHeight: 1.45,

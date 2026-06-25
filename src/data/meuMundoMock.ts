@@ -8,6 +8,8 @@ export type MeuMundoPortal = {
   border: string
 }
 
+export const meuMundoClubSeal = "EXCLUSIVO CLUBE DA TECA" as const
+
 export const meuMundoSections: MeuMundoPortal[] = [
   {
     id: "diario",

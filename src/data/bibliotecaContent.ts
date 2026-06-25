@@ -1,4 +1,6 @@
 export const bibliotecaContent = {
+  cover: "/images/biblioteca-capa.webp",
+  coverAlt: "Biblioteca",
   kicker: "biblioteca",
   title: "Biblioteca",
   introLead: "Leve as descobertas para além da tela.",
