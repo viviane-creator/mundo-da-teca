@@ -1,4 +1,5 @@
 import type { CSSProperties, ReactNode } from "react"
+import type { UniverseAccent } from "../../data/universeAccent"
 import { tecaFichario, tecaFont, tecaTilt } from "../../tecaVisual"
 
 const FURO_COUNT = 5
@@ -7,15 +8,37 @@ function FichaCatalogChrome({
   codigo,
   compact = false,
   label = "ficha nº",
+  accentInk,
+  accentBorder,
+  accentBadgeBg,
 }: {
   codigo?: string
   compact?: boolean
   label?: string
+  accentInk?: string
+  accentBorder?: string
+  accentBadgeBg?: string
 }) {
+  const codigoStyle = accentInk
+    ? {
+        ...tecaFichario.fichaCodigo(),
+        color: accentInk,
+        opacity: 0.9,
+        border: `1px solid ${accentBorder ?? accentInk}`,
+        borderRadius: "999px",
+        padding: "2px 8px",
+        background: accentBadgeBg ?? "transparent",
+      }
+    : tecaFichario.fichaCodigo()
+
+  const codigoCompactStyle = accentInk
+    ? { ...tecaFichario.fichaCodigoCompact(), color: accentInk, opacity: 0.9 }
+    : tecaFichario.fichaCodigoCompact()
+
   if (compact) {
     if (!codigo) return null
     return (
-      <span style={tecaFichario.fichaCodigoCompact()}>
+      <span style={codigoCompactStyle}>
         {label} {codigo}
       </span>
     )
@@ -29,7 +52,7 @@ function FichaCatalogChrome({
         ))}
       </div>
       {codigo && (
-        <span style={tecaFichario.fichaCodigo()}>
+        <span style={codigoStyle}>
           {label} {codigo}
         </span>
       )}
@@ -44,6 +67,7 @@ export function FicharioFicha({
   seal,
   codigo,
   codigoLabel,
+  catalogAccent,
   selected = false,
   compact = false,
   flat = false,
@@ -65,6 +89,7 @@ export function FicharioFicha({
   seal?: string | null
   codigo?: string
   codigoLabel?: string
+  catalogAccent?: Pick<UniverseAccent, "ink" | "border" | "badgeBg">
   selected?: boolean
   compact?: boolean
   flat?: boolean
@@ -191,6 +216,9 @@ export function FicharioFicha({
               codigo={codigo}
               compact={compact}
               label={chromeLabel}
+              accentInk={catalogAccent?.ink}
+              accentBorder={catalogAccent?.border}
+              accentBadgeBg={catalogAccent?.badgeBg}
             />
           )}
           <div
@@ -227,6 +255,9 @@ export function FicharioFicha({
               codigo={codigo}
               compact={compact}
               label={chromeLabel}
+              accentInk={catalogAccent?.ink}
+              accentBorder={catalogAccent?.border}
+              accentBadgeBg={catalogAccent?.badgeBg}
             />
           )}
 

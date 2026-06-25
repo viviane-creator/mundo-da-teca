@@ -1424,6 +1424,83 @@ export const styles: Record<string, CSSProperties> = {
     gap: "26px",
   },
 
+  experienceAccordion: {
+    display: "flex",
+    flexDirection: "column",
+    gap: 0,
+    borderRadius: "18px",
+    overflow: "hidden",
+    border: `1px dashed rgba(196, 165, 141, 0.38)`,
+    boxShadow: "0 10px 28px rgba(120,90,60,0.05)",
+    background: "rgba(255, 253, 249, 0.55)",
+  },
+
+  experienceAccordionItem: {
+    borderBottom: `1px dashed rgba(196, 165, 141, 0.32)`,
+  },
+
+  experienceAccordionItemOpen: {
+    background: "rgba(255, 253, 249, 0.88)",
+  },
+
+  experienceAccordionTrigger: {
+    width: "100%",
+    border: "none",
+    background: "transparent",
+    padding: "15px 16px 15px 14px",
+    display: "flex",
+    alignItems: "center",
+    gap: "10px",
+    cursor: "pointer",
+    textAlign: "left",
+    WebkitTapHighlightColor: "transparent",
+  },
+
+  experienceAccordionTriggerOpen: {
+    paddingBottom: "12px",
+  },
+
+  experienceAccordionArrow: {
+    flexShrink: 0,
+    width: "16px",
+    fontFamily: "'Cormorant Garamond', serif",
+    fontSize: "17px",
+    lineHeight: 1,
+    color: "#b3815f",
+    opacity: 0.9,
+  },
+
+  experienceAccordionTitle: {
+    ...tecaFichario.fichaTitle(),
+    fontSize: "22px",
+    lineHeight: 1.15,
+    margin: 0,
+    flex: 1,
+    textAlign: "left",
+  },
+
+  experienceAccordionSeal: {
+    flexShrink: 0,
+    fontSize: "8px",
+    letterSpacing: "1.6px",
+    textTransform: "uppercase",
+    color: "#a67c52",
+    border: "1px solid #e2cdb8",
+    borderRadius: "999px",
+    padding: "4px 8px",
+    background: "rgba(248, 236, 223, 0.7)",
+    fontFamily: "'Cormorant Garamond', serif",
+    fontWeight: 600,
+    lineHeight: 1.3,
+  },
+
+  experienceAccordionPanel: {
+    padding: "0 10px 18px",
+    display: "flex",
+    flexDirection: "column",
+    gap: "4px",
+  },
+
   experienceStackItem: {
     display: "flex",
     flexDirection: "column",

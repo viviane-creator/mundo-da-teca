@@ -6,8 +6,10 @@ import {
   type PlayUniverseId,
   usesSquareExperienceArt,
 } from "../playData"
-import { tecaHierarchy } from "../tecaVisual"
+import { getUniverseAccent } from "../data/universeAccent"
+import { styles } from "../styles/appStyles"
 import { FicharioFicha, FicharioRegistro } from "./fichario"
+import { PlayExperienceDetailPanel } from "./PlayExperienceDetailPanel"
 
 const discoveryMetaFields = [
   { label: "Materiais", key: "materials" },
@@ -24,65 +26,118 @@ export function PlayExperienceCard({
   experience,
   universeId,
   index,
-  fallbackImage,
-  selected,
-  onSelect,
+  expanded,
+  isLast = false,
+  onToggle,
 }: {
   experience: PlayExperience
   universeId: PlayUniverseId
   index: number
-  fallbackImage: string
-  selected: boolean
-  onSelect: () => void
+  expanded: boolean
+  isLast?: boolean
+  onToggle: () => void
 }) {
   const [imageSrc, setImageSrc] = useState(experience.image)
   const [hideImage, setHideImage] = useState(false)
   const neutralImage = usesNeutralFichaImage(universeId)
+  const displayTitle = formatDiscoveryTitle(experience.title)
+  const accent = getUniverseAccent(universeId)
 
   return (
-    <FicharioFicha
-      variant="descoberta"
-      codigo={formatFichaCodigo(universeId, index)}
-      title={formatDiscoveryTitle(experience.title)}
-      image={neutralImage || hideImage ? undefined : imageSrc}
-      imageAlt={experience.title}
-      imageVariant={
-        usesSquareExperienceArt(universeId) ? "squareCapa" : "default"
-      }
-      neutralImageBlock={neutralImage}
-      seal={!experience.isFree ? "clube da teca" : null}
-      selected={selected}
-      onSelect={onSelect}
-      onImageError={
-        neutralImage
-          ? undefined
-          : () => {
-              const pngFallback = experience.image.replace(/\.webp$/, ".png")
-              if (imageSrc.endsWith(".webp") && pngFallback !== imageSrc) {
-                setImageSrc(pngFallback)
-                return
-              }
-              setHideImage(true)
-            }
-      }
+    <article
+      style={{
+        ...styles.experienceAccordionItem,
+        ...(expanded ? styles.experienceAccordionItemOpen : {}),
+        ...(isLast ? { borderBottom: "none" } : {}),
+        borderBottomColor: accent.line,
+        position: "relative",
+      }}
     >
-      <p
+      <span
+        aria-hidden
         style={{
-          margin: "0 0 12px",
-          ...tecaHierarchy.l5Body,
-          fontSize: "16px",
-          lineHeight: 1.5,
+          position: "absolute",
+          left: 0,
+          top: expanded ? "14px" : "18%",
+          bottom: expanded ? undefined : "18%",
+          width: "2px",
+          height: expanded ? "28px" : undefined,
+          borderRadius: "1px",
+          background: accent.ink,
+          opacity: 0.42,
+        }}
+      />
+      <button
+        type="button"
+        onClick={onToggle}
+        aria-expanded={expanded}
+        style={{
+          ...styles.experienceAccordionTrigger,
+          ...(expanded ? styles.experienceAccordionTriggerOpen : {}),
+          paddingLeft: "18px",
         }}
       >
-        {experience.invite}
-      </p>
+        <span
+          style={{ ...styles.experienceAccordionArrow, color: accent.ink }}
+          aria-hidden="true"
+        >
+          {expanded ? "▾" : "▸"}
+        </span>
+        <span style={styles.experienceAccordionTitle}>{displayTitle}</span>
+        {!experience.isFree ? (
+          <span
+            style={{
+              ...styles.experienceAccordionSeal,
+              color: accent.ink,
+              borderColor: accent.border,
+              background: accent.badgeBg,
+            }}
+          >
+            clube da teca
+          </span>
+        ) : null}
+      </button>
 
-      <FicharioRegistro
-        fields={discoveryMetaFields.map((field) => ({
-          label: field.label,
-          value: experience[field.key],
-        }))}
-      />
-    </FicharioFicha>
+      {expanded ? (
+        <div style={styles.experienceAccordionPanel}>
+          <FicharioFicha
+            variant="descoberta"
+            codigo={formatFichaCodigo(universeId, index)}
+            catalogAccent={accent}
+            image={neutralImage || hideImage ? undefined : imageSrc}
+            imageAlt={experience.title}
+            imageVariant={
+              usesSquareExperienceArt(universeId) ? "squareCapa" : "default"
+            }
+            neutralImageBlock={neutralImage}
+            seal={null}
+            onImageError={
+              neutralImage
+                ? undefined
+                : () => {
+                    const pngFallback = experience.image.replace(/\.webp$/, ".png")
+                    if (imageSrc.endsWith(".webp") && pngFallback !== imageSrc) {
+                      setImageSrc(pngFallback)
+                      return
+                    }
+                    setHideImage(true)
+                  }
+            }
+          >
+            <p style={styles.experienceCardInvite}>{experience.invite}</p>
+
+            <FicharioRegistro
+              labelColor={accent.ink}
+              fields={discoveryMetaFields.map((field) => ({
+                label: field.label,
+                value: experience[field.key],
+              }))}
+            />
+          </FicharioFicha>
+
+          <PlayExperienceDetailPanel experience={experience} accent={accent} />
+        </div>
+      ) : null}
+    </article>
   )
 }

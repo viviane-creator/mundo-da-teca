@@ -52,7 +52,7 @@ import { FeatureCard } from "./components/FeatureCard"
 import { SoftNote } from "./components/SoftNote"
 import { BottomNav } from "./components/BottomNav"
 import { PlayExperienceCard } from "./components/PlayExperienceCard"
-import { PlayExperienceDetailPanel } from "./components/PlayExperienceDetailPanel"
+import { getUniverseAccent } from "./data/universeAccent"
 import { Home } from "./pages/Home"
 import { ClubPage } from "./pages/ClubPage"
 import type { ParticipationPlanId } from "./data/participationPlans"
@@ -496,9 +496,7 @@ function PlayUniversePage({
   universe: PlayUniverse
 }) {
   const [openedId, setOpenedId] = useState<string | null>(null)
-  const openedExperience = universe.experiences.find(
-    (item) => item.id === openedId
-  )
+  const accent = getUniverseAccent(universe.id)
 
   return (
     <section style={styles.subPage}>
@@ -516,16 +514,53 @@ function PlayUniversePage({
       />
 
       <header style={styles.playUniverseChapterEditorial}>
-        <h1 style={styles.playUniverseChapterTitle}>
-          {getUniverseChapterTitle(universe.id)}
-        </h1>
+        <div
+          style={{
+            position: "relative",
+            display: "inline-block",
+            width: "100%",
+          }}
+        >
+          <div
+            aria-hidden
+            style={{
+              position: "absolute",
+              left: "50%",
+              top: "50%",
+              transform: "translate(-50%, -50%)",
+              width: "min(320px, 88vw)",
+              height: "72px",
+              background: accent.titleWash,
+              pointerEvents: "none",
+              zIndex: 0,
+            }}
+          />
+          <h1
+            style={{
+              ...styles.playUniverseChapterTitle,
+              position: "relative",
+              zIndex: 1,
+            }}
+          >
+            {getUniverseChapterTitle(universe.id)}
+          </h1>
+        </div>
         <p style={styles.playUniverseChapterTagline}>
           {universe.chapterTagline}
         </p>
       </header>
 
       <section style={styles.experienceCollection}>
-        <h2 style={styles.experienceCollectionTitle}>
+        <h2
+          style={{
+            ...styles.experienceCollectionTitle,
+            paddingBottom: "10px",
+            borderBottom: `1px solid ${accent.line}`,
+            maxWidth: "220px",
+            marginLeft: "auto",
+            marginRight: "auto",
+          }}
+        >
           Fichas deste universo
         </h2>
         <p style={styles.experienceCollectionCount}>
@@ -534,26 +569,26 @@ function PlayUniversePage({
           explorar
         </p>
 
-        <div style={styles.experienceStack}>
+        <div
+          style={{
+            ...styles.experienceAccordion,
+            borderColor: accent.border,
+          }}
+        >
           {universe.experiences.map((experience, index) => (
-            <div key={experience.id} style={styles.experienceStackItem}>
-              <PlayExperienceCard
-                experience={experience}
-                universeId={universe.id}
-                index={index}
-                fallbackImage={universe.image}
-                selected={openedId === experience.id}
-                onSelect={() =>
-                  setOpenedId((current) =>
-                    current === experience.id ? null : experience.id
-                  )
-                }
-              />
-
-              {openedId === experience.id && openedExperience && (
-                <PlayExperienceDetailPanel experience={openedExperience} />
-              )}
-            </div>
+            <PlayExperienceCard
+              key={experience.id}
+              experience={experience}
+              universeId={universe.id}
+              index={index}
+              isLast={index === universe.experiences.length - 1}
+              expanded={openedId === experience.id}
+              onToggle={() =>
+                setOpenedId((current) =>
+                  current === experience.id ? null : experience.id,
+                )
+              }
+            />
           ))}
         </div>
       </section>

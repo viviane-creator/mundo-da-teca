@@ -1,10 +1,13 @@
+import type { UniverseAccent } from "../data/universeAccent"
 import type { PlayExperience } from "../playData"
 import { styles } from "../styles/appStyles"
 
 export function PlayExperienceDetailPanel({
   experience,
+  accent,
 }: {
   experience: PlayExperience
+  accent?: UniverseAccent
 }) {
   const sections = [
     { label: "mini vídeo", text: experience.detail.atmosphericVideo || "em breve" },
@@ -17,12 +20,24 @@ export function PlayExperienceDetailPanel({
   ]
 
   return (
-    <article style={styles.experienceDetail}>
+    <article
+      style={{
+        ...styles.experienceDetail,
+        borderTopColor: accent?.line ?? "rgba(196, 165, 141, 0.35)",
+      }}
+    >
       <p style={styles.experienceDetailTitle}>{experience.title}</p>
 
       {sections.map((section) => (
         <div key={section.label} style={styles.experienceDetailSection}>
-          <p style={styles.experienceDetailLabel}>{section.label}</p>
+          <p
+            style={{
+              ...styles.experienceDetailLabel,
+              color: accent?.ink ?? "#b3815f",
+            }}
+          >
+            {section.label}
+          </p>
           <p style={styles.experienceDetailText}>
             {section.text || "em breve, com calma."}
           </p>
