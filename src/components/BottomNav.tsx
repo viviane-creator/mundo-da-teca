@@ -1,4 +1,5 @@
 import { bottomNavItems } from "../data/bottomNav"
+import { bottomNavTheme } from "../data/bottomNavTheme"
 import { styles } from "../styles/appStyles"
 import { BottomNavIllustration } from "./BottomNavIllustration"
 
@@ -23,35 +24,36 @@ export function BottomNav({
             onClick={() => setScreen(item.screen)}
             style={styles.navButton}
           >
+            {isActive ? (
+              <span style={styles.navActiveCapsule} aria-hidden="true" />
+            ) : null}
+
             <span style={styles.navIconWrap}>
-              {isActive ? (
-                <span
-                  style={{
-                    ...styles.navActiveHalo,
-                    background: `radial-gradient(circle, ${item.activeTint}40 0%, ${item.activeTint}22 48%, transparent 72%)`,
-                  }}
-                  aria-hidden
-                />
-              ) : null}
               <span
                 style={{
                   ...styles.navIconFrame,
                   opacity: isActive ? 1 : 0.58,
-                  transform: isActive ? "translateY(-1px) scale(1.04)" : "none",
+                  transform: isActive ? "translateY(-1px) scale(1.05)" : "none",
                 }}
               >
                 <BottomNavIllustration id={item.illustration} />
               </span>
             </span>
+
             <span
               style={{
                 ...styles.navLabel,
-                opacity: isActive ? 0.62 : 0.28,
+                color: isActive ? bottomNavTheme.ink : bottomNavTheme.inkMuted,
+                fontWeight: isActive ? 600 : 500,
               }}
               aria-hidden
             >
               {item.label}
             </span>
+
+            {isActive ? (
+              <span style={styles.navActiveMarker} aria-hidden="true" />
+            ) : null}
           </button>
         )
       })}

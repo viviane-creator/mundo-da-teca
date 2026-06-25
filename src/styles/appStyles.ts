@@ -4124,20 +4124,22 @@ export const styles: Record<string, CSSProperties> = {
     left: "14px",
     right: "14px",
     bottom: "14px",
-    height: "62px",
+    height: "64px",
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
-    background: "#F5EFE5",
+    background: "#7F674C",
     borderRadius: "20px",
-    border: "1px solid rgba(196, 165, 141, 0.32)",
+    border: "1px solid #8B7355",
+    borderTop: "1px solid #9A846C",
     boxShadow:
-      "inset 0 1px 0 rgba(255,255,255,0.72), 0 6px 20px rgba(90,60,38,0.07)",
-    padding: "4px 8px 2px",
+      "inset 0 1px 0 rgba(247,243,234,0.14), 0 2px 10px rgba(90,60,38,0.08)",
+    padding: "5px 6px 3px",
     zIndex: 20,
   },
 
   navButton: {
+    position: "relative",
     border: "none",
     background: "transparent",
     width: "20%",
@@ -4154,6 +4156,7 @@ export const styles: Record<string, CSSProperties> = {
 
   navIconWrap: {
     position: "relative",
+    zIndex: 1,
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
@@ -4161,10 +4164,26 @@ export const styles: Record<string, CSSProperties> = {
     height: "44px",
   },
 
-  navActiveHalo: {
+  navActiveCapsule: {
     position: "absolute",
-    inset: "-2px",
+    left: "2px",
+    right: "2px",
+    top: "2px",
+    bottom: "2px",
+    borderRadius: "15px",
+    background: "#9A846C",
+    border: "1px solid rgba(247, 243, 234, 0.2)",
+    pointerEvents: "none",
+  },
+
+  navActiveMarker: {
+    position: "absolute",
+    bottom: "4px",
+    width: "4px",
+    height: "4px",
     borderRadius: "999px",
+    background: "#F7F3EA",
+    opacity: 0.82,
     pointerEvents: "none",
   },
 
@@ -4184,18 +4203,59 @@ export const styles: Record<string, CSSProperties> = {
   },
 
   navLabel: {
+    position: "relative",
+    zIndex: 1,
     fontFamily: "'Cormorant Garamond', serif",
-    fontSize: "7px",
-    letterSpacing: "0.14em",
+    fontSize: "8.5px",
+    letterSpacing: "0.12em",
     textTransform: "uppercase",
     fontWeight: 500,
-    color: "#7A6858",
-    lineHeight: 1,
-    transition: "opacity 0.22s ease",
+    color: "#F7F3EA",
+    lineHeight: 1.1,
+    transition: "color 0.22s ease",
     maxWidth: "100%",
     overflow: "hidden",
     textOverflow: "ellipsis",
     whiteSpace: "nowrap",
+  },
+
+  institutionalFooter: {
+    marginTop: "48px",
+    padding: "0 24px 8px",
+    textAlign: "center",
+  },
+
+  institutionalFooterPhrase: {
+    ...tecaFont.poetic,
+    margin: "0 0 12px",
+    fontSize: "15px",
+    lineHeight: 1.55,
+    color: theme.muted,
+    maxWidth: "28ch",
+    marginLeft: "auto",
+    marginRight: "auto",
+    opacity: 0.9,
+  },
+
+  institutionalFooterHandle: {
+    ...tecaFont.prose,
+    display: "inline-block",
+    margin: "0 0 20px",
+    fontSize: "13px",
+    lineHeight: 1.3,
+    color: "#9a8475",
+    textDecoration: "none",
+    letterSpacing: "0.2px",
+    opacity: 0.88,
+  },
+
+  institutionalFooterRule: {
+    width: "100%",
+    maxWidth: "220px",
+    height: "1px",
+    margin: "0 auto",
+    background:
+      "linear-gradient(90deg, rgba(196,165,141,0) 0%, rgba(196,165,141,0.32) 50%, rgba(196,165,141,0) 100%)",
   },
 
   atlasFooter: {

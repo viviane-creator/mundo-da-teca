@@ -52,6 +52,7 @@ import { UniversosPage } from "./pages/UniversosPage"
 import { FeatureCard } from "./components/FeatureCard"
 import { SoftNote } from "./components/SoftNote"
 import { BottomNav } from "./components/BottomNav"
+import { InstitutionalFooter } from "./components/InstitutionalFooter"
 import { PlayExperienceCard } from "./components/PlayExperienceCard"
 import { getUniverseAccent } from "./data/universeAccent"
 import { Home } from "./pages/Home"
@@ -454,6 +455,8 @@ export default function App() {
         {screen === "meu-mundo" && <MeuMundoPage setScreen={setScreen} />}
 
         {screen === "biblioteca" && <BibliotecaPage setScreen={setScreen} />}
+
+        <InstitutionalFooter />
 
         <BottomNav active={resolveNavActive(screen)} setScreen={setScreen} />
       </section>
