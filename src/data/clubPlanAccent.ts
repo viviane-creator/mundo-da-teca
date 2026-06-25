@@ -1,5 +1,9 @@
 import type { CSSProperties } from "react"
 import type { ParticipationPlanId } from "./participationPlans"
+import type { HomeCtaTone } from "../styles/homeCta"
+
+/** Tom único dos CTAs do Clube — ocre dourado da faixa lateral institucional */
+export const clubInstitutionalCtaTone = "clubeColecionador" as const satisfies HomeCtaTone
 
 export type ClubPlanAccent = {
   spine: string
@@ -9,7 +13,6 @@ export type ClubPlanAccent = {
   badgeBorder: string
   ink: string
   sealLabel: string
-  ctaTone: "clubeExplorador" | "clubeColecionador"
 }
 
 export const clubPlanAccents: Record<ParticipationPlanId, ClubPlanAccent> = {
@@ -21,7 +24,6 @@ export const clubPlanAccents: Record<ParticipationPlanId, ClubPlanAccent> = {
     badgeBorder: "rgba(126, 150, 184, 0.35)",
     ink: "#6E88AA",
     sealLabel: "plano digital",
-    ctaTone: "clubeExplorador",
   },
   colecionador: {
     spine: "#C9AD6A",
@@ -31,7 +33,6 @@ export const clubPlanAccents: Record<ParticipationPlanId, ClubPlanAccent> = {
     badgeBorder: "rgba(201, 173, 106, 0.4)",
     ink: "#A88E50",
     sealLabel: "plano físico",
-    ctaTone: "clubeColecionador",
   },
 }
 

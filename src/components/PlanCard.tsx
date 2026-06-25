@@ -1,6 +1,7 @@
 import type { ParticipationPlan } from "../data/participationPlans"
 import { homeParticipationJourneys } from "../data/participationPlans"
 import {
+  clubInstitutionalCtaTone,
   clubPlanAccents,
   clubPlanCardShellStyle,
   clubPlanSealStyle,
@@ -55,10 +56,10 @@ export function PlanCard({
           <FicharioEtiqueta
             action
             onClick={onCta}
-            className={homeCtaClassName(accent.ctaTone)}
+            className={homeCtaClassName(clubInstitutionalCtaTone)}
             style={{
               ...styles.homeV2PathButton,
-              ...homeCtaStyle(accent.ctaTone),
+              ...homeCtaStyle(clubInstitutionalCtaTone),
             }}
           >
             {journey.pathCta}
@@ -89,10 +90,10 @@ export function PlanCard({
         <FicharioEtiqueta
           action
           onClick={onCta}
-          className={homeCtaClassName(accent.ctaTone)}
+          className={homeCtaClassName(clubInstitutionalCtaTone)}
           style={{
             ...styles.planCardButton,
-            ...homeCtaStyle(accent.ctaTone),
+            ...homeCtaStyle(clubInstitutionalCtaTone),
           }}
         >
           {plan.ctaLabel}
