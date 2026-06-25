@@ -4,8 +4,9 @@ export const bibliotecaContent = {
   introLead: "Leve as descobertas para além da tela.",
   introBody:
     "Materiais para imprimir, observar, registrar e continuar explorando.",
-  shelfSectionTitle: "Na Prateleira",
-  comingSoonTitle: "Novos materiais chegando",
-  comingSoonText:
-    "A biblioteca cresce junto com o Mundo da Teca. Novas páginas, fichas e coleções serão adicionadas aos poucos para acompanhar cada descoberta.",
+  shelfSectionTitle: "Escolha por onde continuar",
+  growthTitle: "Sua biblioteca está crescendo.",
+  growthText:
+    "Novos materiais chegam conforme o Mundo da Teca evolui. Volte sempre para descobrir novas páginas, registros e coleções.",
+  openKitLabel: "Abrir",
 } as const

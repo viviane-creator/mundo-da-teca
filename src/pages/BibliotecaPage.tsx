@@ -1,10 +1,11 @@
+import { BibliotecaKitCard } from "../components/biblioteca/BibliotecaKitCard"
 import { BibliotecaMesaIllustration } from "../components/biblioteca/BibliotecaMesaIllustration"
-import { BibliotecaShelfGlyph } from "../components/biblioteca/BibliotecaShelfGlyph"
+import { bibliotecaAtlas } from "../data/bibliotecaAtlas"
 import { bibliotecaContent } from "../data/bibliotecaContent"
 import { bibliotecaShelfItems } from "../data/bibliotecaMock"
 import { styles } from "../styles/appStyles"
 
-const shelfTilts = [-0.7, 0.55, -0.45, 0.65]
+const kitTilts = [-0.35, 0.28, -0.22, 0.3]
 
 export function BibliotecaPage({
   setScreen,
@@ -21,13 +22,31 @@ export function BibliotecaPage({
         ← meu mundo
       </button>
 
-      <section style={styles.bibliotecaHero}>
-        <span style={styles.bibliotecaHeroSpine} aria-hidden="true" />
+      <section
+        style={{
+          ...styles.bibliotecaHero,
+          borderColor: bibliotecaAtlas.line,
+        }}
+      >
+        <span
+          style={{
+            ...styles.bibliotecaHeroSpine,
+            background: bibliotecaAtlas.accent,
+          }}
+          aria-hidden="true"
+        />
         <BibliotecaMesaIllustration />
       </section>
 
       <div style={styles.pageIntroBlock}>
-        <p style={styles.bibliotecaKicker}>{bibliotecaContent.kicker}</p>
+        <p
+          style={{
+            ...styles.bibliotecaKicker,
+            color: bibliotecaAtlas.deep,
+          }}
+        >
+          {bibliotecaContent.kicker}
+        </p>
         <h1 style={styles.bibliotecaTitle}>{bibliotecaContent.title}</h1>
         <p style={styles.bibliotecaIntroLead}>{bibliotecaContent.introLead}</p>
         <p style={styles.bibliotecaIntro}>{bibliotecaContent.introBody}</p>
@@ -37,34 +56,39 @@ export function BibliotecaPage({
         {bibliotecaContent.shelfSectionTitle}
       </p>
 
-      <div style={styles.bibliotecaShelf}>
-        <span style={styles.bibliotecaShelfBoard} aria-hidden="true" />
-        <div style={styles.bibliotecaShelfGrid}>
-          {bibliotecaShelfItems.map((item, index) => (
-            <article
-              key={item.id}
-              style={{
-                ...styles.bibliotecaShelfItem,
-                transform: `rotate(${shelfTilts[index % shelfTilts.length]}deg)`,
-              }}
-            >
-              <span style={styles.bibliotecaShelfEtiqueta}>{item.etiqueta}</span>
-              <div style={styles.bibliotecaShelfGlyphWrap}>
-                <BibliotecaShelfGlyph kind={item.glyph} />
-              </div>
-              <h2 style={styles.bibliotecaShelfTitle}>{item.title}</h2>
-              <p style={styles.bibliotecaShelfText}>{item.text}</p>
-            </article>
-          ))}
-        </div>
+      <div style={styles.bibliotecaKitStack}>
+        {bibliotecaShelfItems.map((item, index) => (
+          <BibliotecaKitCard
+            key={item.id}
+            glyph={item.glyph}
+            category={item.category}
+            title={item.title}
+            text={item.text}
+            openLabel={bibliotecaContent.openKitLabel}
+            tilt={kitTilts[index % kitTilts.length]}
+            onOpen={() => {}}
+          />
+        ))}
       </div>
 
-      <article style={styles.bibliotecaQuietNote}>
-        <h2 style={styles.bibliotecaQuietTitle}>
-          {bibliotecaContent.comingSoonTitle}
+      <article
+        style={{
+          ...styles.bibliotecaGrowthNote,
+          borderColor: bibliotecaAtlas.line,
+        }}
+      >
+        <span
+          style={{
+            ...styles.bibliotecaGrowthSpine,
+            background: bibliotecaAtlas.accent,
+          }}
+          aria-hidden="true"
+        />
+        <h2 style={styles.bibliotecaGrowthTitle}>
+          {bibliotecaContent.growthTitle}
         </h2>
-        <p style={styles.bibliotecaQuietText}>
-          {bibliotecaContent.comingSoonText}
+        <p style={styles.bibliotecaGrowthText}>
+          {bibliotecaContent.growthText}
         </p>
       </article>
     </section>

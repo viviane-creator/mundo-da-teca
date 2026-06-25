@@ -34,8 +34,9 @@ export function BibliotecaShelfGlyph({ kind }: { kind: GlyphKind }) {
             height="36"
             rx="3"
             fill="#fffdf9"
-            stroke="#d4c0ab"
-            strokeWidth="0.7"
+            stroke="#879BAE"
+            strokeWidth="0.65"
+            opacity={0.55}
             transform="rotate(4 38 38)"
           />
           <path

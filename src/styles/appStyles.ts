@@ -3646,31 +3646,29 @@ export const styles: Record<string, CSSProperties> = {
   bibliotecaHero: {
     position: "relative",
     margin: "0 0 22px",
-    padding: "12px 12px 8px 20px",
+    padding: "10px 10px 6px 18px",
     borderRadius: "28px",
-    border: `1px solid ${theme.line}`,
+    border: "1px solid rgba(126, 147, 168, 0.22)",
     background:
-      "radial-gradient(ellipse at 14% 20%, rgba(217,196,173,0.12) 0%, transparent 50%), linear-gradient(168deg, #fffdf9 0%, #f7efe5 50%, #efe3d4 100%)",
-    boxShadow: "0 14px 36px rgba(120,90,60,0.07)",
+      "repeating-linear-gradient(180deg, transparent 0 27px, rgba(232,221,208,0.18) 27px 28px), linear-gradient(168deg, #fffdf9 0%, #f7efe5 55%, #f2ebe1 100%)",
+    boxShadow: "0 14px 36px rgba(120,90,60,0.06)",
     overflow: "hidden",
   },
 
   bibliotecaHeroSpine: {
     position: "absolute",
     left: 0,
-    top: "12%",
-    bottom: "12%",
-    width: "8px",
+    top: "10%",
+    bottom: "10%",
+    width: "6px",
     borderRadius: "0 4px 4px 0",
-    background:
-      "linear-gradient(180deg, #dcc9b4 0%, #c9b39a 50%, #dcc9b4 100%)",
-    opacity: 0.8,
+    opacity: 0.72,
   },
 
   bibliotecaMesaSvg: {
     display: "block",
     width: "100%",
-    maxWidth: "320px",
+    maxWidth: "340px",
     height: "auto",
     margin: "0 auto",
   },
@@ -3766,12 +3764,147 @@ export const styles: Record<string, CSSProperties> = {
   },
 
   bibliotecaShelfLabel: {
-    margin: "0 0 14px",
+    margin: "0 0 18px",
     fontFamily: "'Cormorant Garamond', serif",
-    fontSize: "20px",
+    fontSize: "22px",
     fontWeight: 500,
-    color: "#8a6f5d",
+    color: "#6a4f3c",
     textAlign: "left",
+  },
+
+  bibliotecaKitStack: {
+    display: "flex",
+    flexDirection: "column",
+    gap: "16px",
+    marginBottom: "28px",
+  },
+
+  bibliotecaKitCard: {
+    position: "relative",
+    display: "flex",
+    flexDirection: "column",
+    gap: "14px",
+    padding: "16px 16px 14px",
+    borderRadius: "22px",
+    border: "1px dashed rgba(196, 165, 141, 0.38)",
+    background:
+      "linear-gradient(168deg, rgba(255,253,249,0.98) 0%, rgba(248,239,228,0.9) 100%)",
+    boxShadow:
+      "inset 0 1px 0 rgba(255,255,255,0.88), 0 6px 18px rgba(120,90,60,0.05)",
+  },
+
+  bibliotecaKitTwine: {
+    position: "absolute",
+    top: "10px",
+    right: "18px",
+    width: "28px",
+    height: "10px",
+    borderTop: "1px solid rgba(196, 165, 141, 0.35)",
+    borderRight: "1px solid rgba(196, 165, 141, 0.28)",
+    borderRadius: "0 8px 0 0",
+    transform: "rotate(8deg)",
+    opacity: 0.65,
+    pointerEvents: "none",
+  },
+
+  bibliotecaKitTop: {
+    display: "flex",
+    alignItems: "flex-start",
+    gap: "14px",
+  },
+
+  bibliotecaKitGlyphFrame: {
+    flexShrink: 0,
+    width: "84px",
+    padding: "6px",
+    borderRadius: "16px",
+    border: "1px solid rgba(126, 147, 168, 0.2)",
+    background:
+      "radial-gradient(ellipse at 50% 20%, rgba(255,253,249,0.98) 0%, rgba(237,228,216,0.72) 100%)",
+    boxShadow: "inset 0 1px 0 rgba(255,255,255,0.75)",
+  },
+
+  bibliotecaKitBody: {
+    flex: 1,
+    minWidth: 0,
+    paddingTop: "2px",
+  },
+
+  bibliotecaKitCategory: {
+    display: "inline-block",
+    marginBottom: "8px",
+    padding: "3px 8px",
+    borderRadius: "999px",
+    border: "1px solid",
+    fontFamily: "'Nunito', sans-serif",
+    fontSize: "8px",
+    letterSpacing: "0.14em",
+    textTransform: "uppercase",
+    fontWeight: 700,
+  },
+
+  bibliotecaKitTitle: {
+    margin: "0 0 6px",
+    fontFamily: "'Cormorant Garamond', serif",
+    fontSize: "26px",
+    fontWeight: 500,
+    color: theme.text,
+    lineHeight: 1.05,
+  },
+
+  bibliotecaKitText: {
+    margin: 0,
+    fontFamily: "'Cormorant Garamond', serif",
+    fontSize: "15px",
+    lineHeight: 1.42,
+    color: theme.muted,
+  },
+
+  bibliotecaKitButton: {
+    alignSelf: "flex-start",
+    fontSize: "17px",
+    padding: "8px 18px",
+    borderColor: "rgba(126, 147, 168, 0.34)",
+    color: "#5E7290",
+    background: "rgba(126, 147, 168, 0.08)",
+  },
+
+  bibliotecaGrowthNote: {
+    position: "relative",
+    padding: "22px 18px 20px 26px",
+    borderRadius: "22px",
+    border: "1px dashed rgba(126, 147, 168, 0.24)",
+    background:
+      "linear-gradient(168deg, rgba(255,253,249,0.94) 0%, rgba(241,236,228,0.78) 100%)",
+    textAlign: "left",
+    boxShadow: "inset 0 1px 0 rgba(255,255,255,0.8)",
+  },
+
+  bibliotecaGrowthSpine: {
+    position: "absolute",
+    left: 0,
+    top: "14%",
+    bottom: "14%",
+    width: "5px",
+    borderRadius: "0 4px 4px 0",
+    opacity: 0.55,
+  },
+
+  bibliotecaGrowthTitle: {
+    margin: "0 0 10px",
+    fontFamily: "'Cormorant Garamond', serif",
+    fontSize: "24px",
+    fontWeight: 500,
+    color: theme.text,
+    lineHeight: 1.12,
+  },
+
+  bibliotecaGrowthText: {
+    margin: 0,
+    fontFamily: "'Cormorant Garamond', serif",
+    fontSize: "16px",
+    lineHeight: 1.5,
+    color: theme.muted,
   },
 
   bibliotecaShelf: {

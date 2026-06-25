@@ -1,132 +1,183 @@
+import { bibliotecaAtlas } from "../../data/bibliotecaAtlas"
 import { styles } from "../../styles/appStyles"
 
 export function BibliotecaMesaIllustration() {
   return (
     <svg
       style={styles.bibliotecaMesaSvg}
-      viewBox="0 0 360 200"
+      viewBox="0 0 360 220"
       aria-hidden="true"
       role="img"
     >
-      <defs>
-        <radialGradient id="bibliotecaMesaWash" cx="50%" cy="42%" r="58%">
-          <stop offset="0%" stopColor="#fffdf9" stopOpacity="0.95" />
-          <stop offset="100%" stopColor="#efe3d4" stopOpacity="0.35" />
-        </radialGradient>
-      </defs>
-
-      <rect width="360" height="200" fill="url(#bibliotecaMesaWash)" />
-
-      <ellipse cx="180" cy="168" rx="118" ry="16" fill="#d9c4ad" opacity={0.12} />
-
-      <rect
-        x="118"
-        y="88"
-        width="92"
-        height="68"
-        rx="6"
-        fill="#f7efe5"
-        stroke="#dcc9b4"
-        strokeWidth="0.8"
-        opacity={0.92}
-        transform="rotate(-4 164 122)"
-      />
+      <rect width="360" height="220" fill="#FBF7F1" />
       <path
-        d="M 126 96 L 202 96"
-        stroke="#e8d5c4"
-        strokeWidth="0.6"
-        opacity={0.7}
-        transform="rotate(-4 164 122)"
-      />
-      <path
-        d="M 126 108 L 196 108"
-        stroke="#e8d5c4"
-        strokeWidth="0.5"
-        opacity={0.55}
-        transform="rotate(-4 164 122)"
-      />
-      <path
-        d="M 126 120 L 188 120"
-        stroke="#e8d5c4"
+        d="M0 28 H360 M0 56 H360 M0 84 H360 M0 112 H360 M0 140 H360 M0 168 H360 M0 196 H360"
+        stroke="#E8DDD0"
         strokeWidth="0.5"
         opacity={0.45}
-        transform="rotate(-4 164 122)"
       />
 
-      <rect
-        x="54"
-        y="72"
-        width="52"
-        height="64"
-        rx="4"
-        fill="#fffdf9"
-        stroke="#d4c0ab"
-        strokeWidth="0.7"
-        opacity={0.88}
-        transform="rotate(-11 80 104)"
-      />
-      <ellipse
-        cx="72"
-        cy="98"
-        rx="10"
-        ry="8"
-        fill="#c9b39a"
-        opacity={0.14}
-        transform="rotate(-11 80 104)"
-      />
+      <ellipse cx="180" cy="188" rx="124" ry="14" fill="#D9C4AD" opacity={0.1} />
 
       <rect
-        x="228"
+        x="108"
         y="78"
-        width="48"
-        height="58"
-        rx="4"
-        fill="#faf4ec"
-        stroke="#d4c0ab"
-        strokeWidth="0.7"
-        opacity={0.86}
-        transform="rotate(9 252 107)"
+        width="104"
+        height="76"
+        rx="5"
+        fill="#FFFDF9"
+        stroke="#DCC9B4"
+        strokeWidth="0.8"
+        transform="rotate(-3 160 116)"
       />
-      <circle cx="248" cy="100" r="7" fill="#b8987a" opacity={0.1} />
+      <path
+        d="M 118 92 H 202 M 118 104 H 196 M 118 116 H 188 M 118 128 H 194"
+        stroke="#E8DDD0"
+        strokeWidth="0.55"
+        transform="rotate(-3 160 116)"
+      />
+      <rect
+        x="124"
+        y="84"
+        width="34"
+        height="12"
+        rx="2"
+        fill="rgba(126, 147, 168, 0.22)"
+        stroke={bibliotecaAtlas.line}
+        strokeWidth="0.5"
+        transform="rotate(-3 141 90)"
+      />
+      <text
+        x="128"
+        y="93"
+        fill={bibliotecaAtlas.deep}
+        fontSize="5.5"
+        fontFamily="Georgia, serif"
+        opacity={0.75}
+        transform="rotate(-3 141 90)"
+      >
+        expedição
+      </text>
 
       <rect
-        x="196"
-        y="118"
-        width="38"
-        height="48"
+        x="42"
+        y="64"
+        width="56"
+        height="70"
+        rx="4"
+        fill="#F7EFE5"
+        stroke="#D4C0AB"
+        strokeWidth="0.7"
+        transform="rotate(-12 70 99)"
+      />
+      <rect
+        x="50"
+        y="72"
+        width="22"
+        height="10"
+        rx="1.5"
+        fill="rgba(140, 151, 112, 0.16)"
+        stroke="rgba(140, 151, 112, 0.34)"
+        strokeWidth="0.45"
+        transform="rotate(-12 61 77)"
+      />
+
+      <rect
+        x="232"
+        y="70"
+        width="50"
+        height="62"
+        rx="4"
+        fill="#FAF4EC"
+        stroke="#D4C0AB"
+        strokeWidth="0.7"
+        transform="rotate(10 257 101)"
+      />
+      <rect
+        x="240"
+        y="78"
+        width="26"
+        height="11"
+        rx="2"
+        fill="rgba(126, 147, 168, 0.14)"
+        stroke={bibliotecaAtlas.line}
+        strokeWidth="0.45"
+        transform="rotate(10 253 83)"
+      />
+
+      <rect
+        x="188"
+        y="112"
+        width="42"
+        height="52"
         rx="3"
-        fill="#fffdf9"
-        stroke="#dcc9b4"
+        fill="#FFFDF9"
+        stroke="#DCC9B4"
         strokeWidth="0.6"
-        opacity={0.8}
-        transform="rotate(6 215 142)"
+        transform="rotate(5 209 138)"
+      />
+      <circle
+        cx="209"
+        cy="126"
+        r="7"
+        fill="none"
+        stroke={bibliotecaAtlas.accent}
+        strokeWidth="0.6"
+        opacity={0.45}
+        transform="rotate(5 209 138)"
       />
 
       <path
-        d="M 286 126 L 302 82"
-        stroke="#c88757"
-        strokeWidth="1.2"
+        d="M 292 138 L 310 88"
+        stroke="#C88757"
+        strokeWidth="1.3"
         strokeLinecap="round"
-        opacity={0.45}
+        opacity={0.5}
       />
       <path
-        d="M 286 126 L 304 126"
-        stroke="#c88757"
-        strokeWidth="0.8"
+        d="M 292 138 L 312 138"
+        stroke="#C88757"
+        strokeWidth="0.85"
         strokeLinecap="round"
+        opacity={0.38}
+      />
+
+      <path
+        d="M 78 154 Q 86 146, 94 152"
+        stroke="#8C9770"
+        strokeWidth="0.7"
+        fill="none"
         opacity={0.35}
       />
+      <ellipse cx="88" cy="158" rx="8" ry="5" fill="#B8987A" opacity={0.18} />
+      <ellipse cx="278" cy="162" rx="7" ry="4" fill="#8C9770" opacity={0.15} />
 
-      <ellipse cx="92" cy="148" rx="9" ry="6" fill="#b8987a" opacity={0.22} />
-      <ellipse cx="104" cy="152" rx="6" ry="4" fill="#8c9770" opacity={0.18} />
-      <path
-        d="M 268 150 Q 274 138, 282 146 Q 276 154, 268 150"
-        fill="#8c9770"
-        opacity={0.16}
+      <rect
+        x="148"
+        y="48"
+        width="64"
+        height="18"
+        rx="3"
+        fill="#F2EBE1"
+        stroke={bibliotecaAtlas.line}
+        strokeWidth="0.55"
+        transform="rotate(-2 180 57)"
       />
+      <text
+        x="156"
+        y="60"
+        fill={bibliotecaAtlas.deep}
+        fontSize="6"
+        fontFamily="Georgia, serif"
+        letterSpacing="1.2"
+        opacity={0.7}
+        transform="rotate(-2 180 57)"
+      >
+        materiais
+      </text>
 
-      <circle cx="48" cy="42" r="18" fill="#d9c4ad" opacity={0.08} />
-      <circle cx="312" cy="36" r="14" fill="#c9b39a" opacity={0.07} />
+      <circle cx="52" cy="38" r="16" fill={bibliotecaAtlas.wash} />
+      <circle cx="308" cy="34" r="12" fill={bibliotecaAtlas.wash} />
     </svg>
   )
 }
