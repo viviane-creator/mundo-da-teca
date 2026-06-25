@@ -1,6 +1,7 @@
 import type { CSSProperties, ReactNode } from "react"
 import { PageCover } from "./components/PageCover"
 import { HomeHeroMist, HomeHeroTextMist, homeHeroMistZoneStyle } from "./components/HomeHeroMist"
+import { atelierPortalCopy } from "./data/atelierPortalCopy"
 import { pageCovers } from "./data/pageCovers"
 import { tecaColors, tecaFont, tecaHierarchy, tecaSpacing } from "./tecaVisual"
 
@@ -49,9 +50,8 @@ export const portalPages = {
   atelie: {
     cover: pageCovers.atelie,
     coverAlt: "Ateliê",
-    title: "ateliê",
-    tagline:
-      "a loja do Mundo da Teca — onde o encantamento vira objeto físico ou digital.",
+    title: atelierPortalCopy.title,
+    tagline: atelierPortalCopy.description,
   },
   figurinhas: {
     cover: "/cards/atelie/album.png",

@@ -1,12 +1,12 @@
 import { AtelierComingSoonVisual } from "./components/AtelierComingSoonVisual"
-import { FicharioEtiqueta } from "./components/fichario"
+import { AtelierFeaturedCard } from "./components/AtelierFeaturedCard"
 import {
   atelierComingSoonItems,
-  atelierFeaturedTreasure,
+  atelierFeaturedItems,
   atelierShowcaseFootnote,
 } from "./data/atelierShowcase"
+import { atelierPortalCopy } from "./data/atelierPortalCopy"
 import { pageCovers } from "./data/pageCovers"
-import { toAtelierProductScreen } from "./atelierNavigation"
 import { styles } from "./styles/appStyles"
 import { WorldPortalCover, worldPortalStyles } from "./worldPortal"
 
@@ -19,46 +19,18 @@ export function AtelierShopPage({ setScreen }: { setScreen: SetScreen }) {
         cover={pageCovers.atelie}
         alt="Ateliê"
         hero={{
-          kicker: "complementos das fichas",
-          title: "Ateliê",
-          tagline: "Objetos que continuam o que as fichas começaram.",
+          kicker: atelierPortalCopy.kicker,
+          title: atelierPortalCopy.title,
+          tagline: atelierPortalCopy.description,
           compactTitle: true,
           variant: "art",
         }}
       />
       <section style={worldPortalStyles.body}>
-        <p style={styles.atelierHeroSubtitle}>
-          Figurinhas, papelaria e colecionáveis — peças para acompanhar as
-          descobertas.
-        </p>
-
         <div style={styles.atelierShowcase}>
-          <article style={styles.atelierShowcaseFeatured}>
-            <img
-              src={atelierFeaturedTreasure.image}
-              alt={atelierFeaturedTreasure.imageAlt}
-              style={styles.atelierShowcaseFeaturedImage}
-            />
-            <div style={styles.atelierShowcaseFeaturedBody}>
-              <h2 style={styles.atelierShowcaseFeaturedTitle}>
-                {atelierFeaturedTreasure.title}
-              </h2>
-              <p style={styles.atelierShowcaseFeaturedText}>
-                {atelierFeaturedTreasure.text}
-              </p>
-              <FicharioEtiqueta
-                action
-                onClick={() =>
-                  setScreen(
-                    toAtelierProductScreen(atelierFeaturedTreasure.productId),
-                  )
-                }
-                style={styles.atelierShowcaseFeaturedButton}
-              >
-                {atelierFeaturedTreasure.ctaLabel}
-              </FicharioEtiqueta>
-            </div>
-          </article>
+          {atelierFeaturedItems.map((item) => (
+            <AtelierFeaturedCard key={item.id} item={item} setScreen={setScreen} />
+          ))}
 
           <div style={styles.atelierShowcaseGrid}>
             {atelierComingSoonItems.map((item) => (

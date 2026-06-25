@@ -1319,8 +1319,11 @@ export const styles: Record<string, CSSProperties> = {
     display: "block",
     width: "100%",
     height: "100%",
-    objectFit: "cover",
+    objectFit: "contain",
     objectPosition: "center center",
+    padding:
+      "clamp(18px, 7vw, 36px) clamp(14px, 5vw, 28px) clamp(28px, 10vw, 48px)",
+    boxSizing: "border-box",
   },
 
   homeV2AtelierFeaturedBody: {
@@ -1756,6 +1759,19 @@ export const styles: Record<string, CSSProperties> = {
     objectPosition: "center center",
   },
 
+  atelierShowcaseFeaturedProductImage: {
+    position: "absolute",
+    inset: 0,
+    display: "block",
+    width: "100%",
+    height: "100%",
+    objectFit: "contain",
+    objectPosition: "center center",
+    padding:
+      "clamp(18px, 7vw, 36px) clamp(14px, 5vw, 28px) clamp(28px, 10vw, 48px)",
+    boxSizing: "border-box",
+  },
+
   atelierShowcaseFeaturedBody: {
     position: "relative",
     zIndex: 1,
@@ -1766,6 +1782,20 @@ export const styles: Record<string, CSSProperties> = {
     padding: "18px 14px 16px",
     background:
       "linear-gradient(180deg, rgba(255,253,249,0) 0%, rgba(255,253,249,0.82) 38%, rgba(255,253,249,0.96) 100%)",
+  },
+
+  atelierShowcaseFeaturedSeal: {
+    display: "inline-block",
+    marginBottom: "10px",
+    fontFamily: "'Nunito', sans-serif",
+    fontSize: "9px",
+    letterSpacing: "2px",
+    textTransform: "uppercase",
+    color: "rgba(180, 122, 99, 0.82)",
+    border: "1px solid rgba(196, 165, 141, 0.38)",
+    borderRadius: "999px",
+    padding: "5px 11px",
+    background: "rgba(255,253,249,0.78)",
   },
 
   atelierShowcaseFeaturedTitle: {
@@ -1780,9 +1810,20 @@ export const styles: Record<string, CSSProperties> = {
     ...tecaHierarchy.l5Body,
     fontSize: "16px",
     lineHeight: 1.55,
-    margin: "0 0 16px",
+    margin: "0 0 10px",
     textAlign: "center",
     maxWidth: "none",
+  },
+
+  atelierShowcaseFeaturedComplement: {
+    ...tecaHierarchy.l5Body,
+    fontSize: "15px",
+    lineHeight: 1.5,
+    margin: "0 0 16px",
+    textAlign: "center",
+    maxWidth: "36ch",
+    color: "#8b7668",
+    fontStyle: "italic",
   },
 
   atelierShowcaseFeaturedButton: {
@@ -1792,6 +1833,19 @@ export const styles: Record<string, CSSProperties> = {
     alignSelf: "center",
     maxWidth: "100%",
     boxSizing: "border-box",
+  },
+
+  atelierShowcaseFeaturedButtonDisabled: {
+    ...tecaFichario.etiquetaAction(),
+    marginTop: 0,
+    fontSize: "18px",
+    alignSelf: "center",
+    maxWidth: "100%",
+    boxSizing: "border-box",
+    opacity: 0.62,
+    cursor: "default",
+    pointerEvents: "none",
+    boxShadow: "none",
   },
 
   atelierShowcaseGrid: {
@@ -2339,6 +2393,114 @@ export const styles: Record<string, CSSProperties> = {
     fontFamily: "'Cormorant Garamond', serif",
     textDecoration: "underline",
     textUnderlineOffset: "4px",
+  },
+
+  bauTreasurePage: {
+    marginTop: "8px",
+    borderRadius: "20px",
+    overflow: "hidden",
+    border: "1px solid rgba(196, 165, 141, 0.32)",
+    background:
+      "linear-gradient(168deg, rgba(255,252,247,0.98) 0%, rgba(248,240,228,0.94) 100%)",
+    boxShadow: "0 12px 36px rgba(120,90,60,0.07)",
+  },
+
+  bauTreasureImageWrap: {
+    width: "100%",
+    background: "transparent",
+  },
+
+  bauTreasureImage: {
+    display: "block",
+    width: "100%",
+    aspectRatio: "4 / 3",
+    objectFit: "contain",
+    objectPosition: "center center",
+    padding: "clamp(18px, 7vw, 36px) clamp(14px, 5vw, 28px)",
+    boxSizing: "border-box",
+    background: "transparent",
+  },
+
+  bauTreasureBody: {
+    padding: "24px 20px 26px",
+    textAlign: "center",
+  },
+
+  bauTreasureSeal: {
+    display: "inline-block",
+    marginBottom: "14px",
+    fontFamily: "'Nunito', sans-serif",
+    fontSize: "9px",
+    letterSpacing: "2px",
+    textTransform: "uppercase",
+    color: "rgba(180, 122, 99, 0.82)",
+    border: "1px solid rgba(196, 165, 141, 0.38)",
+    borderRadius: "999px",
+    padding: "5px 11px",
+    background: "rgba(255,253,249,0.72)",
+  },
+
+  bauTreasureTitle: {
+    margin: "0 0 16px",
+    fontFamily: "'Cormorant Garamond', serif",
+    fontSize: "clamp(30px, 8vw, 38px)",
+    fontWeight: 500,
+    lineHeight: 1.05,
+    color: "#553d30",
+  },
+
+  bauTreasureDescription: {
+    margin: "0 auto 12px",
+    maxWidth: "36ch",
+    fontFamily: "'Cormorant Garamond', serif",
+    fontSize: "18px",
+    lineHeight: 1.55,
+    color: "#6a4f3c",
+  },
+
+  bauTreasureInfoList: {
+    display: "flex",
+    flexDirection: "column",
+    gap: "18px",
+    margin: "28px auto 26px",
+    maxWidth: "34ch",
+    textAlign: "left",
+  },
+
+  bauTreasureInfoBlock: {
+    paddingTop: "2px",
+    borderTop: "1px solid rgba(196, 165, 141, 0.22)",
+  },
+
+  bauTreasureInfoLabel: {
+    margin: "0 0 6px",
+    fontFamily: "'Nunito', sans-serif",
+    fontSize: "10px",
+    letterSpacing: "2px",
+    textTransform: "uppercase",
+    color: "rgba(154, 127, 109, 0.78)",
+    fontWeight: 600,
+  },
+
+  bauTreasureInfoValue: {
+    margin: 0,
+    fontFamily: "'Cormorant Garamond', serif",
+    fontSize: "17px",
+    lineHeight: 1.5,
+    color: "#6a4f3c",
+    whiteSpace: "pre-line",
+  },
+
+  bauTreasureCta: {
+    ...tecaFichario.etiquetaAction(),
+    fontSize: "20px",
+    alignSelf: "center",
+  },
+
+  bauTreasureCtaMuted: {
+    ...tecaFichario.etiquetaAction(),
+    fontSize: "20px",
+    opacity: 0.75,
   },
 
   clubPage: {

@@ -3,6 +3,7 @@ import { MeuMundoCollectionSeals } from "../components/MeuMundoCollectionSeals"
 import { FicharioDivisoria, FicharioEtiqueta } from "../components/fichario"
 import { ParticipationSection } from "../components/ParticipationSection"
 import type { ParticipationPlanId } from "../data/participationPlans"
+import { atelierPortalCopy } from "../data/atelierPortalCopy"
 import { appRoutes, resolveUniverseRoute } from "../navigation/appRoutes"
 import { styles } from "../styles/appStyles"
 import { homeCtaClassName, homeCtaStyle } from "../styles/homeCta"
@@ -80,10 +81,10 @@ export function Home({
 
         <FicharioDivisoria chapter="atelie">
           <div style={styles.homeV2AtelierShop}>
-            <p style={styles.homeV2ChapterKicker}>CURADORIA</p>
-            <h2 style={styles.homeV2ChapterPlaceTitle}>Ateliê</h2>
+            <p style={styles.homeV2ChapterKicker}>{atelierPortalCopy.kicker}</p>
+            <h2 style={styles.homeV2ChapterPlaceTitle}>{atelierPortalCopy.title}</h2>
             <p style={styles.homeV2ChapterSubtitle}>
-              Tesouros criados para continuar explorando.
+              {atelierPortalCopy.description}
             </p>
 
             <article style={styles.homeV2AtelierFeatured}>

@@ -61,6 +61,7 @@ import { appRoutes } from "./navigation/appRoutes"
 import { MeuMundoPage } from "./pages/MeuMundoPage"
 import { BibliotecaPage } from "./pages/BibliotecaPage"
 import { AtelierProductPage } from "./pages/AtelierProductPage"
+import { BauTreasurePage } from "./pages/BauTreasurePage"
 import { MinhaCaixaPage } from "./pages/MinhaCaixaPage"
 
 type Screen =
@@ -419,7 +420,13 @@ export default function App() {
               </section>
             )
           }
-          return (
+          return good.id === "bau" ? (
+            <BauTreasurePage
+              setScreen={setScreen}
+              inBox={box.some((item) => item.id === good.id)}
+              onAddToBox={() => addToBox(good)}
+            />
+          ) : (
             <AtelierProductPage
               setScreen={setScreen}
               good={good}

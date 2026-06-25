@@ -1,3 +1,5 @@
+import { atelierPortalCopy } from "./atelierPortalCopy"
+
 export const pageData = {
   descobertas: {
     title: "Descobertas",
@@ -10,9 +12,8 @@ export const pageData = {
     cover: "/covers/universos.webp",
   },
   atelie: {
-    title: "Ateliê",
-    intro:
-      "a loja do Mundo da Teca — tesouros, figurinhas, papelaria e edições especiais.",
+    title: atelierPortalCopy.title,
+    intro: atelierPortalCopy.description,
     cover: "/covers/atelie.webp",
   },
   clube: {
