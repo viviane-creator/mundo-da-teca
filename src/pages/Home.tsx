@@ -86,6 +86,17 @@ export function Home({
             <p style={styles.homeV2ChapterSubtitle}>
               {atelierPortalCopy.description}
             </p>
+            <FicharioEtiqueta
+              action
+              onClick={() => setScreen(appRoutes.atelie)}
+              className={homeCtaClassName("atelie")}
+              style={{
+                ...styles.homeV2ChapterCta,
+                ...homeCtaStyle("atelie"),
+              }}
+            >
+              Entrar no Ateliê
+            </FicharioEtiqueta>
           </div>
         </FicharioDivisoria>
 
