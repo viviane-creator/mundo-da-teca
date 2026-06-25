@@ -4304,9 +4304,15 @@ export const styles: Record<string, CSSProperties> = {
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "center",
-    gap: "1px",
+    gap: "2px",
     minWidth: 0,
     WebkitTapHighlightColor: "transparent",
+    transition: "padding 0.24s ease, z-index 0s",
+  },
+
+  navButtonActive: {
+    zIndex: 2,
+    padding: "0 10px",
   },
 
   navIconWrap: {
@@ -4316,30 +4322,42 @@ export const styles: Record<string, CSSProperties> = {
     alignItems: "center",
     justifyContent: "center",
     width: "44px",
-    height: "44px",
+    height: "40px",
+    transition: "width 0.24s ease, height 0.24s ease, padding 0.24s ease",
+  },
+
+  navIconWrapActive: {
+    width: "46px",
+    height: "42px",
+    padding: "3px 4px",
+    boxSizing: "border-box",
   },
 
   navActiveCapsule: {
     position: "absolute",
-    left: "2px",
-    right: "2px",
-    top: "2px",
-    bottom: "2px",
-    borderRadius: "15px",
+    left: "-7px",
+    right: "-7px",
+    top: "-2px",
+    bottom: "-2px",
+    borderRadius: "18px",
     background: "#9A846C",
     border: "1px solid rgba(247, 243, 234, 0.2)",
     pointerEvents: "none",
+    transition:
+      "left 0.24s ease, right 0.24s ease, top 0.24s ease, bottom 0.24s ease, border-radius 0.24s ease",
   },
 
   navActiveMarker: {
     position: "absolute",
-    bottom: "4px",
+    bottom: "3px",
+    zIndex: 1,
     width: "4px",
     height: "4px",
     borderRadius: "999px",
     background: "#F7F3EA",
     opacity: 0.82,
     pointerEvents: "none",
+    transition: "bottom 0.24s ease",
   },
 
   navIconFrame: {
@@ -4347,7 +4365,7 @@ export const styles: Record<string, CSSProperties> = {
     zIndex: 1,
     width: "36px",
     height: "36px",
-    transition: "opacity 0.22s ease, transform 0.22s ease",
+    transition: "opacity 0.24s ease, transform 0.24s ease",
   },
 
   navIcon: {
@@ -4366,12 +4384,21 @@ export const styles: Record<string, CSSProperties> = {
     textTransform: "uppercase",
     fontWeight: 500,
     color: "#F7F3EA",
-    lineHeight: 1.1,
-    transition: "color 0.22s ease",
+    lineHeight: 1.15,
+    transition: "color 0.24s ease, letter-spacing 0.24s ease",
     maxWidth: "100%",
     overflow: "hidden",
     textOverflow: "ellipsis",
     whiteSpace: "nowrap",
+    textAlign: "center",
+  },
+
+  navLabelActive: {
+    maxWidth: "none",
+    overflow: "visible",
+    textOverflow: "clip",
+    letterSpacing: "0.1em",
+    padding: "0 2px",
   },
 
   institutionalFooter: {

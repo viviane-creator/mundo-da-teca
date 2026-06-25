@@ -22,13 +22,21 @@ export function BottomNav({
             aria-label={item.label}
             aria-current={isActive ? "page" : undefined}
             onClick={() => setScreen(item.screen)}
-            style={styles.navButton}
+            style={{
+              ...styles.navButton,
+              ...(isActive ? styles.navButtonActive : null),
+            }}
           >
             {isActive ? (
               <span style={styles.navActiveCapsule} aria-hidden="true" />
             ) : null}
 
-            <span style={styles.navIconWrap}>
+            <span
+              style={{
+                ...styles.navIconWrap,
+                ...(isActive ? styles.navIconWrapActive : null),
+              }}
+            >
               <span
                 style={{
                   ...styles.navIconFrame,
@@ -45,6 +53,7 @@ export function BottomNav({
                 ...styles.navLabel,
                 color: isActive ? bottomNavTheme.ink : bottomNavTheme.inkMuted,
                 fontWeight: isActive ? 600 : 500,
+                ...(isActive ? styles.navLabelActive : null),
               }}
               aria-hidden
             >
