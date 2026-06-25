@@ -65,7 +65,7 @@ export const homeParticipationJourneys: Record<
   colecionador: {
     journeyTitle: "Colecionador",
     journeyText:
-      "Receba também materiais físicos e conteúdos para continuar explorando longe das telas.",
+      "Leve o Mundo da Teca para casa com materiais físicos e conteúdos para continuar explorando longe das telas.",
     pathCta: "Receber em Casa",
     decor: [],
   },
