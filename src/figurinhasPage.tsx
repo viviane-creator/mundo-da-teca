@@ -68,7 +68,7 @@ export function FigurinhasPage({
             padding: "0 4px",
           }}
         >
-          envelopes guardados, figurinhas para trocar e um álbum que cresce com
+          envelopes fechados, figurinhas para trocar e um álbum que cresce com
           o tempo — sem pressa, sem placar.
         </p>
 

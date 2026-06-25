@@ -10,7 +10,7 @@ export type AtelierCollection =
   | "Coleção Quintal"
   | "Coleção Correio"
   | "Coleção Vento"
-  | "Gaveta do Ateliê"
+  | "Linha Ateliê"
   | "ABUH × Mundo da Teca"
 
 export type AtelierSectionId =
@@ -107,7 +107,7 @@ export function getAtelierGoodStatus(
   good: AtelierGood,
 ): AtelierGoodStatus | null {
   if (good.isClubExclusive) {
-    return { kind: "club-collection", label: "coleção do clube" }
+    return { kind: "club-collection", label: "exclusivo do clube" }
   }
   if (good.madeToOrder) {
     return { kind: "made-to-order", label: "preparado sob encomenda" }
@@ -157,7 +157,7 @@ export const atelierGoods: AtelierGood[] = [
     id: "album-descobertas",
     title: "álbum das descobertas",
     poetic:
-      "um lugar grosso de papel para guardar figurinhas como quem prende folhas entre páginas.",
+      "um lugar grosso de papel para prender figurinhas como folhas entre páginas.",
     image: atelierGoodImage("album"),
     price: 58,
     clubPrice: clubPriceFrom(58),
@@ -177,7 +177,7 @@ export const atelierGoods: AtelierGood[] = [
     id: "pacotinho-folhas",
     title: "pacotinho — folhas do mundo",
     poetic:
-      "pequenas imagens para guardar descobertas do caminho, como quem encontra folhas dentro de um caderno antigo.",
+      "pequenas imagens do caminho — como folhas encontradas dentro de um caderno antigo.",
     image: atelierGoodImage("pacotinho-folhas"),
     price: 28,
     clubPrice: clubPriceFrom(28),
@@ -207,7 +207,7 @@ export const atelierGoods: AtelierGood[] = [
     collection: "Pacotinho — Coisas da Chuva",
     isClubExclusive: false,
     description:
-      "pacotinho surpresa com gotas, nuvens e pequenos objetos de dia cinza. para colar no álbum ou guardar na gaveta.",
+      "pacotinho surpresa com gotas, nuvens e pequenos objetos de dia cinza. para colar no álbum ou levar no bolso.",
     section: "figurinhas",
     visualKind: "envelope",
     poeticScreen: "pacotinho-chuva",
@@ -247,7 +247,7 @@ export const atelierGoods: AtelierGood[] = [
     collection: "Pacotinho — Céu e Vento",
     isClubExclusive: false,
     description:
-      "pacotinho com selo de vento. figurinhas em tons suaves de céu, para trocar ou guardar entre as páginas do álbum.",
+      "pacotinho com selo de vento. figurinhas em tons suaves de céu, para trocar ou encaixar entre as páginas do álbum.",
     section: "figurinhas",
     visualKind: "envelope",
     poeticScreen: "pacotinho-ceu",
@@ -365,7 +365,7 @@ export const atelierGoods: AtelierGood[] = [
     isLimited: false,
     stock: 30,
     madeToOrder: false,
-    collection: "Gaveta do Ateliê",
+    collection: "Linha Ateliê",
     isClubExclusive: false,
     description:
       "arquivo digital com materiais calmos para imprimir em casa e continuar o Mundo da Teca — papel comum já basta.",
@@ -375,33 +375,33 @@ export const atelierGoods: AtelierGood[] = [
   {
     id: "papelaria",
     title: "papelaria",
-    poetic: "coleções afetivas para tocar, cheirar e guardar perto.",
+    poetic: "peças afetivas para tocar, cheirar e levar para casa.",
     image: atelierGoodImage("papelaria"),
     price: 38,
     clubPrice: clubPriceFrom(38),
     isLimited: false,
     stock: 12,
     madeToOrder: false,
-    collection: "Gaveta do Ateliê",
+    collection: "Linha Ateliê",
     isClubExclusive: false,
     description:
-      "kit surpresa com papéis, fitas e detalhes de coleção. cada caixa é um pouco diferente.",
+      "kit surpresa com papéis, fitas e detalhes de edição. cada caixa é um pouco diferente.",
     section: "papelaria",
     visualKind: "standard",
     poeticScreen: "papelaria",
-    poeticLinkLabel: "conhecer a história desta gaveta",
+    poeticLinkLabel: "conhecer esta linha",
   },
   {
     id: "bau",
     title: "baú da teca",
-    poetic: "um lugar quieto para guardar o que não cabe em gavetas comuns.",
+    poetic: "um baú para abrir com calma — feito para pequenos tesouros especiais.",
     image: atelierGoodImage("bau"),
     price: 72,
     clubPrice: clubPriceFrom(72),
     isLimited: true,
     stock: 0,
     madeToOrder: true,
-    collection: "Gaveta do Ateliê",
+    collection: "Linha Ateliê",
     isClubExclusive: false,
     description:
       "baú de papelão reforçado, fecho de barbante, interior forrado. preparado sob encomenda.",
@@ -412,7 +412,7 @@ export const atelierGoods: AtelierGood[] = [
     id: "calendario-abuh",
     title: "calendário de pequenas coisas",
     poetic:
-      "dias pequenos também merecem ser guardados — um calendário para acompanhar o ano devagar.",
+      "dias pequenos também merecem ser lembrados — um calendário para acompanhar o ano devagar.",
     image: atelierGoodImage("calendario-abuh"),
     price: 68,
     clubPrice: clubPriceFrom(68),

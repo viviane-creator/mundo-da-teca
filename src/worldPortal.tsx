@@ -58,7 +58,7 @@ export const portalPages = {
     coverAlt: "Figurinhas",
     title: "figurinhas",
     tagline:
-      "álbuns, pacotinhos e descobertas raras — coleções feitas devagar, como quem guarda folhas dentro de livros.",
+      "álbuns, pacotinhos e descobertas raras — edições feitas devagar, como folhas entre páginas de um livro.",
   },
   clube: {
     cover: pageCovers.clube,

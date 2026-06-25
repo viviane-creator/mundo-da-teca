@@ -1,3 +1,4 @@
+import { AtelierComingSoonVisual } from "./components/AtelierComingSoonVisual"
 import { FicharioEtiqueta } from "./components/fichario"
 import {
   atelierComingSoonItems,
@@ -62,15 +63,9 @@ export function AtelierShopPage({ setScreen }: { setScreen: SetScreen }) {
           <div style={styles.atelierShowcaseGrid}>
             {atelierComingSoonItems.map((item) => (
               <article key={item.id} style={styles.atelierShowcaseCard}>
-                <div style={styles.atelierShowcaseCardImageWrap}>
-                  <img
-                    src={item.image}
-                    alt={item.imageAlt}
-                    style={styles.atelierShowcaseCardImage}
-                  />
-                </div>
+                <AtelierComingSoonVisual />
                 <div style={styles.atelierShowcaseCardBody}>
-                  <span style={styles.atelierShowcaseBadge}>Em Produção</span>
+                  <span style={styles.atelierShowcaseBadge}>{item.statusLabel}</span>
                   <h3 style={styles.atelierShowcaseCardTitle}>{item.title}</h3>
                 </div>
               </article>

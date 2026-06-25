@@ -1,3 +1,9 @@
+export type AtelierComingSoonItem = {
+  id: string
+  title: string
+  statusLabel: "Em preparação" | "Chegando em breve"
+}
+
 export type AtelierShowcaseItem = {
   id: string
   title: string
@@ -15,28 +21,25 @@ export const atelierFeaturedTreasure: AtelierShowcaseItem & {
   text: "O primeiro grande tesouro do Mundo da Teca.",
   image: "/images/bau-tesouros-open.webp",
   imageAlt: "Baú de Tesouros",
-  ctaLabel: "Conhecer o Baú",
+  ctaLabel: "Ver detalhes",
   productId: "bau",
 }
 
-export const atelierComingSoonItems: AtelierShowcaseItem[] = [
+export const atelierComingSoonItems: AtelierComingSoonItem[] = [
   {
     id: "album-figurinhas",
     title: "Álbum de Figurinhas",
-    image: "/cards/descobertas/colecoes.png",
-    imageAlt: "Álbum de Figurinhas",
+    statusLabel: "Em preparação",
   },
   {
     id: "colecionaveis",
     title: "Colecionáveis",
-    image: "/cards/descobertas/tesouros.png",
-    imageAlt: "Colecionáveis",
+    statusLabel: "Chegando em breve",
   },
   {
     id: "edicoes-especiais",
     title: "Edições Especiais",
-    image: "/cards/clube/colecoes-especiais.png",
-    imageAlt: "Edições Especiais",
+    statusLabel: "Em preparação",
   },
 ]
 

@@ -13,6 +13,7 @@ import {
   FicharioRegistro,
   formatComplementoCodigo,
 } from "./components/fichario"
+import { atelierCommerceCopy } from "./data/atelierCommerce"
 
 function complementoVariantStyle(
   visualKind: AtelierVisualKind,
@@ -95,7 +96,7 @@ export function AtelierGoodCard({
 
       <FicharioRegistro
         fields={[
-          { label: "Coleção", value: good.collection },
+          { label: atelierCommerceCopy.lineLabel, value: good.collection },
           { label: "Valor", value: formatBRL(good.price) },
           {
             label: "Clube",
@@ -108,7 +109,7 @@ export function AtelierGoodCard({
       <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
         {inBox ? (
           <FicharioEtiqueta style={{ fontSize: "18px", opacity: 0.75 }}>
-            na gaveta
+            {atelierCommerceCopy.inCart}
           </FicharioEtiqueta>
         ) : (
           <FicharioEtiqueta
@@ -116,7 +117,7 @@ export function AtelierGoodCard({
             onClick={onAddToBox}
             style={{ fontSize: "18px" }}
           >
-            colocar na gaveta →
+            {atelierCommerceCopy.addToCart}
           </FicharioEtiqueta>
         )}
 
@@ -125,7 +126,7 @@ export function AtelierGoodCard({
           onClick={onOpenProduct}
           style={{ fontSize: "17px" }}
         >
-          ver complemento →
+          {atelierCommerceCopy.viewDetails} →
         </FicharioEtiqueta>
 
         {onOpenPoetic && (
@@ -145,7 +146,7 @@ export function AtelierGoodCard({
               textAlign: "center",
             }}
           >
-            {poeticLinkLabel ?? "conhecer com calma"}
+            {poeticLinkLabel ?? atelierCommerceCopy.know}
           </button>
         )}
       </div>

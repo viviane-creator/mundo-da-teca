@@ -6,14 +6,10 @@ import {
 } from "../atelierShopData"
 import { toAtelierProductScreen } from "../atelierNavigation"
 import { SoftNote } from "../components/SoftNote"
+import { atelierCommerceCopy } from "../data/atelierCommerce"
 import { styles } from "../styles/appStyles"
 
 type SetScreen = (screen: string) => void
-
-function treasureCountLabel(count: number): string {
-  if (count === 1) return "Você guardou 1 tesouro."
-  return `Você guardou ${count} tesouros.`
-}
 
 export function MinhaCaixaPage({
   setScreen,
@@ -35,16 +31,18 @@ export function MinhaCaixaPage({
       </button>
 
       <div style={styles.minhaCaixaHero}>
-        <span style={styles.minhaCaixaBadge}>tesouros</span>
-        <h1 style={styles.pageTitle}>Minha Caixa</h1>
+        <span style={styles.minhaCaixaBadge}>{atelierCommerceCopy.cartBadge}</span>
+        <h1 style={styles.pageTitle}>{atelierCommerceCopy.cartTitle}</h1>
         {box.length > 0 && (
-          <p style={styles.minhaCaixaSummary}>{treasureCountLabel(box.length)}</p>
+          <p style={styles.minhaCaixaSummary}>
+            {atelierCommerceCopy.cartItemCount(box.length)}
+          </p>
         )}
       </div>
 
       {box.length === 0 ? (
-        <SoftNote label="vazia por enquanto">
-          nenhum tesouro ainda. volte ao ateliê e escolha com calma.
+        <SoftNote label="vazio por enquanto">
+          {atelierCommerceCopy.cartEmpty}
         </SoftNote>
       ) : (
         <>
@@ -77,9 +75,8 @@ export function MinhaCaixaPage({
           </div>
 
           {expeditionStarted ? (
-            <SoftNote label="expedição">
-              o caminho até a sua casa ainda está sendo costurado com carinho.
-              por enquanto, seus tesouros ficam guardados aqui.
+            <SoftNote label="compra">
+              {atelierCommerceCopy.checkoutPending}
             </SoftNote>
           ) : (
             <button
@@ -87,7 +84,7 @@ export function MinhaCaixaPage({
               onClick={() => setExpeditionStarted(true)}
               style={styles.minhaCaixaExpeditionButton}
             >
-              Finalizar Expedição
+              {atelierCommerceCopy.finishPurchase}
             </button>
           )}
         </>
@@ -98,7 +95,7 @@ export function MinhaCaixaPage({
         onClick={() => setScreen("atelie")}
         style={styles.paperBackToShopButton}
       >
-        continuar escolhendo
+        {atelierCommerceCopy.continueShopping}
       </button>
     </section>
   )

@@ -28,19 +28,19 @@ export const atelierPoeticPages: Record<
     poetic:
       "páginas grossas esperando figurinhas — como um caderno onde o caminho vai parar.",
     image: "/cards/atelie/album.png",
-    noteLabel: "ritual de guardar",
+    noteLabel: "como usar",
     noteText:
-      "colar devagar é parte da brincadeira. não precisa completar tudo: cada página guarda um pedaço de atenção, como folhas pressionadas entre capítulos de um livro antigo.",
+      "colar devagar é parte da brincadeira. não precisa completar tudo: cada página abriga um pedaço de atenção, como folhas pressionadas entre capítulos de um livro antigo.",
   },
   "pacotinho-folhas": {
     parent: "figurinhas",
     title: "pacotinho — folhas do mundo",
     poetic:
-      "pequenas imagens para guardar descobertas do caminho, como quem encontra folhas dentro de um caderno antigo.",
+      "pequenas imagens do caminho — como folhas encontradas dentro de um caderno antigo.",
     image: "/cards/atelie/pacotinho-folhas.png",
     noteLabel: "como abrir",
     noteText:
-      "o envelope chega fechado com um selo ilustrado. dentro, figurinhas em papel fosco — veias, bordas e formas de folhas vistas de perto. dá para colar no álbum, trocar com quem também coleciona devagar, ou guardar na gaveta até o dia certo.",
+      "o envelope chega fechado com um selo ilustrado. dentro, figurinhas em papel fosco — veias, bordas e formas de folhas vistas de perto. dá para colar no álbum, trocar com quem também coleciona devagar, ou esperar o dia certo para abrir de novo.",
   },
   "pacotinho-chuva": {
     parent: "figurinhas",
@@ -70,13 +70,13 @@ export const atelierPoeticPages: Record<
     image: "/cards/atelie/pacotinho-ceu.png",
     noteLabel: "coleção do alto",
     noteText:
-      "papéis claros, traços suaves, sensação de ar. ideal para quem gosta de deitar no chão e inventar formas nas nuvens. troque as repetidas, guarde as favoritas, complete o álbum quando quiser — sem placar, sem corrida.",
+      "papéis claros, traços suaves, sensação de ar. ideal para quem gosta de deitar no chão e inventar formas nas nuvens. troque as repetidas, escolha as favoritas, complete o álbum quando quiser — sem placar, sem corrida.",
   },
   "calendario-abuh": {
     parent: "atelie",
     title: "calendário de pequenas coisas",
     poetic:
-      "dias pequenos também merecem ser guardados — um calendário para acompanhar o ano devagar.",
+      "dias pequenos também merecem ser lembrados — um calendário para acompanhar o ano devagar.",
     image: "/cards/atelie/calendario-abuh.png",
     noteLabel: "ABUH × Mundo da Teca",
     noteText:
@@ -85,7 +85,7 @@ export const atelierPoeticPages: Record<
   papelaria: {
     parent: "atelie",
     title: "papelaria",
-    poetic: "uma gaveta de tesouros — papéis, fitas e coleções que pedem tempo.",
+    poetic: "papéis, fitas e detalhes que pedem tempo — um canto do ateliê para levar pra casa.",
     image: "/cards/atelie/papelaria.png",
     noteLabel: "canto do ateliê",
     noteText:

@@ -1808,20 +1808,23 @@ export const styles: Record<string, CSSProperties> = {
     background: "rgba(255, 253, 249, 0.72)",
   },
 
-  atelierShowcaseCardImageWrap: {
+  atelierShowcaseComingSoonBlock: {
     position: "relative",
     width: "100%",
     aspectRatio: "16 / 7",
-    overflow: "hidden",
-    background: "#efe4d8",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    background: "rgba(255, 253, 249, 0.94)",
+    borderBottom: "1px dashed rgba(196, 165, 141, 0.34)",
+    boxSizing: "border-box",
   },
 
-  atelierShowcaseCardImage: {
-    display: "block",
-    width: "100%",
-    height: "100%",
-    objectFit: "cover",
-    objectPosition: "center center",
+  atelierShowcaseComingSoonSymbol: {
+    width: "34px",
+    height: "34px",
+    color: "rgba(200, 148, 127, 0.58)",
+    flexShrink: 0,
   },
 
   atelierShowcaseCardBody: {

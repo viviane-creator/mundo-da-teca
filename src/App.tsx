@@ -240,7 +240,7 @@ const subPageData: Record<SimpleSubScreen, SubPageContent> = {
   bau: {
     parent: "atelie",
     title: "baú da teca",
-    poetic: "um lugar quieto para guardar o que não cabe em gavetas comuns.",
+    poetic: "um baú para abrir com calma — feito para pequenos tesouros especiais.",
     image: "/images/bau-tesouros-open.webp",
     noteLabel: "ateliê",
     noteText: "abrir o baú pode ser ritual: lento, cuidadoso, cheio de expectativa.",

@@ -12,6 +12,7 @@ import {
   FicharioRegistro,
   formatComplementoCodigo,
 } from "../components/fichario"
+import { atelierCommerceCopy } from "../data/atelierCommerce"
 import { styles } from "../styles/appStyles"
 
 type SetScreen = (screen: string) => void
@@ -54,8 +55,8 @@ export function AtelierProductPage({
       >
         <FicharioRegistro
           fields={[
-            { label: "Gaveta", value: category },
-            { label: "Coleção", value: good.collection },
+            { label: atelierCommerceCopy.categoryLabel, value: category },
+            { label: atelierCommerceCopy.lineLabel, value: good.collection },
             { label: "Valor", value: formatBRL(good.price) },
             {
               label: "Clube",
@@ -77,7 +78,7 @@ export function AtelierProductPage({
         >
           {inBox ? (
             <FicharioEtiqueta style={{ fontSize: "20px", opacity: 0.75 }}>
-              na gaveta
+              {atelierCommerceCopy.inCart}
             </FicharioEtiqueta>
           ) : (
             <FicharioEtiqueta
@@ -85,7 +86,7 @@ export function AtelierProductPage({
               onClick={onAddToBox}
               style={{ fontSize: "20px" }}
             >
-              colocar na gaveta →
+              {atelierCommerceCopy.addToCart}
             </FicharioEtiqueta>
           )}
 
@@ -95,7 +96,7 @@ export function AtelierProductPage({
               onClick={() => setScreen(good.poeticScreen!)}
               style={{ fontSize: "17px" }}
             >
-              {good.poeticLinkLabel ?? "conhecer com calma →"}
+              {good.poeticLinkLabel ?? `${atelierCommerceCopy.viewDetails} →`}
             </FicharioEtiqueta>
           )}
         </div>
