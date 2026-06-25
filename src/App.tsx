@@ -563,11 +563,6 @@ function PlayUniversePage({
         >
           Fichas deste universo
         </h2>
-        <p style={styles.experienceCollectionCount}>
-          {universe.experiences.length}{" "}
-          {universe.experiences.length === 1 ? "ficha" : "fichas"} para
-          explorar
-        </p>
 
         <div
           style={{
