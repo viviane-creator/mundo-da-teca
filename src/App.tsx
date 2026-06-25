@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import "./fonts.css"
+import "./styles/homeCta.css"
 import {
   isPlayUniverseScreen,
   playUniverses,

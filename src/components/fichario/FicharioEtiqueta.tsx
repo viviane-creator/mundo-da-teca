@@ -6,12 +6,14 @@ export function FicharioEtiqueta({
   onClick,
   action = false,
   style,
+  className,
   type = "button",
 }: {
   children: ReactNode
   onClick?: () => void
   action?: boolean
   style?: CSSProperties
+  className?: string
   type?: "button" | "submit"
 }) {
   const etiquetaStyle = action
@@ -23,6 +25,7 @@ export function FicharioEtiqueta({
       <button
         type={type}
         onClick={onClick}
+        className={className}
         style={{ ...etiquetaStyle, ...style }}
       >
         {children}

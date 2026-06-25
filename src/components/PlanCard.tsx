@@ -1,6 +1,7 @@
 import type { ParticipationPlan } from "../data/participationPlans"
 import { homeParticipationJourneys } from "../data/participationPlans"
 import { styles } from "../styles/appStyles"
+import { homeCtaClassName, homeCtaStyle } from "../styles/homeCta"
 import { FicharioEtiqueta, FicharioFicha } from "./fichario"
 
 export function PlanCard({
@@ -42,7 +43,15 @@ export function PlanCard({
         <div style={styles.homeV2PathCardInner}>
           <h3 style={styles.homeV2PathJourneyTitle}>{plan.title}</h3>
           <p style={styles.homeV2PathJourneyText}>{journey.journeyText}</p>
-          <FicharioEtiqueta action onClick={onCta} style={styles.homeV2PathButton}>
+          <FicharioEtiqueta
+            action
+            onClick={onCta}
+            className={homeCtaClassName("clubeColecionador")}
+            style={{
+              ...styles.homeV2PathButton,
+              ...homeCtaStyle("clubeColecionador"),
+            }}
+          >
             {journey.pathCta}
           </FicharioEtiqueta>
         </div>

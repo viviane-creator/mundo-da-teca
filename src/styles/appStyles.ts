@@ -732,6 +732,8 @@ export const styles: Record<string, CSSProperties> = {
   homeV2ChapterPlaceTitle: {
     ...tecaFont.portalTitle,
     fontSize: "clamp(28px, 8vw, 36px)",
+    fontWeight: 500,
+    color: "#553d30",
     textAlign: "center",
     width: "100%",
     margin: `0 0 ${tecaSpacing.sectionTitleToSubtitle}px`,

@@ -1,0 +1,28 @@
+.home-cta-accent {
+  transition:
+    background-color 0.24s ease,
+    border-color 0.24s ease,
+    box-shadow 0.24s ease,
+    transform 0.24s ease,
+    color 0.24s ease;
+}
+
+.home-cta-accent:hover {
+  background: var(--home-cta-fill-hover) !important;
+  border-color: var(--home-cta-border-hover) !important;
+  box-shadow:
+    0 6px 18px rgba(90, 70, 50, 0.11),
+    inset 0 1px 0 rgba(255, 255, 255, 0.32);
+  transform: translateY(-1px);
+}
+
+.home-cta-accent--outline:hover {
+  box-shadow:
+    0 5px 14px rgba(90, 70, 50, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.92);
+}
+
+.home-cta-accent:focus-visible {
+  outline: 2px solid var(--home-cta-border-hover);
+  outline-offset: 2px;
+}

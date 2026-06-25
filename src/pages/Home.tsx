@@ -4,6 +4,7 @@ import { ParticipationSection } from "../components/ParticipationSection"
 import type { ParticipationPlanId } from "../data/participationPlans"
 import { appRoutes, resolveUniverseRoute } from "../navigation/appRoutes"
 import { styles } from "../styles/appStyles"
+import { homeCtaClassName, homeCtaStyle } from "../styles/homeCta"
 import { WorldPortalLayout, portalPages } from "../worldPortal"
 
 export function Home({
@@ -63,7 +64,11 @@ export function Home({
               <FicharioEtiqueta
                 action
                 onClick={() => setScreen(appRoutes.minhaColecao)}
-                style={styles.homeV2ChapterCta}
+                className={homeCtaClassName("meuMundo")}
+                style={{
+                  ...styles.homeV2ChapterCta,
+                  ...homeCtaStyle("meuMundo"),
+                }}
               >
                 Abrir Minha Coleção
               </FicharioEtiqueta>
@@ -93,7 +98,11 @@ export function Home({
                 <FicharioEtiqueta
                   action
                   onClick={() => setScreen(appRoutes.bauDeTesouros)}
-                  style={styles.homeV2AtelierFeaturedButton}
+                  className={homeCtaClassName("atelie")}
+                  style={{
+                    ...styles.homeV2AtelierFeaturedButton,
+                    ...homeCtaStyle("atelie"),
+                  }}
                 >
                   Conhecer o Baú
                 </FicharioEtiqueta>
