@@ -16,7 +16,7 @@ export function MeuMundoPage({
   const portal = portalPages.meuMundo
 
   return (
-    <WorldPortalLayout {...portal} compactTitle breath="large">
+    <WorldPortalLayout {...portal} compactTitle breath="large" variant="art">
       <section style={styles.meuMundoFicharioBinder}>
         <span style={styles.meuMundoFicharioSpine} aria-hidden="true" />
         <div style={styles.meuMundoFicharioRings} aria-hidden="true">

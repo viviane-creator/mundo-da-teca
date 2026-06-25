@@ -22,6 +22,7 @@ export function AtelierShopPage({ setScreen }: { setScreen: SetScreen }) {
           title: "Ateliê",
           tagline: "Objetos que continuam o que as fichas começaram.",
           compactTitle: true,
+          variant: "art",
         }}
       />
       <section style={worldPortalStyles.body}>

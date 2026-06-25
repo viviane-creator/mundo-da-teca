@@ -23,7 +23,7 @@ export type PortalHeroProps = {
   title: string
   tagline: string
   compactTitle?: boolean
-  variant?: "home" | "portal"
+  variant?: "home" | "portal" | "art"
 }
 
 export const portalPages = {
@@ -98,12 +98,42 @@ const p: Record<string, CSSProperties> = {
     pointerEvents: "none",
     overflow: "visible",
   },
+  /** Meu Mundo e Ateliê — texto no pé da capa, sem sobrepor a arte central */
+  heroContentStackArt: {
+    position: "absolute",
+    left: 0,
+    right: 0,
+    top: "50%",
+    bottom: 0,
+    zIndex: 4,
+    padding:
+      "clamp(10px, 2vh, 16px) clamp(18px, 5vw, 28px) clamp(14px, 3vh, 24px)",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "flex-end",
+    gap: "6px",
+    textAlign: "center",
+    pointerEvents: "none",
+    overflow: "visible",
+  },
   logoInMist: {
     width: "clamp(148px, 38vw, 190px)",
     opacity: 0.98,
     filter:
       "drop-shadow(0 4px 14px rgba(90,60,30,0.13)) contrast(1.02) saturate(0.94) brightness(1.02)",
     marginBottom: "2px",
+  },
+  logoInArt: {
+    position: "absolute",
+    top: "40px",
+    left: "50%",
+    transform: "translateX(-50%)",
+    width: "158px",
+    zIndex: 5,
+    opacity: 0.97,
+    filter: "drop-shadow(0 6px 16px rgba(90,60,30,0.15))",
+    pointerEvents: "none",
   },
   heroKicker: {
     ...tecaHierarchy.l6Micro,
@@ -228,6 +258,7 @@ function PortalHeroOverlay({
   vignetteHome?: boolean
 }) {
   const variant = hero?.variant ?? "portal"
+  const logoInArt = variant === "art"
 
   return (
     <>
@@ -237,12 +268,21 @@ function PortalHeroOverlay({
         <HomeHeroTextMist />
       </div>
       <div style={p.fade} />
-      <div style={p.heroContentStack}>
+      {logoInArt ? (
         <img
           src="/logo/logo.webp"
           alt="Mundo da Teca"
-          style={p.logoInMist}
+          style={p.logoInArt}
         />
+      ) : null}
+      <div style={logoInArt ? p.heroContentStackArt : p.heroContentStack}>
+        {!logoInArt ? (
+          <img
+            src="/logo/logo.webp"
+            alt="Mundo da Teca"
+            style={p.logoInMist}
+          />
+        ) : null}
         {hero ? (
           <>
             {hero.kicker && variant !== "home" ? (
@@ -355,7 +395,7 @@ export function WorldPortalLayout({
   breath = "normal",
   children,
 }: WorldPortalConfig & {
-  variant?: "default" | "home"
+  variant?: "default" | "home" | "art"
   compactTitle?: boolean
   breath?: "normal" | "large"
   children: ReactNode
@@ -365,7 +405,8 @@ export function WorldPortalLayout({
     title,
     tagline,
     compactTitle,
-    variant: variant === "home" ? "home" : "portal",
+    variant:
+      variant === "home" ? "home" : variant === "art" ? "art" : "portal",
   }
 
   return (
