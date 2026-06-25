@@ -7,7 +7,6 @@ import {
   type DiaryEntry,
 } from "./discoveryData"
 import {
-  ficharioDefaultExpandedId,
   ficharioUniverses,
 } from "./data/minhaColecaoMock"
 import { FicharioUniversePanel } from "./components/FicharioUniversePanel"
@@ -78,8 +77,8 @@ const s: Record<string, CSSProperties> = {
   },
   colecoesChapterHero: {
     position: "relative",
-    margin: "0 0 24px",
-    padding: "24px 20px 22px 28px",
+    margin: "0 0 36px",
+    padding: "24px 20px 28px 28px",
     borderRadius: "26px",
     border: `1px dashed rgba(196, 165, 141, 0.38)`,
     background:
@@ -122,11 +121,19 @@ const s: Record<string, CSSProperties> = {
     textAlign: "left",
     marginBottom: `${tecaSpacing.titleToPoetic}px`,
   },
+  colecoesPageIntro: {
+    ...tecaHierarchy.l2Poetic,
+    textAlign: "left",
+    marginLeft: 0,
+    marginRight: 0,
+    marginBottom: 0,
+  },
   colecoesSectionLabel: {
     ...tecaHierarchy.l3SectionTitle,
     ...tecaHierarchy.l3SectionTitleFlush,
     textAlign: "left",
-    marginBottom: `${tecaSpacing.subtitleToContent}px`,
+    marginTop: "4px",
+    marginBottom: "28px",
   },
   notebookSheet: {
     position: "relative",
@@ -783,9 +790,7 @@ export function CollectionsPage({
 }: {
   setScreen: SetScreen
 }) {
-  const [expandedId, setExpandedId] = useState<string | null>(
-    ficharioDefaultExpandedId,
-  )
+  const [expandedId, setExpandedId] = useState<string | null>(null)
 
   return (
     <section style={s.subPage}>
@@ -801,13 +806,13 @@ export function CollectionsPage({
         <span style={s.colecoesChapterSpine} aria-hidden="true" />
         <p style={s.colecoesKicker}>fichário de descobertas</p>
         <h1 style={s.colecoesTitle}>Coleções</h1>
-        <p style={s.pageIntro}>
+        <p style={s.colecoesPageIntro}>
           Cada universo guarda sua própria coleção de fichas — um fichário que
           cresce devagar, ficha por ficha.
         </p>
       </div>
 
-      <p style={s.colecoesSectionLabel}>Fichas por universo</p>
+      <p style={s.colecoesSectionLabel}>Suas coleções</p>
 
       <div style={styles.ficharioUniversosStack}>
         {ficharioUniverses.map((universe) => (

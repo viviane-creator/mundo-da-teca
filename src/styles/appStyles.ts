@@ -2470,13 +2470,13 @@ export const styles: Record<string, CSSProperties> = {
   ficharioUniversosStack: {
     display: "flex",
     flexDirection: "column",
-    gap: "14px",
+    gap: "18px",
   },
 
   ficharioUniversePanel: {
     display: "flex",
     flexDirection: "column",
-    gap: "10px",
+    gap: "8px",
   },
 
   ficharioUniverseHeaderButton: {
@@ -2493,22 +2493,58 @@ export const styles: Record<string, CSSProperties> = {
     position: "relative",
     display: "flex",
     alignItems: "center",
-    gap: "12px",
-    padding: "18px 14px 18px 16px",
+    gap: "14px",
+    minHeight: "104px",
+    padding: "22px 20px 22px 30px",
     width: "100%",
     boxSizing: "border-box",
-    borderRadius: "22px",
+    borderRadius: "20px",
     border: `1px dashed rgba(196, 165, 141, 0.38)`,
-    background:
-      "linear-gradient(180deg, rgba(255,253,249,0.95) 0%, rgba(248,239,228,0.78) 100%)",
+    background: "rgba(255, 253, 249, 0.92)",
     boxShadow: "inset 0 1px 0 rgba(255,255,255,0.65)",
     overflow: "hidden",
   },
 
-  ficharioUniverseHeaderOpen: {
-    borderColor: "rgba(200, 135, 87, 0.38)",
-    background:
-      "linear-gradient(180deg, #fffdf9 0%, #f7efe5 55%, #f0e4d6 100%)",
+  ficharioUniverseSpine: {
+    position: "absolute",
+    left: 0,
+    top: 0,
+    bottom: 0,
+    width: "6px",
+    borderRadius: "20px 0 0 20px",
+  },
+
+  ficharioUniverseEtiqueta: {
+    display: "block",
+    marginBottom: "7px",
+    fontFamily: "'Nunito', sans-serif",
+    fontSize: "9px",
+    letterSpacing: "1.8px",
+    textTransform: "uppercase",
+    fontWeight: 600,
+    opacity: 0.78,
+  },
+
+  ficharioUniverseHeaderOpen: {},
+
+  ficharioUniverseIconFrame: {
+    position: "relative",
+    zIndex: 1,
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    width: "48px",
+    height: "48px",
+    borderRadius: "12px",
+    border: "1px solid",
+    flexShrink: 0,
+  },
+
+  ficharioUniverseIconMark: {
+    width: "32px",
+    height: "32px",
+    objectFit: "contain",
+    display: "block",
   },
 
   ficharioUniverseEmblemWatermark: {
@@ -2549,7 +2585,7 @@ export const styles: Record<string, CSSProperties> = {
   ficharioUniverseTitle: {
     position: "relative",
     zIndex: 1,
-    margin: "0 0 4px",
+    margin: "0 0 6px",
     ...tecaFont.portalTitle,
     fontSize: "28px",
     lineHeight: 0.95,
@@ -2559,7 +2595,7 @@ export const styles: Record<string, CSSProperties> = {
   ficharioUniversePoetic: {
     position: "relative",
     zIndex: 1,
-    margin: "0 0 6px",
+    margin: 0,
     fontFamily: "'Nunito', sans-serif",
     fontSize: "13px",
     lineHeight: 1.4,
@@ -2586,7 +2622,7 @@ export const styles: Record<string, CSSProperties> = {
   },
 
   ficharioAlbumSpread: {
-    padding: "4px 6px 8px",
+    padding: "8px 6px 10px",
     borderRadius: "0 0 20px 20px",
     border: `1px dashed rgba(196, 165, 141, 0.28)`,
     borderTop: "none",
@@ -2634,10 +2670,8 @@ export const styles: Record<string, CSSProperties> = {
     zIndex: 1,
     fontFamily: "'Cormorant Garamond', serif",
     fontSize: "28px",
-    color: "#b3815f",
     lineHeight: 1,
     flexShrink: 0,
-    opacity: 0.85,
   },
 
   ficharioSlot: {
@@ -2839,27 +2873,30 @@ export const styles: Record<string, CSSProperties> = {
 
   meuMundoFicharioKicker: {
     ...tecaHierarchy.l6Micro,
-    marginBottom: "16px",
+    marginBottom: "18px",
     textAlign: "left",
   },
 
   meuMundoFicharioTabs: {
     display: "flex",
     flexDirection: "column",
-    gap: "14px",
+    gap: "22px",
   },
 
   meuMundoFicharioTab: {
     display: "flex",
     alignItems: "stretch",
-    gap: "0",
+    gap: 0,
     width: "100%",
+    minHeight: "104px",
     padding: 0,
     border: "none",
     background: "transparent",
     cursor: "pointer",
     textAlign: "left",
     WebkitTapHighlightColor: "transparent",
+    borderRadius: "18px",
+    transition: "transform 0.2s ease, box-shadow 0.2s ease",
   },
 
   meuMundoFicharioTabStrip: {
@@ -2868,9 +2905,9 @@ export const styles: Record<string, CSSProperties> = {
     alignItems: "center",
     justifyContent: "center",
     gap: "6px",
-    minWidth: "88px",
-    padding: "14px 10px 12px",
-    borderRadius: "14px 0 0 14px",
+    minWidth: "72px",
+    padding: "20px 12px",
+    borderRadius: "16px 0 0 16px",
     border: `1px solid rgba(196, 165, 141, 0.35)`,
     borderRight: "none",
     boxShadow: "inset 0 1px 0 rgba(255,255,255,0.7)",
@@ -2893,15 +2930,18 @@ export const styles: Record<string, CSSProperties> = {
   },
 
   meuMundoFicharioTabIcon: {
-    fontSize: "26px",
+    fontSize: "28px",
     lineHeight: 1,
   },
 
   meuMundoFicharioTabTitle: {
     ...tecaFont.portalTitle,
-    fontSize: "22px",
-    lineHeight: 0.95,
-    writingMode: "horizontal-tb",
+    fontSize: "24px",
+    fontWeight: 500,
+    lineHeight: 1.05,
+    color: "#553d30",
+    display: "block",
+    marginBottom: "6px",
   },
 
   meuMundoFicharioTabBody: {
@@ -2909,47 +2949,19 @@ export const styles: Record<string, CSSProperties> = {
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
-    gap: "10px",
-    padding: "14px 16px 14px 14px",
-    borderRadius: "0 16px 16px 0",
+    gap: "4px",
+    padding: "20px 20px 20px 16px",
+    borderRadius: "0 18px 18px 0",
     border: `1px dashed rgba(196, 165, 141, 0.34)`,
-    background: "rgba(255, 253, 249, 0.72)",
+    background: "rgba(255, 253, 249, 0.78)",
+    boxShadow: "inset 0 1px 0 rgba(255,255,255,0.85)",
   },
 
   meuMundoFicharioTabText: {
     ...tecaHierarchy.l5Body,
-    fontSize: "15px",
-    lineHeight: 1.45,
+    fontSize: "16px",
+    lineHeight: 1.5,
     color: theme.muted,
-  },
-
-  meuMundoFicharioTabStats: {
-    display: "flex",
-    flexWrap: "wrap",
-    gap: "10px 14px",
-  },
-
-  meuMundoFicharioTabStat: {
-    display: "flex",
-    flexDirection: "column",
-    gap: "1px",
-    minWidth: "72px",
-  },
-
-  meuMundoFicharioTabStatValue: {
-    fontFamily: "'Cormorant Garamond', serif",
-    fontSize: "22px",
-    lineHeight: 1,
-    color: theme.text,
-  },
-
-  meuMundoFicharioTabStatLabel: {
-    fontFamily: "'Nunito', sans-serif",
-    fontSize: "9px",
-    letterSpacing: "1.1px",
-    textTransform: "uppercase",
-    color: "#b5a090",
-    opacity: 0.85,
   },
 
   meuMundoHero: {

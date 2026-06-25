@@ -1,7 +1,8 @@
-import { getUniverseCollectionSummary } from "../data/minhaColecaoMock"
+import type { CSSProperties } from "react"
 import type { FicharioUniverse } from "../data/minhaColecaoMock"
+import { getUniverseAccent } from "../data/universeAccent"
+import type { UniverseId } from "../data/universeAssets"
 import { CollectionPageSlot } from "./CollectionPageSlot"
-import { UniverseIcon } from "./UniverseIcon"
 import { styles } from "../styles/appStyles"
 
 export function FicharioUniversePanel({
@@ -13,60 +14,80 @@ export function FicharioUniversePanel({
   expanded: boolean
   onToggle: () => void
 }) {
-  const collectionSummary = getUniverseCollectionSummary(universe.slots)
-  const guardadas = universe.slots.filter(
-    (slot) => slot.status === "concluida" || slot.status === "recebida"
-  ).length
-  const aguardando = universe.slots.filter(
-    (slot) => slot.status === "aguardando"
-  ).length
+  const accent = getUniverseAccent(universe.id as UniverseId)
 
   return (
     <section style={styles.ficharioUniversePanel}>
       <button
         type="button"
         onClick={onToggle}
-        style={styles.ficharioUniverseHeaderButton}
+        className="fichario-colecao-divider"
+        style={
+          {
+            ...styles.ficharioUniverseHeaderButton,
+            "--universe-border": accent.border,
+          } as CSSProperties
+        }
         aria-expanded={expanded}
       >
         <article
+          className="fichario-colecao-card"
+          data-open={expanded ? "true" : "false"}
           style={{
             ...styles.ficharioUniverseHeader,
-            ...(expanded ? styles.ficharioUniverseHeaderOpen : {}),
+            ...(expanded
+              ? {
+                  borderColor: accent.border,
+                  borderStyle: "solid",
+                  background: "rgba(255, 253, 249, 0.96)",
+                  boxShadow: "inset 0 1px 0 rgba(255,255,255,0.7)",
+                }
+              : {}),
           }}
         >
-          <UniverseIcon
-            src={universe.icon}
-            variant="panel"
-            style={styles.ficharioUniverseEmblemWatermark}
+          <span
+            aria-hidden
+            style={{
+              ...styles.ficharioUniverseSpine,
+              background: accent.spine,
+            }}
           />
 
           <div style={styles.ficharioUniverseHeaderBody}>
+            <span
+              style={{
+                ...styles.ficharioUniverseEtiqueta,
+                color: accent.spine,
+              }}
+            >
+              {universe.title}
+            </span>
             <h3 style={styles.ficharioUniverseTitle}>
               {universe.collectionTitle}
             </h3>
             <p style={styles.ficharioUniversePoetic}>{universe.poetic}</p>
-            <p style={styles.ficharioArchiveLabel}>{collectionSummary}</p>
           </div>
 
-          <span style={styles.ficharioUniverseChevron} aria-hidden="true">
+          <span
+            style={{
+              ...styles.ficharioUniverseChevron,
+              color: accent.spine,
+              opacity: expanded ? 1 : 0.88,
+            }}
+            aria-hidden="true"
+          >
             {expanded ? "−" : "+"}
           </span>
         </article>
       </button>
 
       {expanded && (
-        <div style={styles.ficharioAlbumSpread}>
-          <div style={styles.ficharioAlbumLegend}>
-            <span style={styles.ficharioAlbumLegendItem}>
-              {guardadas} fichas guardadas
-            </span>
-            <span style={styles.ficharioAlbumLegendDot}>·</span>
-            <span style={styles.ficharioAlbumLegendItem}>
-              {aguardando} espaços livres
-            </span>
-          </div>
-
+        <div
+          style={{
+            ...styles.ficharioAlbumSpread,
+            borderColor: accent.line,
+          }}
+        >
           <div style={styles.ficharioAlbumGrid}>
             {universe.slots.map((slot, index) => (
               <CollectionPageSlot key={slot.id} slot={slot} index={index} />

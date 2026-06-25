@@ -2,6 +2,7 @@ import type { UniverseId } from "./universeAssets"
 
 export type UniverseAccent = {
   ink: string
+  spine: string
   line: string
   border: string
   badgeBg: string
@@ -11,6 +12,7 @@ export type UniverseAccent = {
 const accents: Record<UniverseId, UniverseAccent> = {
   laboratorio: {
     ink: "#5C6B94",
+    spine: "#7E96B8",
     line: "rgba(92, 107, 148, 0.28)",
     border: "rgba(92, 107, 148, 0.38)",
     badgeBg: "rgba(92, 107, 148, 0.08)",
@@ -19,6 +21,7 @@ const accents: Record<UniverseId, UniverseAccent> = {
   },
   cozinha: {
     ink: "#B07A5F",
+    spine: "#C98A6B",
     line: "rgba(176, 122, 95, 0.28)",
     border: "rgba(176, 122, 95, 0.36)",
     badgeBg: "rgba(176, 122, 95, 0.09)",
@@ -27,6 +30,7 @@ const accents: Record<UniverseId, UniverseAccent> = {
   },
   oficina: {
     ink: "#7A8060",
+    spine: "#8C9770",
     line: "rgba(122, 128, 96, 0.28)",
     border: "rgba(122, 128, 96, 0.36)",
     badgeBg: "rgba(122, 128, 96, 0.09)",
@@ -35,6 +39,7 @@ const accents: Record<UniverseId, UniverseAccent> = {
   },
   "faz-de-conta": {
     ink: "#907088",
+    spine: "#A78BA7",
     line: "rgba(144, 112, 136, 0.28)",
     border: "rgba(144, 112, 136, 0.34)",
     badgeBg: "rgba(144, 112, 136, 0.09)",
@@ -43,6 +48,7 @@ const accents: Record<UniverseId, UniverseAccent> = {
   },
   quintal: {
     ink: "#C4A04E",
+    spine: "#D4B15E",
     line: "rgba(196, 160, 78, 0.3)",
     border: "rgba(196, 160, 78, 0.36)",
     badgeBg: "rgba(196, 160, 78, 0.1)",
@@ -51,6 +57,7 @@ const accents: Record<UniverseId, UniverseAccent> = {
   },
   observatorio: {
     ink: "#3E5C72",
+    spine: "#6F8D9A",
     line: "rgba(62, 92, 114, 0.28)",
     border: "rgba(62, 92, 114, 0.36)",
     badgeBg: "rgba(62, 92, 114, 0.09)",

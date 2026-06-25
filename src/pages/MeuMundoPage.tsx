@@ -33,6 +33,7 @@ export function MeuMundoPage({
               key={section.id}
               type="button"
               aria-label={section.buttonLabel}
+              className="meu-mundo-ficha-card"
               style={styles.meuMundoFicharioTab}
               onClick={() => setScreen(section.screen)}
             >
@@ -45,33 +46,15 @@ export function MeuMundoPage({
                 <span style={styles.meuMundoFicharioTabIcon} aria-hidden="true">
                   {section.icon}
                 </span>
+              </span>
+
+              <span style={styles.meuMundoFicharioTabBody} data-meu-mundo-tab-body>
                 <span style={styles.meuMundoFicharioTabTitle}>
                   {section.title}
                 </span>
-              </span>
-
-              <span style={styles.meuMundoFicharioTabBody}>
                 <span style={styles.meuMundoFicharioTabText}>
                   {section.text}
                 </span>
-
-                {section.stats && (
-                  <span style={styles.meuMundoFicharioTabStats}>
-                    {section.stats.map((stat) => (
-                      <span
-                        key={stat.label}
-                        style={styles.meuMundoFicharioTabStat}
-                      >
-                        <span style={styles.meuMundoFicharioTabStatValue}>
-                          {stat.value}
-                        </span>
-                        <span style={styles.meuMundoFicharioTabStatLabel}>
-                          {stat.label}
-                        </span>
-                      </span>
-                    ))}
-                  </span>
-                )}
               </span>
             </button>
           ))}

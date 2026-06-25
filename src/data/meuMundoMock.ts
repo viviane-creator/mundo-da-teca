@@ -4,42 +4,32 @@ export type MeuMundoSection = {
   title: string
   text: string
   buttonLabel: string
-  image: string
   screen: string
-  stats?: { label: string; value: string }[]
 }
 
 export const meuMundoSections: MeuMundoSection[] = [
   {
     id: "diario",
     icon: "📖",
-    title: "Diário",
-    text: "O lugar onde observações viram fichas de memória.",
-    buttonLabel: "Abrir Diário",
-    image: "/cards/descobertas/diario.png",
+    title: "Diário de Descobertas",
+    text: "Onde observações viram memórias.",
+    buttonLabel: "Abrir Diário de Descobertas",
     screen: "diario",
   },
   {
     id: "colecoes",
     icon: "📁",
     title: "Coleções",
-    text: "O lugar onde as fichas das descobertas ficam guardadas.",
-    buttonLabel: "Ver Coleções",
-    image: "/cards/descobertas/colecoes.png",
+    text: "Onde suas descobertas encontram um lugar para morar.",
+    buttonLabel: "Abrir Coleções",
     screen: "colecoes",
-    stats: [
-      { label: "fichas guardadas", value: "12" },
-      { label: "coleções iniciadas", value: "3" },
-      { label: "descobertas registradas", value: "18" },
-    ],
   },
   {
     id: "biblioteca",
     icon: "📚",
     title: "Biblioteca",
-    text: "Prateleira de materiais para imprimir.",
+    text: "Materiais para imprimir e continuar explorando.",
     buttonLabel: "Abrir Biblioteca",
-    image: "/cards/descobertas/tesouros.png",
     screen: "biblioteca",
   },
 ]

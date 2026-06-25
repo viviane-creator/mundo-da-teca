@@ -215,8 +215,6 @@ export const ficharioUniverses: FicharioUniverse[] = [
   },
 ]
 
-export const ficharioDefaultExpandedId = "laboratorio"
-
 export const ficharioComplements = [
   {
     id: "diario",

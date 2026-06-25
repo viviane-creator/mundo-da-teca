@@ -26,3 +26,21 @@
   outline: 2px solid var(--home-cta-border-hover);
   outline-offset: 2px;
 }
+
+.meu-mundo-ficha-card:hover {
+  transform: translateY(-1px);
+}
+
+.meu-mundo-ficha-card:hover [data-meu-mundo-tab-body] {
+  box-shadow:
+    0 8px 20px rgba(90, 70, 50, 0.07),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+.fichario-colecao-card {
+  transition: border-color 0.22s ease, background-color 0.22s ease;
+}
+
+.fichario-colecao-divider:hover .fichario-colecao-card {
+  border-color: var(--universe-border) !important;
+}
