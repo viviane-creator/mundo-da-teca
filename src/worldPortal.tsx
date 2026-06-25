@@ -1,5 +1,7 @@
 import type { CSSProperties, ReactNode } from "react"
+import { PageCover } from "./components/PageCover"
 import { HomeHeroMist, HomeHeroTextMist, homeHeroMistZoneStyle } from "./components/HomeHeroMist"
+import { pageCovers } from "./data/pageCovers"
 import { tecaColors, tecaFont, tecaHierarchy, tecaSpacing } from "./tecaVisual"
 
 const theme = {
@@ -16,28 +18,36 @@ export type WorldPortalConfig = {
   kicker?: string
 }
 
+export type PortalHeroProps = {
+  kicker?: string
+  title: string
+  tagline: string
+  compactTitle?: boolean
+  variant?: "home" | "portal"
+}
+
 export const portalPages = {
   home: {
-    cover: "/images/hero-home.webp",
+    cover: pageCovers.home,
     coverAlt: "Mundo da Teca",
     title: "Existe um mundo inteiro\nesperando para ser descoberto.",
     tagline: "Observe. Descubra. Colecione.",
     kicker: "observa • cria • imagina",
   },
   descobertas: {
-    cover: "/covers/descobertas.png",
+    cover: pageCovers.meuMundo,
     coverAlt: "Descobertas",
     title: "descobertas",
     tagline: "pequenas coisas que o mundo esconde para quem olha devagar.",
   },
   universos: {
-    cover: "/covers/brincadeiras.png",
+    cover: pageCovers.universos,
     coverAlt: "Universos",
     title: "Universos",
     tagline: "Seis trilhas. Seis jeitos de descobrir o mundo.",
   },
   atelie: {
-    cover: "/covers/atelie.png",
+    cover: pageCovers.atelie,
     coverAlt: "Ateliê",
     title: "ateliê",
     tagline:
@@ -51,13 +61,13 @@ export const portalPages = {
       "álbuns, pacotinhos e descobertas raras — coleções feitas devagar, como quem guarda folhas dentro de livros.",
   },
   clube: {
-    cover: "/covers/clube.png",
+    cover: pageCovers.clube,
     coverAlt: "Clube da Teca",
     title: "Clube da Teca",
     tagline: "Descobrir. Registrar. Colecionar.",
   },
   meuMundo: {
-    cover: "/cards/descobertas/diario.png",
+    cover: pageCovers.meuMundo,
     coverAlt: "Meu Mundo",
     title: "Meu Mundo",
     tagline: "Toda descoberta precisa de um lugar para morar.",
@@ -66,48 +76,47 @@ export const portalPages = {
 } as const
 
 const p: Record<string, CSSProperties> = {
-  coverWrap: {
-    position: "relative",
-    width: "100%",
-    minHeight: "min(52vh, 500px)",
-    maxHeight: "540px",
-    overflow: "hidden",
-    background: "#e8ddd0",
-  },
-  coverWrapHome: {
-    minHeight: "min(78vh, 700px)",
-    maxHeight: "780px",
-  },
-  coverImageHome: {
-    objectPosition: "center 36%",
-    filter: "saturate(0.86) contrast(0.92) brightness(1.04)",
-  },
   vignetteHome: {
     background:
       "radial-gradient(ellipse 96% 88% at 50% 44%, transparent 58%, rgba(72,48,32,0.05) 100%)",
   },
-  homeHeroTextOverlay: {
+  heroContentStack: {
     position: "absolute",
     left: 0,
     right: 0,
-    bottom: "clamp(32px, 6vh, 52px)",
+    top: "50%",
+    bottom: 0,
     zIndex: 4,
-    padding: "0 clamp(18px, 5vw, 28px)",
+    padding:
+      "clamp(10px, 2vh, 16px) clamp(18px, 5vw, 28px) clamp(14px, 3vh, 24px)",
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    justifyContent: "flex-end",
+    justifyContent: "flex-start",
+    gap: "6px",
     textAlign: "center",
     pointerEvents: "none",
     overflow: "visible",
+  },
+  logoInMist: {
+    width: "clamp(148px, 38vw, 190px)",
+    opacity: 0.98,
+    filter:
+      "drop-shadow(0 4px 14px rgba(90,60,30,0.13)) contrast(1.02) saturate(0.94) brightness(1.02)",
+    marginBottom: "2px",
+  },
+  heroKicker: {
+    ...tecaHierarchy.l6Micro,
+    margin: 0,
+    opacity: 0.85,
   },
   homeHeroTitle: {
     ...tecaFont.heading,
     fontStyle: "normal",
     fontWeight: 400,
-    margin: "0 0 14px",
+    margin: 0,
     fontSize: "clamp(24px, 5.2vw, 36px)",
-    lineHeight: 1.3,
+    lineHeight: 1.28,
     letterSpacing: "0.015em",
     maxWidth: "min(520px, 90vw)",
     color: tecaColors.text,
@@ -117,31 +126,37 @@ const p: Record<string, CSSProperties> = {
   homeHeroTagline: {
     ...tecaFont.prose,
     fontStyle: "normal",
-    margin: "0 auto",
-    fontSize: "clamp(20px, 4.8vw, 24px)",
+    margin: 0,
+    fontSize: "clamp(18px, 4.2vw, 22px)",
     fontWeight: 500,
     color: tecaColors.text,
-    lineHeight: 1.35,
+    lineHeight: 1.32,
     letterSpacing: "0.35px",
     maxWidth: "min(400px, 88vw)",
     textAlign: "center",
     textShadow:
       "0 1px 3px rgba(255,253,249,0.94), 0 3px 22px rgba(255,253,249,0.88), 0 1px 0 rgba(90,60,30,0.1)",
   },
+  heroTitle: {
+    ...tecaHierarchy.l1PageTitle,
+    margin: 0,
+    lineHeight: 1.08,
+  },
+  titleCompact: {
+    fontSize: "48px",
+  },
+  heroTagline: {
+    ...tecaHierarchy.l2Poetic,
+    margin: 0,
+    fontSize: "clamp(17px, 4vw, 20px)",
+    lineHeight: 1.38,
+    maxWidth: "min(360px, 90vw)",
+  },
   bodyHome: {
     position: "relative",
     zIndex: 6,
-    padding: "48px 24px 0",
+    padding: "20px 24px 0",
     marginTop: 0,
-  },
-  coverImage: {
-    width: "100%",
-    height: "100%",
-    minHeight: "inherit",
-    objectFit: "cover",
-    objectPosition: "center 28%",
-    display: "block",
-    filter: "saturate(0.92) contrast(1.02)",
   },
   vignette: {
     position: "absolute",
@@ -151,43 +166,13 @@ const p: Record<string, CSSProperties> = {
     zIndex: 1,
     pointerEvents: "none",
   },
-  logo: {
-    position: "absolute",
-    top: "40px",
-    left: "50%",
-    transform: "translateX(-50%)",
-    width: "158px",
-    zIndex: 5,
-    opacity: 0.97,
-    filter: "drop-shadow(0 6px 16px rgba(90,60,30,0.15))",
-  },
-  logoHome: {
-    top: "clamp(88px, 11vh, 108px)",
-    left: "50%",
-    width: "clamp(200px, 48vw, 234px)",
-    transform: "translateX(-50%)",
-    opacity: 0.98,
-    filter:
-      "drop-shadow(0 4px 14px rgba(90,60,30,0.13)) contrast(1.02) saturate(0.94) brightness(1.02)",
-  },
   fade: {
     position: "absolute",
     left: 0,
     right: 0,
     bottom: 0,
-    height: "180px",
-    background: `linear-gradient(180deg, rgba(246,237,226,0) 0%, rgba(246,237,226,0.55) 45%, ${theme.shell} 96%)`,
-    zIndex: 2,
-    pointerEvents: "none",
-  },
-  /** Mesmo degradê de névoa da capa Universos — altura proporcional à hero */
-  fadeHome: {
-    position: "absolute",
-    left: 0,
-    right: 0,
-    bottom: 0,
     height: "50%",
-    background: `linear-gradient(180deg, rgba(246,237,226,0) 0%, rgba(255,251,245,0.32) 38%, rgba(246,237,226,0.68) 72%, ${theme.shell} 100%)`,
+    background: `linear-gradient(180deg, rgba(246,237,226,0) 0%, rgba(255,251,245,0.32) 30%, rgba(246,237,226,0.68) 68%, ${theme.shell} 100%)`,
     zIndex: 3,
     pointerEvents: "none",
     WebkitMaskImage: "linear-gradient(to top, #000 0%, #000 48%, transparent 100%)",
@@ -196,8 +181,8 @@ const p: Record<string, CSSProperties> = {
   body: {
     position: "relative",
     zIndex: 6,
-    padding: "0 24px 32px",
-    marginTop: "-36px",
+    padding: "12px 24px 32px",
+    marginTop: 0,
   },
   header: {
     textAlign: "center",
@@ -209,9 +194,6 @@ const p: Record<string, CSSProperties> = {
   },
   title: {
     ...tecaHierarchy.l1PageTitle,
-  },
-  titleCompact: {
-    fontSize: "48px",
   },
   tagline: {
     ...tecaHierarchy.l2Poetic,
@@ -238,47 +220,82 @@ const p: Record<string, CSSProperties> = {
   },
 }
 
+function PortalHeroOverlay({
+  hero,
+  vignetteHome = false,
+}: {
+  hero?: PortalHeroProps
+  vignetteHome?: boolean
+}) {
+  const variant = hero?.variant ?? "portal"
+
+  return (
+    <>
+      <div style={{ ...p.vignette, ...(vignetteHome ? p.vignetteHome : {}) }} />
+      <div style={homeHeroMistZoneStyle}>
+        <HomeHeroMist />
+        <HomeHeroTextMist />
+      </div>
+      <div style={p.fade} />
+      <div style={p.heroContentStack}>
+        <img
+          src="/logo/logo.webp"
+          alt="Mundo da Teca"
+          style={p.logoInMist}
+        />
+        {hero ? (
+          <>
+            {hero.kicker && variant !== "home" ? (
+              <p style={p.heroKicker}>{hero.kicker}</p>
+            ) : null}
+            <h1
+              style={{
+                ...(variant === "home" ? p.homeHeroTitle : p.heroTitle),
+                ...(hero.compactTitle && variant !== "home"
+                  ? p.titleCompact
+                  : {}),
+                position: "relative",
+                zIndex: 1,
+              }}
+            >
+              {hero.title.split("\n").map((line, index, lines) => (
+                <span key={line}>
+                  {line}
+                  {index < lines.length - 1 ? <br /> : null}
+                </span>
+              ))}
+            </h1>
+            <p
+              style={{
+                ...(variant === "home" ? p.homeHeroTagline : p.heroTagline),
+                position: "relative",
+                zIndex: 1,
+              }}
+            >
+              {hero.tagline}
+            </p>
+          </>
+        ) : null}
+      </div>
+    </>
+  )
+}
+
 export function WorldPortalCover({
   cover,
   alt,
-  variant = "default",
-  showFade = true,
+  hero,
+  vignetteHome = false,
 }: {
   cover: string
   alt: string
-  variant?: "default" | "home"
-  showFade?: boolean
+  hero?: PortalHeroProps
+  vignetteHome?: boolean
 }) {
   return (
-    <div
-      style={{
-        ...p.coverWrap,
-        ...(variant === "home" ? p.coverWrapHome : {}),
-      }}
-    >
-      <img
-        src={cover}
-        alt={alt}
-        style={{
-          ...p.coverImage,
-          ...(variant === "home" ? p.coverImageHome : {}),
-        }}
-      />
-      <div style={p.vignette} />
-      <img
-        src="/logo/logo.webp"
-        alt="Mundo da Teca"
-        style={{
-          ...p.logo,
-          ...(variant === "home" ? p.logoHome : {}),
-        }}
-      />
-      {variant === "home" ? (
-        <div style={p.fadeHome} />
-      ) : (
-        showFade && <div style={p.fade} />
-      )}
-    </div>
+    <PageCover image={cover} alt={alt}>
+      <PortalHeroOverlay hero={hero} vignetteHome={vignetteHome} />
+    </PageCover>
   )
 }
 
@@ -343,66 +360,25 @@ export function WorldPortalLayout({
   breath?: "normal" | "large"
   children: ReactNode
 }) {
-  if (variant === "home") {
-    return (
-      <>
-        <div
-          style={{
-            ...p.coverWrap,
-            ...p.coverWrapHome,
-          }}
-        >
-          <img
-            src={cover}
-            alt={coverAlt}
-            width={1000}
-            height={1500}
-            fetchPriority="high"
-            loading="eager"
-            decoding="async"
-            style={{ ...p.coverImage, ...p.coverImageHome }}
-          />
-          <div style={{ ...p.vignette, ...p.vignetteHome }} />
-          <div style={homeHeroMistZoneStyle}>
-            <HomeHeroMist />
-            <HomeHeroTextMist />
-          </div>
-          <img
-            src="/logo/logo.webp"
-            alt="Mundo da Teca"
-            style={{ ...p.logo, ...p.logoHome }}
-          />
-          <div style={p.fadeHome} />
-          <div style={p.homeHeroTextOverlay}>
-            <h1 style={{ ...p.homeHeroTitle, position: "relative", zIndex: 1 }}>
-              {title.split("\n").map((line, index, lines) => (
-                <span key={line}>
-                  {line}
-                  {index < lines.length - 1 ? <br /> : null}
-                </span>
-              ))}
-            </h1>
-            <p style={{ ...p.homeHeroTagline, position: "relative", zIndex: 1 }}>
-              {tagline}
-            </p>
-          </div>
-        </div>
-        <section style={p.bodyHome}>{children}</section>
-      </>
-    )
+  const hero: PortalHeroProps = {
+    kicker,
+    title,
+    tagline,
+    compactTitle,
+    variant: variant === "home" ? "home" : "portal",
   }
 
   return (
     <>
-      <WorldPortalCover cover={cover} alt={coverAlt} variant={variant} />
-      <section style={p.body}>
-        <WorldPortalHeader
-          title={title}
-          tagline={tagline}
-          kicker={kicker}
-          compactTitle={compactTitle}
-          breath={breath}
-        />
+      <PageCover
+        image={cover}
+        alt={coverAlt}
+        priority={variant === "home"}
+      >
+        <PortalHeroOverlay hero={hero} vignetteHome={variant === "home"} />
+      </PageCover>
+      <section style={variant === "home" ? p.bodyHome : p.body}>
+        <div style={breath === "large" ? p.breathLarge : p.breath} />
         {children}
       </section>
     </>

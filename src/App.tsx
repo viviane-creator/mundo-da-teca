@@ -398,16 +398,7 @@ export default function App() {
           <UniversosPage setScreen={setScreen} />
         )}
 
-        {screen === "atelie" && (
-          <AtelierShopPage
-            setScreen={setScreen}
-            box={box}
-            onAddToBox={addToBox}
-            onOpenProduct={(good) =>
-              setScreen(toAtelierProductScreen(good.id))
-            }
-          />
-        )}
+        {screen === "atelie" && <AtelierShopPage setScreen={setScreen} />}
 
         {isAtelierProductScreen(screen) && (() => {
           const good = getAtelierGoodById(getAtelierProductId(screen))

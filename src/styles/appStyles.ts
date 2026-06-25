@@ -91,17 +91,24 @@ export const styles: Record<string, CSSProperties> = {
     ...tecaFont.prose,
   },
 
-  coverWrap: {
+  /** Capa padrão — mesmas dimensões e enquadramento da Home */
+  pageCoverWrap: {
     position: "relative",
-    height: "270px",
+    width: "100%",
+    minHeight: "min(78vh, 700px)",
+    maxHeight: "780px",
     overflow: "hidden",
+    background: "#e8ddd0",
   },
 
-  coverImage: {
+  pageCoverImage: {
     width: "100%",
-    borderRadius: 28,
+    height: "100%",
+    minHeight: "inherit",
     objectFit: "cover",
-    marginBottom: 34,
+    objectPosition: "center 36%",
+    display: "block",
+    filter: "saturate(0.86) contrast(0.92) brightness(1.04)",
   },
 
   smallLogo: {
@@ -1519,6 +1526,12 @@ export const styles: Record<string, CSSProperties> = {
     paddingBottom: 0,
   },
 
+  atelierHeroSubtitle: {
+    ...tecaHierarchy.l4Subtitle,
+    margin: "0 auto 4px",
+    textAlign: "center",
+  },
+
   atelierFichaKicker: {
     ...tecaHierarchy.l6Micro,
     textAlign: "left",
@@ -1573,6 +1586,144 @@ export const styles: Record<string, CSSProperties> = {
     fontSize: "14px",
     lineHeight: 1.4,
     color: "#b5a090",
+    textAlign: "center",
+  },
+
+  atelierShowcase: {
+    marginTop: "20px",
+    display: "flex",
+    flexDirection: "column",
+    gap: "20px",
+  },
+
+  atelierShowcaseFeatured: {
+    position: "relative",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "flex-end",
+    alignItems: "stretch",
+    gap: 0,
+    margin: 0,
+    padding: 0,
+    width: "100%",
+    minHeight: "min(360px, 88vw)",
+    boxSizing: "border-box",
+    borderRadius: "18px",
+    border: "1px dashed rgba(196, 165, 141, 0.38)",
+    boxShadow: "0 10px 28px rgba(120,90,60,0.06)",
+    overflow: "hidden",
+  },
+
+  atelierShowcaseFeaturedImage: {
+    position: "absolute",
+    inset: 0,
+    display: "block",
+    width: "100%",
+    height: "100%",
+    objectFit: "cover",
+    objectPosition: "center center",
+  },
+
+  atelierShowcaseFeaturedBody: {
+    position: "relative",
+    zIndex: 1,
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    textAlign: "center",
+    padding: "18px 14px 16px",
+    background:
+      "linear-gradient(180deg, rgba(255,253,249,0) 0%, rgba(255,253,249,0.82) 38%, rgba(255,253,249,0.96) 100%)",
+  },
+
+  atelierShowcaseFeaturedTitle: {
+    ...tecaFont.heading,
+    fontSize: "clamp(24px, 6.5vw, 28px)",
+    lineHeight: 1.08,
+    margin: "0 0 10px",
+    textAlign: "center",
+  },
+
+  atelierShowcaseFeaturedText: {
+    ...tecaHierarchy.l5Body,
+    fontSize: "16px",
+    lineHeight: 1.55,
+    margin: "0 0 16px",
+    textAlign: "center",
+    maxWidth: "none",
+  },
+
+  atelierShowcaseFeaturedButton: {
+    ...tecaFichario.etiquetaAction(),
+    marginTop: 0,
+    fontSize: "18px",
+    alignSelf: "center",
+    maxWidth: "100%",
+    boxSizing: "border-box",
+  },
+
+  atelierShowcaseGrid: {
+    display: "flex",
+    flexDirection: "column",
+    gap: "16px",
+  },
+
+  atelierShowcaseCard: {
+    borderRadius: "18px",
+    border: "1px dashed rgba(196, 165, 141, 0.38)",
+    boxShadow: "0 10px 28px rgba(120,90,60,0.06)",
+    overflow: "hidden",
+    background: "rgba(255, 253, 249, 0.72)",
+  },
+
+  atelierShowcaseCardImageWrap: {
+    position: "relative",
+    width: "100%",
+    aspectRatio: "16 / 7",
+    overflow: "hidden",
+    background: "#efe4d8",
+  },
+
+  atelierShowcaseCardImage: {
+    display: "block",
+    width: "100%",
+    height: "100%",
+    objectFit: "cover",
+    objectPosition: "center center",
+  },
+
+  atelierShowcaseCardBody: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    gap: "10px",
+    padding: "14px 16px 16px",
+    textAlign: "center",
+  },
+
+  atelierShowcaseBadge: {
+    ...tecaFichario.etiqueta(),
+    fontSize: "15px",
+    letterSpacing: "0.04em",
+    textTransform: "uppercase",
+    opacity: 0.88,
+  },
+
+  atelierShowcaseCardTitle: {
+    ...tecaFont.heading,
+    fontSize: "clamp(20px, 5vw, 24px)",
+    lineHeight: 1.15,
+    margin: 0,
+    textAlign: "center",
+  },
+
+  atelierShowcaseFootnote: {
+    margin: "8px auto 0",
+    maxWidth: "340px",
+    ...tecaHierarchy.l5Body,
+    fontSize: "15px",
+    lineHeight: 1.55,
+    color: theme.muted,
     textAlign: "center",
   },
 

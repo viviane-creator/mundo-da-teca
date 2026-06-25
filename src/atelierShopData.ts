@@ -62,7 +62,7 @@ export type AtelierGoodStatus = {
   label: string
 }
 
-export const atelierCoverImage = "/covers/atelie.png"
+export const atelierCoverImage = "/covers/atelie.webp"
 
 export const atelierSections: AtelierSection[] = [
   {
