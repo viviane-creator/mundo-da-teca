@@ -16,6 +16,10 @@ const discoveryMetaFields = [
   { label: "Vira coleção", key: "collectible" },
 ] as const
 
+function usesNeutralFichaImage(universeId: PlayUniverseId): boolean {
+  return universeId !== "laboratorio"
+}
+
 export function PlayExperienceCard({
   experience,
   universeId,
@@ -33,36 +37,34 @@ export function PlayExperienceCard({
 }) {
   const [imageSrc, setImageSrc] = useState(experience.image)
   const [hideImage, setHideImage] = useState(false)
+  const neutralImage = usesNeutralFichaImage(universeId)
 
   return (
     <FicharioFicha
       variant="descoberta"
       codigo={formatFichaCodigo(universeId, index)}
       title={formatDiscoveryTitle(experience.title)}
-      image={hideImage ? undefined : imageSrc}
+      image={neutralImage || hideImage ? undefined : imageSrc}
       imageAlt={experience.title}
       imageVariant={
         usesSquareExperienceArt(universeId) ? "squareCapa" : "default"
       }
+      neutralImageBlock={neutralImage}
       seal={!experience.isFree ? "clube da teca" : null}
       selected={selected}
       onSelect={onSelect}
-      onImageError={() => {
-        if (universeId === "laboratorio") {
-          const pngFallback = experience.image.replace(/\.webp$/, ".png")
-          if (imageSrc.endsWith(".webp") && pngFallback !== imageSrc) {
-            setImageSrc(pngFallback)
-            return
-          }
-          setHideImage(true)
-          return
-        }
-        if (universeId === "cozinha") {
-          setHideImage(true)
-          return
-        }
-        if (imageSrc !== fallbackImage) setImageSrc(fallbackImage)
-      }}
+      onImageError={
+        neutralImage
+          ? undefined
+          : () => {
+              const pngFallback = experience.image.replace(/\.webp$/, ".png")
+              if (imageSrc.endsWith(".webp") && pngFallback !== imageSrc) {
+                setImageSrc(pngFallback)
+                return
+              }
+              setHideImage(true)
+            }
+      }
     >
       <p
         style={{

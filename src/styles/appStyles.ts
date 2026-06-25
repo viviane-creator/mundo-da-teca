@@ -214,6 +214,27 @@ export const styles: Record<string, CSSProperties> = {
     borderRadius: 0,
   },
 
+  playUniverseChapterEditorial: {
+    textAlign: "center",
+    margin: "20px 0 0",
+    padding: "0 4px",
+  },
+
+  playUniverseChapterTitle: {
+    ...tecaHierarchy.l1PageTitle,
+    fontSize: "40px",
+    margin: "0 0 10px",
+    lineHeight: 1.08,
+  },
+
+  playUniverseChapterTagline: {
+    ...tecaHierarchy.l2Poetic,
+    margin: "0 auto",
+    maxWidth: "min(360px, 92vw)",
+    fontSize: "18px",
+    lineHeight: 1.45,
+  },
+
   playUniverseInviteWrap: {
     margin: "24px 0 0",
     paddingTop: "0",
@@ -1376,7 +1397,7 @@ export const styles: Record<string, CSSProperties> = {
   },
 
   experienceCollection: {
-    marginTop: "8px",
+    marginTop: "28px",
     paddingTop: "0",
   },
 

@@ -53,6 +53,7 @@ export function FicharioFicha({
   onSelect,
   onImageError,
   imageVariant = "default",
+  neutralImageBlock = false,
   children,
   style,
   empty,
@@ -73,6 +74,8 @@ export function FicharioFicha({
   onSelect?: () => void
   onImageError?: () => void
   imageVariant?: "default" | "squareCapa" | "editorialCapa"
+  /** Bloco creme vazio no lugar da imagem — fichas de universo */
+  neutralImageBlock?: boolean
   children?: ReactNode
   style?: CSSProperties
   empty?: boolean
@@ -281,6 +284,22 @@ export function FicharioFicha({
             </h4>
           )}
 
+          {neutralImageBlock && !compact && (
+            <div
+              style={{
+                width: "100%",
+                aspectRatio:
+                  imageVariant === "squareCapa" ? "1 / 1" : "5 / 3",
+                display: "block",
+                background: "#fffdf9",
+                ...(imageVariant === "squareCapa"
+                  ? { borderRadius: "12px" }
+                  : {}),
+              }}
+              aria-hidden="true"
+            />
+          )}
+
           {image && compact && (
             <img
               src={image}
@@ -298,7 +317,7 @@ export function FicharioFicha({
             />
           )}
 
-          {image && !compact && (
+          {image && !compact && !neutralImageBlock && (
             <img
               src={image}
               alt={imageAlt ?? title ?? ""}

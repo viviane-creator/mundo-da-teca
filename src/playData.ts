@@ -34,6 +34,7 @@ export type PlayUniverse = {
   poetic: string
   image: string
   noteText: string
+  chapterTagline: string
   experiences: PlayExperience[]
 }
 
@@ -903,6 +904,7 @@ export const playUniverses: Record<PlayUniverseId, PlayUniverse> = {
     intro: "experiências suaves e curiosas",
     poetic: "perguntas pequenas merecem experimentos suaves.",
     noteText: "observe o que muda devagar, sem querer explicar tudo.",
+    chapterTagline: "Observe o que muda devagar, sem querer explicar tudo.",
     experiences: buildExperiences("laboratorio", laboratorioSeeds),
   }),
   cozinha: withUniverseCover({
@@ -911,6 +913,8 @@ export const playUniverses: Record<PlayUniverseId, PlayUniverse> = {
     intro: "misturas e descobertas",
     poetic: "misturar, cheirar e esperar ensina paciência nas mãos.",
     noteText: "receitas simples, sem pressa e com adulto por perto.",
+    chapterTagline:
+      "Misture, transforme e descubra o extraordinário escondido nas coisas simples.",
     experiences: buildExperiences("cozinha", cozinhaSeeds),
   }),
   oficina: withUniverseCover({
@@ -919,6 +923,7 @@ export const playUniverses: Record<PlayUniverseId, PlayUniverse> = {
     intro: "coisas feitas com as mãos",
     poetic: "fazer com as próprias mãos deixa a tarde mais presente.",
     noteText: "ferramentas leves, materiais simples, tempo generoso.",
+    chapterTagline: "Construir é uma forma de imaginar com as mãos.",
     experiences: buildExperiences("oficina", oficinaSeeds),
   }),
   "faz-de-conta": withUniverseCover({
@@ -927,6 +932,7 @@ export const playUniverses: Record<PlayUniverseId, PlayUniverse> = {
     intro: "personagens, histórias e mundos inventados",
     poetic: "uma coleção de gestos criativos para inventar mundos delicados.",
     noteText: "sem pressa de terminar: inventar também é descobrir.",
+    chapterTagline: "Toda chave abre uma porta que ainda não existe.",
     experiences: buildExperiences("faz-de-conta", fazDeContaSeeds),
   }),
   quintal: withUniverseCover({
@@ -935,6 +941,7 @@ export const playUniverses: Record<PlayUniverseId, PlayUniverse> = {
     intro: "ar livre, calçada e descobertas lá fora",
     poetic: "folhas, vento e chão vivo para brincar com o que já existe.",
     noteText: "observe devagar: o quintal já começa no caminho de casa.",
+    chapterTagline: "O mundo lá fora está cheio de pequenas aventuras.",
     experiences: buildExperiences("quintal", brincarNaRuaSeeds),
   }),
   observatorio: withUniverseCover({
@@ -943,6 +950,7 @@ export const playUniverses: Record<PlayUniverseId, PlayUniverse> = {
     intro: "céu, curiosidade e olhar atento",
     poetic: "janela, chuva e tardes de dentro para olhar o mundo devagar.",
     noteText: "olhar também pode ser suave, silencioso e curioso.",
+    chapterTagline: "Grandes descobertas começam quando alguém presta atenção.",
     experiences: buildExperiences("observatorio", diasDeChuvaSeeds),
   }),
 }

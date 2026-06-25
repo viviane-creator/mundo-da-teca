@@ -515,11 +515,14 @@ function PlayUniversePage({
         style={styles.playUniverseChapterOpening}
       />
 
-      <div style={styles.playUniverseInviteWrap}>
-        <SoftNote label="convite" centered>
-          {universe.noteText}
-        </SoftNote>
-      </div>
+      <header style={styles.playUniverseChapterEditorial}>
+        <h1 style={styles.playUniverseChapterTitle}>
+          {getUniverseChapterTitle(universe.id)}
+        </h1>
+        <p style={styles.playUniverseChapterTagline}>
+          {universe.chapterTagline}
+        </p>
+      </header>
 
       <section style={styles.experienceCollection}>
         <h2 style={styles.experienceCollectionTitle}>
