@@ -13,7 +13,7 @@ export const atelierFeaturedTreasure: AtelierShowcaseItem & {
   id: "bau",
   title: "Baú de Tesouros",
   text: "O primeiro grande tesouro do Mundo da Teca.",
-  image: "/cards/atelie/bau.png",
+  image: "/images/bau-tesouros-open.webp",
   imageAlt: "Baú de Tesouros",
   ctaLabel: "Conhecer o Baú",
   productId: "bau",

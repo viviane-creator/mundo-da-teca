@@ -88,6 +88,7 @@ export const atelierSections: AtelierSection[] = [
 ]
 
 export function atelierGoodImage(id: string): string {
+  if (id === "bau") return "/images/bau-tesouros-open.webp"
   return `/cards/atelie/${id}.png`
 }
 

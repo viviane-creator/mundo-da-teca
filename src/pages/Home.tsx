@@ -86,7 +86,7 @@ export function Home({
 
             <article style={styles.homeV2AtelierFeatured}>
               <img
-                src="/cards/atelie/bau.png"
+                src="/images/bau-tesouros-open.webp"
                 alt="Baú de Tesouros"
                 style={styles.homeV2AtelierFeaturedImage}
               />
