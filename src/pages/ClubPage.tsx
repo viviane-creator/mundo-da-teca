@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import { clubPlanAccents } from "../data/clubPlanAccent"
 import { clubParticipationPlans } from "../data/participationPlans"
 import type { ParticipationPlanId } from "../data/participationPlans"
 import { PlanCard } from "../components/PlanCard"
@@ -35,7 +36,7 @@ export function ClubPage({
     <WorldPortalLayout {...portal} breath="large">
       <section style={styles.clubPlansSection}>
         <p style={styles.clubSecondaryLabel}>novas fichas chegando</p>
-        <h2 style={styles.clubEntryHeading}>Como Participar</h2>
+        <h2 style={styles.clubEntryHeading}>Escolha sua jornada</h2>
         <p style={styles.clubFichaHint}>
           O clube envia fichas novas para a coleção — online ou em casa.
         </p>
@@ -46,7 +47,12 @@ export function ClubPage({
               key={plan.id}
               data-club-plan={plan.id}
               style={
-                focusPlan === plan.id ? styles.clubPlanCardFocused : undefined
+                focusPlan === plan.id
+                  ? {
+                      ...styles.clubPlanCardFocused,
+                      boxShadow: `0 0 0 2px ${clubPlanAccents[plan.id].borderHover}, 0 12px 28px rgba(120,90,60,0.1)`,
+                    }
+                  : undefined
               }
             >
               <PlanCard
@@ -71,14 +77,17 @@ export function ClubPage({
         <p style={styles.clubSecondaryLabel}>pertencimento</p>
 
         <article style={{ ...styles.clubMemberCard, ...tecaTilt(-0.35) }}>
-          <div style={styles.clubMemberCardTop}>
-            <span style={styles.clubSealBadge}>teca</span>
+          <span aria-hidden="true" style={styles.clubMemberCardFrame} />
+          <span aria-hidden="true" style={styles.clubMemberCardSeal} />
+
+          <header style={styles.clubMemberCardHeader}>
+            <p style={styles.clubMemberCardIssuer}>Mundo da Teca</p>
             <p style={styles.clubMemberNumber}>carteirinha nº 024</p>
-          </div>
+          </header>
 
           <h2 style={styles.clubMemberCardTitle}>carteirinha da teca</h2>
-          <p style={styles.clubFichaHint}>
-            ficha de pertencimento — preencha com calma
+          <p style={styles.clubMemberCardSubtitle}>
+            documento de explorador — para guardar com orgulho
           </p>
 
           <div style={styles.clubField}>

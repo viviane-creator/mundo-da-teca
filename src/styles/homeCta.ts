@@ -39,12 +39,11 @@ const toneTokens: Record<
     text: "#FFFCF7",
   },
   clubeExplorador: {
-    fill: "rgba(255, 253, 249, 0.55)",
-    fillHover: "rgba(255, 253, 249, 0.88)",
-    border: "rgba(138, 152, 112, 0.42)",
-    borderHover: "rgba(138, 152, 112, 0.62)",
-    text: "#6a4f3c",
-    outline: true,
+    fill: "#8FA8C6",
+    fillHover: "#7E96B8",
+    border: "#7E96B8",
+    borderHover: "#6E88AA",
+    text: "#FFFCF7",
   },
 }
 

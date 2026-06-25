@@ -1,8 +1,15 @@
 import type { ParticipationPlan } from "../data/participationPlans"
 import { homeParticipationJourneys } from "../data/participationPlans"
+import {
+  clubPlanAccents,
+  clubPlanCardShellStyle,
+  clubPlanSealStyle,
+  clubPlanSpineStyle,
+} from "../data/clubPlanAccent"
 import { styles } from "../styles/appStyles"
 import { homeCtaClassName, homeCtaStyle } from "../styles/homeCta"
-import { FicharioEtiqueta, FicharioFicha } from "./fichario"
+import { tecaTilt } from "../tecaVisual"
+import { FicharioEtiqueta } from "./fichario"
 
 export function PlanCard({
   plan,
@@ -15,6 +22,8 @@ export function PlanCard({
   tilt?: number
   variant?: "default" | "home-path"
 }) {
+  const accent = clubPlanAccents[plan.id]
+
   if (variant === "home-path") {
     const journey = homeParticipationJourneys[plan.id]
 
@@ -46,10 +55,10 @@ export function PlanCard({
           <FicharioEtiqueta
             action
             onClick={onCta}
-            className={homeCtaClassName("clubeColecionador")}
+            className={homeCtaClassName(accent.ctaTone)}
             style={{
               ...styles.homeV2PathButton,
-              ...homeCtaStyle("clubeColecionador"),
+              ...homeCtaStyle(accent.ctaTone),
             }}
           >
             {journey.pathCta}
@@ -60,18 +69,35 @@ export function PlanCard({
   }
 
   return (
-    <FicharioFicha flat tilt={tilt}>
-      <h3 style={styles.planCardTitle}>{plan.title}</h3>
-      <ul style={styles.planBenefitsList}>
-        {plan.benefits.map((benefit) => (
-          <li key={benefit} style={styles.planBenefitItem}>
-            {benefit}
-          </li>
-        ))}
-      </ul>
-      <FicharioEtiqueta action onClick={onCta} style={styles.planCardButton}>
-        {plan.ctaLabel}
-      </FicharioEtiqueta>
-    </FicharioFicha>
+    <article
+      style={{
+        ...clubPlanCardShellStyle(plan.id),
+        ...tecaTilt(tilt),
+      }}
+    >
+      <span aria-hidden="true" style={clubPlanSpineStyle(plan.id)} />
+      <div style={styles.clubPlanCardBody}>
+        <span style={clubPlanSealStyle(plan.id)}>{accent.sealLabel}</span>
+        <h3 style={styles.planCardTitle}>{plan.title}</h3>
+        <ul style={styles.planBenefitsList}>
+          {plan.benefits.map((benefit) => (
+            <li key={benefit} style={styles.planBenefitItem}>
+              {benefit}
+            </li>
+          ))}
+        </ul>
+        <FicharioEtiqueta
+          action
+          onClick={onCta}
+          className={homeCtaClassName(accent.ctaTone)}
+          style={{
+            ...styles.planCardButton,
+            ...homeCtaStyle(accent.ctaTone),
+          }}
+        >
+          {plan.ctaLabel}
+        </FicharioEtiqueta>
+      </div>
+    </article>
   )
 }

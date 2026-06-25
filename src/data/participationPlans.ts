@@ -130,7 +130,7 @@ export const clubParticipationPlans: ParticipationPlan[] = [
       "Universos, experiências e Meu Mundo digital",
       "Diário, Minhas Descobertas e Biblioteca de materiais para imprimir",
     ],
-    ctaLabel: "Começar pelo digital",
+    ctaLabel: "Explorar Online",
   },
   {
     id: "colecionador",

@@ -2343,9 +2343,60 @@ export const styles: Record<string, CSSProperties> = {
   },
 
   clubMemberCard: {
-    ...tecaObjects.ficha(tecaRadius.lg),
-    marginBottom: "24px",
-    borderTop: `3px solid ${tecaColors.lineSoft}`,
+    position: "relative",
+    marginBottom: "28px",
+    padding: "28px 24px 26px",
+    borderRadius: "20px",
+    backgroundImage: [
+      "repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(166,124,82,0.022) 3px, rgba(166,124,82,0.022) 4px)",
+      "linear-gradient(168deg, rgba(255,252,247,0.98) 0%, rgba(248,240,228,0.95) 55%, rgba(245,236,222,0.92) 100%)",
+    ].join(", "),
+    border: "1px solid rgba(201, 173, 106, 0.36)",
+    boxShadow:
+      "0 10px 32px rgba(120,90,60,0.09), inset 0 1px 0 rgba(255,255,255,0.88), inset 0 0 0 1px rgba(255,255,255,0.45)",
+    overflow: "hidden",
+  },
+
+  clubMemberCardFrame: {
+    position: "absolute",
+    inset: "10px",
+    borderRadius: "14px",
+    border: "1px solid rgba(201, 173, 106, 0.22)",
+    pointerEvents: "none",
+  },
+
+  clubMemberCardSeal: {
+    position: "absolute",
+    top: "18px",
+    right: "20px",
+    width: "44px",
+    height: "44px",
+    borderRadius: "50%",
+    border: "1px solid rgba(201, 173, 106, 0.35)",
+    background:
+      "radial-gradient(circle at 35% 30%, rgba(255,252,247,0.95) 0%, rgba(201,173,106,0.18) 70%, rgba(168,142,80,0.12) 100%)",
+    boxShadow: "inset 0 1px 2px rgba(255,255,255,0.6)",
+    opacity: 0.72,
+    pointerEvents: "none",
+  },
+
+  clubMemberCardHeader: {
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "baseline",
+    gap: "12px",
+    marginBottom: "18px",
+    paddingRight: "48px",
+  },
+
+  clubMemberCardIssuer: {
+    margin: 0,
+    fontFamily: "'Nunito', sans-serif",
+    fontSize: "10px",
+    letterSpacing: "2.5px",
+    textTransform: "uppercase",
+    color: "rgba(168, 142, 80, 0.75)",
+    fontWeight: 600,
   },
 
   clubFichaHint: {
@@ -2369,27 +2420,49 @@ export const styles: Record<string, CSSProperties> = {
   clubMemberNumber: {
     margin: 0,
     fontFamily: "'Cormorant Garamond', serif",
-    fontSize: "15px",
-    color: "#9a8475",
+    fontSize: "14px",
+    letterSpacing: "0.5px",
+    color: "rgba(154, 132, 117, 0.85)",
+    fontStyle: "italic",
   },
 
   clubMemberCardTitle: {
-    margin: "0 0 6px",
+    margin: "0 0 8px",
     textAlign: "left",
-    fontSize: "32px",
+    fontSize: "34px",
     ...tecaFont.portalTitle,
   },
 
+  clubMemberCardSubtitle: {
+    margin: "0 0 22px",
+    fontFamily: "'Cormorant Garamond', serif",
+    fontSize: "16px",
+    lineHeight: 1.45,
+    color: "rgba(139, 118, 104, 0.82)",
+    fontStyle: "italic",
+  },
+
   clubField: {
-    marginBottom: "14px",
+    marginBottom: "16px",
   },
 
   clubFieldLabel: {
     ...tecaType.labelSmall,
+    marginBottom: "4px",
+    color: "rgba(168, 142, 80, 0.7)",
+    letterSpacing: "1.8px",
   },
 
   clubFieldLine: {
     ...tecaType.fichaLine,
+    border: "none",
+    borderBottom: "1px solid rgba(166, 124, 82, 0.28)",
+    borderRadius: 0,
+    background: "transparent",
+    padding: "6px 2px 8px",
+    fontFamily: "'Cormorant Garamond', serif",
+    fontSize: "22px",
+    color: theme.text,
   },
 
   clubBelongingCard: {
@@ -2425,8 +2498,12 @@ export const styles: Record<string, CSSProperties> = {
 
   clubPlanCardFocused: {
     borderRadius: "18px",
-    boxShadow: "0 0 0 1px rgba(200,135,87,0.28), 0 10px 24px rgba(120,90,60,0.08)",
     transition: "box-shadow 0.35s ease",
+  },
+
+  clubPlanCardBody: {
+    position: "relative",
+    padding: "18px 16px 16px 22px",
   },
 
   clubEntryHeading: {
@@ -2438,7 +2515,6 @@ export const styles: Record<string, CSSProperties> = {
 
   clubCarteirinhaSection: {
     marginTop: "8px",
-    opacity: 0.92,
   },
 
   clubSecondaryLabel: {
