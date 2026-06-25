@@ -88,7 +88,7 @@ export const ficharioUniverses: FicharioUniverse[] = [
     id: "laboratorio",
     icon: universeIconPath("laboratorio"),
     title: "Laboratório",
-    collectionTitle: "Coleção do Laboratório",
+    collectionTitle: "Descobertas do Laboratório",
     poetic: "Onde as coisas se transformam.",
     image: universeCoverPath("laboratorio"),
     slots: padSlots(
@@ -121,7 +121,7 @@ export const ficharioUniverses: FicharioUniverse[] = [
     id: "cozinha",
     icon: universeIconPath("cozinha"),
     title: "Cozinha",
-    collectionTitle: "Coleção da Cozinha",
+    collectionTitle: "Descobertas da Cozinha",
     poetic: "Onde receitas viram descobertas.",
     image: universeCoverPath("cozinha"),
     slots: padSlots(
@@ -143,7 +143,7 @@ export const ficharioUniverses: FicharioUniverse[] = [
     id: "oficina",
     icon: universeIconPath("oficina"),
     title: "Oficina",
-    collectionTitle: "Coleção da Oficina",
+    collectionTitle: "Descobertas da Oficina",
     poetic: "Onde as mãos constroem ideias.",
     image: universeCoverPath("oficina"),
     slots: padSlots(
@@ -161,7 +161,7 @@ export const ficharioUniverses: FicharioUniverse[] = [
     id: "faz-de-conta",
     icon: universeIconPath("faz-de-conta"),
     title: "Faz de Conta",
-    collectionTitle: "Coleção do Faz de Conta",
+    collectionTitle: "Descobertas do Faz de Conta",
     poetic: "Onde a imaginação ganha forma.",
     image: universeCoverPath("faz-de-conta"),
     slots: padSlots(
@@ -182,7 +182,7 @@ export const ficharioUniverses: FicharioUniverse[] = [
     id: "quintal",
     icon: universeIconPath("quintal"),
     title: "Quintal",
-    collectionTitle: "Coleção do Quintal",
+    collectionTitle: "Descobertas do Quintal",
     poetic: "Onde o mundo lá fora vira aventura.",
     image: universeCoverPath("quintal"),
     slots: padSlots(
@@ -199,7 +199,7 @@ export const ficharioUniverses: FicharioUniverse[] = [
     id: "observatorio",
     icon: universeIconPath("observatorio"),
     title: "Observatório",
-    collectionTitle: "Coleção do Observatório",
+    collectionTitle: "Descobertas do Observatório",
     poetic: "Onde a curiosidade encontra o invisível.",
     image: universeCoverPath("observatorio"),
     slots: padSlots(
@@ -219,13 +219,13 @@ export const ficharioComplements = [
   {
     id: "diario",
     title: "Diário",
-    text: "pequenas descobertas anotadas",
+    text: "observações, desenhos e memórias livres",
     screen: "diario",
   },
   {
     id: "colecoes",
-    title: "Coleções de descoberta",
-    text: "folhas, pedras, cores do caminho",
+    title: "Minhas Descobertas",
+    text: "experiências realizadas e guardadas",
     screen: "colecoes",
   },
 ] as const

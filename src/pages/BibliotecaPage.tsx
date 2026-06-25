@@ -75,8 +75,7 @@ export function BibliotecaPage({
         <p style={styles.bibliotecaKicker}>materiais de exploração</p>
         <h1 style={styles.bibliotecaTitle}>Biblioteca</h1>
         <p style={styles.bibliotecaIntro}>
-          Páginas, fichas e materiais para imprimir e continuar explorando em
-          casa.
+          Materiais para imprimir e continuar explorando.
         </p>
       </div>
 
@@ -112,8 +111,9 @@ export function BibliotecaPage({
       <article style={styles.bibliotecaQuietNote}>
         <p style={styles.bibliotecaQuietLabel}>em preparação</p>
         <p style={styles.bibliotecaQuietText}>
-          A prateleira está sendo montada devagar. Por enquanto, continue
-          guardando descobertas no diário e nas coleções.
+          A prateleira está sendo montada devagar. Por enquanto, use o diário
+          para observações livres e Minhas Descobertas para as experiências que
+          você realizou.
         </p>
       </article>
     </section>

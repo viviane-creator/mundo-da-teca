@@ -1,5 +1,6 @@
 import type { CSSProperties } from "react"
 import type { FicharioUniverse } from "../data/minhaColecaoMock"
+import type { FicharioSlot } from "../data/minhaColecaoMock"
 import { getUniverseAccent } from "../data/universeAccent"
 import type { UniverseId } from "../data/universeAssets"
 import { CollectionPageSlot } from "./CollectionPageSlot"
@@ -9,10 +10,14 @@ export function FicharioUniversePanel({
   universe,
   expanded,
   onToggle,
+  registeredKeys,
+  onSlotRegisterRequest,
 }: {
   universe: FicharioUniverse
   expanded: boolean
   onToggle: () => void
+  registeredKeys: Set<string>
+  onSlotRegisterRequest: (slot: FicharioSlot) => void
 }) {
   const accent = getUniverseAccent(universe.id as UniverseId)
 
@@ -90,7 +95,15 @@ export function FicharioUniversePanel({
         >
           <div style={styles.ficharioAlbumGrid}>
             {universe.slots.map((slot, index) => (
-              <CollectionPageSlot key={slot.id} slot={slot} index={index} />
+              <CollectionPageSlot
+                key={slot.id}
+                universeId={universe.id}
+                slot={slot}
+                index={index}
+                accent={accent}
+                registeredKeys={registeredKeys}
+                onRegisterRequest={onSlotRegisterRequest}
+              />
             ))}
           </div>
         </div>

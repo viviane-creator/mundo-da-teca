@@ -1,12 +1,7 @@
+import type { CSSProperties } from "react"
 import { meuMundoSections } from "../data/meuMundoMock"
 import { styles } from "../styles/appStyles"
 import { WorldPortalLayout, portalPages } from "../worldPortal"
-
-const tabStripStyles = [
-  styles.meuMundoFicharioTabStripDiario,
-  styles.meuMundoFicharioTabStripColecoes,
-  styles.meuMundoFicharioTabStripBiblioteca,
-] as const
 
 export function MeuMundoPage({
   setScreen,
@@ -17,49 +12,37 @@ export function MeuMundoPage({
 
   return (
     <WorldPortalLayout {...portal} compactTitle breath="large" variant="art">
-      <section style={styles.meuMundoFicharioBinder}>
-        <span style={styles.meuMundoFicharioSpine} aria-hidden="true" />
-        <div style={styles.meuMundoFicharioRings} aria-hidden="true">
-          <span style={styles.meuMundoFicharioRing} />
-          <span style={styles.meuMundoFicharioRing} />
-          <span style={styles.meuMundoFicharioRing} />
-        </div>
-
-        <p style={styles.meuMundoFicharioKicker}>fichário de fichas</p>
-
-        <div style={styles.meuMundoFicharioTabs}>
-          {meuMundoSections.map((section, index) => (
-            <button
-              key={section.id}
-              type="button"
-              aria-label={section.buttonLabel}
-              className="meu-mundo-ficha-card"
-              style={styles.meuMundoFicharioTab}
-              onClick={() => setScreen(section.screen)}
-            >
+      <div style={styles.meuMundoPortalStack}>
+        {meuMundoSections.map((section) => (
+          <button
+            key={section.id}
+            type="button"
+            aria-label={section.buttonLabel}
+            className="meu-mundo-portal"
+            style={
+              {
+                ...styles.meuMundoPortalButton,
+                "--portal-border": section.border,
+              } as CSSProperties
+            }
+            onClick={() => setScreen(section.screen)}
+          >
+            <article className="meu-mundo-portal-card" style={styles.meuMundoPortalCard}>
               <span
+                aria-hidden
                 style={{
-                  ...styles.meuMundoFicharioTabStrip,
-                  ...tabStripStyles[index],
+                  ...styles.meuMundoPortalSpine,
+                  background: section.spine,
                 }}
-              >
-                <span style={styles.meuMundoFicharioTabIcon} aria-hidden="true">
-                  {section.icon}
-                </span>
-              </span>
-
-              <span style={styles.meuMundoFicharioTabBody} data-meu-mundo-tab-body>
-                <span style={styles.meuMundoFicharioTabTitle}>
-                  {section.title}
-                </span>
-                <span style={styles.meuMundoFicharioTabText}>
-                  {section.text}
-                </span>
-              </span>
-            </button>
-          ))}
-        </div>
-      </section>
+              />
+              <div style={styles.meuMundoPortalBody}>
+                <h2 style={styles.meuMundoPortalTitle}>{section.title}</h2>
+                <p style={styles.meuMundoPortalText}>{section.text}</p>
+              </div>
+            </article>
+          </button>
+        ))}
+      </div>
     </WorldPortalLayout>
   )
 }

@@ -2674,6 +2674,85 @@ export const styles: Record<string, CSSProperties> = {
     flexShrink: 0,
   },
 
+  discoveryRegisterOverlay: {
+    position: "fixed",
+    inset: 0,
+    zIndex: 120,
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    padding: "24px",
+    background: "rgba(72, 48, 32, 0.26)",
+  },
+
+  discoveryRegisterModal: {
+    position: "relative",
+    width: "100%",
+    maxWidth: "360px",
+    borderRadius: "22px",
+    border: "1px dashed rgba(196, 165, 141, 0.42)",
+    background: "rgba(255, 253, 249, 0.98)",
+    padding: "24px 22px 20px 26px",
+    boxShadow: "0 14px 36px rgba(120, 90, 60, 0.1)",
+    textAlign: "left",
+  },
+
+  discoveryRegisterModalSpine: {
+    position: "absolute",
+    left: 0,
+    top: 0,
+    bottom: 0,
+    width: "5px",
+    borderRadius: "22px 0 0 22px",
+  },
+
+  discoveryRegisterKicker: {
+    ...tecaHierarchy.l6Micro,
+    marginBottom: "10px",
+  },
+
+  discoveryRegisterTitle: {
+    ...tecaFont.portalTitle,
+    fontSize: "30px",
+    lineHeight: 1.05,
+    margin: "0 0 14px",
+    textAlign: "left",
+  },
+
+  discoveryRegisterQuestion: {
+    ...tecaHierarchy.l5Body,
+    fontSize: "17px",
+    lineHeight: 1.5,
+    margin: "0 0 20px",
+    color: theme.muted,
+  },
+
+  discoveryRegisterActions: {
+    display: "flex",
+    flexDirection: "column",
+    gap: "10px",
+  },
+
+  discoveryRegisterButtonSecondary: {
+    ...tecaFichario.etiquetaAction(),
+    fontSize: "18px",
+    background: "rgba(255, 253, 249, 0.85)",
+  },
+
+  discoveryRegisterButtonPrimary: {
+    ...tecaFichario.etiquetaAction(),
+    fontSize: "18px",
+    borderStyle: "solid",
+  },
+
+  discoverySlotPendingNote: {
+    margin: 0,
+    fontFamily: "'Cormorant Garamond', serif",
+    fontSize: "13px",
+    color: "#9a8475",
+    lineHeight: 1.35,
+  },
+
   ficharioSlot: {
     ...tecaFichario.fichaCompact(),
   },
@@ -2824,6 +2903,73 @@ export const styles: Record<string, CSSProperties> = {
   meuMundoIntroSection: {
     marginTop: "4px",
     marginBottom: "8px",
+  },
+
+  meuMundoPortalStack: {
+    display: "flex",
+    flexDirection: "column",
+    gap: "20px",
+    marginTop: "8px",
+  },
+
+  meuMundoPortalButton: {
+    width: "100%",
+    padding: 0,
+    border: "none",
+    background: "transparent",
+    cursor: "pointer",
+    textAlign: "left",
+    WebkitTapHighlightColor: "transparent",
+  },
+
+  meuMundoPortalCard: {
+    position: "relative",
+    display: "flex",
+    alignItems: "stretch",
+    minHeight: "128px",
+    padding: "26px 22px 26px 30px",
+    borderRadius: "22px",
+    border: `1px dashed rgba(196, 165, 141, 0.38)`,
+    background: "rgba(255, 253, 249, 0.92)",
+    boxShadow: "inset 0 1px 0 rgba(255,255,255,0.7)",
+    overflow: "hidden",
+    transition: "border-color 0.22s ease",
+  },
+
+  meuMundoPortalSpine: {
+    position: "absolute",
+    left: 0,
+    top: 0,
+    bottom: 0,
+    width: "6px",
+    borderRadius: "22px 0 0 22px",
+  },
+
+  meuMundoPortalBody: {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    gap: "10px",
+    width: "100%",
+  },
+
+  meuMundoPortalTitle: {
+    ...tecaFont.portalTitle,
+    fontSize: "clamp(28px, 7.5vw, 34px)",
+    fontWeight: 500,
+    color: "#553d30",
+    margin: 0,
+    lineHeight: 1.05,
+    textAlign: "left",
+  },
+
+  meuMundoPortalText: {
+    ...tecaHierarchy.l5Body,
+    margin: 0,
+    fontSize: "16px",
+    lineHeight: 1.5,
+    color: theme.muted,
+    maxWidth: "38ch",
   },
 
   meuMundoFicharioBinder: {

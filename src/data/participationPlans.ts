@@ -128,7 +128,7 @@ export const clubParticipationPlans: ParticipationPlan[] = [
     benefits: [
       "plano digital",
       "Universos, experiências e Meu Mundo digital",
-      "Diário, Coleções e Biblioteca de materiais para imprimir",
+      "Diário, Minhas Descobertas e Biblioteca de materiais para imprimir",
     ],
     ctaLabel: "Começar pelo digital",
   },

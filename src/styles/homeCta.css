@@ -27,14 +27,16 @@
   outline-offset: 2px;
 }
 
-.meu-mundo-ficha-card:hover {
+.meu-mundo-portal {
+  transition: transform 0.22s ease;
+}
+
+.meu-mundo-portal:hover {
   transform: translateY(-1px);
 }
 
-.meu-mundo-ficha-card:hover [data-meu-mundo-tab-body] {
-  box-shadow:
-    0 8px 20px rgba(90, 70, 50, 0.07),
-    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+.meu-mundo-portal:hover .meu-mundo-portal-card {
+  border-color: var(--portal-border) !important;
 }
 
 .fichario-colecao-card {

@@ -9,12 +9,21 @@ import {
 import {
   ficharioUniverses,
 } from "./data/minhaColecaoMock"
+import {
+  buildInitialDiscoveryRegistry,
+  discoverySlotKey,
+} from "./data/discoveryRegistry"
+import { getUniverseAccent } from "./data/universeAccent"
+import type { UniverseId } from "./data/universeAssets"
+import type { FicharioSlot } from "./data/minhaColecaoMock"
+import { DiscoveryRegisterModal } from "./components/DiscoveryRegisterModal"
 import { FicharioUniversePanel } from "./components/FicharioUniversePanel"
 import {
   FicharioEtiqueta,
   FicharioFicha,
   formatMemoriaCodigo,
 } from "./components/fichario"
+import { formatDiscoveryTitle } from "./playData"
 import { styles } from "./styles/appStyles"
 import {
   diaryMarkerChoices,
@@ -593,10 +602,11 @@ export function DiaryPage({
 
       <div style={s.diaryChapterHero}>
         <span style={s.diaryChapterSpine} aria-hidden="true" />
-        <p style={s.diaryKicker}>fichas de memória</p>
-        <h1 style={s.diaryTitle}>Meu Diário</h1>
+        <p style={s.diaryKicker}>diário livre</p>
+        <h1 style={s.diaryTitle}>Diário</h1>
         <p style={s.diaryIntro}>
-          Algumas descobertas merecem virar ficha de memória.
+          Um lugar para escrever, desenhar e registrar aquilo que chamou sua
+          atenção.
         </p>
       </div>
 
@@ -634,7 +644,7 @@ export function DiaryPage({
         onClick={() => setScreen("diario-guardar")}
         style={s.discoveryButton}
       >
-        registrar nova ficha de memória →
+        escrever no diário →
       </FicharioEtiqueta>
     </section>
   )
@@ -692,11 +702,11 @@ export function DiaryNewEntryPage({
       </button>
 
       <div style={s.pageIntroBlock}>
-        <p style={s.diaryKicker}>nova ficha de memória</p>
+        <p style={s.diaryKicker}>nova entrada</p>
         <h1 style={s.diaryNewPageTitle}>Registrar observação</h1>
         <p style={s.diaryNewPageIntro}>
-          Preencha a ficha com o que você observou — sem pressa, sem resposta
-          certa.
+          Escreva, desenhe ou registre o que chamou sua atenção — sem pressa, sem
+          resposta certa.
         </p>
       </div>
 
@@ -779,7 +789,7 @@ export function DiaryNewEntryPage({
       </article>
 
       <FicharioEtiqueta action onClick={handleSave} style={s.saveButton}>
-        guardar ficha de memória →
+        guardar no diário →
       </FicharioEtiqueta>
     </section>
   )
@@ -791,6 +801,22 @@ export function CollectionsPage({
   setScreen: SetScreen
 }) {
   const [expandedId, setExpandedId] = useState<string | null>(null)
+  const [registeredKeys, setRegisteredKeys] = useState(buildInitialDiscoveryRegistry)
+  const [activeRegistration, setActiveRegistration] = useState<{
+    universeId: UniverseId
+    slot: FicharioSlot
+  } | null>(null)
+
+  const confirmRegistration = () => {
+    if (!activeRegistration) return
+
+    const key = discoverySlotKey(
+      activeRegistration.universeId,
+      activeRegistration.slot.id,
+    )
+    setRegisteredKeys((current) => new Set(current).add(key))
+    setActiveRegistration(null)
+  }
 
   return (
     <section style={s.subPage}>
@@ -804,15 +830,15 @@ export function CollectionsPage({
 
       <div style={s.colecoesChapterHero}>
         <span style={s.colecoesChapterSpine} aria-hidden="true" />
-        <p style={s.colecoesKicker}>fichário de descobertas</p>
-        <h1 style={s.colecoesTitle}>Coleções</h1>
+        <p style={s.colecoesKicker}>coleção pessoal</p>
+        <h1 style={s.colecoesTitle}>Minhas Descobertas</h1>
         <p style={s.colecoesPageIntro}>
-          Cada universo guarda sua própria coleção de fichas — um fichário que
-          cresce devagar, ficha por ficha.
+          Aqui ficam guardadas as experiências que já fazem parte da sua jornada
+          de descobertas.
         </p>
       </div>
 
-      <p style={s.colecoesSectionLabel}>Suas coleções</p>
+      <p style={s.colecoesSectionLabel}>Por universo</p>
 
       <div style={styles.ficharioUniversosStack}>
         {ficharioUniverses.map((universe) => (
@@ -820,12 +846,28 @@ export function CollectionsPage({
             key={universe.id}
             universe={universe}
             expanded={expandedId === universe.id}
+            registeredKeys={registeredKeys}
+            onSlotRegisterRequest={(slot) =>
+              setActiveRegistration({
+                universeId: universe.id as UniverseId,
+                slot,
+              })
+            }
             onToggle={() =>
               setExpandedId(expandedId === universe.id ? null : universe.id)
             }
           />
         ))}
       </div>
+
+      {activeRegistration ? (
+        <DiscoveryRegisterModal
+          title={formatDiscoveryTitle(activeRegistration.slot.title ?? "")}
+          accent={getUniverseAccent(activeRegistration.universeId)}
+          onDismiss={() => setActiveRegistration(null)}
+          onConfirm={confirmRegistration}
+        />
+      ) : null}
     </section>
   )
 }
@@ -850,7 +892,7 @@ export function CollectionDetailPage({
         onClick={() => setScreen("colecoes")}
         style={s.backButton}
       >
-        ← coleções
+        ← minhas descobertas
       </button>
 
       <img
