@@ -135,7 +135,15 @@ const s: Record<string, CSSProperties> = {
     textAlign: "left",
     marginLeft: 0,
     marginRight: 0,
-    marginBottom: 0,
+    marginBottom: `${tecaSpacing.poeticToSection}px`,
+  },
+  colecoesPageSubtitle: {
+    ...tecaHierarchy.l5Body,
+    textAlign: "left",
+    margin: 0,
+    color: theme.muted,
+    fontSize: "17px",
+    lineHeight: 1.5,
   },
   colecoesSectionLabel: {
     ...tecaHierarchy.l3SectionTitle,
@@ -833,12 +841,16 @@ export function CollectionsPage({
         <p style={s.colecoesKicker}>coleção pessoal</p>
         <h1 style={s.colecoesTitle}>Minhas Descobertas</h1>
         <p style={s.colecoesPageIntro}>
-          Aqui ficam guardadas as experiências que já fazem parte da sua jornada
-          de descobertas.
+          As experiências que você já realizou e decidiu guardar.
+        </p>
+        <p style={s.colecoesPageSubtitle}>
+          Cada descoberta registrada ganha seu lugar aqui.
         </p>
       </div>
 
-      <p style={s.colecoesSectionLabel}>Por universo</p>
+      <p style={s.colecoesSectionLabel}>
+        Organize suas experiências por universo.
+      </p>
 
       <div style={styles.ficharioUniversosStack}>
         {ficharioUniverses.map((universe) => (
@@ -862,7 +874,11 @@ export function CollectionsPage({
 
       {activeRegistration ? (
         <DiscoveryRegisterModal
-          title={formatDiscoveryTitle(activeRegistration.slot.title ?? "")}
+          title={
+            activeRegistration.slot.title
+              ? formatDiscoveryTitle(activeRegistration.slot.title)
+              : "Nova experiência"
+          }
           accent={getUniverseAccent(activeRegistration.universeId)}
           onDismiss={() => setActiveRegistration(null)}
           onConfirm={confirmRegistration}

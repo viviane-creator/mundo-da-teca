@@ -1,3 +1,5 @@
+import { atelierCommerceCopy } from "./atelierCommerce"
+
 export type AtelierFeaturedItemState = "available" | "developing"
 
 export type AtelierFeaturedItem = {
@@ -25,22 +27,22 @@ export const atelierFeaturedItems: AtelierFeaturedItem[] = [
     title: "Meu Fichário de Descobertas",
     seal: "Em desenvolvimento",
     description:
-      "O lugar onde as fichas de descoberta encontram uma casa. Organize universos, coleções e registros em um único fichário criado para acompanhar anos de exploração.",
+      "O lugar onde as descobertas ganham uma história. Organize experiências, registros e coleções em um único fichário criado para acompanhar anos de exploração.",
     complementaryText:
-      "Projetado para guardar as fichas dos seis universos do Mundo da Teca e crescer junto com novas descobertas.",
+      "Projetado para guardar as fichas dos seis universos do Mundo da Teca.",
     image: "/images/fichario-open.webp",
     imageAlt: "Meu Fichário de Descobertas",
     state: "developing",
-    ctaLabel: "Em preparação",
+    ctaLabel: atelierCommerceCopy.notifyWhenAvailable,
   },
   {
     id: "bau",
-    title: "Meu Mundo de Tesouros",
-    seal: "O primeiro grande tesouro do Mundo da Teca",
+    title: "Baú de Tesouros",
+    seal: "",
     description:
-      "Um lugar para guardar aquilo que merece continuar com você.",
+      "Um lugar para guardar aquilo que a criança considera especial.",
     image: "/images/bau-tesouros-open.webp",
-    imageAlt: "Meu Mundo de Tesouros",
+    imageAlt: "Baú de Tesouros",
     state: "available",
     ctaLabel: "Ver detalhes",
     productId: "bau",

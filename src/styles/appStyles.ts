@@ -2961,7 +2961,9 @@ export const styles: Record<string, CSSProperties> = {
   discoveryRegisterModal: {
     position: "relative",
     width: "100%",
-    maxWidth: "360px",
+    maxWidth: "420px",
+    maxHeight: "min(90vh, 720px)",
+    overflowY: "auto",
     borderRadius: "22px",
     border: "1px dashed rgba(196, 165, 141, 0.42)",
     background: "rgba(255, 253, 249, 0.98)",
@@ -2988,8 +2990,82 @@ export const styles: Record<string, CSSProperties> = {
     ...tecaFont.portalTitle,
     fontSize: "30px",
     lineHeight: 1.05,
-    margin: "0 0 14px",
+    margin: "0 0 18px",
     textAlign: "left",
+  },
+
+  discoveryRegisterField: {
+    display: "flex",
+    flexDirection: "column",
+    gap: "8px",
+    marginBottom: "16px",
+  },
+
+  discoveryRegisterLabel: {
+    ...tecaHierarchy.l6Micro,
+    margin: 0,
+    textAlign: "left",
+  },
+
+  discoveryRegisterTextarea: {
+    width: "100%",
+    minHeight: "72px",
+    resize: "vertical",
+    borderRadius: "14px",
+    border: "1px dashed rgba(196, 165, 141, 0.42)",
+    background: "rgba(255, 253, 249, 0.92)",
+    padding: "12px 14px",
+    fontFamily: "'Cormorant Garamond', serif",
+    fontSize: "17px",
+    lineHeight: 1.45,
+    color: "#6a4f3c",
+    boxSizing: "border-box",
+  },
+
+  discoveryRegisterMediaPlaceholder: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    minHeight: "96px",
+    borderRadius: "16px",
+    border: "1px dashed rgba(196, 165, 141, 0.38)",
+    background:
+      "repeating-linear-gradient(135deg, rgba(196,165,141,0.06) 0 10px, transparent 10px 20px), rgba(255, 253, 249, 0.88)",
+  },
+
+  discoveryRegisterMediaHint: {
+    ...tecaHierarchy.l5Body,
+    margin: 0,
+    color: "#9a8475",
+    fontSize: "15px",
+    textAlign: "center",
+    padding: "0 16px",
+  },
+
+  discoveryRegisterKeepFieldset: {
+    border: "none",
+    margin: "0 0 18px",
+    padding: 0,
+  },
+
+  discoveryRegisterKeepOptions: {
+    display: "flex",
+    gap: "10px",
+    marginTop: "10px",
+  },
+
+  discoveryRegisterKeepOption: {
+    ...tecaFichario.etiquetaAction(),
+    flex: 1,
+    fontSize: "17px",
+    background: "rgba(255, 253, 249, 0.85)",
+    borderStyle: "dashed",
+  },
+
+  discoveryRegisterKeepOptionActive: {
+    background: "rgba(249, 243, 235, 0.98)",
+    borderStyle: "solid",
+    boxShadow: "inset 0 1px 0 rgba(255,255,255,0.75)",
   },
 
   discoveryRegisterQuestion: {

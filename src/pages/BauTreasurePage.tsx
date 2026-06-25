@@ -43,23 +43,21 @@ export function BauTreasurePage({
         </div>
 
         <div style={styles.bauTreasureBody}>
-          <span style={styles.bauTreasureSeal}>{bauTreasureContent.seal}</span>
           <h1 style={styles.bauTreasureTitle}>{bauTreasureContent.title}</h1>
 
-          {bauTreasureContent.description.map((paragraph) => (
-            <p key={paragraph} style={styles.bauTreasureDescription}>
-              {paragraph}
+          {bauTreasureContent.paragraphs.map((paragraph) => (
+            <p
+              key={paragraph}
+              style={styles.bauTreasureDescription}
+            >
+              {paragraph.split("\n").map((line, index, lines) => (
+                <span key={`${line}-${index}`}>
+                  {line}
+                  {index < lines.length - 1 ? <br /> : null}
+                </span>
+              ))}
             </p>
           ))}
-
-          <div style={styles.bauTreasureInfoList}>
-            {bauTreasureContent.info.map((item) => (
-              <div key={item.label} style={styles.bauTreasureInfoBlock}>
-                <p style={styles.bauTreasureInfoLabel}>{item.label}</p>
-                <p style={styles.bauTreasureInfoValue}>{item.value}</p>
-              </div>
-            ))}
-          </div>
 
           {inBox ? (
             <FicharioEtiqueta style={styles.bauTreasureCtaMuted}>

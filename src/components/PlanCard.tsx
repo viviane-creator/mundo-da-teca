@@ -30,25 +30,27 @@ export function PlanCard({
 
     return (
       <article style={styles.homeV2PathCard}>
-        <div style={styles.homeV2PathCardDecor} aria-hidden="true">
-          {journey.decor.map((item) => (
-            <img
-              key={item.src}
-              src={item.src}
-              alt=""
-              style={{
-                ...styles.homeV2PathCardDecorImg,
-                width: `${item.w}px`,
-                height: `${item.h}px`,
-                ...(item.top ? { top: item.top } : {}),
-                ...(item.bottom ? { bottom: item.bottom } : {}),
-                ...(item.left ? { left: item.left } : {}),
-                ...(item.right ? { right: item.right } : {}),
-                transform: `rotate(${item.rotate}deg)`,
-              }}
-            />
-          ))}
-        </div>
+        {journey.decor.length > 0 ? (
+          <div style={styles.homeV2PathCardDecor} aria-hidden="true">
+            {journey.decor.map((item) => (
+              <img
+                key={item.src}
+                src={item.src}
+                alt=""
+                style={{
+                  ...styles.homeV2PathCardDecorImg,
+                  width: `${item.w}px`,
+                  height: `${item.h}px`,
+                  ...(item.top ? { top: item.top } : {}),
+                  ...(item.bottom ? { bottom: item.bottom } : {}),
+                  ...(item.left ? { left: item.left } : {}),
+                  ...(item.right ? { right: item.right } : {}),
+                  transform: `rotate(${item.rotate}deg)`,
+                }}
+              />
+            ))}
+          </div>
+        ) : null}
 
         <div style={styles.homeV2PathCardInner}>
           <h3 style={styles.homeV2PathJourneyTitle}>{plan.title}</h3>

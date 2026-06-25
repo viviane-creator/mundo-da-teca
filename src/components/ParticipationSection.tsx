@@ -1,5 +1,6 @@
 import type { ParticipationPlanId } from "../data/participationPlans"
 import { participationPlans } from "../data/participationPlans"
+import { homeClubCopy } from "../data/homeClubCopy"
 import { styles } from "../styles/appStyles"
 import { PlanCard } from "./PlanCard"
 
@@ -13,11 +14,8 @@ export function ParticipationSection({
   if (variant === "home-path") {
     return (
       <section style={styles.homeV2PathSection}>
-        <h2 style={styles.homeV2ChapterPlaceTitle}>Clube</h2>
-        <p style={styles.homeV2ChapterSectionHeading}>Escolha como deseja explorar.</p>
-        <p style={styles.homeV2ChapterSubtitle}>
-          Duas formas de participar da expedição.
-        </p>
+        <h2 style={styles.homeV2ChapterPlaceTitle}>{homeClubCopy.title}</h2>
+        <p style={styles.homeV2ChapterSubtitle}>{homeClubCopy.intro}</p>
 
         <div style={styles.homeV2PathStack}>
           {participationPlans.map((plan) => (

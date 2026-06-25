@@ -58,66 +58,16 @@ export const homeParticipationJourneys: Record<
   explorador: {
     journeyTitle: "Explorador",
     journeyText:
-      "Acesse experiências, registre descobertas e monte sua coleção digital.",
-    pathCta: "Explorar online",
-    decor: [
-      {
-        src: "/cards/descobertas/diario.png",
-        w: 46,
-        h: 34,
-        top: "6%",
-        left: "5%",
-        rotate: -11,
-      },
-      {
-        src: "/cards/descobertas/colecoes.png",
-        w: 40,
-        h: 36,
-        bottom: "16%",
-        right: "6%",
-        rotate: 9,
-      },
-      {
-        src: "/cards/descobertas/descoberta-do-dia.png",
-        w: 34,
-        h: 34,
-        top: "18%",
-        right: "8%",
-        rotate: 6,
-      },
-    ],
+      "Acesso digital às experiências, registros e biblioteca.",
+    pathCta: "Explorar Online",
+    decor: [],
   },
   colecionador: {
     journeyTitle: "Colecionador",
     journeyText:
-      "Receba páginas, materiais e tesouros para continuar explorando em casa.",
-    pathCta: "Receber em casa",
-    decor: [
-      {
-        src: "/cards/clube/correio.png",
-        w: 50,
-        h: 38,
-        top: "8%",
-        right: "5%",
-        rotate: 7,
-      },
-      {
-        src: "/cards/atelie/pacotinho-folhas.png",
-        w: 44,
-        h: 44,
-        bottom: "12%",
-        left: "4%",
-        rotate: -9,
-      },
-      {
-        src: "/cards/atelie/papel-de-carta.png",
-        w: 42,
-        h: 32,
-        top: "20%",
-        left: "7%",
-        rotate: -13,
-      },
-    ],
+      "Receba também materiais físicos e conteúdos para continuar explorando longe das telas.",
+    pathCta: "Receber em Casa",
+    decor: [],
   },
 }
 

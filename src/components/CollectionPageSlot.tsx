@@ -34,8 +34,9 @@ export function CollectionPageSlot({
         empty
         variant="descoberta"
         codigo={slotCodigo(slot.id)}
-        emptyLabel="espaço para nova ficha"
+        emptyLabel="espaço para nova experiência"
         tilt={tilt}
+        onSelect={() => onRegisterRequest(slot)}
       />
     )
   }
@@ -56,7 +57,7 @@ export function CollectionPageSlot({
       variant="descoberta"
       codigo={slotCodigo(slot.id)}
       title={title}
-      seal={isGuardada ? "✓ Descoberta Guardada" : null}
+      seal={isGuardada ? "✓ Experiência guardada" : null}
       tilt={tilt}
       onSelect={() => onRegisterRequest(slot)}
       style={guardadaStyle}

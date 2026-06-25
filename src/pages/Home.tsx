@@ -86,31 +86,6 @@ export function Home({
             <p style={styles.homeV2ChapterSubtitle}>
               {atelierPortalCopy.description}
             </p>
-
-            <article style={styles.homeV2AtelierFeatured}>
-              <img
-                src="/images/bau-tesouros-open.webp"
-                alt="Baú de Tesouros"
-                style={styles.homeV2AtelierFeaturedImage}
-              />
-              <div style={styles.homeV2AtelierFeaturedBody}>
-                <h3 style={styles.homeV2AtelierFeaturedTitle}>Baú de Tesouros</h3>
-                <p style={styles.homeV2AtelierFeaturedText}>
-                  O primeiro grande tesouro do Mundo da Teca.
-                </p>
-                <FicharioEtiqueta
-                  action
-                  onClick={() => setScreen(appRoutes.bauDeTesouros)}
-                  className={homeCtaClassName("atelie")}
-                  style={{
-                    ...styles.homeV2AtelierFeaturedButton,
-                    ...homeCtaStyle("atelie"),
-                  }}
-                >
-                  Conhecer o Baú
-                </FicharioEtiqueta>
-              </div>
-            </article>
           </div>
         </FicharioDivisoria>
 

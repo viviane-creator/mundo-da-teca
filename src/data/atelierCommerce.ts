@@ -1,5 +1,5 @@
 export const atelierCommerceCopy = {
-  addToCart: "Adicionar ao carrinho",
+  addToCart: "Adicionar ao Carrinho",
   inCart: "No carrinho",
   viewDetails: "Ver detalhes",
   buy: "Comprar",

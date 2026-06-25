@@ -21,7 +21,7 @@ export const meuMundoSections: MeuMundoPortal[] = [
   {
     id: "colecoes",
     title: "Minhas Descobertas",
-    text: "As experiências que você realizou e decidiu guardar.",
+    text: "As experiências que você já realizou e decidiu guardar.",
     buttonLabel: "Abrir Minhas Descobertas",
     screen: "colecoes",
     spine: "#8C9770",

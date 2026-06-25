@@ -26,7 +26,9 @@ export function AtelierFeaturedCard({
       ) : null}
 
       <div style={styles.atelierShowcaseFeaturedBody}>
-        <span style={styles.atelierShowcaseFeaturedSeal}>{item.seal}</span>
+        {item.seal ? (
+          <span style={styles.atelierShowcaseFeaturedSeal}>{item.seal}</span>
+        ) : null}
         <h2 style={styles.atelierShowcaseFeaturedTitle}>{item.title}</h2>
         <p style={styles.atelierShowcaseFeaturedText}>{item.description}</p>
         {item.complementaryText ? (

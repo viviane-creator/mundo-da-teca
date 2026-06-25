@@ -1,3 +1,4 @@
+import { useState } from "react"
 import type { UniverseAccent } from "../data/universeAccent"
 import { styles } from "../styles/appStyles"
 
@@ -12,6 +13,14 @@ export function DiscoveryRegisterModal({
   onDismiss: () => void
   onConfirm: () => void
 }) {
+  const [whatDiscovered, setWhatDiscovered] = useState("")
+  const [whatSurprised, setWhatSurprised] = useState("")
+  const [wantsToKeep, setWantsToKeep] = useState<boolean | null>(null)
+
+  const handleSave = () => {
+    onConfirm()
+  }
+
   return (
     <div
       style={styles.discoveryRegisterOverlay}
@@ -39,20 +48,83 @@ export function DiscoveryRegisterModal({
         <h2 id="discovery-register-title" style={styles.discoveryRegisterTitle}>
           {title}
         </h2>
-        <p style={styles.discoveryRegisterQuestion}>
-          Você já realizou esta descoberta?
-        </p>
+
+        <label style={styles.discoveryRegisterField}>
+          <span style={styles.discoveryRegisterLabel}>O que você descobriu?</span>
+          <textarea
+            value={whatDiscovered}
+            onChange={(event) => setWhatDiscovered(event.target.value)}
+            rows={3}
+            style={styles.discoveryRegisterTextarea}
+          />
+        </label>
+
+        <label style={styles.discoveryRegisterField}>
+          <span style={styles.discoveryRegisterLabel}>
+            O que mais te surpreendeu?
+          </span>
+          <textarea
+            value={whatSurprised}
+            onChange={(event) => setWhatSurprised(event.target.value)}
+            rows={3}
+            style={styles.discoveryRegisterTextarea}
+          />
+        </label>
+
+        <div style={styles.discoveryRegisterField}>
+          <span style={styles.discoveryRegisterLabel}>Desenho ou foto</span>
+          <div style={styles.discoveryRegisterMediaPlaceholder}>
+            <span style={styles.discoveryRegisterMediaHint}>
+              Espaço para desenho ou foto
+            </span>
+          </div>
+        </div>
+
+        <fieldset style={styles.discoveryRegisterKeepFieldset}>
+          <legend style={styles.discoveryRegisterLabel}>
+            Gostaria de guardar essa descoberta?
+          </legend>
+          <div style={styles.discoveryRegisterKeepOptions}>
+            <button
+              type="button"
+              onClick={() => setWantsToKeep(true)}
+              style={{
+                ...styles.discoveryRegisterKeepOption,
+                ...(wantsToKeep === true
+                  ? styles.discoveryRegisterKeepOptionActive
+                  : {}),
+                borderColor: accent.border,
+              }}
+            >
+              Sim
+            </button>
+            <button
+              type="button"
+              onClick={() => setWantsToKeep(false)}
+              style={{
+                ...styles.discoveryRegisterKeepOption,
+                ...(wantsToKeep === false
+                  ? styles.discoveryRegisterKeepOptionActive
+                  : {}),
+                borderColor: accent.border,
+              }}
+            >
+              Não
+            </button>
+          </div>
+        </fieldset>
+
         <div style={styles.discoveryRegisterActions}>
           <button
             type="button"
             onClick={onDismiss}
             style={styles.discoveryRegisterButtonSecondary}
           >
-            Ainda não
+            Cancelar
           </button>
           <button
             type="button"
-            onClick={onConfirm}
+            onClick={handleSave}
             style={{
               ...styles.discoveryRegisterButtonPrimary,
               borderColor: accent.border,
@@ -60,7 +132,7 @@ export function DiscoveryRegisterModal({
               background: accent.badgeBg,
             }}
           >
-            Sim, já fiz
+            Guardar no Meu Mundo
           </button>
         </div>
       </div>
