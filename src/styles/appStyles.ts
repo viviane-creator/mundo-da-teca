@@ -447,7 +447,39 @@ export const styles: Record<string, CSSProperties> = {
     transform: "rotate(-7deg)",
     opacity: 0.7,
     flexShrink: 0,
-    whiteSpace: "nowrap",
+  },
+
+  homeV2MeuMundoSeals: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    flexWrap: "nowrap",
+    gap: "8px",
+    margin: "18px auto 6px",
+    width: "100%",
+    maxWidth: "280px",
+    opacity: 0.9,
+  },
+
+  homeV2MeuMundoSeal: {
+    position: "relative",
+    width: "34px",
+    height: "34px",
+    borderRadius: "50%",
+    display: "block",
+    flexShrink: 0,
+    overflow: "hidden",
+    backgroundColor: "rgba(255,253,249,0.55)",
+  },
+
+  homeV2MeuMundoSealIcon: {
+    width: "100%",
+    height: "100%",
+    objectFit: "cover",
+    objectPosition: "center",
+    display: "block",
+    opacity: 0.94,
+    filter: "saturate(0.9)",
   },
 
   homeSectionHeading: {

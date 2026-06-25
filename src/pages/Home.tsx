@@ -1,4 +1,5 @@
 import { HomeExploreMap } from "../components/HomeExploreMap"
+import { MeuMundoCollectionSeals } from "../components/MeuMundoCollectionSeals"
 import { FicharioDivisoria, FicharioEtiqueta } from "../components/fichario"
 import { ParticipationSection } from "../components/ParticipationSection"
 import type { ParticipationPlanId } from "../data/participationPlans"
@@ -61,6 +62,7 @@ export function Home({
               <p style={styles.homeV2ChapterSubtitle}>
                 O lugar onde suas descobertas ganham uma casa.
               </p>
+              <MeuMundoCollectionSeals />
               <FicharioEtiqueta
                 action
                 onClick={() => setScreen(appRoutes.minhaColecao)}
