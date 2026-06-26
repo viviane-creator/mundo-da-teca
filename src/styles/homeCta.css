@@ -46,3 +46,17 @@
 .fichario-colecao-divider:hover .fichario-colecao-card {
   border-color: var(--universe-border) !important;
 }
+
+.top-access-link {
+  transition: color 0.2s ease, opacity 0.2s ease;
+}
+
+.top-access-link:hover {
+  color: #6a4f3c;
+  opacity: 0.92;
+}
+
+.top-access-link:focus-visible {
+  outline: 1px solid rgba(122, 98, 84, 0.45);
+  outline-offset: 3px;
+}

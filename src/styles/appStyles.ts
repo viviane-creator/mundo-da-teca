@@ -4559,5 +4559,207 @@ export const styles: Record<string, CSSProperties> = {
     maxWidth: "30ch",
     opacity: 0.88,
   },
+
+  topAccessLink: {
+    position: "absolute",
+    top: "16px",
+    right: "22px",
+    zIndex: 40,
+    background: "none",
+    border: "none",
+    padding: "6px 2px",
+    cursor: "pointer",
+    fontFamily: "'Cormorant Garamond', serif",
+    fontSize: "14px",
+    fontWeight: 400,
+    letterSpacing: "0.4px",
+    color: "#7a6254",
+    WebkitTapHighlightColor: "transparent",
+  },
+
+  authOverlay: {
+    position: "fixed",
+    inset: 0,
+    zIndex: 120,
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    padding: "24px",
+    background: "rgba(72, 48, 32, 0.22)",
+  },
+
+  authModal: {
+    position: "relative",
+    width: "100%",
+    maxWidth: "380px",
+    borderRadius: "20px",
+    border: "1px dashed rgba(196, 165, 141, 0.42)",
+    background: "rgba(255, 253, 249, 0.98)",
+    padding: "28px 24px 24px 26px",
+    boxShadow: "0 16px 40px rgba(90, 60, 38, 0.1)",
+    overflow: "hidden",
+  },
+
+  authModalSpine: {
+    position: "absolute",
+    left: 0,
+    top: 0,
+    bottom: 0,
+    width: "5px",
+    borderRadius: "20px 0 0 20px",
+    background: "#B99B5C",
+  },
+
+  authModalKicker: {
+    ...tecaFont.micro,
+    fontSize: "9px",
+    letterSpacing: "1.8px",
+    margin: "0 0 10px",
+    textAlign: "center",
+    color: "#b3815f",
+  },
+
+  authModalTitle: {
+    ...tecaFont.heading,
+    fontSize: "28px",
+    textAlign: "center",
+    margin: "0 0 12px",
+    lineHeight: 1.1,
+  },
+
+  authModalText: {
+    ...tecaFont.prose,
+    fontSize: "15px",
+    textAlign: "center",
+    margin: "0 auto 24px",
+    maxWidth: "300px",
+    lineHeight: 1.5,
+  },
+
+  authForm: {
+    display: "flex",
+    flexDirection: "column",
+    gap: "16px",
+  },
+
+  authField: {
+    display: "flex",
+    flexDirection: "column",
+    gap: "6px",
+  },
+
+  authFieldLabel: {
+    ...tecaFont.micro,
+    fontSize: "9px",
+    letterSpacing: "1.4px",
+    color: "#b3815f",
+  },
+
+  authFieldInput: {
+    border: "none",
+    borderBottom: `1px solid ${tecaColors.line}`,
+    background: "transparent",
+    padding: "6px 0 10px",
+    outline: "none",
+    fontFamily: "'Cormorant Garamond', serif",
+    fontSize: "18px",
+    color: tecaColors.text,
+  },
+
+  authActions: {
+    display: "flex",
+    flexDirection: "column",
+    gap: "10px",
+    marginTop: "8px",
+  },
+
+  authButtonPrimary: {
+    ...tecaFichario.etiquetaAction(),
+    fontSize: "18px",
+  },
+
+  authButtonSecondary: {
+    border: "none",
+    background: "transparent",
+    padding: "8px",
+    cursor: "pointer",
+    fontFamily: "'Cormorant Garamond', serif",
+    fontSize: "15px",
+    color: tecaColors.muted,
+    textAlign: "center",
+  },
+
+  clubGate: {
+    padding: "20px 22px 0",
+    minHeight: "60vh",
+    display: "flex",
+    flexDirection: "column",
+  },
+
+  clubGateBack: {
+    alignSelf: "flex-start",
+    border: "none",
+    background: "transparent",
+    padding: "4px 0",
+    cursor: "pointer",
+    fontFamily: "'Cormorant Garamond', serif",
+    fontSize: "15px",
+    color: tecaColors.muted,
+    marginBottom: "32px",
+  },
+
+  clubGateContent: {
+    flex: 1,
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
+    textAlign: "center",
+    padding: "0 12px 24px",
+  },
+
+  clubGateSeal: {
+    ...tecaObjects.seal(),
+    marginBottom: "24px",
+    fontSize: "10px",
+    letterSpacing: "1.2px",
+    textTransform: "uppercase",
+  },
+
+  clubGateTitle: {
+    ...tecaFont.heading,
+    fontSize: "26px",
+    lineHeight: 1.25,
+    margin: "0 0 16px",
+    maxWidth: "320px",
+    color: tecaColors.text,
+  },
+
+  clubGateText: {
+    ...tecaFont.prose,
+    fontSize: "16px",
+    lineHeight: 1.55,
+    margin: "0 auto 32px",
+    maxWidth: "300px",
+    color: tecaColors.muted,
+  },
+
+  clubGateActions: {
+    display: "flex",
+    flexDirection: "column",
+    gap: "12px",
+    width: "100%",
+    maxWidth: "280px",
+  },
+
+  clubGateButtonPrimary: {
+    fontSize: "18px",
+  },
+
+  clubGateButtonSecondary: {
+    fontSize: "17px",
+    color: tecaColors.muted,
+    background: "rgba(255, 253, 249, 0.6)",
+  },
 }
 

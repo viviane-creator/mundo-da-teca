@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState, type ReactNode } from "react"
 import "./fonts.css"
 import "./styles/homeCta.css"
 import {
@@ -65,6 +65,12 @@ import { BibliotecaPage } from "./pages/BibliotecaPage"
 import { AtelierProductPage } from "./pages/AtelierProductPage"
 import { BauTreasurePage } from "./pages/BauTreasurePage"
 import { MinhaCaixaPage } from "./pages/MinhaCaixaPage"
+import { AuthProvider, useAuth } from "./auth/authContext"
+import { isClubExclusiveScreen } from "./auth/clubExclusiveScreens"
+import { TopAccessLink } from "./components/TopAccessLink"
+import { LoginModal } from "./components/LoginModal"
+import { AccountModal } from "./components/AccountModal"
+import { ClubGateScreen } from "./components/ClubGateScreen"
 
 type Screen =
   | "home"
@@ -308,7 +314,25 @@ function resolveNavActive(screen: Screen): string {
   return screen
 }
 
-export default function App() {
+function ClubGated({
+  screen,
+  setScreen,
+  children,
+}: {
+  screen: Screen
+  setScreen: (screen: Screen) => void
+  children: ReactNode
+}) {
+  const { isAuthenticated } = useAuth()
+
+  if (!isAuthenticated && isClubExclusiveScreen(screen)) {
+    return <ClubGateScreen setScreen={setScreen} />
+  }
+
+  return <>{children}</>
+}
+
+function AppContent() {
   const [screen, setScreen] = useState<Screen>("home")
   const [clubPlanFocus, setClubPlanFocus] = useState<ParticipationPlanId | null>(
     null,
@@ -342,6 +366,10 @@ export default function App() {
   return (
     <main style={styles.main}>
       <section style={styles.appShell}>
+        <TopAccessLink />
+        <LoginModal />
+        <AccountModal />
+
         {screen === "home" && (
           <Home setScreen={setScreen} onGoToClube={goToClubePlan} />
         )}
@@ -367,7 +395,7 @@ export default function App() {
         )}
 
         {isDiscoveryFlowScreen(screen) && (
-          <>
+          <ClubGated screen={screen} setScreen={setScreen}>
             {screen === "diario" && (
               <DiaryPage setScreen={setScreen} entries={diaryEntries} />
             )}
@@ -383,7 +411,7 @@ export default function App() {
             {isCollectionDetailScreen(screen) && (
               <CollectionDetailPage setScreen={setScreen} screen={screen} />
             )}
-          </>
+          </ClubGated>
         )}
 
         {isSimpleSubScreen(screen) && (
@@ -455,7 +483,11 @@ export default function App() {
 
         {screen === "meu-mundo" && <MeuMundoPage setScreen={setScreen} />}
 
-        {screen === "biblioteca" && <BibliotecaPage setScreen={setScreen} />}
+        {screen === "biblioteca" && (
+          <ClubGated screen={screen} setScreen={setScreen}>
+            <BibliotecaPage setScreen={setScreen} />
+          </ClubGated>
+        )}
 
         <InstitutionalFooter />
 
@@ -701,5 +733,13 @@ function DiscoveryDay({
         </div>
       )}
     </section>
+  )
+}
+
+export default function App() {
+  return (
+    <AuthProvider>
+      <AppContent />
+    </AuthProvider>
   )
 }
