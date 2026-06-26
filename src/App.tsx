@@ -49,6 +49,7 @@ import {
 import { pageData } from "./data/pageData"
 import { getUniverseChapterTitle } from "./data/homeUniversePortals"
 import { UniversosPage } from "./pages/UniversosPage"
+import { UniverseChapterFrame } from "./components/UniverseChapterFrame"
 import { FeatureCard } from "./components/FeatureCard"
 import { SoftNote } from "./components/SoftNote"
 import { BottomNav } from "./components/BottomNav"
@@ -518,10 +519,10 @@ function PlayUniversePage({
         ← universos
       </button>
 
-      <img
+      <UniverseChapterFrame
         src={universe.image}
         alt={getUniverseChapterTitle(universe.id)}
-        style={styles.playUniverseChapterOpening}
+        universeId={universe.id}
       />
 
       <header style={styles.playUniverseChapterEditorial}>

@@ -198,7 +198,7 @@ export const styles: Record<string, CSSProperties> = {
     boxShadow: "0 10px 28px rgba(120,90,60,0.06)",
   },
 
-  /** Abertura de capítulo — página ilustrada, sem moldura de card */
+  /** Abertura de capítulo — prancha editorial com moldura dupla */
   playUniverseChapterOpening: {
     display: "block",
     width: "calc(100% + 48px)",
@@ -212,6 +212,54 @@ export const styles: Record<string, CSSProperties> = {
     boxShadow: "0 18px 42px rgba(120,90,60,0.07)",
     border: "none",
     borderRadius: 0,
+  },
+
+  universeChapterFrame: {
+    position: "relative",
+    width: "calc(100% + 48px)",
+    margin: "0 -24px 22px",
+    padding: "1px",
+    borderRadius: "16px",
+    border: "1px solid #B89A62",
+    background: "#faf6f0",
+    boxShadow: "0 12px 32px rgba(120,90,60,0.05)",
+    boxSizing: "border-box",
+  },
+
+  universeChapterFrameSeal: {
+    position: "absolute",
+    top: "-15px",
+    left: "50%",
+    transform: "translateX(-50%)",
+    zIndex: 2,
+    width: "34px",
+    height: "34px",
+    borderRadius: "999px",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    background: "#faf6f0",
+    border: "1px solid #B89A62",
+    boxShadow: "0 2px 10px rgba(120,90,60,0.06)",
+    pointerEvents: "none",
+  },
+
+  universeChapterFrameInner: {
+    borderRadius: "15px",
+    border: "1px solid #A9864F",
+    padding: "12px",
+    background:
+      "linear-gradient(180deg, #faf6f0 0%, #f5efe5 55%, #f0e8dc 100%)",
+  },
+
+  universeChapterFrameImage: {
+    display: "block",
+    width: "100%",
+    aspectRatio: "1 / 1",
+    objectFit: "contain",
+    objectPosition: "center top",
+    borderRadius: "6px",
+    background: "transparent",
   },
 
   playUniverseChapterEditorial: {
