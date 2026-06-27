@@ -1,11 +1,12 @@
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
+import { useAuth } from "../auth/authContext"
 import { clubPlanAccents } from "../data/clubPlanAccent"
 import { clubParticipationPlans } from "../data/participationPlans"
 import type { ParticipationPlanId } from "../data/participationPlans"
 import { PlanCard } from "../components/PlanCard"
+import { ClubMemberCard } from "../components/ClubMemberCard"
 import { appRoutes } from "../navigation/appRoutes"
 import { styles } from "../styles/appStyles"
-import { tecaTilt } from "../tecaVisual"
 import { WorldPortalLayout, portalPages } from "../worldPortal"
 
 export function ClubPage({
@@ -15,9 +16,7 @@ export function ClubPage({
   setScreen: (screen: string) => void
   focusPlan?: ParticipationPlanId | null
 }) {
-  const [childName, setChildName] = useState("teca")
-  const [birthday, setBirthday] = useState("12 de abril")
-  const [memberSince, setMemberSince] = useState("maio de 2026")
+  const { user } = useAuth()
   const portal = portalPages.clube
 
   useEffect(() => {
@@ -75,54 +74,7 @@ export function ClubPage({
 
       <section style={styles.clubCarteirinhaSection}>
         <p style={styles.clubSecondaryLabel}>pertencimento</p>
-
-        <article style={{ ...styles.clubMemberCard, ...tecaTilt(-0.35) }}>
-          <span aria-hidden="true" style={styles.clubMemberCardFrame} />
-          <span aria-hidden="true" style={styles.clubMemberCardSeal} />
-
-          <header style={styles.clubMemberCardHeader}>
-            <p style={styles.clubMemberCardIssuer}>Mundo da Teca</p>
-            <p style={styles.clubMemberNumber}>carteirinha nº 024</p>
-          </header>
-
-          <h2 style={styles.clubMemberCardTitle}>carteirinha da teca</h2>
-          <p style={styles.clubMemberCardSubtitle}>
-            documento de explorador — para guardar com orgulho
-          </p>
-
-          <div style={styles.clubField}>
-            <p style={styles.clubFieldLabel}>nome da criança</p>
-            <input
-              type="text"
-              value={childName}
-              onChange={(e) => setChildName(e.target.value)}
-              style={styles.clubFieldLine}
-              aria-label="nome da criança"
-            />
-          </div>
-
-          <div style={styles.clubField}>
-            <p style={styles.clubFieldLabel}>aniversário</p>
-            <input
-              type="text"
-              value={birthday}
-              onChange={(e) => setBirthday(e.target.value)}
-              style={styles.clubFieldLine}
-              aria-label="aniversário"
-            />
-          </div>
-
-          <div style={styles.clubField}>
-            <p style={styles.clubFieldLabel}>membro desde</p>
-            <input
-              type="text"
-              value={memberSince}
-              onChange={(e) => setMemberSince(e.target.value)}
-              style={styles.clubFieldLine}
-              aria-label="membro desde"
-            />
-          </div>
-        </article>
+        <ClubMemberCard user={user} />
       </section>
     </WorldPortalLayout>
   )

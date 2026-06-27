@@ -1,10 +1,10 @@
 import type { CSSProperties } from "react"
 import { useAuth } from "../auth/authContext"
 import {
-  bibliotecaDaChild,
-  colecaoDaChild,
-  diarioDaChild,
-  mundoDaChild,
+  bibliotecaDeChild,
+  colecaoDeChild,
+  diarioDeChild,
+  mundoDeChild,
 } from "../auth/childPersonalization"
 import { meuMundoClubSeal, meuMundoSections } from "../data/meuMundoMock"
 import { styles } from "../styles/appStyles"
@@ -18,13 +18,13 @@ export function MeuMundoPage({
   const { user, isAuthenticated } = useAuth()
   const portal = portalPages.meuMundo
   const portalTitle =
-    isAuthenticated && user ? mundoDaChild(user.childName) : portal.title
+    isAuthenticated && user ? mundoDeChild(user.childName) : portal.title
 
   const sectionTitle = (sectionId: string, fallback: string) => {
     if (!isAuthenticated || !user) return fallback
-    if (sectionId === "diario") return diarioDaChild(user.childName)
-    if (sectionId === "colecoes") return colecaoDaChild(user.childName)
-    if (sectionId === "biblioteca") return bibliotecaDaChild(user.childName)
+    if (sectionId === "diario") return diarioDeChild(user.childName)
+    if (sectionId === "colecoes") return colecaoDeChild(user.childName)
+    if (sectionId === "biblioteca") return bibliotecaDeChild(user.childName)
     return fallback
   }
 

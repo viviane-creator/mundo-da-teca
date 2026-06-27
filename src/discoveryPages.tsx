@@ -1,6 +1,6 @@
 import { useRef, useState, type CSSProperties } from "react"
 import { useAuth } from "./auth/authContext"
-import { colecaoDaChild, diarioDaChild } from "./auth/childPersonalization"
+import { colecaoDeChild, diarioDeChild } from "./auth/childPersonalization"
 import {
   buildDiaryDescription,
   formatPoeticDate,
@@ -602,7 +602,7 @@ export function DiaryPage({
 }) {
   const { user, isAuthenticated } = useAuth()
   const diaryTitle =
-    isAuthenticated && user ? diarioDaChild(user.childName) : "Diário"
+    isAuthenticated && user ? diarioDeChild(user.childName) : "Diário"
 
   return (
     <section style={s.subPage}>
@@ -816,7 +816,7 @@ export function CollectionsPage({
 }) {
   const { user, isAuthenticated } = useAuth()
   const collectionTitle =
-    isAuthenticated && user ? colecaoDaChild(user.childName) : "Minhas Descobertas"
+    isAuthenticated && user ? colecaoDeChild(user.childName) : "Minhas Descobertas"
   const [expandedId, setExpandedId] = useState<string | null>(null)
   const [registeredKeys, setRegisteredKeys] = useState(buildInitialDiscoveryRegistry)
   const [activeRegistration, setActiveRegistration] = useState<{

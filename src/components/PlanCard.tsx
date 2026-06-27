@@ -4,6 +4,7 @@ import {
   clubInstitutionalCtaTone,
   clubPlanAccents,
   clubPlanCardShellStyle,
+  clubPlanCtaTone,
   clubPlanSealStyle,
   clubPlanSpineStyle,
 } from "../data/clubPlanAccent"
@@ -92,10 +93,10 @@ export function PlanCard({
         <FicharioEtiqueta
           action
           onClick={onCta}
-          className={homeCtaClassName(clubInstitutionalCtaTone)}
+          className={homeCtaClassName(clubPlanCtaTone(plan.id))}
           style={{
             ...styles.planCardButton,
-            ...homeCtaStyle(clubInstitutionalCtaTone),
+            ...homeCtaStyle(clubPlanCtaTone(plan.id)),
           }}
         >
           {plan.ctaLabel}

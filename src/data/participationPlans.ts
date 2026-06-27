@@ -91,6 +91,6 @@ export const clubParticipationPlans: ParticipationPlan[] = [
       "envio do Meu Mundo de Descobertas em casa",
       "materiais, páginas, fichas, colecionáveis e pequenos tesouros",
     ],
-    ctaLabel: "Receber em casa",
+    ctaLabel: "Receber em Casa",
   },
 ]

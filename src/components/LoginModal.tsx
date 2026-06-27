@@ -5,13 +5,17 @@ import {
 } from "../auth/birthDateInput"
 import { useAuth } from "../auth/authContext"
 import {
-  mundoProntoText,
-  prepararMundoTitle,
+  bemVindoDeVoltaText,
+  descobertasEsperandoText,
+  espacoProntoText,
 } from "../auth/childPersonalization"
 import { appRoutes } from "../navigation/appRoutes"
 import { styles } from "../styles/appStyles"
 
-type AccessStep = "welcome" | "signup" | "login" | "success"
+type AccessStep = "welcome" | "signup" | "login" | "success" | "welcomeBack"
+
+const SIGNUP_TITLE = "Vamos preparar um Mundo da Teca?"
+const RETURN_TITLE = "Bem-vindo ao Mundo da Teca."
 
 export function LoginModal({
   setScreen,
@@ -24,7 +28,7 @@ export function LoginModal({
   const [guardianEmail, setGuardianEmail] = useState("")
   const [childName, setChildName] = useState("")
   const [childBirthDate, setChildBirthDate] = useState("")
-  const [createdChildName, setCreatedChildName] = useState("")
+  const [welcomedChildName, setWelcomedChildName] = useState("")
   const [loginEmail, setLoginEmail] = useState("")
   const [loginError, setLoginError] = useState("")
 
@@ -35,7 +39,7 @@ export function LoginModal({
     setGuardianEmail("")
     setChildName("")
     setChildBirthDate("")
-    setCreatedChildName("")
+    setWelcomedChildName("")
     setLoginEmail("")
     setLoginError("")
   }, [loginModalOpen])
@@ -66,7 +70,7 @@ export function LoginModal({
       },
       { keepModalOpen: true },
     )
-    setCreatedChildName(trimmedChild)
+    setWelcomedChildName(trimmedChild)
     setStep("success")
   }
 
@@ -75,12 +79,16 @@ export function LoginModal({
     const trimmedEmail = loginEmail.trim()
     if (!trimmedEmail) return
 
-    const ok = loginByEmail(trimmedEmail)
-    if (!ok) {
+    const found = loginByEmail(trimmedEmail, { keepModalOpen: true })
+    if (!found) {
       setLoginError(
         "Não encontramos este e-mail. Que tal preparar um Mundo da Teca?",
       )
+      return
     }
+
+    setWelcomedChildName(found.childName)
+    setStep("welcomeBack")
   }
 
   const enterMeuMundo = () => {
@@ -107,7 +115,7 @@ export function LoginModal({
           <div key="welcome" className="auth-modal-step">
             <p style={styles.authModalKicker}>primeiro acesso</p>
             <h2 id="access-modal-title" style={styles.authModalTitle}>
-              Vamos preparar um Mundo da Teca?
+              {SIGNUP_TITLE}
             </h2>
             <p style={styles.authModalText}>
               Cada criança terá seu próprio espaço para guardar descobertas,
@@ -142,7 +150,7 @@ export function LoginModal({
           <div key="signup" className="auth-modal-step">
             <p style={styles.authModalKicker}>primeiro acesso</p>
             <h2 id="access-modal-title" style={styles.authModalTitle}>
-              {prepararMundoTitle(childName)}
+              {SIGNUP_TITLE}
             </h2>
 
             <form onSubmit={handleSignup} style={styles.authFormSignup}>
@@ -230,7 +238,7 @@ export function LoginModal({
         {step === "login" && (
           <div key="login" className="auth-modal-step">
             <h2 id="access-modal-title" style={styles.authModalTitle}>
-              Bem-vindo de volta.
+              {RETURN_TITLE}
             </h2>
             <p style={styles.authModalText}>
               Seu Mundo da Teca está esperando por você.
@@ -283,10 +291,33 @@ export function LoginModal({
               Pronto!
             </h2>
             <p style={styles.authModalText}>
-              {mundoProntoText(createdChildName)}
+              {espacoProntoText(welcomedChildName)}
               <br />
               <br />
               Agora é hora de começar novas descobertas.
+            </p>
+            <div style={styles.authActions}>
+              <button
+                type="button"
+                onClick={enterMeuMundo}
+                style={styles.authButtonPrimary}
+              >
+                Entrar no Meu Mundo
+              </button>
+            </div>
+          </div>
+        )}
+
+        {step === "welcomeBack" && (
+          <div key="welcomeBack" className="auth-modal-step">
+            <h2 id="access-modal-title" style={styles.authModalTitle}>
+              {RETURN_TITLE}
+            </h2>
+            <p style={styles.authModalText}>
+              {bemVindoDeVoltaText(welcomedChildName)}
+              <br />
+              <br />
+              {descobertasEsperandoText(welcomedChildName)}
             </p>
             <div style={styles.authActions}>
               <button

@@ -1,5 +1,8 @@
 import { useAuth } from "../auth/authContext"
-import { mundoDaChild, olaChild } from "../auth/childPersonalization"
+import {
+  bemVindoDeVoltaText,
+  descobertasEsperandoText,
+} from "../auth/childPersonalization"
 import { styles } from "../styles/appStyles"
 
 export function AccountModal() {
@@ -23,9 +26,14 @@ export function AccountModal() {
         <span aria-hidden style={styles.authModalSpine} />
         <p style={styles.authModalKicker}>minha conta</p>
         <h2 id="account-modal-title" style={styles.authModalTitle}>
-          {olaChild(user.childName)}
+          Bem-vindo ao Mundo da Teca.
         </h2>
-        <p style={styles.authModalText}>{mundoDaChild(user.childName)}</p>
+        <p style={styles.authModalText}>
+          {bemVindoDeVoltaText(user.childName)}
+          <br />
+          <br />
+          {descobertasEsperandoText(user.childName)}
+        </p>
         <p style={styles.authModalHint}>
           {user.guardianName ? `${user.guardianName} · ` : ""}
           {user.email}

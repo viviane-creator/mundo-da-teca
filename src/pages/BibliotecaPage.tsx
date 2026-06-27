@@ -1,6 +1,6 @@
 import { BibliotecaKitCard } from "../components/biblioteca/BibliotecaKitCard"
 import { useAuth } from "../auth/authContext"
-import { bibliotecaDaChild } from "../auth/childPersonalization"
+import { bibliotecaDeChild } from "../auth/childPersonalization"
 import { bibliotecaAtlas } from "../data/bibliotecaAtlas"
 import { bibliotecaContent } from "../data/bibliotecaContent"
 import { bibliotecaShelfItems } from "../data/bibliotecaMock"
@@ -21,7 +21,7 @@ export function BibliotecaPage({
   const { user, isAuthenticated } = useAuth()
   const libraryTitle =
     isAuthenticated && user
-      ? bibliotecaDaChild(user.childName)
+      ? bibliotecaDeChild(user.childName)
       : bibliotecaContent.title
 
   return (

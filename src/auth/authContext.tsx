@@ -11,19 +11,26 @@ import {
   type ReactNode,
 } from "react"
 import { childFirstName, olaChild } from "./childPersonalization"
+import { generateExplorerNumber, explorerNumberFromEmail } from "./explorerNumber"
 
 export type TecaUser = {
   guardianName: string
   email: string
   childName: string
   childBirthDate: string
+  memberSince: string
+  explorerNumber: string
+  childPhoto?: string
 }
 
 type AuthContextValue = {
   user: TecaUser | null
   isAuthenticated: boolean
   register: (user: TecaUser, options?: { keepModalOpen?: boolean }) => void
-  loginByEmail: (email: string) => boolean
+  loginByEmail: (
+    email: string,
+    options?: { keepModalOpen?: boolean },
+  ) => TecaUser | null
   logout: () => void
   loginModalOpen: boolean
   accountModalOpen: boolean
@@ -55,6 +62,14 @@ function normalizeUser(raw: unknown): TecaUser | null {
       childName,
       childBirthDate:
         typeof record.childBirthDate === "string" ? record.childBirthDate.trim() : "",
+      memberSince:
+        typeof record.memberSince === "string" ? record.memberSince.trim() : "",
+      explorerNumber:
+        typeof record.explorerNumber === "string"
+          ? record.explorerNumber.trim()
+          : "",
+      childPhoto:
+        typeof record.childPhoto === "string" ? record.childPhoto : undefined,
     }
   }
 
@@ -67,6 +82,8 @@ function normalizeUser(raw: unknown): TecaUser | null {
       email,
       childName: name,
       childBirthDate: "",
+      memberSince: "",
+      explorerNumber: "",
     }
   }
 
@@ -102,7 +119,8 @@ function readSessionUser(): TecaUser | null {
   try {
     const raw = localStorage.getItem(SESSION_KEY)
     if (!raw) return null
-    return normalizeUser(JSON.parse(raw))
+    const user = normalizeUser(JSON.parse(raw))
+    return user ? ensureUserMetadata(user) : null
   } catch {
     return null
   }
@@ -116,6 +134,26 @@ function persistSession(user: TecaUser | null) {
   }
 }
 
+function ensureUserMetadata(user: TecaUser): TecaUser {
+  const needsMemberSince = !user.memberSince
+  const needsExplorer = !user.explorerNumber
+
+  if (!needsMemberSince && !needsExplorer) return user
+
+  const enriched: TecaUser = {
+    ...user,
+    memberSince: user.memberSince || new Date().toISOString(),
+    explorerNumber:
+      user.explorerNumber || explorerNumberFromEmail(user.email),
+  }
+
+  persistSession(enriched)
+  const registry = readRegistry()
+  registry[enriched.email] = enriched
+  persistRegistry(registry)
+  return enriched
+}
+
 const AuthContext = createContext<AuthContextValue | null>(null)
 
 export function AuthProvider({ children }: { children: ReactNode }) {
@@ -125,13 +163,19 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const register = useCallback(
     (nextUser: TecaUser, options?: { keepModalOpen?: boolean }) => {
+      const registry = readRegistry()
+      const email = normalizeEmail(nextUser.email)
+      const existing = registry[email]
+
       const normalized: TecaUser = {
         guardianName: nextUser.guardianName.trim(),
-        email: normalizeEmail(nextUser.email),
+        email,
         childName: nextUser.childName.trim(),
         childBirthDate: nextUser.childBirthDate.trim(),
+        memberSince: existing?.memberSince ?? new Date().toISOString(),
+        explorerNumber: existing?.explorerNumber ?? generateExplorerNumber(),
+        childPhoto: existing?.childPhoto,
       }
-      const registry = readRegistry()
       registry[normalized.email] = normalized
       persistRegistry(registry)
       setUser(normalized)
@@ -143,15 +187,21 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     [],
   )
 
-  const loginByEmail = useCallback((email: string) => {
-    const registry = readRegistry()
-    const found = registry[normalizeEmail(email)]
-    if (!found) return false
-    setUser(found)
-    persistSession(found)
-    setLoginModalOpen(false)
-    return true
-  }, [])
+  const loginByEmail = useCallback(
+    (email: string, options?: { keepModalOpen?: boolean }) => {
+      const registry = readRegistry()
+      const found = registry[normalizeEmail(email)]
+      if (!found) return null
+      const user = ensureUserMetadata(found)
+      setUser(user)
+      persistSession(user)
+      if (!options?.keepModalOpen) {
+        setLoginModalOpen(false)
+      }
+      return user
+    },
+    [],
+  )
 
   const logout = useCallback(() => {
     setUser(null)

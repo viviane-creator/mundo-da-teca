@@ -2,8 +2,12 @@ import type { CSSProperties } from "react"
 import type { ParticipationPlanId } from "./participationPlans"
 import type { HomeCtaTone } from "../styles/homeCta"
 
-/** Tom único dos CTAs do Clube — ocre dourado da faixa lateral institucional */
+/** Tom único dos CTAs do Clube na Home — ocre dourado da faixa lateral institucional */
 export const clubInstitutionalCtaTone = "clubeColecionador" as const satisfies HomeCtaTone
+
+export function clubPlanCtaTone(planId: ParticipationPlanId): HomeCtaTone {
+  return planId === "explorador" ? "clubeExplorador" : "clubeColecionador"
+}
 
 export type ClubPlanAccent = {
   spine: string

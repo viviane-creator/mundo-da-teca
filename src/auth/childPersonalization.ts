@@ -2,24 +2,24 @@ export function childFirstName(fullName: string): string {
   return fullName.trim().split(/\s+/)[0] ?? ""
 }
 
-export function mundoDaChild(childName: string): string {
+export function mundoDeChild(childName: string): string {
   const name = childFirstName(childName)
-  return name ? `O Mundo da ${name}` : "Meu Mundo"
+  return name ? `O Mundo de ${name}` : "Meu Mundo"
 }
 
-export function diarioDaChild(childName: string): string {
+export function diarioDeChild(childName: string): string {
   const name = childFirstName(childName)
-  return name ? `Diário da ${name}` : "Diário"
+  return name ? `Diário de ${name}` : "Diário"
 }
 
-export function colecaoDaChild(childName: string): string {
+export function colecaoDeChild(childName: string): string {
   const name = childFirstName(childName)
-  return name ? `Coleção da ${name}` : "Minhas Descobertas"
+  return name ? `Coleção de ${name}` : "Minhas Descobertas"
 }
 
-export function bibliotecaDaChild(childName: string): string {
+export function bibliotecaDeChild(childName: string): string {
   const name = childFirstName(childName)
-  return name ? `Biblioteca da ${name}` : "Biblioteca"
+  return name ? `Biblioteca de ${name}` : "Biblioteca"
 }
 
 export function olaChild(childName: string): string {
@@ -27,16 +27,23 @@ export function olaChild(childName: string): string {
   return name ? `Olá, ${name}` : "Minha Conta"
 }
 
-export function prepararMundoTitle(childName: string): string {
-  const trimmed = childName.trim()
-  if (!trimmed) return "Vamos preparar um Mundo da Teca?"
-  const name = childFirstName(trimmed) || trimmed
-  return `Vamos preparar o Mundo da ${name}?`
-}
-
-export function mundoProntoText(childName: string): string {
+export function espacoProntoText(childName: string): string {
   const name = childFirstName(childName)
   return name
-    ? `O Mundo da ${name} já está preparado.`
-    : "Seu Mundo da Teca já está preparado."
+    ? `O espaço de ${name} já está preparado.`
+    : "Seu espaço já está preparado."
+}
+
+export function bemVindoDeVoltaText(childName: string): string {
+  const name = childFirstName(childName)
+  return name
+    ? `Que bom te ver de novo, ${name}.`
+    : "Que bom te ver de novo."
+}
+
+export function descobertasEsperandoText(childName: string): string {
+  const name = childFirstName(childName)
+  return name
+    ? `As descobertas de ${name} estão esperando por você.`
+    : "Suas descobertas estão esperando por você."
 }

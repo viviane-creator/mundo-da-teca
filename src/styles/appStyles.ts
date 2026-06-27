@@ -1,4 +1,5 @@
 import type { CSSProperties } from "react"
+import { bottomNavTheme } from "../data/bottomNavTheme"
 import { tecaColors, tecaFichario, tecaFont, tecaHierarchy, tecaObjects, tecaRadius, tecaSpacing, tecaType } from "../tecaVisual"
 
 const theme = {
@@ -2710,6 +2711,51 @@ export const styles: Record<string, CSSProperties> = {
     color: theme.text,
   },
 
+  clubFieldValue: {
+    margin: 0,
+    padding: "6px 2px 8px",
+    borderBottom: "1px solid rgba(166, 124, 82, 0.28)",
+    fontFamily: "'Cormorant Garamond', serif",
+    fontSize: "22px",
+    lineHeight: 1.2,
+    color: theme.text,
+  },
+
+  clubMemberIdentity: {
+    display: "flex",
+    alignItems: "flex-start",
+    gap: "18px",
+  },
+
+  clubMemberFields: {
+    flex: 1,
+    minWidth: 0,
+  },
+
+  clubMemberPhotoWrap: {
+    flexShrink: 0,
+    width: "72px",
+    height: "72px",
+    borderRadius: "999px",
+    overflow: "hidden",
+    border: "1px solid rgba(196, 165, 141, 0.34)",
+    background: "rgba(248, 239, 228, 0.55)",
+    boxShadow: "inset 0 1px 0 rgba(255, 253, 249, 0.75)",
+  },
+
+  clubMemberPhotoImage: {
+    width: "100%",
+    height: "100%",
+    objectFit: "cover",
+    display: "block",
+  },
+
+  clubMemberPhotoSilhouette: {
+    width: "100%",
+    height: "100%",
+    display: "block",
+  },
+
   clubBelongingCard: {
     ...tecaObjects.note(tecaRadius.md),
     marginBottom: "28px",
@@ -4331,12 +4377,11 @@ export const styles: Record<string, CSSProperties> = {
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
-    background: "#7F674C",
+    background: bottomNavTheme.bar,
     borderRadius: "20px",
-    border: "1px solid #8B7355",
-    borderTop: "1px solid #9A846C",
-    boxShadow:
-      "inset 0 1px 0 rgba(247,243,234,0.14), 0 2px 10px rgba(90,60,38,0.08)",
+    border: "none",
+    borderTop: `1px solid ${bottomNavTheme.barTopLine}`,
+    boxShadow: "none",
     padding: "5px 6px 3px",
     zIndex: 20,
   },
@@ -4360,7 +4405,7 @@ export const styles: Record<string, CSSProperties> = {
 
   navButtonActive: {
     zIndex: 2,
-    padding: "0 10px",
+    padding: "0 8px",
   },
 
   navIconWrap: {
@@ -4383,29 +4428,17 @@ export const styles: Record<string, CSSProperties> = {
 
   navActiveCapsule: {
     position: "absolute",
-    left: "-7px",
-    right: "-7px",
-    top: "-2px",
-    bottom: "-2px",
-    borderRadius: "18px",
-    background: "#9A846C",
-    border: "1px solid rgba(247, 243, 234, 0.2)",
+    left: "-11px",
+    right: "-11px",
+    top: "-5px",
+    bottom: "-6px",
+    borderRadius: "20px",
+    background: bottomNavTheme.capsuleBg,
+    border: `0.5px solid ${bottomNavTheme.capsuleBorder}`,
+    boxShadow: bottomNavTheme.capsuleShadow,
     pointerEvents: "none",
     transition:
       "left 0.24s ease, right 0.24s ease, top 0.24s ease, bottom 0.24s ease, border-radius 0.24s ease",
-  },
-
-  navActiveMarker: {
-    position: "absolute",
-    bottom: "3px",
-    zIndex: 1,
-    width: "4px",
-    height: "4px",
-    borderRadius: "999px",
-    background: "#F7F3EA",
-    opacity: 0.82,
-    pointerEvents: "none",
-    transition: "bottom 0.24s ease",
   },
 
   navIconFrame: {
@@ -4431,7 +4464,7 @@ export const styles: Record<string, CSSProperties> = {
     letterSpacing: "0.12em",
     textTransform: "uppercase",
     fontWeight: 500,
-    color: "#F7F3EA",
+    color: bottomNavTheme.inkInactive,
     lineHeight: 1.15,
     transition: "color 0.24s ease, letter-spacing 0.24s ease",
     maxWidth: "100%",
@@ -4445,8 +4478,8 @@ export const styles: Record<string, CSSProperties> = {
     maxWidth: "none",
     overflow: "visible",
     textOverflow: "clip",
-    letterSpacing: "0.1em",
-    padding: "0 2px",
+    letterSpacing: "0.08em",
+    padding: "0 3px",
   },
 
   institutionalFooter: {

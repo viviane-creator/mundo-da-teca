@@ -40,29 +40,27 @@ export function BottomNav({
               <span
                 style={{
                   ...styles.navIconFrame,
-                  opacity: isActive ? 1 : 0.58,
-                  transform: isActive ? "translateY(-1px) scale(1.05)" : "none",
+                  opacity: isActive ? 1 : 0.88,
+                  transform: isActive ? "translateY(-1px) scale(1.03)" : "none",
                 }}
               >
-                <BottomNavIllustration id={item.illustration} />
+                <BottomNavIllustration id={item.illustration} active={isActive} />
               </span>
             </span>
 
             <span
               style={{
                 ...styles.navLabel,
-                color: isActive ? bottomNavTheme.ink : bottomNavTheme.inkMuted,
-                fontWeight: isActive ? 600 : 500,
+                color: isActive
+                  ? bottomNavTheme.ink
+                  : bottomNavTheme.inkInactive,
+                fontWeight: 500,
                 ...(isActive ? styles.navLabelActive : null),
               }}
               aria-hidden
             >
               {item.label}
             </span>
-
-            {isActive ? (
-              <span style={styles.navActiveMarker} aria-hidden="true" />
-            ) : null}
           </button>
         )
       })}
