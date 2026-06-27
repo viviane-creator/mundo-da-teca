@@ -1,7 +1,7 @@
 import type { CSSProperties, ReactNode } from "react"
 import { PageCover } from "./components/PageCover"
 import { HomeEditorialBridge } from "./components/home/HomeEditorialBridge"
-import { HomeHeroMist, HomeHeroTextMist, homeHeroMistZoneStyle } from "./components/HomeHeroMist"
+import { HomeHeroMist, HomeHeroTextMist, homeHeroMistZoneStyle, homeHeroMistZoneStyleHome } from "./components/HomeHeroMist"
 import { atelierPortalCopy } from "./data/atelierPortalCopy"
 import { pageCovers } from "./data/pageCovers"
 import { tecaColors, tecaFont, tecaHierarchy, tecaSpacing } from "./tecaVisual"
@@ -175,10 +175,19 @@ const p: Record<string, CSSProperties> = {
     textShadow:
       "0 1px 3px rgba(255,253,249,0.94), 0 3px 22px rgba(255,253,249,0.88), 0 1px 0 rgba(90,60,30,0.1)",
   },
+  homeHeroActionWrap: {
+    position: "relative",
+    zIndex: 12,
+    isolation: "isolate",
+    transform: "translateZ(0)",
+    WebkitTransform: "translateZ(0)",
+    marginTop: "10px",
+    pointerEvents: "auto",
+  },
   homeHeroAction: {
     position: "relative",
-    zIndex: 2,
-    marginTop: "3px",
+    zIndex: 1,
+    marginTop: 0,
     pointerEvents: "auto",
   },
   heroTitle: {
@@ -294,9 +303,9 @@ function PortalHeroOverlay({
   return (
     <>
       <div style={{ ...p.vignette, ...(vignetteHome ? p.vignetteHome : {}) }} />
-      <div style={homeHeroMistZoneStyle}>
+      <div style={vignetteHome ? homeHeroMistZoneStyleHome : homeHeroMistZoneStyle}>
         <HomeHeroMist />
-        <HomeHeroTextMist />
+        {!vignetteHome ? <HomeHeroTextMist /> : null}
       </div>
       <div style={vignetteHome ? p.fadeHome : p.fade} />
       {logoInArt ? (
@@ -351,17 +360,25 @@ function PortalHeroOverlay({
               ))}
             </p>
             {hero.action ? (
-              <button
-                type="button"
-                className={hero.action.className}
-                onClick={hero.action.onClick}
-                style={{
-                  ...p.homeHeroAction,
-                  ...hero.action.style,
-                }}
+              <div
+                style={
+                  variant === "home" ? p.homeHeroActionWrap : undefined
+                }
               >
-                {hero.action.label}
-              </button>
+                <button
+                  type="button"
+                  className={hero.action.className}
+                  onClick={hero.action.onClick}
+                  style={{
+                    ...p.homeHeroAction,
+                    ...hero.action.style,
+                  }}
+                >
+                  <span className="home-hero-cta__label">
+                    {hero.action.label}
+                  </span>
+                </button>
+              </div>
             ) : null}
           </>
         ) : null}

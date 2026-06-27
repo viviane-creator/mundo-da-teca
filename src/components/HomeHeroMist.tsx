@@ -133,6 +133,15 @@ export const homeHeroMistZoneStyle: CSSProperties = {
   maskImage: "linear-gradient(to top, #000 0%, #000 52%, transparent 100%)",
 }
 
+/** Home — máscara mais suave para evitar faixa horizontal no Safari iOS */
+export const homeHeroMistZoneStyleHome: CSSProperties = {
+  ...homeHeroMistZoneStyle,
+  WebkitMaskImage:
+    "linear-gradient(to top, #000 0%, #000 38%, rgba(0,0,0,0.55) 62%, transparent 92%)",
+  maskImage:
+    "linear-gradient(to top, #000 0%, #000 38%, rgba(0,0,0,0.55) 62%, transparent 92%)",
+}
+
 export const homeHeroTextMistSlotStyle: CSSProperties = {
   position: "absolute",
   left: 0,
