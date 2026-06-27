@@ -406,13 +406,6 @@ export const styles: Record<string, CSSProperties> = {
     marginTop: "4px",
   },
 
-  homeChapterDivider: {
-    margin: "44px 0 40px",
-    height: "1px",
-    background:
-      "linear-gradient(90deg, rgba(194,165,141,0) 0%, rgba(194,165,141,0.45) 30%, rgba(194,165,141,0.45) 70%, rgba(194,165,141,0) 100%)",
-  },
-
   homeV2MeuMundoCard: {
     position: "relative",
     padding: "2px 0 4px",
@@ -750,13 +743,369 @@ export const styles: Record<string, CSSProperties> = {
 
   homeV2Journey: {
     position: "relative",
-    padding: "6px 2px 0 8px",
+    padding: "0 2px 0 8px",
+    marginTop: "clamp(8px, 2.2vw, 14px)",
     borderRadius: "24px",
     border: `1px dashed rgba(196, 165, 141, 0.32)`,
     background:
       "linear-gradient(168deg, #fffdf9 0%, #f8efe5 48%, #f0e4d6 100%)",
     boxShadow: "inset 0 1px 0 rgba(255,255,255,0.88)",
     overflow: "hidden",
+  },
+
+  homeReceptionSection: {
+    position: "relative",
+    zIndex: 1,
+    padding: "clamp(32px, 7vw, 48px) clamp(14px, 4vw, 22px)",
+    marginBottom: "clamp(12px, 3vw, 20px)",
+  },
+
+  homeReceptionSectionCompact: {
+    position: "relative",
+    zIndex: 1,
+    padding: "clamp(18px, 4vw, 26px) clamp(12px, 3vw, 18px)",
+    marginBottom: "clamp(4px, 1.5vw, 10px)",
+  },
+
+  homeEditorialBridge: {
+    position: "relative",
+    height: "24px",
+    marginTop: "-18px",
+    marginBottom: "0",
+    zIndex: 2,
+    pointerEvents: "none",
+  },
+
+  homeEditorialBridgeWash: {
+    position: "absolute",
+    left: "-24px",
+    right: "-24px",
+    top: "-6px",
+    bottom: "-2px",
+    background: `
+      radial-gradient(ellipse 88% 130% at 50% 100%, rgba(200, 135, 87, 0.065) 0%, transparent 74%),
+      radial-gradient(ellipse 52% 95% at 16% 58%, rgba(179, 129, 95, 0.04) 0%, transparent 70%),
+      radial-gradient(ellipse 50% 90% at 84% 52%, rgba(196, 165, 141, 0.035) 0%, transparent 68%),
+      linear-gradient(180deg, rgba(246, 237, 226, 0.5) 0%, rgba(246, 237, 226, 0.12) 58%, transparent 100%)
+    `,
+  },
+
+  homeEditorialBridgeSpeckle: {
+    position: "absolute",
+    left: "50%",
+    top: "62%",
+    transform: "translate(-50%, -50%)",
+    width: "120px",
+    height: "18px",
+    opacity: 0.55,
+    backgroundImage: `
+      radial-gradient(circle at 22% 50%, rgba(179, 129, 95, 0.22) 1px, transparent 1.5px),
+      radial-gradient(circle at 50% 42%, rgba(179, 129, 95, 0.28) 1.2px, transparent 1.7px),
+      radial-gradient(circle at 78% 50%, rgba(179, 129, 95, 0.2) 1px, transparent 1.5px)
+    `,
+  },
+
+  homeAboutChapter: {
+    position: "relative",
+    zIndex: 1,
+    paddingBottom: "clamp(10px, 2.5vw, 16px)",
+  },
+
+  homeTecaHostessFrame: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+
+  homeTecaHostessImage: {
+    width: "clamp(112px, 29vw, 118px)",
+    height: "auto",
+    display: "block",
+  },
+
+  homeChapterDivider: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    gap: "8px",
+    padding: "clamp(4px, 1vw, 8px) 0 clamp(8px, 2vw, 12px)",
+  },
+
+  homeChapterDividerDot: {
+    width: "4px",
+    height: "4px",
+    borderRadius: "50%",
+    background: "rgba(179, 129, 95, 0.28)",
+    boxShadow: "0 0 0 1px rgba(255, 253, 249, 0.5)",
+  },
+
+  homeChapterDividerDotMid: {
+    width: "5px",
+    height: "5px",
+    background: "rgba(179, 129, 95, 0.38)",
+  },
+
+  homeChapterOpener: {
+    position: "relative",
+    zIndex: 1,
+    padding: "0 clamp(20px, 5vw, 28px)",
+    marginBottom: 0,
+    textAlign: "center",
+    background: "transparent",
+  },
+
+  homeChapterOpenerIllustration: {
+    display: "flex",
+    justifyContent: "center",
+    margin: "0 auto clamp(10px, 2.4vw, 14px)",
+    opacity: 1,
+  },
+
+  homeChapterOpenerTitle: {
+    ...tecaFont.heading,
+    fontSize: "clamp(22px, 5vw, 28px)",
+    fontWeight: 500,
+    color: theme.text,
+    textAlign: "center",
+    margin: "0 auto clamp(8px, 2vw, 11px)",
+    lineHeight: 1.18,
+    maxWidth: "22ch",
+  },
+
+  homeChapterOpenerProse: {
+    ...tecaFont.prose,
+    fontSize: "clamp(14px, 3.4vw, 16px)",
+    lineHeight: 1.54,
+    margin: "0 auto",
+    maxWidth: "36ch",
+    textAlign: "center",
+    color: theme.muted,
+  },
+
+  homeChapterOpenerProseFollow: {
+    ...tecaFont.prose,
+    fontSize: "clamp(14px, 3.4vw, 16px)",
+    lineHeight: 1.54,
+    margin: "clamp(7px, 1.8vw, 10px) auto 0",
+    maxWidth: "36ch",
+    textAlign: "center",
+    color: theme.muted,
+  },
+
+  homeReceptionTitle: {
+    ...tecaFont.heading,
+    fontSize: "clamp(24px, 5.5vw, 30px)",
+    fontWeight: 500,
+    color: theme.text,
+    textAlign: "left",
+    margin: "0 0 24px",
+    lineHeight: 1.2,
+  },
+
+  homeReceptionTitleCompact: {
+    ...tecaFont.heading,
+    fontSize: "clamp(21px, 4.8vw, 26px)",
+    fontWeight: 500,
+    color: theme.text,
+    textAlign: "left",
+    margin: "0 0 12px",
+    lineHeight: 1.18,
+  },
+
+  homeReceptionProse: {
+    ...tecaFont.prose,
+    fontSize: "clamp(15px, 3.6vw, 17px)",
+    lineHeight: 1.68,
+    margin: "0 0 20px",
+    maxWidth: "40ch",
+  },
+
+  homeReceptionProseCompact: {
+    ...tecaFont.prose,
+    fontSize: "clamp(14px, 3.4vw, 16px)",
+    lineHeight: 1.58,
+    margin: 0,
+    maxWidth: "42ch",
+  },
+
+  homeReceptionAboutLayout: {
+    display: "flex",
+    gap: "18px",
+  },
+
+  homeReceptionIllustrationWrap: {
+    flexShrink: 0,
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    padding: "8px 0",
+    opacity: 0.92,
+  },
+
+  homeReceptionIllustrationWrapCompact: {
+    flexShrink: 0,
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "flex-start",
+    padding: "2px 0",
+    opacity: 0.88,
+  },
+
+  homeReceptionAboutBody: {
+    flex: 1,
+    minWidth: 0,
+    width: "100%",
+  },
+
+  homeEditorialTimeline: {
+    listStyle: "none",
+    margin: "4px 0 0",
+    padding: "0 0 0 4px",
+  },
+
+  homeEditorialTimelineStep: {
+    listStyle: "none",
+    margin: 0,
+    padding: 0,
+  },
+
+  homeEditorialTimelineRow: {
+    display: "flex",
+    alignItems: "flex-start",
+    gap: "12px",
+  },
+
+  homeEditorialTimelineIcon: {
+    flexShrink: 0,
+    fontSize: "18px",
+    lineHeight: 1.3,
+    opacity: 0.86,
+    width: "24px",
+    textAlign: "center",
+  },
+
+  homeEditorialTimelineBody: {
+    flex: 1,
+    minWidth: 0,
+    paddingTop: "1px",
+  },
+
+  homeEditorialTimelineTitle: {
+    ...tecaFont.heading,
+    fontSize: "18px",
+    fontWeight: 500,
+    color: theme.text,
+    margin: "0 0 4px",
+    lineHeight: 1.15,
+  },
+
+  homeEditorialTimelineText: {
+    ...tecaFont.prose,
+    fontSize: "14px",
+    lineHeight: 1.5,
+    margin: 0,
+    maxWidth: "36ch",
+  },
+
+  homeEditorialTimelineConnector: {
+    display: "block",
+    margin: "6px 0 6px 11px",
+    fontFamily: "'Cormorant Garamond', serif",
+    fontSize: "15px",
+    lineHeight: 1,
+    color: "rgba(179, 129, 95, 0.42)",
+    letterSpacing: "0.05em",
+  },
+
+  homeWhyItMattersSectionCompact: {
+    position: "relative",
+    zIndex: 1,
+    padding: "clamp(20px, 4.5vw, 28px) clamp(12px, 3vw, 18px) clamp(24px, 5vw, 32px)",
+    marginBottom: "clamp(4px, 1.5vw, 8px)",
+    textAlign: "center",
+  },
+
+  homeWhyItMattersTitleCompact: {
+    ...tecaFont.heading,
+    fontSize: "clamp(19px, 4.2vw, 22px)",
+    fontWeight: 500,
+    color: theme.text,
+    margin: "0 0 8px",
+    lineHeight: 1.2,
+  },
+
+  homeWhyItMattersLeadCompact: {
+    ...tecaFont.poetic,
+    fontSize: "13px",
+    lineHeight: 1.45,
+    margin: "0 auto 18px",
+    maxWidth: "30ch",
+    color: theme.muted,
+  },
+
+  homeWhyItMattersRow: {
+    listStyle: "none",
+    margin: 0,
+    padding: 0,
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "flex-start",
+    gap: "clamp(12px, 4vw, 22px)",
+    flexWrap: "wrap",
+  },
+
+  homeWhyItMattersChip: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    gap: "6px",
+    minWidth: "72px",
+    maxWidth: "96px",
+  },
+
+  homeWhyItMattersChipIcon: {
+    fontSize: "16px",
+    lineHeight: 1,
+    opacity: 0.8,
+  },
+
+  homeWhyItMattersChipLabel: {
+    ...tecaFont.micro,
+    fontSize: "8px",
+    letterSpacing: "0.14em",
+    fontWeight: 600,
+    color: theme.muted,
+    textAlign: "center",
+    lineHeight: 1.35,
+  },
+
+  homeUniversosDivisoria: {
+    marginTop: 0,
+    marginBottom: "10px",
+  },
+
+  homeExploreSectionPaperCompact: {
+    margin: "-10px -10px -10px",
+    padding: "10px 8px 8px",
+    borderRadius: "0 16px 16px 0",
+    background: "transparent",
+  },
+
+  homeSectionHeadingCompact: {
+    ...tecaFont.heading,
+    fontSize: "clamp(22px, 5vw, 28px)",
+    textAlign: "center",
+    margin: "0 0 8px",
+    lineHeight: 1.15,
+  },
+
+  homeSectionSubtitleCompact: {
+    ...tecaHierarchy.l4Subtitle,
+    textAlign: "center",
+    margin: "0 auto 12px",
+    maxWidth: "34ch",
+    fontSize: "14px",
+    lineHeight: 1.45,
   },
 
   /** Encerramento da Home — respiro antes do menu inferior */
@@ -839,6 +1188,17 @@ export const styles: Record<string, CSSProperties> = {
     marginRight: "auto",
   },
 
+  homeV2ChapterSubtitleShort: {
+    ...tecaHierarchy.l4Subtitle,
+    marginTop: 0,
+    lineHeight: 1.45,
+    maxWidth: "30ch",
+    fontSize: "14px",
+    textAlign: "center",
+    marginLeft: "auto",
+    marginRight: "auto",
+  },
+
   homeV2ChapterKicker: {
     ...tecaHierarchy.l6Micro,
     textAlign: "center",
@@ -891,7 +1251,7 @@ export const styles: Record<string, CSSProperties> = {
   homeV2UniversosWrap: {
     position: "relative",
     overflow: "visible",
-    marginTop: "6px",
+    marginTop: "2px",
     padding: 0,
   },
 

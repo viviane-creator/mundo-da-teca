@@ -1,9 +1,10 @@
 import type { CSSProperties, ReactNode } from "react"
 import { PageCover } from "./components/PageCover"
+import { HomeEditorialBridge } from "./components/home/HomeEditorialBridge"
 import { HomeHeroMist, HomeHeroTextMist, homeHeroMistZoneStyle } from "./components/HomeHeroMist"
 import { atelierPortalCopy } from "./data/atelierPortalCopy"
 import { pageCovers } from "./data/pageCovers"
-import { tecaColors, tecaFont, tecaHierarchy, tecaSpacing } from "./tecaVisual"
+import { tecaColors, tecaFichario, tecaFont, tecaHierarchy, tecaSpacing } from "./tecaVisual"
 
 const theme = {
   text: tecaColors.text,
@@ -25,6 +26,12 @@ export type PortalHeroProps = {
   tagline: string
   compactTitle?: boolean
   variant?: "home" | "portal" | "art"
+  action?: {
+    label: string
+    onClick: () => void
+    style?: CSSProperties
+    className?: string
+  }
 }
 
 export const portalPages = {
@@ -32,7 +39,8 @@ export const portalPages = {
     cover: pageCovers.home,
     coverAlt: "Mundo da Teca",
     title: "Existe um mundo inteiro\nesperando para ser descoberto.",
-    tagline: "Observe. Descubra. Colecione.",
+    tagline:
+      "Menos tempo nas telas.\nMais tempo explorando, criando e colecionando descobertas.",
     kicker: "observa • cria • imagina",
   },
   descobertas: {
@@ -88,12 +96,12 @@ const p: Record<string, CSSProperties> = {
     bottom: 0,
     zIndex: 4,
     padding:
-      "clamp(10px, 2vh, 16px) clamp(18px, 5vw, 28px) clamp(14px, 3vh, 24px)",
+      "clamp(10px, 2vh, 16px) clamp(18px, 5vw, 28px) clamp(4px, 1.1vh, 8px)",
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "flex-start",
-    gap: "6px",
+    gap: "2px",
     textAlign: "center",
     pointerEvents: "none",
     overflow: "visible",
@@ -157,15 +165,24 @@ const p: Record<string, CSSProperties> = {
     ...tecaFont.prose,
     fontStyle: "normal",
     margin: 0,
-    fontSize: "clamp(18px, 4.2vw, 22px)",
-    fontWeight: 500,
-    color: tecaColors.text,
-    lineHeight: 1.32,
-    letterSpacing: "0.35px",
-    maxWidth: "min(400px, 88vw)",
+    fontSize: "clamp(16px, 3.8vw, 20px)",
+    fontWeight: 400,
+    color: tecaColors.muted,
+    lineHeight: 1.45,
+    letterSpacing: "0.2px",
+    maxWidth: "min(340px, 88vw)",
     textAlign: "center",
     textShadow:
       "0 1px 3px rgba(255,253,249,0.94), 0 3px 22px rgba(255,253,249,0.88), 0 1px 0 rgba(90,60,30,0.1)",
+  },
+  homeHeroAction: {
+    ...tecaFichario.etiquetaAction(),
+    position: "relative",
+    zIndex: 2,
+    marginTop: "3px",
+    pointerEvents: "auto",
+    fontSize: "17px",
+    padding: "8px 20px",
   },
   heroTitle: {
     ...tecaHierarchy.l1PageTitle,
@@ -185,8 +202,8 @@ const p: Record<string, CSSProperties> = {
   bodyHome: {
     position: "relative",
     zIndex: 6,
-    padding: "20px 24px 0",
-    marginTop: 0,
+    padding: "0 20px 0",
+    marginTop: "-14px",
   },
   vignette: {
     position: "absolute",
@@ -195,6 +212,19 @@ const p: Record<string, CSSProperties> = {
       "radial-gradient(ellipse 90% 80% at 50% 40%, transparent 35%, rgba(72,48,32,0.18) 100%)",
     zIndex: 1,
     pointerEvents: "none",
+  },
+  fadeHome: {
+    position: "absolute",
+    left: 0,
+    right: 0,
+    bottom: 0,
+    height: "56%",
+    background: `linear-gradient(180deg, rgba(246,237,226,0) 0%, rgba(255,251,245,0.16) 20%, rgba(246,237,226,0.46) 54%, rgba(246,237,226,0.78) 80%, ${theme.shell} 100%)`,
+    zIndex: 3,
+    pointerEvents: "none",
+    WebkitMaskImage:
+      "linear-gradient(to top, #000 0%, #000 60%, transparent 100%)",
+    maskImage: "linear-gradient(to top, #000 0%, #000 60%, transparent 100%)",
   },
   fade: {
     position: "absolute",
@@ -205,7 +235,8 @@ const p: Record<string, CSSProperties> = {
     background: `linear-gradient(180deg, rgba(246,237,226,0) 0%, rgba(255,251,245,0.32) 30%, rgba(246,237,226,0.68) 68%, ${theme.shell} 100%)`,
     zIndex: 3,
     pointerEvents: "none",
-    WebkitMaskImage: "linear-gradient(to top, #000 0%, #000 48%, transparent 100%)",
+    WebkitMaskImage:
+      "linear-gradient(to top, #000 0%, #000 48%, transparent 100%)",
     maskImage: "linear-gradient(to top, #000 0%, #000 48%, transparent 100%)",
   },
   body: {
@@ -230,6 +261,9 @@ const p: Record<string, CSSProperties> = {
   },
   breath: {
     ...tecaHierarchy.pageHeroBreath,
+  },
+  breathHome: {
+    height: `${Math.round(tecaSpacing.poeticToSection * 0.375)}px`,
   },
   breathLarge: {
     height: `${tecaSpacing.poeticToSection}px`,
@@ -267,7 +301,7 @@ function PortalHeroOverlay({
         <HomeHeroMist />
         <HomeHeroTextMist />
       </div>
-      <div style={p.fade} />
+      <div style={vignetteHome ? p.fadeHome : p.fade} />
       {logoInArt ? (
         <img
           src="/logo/logo.webp"
@@ -312,8 +346,26 @@ function PortalHeroOverlay({
                 zIndex: 1,
               }}
             >
-              {hero.tagline}
+              {hero.tagline.split("\n").map((line, index, lines) => (
+                <span key={line}>
+                  {line}
+                  {index < lines.length - 1 ? <br /> : null}
+                </span>
+              ))}
             </p>
+            {hero.action ? (
+              <button
+                type="button"
+                className={hero.action.className}
+                onClick={hero.action.onClick}
+                style={{
+                  ...p.homeHeroAction,
+                  ...hero.action.style,
+                }}
+              >
+                {hero.action.label}
+              </button>
+            ) : null}
           </>
         ) : null}
       </div>
@@ -393,11 +445,13 @@ export function WorldPortalLayout({
   variant = "default",
   compactTitle,
   breath = "normal",
+  heroAction,
   children,
 }: WorldPortalConfig & {
   variant?: "default" | "home" | "art"
   compactTitle?: boolean
   breath?: "normal" | "large"
+  heroAction?: PortalHeroProps["action"]
   children: ReactNode
 }) {
   const hero: PortalHeroProps = {
@@ -405,6 +459,7 @@ export function WorldPortalLayout({
     title,
     tagline,
     compactTitle,
+    action: heroAction,
     variant:
       variant === "home" ? "home" : variant === "art" ? "art" : "portal",
   }
@@ -419,7 +474,16 @@ export function WorldPortalLayout({
         <PortalHeroOverlay hero={hero} vignetteHome={variant === "home"} />
       </PageCover>
       <section style={variant === "home" ? p.bodyHome : p.body}>
-        <div style={breath === "large" ? p.breathLarge : p.breath} />
+        {variant === "home" ? <HomeEditorialBridge /> : null}
+        <div
+          style={
+            variant === "home"
+              ? p.breathHome
+              : breath === "large"
+                ? p.breathLarge
+                : p.breath
+          }
+        />
         {children}
       </section>
     </>

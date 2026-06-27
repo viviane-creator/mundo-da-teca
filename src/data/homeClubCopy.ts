@@ -1,4 +1,4 @@
 export const homeClubCopy = {
   title: "Clube",
-  intro: "Escolha como deseja participar da expedição.",
+  intro: "Escolha como participar da expedição.",
 } as const

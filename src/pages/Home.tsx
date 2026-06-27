@@ -1,13 +1,19 @@
+import { HomeAboutSection } from "../components/home/HomeAboutSection"
 import { HomeExploreMap } from "../components/HomeExploreMap"
 import { MeuMundoCollectionSeals } from "../components/MeuMundoCollectionSeals"
 import { FicharioDivisoria, FicharioEtiqueta } from "../components/fichario"
 import { ParticipationSection } from "../components/ParticipationSection"
 import type { ParticipationPlanId } from "../data/participationPlans"
-import { atelierPortalCopy } from "../data/atelierPortalCopy"
 import { appRoutes, resolveUniverseRoute } from "../navigation/appRoutes"
 import { styles } from "../styles/appStyles"
 import { homeCtaClassName, homeCtaStyle } from "../styles/homeCta"
 import { WorldPortalLayout, portalPages } from "../worldPortal"
+
+const homeMeuMundoCopy =
+  "O lugar onde suas descobertas ganham uma casa."
+
+const homeAtelierCopy =
+  "Objetos para guardar descobertas e continuar explorando."
 
 export function Home({
   setScreen,
@@ -19,18 +25,30 @@ export function Home({
   const portal = portalPages.home
 
   return (
-    <WorldPortalLayout {...portal} variant="home">
+    <WorldPortalLayout
+      {...portal}
+      variant="home"
+      heroAction={{
+        label: "Começar a explorar",
+        onClick: () => setScreen(appRoutes.brincadeiras),
+        className: homeCtaClassName("clubeExplorador"),
+        style: homeCtaStyle("clubeExplorador"),
+      }}
+    >
+      <HomeAboutSection />
+
       <div style={styles.homeV2Journey}>
         <span style={styles.homeFicharioSpine} aria-hidden="true" />
 
-        <FicharioDivisoria chapter="exploracao">
-          <div style={styles.homeExploreSectionPaper}>
+        <FicharioDivisoria chapter="exploracao" style={styles.homeUniversosDivisoria}>
+          <div style={styles.homeExploreSectionPaperCompact}>
             <p style={styles.homeV2SectionKicker}>mapa de exploração</p>
-            <h2 style={styles.homeSectionHeading}>
-              Escolha por onde começar.
+            <h2 style={styles.homeSectionHeadingCompact}>
+              Escolha sua primeira descoberta.
             </h2>
-            <p style={styles.homeSectionSubtitle}>
-              Seis universos para explorar, criar, imaginar e descobrir.
+            <p style={styles.homeSectionSubtitleCompact}>
+              Seis universos cheios de experiências para observar, criar,
+              imaginar e colecionar.
             </p>
 
             <div style={styles.homeV2UniversosWrap}>
@@ -60,9 +78,7 @@ export function Home({
                 </span>
               </div>
               <h2 style={styles.homeV2ChapterPlaceTitle}>Meu Mundo</h2>
-              <p style={styles.homeV2ChapterSubtitle}>
-                O lugar onde suas descobertas ganham uma casa.
-              </p>
+              <p style={styles.homeV2ChapterSubtitleShort}>{homeMeuMundoCopy}</p>
               <MeuMundoCollectionSeals />
               <FicharioEtiqueta
                 action
@@ -79,13 +95,18 @@ export function Home({
           </div>
         </FicharioDivisoria>
 
-        <FicharioDivisoria chapter="atelie">
+        <FicharioDivisoria chapter="clube">
+          <ParticipationSection
+            variant="home-path"
+            onGoToClube={onGoToClube}
+          />
+        </FicharioDivisoria>
+
+        <FicharioDivisoria chapter="atelie" style={styles.homeV2ClubeEnd}>
           <div style={styles.homeV2AtelierShop}>
-            <p style={styles.homeV2ChapterKicker}>{atelierPortalCopy.kicker}</p>
-            <h2 style={styles.homeV2ChapterPlaceTitle}>{atelierPortalCopy.title}</h2>
-            <p style={styles.homeV2ChapterSubtitle}>
-              {atelierPortalCopy.description}
-            </p>
+            <p style={styles.homeV2ChapterKicker}>Leve o Mundo da Teca para casa</p>
+            <h2 style={styles.homeV2ChapterPlaceTitle}>Ateliê</h2>
+            <p style={styles.homeV2ChapterSubtitleShort}>{homeAtelierCopy}</p>
             <FicharioEtiqueta
               action
               onClick={() => setScreen(appRoutes.atelie)}
@@ -98,13 +119,6 @@ export function Home({
               Entrar no Ateliê
             </FicharioEtiqueta>
           </div>
-        </FicharioDivisoria>
-
-        <FicharioDivisoria chapter="clube" style={styles.homeV2ClubeEnd}>
-          <ParticipationSection
-            variant="home-path"
-            onGoToClube={onGoToClube}
-          />
         </FicharioDivisoria>
       </div>
     </WorldPortalLayout>
