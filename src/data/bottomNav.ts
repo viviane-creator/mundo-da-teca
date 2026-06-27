@@ -35,15 +35,15 @@ export const bottomNavItems: BottomNavItem[] = [
     activeTint: "#8A9870",
   },
   {
-    label: "Clube",
-    screen: appRoutes.clube,
-    illustration: "clube",
-    activeTint: "#B99B5C",
-  },
-  {
     label: "Ateliê",
     screen: appRoutes.atelie,
     illustration: "atelie",
     activeTint: "#B47A63",
+  },
+  {
+    label: "Clube",
+    screen: appRoutes.clube,
+    illustration: "clube",
+    activeTint: "#B99B5C",
   },
 ]
