@@ -1,7 +1,6 @@
 /**
  * Autenticação simbólica — fase de UX.
- * Persiste nome + e-mail no localStorage; sem backend nem provedor externo.
- * Substituir por auth real quando o Clube da Teca tiver integração.
+ * Responsável + criança persistidos no localStorage; sem backend nem provedor externo.
  */
 import {
   createContext,
@@ -11,16 +10,20 @@ import {
   useState,
   type ReactNode,
 } from "react"
+import { childFirstName, olaChild } from "./childPersonalization"
 
 export type TecaUser = {
-  name: string
+  guardianName: string
   email: string
+  childName: string
+  childBirthDate: string
 }
 
 type AuthContextValue = {
   user: TecaUser | null
   isAuthenticated: boolean
-  login: (user: TecaUser) => void
+  register: (user: TecaUser, options?: { keepModalOpen?: boolean }) => void
+  loginByEmail: (email: string) => boolean
   logout: () => void
   loginModalOpen: boolean
   accountModalOpen: boolean
@@ -30,48 +33,129 @@ type AuthContextValue = {
   closeAccount: () => void
 }
 
-const STORAGE_KEY = "teca-user"
+const SESSION_KEY = "teca-user"
+const REGISTRY_KEY = "teca-registry"
 
-function readStoredUser(): TecaUser | null {
+function normalizeEmail(email: string): string {
+  return email.trim().toLowerCase()
+}
+
+function normalizeUser(raw: unknown): TecaUser | null {
+  if (!raw || typeof raw !== "object") return null
+  const record = raw as Record<string, unknown>
+
+  if (typeof record.childName === "string" && typeof record.email === "string") {
+    const childName = record.childName.trim()
+    const email = normalizeEmail(record.email)
+    if (!childName || !email) return null
+    return {
+      guardianName:
+        typeof record.guardianName === "string" ? record.guardianName.trim() : "",
+      email,
+      childName,
+      childBirthDate:
+        typeof record.childBirthDate === "string" ? record.childBirthDate.trim() : "",
+    }
+  }
+
+  if (typeof record.name === "string" && typeof record.email === "string") {
+    const name = record.name.trim()
+    const email = normalizeEmail(record.email)
+    if (!name || !email) return null
+    return {
+      guardianName: name,
+      email,
+      childName: name,
+      childBirthDate: "",
+    }
+  }
+
+  return null
+}
+
+function readRegistry(): Record<string, TecaUser> {
   try {
-    const raw = localStorage.getItem(STORAGE_KEY)
+    const raw = localStorage.getItem(REGISTRY_KEY)
+    if (raw) {
+      const parsed = JSON.parse(raw) as Record<string, unknown>
+      const registry: Record<string, TecaUser> = {}
+      for (const [email, value] of Object.entries(parsed)) {
+        const user = normalizeUser(value)
+        if (user) registry[email] = user
+      }
+      return registry
+    }
+  } catch {
+    /* ignore */
+  }
+
+  const session = readSessionUser()
+  if (session) return { [session.email]: session }
+  return {}
+}
+
+function persistRegistry(registry: Record<string, TecaUser>) {
+  localStorage.setItem(REGISTRY_KEY, JSON.stringify(registry))
+}
+
+function readSessionUser(): TecaUser | null {
+  try {
+    const raw = localStorage.getItem(SESSION_KEY)
     if (!raw) return null
-    const parsed = JSON.parse(raw) as TecaUser
-    if (parsed?.name && parsed?.email) return parsed
-    return null
+    return normalizeUser(JSON.parse(raw))
   } catch {
     return null
   }
 }
 
-function persistUser(user: TecaUser | null) {
+function persistSession(user: TecaUser | null) {
   if (user) {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(user))
+    localStorage.setItem(SESSION_KEY, JSON.stringify(user))
   } else {
-    localStorage.removeItem(STORAGE_KEY)
+    localStorage.removeItem(SESSION_KEY)
   }
-}
-
-function firstName(fullName: string): string {
-  return fullName.trim().split(/\s+/)[0] ?? ""
 }
 
 const AuthContext = createContext<AuthContextValue | null>(null)
 
 export function AuthProvider({ children }: { children: ReactNode }) {
-  const [user, setUser] = useState<TecaUser | null>(() => readStoredUser())
+  const [user, setUser] = useState<TecaUser | null>(() => readSessionUser())
   const [loginModalOpen, setLoginModalOpen] = useState(false)
   const [accountModalOpen, setAccountModalOpen] = useState(false)
 
-  const login = useCallback((nextUser: TecaUser) => {
-    setUser(nextUser)
-    persistUser(nextUser)
+  const register = useCallback(
+    (nextUser: TecaUser, options?: { keepModalOpen?: boolean }) => {
+      const normalized: TecaUser = {
+        guardianName: nextUser.guardianName.trim(),
+        email: normalizeEmail(nextUser.email),
+        childName: nextUser.childName.trim(),
+        childBirthDate: nextUser.childBirthDate.trim(),
+      }
+      const registry = readRegistry()
+      registry[normalized.email] = normalized
+      persistRegistry(registry)
+      setUser(normalized)
+      persistSession(normalized)
+      if (!options?.keepModalOpen) {
+        setLoginModalOpen(false)
+      }
+    },
+    [],
+  )
+
+  const loginByEmail = useCallback((email: string) => {
+    const registry = readRegistry()
+    const found = registry[normalizeEmail(email)]
+    if (!found) return false
+    setUser(found)
+    persistSession(found)
     setLoginModalOpen(false)
+    return true
   }, [])
 
   const logout = useCallback(() => {
     setUser(null)
-    persistUser(null)
+    persistSession(null)
     setAccountModalOpen(false)
   }, [])
 
@@ -91,7 +175,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     () => ({
       user,
       isAuthenticated: user !== null,
-      login,
+      register,
+      loginByEmail,
       logout,
       loginModalOpen,
       accountModalOpen,
@@ -102,7 +187,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     }),
     [
       user,
-      login,
+      register,
+      loginByEmail,
       logout,
       loginModalOpen,
       accountModalOpen,
@@ -123,15 +209,13 @@ export function useAuth() {
 }
 
 export function userDisplayName(user: TecaUser): string {
-  return firstName(user.name)
+  return childFirstName(user.childName)
 }
 
-/** Rótulo do link no topo: "Entrar" ou "Olá, [nome]" / "Minha Conta" */
 export function topAccessLabel(
   user: TecaUser | null,
   isAuthenticated: boolean,
 ): string {
   if (!isAuthenticated || !user) return "Entrar"
-  const name = userDisplayName(user)
-  return name ? `Olá, ${name}` : "Minha Conta"
+  return olaChild(user.childName)
 }

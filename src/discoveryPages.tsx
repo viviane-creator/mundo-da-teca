@@ -1,4 +1,6 @@
 import { useRef, useState, type CSSProperties } from "react"
+import { useAuth } from "./auth/authContext"
+import { colecaoDaChild, diarioDaChild } from "./auth/childPersonalization"
 import {
   buildDiaryDescription,
   formatPoeticDate,
@@ -598,6 +600,10 @@ export function DiaryPage({
   setScreen: SetScreen
   entries: DiaryEntry[]
 }) {
+  const { user, isAuthenticated } = useAuth()
+  const diaryTitle =
+    isAuthenticated && user ? diarioDaChild(user.childName) : "Diário"
+
   return (
     <section style={s.subPage}>
       <button
@@ -611,7 +617,7 @@ export function DiaryPage({
       <div style={s.diaryChapterHero}>
         <span style={s.diaryChapterSpine} aria-hidden="true" />
         <p style={s.diaryKicker}>diário livre</p>
-        <h1 style={s.diaryTitle}>Diário</h1>
+        <h1 style={s.diaryTitle}>{diaryTitle}</h1>
         <p style={s.diaryIntro}>
           Um lugar para escrever, desenhar e registrar aquilo que chamou sua
           atenção.
@@ -808,6 +814,9 @@ export function CollectionsPage({
 }: {
   setScreen: SetScreen
 }) {
+  const { user, isAuthenticated } = useAuth()
+  const collectionTitle =
+    isAuthenticated && user ? colecaoDaChild(user.childName) : "Minhas Descobertas"
   const [expandedId, setExpandedId] = useState<string | null>(null)
   const [registeredKeys, setRegisteredKeys] = useState(buildInitialDiscoveryRegistry)
   const [activeRegistration, setActiveRegistration] = useState<{
@@ -839,7 +848,7 @@ export function CollectionsPage({
       <div style={s.colecoesChapterHero}>
         <span style={s.colecoesChapterSpine} aria-hidden="true" />
         <p style={s.colecoesKicker}>coleção pessoal</p>
-        <h1 style={s.colecoesTitle}>Minhas Descobertas</h1>
+        <h1 style={s.colecoesTitle}>{collectionTitle}</h1>
         <p style={s.colecoesPageIntro}>
           As experiências que você já realizou e decidiu guardar.
         </p>

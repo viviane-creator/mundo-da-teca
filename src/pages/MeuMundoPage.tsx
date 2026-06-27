@@ -1,4 +1,11 @@
 import type { CSSProperties } from "react"
+import { useAuth } from "../auth/authContext"
+import {
+  bibliotecaDaChild,
+  colecaoDaChild,
+  diarioDaChild,
+  mundoDaChild,
+} from "../auth/childPersonalization"
 import { meuMundoClubSeal, meuMundoSections } from "../data/meuMundoMock"
 import { styles } from "../styles/appStyles"
 import { WorldPortalLayout, portalPages } from "../worldPortal"
@@ -8,10 +15,27 @@ export function MeuMundoPage({
 }: {
   setScreen: (screen: string) => void
 }) {
+  const { user, isAuthenticated } = useAuth()
   const portal = portalPages.meuMundo
+  const portalTitle =
+    isAuthenticated && user ? mundoDaChild(user.childName) : portal.title
+
+  const sectionTitle = (sectionId: string, fallback: string) => {
+    if (!isAuthenticated || !user) return fallback
+    if (sectionId === "diario") return diarioDaChild(user.childName)
+    if (sectionId === "colecoes") return colecaoDaChild(user.childName)
+    if (sectionId === "biblioteca") return bibliotecaDaChild(user.childName)
+    return fallback
+  }
 
   return (
-    <WorldPortalLayout {...portal} compactTitle breath="large" variant="art">
+    <WorldPortalLayout
+      {...portal}
+      title={portalTitle}
+      compactTitle
+      breath="large"
+      variant="art"
+    >
       <div style={styles.meuMundoPortalStack}>
         {meuMundoSections.map((section) => (
           <button
@@ -39,7 +63,9 @@ export function MeuMundoPage({
                 }}
               />
               <div style={styles.meuMundoPortalBody}>
-                <h2 style={styles.meuMundoPortalTitle}>{section.title}</h2>
+                <h2 style={styles.meuMundoPortalTitle}>
+                  {sectionTitle(section.id, section.title)}
+                </h2>
                 <p style={styles.meuMundoPortalText}>{section.text}</p>
               </div>
             </article>

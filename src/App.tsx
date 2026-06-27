@@ -367,7 +367,7 @@ function AppContent() {
     <main style={styles.main}>
       <section style={styles.appShell}>
         <TopAccessLink />
-        <LoginModal />
+        <LoginModal setScreen={setScreen} />
         <AccountModal />
 
         {screen === "home" && (

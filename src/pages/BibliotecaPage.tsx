@@ -1,4 +1,6 @@
 import { BibliotecaKitCard } from "../components/biblioteca/BibliotecaKitCard"
+import { useAuth } from "../auth/authContext"
+import { bibliotecaDaChild } from "../auth/childPersonalization"
 import { bibliotecaAtlas } from "../data/bibliotecaAtlas"
 import { bibliotecaContent } from "../data/bibliotecaContent"
 import { bibliotecaShelfItems } from "../data/bibliotecaMock"
@@ -16,6 +18,12 @@ export function BibliotecaPage({
 }: {
   setScreen: (screen: string) => void
 }) {
+  const { user, isAuthenticated } = useAuth()
+  const libraryTitle =
+    isAuthenticated && user
+      ? bibliotecaDaChild(user.childName)
+      : bibliotecaContent.title
+
   return (
     <>
       <WorldPortalCover
@@ -34,7 +42,7 @@ export function BibliotecaPage({
 
         <WorldPortalHeader
           kicker={bibliotecaContent.kicker}
-          title={bibliotecaContent.title}
+          title={libraryTitle}
           tagline={bibliotecaContent.introLead}
           compactTitle
           breath="large"

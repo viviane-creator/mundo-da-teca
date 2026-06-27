@@ -4597,12 +4597,14 @@ export const styles: Record<string, CSSProperties> = {
     position: "relative",
     width: "100%",
     maxWidth: "380px",
+    maxHeight: "min(88vh, 680px)",
     borderRadius: "20px",
     border: "1px dashed rgba(196, 165, 141, 0.42)",
     background: "rgba(255, 253, 249, 0.98)",
     padding: "28px 24px 24px 26px",
     boxShadow: "0 16px 40px rgba(90, 60, 38, 0.1)",
-    overflow: "hidden",
+    overflowX: "hidden",
+    overflowY: "auto",
   },
 
   authModalSpine: {
@@ -4628,29 +4630,79 @@ export const styles: Record<string, CSSProperties> = {
     ...tecaFont.heading,
     fontSize: "28px",
     textAlign: "center",
-    margin: "0 0 12px",
-    lineHeight: 1.1,
+    margin: "0 0 20px",
+    lineHeight: 1.15,
+    transition: "opacity 0.25s ease",
   },
 
   authModalText: {
     ...tecaFont.prose,
     fontSize: "15px",
     textAlign: "center",
-    margin: "0 auto 24px",
+    margin: "0 auto 28px",
+    maxWidth: "300px",
+    lineHeight: 1.55,
+  },
+
+  authModalHint: {
+    ...tecaFont.prose,
+    fontSize: "14px",
+    textAlign: "center",
+    margin: "0 auto 8px",
     maxWidth: "300px",
     lineHeight: 1.5,
+    color: tecaColors.muted,
+    fontStyle: "italic",
+  },
+
+  authModeLink: {
+    display: "block",
+    width: "100%",
+    marginTop: "20px",
+    padding: "4px 0",
+    border: "none",
+    background: "transparent",
+    cursor: "pointer",
+    fontFamily: "'Cormorant Garamond', serif",
+    fontSize: "15px",
+    color: tecaColors.muted,
+    textAlign: "center",
+    textDecoration: "underline",
+    textUnderlineOffset: "3px",
+    textDecorationColor: "rgba(196, 165, 141, 0.45)",
   },
 
   authForm: {
     display: "flex",
     flexDirection: "column",
-    gap: "16px",
+    gap: "20px",
+  },
+
+  authFormSignup: {
+    display: "flex",
+    flexDirection: "column",
+    gap: "14px",
   },
 
   authField: {
     display: "flex",
     flexDirection: "column",
     gap: "6px",
+  },
+
+  authFieldInner: {
+    display: "flex",
+    flexDirection: "column",
+    gap: "6px",
+  },
+
+  authFieldSupport: {
+    ...tecaFont.prose,
+    fontSize: "11px",
+    lineHeight: 1.4,
+    color: tecaColors.muted,
+    margin: "0",
+    opacity: 0.82,
   },
 
   authFieldLabel: {
@@ -4675,7 +4727,7 @@ export const styles: Record<string, CSSProperties> = {
     display: "flex",
     flexDirection: "column",
     gap: "10px",
-    marginTop: "8px",
+    marginTop: "4px",
   },
 
   authButtonPrimary: {
