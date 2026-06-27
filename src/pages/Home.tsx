@@ -6,7 +6,11 @@ import { ParticipationSection } from "../components/ParticipationSection"
 import type { ParticipationPlanId } from "../data/participationPlans"
 import { appRoutes, resolveUniverseRoute } from "../navigation/appRoutes"
 import { styles } from "../styles/appStyles"
-import { homeCtaClassName, homeCtaStyle } from "../styles/homeCta"
+import {
+  homeCtaClassName,
+  homeCtaStyle,
+  homeHeroCtaClassName,
+} from "../styles/homeCta"
 import { WorldPortalLayout, portalPages } from "../worldPortal"
 
 const homeMeuMundoCopy =
@@ -31,8 +35,7 @@ export function Home({
       heroAction={{
         label: "Começar a explorar",
         onClick: () => setScreen(appRoutes.brincadeiras),
-        className: homeCtaClassName("clubeExplorador"),
-        style: homeCtaStyle("clubeExplorador"),
+        className: homeHeroCtaClassName,
       }}
     >
       <HomeAboutSection />

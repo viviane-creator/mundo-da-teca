@@ -4,7 +4,7 @@ import { HomeEditorialBridge } from "./components/home/HomeEditorialBridge"
 import { HomeHeroMist, HomeHeroTextMist, homeHeroMistZoneStyle } from "./components/HomeHeroMist"
 import { atelierPortalCopy } from "./data/atelierPortalCopy"
 import { pageCovers } from "./data/pageCovers"
-import { tecaColors, tecaFichario, tecaFont, tecaHierarchy, tecaSpacing } from "./tecaVisual"
+import { tecaColors, tecaFont, tecaHierarchy, tecaSpacing } from "./tecaVisual"
 
 const theme = {
   text: tecaColors.text,
@@ -176,13 +176,10 @@ const p: Record<string, CSSProperties> = {
       "0 1px 3px rgba(255,253,249,0.94), 0 3px 22px rgba(255,253,249,0.88), 0 1px 0 rgba(90,60,30,0.1)",
   },
   homeHeroAction: {
-    ...tecaFichario.etiquetaAction(),
     position: "relative",
     zIndex: 2,
     marginTop: "3px",
     pointerEvents: "auto",
-    fontSize: "17px",
-    padding: "8px 20px",
   },
   heroTitle: {
     ...tecaHierarchy.l1PageTitle,
