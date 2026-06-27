@@ -4405,7 +4405,27 @@ export const styles: Record<string, CSSProperties> = {
 
   navButtonActive: {
     zIndex: 2,
-    padding: "0 8px",
+  },
+
+  navItemContent: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
+    gap: "2px",
+    minWidth: 0,
+  },
+
+  navActiveCluster: {
+    position: "relative",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
+    gap: "2px",
+    padding: "3px 5px 4px",
+    maxWidth: "85%",
+    minWidth: 0,
   },
 
   navIconWrap: {
@@ -4419,17 +4439,10 @@ export const styles: Record<string, CSSProperties> = {
     transition: "width 0.24s ease, height 0.24s ease, padding 0.24s ease",
   },
 
-  navIconWrapActive: {
-    width: "46px",
-    height: "42px",
-    padding: "3px 4px",
-    boxSizing: "border-box",
-  },
-
   navActiveCapsule: {
     position: "absolute",
-    left: "-11px",
-    right: "-11px",
+    left: "-2px",
+    right: "-2px",
     top: "-5px",
     bottom: "-6px",
     borderRadius: "20px",
@@ -4479,7 +4492,6 @@ export const styles: Record<string, CSSProperties> = {
     overflow: "visible",
     textOverflow: "clip",
     letterSpacing: "0.08em",
-    padding: "0 3px",
   },
 
   institutionalFooter: {
