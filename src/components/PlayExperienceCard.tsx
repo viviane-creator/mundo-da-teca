@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { clubExclusiveSeal, isClubExclusiveFicha } from "../auth/clubExclusiveScreens"
 import {
   formatDiscoveryTitle,
   formatFichaCodigo,
@@ -84,7 +85,7 @@ export function PlayExperienceCard({
           {expanded ? "▾" : "▸"}
         </span>
         <span style={styles.experienceAccordionTitle}>{displayTitle}</span>
-        {!experience.isFree ? (
+        {isClubExclusiveFicha(experience) ? (
           <span
             style={{
               ...styles.experienceAccordionSeal,
@@ -93,7 +94,7 @@ export function PlayExperienceCard({
               background: accent.badgeBg,
             }}
           >
-            clube da teca
+            {clubExclusiveSeal}
           </span>
         ) : null}
       </button>

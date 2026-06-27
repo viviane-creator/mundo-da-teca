@@ -6,20 +6,32 @@ import { tecaFichario, tecaHierarchy } from "../tecaVisual"
 export function ClubGateScreen({
   setScreen,
   returnScreen = appRoutes.minhaColecao,
+  backLabel = "meu mundo",
+  onBack,
 }: {
   setScreen: (screen: string) => void
   returnScreen?: string
+  backLabel?: string
+  onBack?: () => void
 }) {
   const { openLogin } = useAuth()
+
+  const handleBack = () => {
+    if (onBack) {
+      onBack()
+      return
+    }
+    setScreen(returnScreen)
+  }
 
   return (
     <section style={styles.clubGate}>
       <button
         type="button"
-        onClick={() => setScreen(returnScreen)}
+        onClick={handleBack}
         style={styles.clubGateBack}
       >
-        ← meu mundo
+        ← {backLabel}
       </button>
 
       <div style={styles.clubGateContent}>

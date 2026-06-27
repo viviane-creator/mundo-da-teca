@@ -4,8 +4,6 @@ import "./styles/homeCta.css"
 import {
   isPlayUniverseScreen,
   playUniverses,
-  type PlayExperience,
-  type PlayUniverse,
 } from "./playData"
 import { getAtelierGoodById, type AtelierGood } from "./atelierShopData"
 import {
@@ -47,15 +45,12 @@ import {
   DiaryPage,
 } from "./discoveryPages"
 import { pageData } from "./data/pageData"
-import { getUniverseChapterTitle } from "./data/homeUniversePortals"
 import { UniversosPage } from "./pages/UniversosPage"
-import { UniverseChapterFrame } from "./components/UniverseChapterFrame"
+import { PlayUniversePage } from "./pages/PlayUniversePage"
 import { FeatureCard } from "./components/FeatureCard"
 import { SoftNote } from "./components/SoftNote"
 import { BottomNav } from "./components/BottomNav"
 import { InstitutionalFooter } from "./components/InstitutionalFooter"
-import { PlayExperienceCard } from "./components/PlayExperienceCard"
-import { getUniverseAccent } from "./data/universeAccent"
 import { Home } from "./pages/Home"
 import { ClubPage } from "./pages/ClubPage"
 import type { ParticipationPlanId } from "./data/participationPlans"
@@ -387,7 +382,7 @@ function AppContent() {
           <DiscoveryDay setScreen={setScreen} />
         )}
 
-        {isPlayUniverseScreen(screen) && (
+        {isPlayUniverseScreen(screen) && playUniverses[screen] && (
           <PlayUniversePage
             setScreen={setScreen}
             universe={playUniverses[screen]}
@@ -529,109 +524,6 @@ function Page({
         ))}
       </div>
     </WorldPortalLayout>
-  )
-}
-
-function PlayUniversePage({
-  setScreen,
-  universe,
-}: {
-  setScreen: (screen: Screen) => void
-  universe: PlayUniverse
-}) {
-  const [openedId, setOpenedId] = useState<string | null>(null)
-  const accent = getUniverseAccent(universe.id)
-
-  return (
-    <section style={styles.subPage}>
-      <button
-        onClick={() => setScreen("universos")}
-        style={styles.backButton}
-      >
-        ← universos
-      </button>
-
-      <UniverseChapterFrame
-        src={universe.image}
-        alt={getUniverseChapterTitle(universe.id)}
-        universeId={universe.id}
-      />
-
-      <header style={styles.playUniverseChapterEditorial}>
-        <div
-          style={{
-            position: "relative",
-            display: "inline-block",
-            width: "100%",
-          }}
-        >
-          <div
-            aria-hidden
-            style={{
-              position: "absolute",
-              left: "50%",
-              top: "50%",
-              transform: "translate(-50%, -50%)",
-              width: "min(320px, 88vw)",
-              height: "72px",
-              background: accent.titleWash,
-              pointerEvents: "none",
-              zIndex: 0,
-            }}
-          />
-          <h1
-            style={{
-              ...styles.playUniverseChapterTitle,
-              position: "relative",
-              zIndex: 1,
-            }}
-          >
-            {getUniverseChapterTitle(universe.id)}
-          </h1>
-        </div>
-        <p style={styles.playUniverseChapterTagline}>
-          {universe.chapterTagline}
-        </p>
-      </header>
-
-      <section style={styles.experienceCollection}>
-        <h2
-          style={{
-            ...styles.experienceCollectionTitle,
-            paddingBottom: "10px",
-            borderBottom: `1px solid ${accent.line}`,
-            maxWidth: "220px",
-            marginLeft: "auto",
-            marginRight: "auto",
-          }}
-        >
-          Fichas deste universo
-        </h2>
-
-        <div
-          style={{
-            ...styles.experienceAccordion,
-            borderColor: accent.border,
-          }}
-        >
-          {universe.experiences.map((experience, index) => (
-            <PlayExperienceCard
-              key={experience.id}
-              experience={experience}
-              universeId={universe.id}
-              index={index}
-              isLast={index === universe.experiences.length - 1}
-              expanded={openedId === experience.id}
-              onToggle={() =>
-                setOpenedId((current) =>
-                  current === experience.id ? null : experience.id,
-                )
-              }
-            />
-          ))}
-        </div>
-      </section>
-    </section>
   )
 }
 

@@ -1567,17 +1567,19 @@ export const styles: Record<string, CSSProperties> = {
 
   experienceAccordionSeal: {
     flexShrink: 0,
-    fontSize: "8px",
-    letterSpacing: "1.6px",
+    maxWidth: "74px",
+    fontSize: "6.5px",
+    letterSpacing: "0.12em",
     textTransform: "uppercase",
     color: "#a67c52",
     border: "1px solid #e2cdb8",
     borderRadius: "999px",
-    padding: "4px 8px",
+    padding: "4px 7px",
     background: "rgba(248, 236, 223, 0.7)",
     fontFamily: "'Cormorant Garamond', serif",
     fontWeight: 600,
-    lineHeight: 1.3,
+    lineHeight: 1.35,
+    textAlign: "center",
   },
 
   experienceAccordionPanel: {
