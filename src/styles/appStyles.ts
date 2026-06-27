@@ -4680,6 +4680,32 @@ export const styles: Record<string, CSSProperties> = {
     transition: "opacity 0.25s ease",
   },
 
+  authModalTitleStack: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    gap: "4px",
+    margin: "0 0 20px",
+    textAlign: "center",
+    transition: "opacity 0.25s ease",
+  },
+
+  authModalTitleLead: {
+    ...tecaFont.heading,
+    fontSize: "22px",
+    fontWeight: 500,
+    lineHeight: 1.2,
+    margin: 0,
+  },
+
+  authModalTitleBrand: {
+    ...tecaFont.heading,
+    fontSize: "30px",
+    fontWeight: 500,
+    lineHeight: 1.15,
+    margin: 0,
+  },
+
   authModalText: {
     ...tecaFont.prose,
     fontSize: "15px",

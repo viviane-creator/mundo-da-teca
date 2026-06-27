@@ -15,8 +15,16 @@ import { styles } from "../styles/appStyles"
 
 type AccessStep = "welcome" | "signup" | "login" | "success" | "welcomeBack"
 
-const SIGNUP_TITLE = "Vamos preparar um Mundo da Teca?"
 const RETURN_TITLE = "Bem-vindo ao Mundo da Teca."
+
+function SignupTitle({ id }: { id?: string }) {
+  return (
+    <h2 id={id} style={styles.authModalTitleStack}>
+      <span style={styles.authModalTitleLead}>Vamos preparar o seu</span>
+      <span style={styles.authModalTitleBrand}>Mundo da Teca.</span>
+    </h2>
+  )
+}
 
 export function LoginModal({
   setScreen,
@@ -113,9 +121,7 @@ export function LoginModal({
         {step === "welcome" && (
           <div key="welcome" className="auth-modal-step">
             <p style={styles.authModalKicker}>primeiro acesso</p>
-            <h2 id="access-modal-title" style={styles.authModalTitle}>
-              {SIGNUP_TITLE}
-            </h2>
+            <SignupTitle id="access-modal-title" />
             <p style={styles.authModalText}>
               Cada criança terá seu próprio espaço para guardar descobertas,
               registrar suas aventuras e construir sua coleção.
@@ -148,9 +154,7 @@ export function LoginModal({
         {step === "signup" && (
           <div key="signup" className="auth-modal-step">
             <p style={styles.authModalKicker}>primeiro acesso</p>
-            <h2 id="access-modal-title" style={styles.authModalTitle}>
-              {SIGNUP_TITLE}
-            </h2>
+            <SignupTitle id="access-modal-title" />
 
             <form onSubmit={handleSignup} style={styles.authFormSignup}>
               <label style={styles.authField}>
