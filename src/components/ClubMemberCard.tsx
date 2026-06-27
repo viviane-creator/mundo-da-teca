@@ -1,28 +1,18 @@
 import { childFirstName } from "../auth/childPersonalization"
-import {
-  formatBirthDateLong,
-  formatExplorerSinceMonthYear,
-} from "../auth/memberCardFormat"
-import type { TecaUser } from "../auth/authContext"
+import { childProfileCardLabels } from "../auth/childProfileView"
+import type { ChildProfile } from "../types/childProfile"
 import { styles } from "../styles/appStyles"
 import { tecaTilt } from "../tecaVisual"
 
-function ClubMemberPhoto({
-  photoUrl,
-  childName,
-}: {
-  photoUrl?: string
-  childName: string
-}) {
-  const label = childName
-    ? `Foto de ${childFirstName(childName)}`
-    : "Espaço para foto"
+function ClubMemberPhoto({ profile }: { profile: ChildProfile | null }) {
+  const name = profile?.name ?? ""
+  const label = name ? `Foto de ${childFirstName(name)}` : "Espaço para foto"
 
   return (
     <div style={styles.clubMemberPhotoWrap}>
-      {photoUrl ? (
+      {profile?.photoUrl ? (
         <img
-          src={photoUrl}
+          src={profile.photoUrl}
           alt={label}
           style={styles.clubMemberPhotoImage}
         />
@@ -72,15 +62,12 @@ function ClubMemberField({
   )
 }
 
-export function ClubMemberCard({ user }: { user: TecaUser | null }) {
-  const displayName = user ? childFirstName(user.childName) || user.childName : "—"
-  const birthday = user?.childBirthDate
-    ? formatBirthDateLong(user.childBirthDate)
-    : "—"
-  const explorerSince = user?.memberSince
-    ? formatExplorerSinceMonthYear(user.memberSince)
-    : "—"
-  const explorerNumber = user?.explorerNumber ?? "EXP-00000"
+export function ClubMemberCard({
+  profile,
+}: {
+  profile: ChildProfile | null
+}) {
+  const labels = childProfileCardLabels(profile)
 
   return (
     <article style={{ ...styles.clubMemberCard, ...tecaTilt(-0.35) }}>
@@ -89,7 +76,7 @@ export function ClubMemberCard({ user }: { user: TecaUser | null }) {
 
       <header style={styles.clubMemberCardHeader}>
         <p style={styles.clubMemberCardIssuer}>Mundo da Teca</p>
-        <p style={styles.clubMemberNumber}>{explorerNumber}</p>
+        <p style={styles.clubMemberNumber}>{labels.explorerNumber}</p>
       </header>
 
       <h2 style={styles.clubMemberCardTitle}>carteirinha da teca</h2>
@@ -98,15 +85,12 @@ export function ClubMemberCard({ user }: { user: TecaUser | null }) {
       </p>
 
       <div style={styles.clubMemberIdentity}>
-        <ClubMemberPhoto
-          photoUrl={user?.childPhoto}
-          childName={user?.childName ?? ""}
-        />
+        <ClubMemberPhoto profile={profile} />
 
         <div style={styles.clubMemberFields}>
-          <ClubMemberField label="nome da criança" value={displayName} />
-          <ClubMemberField label="aniversário" value={birthday} />
-          <ClubMemberField label="explorador desde" value={explorerSince} />
+          <ClubMemberField label="nome da criança" value={labels.displayName} />
+          <ClubMemberField label="aniversário" value={labels.birthDate} />
+          <ClubMemberField label="explorador desde" value={labels.joinedAt} />
         </div>
       </div>
     </article>

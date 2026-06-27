@@ -16,7 +16,7 @@ export function ClubPage({
   setScreen: (screen: string) => void
   focusPlan?: ParticipationPlanId | null
 }) {
-  const { user } = useAuth()
+  const { childProfile } = useAuth()
   const portal = portalPages.clube
 
   useEffect(() => {
@@ -74,7 +74,7 @@ export function ClubPage({
 
       <section style={styles.clubCarteirinhaSection}>
         <p style={styles.clubSecondaryLabel}>pertencimento</p>
-        <ClubMemberCard user={user} />
+        <ClubMemberCard profile={childProfile} />
       </section>
     </WorldPortalLayout>
   )

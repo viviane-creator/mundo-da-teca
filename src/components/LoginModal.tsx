@@ -3,6 +3,7 @@ import {
   formatBirthDateInput,
   isCompleteBirthDate,
 } from "../auth/birthDateInput"
+import { childProfileToUserFields } from "../auth/childProfile"
 import { useAuth } from "../auth/authContext"
 import {
   bemVindoDeVoltaText,
@@ -62,12 +63,10 @@ export function LoginModal({
     }
 
     register(
-      {
-        guardianName: trimmedGuardian,
-        email: trimmedEmail,
-        childName: trimmedChild,
-        childBirthDate: trimmedBirthDate,
-      },
+      childProfileToUserFields(
+        { name: trimmedChild, birthDate: trimmedBirthDate },
+        { guardianName: trimmedGuardian, email: trimmedEmail },
+      ),
       { keepModalOpen: true },
     )
     setWelcomedChildName(trimmedChild)

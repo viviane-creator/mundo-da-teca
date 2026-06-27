@@ -10,8 +10,10 @@ import {
   useState,
   type ReactNode,
 } from "react"
+import { childProfileFromUser } from "./childProfile"
 import { childFirstName, olaChild } from "./childPersonalization"
 import { generateExplorerNumber, explorerNumberFromEmail } from "./explorerNumber"
+import type { ChildProfile } from "../types/childProfile"
 
 export type TecaUser = {
   guardianName: string
@@ -25,6 +27,7 @@ export type TecaUser = {
 
 type AuthContextValue = {
   user: TecaUser | null
+  childProfile: ChildProfile | null
   isAuthenticated: boolean
   register: (user: TecaUser, options?: { keepModalOpen?: boolean }) => void
   loginByEmail: (
@@ -221,9 +224,15 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const openAccount = useCallback(() => setAccountModalOpen(true), [])
   const closeAccount = useCallback(() => setAccountModalOpen(false), [])
 
+  const childProfile = useMemo(
+    () => childProfileFromUser(user),
+    [user],
+  )
+
   const value = useMemo<AuthContextValue>(
     () => ({
       user,
+      childProfile,
       isAuthenticated: user !== null,
       register,
       loginByEmail,
@@ -237,6 +246,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     }),
     [
       user,
+      childProfile,
       register,
       loginByEmail,
       logout,
