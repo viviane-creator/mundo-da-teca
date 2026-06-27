@@ -26,12 +26,6 @@ export type PortalHeroProps = {
   tagline: string
   compactTitle?: boolean
   variant?: "home" | "portal" | "art"
-  action?: {
-    label: string
-    onClick: () => void
-    style?: CSSProperties
-    className?: string
-  }
 }
 
 export const portalPages = {
@@ -174,21 +168,6 @@ const p: Record<string, CSSProperties> = {
     textAlign: "center",
     textShadow:
       "0 1px 3px rgba(255,253,249,0.94), 0 3px 22px rgba(255,253,249,0.88), 0 1px 0 rgba(90,60,30,0.1)",
-  },
-  homeHeroActionWrap: {
-    position: "relative",
-    zIndex: 12,
-    isolation: "isolate",
-    transform: "translateZ(0)",
-    WebkitTransform: "translateZ(0)",
-    marginTop: "10px",
-    pointerEvents: "auto",
-  },
-  homeHeroAction: {
-    position: "relative",
-    zIndex: 1,
-    marginTop: 0,
-    pointerEvents: "auto",
   },
   heroTitle: {
     ...tecaHierarchy.l1PageTitle,
@@ -359,27 +338,6 @@ function PortalHeroOverlay({
                 </span>
               ))}
             </p>
-            {hero.action ? (
-              <div
-                style={
-                  variant === "home" ? p.homeHeroActionWrap : undefined
-                }
-              >
-                <button
-                  type="button"
-                  className={hero.action.className}
-                  onClick={hero.action.onClick}
-                  style={{
-                    ...p.homeHeroAction,
-                    ...hero.action.style,
-                  }}
-                >
-                  <span className="home-hero-cta__label">
-                    {hero.action.label}
-                  </span>
-                </button>
-              </div>
-            ) : null}
           </>
         ) : null}
       </div>
@@ -459,13 +417,11 @@ export function WorldPortalLayout({
   variant = "default",
   compactTitle,
   breath = "normal",
-  heroAction,
   children,
 }: WorldPortalConfig & {
   variant?: "default" | "home" | "art"
   compactTitle?: boolean
   breath?: "normal" | "large"
-  heroAction?: PortalHeroProps["action"]
   children: ReactNode
 }) {
   const hero: PortalHeroProps = {
@@ -473,7 +429,6 @@ export function WorldPortalLayout({
     title,
     tagline,
     compactTitle,
-    action: heroAction,
     variant:
       variant === "home" ? "home" : variant === "art" ? "art" : "portal",
   }

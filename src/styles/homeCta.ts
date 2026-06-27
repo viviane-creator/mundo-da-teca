@@ -47,8 +47,6 @@ const toneTokens: Record<
   },
 }
 
-export const homeHeroCtaClassName = "home-hero-cta"
-
 export function homeCtaClassName(tone: HomeCtaTone): string {
   const base = "home-cta-accent"
   return toneTokens[tone].outline
