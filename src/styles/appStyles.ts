@@ -4877,13 +4877,32 @@ export const styles: Record<string, CSSProperties> = {
   institutionalFooterHandle: {
     ...tecaFont.prose,
     display: "inline-block",
-    margin: "0 0 20px",
+    margin: "0 0 10px",
     fontSize: "13px",
     lineHeight: 1.3,
     color: "#9a8475",
     textDecoration: "none",
     letterSpacing: "0.2px",
     opacity: 0.88,
+  },
+
+  institutionalFooterAboutLink: {
+    ...tecaFont.prose,
+    display: "inline-block",
+    margin: "0 0 12px",
+    padding: 0,
+    border: "none",
+    background: "transparent",
+    fontSize: "13px",
+    lineHeight: 1.35,
+    color: "#9a8475",
+    textDecoration: "underline",
+    textDecorationColor: "rgba(179, 129, 95, 0.35)",
+    textUnderlineOffset: "3px",
+    letterSpacing: "0.15px",
+    opacity: 0.92,
+    cursor: "pointer",
+    WebkitTapHighlightColor: "transparent",
   },
 
   institutionalFooterRule: {

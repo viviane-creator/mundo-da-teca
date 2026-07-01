@@ -1,0 +1,343 @@
+import type { CSSProperties } from "react"
+import { tecaColors, tecaFont, tecaHierarchy } from "../tecaVisual"
+
+const paperWash =
+  "radial-gradient(ellipse 80% 60% at 50% 0%, rgba(255,253,249,0.9) 0%, transparent 72%)"
+
+export const conhecaPageStyles: Record<string, CSSProperties> = {
+  page: {
+    position: "relative",
+    background: tecaColors.shell,
+    backgroundImage: paperWash,
+    paddingBottom: "clamp(24px, 6vw, 40px)",
+  },
+
+  hero: {
+    position: "relative",
+    overflow: "hidden",
+    minHeight: "min(72vh, 620px)",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "flex-end",
+  },
+
+  heroImage: {
+    position: "absolute",
+    inset: 0,
+    width: "100%",
+    height: "100%",
+    objectFit: "cover",
+    objectPosition: "center 38%",
+    filter: "saturate(0.9) contrast(0.94) brightness(1.03)",
+  },
+
+  heroFade: {
+    position: "absolute",
+    inset: 0,
+    background: `linear-gradient(180deg, rgba(246,237,226,0.08) 0%, rgba(246,237,226,0.42) 48%, ${tecaColors.shell} 100%)`,
+    pointerEvents: "none",
+  },
+
+  heroVignette: {
+    position: "absolute",
+    inset: 0,
+    background:
+      "radial-gradient(ellipse 96% 88% at 50% 44%, transparent 58%, rgba(72,48,32,0.06) 100%)",
+    pointerEvents: "none",
+  },
+
+  heroBody: {
+    position: "relative",
+    zIndex: 2,
+    padding: "clamp(28px, 7vw, 44px) clamp(22px, 5vw, 32px) clamp(22px, 5vw, 30px)",
+    textAlign: "center",
+  },
+
+  pageKicker: {
+    ...tecaHierarchy.l6Micro,
+    margin: "0 0 12px",
+    opacity: 0.8,
+  },
+
+  heroTitle: {
+    ...tecaFont.heading,
+    fontSize: "clamp(26px, 6vw, 38px)",
+    fontWeight: 400,
+    lineHeight: 1.24,
+    margin: "0 auto 14px",
+    maxWidth: "18ch",
+    color: tecaColors.text,
+    textShadow:
+      "0 1px 3px rgba(255,253,249,0.92), 0 4px 24px rgba(255,253,249,0.82)",
+  },
+
+  heroText: {
+    ...tecaFont.prose,
+    fontSize: "clamp(16px, 3.8vw, 19px)",
+    lineHeight: 1.52,
+    margin: "0 auto 18px",
+    maxWidth: "34ch",
+    color: tecaColors.muted,
+    textShadow: "0 1px 3px rgba(255,253,249,0.9)",
+  },
+
+  section: {
+    padding: "clamp(36px, 8vw, 56px) clamp(22px, 5vw, 32px)",
+  },
+
+  sectionTight: {
+    padding: "clamp(28px, 6vw, 44px) clamp(22px, 5vw, 32px)",
+  },
+
+  sectionBreath: {
+    padding: "clamp(48px, 10vw, 72px) clamp(22px, 5vw, 32px)",
+  },
+
+  proseCenter: {
+    ...tecaFont.prose,
+    fontSize: "clamp(17px, 4vw, 20px)",
+    lineHeight: 1.58,
+    textAlign: "center",
+    margin: "0 auto",
+    maxWidth: "32ch",
+    color: tecaColors.muted,
+  },
+
+  proseLine: {
+    ...tecaFont.prose,
+    fontSize: "clamp(17px, 4vw, 20px)",
+    lineHeight: 1.62,
+    textAlign: "center",
+    margin: "0 auto 10px",
+    maxWidth: "30ch",
+    color: tecaColors.muted,
+  },
+
+  proseClosing: {
+    ...tecaFont.heading,
+    fontSize: "clamp(19px, 4.2vw, 23px)",
+    fontWeight: 500,
+    lineHeight: 1.35,
+    textAlign: "center",
+    margin: "clamp(20px, 4vw, 28px) auto 0",
+    maxWidth: "28ch",
+    color: tecaColors.text,
+  },
+
+  editorialImageWrap: {
+    display: "flex",
+    justifyContent: "center",
+    margin: "clamp(28px, 6vw, 40px) auto 0",
+  },
+
+  editorialImageRound: {
+    width: "clamp(132px, 34vw, 168px)",
+    height: "auto",
+    display: "block",
+    borderRadius: "50%",
+  },
+
+  editorialImageWide: {
+    width: "min(100%, 340px)",
+    height: "auto",
+    display: "block",
+    borderRadius: "20px",
+    boxShadow: "0 14px 36px rgba(90,60,30,0.08)",
+  },
+
+  sectionTitle: {
+    ...tecaFont.heading,
+    fontSize: "clamp(24px, 5.5vw, 32px)",
+    fontWeight: 500,
+    textAlign: "center",
+    margin: "0 auto 16px",
+    maxWidth: "20ch",
+    lineHeight: 1.18,
+    color: tecaColors.text,
+  },
+
+  sectionLead: {
+    ...tecaFont.prose,
+    fontSize: "clamp(17px, 4vw, 20px)",
+    lineHeight: 1.55,
+    textAlign: "center",
+    margin: "0 auto 8px",
+    maxWidth: "30ch",
+    color: tecaColors.muted,
+  },
+
+  journeySteps: {
+    listStyle: "none",
+    margin: "clamp(18px, 4vw, 24px) auto 0",
+    padding: 0,
+    maxWidth: "16ch",
+    textAlign: "center",
+  },
+
+  journeyStep: {
+    ...tecaFont.poetic,
+    fontSize: "clamp(18px, 4.2vw, 22px)",
+    fontStyle: "italic",
+    lineHeight: 1.4,
+    margin: "0 0 6px",
+    color: tecaColors.text,
+  },
+
+  howItWorks: {
+    margin: "0 auto",
+    maxWidth: "280px",
+    padding: "clamp(24px, 5vw, 32px) clamp(18px, 4vw, 24px)",
+    borderRadius: "22px",
+    border: "1px dashed rgba(196, 165, 141, 0.36)",
+    background:
+      "linear-gradient(168deg, rgba(255,253,249,0.92) 0%, rgba(248,239,228,0.78) 100%)",
+    boxShadow: "inset 0 1px 0 rgba(255,255,255,0.88)",
+  },
+
+  howStep: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    gap: "4px",
+    margin: 0,
+    padding: 0,
+  },
+
+  howStepNumber: {
+    ...tecaFont.heading,
+    fontSize: "13px",
+    letterSpacing: "0.12em",
+    color: "rgba(179, 129, 95, 0.72)",
+    margin: 0,
+  },
+
+  howStepText: {
+    ...tecaFont.prose,
+    fontSize: "clamp(16px, 3.8vw, 18px)",
+    lineHeight: 1.4,
+    textAlign: "center",
+    margin: "0 0 2px",
+    color: tecaColors.text,
+  },
+
+  howArrow: {
+    display: "block",
+    margin: "6px auto 8px",
+    fontFamily: "'Cormorant Garamond', serif",
+    fontSize: "18px",
+    lineHeight: 1,
+    color: "rgba(179, 129, 95, 0.45)",
+  },
+
+  pillarGrid: {
+    display: "grid",
+    gridTemplateColumns: "1fr",
+    gap: "14px",
+    marginTop: "clamp(22px, 5vw, 30px)",
+  },
+
+  pillarCard: {
+    padding: "clamp(18px, 4vw, 22px) clamp(16px, 3.5vw, 20px)",
+    borderRadius: "18px",
+    border: "1px dashed rgba(196, 165, 141, 0.34)",
+    background: "rgba(255, 253, 249, 0.72)",
+    textAlign: "center",
+    cursor: "pointer",
+    WebkitTapHighlightColor: "transparent",
+    transition: "transform 0.22s ease, box-shadow 0.22s ease",
+    font: "inherit",
+    width: "100%",
+  },
+
+  pillarTitle: {
+    ...tecaFont.heading,
+    fontSize: "clamp(20px, 4.5vw, 24px)",
+    fontWeight: 500,
+    margin: "0 0 8px",
+    color: tecaColors.text,
+  },
+
+  pillarText: {
+    ...tecaFont.prose,
+    fontSize: "clamp(15px, 3.5vw, 17px)",
+    lineHeight: 1.48,
+    margin: 0,
+    color: tecaColors.muted,
+  },
+
+  philosophyBlock: {
+    maxWidth: "34ch",
+    margin: "0 auto",
+    textAlign: "center",
+    padding: "clamp(12px, 3vw, 20px) 0",
+  },
+
+  philosophyLead: {
+    ...tecaFont.poetic,
+    fontSize: "clamp(18px, 4vw, 21px)",
+    margin: "0 0 clamp(20px, 4vw, 28px)",
+    color: tecaColors.muted,
+  },
+
+  philosophyList: {
+    listStyle: "none",
+    margin: 0,
+    padding: 0,
+    display: "flex",
+    flexDirection: "column",
+    gap: "clamp(14px, 3.5vw, 20px)",
+  },
+
+  philosophyItem: {
+    ...tecaFont.prose,
+    fontSize: "clamp(17px, 3.9vw, 19px)",
+    lineHeight: 1.5,
+    color: tecaColors.text,
+    margin: 0,
+  },
+
+  finale: {
+    padding: "clamp(40px, 8vw, 56px) clamp(22px, 5vw, 32px) clamp(16px, 4vw, 24px)",
+    textAlign: "center",
+  },
+
+  finaleTitle: {
+    ...tecaFont.heading,
+    fontSize: "clamp(24px, 5.5vw, 30px)",
+    fontWeight: 500,
+    lineHeight: 1.22,
+    margin: "0 auto clamp(22px, 5vw, 28px)",
+    maxWidth: "20ch",
+    color: tecaColors.text,
+  },
+
+  finaleActions: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    gap: "10px",
+    maxWidth: "280px",
+    margin: "0 auto",
+  },
+
+  chapterDots: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    gap: "9px",
+    padding: "clamp(16px, 4vw, 24px) 0 0",
+  },
+
+  chapterDot: {
+    width: "4px",
+    height: "4px",
+    borderRadius: "50%",
+    background: "rgba(179, 129, 95, 0.28)",
+  },
+
+  chapterDotMid: {
+    width: "5px",
+    height: "5px",
+    background: "rgba(179, 129, 95, 0.38)",
+  },
+}

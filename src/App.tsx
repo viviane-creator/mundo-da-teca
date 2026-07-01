@@ -53,6 +53,8 @@ import { BottomNav } from "./components/BottomNav"
 import { InstitutionalFooter } from "./components/InstitutionalFooter"
 import { Home } from "./pages/Home"
 import { ClubPage } from "./pages/ClubPage"
+import { ConhecaMundoPage } from "./pages/ConhecaMundoPage"
+import { CONHECA_SHARE_PATH, conhecaPageCopy } from "./data/conhecaPageCopy"
 import type { ParticipationPlanId } from "./data/participationPlans"
 import { appRoutes } from "./navigation/appRoutes"
 import { MeuMundoPage } from "./pages/MeuMundoPage"
@@ -99,6 +101,7 @@ type Screen =
   | AtelierProductScreen
   | "meu-mundo"
   | "clube"
+  | "conheca"
 
 type SimpleSubScreen = Exclude<
   Screen,
@@ -118,6 +121,7 @@ type SimpleSubScreen = Exclude<
   | "minha-caixa"
   | "meu-mundo"
   | "clube"
+  | "conheca"
 >
 
 type SubPageContent = {
@@ -275,7 +279,17 @@ function isDiscoveryFlowScreen(screen: Screen): boolean {
   )
 }
 
+function readInitialScreen(): Screen {
+  const path = window.location.pathname.replace(/\/$/, "") || "/"
+  if (path === CONHECA_SHARE_PATH || path.endsWith("/conheca")) {
+    return appRoutes.conheca
+  }
+  return "home"
+}
+
 function resolveNavActive(screen: Screen): string {
+  if (screen === appRoutes.conheca) return "home"
+
   if (
     screen === "figurinhas" ||
     screen === "minha-caixa" ||
@@ -328,7 +342,7 @@ function ClubGated({
 }
 
 function AppContent() {
-  const [screen, setScreen] = useState<Screen>("home")
+  const [screen, setScreen] = useState<Screen>(readInitialScreen)
   const [clubPlanFocus, setClubPlanFocus] = useState<ParticipationPlanId | null>(
     null,
   )
@@ -353,6 +367,33 @@ function AppContent() {
     }
   }, [screen])
 
+  useEffect(() => {
+    const path = window.location.pathname.replace(/\/$/, "") || "/"
+
+    if (screen === appRoutes.conheca) {
+      if (path !== CONHECA_SHARE_PATH) {
+        window.history.pushState({ screen: appRoutes.conheca }, "", CONHECA_SHARE_PATH)
+      }
+      document.title = conhecaPageCopy.documentTitle
+      return
+    }
+
+    if (path === CONHECA_SHARE_PATH) {
+      window.history.pushState({ screen }, "", "/")
+    }
+
+    document.title = "Mundo da Teca"
+  }, [screen])
+
+  useEffect(() => {
+    const onPopState = () => {
+      setScreen(readInitialScreen())
+    }
+
+    window.addEventListener("popstate", onPopState)
+    return () => window.removeEventListener("popstate", onPopState)
+  }, [])
+
   const goToClubePlan = (plan: ParticipationPlanId) => {
     setClubPlanFocus(plan)
     setScreen(appRoutes.clube)
@@ -367,6 +408,10 @@ function AppContent() {
 
         {screen === "home" && (
           <Home setScreen={setScreen} onGoToClube={goToClubePlan} />
+        )}
+
+        {screen === appRoutes.conheca && (
+          <ConhecaMundoPage setScreen={setScreen} />
         )}
 
         {screen === "descobertas" && (
@@ -484,7 +529,7 @@ function AppContent() {
           </ClubGated>
         )}
 
-        <InstitutionalFooter />
+        <InstitutionalFooter setScreen={setScreen} />
 
         <BottomNav active={resolveNavActive(screen)} setScreen={setScreen} />
       </section>
