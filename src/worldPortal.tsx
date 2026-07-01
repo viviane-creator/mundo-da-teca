@@ -47,7 +47,7 @@ export const portalPages = {
     cover: pageCovers.universos,
     coverAlt: "Universos",
     title: "Universos",
-    tagline: "Seis trilhas. Seis jeitos de descobrir o mundo.",
+    tagline: "Cada universo convida a descobrir o mundo de um jeito diferente.",
   },
   atelie: {
     cover: pageCovers.atelie,

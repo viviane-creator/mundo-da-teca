@@ -1,3 +1,4 @@
+import { homeCopy } from "../../data/homeCopy"
 import { HomeTecaHostess } from "./HomeTecaHostess"
 import { styles } from "../../styles/appStyles"
 
@@ -12,6 +13,8 @@ function HomeChapterDivider() {
 }
 
 export function HomeAboutSection() {
+  const copy = homeCopy.about
+
   return (
     <div style={styles.homeAboutChapter}>
       <HomeChapterDivider />
@@ -22,17 +25,11 @@ export function HomeAboutSection() {
         </div>
 
         <h2 id="home-about-title" style={styles.homeChapterOpenerTitle}>
-          O que é o Mundo da Teca?
+          {copy.title}
         </h2>
 
-        <p style={styles.homeChapterOpenerProse}>
-          O Mundo da Teca reúne brincadeiras, experiências e coleções que
-          transformam a curiosidade das crianças em descobertas inesquecíveis.
-        </p>
-        <p style={styles.homeChapterOpenerProseFollow}>
-          Cada descoberta pode ser registrada, guardada e revisitada, criando
-          uma coleção que cresce junto com a infância.
-        </p>
+        <p style={styles.homeChapterOpenerProse}>{copy.prose}</p>
+        <p style={styles.homeChapterOpenerProseFollow}>{copy.proseFollow}</p>
       </section>
     </div>
   )

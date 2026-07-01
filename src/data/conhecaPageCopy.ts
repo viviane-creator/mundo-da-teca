@@ -106,7 +106,7 @@ export const conhecaPageCopy = {
     title: "Sua primeira descoberta começa aqui.",
     ctas: [
       {
-        label: "Explorar Brincadeiras",
+        label: "Explorar Universos",
         screen: "universos" as const,
         tone: "clubeExplorador" as const,
       },

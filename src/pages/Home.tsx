@@ -3,17 +3,12 @@ import { HomeExploreMap } from "../components/HomeExploreMap"
 import { MeuMundoCollectionSeals } from "../components/MeuMundoCollectionSeals"
 import { FicharioDivisoria, FicharioEtiqueta } from "../components/fichario"
 import { ParticipationSection } from "../components/ParticipationSection"
+import { homeCopy } from "../data/homeCopy"
 import type { ParticipationPlanId } from "../data/participationPlans"
 import { appRoutes, resolveUniverseRoute } from "../navigation/appRoutes"
 import { styles } from "../styles/appStyles"
 import { homeCtaClassName, homeCtaStyle } from "../styles/homeCta"
 import { WorldPortalLayout, portalPages } from "../worldPortal"
-
-const homeMeuMundoCopy =
-  "O lugar onde suas descobertas ganham uma casa."
-
-const homeAtelierCopy =
-  "Objetos para guardar descobertas e continuar explorando."
 
 export function Home({
   setScreen,
@@ -23,6 +18,7 @@ export function Home({
   onGoToClube: (planId: ParticipationPlanId) => void
 }) {
   const portal = portalPages.home
+  const copy = homeCopy
 
   return (
     <WorldPortalLayout {...portal} variant="home">
@@ -33,13 +29,12 @@ export function Home({
 
         <FicharioDivisoria chapter="exploracao" style={styles.homeUniversosDivisoria}>
           <div style={styles.homeExploreSectionPaperCompact}>
-            <p style={styles.homeV2SectionKicker}>mapa de exploração</p>
+            <p style={styles.homeV2SectionKicker}>{copy.universos.kicker}</p>
             <h2 style={styles.homeSectionHeadingCompact}>
-              Escolha sua primeira descoberta.
+              {copy.universos.title}
             </h2>
             <p style={styles.homeSectionSubtitleCompact}>
-              Seis universos cheios de experiências para observar, criar,
-              imaginar e colecionar.
+              {copy.universos.subtitle}
             </p>
 
             <div style={styles.homeV2UniversosWrap}>
@@ -69,7 +64,7 @@ export function Home({
                 </span>
               </div>
               <h2 style={styles.homeV2ChapterPlaceTitle}>Meu Mundo</h2>
-              <p style={styles.homeV2ChapterSubtitleShort}>{homeMeuMundoCopy}</p>
+              <p style={styles.homeV2ChapterSubtitleShort}>{copy.meuMundo.copy}</p>
               <MeuMundoCollectionSeals />
               <FicharioEtiqueta
                 action
@@ -80,7 +75,7 @@ export function Home({
                   ...homeCtaStyle("meuMundo"),
                 }}
               >
-                Abrir Minha Coleção
+                {copy.meuMundo.cta}
               </FicharioEtiqueta>
             </div>
           </div>
@@ -95,9 +90,9 @@ export function Home({
 
         <FicharioDivisoria chapter="atelie" style={styles.homeV2ClubeEnd}>
           <div style={styles.homeV2AtelierShop}>
-            <p style={styles.homeV2ChapterKicker}>Leve o Mundo da Teca para casa</p>
+            <p style={styles.homeV2ChapterKicker}>{copy.atelier.kicker}</p>
             <h2 style={styles.homeV2ChapterPlaceTitle}>Ateliê</h2>
-            <p style={styles.homeV2ChapterSubtitleShort}>{homeAtelierCopy}</p>
+            <p style={styles.homeV2ChapterSubtitleShort}>{copy.atelier.copy}</p>
             <FicharioEtiqueta
               action
               onClick={() => setScreen(appRoutes.atelie)}
@@ -107,7 +102,7 @@ export function Home({
                 ...homeCtaStyle("atelie"),
               }}
             >
-              Entrar no Ateliê
+              {copy.atelier.cta}
             </FicharioEtiqueta>
           </div>
         </FicharioDivisoria>

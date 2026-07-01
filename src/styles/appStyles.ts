@@ -808,7 +808,7 @@ export const styles: Record<string, CSSProperties> = {
   homeAboutChapter: {
     position: "relative",
     zIndex: 1,
-    paddingBottom: "clamp(10px, 2.5vw, 16px)",
+    paddingBottom: "clamp(20px, 4.5vw, 28px)",
   },
 
   homeTecaHostessFrame: {
@@ -1080,13 +1080,13 @@ export const styles: Record<string, CSSProperties> = {
   },
 
   homeUniversosDivisoria: {
-    marginTop: 0,
-    marginBottom: "10px",
+    marginTop: "clamp(8px, 2vw, 12px)",
+    marginBottom: "14px",
   },
 
   homeExploreSectionPaperCompact: {
     margin: "-10px -10px -10px",
-    padding: "10px 8px 8px",
+    padding: "clamp(14px, 3vw, 18px) 8px clamp(12px, 2.5vw, 16px)",
     borderRadius: "0 16px 16px 0",
     background: "transparent",
   },
@@ -1095,17 +1095,17 @@ export const styles: Record<string, CSSProperties> = {
     ...tecaFont.heading,
     fontSize: "clamp(22px, 5vw, 28px)",
     textAlign: "center",
-    margin: "0 0 8px",
+    margin: "0 0 clamp(10px, 2.2vw, 14px)",
     lineHeight: 1.15,
   },
 
   homeSectionSubtitleCompact: {
     ...tecaHierarchy.l4Subtitle,
     textAlign: "center",
-    margin: "0 auto 12px",
+    margin: "0 auto clamp(20px, 4.5vw, 28px)",
     maxWidth: "34ch",
-    fontSize: "14px",
-    lineHeight: 1.45,
+    fontSize: "clamp(14px, 3.4vw, 16px)",
+    lineHeight: 1.5,
   },
 
   /** Encerramento da Home — respiro antes do menu inferior */
@@ -1320,7 +1320,29 @@ export const styles: Record<string, CSSProperties> = {
   },
 
   universosExploreSection: {
-    marginTop: "0",
+    marginTop: "clamp(8px, 2vw, 12px)",
+    paddingBottom: "clamp(40px, 9vw, 56px)",
+  },
+
+  universosEpigraph: {
+    ...tecaFont.poetic,
+    fontSize: "clamp(18px, 4.2vw, 22px)",
+    fontStyle: "italic",
+    lineHeight: 1.48,
+    textAlign: "center",
+    margin: "0 auto clamp(24px, 5.5vw, 32px)",
+    maxWidth: "28ch",
+    color: theme.muted,
+  },
+
+  universosSubtitle: {
+    ...tecaFont.prose,
+    fontSize: "clamp(15px, 3.5vw, 17px)",
+    lineHeight: 1.5,
+    textAlign: "center",
+    margin: "0 auto clamp(28px, 6vw, 40px)",
+    maxWidth: "26ch",
+    color: theme.muted,
   },
 
   universosExploreKicker: {
@@ -1468,7 +1490,7 @@ export const styles: Record<string, CSSProperties> = {
 
   homeV2TrailEnd: {
     textAlign: "center",
-    margin: "8px 0 0",
+    margin: "clamp(20px, 4.5vw, 28px) 0 0",
     fontFamily: "'Cormorant Garamond', serif",
     fontSize: "14px",
     color: "#a89486",

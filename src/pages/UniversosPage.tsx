@@ -1,3 +1,4 @@
+import { universosPageCopy } from "../data/universosPageCopy"
 import { HomeExploreMap } from "../components/HomeExploreMap"
 import { styles } from "../styles/appStyles"
 import { WorldPortalLayout, portalPages } from "../worldPortal"
@@ -8,18 +9,18 @@ export function UniversosPage({
   setScreen: (screen: string) => void
 }) {
   const portal = portalPages.universos
+  const copy = universosPageCopy
 
   return (
     <WorldPortalLayout {...portal} breath="large">
-      <section style={styles.universosExploreSection}>
-        <p style={styles.universosExploreKicker}>trilha de exploração</p>
+      <section style={styles.universosExploreSection} aria-label="Mapa de universos">
+        <p style={styles.universosEpigraph}>{copy.epigraph}</p>
+        <p style={styles.universosSubtitle}>{copy.subtitle}</p>
 
         <div style={styles.universosExploreMapWrap}>
           <div style={styles.editorialDecorContent}>
             <HomeExploreMap onSelect={setScreen} variant="full" />
-            <p style={styles.homeV2TrailEnd}>
-              · · · seis caminhos · seis coleções de fichas · · ·
-            </p>
+            <p style={styles.homeV2TrailEnd}>{copy.trailEnd}</p>
           </div>
         </div>
       </section>
