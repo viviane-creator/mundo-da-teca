@@ -50,8 +50,13 @@ export const conhecaPageStyles: Record<string, CSSProperties> = {
     position: "relative",
     zIndex: 2,
     padding:
-      "clamp(28px, 7vw, 44px) clamp(22px, 5vw, 32px) clamp(28px, 5vw, 40px)",
+      "clamp(28px, 7vw, 44px) clamp(22px, 5vw, 32px) clamp(36px, 8vw, 52px)",
     textAlign: "center",
+  },
+
+  heroTail: {
+    height: "clamp(32px, 7vw, 48px)",
+    background: tecaColors.shell,
   },
 
   pageKicker: {
@@ -89,7 +94,7 @@ export const conhecaPageStyles: Record<string, CSSProperties> = {
 
   chapterFirst: {
     padding:
-      "clamp(48px, 10vw, 72px) clamp(22px, 5vw, 32px) clamp(64px, 13vw, 96px)",
+      "clamp(64px, 14vw, 96px) clamp(22px, 5vw, 32px) clamp(72px, 16vw, 104px)",
   },
 
   chapterTextOnly: {
@@ -152,7 +157,8 @@ export const conhecaPageStyles: Record<string, CSSProperties> = {
   editorialImageWrapLead: {
     display: "flex",
     justifyContent: "center",
-    margin: "0 auto clamp(44px, 10vw, 64px)",
+    margin:
+      "clamp(12px, 3vw, 20px) auto clamp(52px, 12vw, 72px)",
   },
 
   editorialImageWrapInset: {
@@ -182,6 +188,17 @@ export const conhecaPageStyles: Record<string, CSSProperties> = {
     boxShadow: "0 14px 36px rgba(90,60,30,0.08)",
   },
 
+  chapterEpigraph: {
+    ...tecaFont.poetic,
+    fontSize: "clamp(19px, 4.4vw, 24px)",
+    fontStyle: "italic",
+    lineHeight: 1.45,
+    textAlign: "center",
+    margin: "0 auto clamp(28px, 6vw, 40px)",
+    maxWidth: "22ch",
+    color: tecaColors.muted,
+  },
+
   sectionTitle: {
     ...tecaFont.heading,
     fontSize: "clamp(24px, 5.5vw, 32px)",
@@ -191,6 +208,16 @@ export const conhecaPageStyles: Record<string, CSSProperties> = {
     maxWidth: "20ch",
     lineHeight: 1.18,
     color: tecaColors.text,
+  },
+
+  sectionSubtitle: {
+    ...tecaFont.prose,
+    fontSize: "clamp(16px, 3.8vw, 19px)",
+    lineHeight: 1.55,
+    textAlign: "center",
+    margin: "0 auto clamp(36px, 8vw, 52px)",
+    maxWidth: "32ch",
+    color: tecaColors.muted,
   },
 
   sectionLead: {
@@ -221,7 +248,7 @@ export const conhecaPageStyles: Record<string, CSSProperties> = {
   },
 
   howItWorks: {
-    margin: "clamp(36px, 8vw, 52px) auto",
+    margin: "clamp(48px, 11vw, 68px) auto",
     maxWidth: "280px",
     padding: "clamp(28px, 6vw, 36px) clamp(20px, 4.5vw, 28px)",
     borderRadius: "22px",
@@ -269,8 +296,8 @@ export const conhecaPageStyles: Record<string, CSSProperties> = {
   pillarGrid: {
     display: "grid",
     gridTemplateColumns: "1fr",
-    gap: "16px",
-    marginTop: "clamp(32px, 7vw, 44px)",
+    gap: "clamp(18px, 4vw, 22px)",
+    marginTop: 0,
   },
 
   pillarCard: {
@@ -286,12 +313,29 @@ export const conhecaPageStyles: Record<string, CSSProperties> = {
     width: "100%",
   },
 
+  pillarCardFeatured: {
+    padding: "clamp(24px, 5.5vw, 30px) clamp(20px, 4.5vw, 26px)",
+    borderRadius: "22px",
+    border: "1px solid rgba(143, 168, 198, 0.42)",
+    background:
+      "linear-gradient(168deg, rgba(255,253,249,0.96) 0%, rgba(236,244,252,0.88) 100%)",
+    boxShadow:
+      "0 12px 32px rgba(90,60,30,0.07), inset 0 1px 0 rgba(255,255,255,0.92)",
+  },
+
   pillarTitle: {
     ...tecaFont.heading,
     fontSize: "clamp(20px, 4.5vw, 24px)",
     fontWeight: 500,
     margin: "0 0 8px",
     color: tecaColors.text,
+  },
+
+  pillarTitleFeatured: {
+    fontSize: "clamp(24px, 5.5vw, 30px)",
+    letterSpacing: "0.04em",
+    textTransform: "uppercase" as const,
+    margin: "0 0 12px",
   },
 
   pillarText: {
@@ -383,7 +427,7 @@ export const conhecaPageStyles: Record<string, CSSProperties> = {
 
   invitationBlock: {
     padding:
-      "clamp(56px, 12vw, 80px) clamp(22px, 5vw, 32px) clamp(64px, 14vw, 96px)",
+      "clamp(72px, 16vw, 104px) clamp(22px, 5vw, 32px) clamp(72px, 16vw, 104px)",
     textAlign: "center",
   },
 
@@ -401,17 +445,17 @@ export const conhecaPageStyles: Record<string, CSSProperties> = {
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    gap: "16px",
-    maxWidth: "min(100%, 320px)",
+    gap: "18px",
+    maxWidth: "min(100%, 360px)",
     margin: "0 auto",
-    padding: "clamp(8px, 2vw, 12px) 0",
+    padding: "clamp(12px, 3vw, 20px) 0",
   },
 
   invitationCta: {
     width: "100%",
-    fontSize: "18px",
-    padding: "13px 24px",
-    letterSpacing: "0.02em",
+    fontSize: "clamp(17px, 4vw, 19px)",
+    padding: "15px 28px",
+    letterSpacing: "0.03em",
   },
 
   signatureBlock: {
@@ -452,11 +496,11 @@ export const conhecaPageStyles: Record<string, CSSProperties> = {
 
   signatureLogo: {
     display: "block",
-    width: "clamp(210px, 54vw, 272px)",
+    width: "clamp(248px, 62vw, 320px)",
     height: "auto",
-    margin: "clamp(56px, 12vw, 80px) auto 0",
-    opacity: 0.97,
-    filter: "drop-shadow(0 5px 18px rgba(90,60,30,0.09))",
+    margin: "clamp(64px, 14vw, 96px) auto 0",
+    opacity: 0.98,
+    filter: "drop-shadow(0 8px 24px rgba(90,60,30,0.11))",
   },
 
   chapterDots: {

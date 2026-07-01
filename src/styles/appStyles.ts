@@ -4881,6 +4881,62 @@ export const styles: Record<string, CSSProperties> = {
       "linear-gradient(90deg, rgba(196,165,141,0) 0%, rgba(196,165,141,0.34) 50%, rgba(196,165,141,0) 100%)",
   },
 
+  institutionalFooterDestinations: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "stretch",
+    gap: "clamp(20px, 5vw, 28px)",
+    maxWidth: "320px",
+    margin: "0 auto",
+  },
+
+  institutionalFooterDestination: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    gap: "10px",
+    padding: "clamp(18px, 4vw, 22px) clamp(16px, 3.5vw, 20px)",
+    borderRadius: "16px",
+    border: "1px dashed rgba(196, 165, 141, 0.28)",
+    background: "rgba(255, 253, 249, 0.55)",
+  },
+
+  institutionalFooterDestinationDivider: {
+    width: "100%",
+    maxWidth: "120px",
+    height: "1px",
+    margin: "0 auto",
+    background:
+      "linear-gradient(90deg, rgba(196,165,141,0) 0%, rgba(196,165,141,0.22) 50%, rgba(196,165,141,0) 100%)",
+  },
+
+  institutionalFooterDestinationTitle: {
+    ...tecaFont.heading,
+    margin: 0,
+    fontSize: "clamp(16px, 3.8vw, 18px)",
+    fontWeight: 500,
+    lineHeight: 1.25,
+    color: theme.text,
+    letterSpacing: "0.01em",
+  },
+
+  institutionalFooterDestinationLink: {
+    ...tecaFont.prose,
+    display: "inline-block",
+    margin: 0,
+    padding: 0,
+    border: "none",
+    background: "transparent",
+    fontSize: "clamp(14px, 3.2vw, 15px)",
+    lineHeight: 1.35,
+    color: "#9a8475",
+    textDecoration: "none",
+    letterSpacing: "0.12px",
+    opacity: 0.92,
+    cursor: "pointer",
+    WebkitTapHighlightColor: "transparent",
+  },
+
   institutionalFooterAboutBlock: {
     display: "flex",
     flexDirection: "column",

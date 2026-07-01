@@ -20,29 +20,38 @@ export function InstitutionalFooter({
 
       <div style={styles.institutionalFooterRuleSpaced} aria-hidden="true" />
 
-      <div style={styles.institutionalFooterAboutBlock}>
-        <p style={styles.institutionalFooterAboutTitle}>{copy.aboutTitle}</p>
-        <button
-          type="button"
-          onClick={() => setScreen(appRoutes.conheca)}
-          style={styles.institutionalFooterAboutLink}
-        >
-          {copy.aboutLink}
-        </button>
-      </div>
+      <div style={styles.institutionalFooterDestinations}>
+        <div style={styles.institutionalFooterDestination}>
+          <p style={styles.institutionalFooterDestinationTitle}>
+            {copy.aboutTitle}
+          </p>
+          <button
+            type="button"
+            onClick={() => setScreen(appRoutes.conheca)}
+            style={styles.institutionalFooterDestinationLink}
+          >
+            {copy.aboutLink}
+          </button>
+        </div>
 
-      <div style={styles.institutionalFooterRuleSpaced} aria-hidden="true" />
+        <div
+          style={styles.institutionalFooterDestinationDivider}
+          aria-hidden="true"
+        />
 
-      <div style={styles.institutionalFooterSocialBlock}>
-        <p style={styles.institutionalFooterSocialLabel}>{copy.instagramLabel}</p>
-        <a
-          href={socialLinks.instagram}
-          target="_blank"
-          rel="noopener noreferrer"
-          style={styles.institutionalFooterHandle}
-        >
-          {copy.handle}
-        </a>
+        <div style={styles.institutionalFooterDestination}>
+          <p style={styles.institutionalFooterDestinationTitle}>
+            {copy.instagramLabel}
+          </p>
+          <a
+            href={socialLinks.instagram}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={styles.institutionalFooterDestinationLink}
+          >
+            {copy.handle}
+          </a>
+        </div>
       </div>
     </footer>
   )

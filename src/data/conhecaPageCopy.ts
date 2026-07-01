@@ -3,7 +3,7 @@ export const conhecaPageCopy = {
   hero: {
     title: "Existe um mundo inteiro esperando para ser descoberto.",
     text:
-      "O Mundo da Teca nasceu para transformar a curiosidade das crianças em descobertas, memórias e coleções que crescem junto com a infância.",
+      "Aqui, a curiosidade das crianças vira descobertas, memórias e coleções que crescem junto com a infância.",
     cta: "Começar a explorar",
     image: "/images/hero-home.webp",
     imageAlt: "Cena de descoberta no Mundo da Teca",
@@ -15,13 +15,13 @@ export const conhecaPageCopy = {
       "Continuam imaginando.",
       "Continuam observando o mundo com encantamento.",
     ],
-    closing: "O Mundo da Teca existe para preservar esse jeito de descobrir.",
+    closing: "Este é um lugar para preservar esse jeito de descobrir.",
     image: "/images/teca.webp",
     imageAlt: "Teca, anfitriã do Mundo da Teca",
   },
   journey: {
+    epigraph: "Não são apenas atividades.",
     title: "Mais do que brincadeiras.",
-    lead: "O Mundo da Teca não reúne apenas atividades.",
     body: "Cada experiência faz parte de uma jornada.",
     steps: ["A criança brinca.", "Descobre.", "Registra.", "Coleciona."],
     closing:
@@ -41,14 +41,17 @@ export const conhecaPageCopy = {
     ],
   },
   pillars: {
-    title: "O que você encontra aqui?",
+    title: "Escolha por onde começar.",
+    subtitle:
+      "Cada caminho revela uma parte diferente do Mundo da Teca.",
     items: [
       {
-        id: "brincadeiras",
-        title: "Brincadeiras",
-        text: "Experiências para explorar, criar e descobrir.",
+        id: "universos",
+        title: "Universos",
+        text: "Seis caminhos diferentes para descobrir, criar, imaginar e colecionar.",
         screen: "universos" as const,
         tone: "clubeExplorador" as const,
+        featured: true,
       },
       {
         id: "meu-mundo",
@@ -56,44 +59,47 @@ export const conhecaPageCopy = {
         text: "O lugar onde cada descoberta ganha uma história.",
         screen: "meu-mundo" as const,
         tone: "meuMundo" as const,
+        featured: false,
       },
       {
         id: "clube",
         title: "Clube",
-        text: "Uma nova oportunidade para explorar todos os meses.",
+        text: "Receba novas experiências e materiais para continuar explorando todos os meses.",
         screen: "clube" as const,
         tone: "clubeColecionador" as const,
+        featured: false,
       },
       {
         id: "atelie",
         title: "Ateliê",
-        text: "Tesouros para continuar explorando.",
+        text: "Tesouros, papelaria e objetos para levar o Mundo da Teca para casa.",
         screen: "atelie" as const,
         tone: "atelie" as const,
+        featured: false,
       },
     ],
   },
   audience: {
+    opener: "Não importa se são cinco minutos ou uma tarde inteira.",
     title: "Para quem é?",
     text: "Famílias que acreditam que a infância merece tempo para observar, experimentar, imaginar e colecionar memórias.",
-    closing:
-      "Não importa se são cinco minutos ou uma tarde inteira. O importante é viver a descoberta.",
+    closing: "O importante é viver a descoberta.",
   },
   philosophy: {
     title: "Nossa filosofia.",
-    lead: "No Mundo da Teca...",
+    lead: "Aqui, cada descoberta pode virar uma lembrança.",
     principles: [
-      "a curiosidade vem antes da resposta.",
-      "a experiência vem antes da explicação.",
-      "a descoberta vem antes do conteúdo.",
-      "cada criança constrói sua própria coleção.",
+      "A curiosidade vem antes da resposta.",
+      "A experiência vem antes da explicação.",
+      "A descoberta vem antes do conteúdo.",
+      "Cada criança constrói sua própria coleção.",
     ],
   },
   closing: {
-    title: "Agora você já conhece o Mundo da Teca.",
+    title: "Agora você já conhece este mundo.",
     lead:
       "Mas ele só existe de verdade quando uma criança faz uma pergunta, abre um frasco, encontra uma pedra diferente ou guarda uma folha dentro do seu diário.",
-    body: "Porque o Mundo da Teca não é apenas um lugar.",
+    body: "Porque não é apenas um lugar.",
     closing: "É uma maneira de viver a infância.",
   },
   invitation: {

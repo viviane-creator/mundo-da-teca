@@ -50,6 +50,8 @@ export function ConhecaMundoPage({
         </div>
       </header>
 
+      <div style={s.heroTail} aria-hidden="true" />
+
       <section style={s.chapterFirst} aria-labelledby="conheca-curiosity">
         <ChapterDots />
         <div style={s.editorialImageWrapLead}>
@@ -75,6 +77,7 @@ export function ConhecaMundoPage({
 
       <section style={s.chapter} aria-labelledby="conheca-journey">
         <ChapterDots />
+        <p style={s.chapterEpigraph}>{copy.journey.epigraph}</p>
         <h2 id="conheca-journey" style={s.sectionTitle}>
           {copy.journey.title}
         </h2>
@@ -89,8 +92,7 @@ export function ConhecaMundoPage({
             style={s.editorialImageWide}
           />
         </div>
-        <p style={s.sectionLead}>{copy.journey.lead}</p>
-        <p style={{ ...s.sectionLead, marginTop: "4px" }}>{copy.journey.body}</p>
+        <p style={s.sectionLead}>{copy.journey.body}</p>
         <ul style={s.journeySteps}>
           {copy.journey.steps.map((step) => (
             <li key={step} style={s.journeyStep}>
@@ -101,7 +103,7 @@ export function ConhecaMundoPage({
         <p style={s.proseClosing}>{copy.journey.closing}</p>
       </section>
 
-      <section style={s.sectionTight} aria-labelledby="conheca-how">
+      <section style={s.sectionBreath} aria-labelledby="conheca-how">
         <ChapterDots />
         <h2 id="conheca-how" style={s.sectionTitle}>
           {copy.howItWorks.title}
@@ -128,15 +130,26 @@ export function ConhecaMundoPage({
         <h2 id="conheca-pillars" style={s.sectionTitle}>
           {copy.pillars.title}
         </h2>
+        <p style={s.sectionSubtitle}>{copy.pillars.subtitle}</p>
         <div style={s.pillarGrid}>
           {copy.pillars.items.map((item) => (
             <button
               key={item.id}
               type="button"
-              style={s.pillarCard}
+              style={{
+                ...s.pillarCard,
+                ...(item.featured ? s.pillarCardFeatured : {}),
+              }}
               onClick={() => setScreen(item.screen)}
             >
-              <h3 style={s.pillarTitle}>{item.title}</h3>
+              <h3
+                style={{
+                  ...s.pillarTitle,
+                  ...(item.featured ? s.pillarTitleFeatured : {}),
+                }}
+              >
+                {item.title}
+              </h3>
               <p style={s.pillarText}>{item.text}</p>
             </button>
           ))}
@@ -145,6 +158,7 @@ export function ConhecaMundoPage({
 
       <section style={s.chapterTextOnly} aria-labelledby="conheca-audience">
         <ChapterDots />
+        <p style={s.chapterEpigraph}>{copy.audience.opener}</p>
         <h2 id="conheca-audience" style={s.sectionTitle}>
           {copy.audience.title}
         </h2>
@@ -157,10 +171,10 @@ export function ConhecaMundoPage({
       <section style={s.chapterTextOnly} aria-labelledby="conheca-philosophy">
         <ChapterDots />
         <div style={s.philosophyBlock}>
+          <p style={s.chapterEpigraph}>{copy.philosophy.lead}</p>
           <h2 id="conheca-philosophy" style={s.sectionTitle}>
             {copy.philosophy.title}
           </h2>
-          <p style={s.philosophyLead}>{copy.philosophy.lead}</p>
           <ul style={s.philosophyList}>
             {copy.philosophy.principles.map((principle) => (
               <li key={principle} style={s.philosophyItem}>
