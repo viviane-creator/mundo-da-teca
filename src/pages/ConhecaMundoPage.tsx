@@ -50,17 +50,9 @@ export function ConhecaMundoPage({
         </div>
       </header>
 
-      <section style={s.sectionBreath} aria-labelledby="conheca-curiosity">
+      <section style={s.chapterFirst} aria-labelledby="conheca-curiosity">
         <ChapterDots />
-        <div id="conheca-curiosity">
-          {copy.curiosity.lines.map((line) => (
-            <p key={line} style={s.proseLine}>
-              {line}
-            </p>
-          ))}
-          <p style={s.proseClosing}>{copy.curiosity.closing}</p>
-        </div>
-        <div style={s.editorialImageWrap}>
+        <div style={s.editorialImageWrapLead}>
           <img
             src={copy.curiosity.image}
             alt={copy.curiosity.imageAlt}
@@ -71,24 +63,22 @@ export function ConhecaMundoPage({
             style={s.editorialImageRound}
           />
         </div>
+        <div id="conheca-curiosity">
+          {copy.curiosity.lines.map((line) => (
+            <p key={line} style={s.proseLine}>
+              {line}
+            </p>
+          ))}
+          <p style={s.proseClosing}>{copy.curiosity.closing}</p>
+        </div>
       </section>
 
-      <section style={s.section} aria-labelledby="conheca-journey">
+      <section style={s.chapter} aria-labelledby="conheca-journey">
         <ChapterDots />
         <h2 id="conheca-journey" style={s.sectionTitle}>
           {copy.journey.title}
         </h2>
-        <p style={s.sectionLead}>{copy.journey.lead}</p>
-        <p style={{ ...s.sectionLead, marginTop: "4px" }}>{copy.journey.body}</p>
-        <ul style={s.journeySteps}>
-          {copy.journey.steps.map((step) => (
-            <li key={step} style={s.journeyStep}>
-              {step}
-            </li>
-          ))}
-        </ul>
-        <p style={s.proseClosing}>{copy.journey.closing}</p>
-        <div style={s.editorialImageWrap}>
+        <div style={s.editorialImageWrapInset}>
           <img
             src={copy.journey.image}
             alt={copy.journey.imageAlt}
@@ -99,6 +89,16 @@ export function ConhecaMundoPage({
             style={s.editorialImageWide}
           />
         </div>
+        <p style={s.sectionLead}>{copy.journey.lead}</p>
+        <p style={{ ...s.sectionLead, marginTop: "4px" }}>{copy.journey.body}</p>
+        <ul style={s.journeySteps}>
+          {copy.journey.steps.map((step) => (
+            <li key={step} style={s.journeyStep}>
+              {step}
+            </li>
+          ))}
+        </ul>
+        <p style={s.proseClosing}>{copy.journey.closing}</p>
       </section>
 
       <section style={s.sectionTight} aria-labelledby="conheca-how">
@@ -123,7 +123,7 @@ export function ConhecaMundoPage({
         </div>
       </section>
 
-      <section style={s.section} aria-labelledby="conheca-pillars">
+      <section style={s.chapter} aria-labelledby="conheca-pillars">
         <ChapterDots />
         <h2 id="conheca-pillars" style={s.sectionTitle}>
           {copy.pillars.title}
@@ -143,18 +143,18 @@ export function ConhecaMundoPage({
         </div>
       </section>
 
-      <section style={s.sectionBreath} aria-labelledby="conheca-audience">
+      <section style={s.chapterTextOnly} aria-labelledby="conheca-audience">
         <ChapterDots />
         <h2 id="conheca-audience" style={s.sectionTitle}>
           {copy.audience.title}
         </h2>
         <p style={s.proseCenter}>{copy.audience.text}</p>
-        <p style={{ ...s.proseClosing, marginTop: "clamp(18px, 4vw, 24px)" }}>
+        <p style={{ ...s.proseClosing, marginTop: "clamp(24px, 5vw, 32px)" }}>
           {copy.audience.closing}
         </p>
       </section>
 
-      <section style={s.sectionBreath} aria-labelledby="conheca-philosophy">
+      <section style={s.chapterTextOnly} aria-labelledby="conheca-philosophy">
         <ChapterDots />
         <div style={s.philosophyBlock}>
           <h2 id="conheca-philosophy" style={s.sectionTitle}>
@@ -185,6 +185,7 @@ export function ConhecaMundoPage({
         </section>
 
         <section style={s.invitationBlock} aria-labelledby="conheca-invitation">
+          <ChapterDots />
           <h2 id="conheca-invitation" style={s.invitationTitle}>
             {copy.invitation.title}
           </h2>

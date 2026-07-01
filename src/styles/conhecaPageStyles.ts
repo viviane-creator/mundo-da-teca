@@ -9,7 +9,7 @@ export const conhecaPageStyles: Record<string, CSSProperties> = {
     position: "relative",
     background: tecaColors.shell,
     backgroundImage: paperWash,
-    paddingBottom: "clamp(24px, 6vw, 40px)",
+    paddingBottom: "clamp(32px, 7vw, 48px)",
   },
 
   hero: {
@@ -49,7 +49,8 @@ export const conhecaPageStyles: Record<string, CSSProperties> = {
   heroBody: {
     position: "relative",
     zIndex: 2,
-    padding: "clamp(28px, 7vw, 44px) clamp(22px, 5vw, 32px) clamp(22px, 5vw, 30px)",
+    padding:
+      "clamp(28px, 7vw, 44px) clamp(22px, 5vw, 32px) clamp(28px, 5vw, 40px)",
     textAlign: "center",
   },
 
@@ -81,16 +82,34 @@ export const conhecaPageStyles: Record<string, CSSProperties> = {
     textShadow: "0 1px 3px rgba(255,253,249,0.9)",
   },
 
+  chapter: {
+    padding:
+      "clamp(56px, 12vw, 88px) clamp(22px, 5vw, 32px)",
+  },
+
+  chapterFirst: {
+    padding:
+      "clamp(48px, 10vw, 72px) clamp(22px, 5vw, 32px) clamp(64px, 13vw, 96px)",
+  },
+
+  chapterTextOnly: {
+    padding:
+      "clamp(64px, 13vw, 96px) clamp(22px, 5vw, 32px)",
+  },
+
   section: {
-    padding: "clamp(36px, 8vw, 56px) clamp(22px, 5vw, 32px)",
+    padding:
+      "clamp(56px, 12vw, 88px) clamp(22px, 5vw, 32px)",
   },
 
   sectionTight: {
-    padding: "clamp(28px, 6vw, 44px) clamp(22px, 5vw, 32px)",
+    padding:
+      "clamp(64px, 13vw, 96px) clamp(22px, 5vw, 32px)",
   },
 
   sectionBreath: {
-    padding: "clamp(48px, 10vw, 72px) clamp(22px, 5vw, 32px)",
+    padding:
+      "clamp(72px, 15vw, 104px) clamp(22px, 5vw, 32px)",
   },
 
   proseCenter: {
@@ -119,7 +138,7 @@ export const conhecaPageStyles: Record<string, CSSProperties> = {
     fontWeight: 500,
     lineHeight: 1.35,
     textAlign: "center",
-    margin: "clamp(20px, 4vw, 28px) auto 0",
+    margin: "clamp(28px, 6vw, 40px) auto 0",
     maxWidth: "28ch",
     color: tecaColors.text,
   },
@@ -127,7 +146,25 @@ export const conhecaPageStyles: Record<string, CSSProperties> = {
   editorialImageWrap: {
     display: "flex",
     justifyContent: "center",
-    margin: "clamp(28px, 6vw, 40px) auto 0",
+    margin: "clamp(40px, 9vw, 56px) auto",
+  },
+
+  editorialImageWrapLead: {
+    display: "flex",
+    justifyContent: "center",
+    margin: "0 auto clamp(44px, 10vw, 64px)",
+  },
+
+  editorialImageWrapInset: {
+    display: "flex",
+    justifyContent: "center",
+    margin: "clamp(36px, 8vw, 52px) auto clamp(40px, 9vw, 56px)",
+  },
+
+  editorialImageWrapTrail: {
+    display: "flex",
+    justifyContent: "center",
+    margin: "clamp(48px, 11vw, 72px) auto 0",
   },
 
   editorialImageRound: {
@@ -150,7 +187,7 @@ export const conhecaPageStyles: Record<string, CSSProperties> = {
     fontSize: "clamp(24px, 5.5vw, 32px)",
     fontWeight: 500,
     textAlign: "center",
-    margin: "0 auto 16px",
+    margin: "0 auto clamp(20px, 4.5vw, 28px)",
     maxWidth: "20ch",
     lineHeight: 1.18,
     color: tecaColors.text,
@@ -184,9 +221,9 @@ export const conhecaPageStyles: Record<string, CSSProperties> = {
   },
 
   howItWorks: {
-    margin: "0 auto",
+    margin: "clamp(36px, 8vw, 52px) auto",
     maxWidth: "280px",
-    padding: "clamp(24px, 5vw, 32px) clamp(18px, 4vw, 24px)",
+    padding: "clamp(28px, 6vw, 36px) clamp(20px, 4.5vw, 28px)",
     borderRadius: "22px",
     border: "1px dashed rgba(196, 165, 141, 0.36)",
     background:
@@ -232,8 +269,8 @@ export const conhecaPageStyles: Record<string, CSSProperties> = {
   pillarGrid: {
     display: "grid",
     gridTemplateColumns: "1fr",
-    gap: "14px",
-    marginTop: "clamp(22px, 5vw, 30px)",
+    gap: "16px",
+    marginTop: "clamp(32px, 7vw, 44px)",
   },
 
   pillarCard: {
@@ -269,7 +306,7 @@ export const conhecaPageStyles: Record<string, CSSProperties> = {
     maxWidth: "34ch",
     margin: "0 auto",
     textAlign: "center",
-    padding: "clamp(12px, 3vw, 20px) 0",
+    padding: "clamp(16px, 4vw, 24px) 0",
   },
 
   philosophyLead: {
@@ -297,8 +334,8 @@ export const conhecaPageStyles: Record<string, CSSProperties> = {
   },
 
   closingChapter: {
-    marginTop: "clamp(8px, 2vw, 16px)",
-    padding: "0 0 clamp(4px, 1vw, 8px)",
+    marginTop: "clamp(24px, 5vw, 36px)",
+    padding: "0 0 clamp(8px, 2vw, 12px)",
     background: `
       linear-gradient(180deg,
         rgba(246, 237, 226, 0) 0%,
@@ -311,7 +348,7 @@ export const conhecaPageStyles: Record<string, CSSProperties> = {
 
   epilogue: {
     padding:
-      "clamp(44px, 9vw, 64px) clamp(22px, 5vw, 32px) clamp(64px, 14vw, 96px)",
+      "clamp(56px, 12vw, 80px) clamp(22px, 5vw, 32px) clamp(72px, 16vw, 112px)",
     textAlign: "center",
   },
 
@@ -345,7 +382,8 @@ export const conhecaPageStyles: Record<string, CSSProperties> = {
   },
 
   invitationBlock: {
-    padding: "0 clamp(22px, 5vw, 32px) clamp(48px, 10vw, 72px)",
+    padding:
+      "clamp(56px, 12vw, 80px) clamp(22px, 5vw, 32px) clamp(64px, 14vw, 96px)",
     textAlign: "center",
   },
 
@@ -354,7 +392,7 @@ export const conhecaPageStyles: Record<string, CSSProperties> = {
     fontSize: "clamp(28px, 6.8vw, 38px)",
     fontWeight: 500,
     lineHeight: 1.18,
-    margin: "0 auto clamp(28px, 6vw, 36px)",
+    margin: "0 auto clamp(36px, 8vw, 48px)",
     maxWidth: "16ch",
     color: tecaColors.text,
   },
@@ -363,9 +401,10 @@ export const conhecaPageStyles: Record<string, CSSProperties> = {
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    gap: "14px",
+    gap: "16px",
     maxWidth: "min(100%, 320px)",
     margin: "0 auto",
+    padding: "clamp(8px, 2vw, 12px) 0",
   },
 
   invitationCta: {
@@ -377,7 +416,7 @@ export const conhecaPageStyles: Record<string, CSSProperties> = {
 
   signatureBlock: {
     padding:
-      "clamp(48px, 10vw, 72px) clamp(22px, 5vw, 32px) clamp(28px, 6vw, 40px)",
+      "clamp(64px, 14vw, 96px) clamp(22px, 5vw, 32px) clamp(40px, 9vw, 56px)",
     textAlign: "center",
   },
 
@@ -406,7 +445,7 @@ export const conhecaPageStyles: Record<string, CSSProperties> = {
     ...tecaFont.poetic,
     fontSize: "clamp(17px, 4vw, 20px)",
     lineHeight: 1.55,
-    margin: "clamp(40px, 9vw, 56px) auto 0",
+    margin: "clamp(48px, 11vw, 68px) auto 0",
     maxWidth: "34ch",
     color: tecaColors.muted,
   },
@@ -415,7 +454,7 @@ export const conhecaPageStyles: Record<string, CSSProperties> = {
     display: "block",
     width: "clamp(210px, 54vw, 272px)",
     height: "auto",
-    margin: "clamp(44px, 9vw, 60px) auto 0",
+    margin: "clamp(56px, 12vw, 80px) auto 0",
     opacity: 0.97,
     filter: "drop-shadow(0 5px 18px rgba(90,60,30,0.09))",
   },
@@ -425,7 +464,7 @@ export const conhecaPageStyles: Record<string, CSSProperties> = {
     alignItems: "center",
     justifyContent: "center",
     gap: "9px",
-    padding: "clamp(16px, 4vw, 24px) 0 0",
+    padding: "0 0 clamp(28px, 6vw, 40px)",
   },
 
   chapterDot: {
