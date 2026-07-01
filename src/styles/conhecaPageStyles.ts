@@ -296,28 +296,128 @@ export const conhecaPageStyles: Record<string, CSSProperties> = {
     margin: 0,
   },
 
-  finale: {
-    padding: "clamp(40px, 8vw, 56px) clamp(22px, 5vw, 32px) clamp(16px, 4vw, 24px)",
+  closingChapter: {
+    marginTop: "clamp(8px, 2vw, 16px)",
+    padding: "0 0 clamp(4px, 1vw, 8px)",
+    background: `
+      linear-gradient(180deg,
+        rgba(246, 237, 226, 0) 0%,
+        rgba(240, 228, 214, 0.45) 18%,
+        rgba(234, 220, 204, 0.62) 55%,
+        rgba(228, 214, 198, 0.72) 100%
+      )
+    `,
+  },
+
+  epilogue: {
+    padding:
+      "clamp(44px, 9vw, 64px) clamp(22px, 5vw, 32px) clamp(64px, 14vw, 96px)",
     textAlign: "center",
   },
 
-  finaleTitle: {
+  epilogueTitle: {
     ...tecaFont.heading,
-    fontSize: "clamp(24px, 5.5vw, 30px)",
+    fontSize: "clamp(23px, 5.2vw, 30px)",
     fontWeight: 500,
-    lineHeight: 1.22,
-    margin: "0 auto clamp(22px, 5vw, 28px)",
-    maxWidth: "20ch",
+    lineHeight: 1.28,
+    margin: "0 auto clamp(18px, 4vw, 24px)",
+    maxWidth: "22ch",
     color: tecaColors.text,
   },
 
-  finaleActions: {
+  epilogueText: {
+    ...tecaFont.prose,
+    fontSize: "clamp(17px, 3.9vw, 20px)",
+    lineHeight: 1.58,
+    margin: "0 auto 12px",
+    maxWidth: "36ch",
+    color: tecaColors.muted,
+  },
+
+  epilogueEmphasis: {
+    ...tecaFont.heading,
+    fontSize: "clamp(18px, 4.2vw, 22px)",
+    fontWeight: 500,
+    lineHeight: 1.4,
+    margin: "clamp(16px, 4vw, 22px) auto 0",
+    maxWidth: "28ch",
+    color: tecaColors.text,
+  },
+
+  invitationBlock: {
+    padding: "0 clamp(22px, 5vw, 32px) clamp(48px, 10vw, 72px)",
+    textAlign: "center",
+  },
+
+  invitationTitle: {
+    ...tecaFont.heading,
+    fontSize: "clamp(28px, 6.8vw, 38px)",
+    fontWeight: 500,
+    lineHeight: 1.18,
+    margin: "0 auto clamp(28px, 6vw, 36px)",
+    maxWidth: "16ch",
+    color: tecaColors.text,
+  },
+
+  invitationActions: {
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    gap: "10px",
-    maxWidth: "280px",
+    gap: "14px",
+    maxWidth: "min(100%, 320px)",
     margin: "0 auto",
+  },
+
+  invitationCta: {
+    width: "100%",
+    fontSize: "18px",
+    padding: "13px 24px",
+    letterSpacing: "0.02em",
+  },
+
+  signatureBlock: {
+    padding:
+      "clamp(48px, 10vw, 72px) clamp(22px, 5vw, 32px) clamp(28px, 6vw, 40px)",
+    textAlign: "center",
+  },
+
+  mantraList: {
+    listStyle: "none",
+    margin: "0 auto",
+    padding: 0,
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    gap: "clamp(22px, 5.5vw, 36px)",
+    maxWidth: "100%",
+  },
+
+  mantraWord: {
+    ...tecaFont.heading,
+    fontSize: "clamp(30px, 7.5vw, 42px)",
+    fontWeight: 400,
+    lineHeight: 1,
+    letterSpacing: "0.06em",
+    color: tecaColors.text,
+    margin: 0,
+  },
+
+  signatureQuote: {
+    ...tecaFont.poetic,
+    fontSize: "clamp(17px, 4vw, 20px)",
+    lineHeight: 1.55,
+    margin: "clamp(40px, 9vw, 56px) auto 0",
+    maxWidth: "34ch",
+    color: tecaColors.muted,
+  },
+
+  signatureLogo: {
+    display: "block",
+    width: "clamp(210px, 54vw, 272px)",
+    height: "auto",
+    margin: "clamp(44px, 9vw, 60px) auto 0",
+    opacity: 0.97,
+    filter: "drop-shadow(0 5px 18px rgba(90,60,30,0.09))",
   },
 
   chapterDots: {

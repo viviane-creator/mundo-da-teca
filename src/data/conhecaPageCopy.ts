@@ -89,25 +89,39 @@ export const conhecaPageCopy = {
       "cada criança constrói sua própria coleção.",
     ],
   },
-  finale: {
+  closing: {
+    title: "Agora você já conhece o Mundo da Teca.",
+    lead:
+      "Mas ele só existe de verdade quando uma criança faz uma pergunta, abre um frasco, encontra uma pedra diferente ou guarda uma folha dentro do seu diário.",
+    body: "Porque o Mundo da Teca não é apenas um lugar.",
+    closing: "É uma maneira de viver a infância.",
+  },
+  invitation: {
     title: "Sua primeira descoberta começa aqui.",
     ctas: [
       {
-        label: "Explorar Brincadeiras",
+        label: "⚗️ Explorar Brincadeiras",
         screen: "universos" as const,
         tone: "clubeExplorador" as const,
       },
       {
-        label: "Conhecer o Clube",
+        label: "📦 Conhecer o Clube",
         screen: "clube" as const,
         tone: "clubeColecionador" as const,
       },
       {
-        label: "Visitar o Ateliê",
+        label: "✂️ Visitar o Ateliê",
         screen: "atelie" as const,
         tone: "atelie" as const,
       },
     ],
+  },
+  signature: {
+    mantra: ["Observe.", "Descubra.", "Colecione."],
+    quote:
+      "Algumas das lembranças mais bonitas da infância começam com uma simples descoberta.",
+    logo: "/logo/logo.webp",
+    logoAlt: "Mundo da Teca",
   },
 } as const
 

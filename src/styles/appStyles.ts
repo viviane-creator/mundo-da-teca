@@ -4858,51 +4858,88 @@ export const styles: Record<string, CSSProperties> = {
 
   institutionalFooter: {
     marginTop: "48px",
-    padding: "0 24px 8px",
+    padding: "0 24px 12px",
     textAlign: "center",
   },
 
-  institutionalFooterPhrase: {
+  institutionalFooterTagline: {
     ...tecaFont.poetic,
-    margin: "0 0 12px",
-    fontSize: "15px",
-    lineHeight: 1.55,
+    margin: "0 auto",
+    fontSize: "clamp(16px, 3.8vw, 18px)",
+    lineHeight: 1.5,
     color: theme.muted,
-    maxWidth: "28ch",
-    marginLeft: "auto",
-    marginRight: "auto",
+    maxWidth: "22ch",
+    opacity: 0.92,
+  },
+
+  institutionalFooterRuleSpaced: {
+    width: "100%",
+    maxWidth: "200px",
+    height: "1px",
+    margin: "clamp(22px, 5vw, 28px) auto",
+    background:
+      "linear-gradient(90deg, rgba(196,165,141,0) 0%, rgba(196,165,141,0.34) 50%, rgba(196,165,141,0) 100%)",
+  },
+
+  institutionalFooterAboutBlock: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    gap: "8px",
+  },
+
+  institutionalFooterAboutTitle: {
+    ...tecaFont.heading,
+    margin: 0,
+    fontSize: "clamp(17px, 4vw, 19px)",
+    fontWeight: 500,
+    lineHeight: 1.25,
+    color: theme.text,
+    letterSpacing: "0.01em",
+  },
+
+  institutionalFooterAboutLink: {
+    ...tecaFont.prose,
+    display: "inline-block",
+    margin: 0,
+    padding: 0,
+    border: "none",
+    background: "transparent",
+    fontSize: "clamp(14px, 3.2vw, 15px)",
+    lineHeight: 1.35,
+    color: "#9a8475",
+    textDecoration: "none",
+    letterSpacing: "0.12px",
     opacity: 0.9,
+    cursor: "pointer",
+    WebkitTapHighlightColor: "transparent",
+  },
+
+  institutionalFooterSocialBlock: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    gap: "6px",
+    marginBottom: "4px",
+  },
+
+  institutionalFooterSocialLabel: {
+    ...tecaHierarchy.l6Micro,
+    margin: 0,
+    opacity: 0.72,
+    letterSpacing: "0.14em",
   },
 
   institutionalFooterHandle: {
     ...tecaFont.prose,
     display: "inline-block",
-    margin: "0 0 10px",
+    margin: 0,
     fontSize: "13px",
     lineHeight: 1.3,
     color: "#9a8475",
     textDecoration: "none",
     letterSpacing: "0.2px",
     opacity: 0.88,
-  },
-
-  institutionalFooterAboutLink: {
-    ...tecaFont.prose,
-    display: "inline-block",
-    margin: "0 0 12px",
-    padding: 0,
-    border: "none",
-    background: "transparent",
-    fontSize: "13px",
-    lineHeight: 1.35,
-    color: "#9a8475",
-    textDecoration: "underline",
-    textDecorationColor: "rgba(179, 129, 95, 0.35)",
-    textUnderlineOffset: "3px",
-    letterSpacing: "0.15px",
-    opacity: 0.92,
-    cursor: "pointer",
-    WebkitTapHighlightColor: "transparent",
   },
 
   institutionalFooterRule: {

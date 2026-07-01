@@ -171,28 +171,61 @@ export function ConhecaMundoPage({
         </div>
       </section>
 
-      <footer style={s.finale} aria-labelledby="conheca-finale">
-        <ChapterDots />
-        <h2 id="conheca-finale" style={s.finaleTitle}>
-          {copy.finale.title}
-        </h2>
-        <div style={s.finaleActions}>
-          {copy.finale.ctas.map((cta) => (
-            <FicharioEtiqueta
-              key={cta.label}
-              action
-              onClick={() => setScreen(cta.screen)}
-              className={homeCtaClassName(cta.tone)}
-              style={{
-                ...homeCtaStyle(cta.tone),
-                width: "100%",
-              }}
-            >
-              {cta.label}
-            </FicharioEtiqueta>
-          ))}
-        </div>
-      </footer>
+      <div style={s.closingChapter}>
+        <section style={s.epilogue} aria-labelledby="conheca-epilogue">
+          <ChapterDots />
+          <h2 id="conheca-epilogue" style={s.epilogueTitle}>
+            {copy.closing.title}
+          </h2>
+          <p style={s.epilogueText}>{copy.closing.lead}</p>
+          <p style={s.epilogueEmphasis}>{copy.closing.body}</p>
+          <p style={{ ...s.epilogueEmphasis, marginTop: "10px" }}>
+            {copy.closing.closing}
+          </p>
+        </section>
+
+        <section style={s.invitationBlock} aria-labelledby="conheca-invitation">
+          <h2 id="conheca-invitation" style={s.invitationTitle}>
+            {copy.invitation.title}
+          </h2>
+          <div style={s.invitationActions}>
+            {copy.invitation.ctas.map((cta) => (
+              <FicharioEtiqueta
+                key={cta.label}
+                action
+                onClick={() => setScreen(cta.screen)}
+                className={homeCtaClassName(cta.tone)}
+                style={{
+                  ...homeCtaStyle(cta.tone),
+                  ...s.invitationCta,
+                }}
+              >
+                {cta.label}
+              </FicharioEtiqueta>
+            ))}
+          </div>
+        </section>
+
+        <section style={s.signatureBlock} aria-label="Encerramento editorial">
+          <ul style={s.mantraList}>
+            {copy.signature.mantra.map((word) => (
+              <li key={word} style={s.mantraWord}>
+                {word}
+              </li>
+            ))}
+          </ul>
+          <p style={s.signatureQuote}>{copy.signature.quote}</p>
+          <img
+            src={copy.signature.logo}
+            alt={copy.signature.logoAlt}
+            width={400}
+            height={120}
+            loading="lazy"
+            decoding="async"
+            style={s.signatureLogo}
+          />
+        </section>
+      </div>
     </article>
   )
 }

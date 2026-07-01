@@ -1,5 +1,8 @@
 export const institutionalFooterCopy = {
-  phrase: "Existe um mundo inteiro de coisas incríveis fora das telas.",
-  aboutLink: "Conheça o Mundo da Teca",
+  taglineLine1: "Existe um mundo inteiro",
+  taglineLine2: "esperando para ser descoberto.",
+  aboutTitle: "Conheça o Mundo da Teca",
+  aboutLink: "→ Nossa história",
+  instagramLabel: "Instagram",
   handle: "@mundodateca",
 } as const
