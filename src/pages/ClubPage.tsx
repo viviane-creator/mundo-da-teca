@@ -1,5 +1,6 @@
 import { useEffect } from "react"
 import { useAuth } from "../auth/authContext"
+import { clubPageCopy } from "../data/clubPageCopy"
 import { clubPlanAccents } from "../data/clubPlanAccent"
 import { clubParticipationPlans } from "../data/participationPlans"
 import type { ParticipationPlanId } from "../data/participationPlans"
@@ -34,10 +35,10 @@ export function ClubPage({
   return (
     <WorldPortalLayout {...portal} breath="large">
       <section style={styles.clubPlansSection}>
-        <p style={styles.clubSecondaryLabel}>novas fichas chegando</p>
-        <h2 style={styles.clubEntryHeading}>Escolha sua jornada</h2>
-        <p style={styles.clubFichaHint}>
-          O clube envia fichas novas para a coleção — online ou em casa.
+        <h2 style={styles.clubEntryHeading}>{clubPageCopy.title}</h2>
+        <p style={styles.clubFichaHint}>{clubPageCopy.intro}</p>
+        <p style={{ ...styles.clubFichaHint, marginTop: "-4px" }}>
+          {clubPageCopy.introFollow}
         </p>
 
         <div style={styles.planCardsStack}>

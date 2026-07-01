@@ -27,6 +27,9 @@ export function AtelierShopPage({ setScreen }: { setScreen: SetScreen }) {
         }}
       />
       <section style={worldPortalStyles.body}>
+        <h2 style={styles.clubEntryHeading}>{atelierPortalCopy.pageTitle}</h2>
+        <p style={styles.clubFichaHint}>{atelierPortalCopy.pageIntro}</p>
+
         <div style={styles.atelierShowcase}>
           {atelierFeaturedItems.map((item) => (
             <AtelierFeaturedCard key={item.id} item={item} setScreen={setScreen} />

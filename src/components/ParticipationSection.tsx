@@ -16,6 +16,7 @@ export function ParticipationSection({
       <section style={styles.homeV2PathSection}>
         <h2 style={styles.homeV2ChapterPlaceTitle}>{homeClubCopy.title}</h2>
         <p style={styles.homeV2ChapterSubtitle}>{homeClubCopy.intro}</p>
+        <p style={styles.homeV2ChapterSubtitleShort}>{homeClubCopy.introFollow}</p>
 
         <div style={styles.homeV2PathStack}>
           {participationPlans.map((plan) => (

@@ -128,6 +128,7 @@ export function PlayExperienceCard({
             <p style={styles.experienceCardInvite}>{experience.invite}</p>
 
             <FicharioRegistro
+              variant="discovery"
               labelColor={accent.ink}
               fields={discoveryMetaFields.map((field) => ({
                 label: field.label,
