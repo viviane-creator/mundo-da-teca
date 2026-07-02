@@ -1,6 +1,5 @@
 import { FicharioEtiqueta } from "../components/fichario"
 import { conhecaPageCopy } from "../data/conhecaPageCopy"
-import { appRoutes } from "../navigation/appRoutes"
 import { conhecaPageStyles as s } from "../styles/conhecaPageStyles"
 import { homeCtaClassName, homeCtaStyle } from "../styles/homeCta"
 
@@ -39,18 +38,8 @@ export function ConhecaMundoPage({
           <p style={s.pageKicker}>{copy.documentTitle}</p>
           <h1 style={s.heroTitle}>{copy.hero.title}</h1>
           <p style={s.heroText}>{copy.hero.text}</p>
-          <FicharioEtiqueta
-            action
-            onClick={() => setScreen(appRoutes.brincadeiras)}
-            className={homeCtaClassName("clubeExplorador")}
-            style={homeCtaStyle("clubeExplorador")}
-          >
-            {copy.hero.cta}
-          </FicharioEtiqueta>
         </div>
       </header>
-
-      <div style={s.heroTail} aria-hidden="true" />
 
       <section style={s.chapterFirst} aria-labelledby="conheca-curiosity">
         <h2 id="conheca-curiosity" style={s.manifestoTitle}>
@@ -64,24 +53,6 @@ export function ConhecaMundoPage({
           ))}
           <p style={s.proseClosing}>{copy.curiosity.closing}</p>
         </div>
-      </section>
-
-      <section style={s.chapterTeca} aria-labelledby="conheca-teca">
-        <div style={s.editorialImageWrapLead}>
-          <img
-            src={copy.curiosity.image}
-            alt={copy.curiosity.imageAlt}
-            width={240}
-            height={240}
-            loading="lazy"
-            decoding="async"
-            style={s.editorialImageRound}
-          />
-        </div>
-        <h2 id="conheca-teca" style={s.sectionTitle}>
-          {copy.curiosity.tecaTitle}
-        </h2>
-        <p style={s.proseCenter}>{copy.curiosity.tecaLead}</p>
       </section>
 
       <section style={s.chapter} aria-labelledby="conheca-journey">
@@ -164,18 +135,16 @@ export function ConhecaMundoPage({
         </div>
       </section>
 
-      <section style={s.chapterTextOnly} aria-labelledby="conheca-audience">
+      <section style={s.chapterCompact} aria-labelledby="conheca-audience">
         <p style={s.chapterEpigraph}>{copy.audience.opener}</p>
         <h2 id="conheca-audience" style={s.sectionTitle}>
           {copy.audience.title}
         </h2>
         <p style={s.proseCenter}>{copy.audience.text}</p>
-        <p style={{ ...s.proseClosing, marginTop: "clamp(24px, 5vw, 32px)" }}>
-          {copy.audience.closing}
-        </p>
+        <p style={s.proseClosingCompact}>{copy.audience.closing}</p>
       </section>
 
-      <section style={s.chapterTextOnly} aria-labelledby="conheca-philosophy">
+      <section style={s.chapterCompact} aria-labelledby="conheca-philosophy">
         <div style={s.philosophyBlock}>
           <p style={s.chapterEpigraph}>{copy.philosophy.lead}</p>
           <h2 id="conheca-philosophy" style={s.sectionTitle}>
@@ -191,58 +160,39 @@ export function ConhecaMundoPage({
         </div>
       </section>
 
-      <div style={s.closingChapter}>
-        <section style={s.epilogue} aria-labelledby="conheca-epilogue">
-          <ChapterDots />
-          <h2 id="conheca-epilogue" style={s.epilogueTitle}>
-            {copy.closing.title}
-          </h2>
-          <p style={s.epilogueText}>{copy.closing.lead}</p>
-          <p style={s.epilogueEmphasis}>{copy.closing.body}</p>
-          <p style={{ ...s.epilogueEmphasis, marginTop: "10px" }}>
-            {copy.closing.closing}
+      <section style={s.finalChapter} aria-labelledby="conheca-invitation">
+        <ChapterDots />
+        <h2 id="conheca-invitation" style={s.invitationTitle}>
+          {copy.invitation.title}
+        </h2>
+        {copy.invitation.lines.map((line) => (
+          <p key={line} style={s.finalClosingLine}>
+            {line}
           </p>
-        </section>
-
-        <section style={s.invitationBlock} aria-labelledby="conheca-invitation">
-          <h2 id="conheca-invitation" style={s.invitationTitle}>
-            {copy.invitation.title}
-          </h2>
-          <div style={s.invitationActions}>
-            <FicharioEtiqueta
-              action
-              onClick={() => setScreen(copy.invitation.cta.screen)}
-              className={homeCtaClassName(copy.invitation.cta.tone)}
-              style={{
-                ...homeCtaStyle(copy.invitation.cta.tone),
-                ...s.invitationCta,
-              }}
-            >
-              {copy.invitation.cta.label}
-            </FicharioEtiqueta>
-          </div>
-        </section>
-
-        <section style={s.signatureBlock} aria-label="Encerramento editorial">
-          <ul style={s.mantraList}>
-            {copy.signature.mantra.map((word) => (
-              <li key={word} style={s.mantraWord}>
-                {word}
-              </li>
-            ))}
-          </ul>
-          <p style={s.signatureQuote}>{copy.signature.quote}</p>
-          <img
-            src={copy.signature.logo}
-            alt={copy.signature.logoAlt}
-            width={400}
-            height={120}
-            loading="lazy"
-            decoding="async"
-            style={s.signatureLogo}
-          />
-        </section>
-      </div>
+        ))}
+        <div style={s.invitationActions}>
+          <FicharioEtiqueta
+            action
+            onClick={() => setScreen(copy.invitation.cta.screen)}
+            className={homeCtaClassName(copy.invitation.cta.tone)}
+            style={{
+              ...homeCtaStyle(copy.invitation.cta.tone),
+              ...s.invitationCta,
+            }}
+          >
+            {copy.invitation.cta.label}
+          </FicharioEtiqueta>
+        </div>
+        <img
+          src={copy.signature.logo}
+          alt={copy.signature.logoAlt}
+          width={400}
+          height={120}
+          loading="lazy"
+          decoding="async"
+          style={s.signatureLogo}
+        />
+      </section>
     </article>
   )
 }

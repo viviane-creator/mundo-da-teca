@@ -4,7 +4,6 @@ export const conhecaPageCopy = {
     title: "Existe um mundo inteiro esperando para ser descoberto.",
     text:
       "Aqui, a curiosidade das crianças vira descobertas, memórias e coleções que crescem junto com a infância.",
-    cta: "Começar a explorar",
     image: "/images/hero-home.webp",
     imageAlt: "Cena de descoberta no Mundo da Teca",
   },
@@ -17,10 +16,6 @@ export const conhecaPageCopy = {
       "Continuam observando o mundo com encantamento.",
     ],
     closing: "Este é um lugar para preservar esse jeito de descobrir.",
-    tecaTitle: "Conheça a Teca",
-    tecaLead: "Uma presença que acolhe, provoca perguntas e abre caminhos de descoberta.",
-    image: "/images/teca.webp",
-    imageAlt: "Teca, anfitriã do Mundo da Teca",
   },
   journey: {
     epigraph: "Não são apenas atividades.",
@@ -44,9 +39,9 @@ export const conhecaPageCopy = {
     ],
   },
   pillars: {
-    title: "Explore o Mundo da Teca",
+    title: "Escolha por onde começar.",
     subtitle:
-      "Quatro caminhos para continuar a jornada no seu próprio ritmo.",
+      "Cada caminho revela uma parte diferente do Mundo da Teca.",
     items: [
       {
         id: "universos",
@@ -98,15 +93,12 @@ export const conhecaPageCopy = {
       "Cada criança constrói sua própria coleção.",
     ],
   },
-  closing: {
-    title: "Agora você já conhece este mundo.",
-    lead:
-      "Mas ele só existe de verdade quando uma criança faz uma pergunta, abre um frasco, encontra uma pedra diferente ou guarda uma folha dentro do seu diário.",
-    body: "Porque não é apenas um lugar.",
-    closing: "É uma maneira de viver a infância.",
-  },
   invitation: {
-    title: "Sua jornada continua daqui.",
+    title: "Sua jornada começa aqui.",
+    lines: [
+      "O Mundo da Teca não termina aqui.",
+      "Ele começa quando uma criança faz sua primeira descoberta.",
+    ],
     cta: {
       label: "Começar a explorar",
       screen: "universos" as const,
@@ -114,9 +106,6 @@ export const conhecaPageCopy = {
     },
   },
   signature: {
-    mantra: ["Observe.", "Descubra.", "Colecione."],
-    quote:
-      "Algumas das lembranças mais bonitas da infância começam com uma simples descoberta.",
     logo: "/logo/logo.webp",
     logoAlt: "Mundo da Teca",
   },

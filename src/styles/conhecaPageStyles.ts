@@ -50,12 +50,12 @@ export const conhecaPageStyles: Record<string, CSSProperties> = {
     position: "relative",
     zIndex: 2,
     padding:
-      "clamp(28px, 7vw, 44px) clamp(22px, 5vw, 32px) clamp(36px, 8vw, 52px)",
+      "clamp(28px, 7vw, 44px) clamp(22px, 5vw, 32px) clamp(32px, 7vw, 44px)",
     textAlign: "center",
   },
 
   heroTail: {
-    height: "clamp(32px, 7vw, 48px)",
+    height: "clamp(16px, 4vw, 24px)",
     background: tecaColors.shell,
   },
 
@@ -89,22 +89,22 @@ export const conhecaPageStyles: Record<string, CSSProperties> = {
 
   chapter: {
     padding:
-      "clamp(56px, 12vw, 88px) clamp(22px, 5vw, 32px)",
+      "clamp(36px, 8vw, 56px) clamp(22px, 5vw, 32px)",
   },
 
   chapterFirst: {
     padding:
-      "clamp(40px, 9vw, 64px) clamp(22px, 5vw, 32px) clamp(44px, 10vw, 68px)",
+      "clamp(32px, 7vw, 48px) clamp(22px, 5vw, 32px) clamp(28px, 6.5vw, 40px)",
   },
 
   chapterTeca: {
     padding:
-      "clamp(28px, 7vw, 44px) clamp(22px, 5vw, 32px) clamp(48px, 11vw, 72px)",
+      "clamp(24px, 5.5vw, 36px) clamp(22px, 5vw, 32px) clamp(32px, 7vw, 48px)",
   },
 
-  chapterTextOnly: {
+  chapterCompact: {
     padding:
-      "clamp(64px, 13vw, 96px) clamp(22px, 5vw, 32px)",
+      "clamp(32px, 7vw, 48px) clamp(22px, 5vw, 32px)",
   },
 
   section: {
@@ -119,7 +119,7 @@ export const conhecaPageStyles: Record<string, CSSProperties> = {
 
   sectionBreath: {
     padding:
-      "clamp(44px, 10vw, 68px) clamp(22px, 5vw, 32px)",
+      "clamp(32px, 7vw, 48px) clamp(22px, 5vw, 32px)",
   },
 
   manifestoTitle: {
@@ -161,7 +161,18 @@ export const conhecaPageStyles: Record<string, CSSProperties> = {
     fontWeight: 500,
     lineHeight: 1.35,
     textAlign: "center",
-    margin: "clamp(28px, 6vw, 40px) auto 0",
+    margin: "clamp(20px, 4.5vw, 28px) auto 0",
+    maxWidth: "28ch",
+    color: tecaColors.text,
+  },
+
+  proseClosingCompact: {
+    ...tecaFont.heading,
+    fontSize: "clamp(18px, 4vw, 21px)",
+    fontWeight: 500,
+    lineHeight: 1.35,
+    textAlign: "center",
+    margin: "clamp(18px, 4vw, 24px) auto 0",
     maxWidth: "28ch",
     color: tecaColors.text,
   },
@@ -182,7 +193,33 @@ export const conhecaPageStyles: Record<string, CSSProperties> = {
   editorialImageWrapInset: {
     display: "flex",
     justifyContent: "center",
-    margin: "clamp(36px, 8vw, 52px) auto clamp(40px, 9vw, 56px)",
+    margin: "clamp(20px, 4.5vw, 28px) auto clamp(24px, 5.5vw, 32px)",
+  },
+
+  tecaStoryCard: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    width: "min(100%, 300px)",
+    margin: "clamp(20px, 4.5vw, 28px) auto 0",
+    padding: "clamp(12px, 3vw, 16px) clamp(14px, 3.2vw, 18px)",
+    borderRadius: "16px",
+    border: "1px dashed rgba(196, 165, 141, 0.3)",
+    background: "rgba(255, 253, 249, 0.62)",
+    cursor: "pointer",
+    WebkitTapHighlightColor: "transparent",
+    font: "inherit",
+    textAlign: "center",
+    transition: "transform 0.22s ease, box-shadow 0.22s ease",
+  },
+
+  tecaStoryCardLabel: {
+    ...tecaFont.heading,
+    fontSize: "clamp(14px, 3.3vw, 16px)",
+    fontWeight: 500,
+    lineHeight: 1.3,
+    color: tecaColors.text,
+    letterSpacing: "0.01em",
   },
 
   editorialImageWrapTrail: {
@@ -208,11 +245,11 @@ export const conhecaPageStyles: Record<string, CSSProperties> = {
 
   chapterEpigraph: {
     ...tecaFont.poetic,
-    fontSize: "clamp(19px, 4.4vw, 24px)",
+    fontSize: "clamp(18px, 4.2vw, 22px)",
     fontStyle: "italic",
     lineHeight: 1.45,
     textAlign: "center",
-    margin: "0 auto clamp(28px, 6vw, 40px)",
+    margin: "0 auto clamp(16px, 3.8vw, 22px)",
     maxWidth: "22ch",
     color: tecaColors.muted,
   },
@@ -233,7 +270,7 @@ export const conhecaPageStyles: Record<string, CSSProperties> = {
     fontSize: "clamp(16px, 3.8vw, 19px)",
     lineHeight: 1.55,
     textAlign: "center",
-    margin: "0 auto clamp(36px, 8vw, 52px)",
+    margin: "0 auto clamp(24px, 5.5vw, 32px)",
     maxWidth: "32ch",
     color: tecaColors.muted,
   },
@@ -368,7 +405,7 @@ export const conhecaPageStyles: Record<string, CSSProperties> = {
     maxWidth: "34ch",
     margin: "0 auto",
     textAlign: "center",
-    padding: "clamp(16px, 4vw, 24px) 0",
+    padding: 0,
   },
 
   philosophyLead: {
@@ -451,10 +488,10 @@ export const conhecaPageStyles: Record<string, CSSProperties> = {
 
   invitationTitle: {
     ...tecaFont.heading,
-    fontSize: "clamp(28px, 6.8vw, 38px)",
+    fontSize: "clamp(26px, 6.2vw, 34px)",
     fontWeight: 500,
     lineHeight: 1.18,
-    margin: "0 auto clamp(20px, 4.5vw, 28px)",
+    margin: "0 auto clamp(18px, 4vw, 24px)",
     maxWidth: "16ch",
     color: tecaColors.text,
   },
@@ -465,8 +502,8 @@ export const conhecaPageStyles: Record<string, CSSProperties> = {
     alignItems: "center",
     gap: "18px",
     maxWidth: "min(100%, 360px)",
-    margin: "0 auto",
-    padding: "clamp(12px, 3vw, 20px) 0",
+    margin: "clamp(24px, 5.5vw, 32px) auto 0",
+    padding: 0,
   },
 
   invitationCta: {
@@ -514,11 +551,26 @@ export const conhecaPageStyles: Record<string, CSSProperties> = {
 
   signatureLogo: {
     display: "block",
-    width: "clamp(248px, 62vw, 320px)",
+    width: "clamp(124px, 31vw, 160px)",
     height: "auto",
-    margin: "clamp(36px, 8vw, 52px) auto 0",
+    margin: "clamp(32px, 7vw, 44px) auto 0",
     opacity: 0.98,
     filter: "drop-shadow(0 8px 24px rgba(90,60,30,0.11))",
+  },
+
+  finalChapter: {
+    padding:
+      "clamp(36px, 8vw, 52px) clamp(22px, 5vw, 32px) clamp(20px, 4.5vw, 28px)",
+    textAlign: "center",
+  },
+
+  finalClosingLine: {
+    ...tecaFont.prose,
+    fontSize: "clamp(17px, 3.9vw, 20px)",
+    lineHeight: 1.55,
+    margin: "0 auto 10px",
+    maxWidth: "34ch",
+    color: tecaColors.muted,
   },
 
   chapterDots: {

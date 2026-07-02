@@ -7,14 +7,6 @@ export function InstitutionalFooter() {
 
   return (
     <footer style={styles.institutionalFooter}>
-      <p style={styles.institutionalFooterTagline}>
-        {copy.taglineLine1}
-        <br />
-        {copy.taglineLine2}
-      </p>
-
-      <div style={styles.institutionalFooterRuleSpaced} aria-hidden="true" />
-
       <div style={styles.institutionalFooterSocialBlock}>
         <p style={styles.institutionalFooterSocialLabel}>{copy.instagramLabel}</p>
         <a
