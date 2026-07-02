@@ -35,7 +35,6 @@ export function ClubPage({
   return (
     <WorldPortalLayout {...portal} breath="large">
       <section style={styles.clubPlansSection}>
-        <h2 style={styles.clubEntryHeading}>{clubPageCopy.title}</h2>
         <p style={styles.clubFichaHint}>{clubPageCopy.intro}</p>
         <p style={{ ...styles.clubFichaHint, marginTop: "-4px" }}>
           {clubPageCopy.introFollow}
