@@ -5,8 +5,6 @@ export const homeCopy = {
       "Aqui, cada universo convida a observar, criar, imaginar e colecionar — no ritmo da infância.",
     proseFollow:
       "Cada descoberta pode virar uma lembrança guardada para sempre.",
-    storyTransition:
-      "E tudo isso começou com uma menina que nunca deixou de fazer perguntas.",
     storyCardTitle: "Conheça o Mundo da Teca",
     storyCardLink: "Nossa história →",
   },

@@ -35,8 +35,6 @@ export function HomeAboutSection({
         <p style={styles.homeChapterOpenerProse}>{copy.prose}</p>
         <p style={styles.homeChapterOpenerProseFollow}>{copy.proseFollow}</p>
 
-        <p style={styles.homeStoryBridgeTransition}>{copy.storyTransition}</p>
-
         <button
           type="button"
           onClick={onOpenStory}
