@@ -907,10 +907,10 @@ export const styles: Record<string, CSSProperties> = {
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    gap: "8px",
-    width: "min(100%, 300px)",
+    gap: 0,
+    width: "min(100%, 260px)",
     margin: "clamp(20px, 4.5vw, 28px) auto 0",
-    padding: "clamp(16px, 3.8vw, 20px) clamp(14px, 3.2vw, 18px)",
+    padding: "clamp(12px, 3vw, 16px) clamp(12px, 3vw, 16px)",
     borderRadius: "16px",
     border: "1px dashed rgba(196, 165, 141, 0.3)",
     background: "rgba(255, 253, 249, 0.62)",
@@ -1305,7 +1305,7 @@ export const styles: Record<string, CSSProperties> = {
   universosExploreMapWrap: {
     position: "relative",
     overflow: "hidden",
-    marginTop: "8px",
+    marginTop: 0,
   },
 
   /** Seção de exploração — título e texto sobre o fichário */
@@ -1367,8 +1367,13 @@ export const styles: Record<string, CSSProperties> = {
   },
 
   universosExploreSection: {
-    marginTop: "clamp(8px, 2vw, 12px)",
-    paddingBottom: "clamp(40px, 9vw, 56px)",
+    marginTop: 0,
+    padding: "0 0 clamp(28px, 6.5vw, 40px)",
+  },
+
+  universosEditorialFlow: {
+    marginTop: 0,
+    paddingTop: 0,
   },
 
   universosEpigraph: {
@@ -1377,7 +1382,7 @@ export const styles: Record<string, CSSProperties> = {
     fontStyle: "italic",
     lineHeight: 1.48,
     textAlign: "center",
-    margin: "0 auto clamp(24px, 5.5vw, 32px)",
+    margin: "0 auto clamp(12px, 3vw, 16px)",
     maxWidth: "28ch",
     color: theme.muted,
   },
@@ -1387,7 +1392,7 @@ export const styles: Record<string, CSSProperties> = {
     fontSize: "clamp(15px, 3.5vw, 17px)",
     lineHeight: 1.5,
     textAlign: "center",
-    margin: "0 auto clamp(28px, 6vw, 40px)",
+    margin: "0 auto clamp(28px, 6.5vw, 36px)",
     maxWidth: "26ch",
     color: theme.muted,
   },

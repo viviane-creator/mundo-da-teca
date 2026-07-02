@@ -12,15 +12,17 @@ export function UniversosPage({
   const copy = universosPageCopy
 
   return (
-    <WorldPortalLayout {...portal} breath="large">
+    <WorldPortalLayout {...portal} breath="none">
       <section style={styles.universosExploreSection} aria-label="Mapa de universos">
-        <p style={styles.universosEpigraph}>{copy.epigraph}</p>
-        <p style={styles.universosSubtitle}>{copy.subtitle}</p>
+        <div style={styles.universosEditorialFlow}>
+          <p style={styles.universosEpigraph}>{copy.epigraph}</p>
+          <p style={styles.universosSubtitle}>{copy.subtitle}</p>
 
-        <div style={styles.universosExploreMapWrap}>
-          <div style={styles.editorialDecorContent}>
-            <HomeExploreMap onSelect={setScreen} variant="full" />
-            <p style={styles.homeV2TrailEnd}>{copy.trailEnd}</p>
+          <div style={styles.universosExploreMapWrap}>
+            <div style={styles.editorialDecorContent}>
+              <HomeExploreMap onSelect={setScreen} variant="full" />
+              <p style={styles.homeV2TrailEnd}>{copy.trailEnd}</p>
+            </div>
           </div>
         </div>
       </section>

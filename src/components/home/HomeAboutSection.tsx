@@ -41,7 +41,6 @@ export function HomeAboutSection({
           style={styles.homeStoryBridgeCard}
         >
           <span style={styles.homeStoryBridgeTitle}>{copy.storyCardTitle}</span>
-          <span style={styles.homeStoryBridgeLink}>{copy.storyCardLink}</span>
         </button>
       </section>
     </div>

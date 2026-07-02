@@ -6,7 +6,6 @@ export const homeCopy = {
     proseFollow:
       "Cada descoberta pode virar uma lembrança guardada para sempre.",
     storyCardTitle: "Conheça o Mundo da Teca",
-    storyCardLink: "Nossa história →",
   },
   universos: {
     kicker: "porta de entrada",

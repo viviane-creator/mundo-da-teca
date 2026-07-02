@@ -374,7 +374,7 @@ export function WorldPortalHeader({
   tagline: string
   kicker?: string
   compactTitle?: boolean
-  breath?: "normal" | "large"
+  breath?: "normal" | "large" | "none"
 }) {
   return (
     <header style={p.header}>
@@ -388,7 +388,11 @@ export function WorldPortalHeader({
         {title}
       </h1>
       <p style={p.tagline}>{tagline}</p>
-      <div style={breath === "large" ? p.breathLarge : p.breath} />
+      <div
+        style={
+          breath === "none" ? { height: 0 } : breath === "large" ? p.breathLarge : p.breath
+        }
+      />
     </header>
   )
 }
@@ -421,7 +425,7 @@ export function WorldPortalLayout({
 }: WorldPortalConfig & {
   variant?: "default" | "home" | "art"
   compactTitle?: boolean
-  breath?: "normal" | "large"
+  breath?: "normal" | "large" | "none"
   children: ReactNode
 }) {
   const hero: PortalHeroProps = {
@@ -448,6 +452,8 @@ export function WorldPortalLayout({
           style={
             variant === "home"
               ? p.breathHome
+              : breath === "none"
+                ? { height: 0 }
               : breath === "large"
                 ? p.breathLarge
                 : p.breath
