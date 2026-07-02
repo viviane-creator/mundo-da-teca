@@ -53,7 +53,20 @@ export function ConhecaMundoPage({
       <div style={s.heroTail} aria-hidden="true" />
 
       <section style={s.chapterFirst} aria-labelledby="conheca-curiosity">
-        <ChapterDots />
+        <h2 id="conheca-curiosity" style={s.manifestoTitle}>
+          {copy.curiosity.title}
+        </h2>
+        <div style={s.manifestoBlock}>
+          {copy.curiosity.lines.map((line) => (
+            <p key={line} style={s.proseLine}>
+              {line}
+            </p>
+          ))}
+          <p style={s.proseClosing}>{copy.curiosity.closing}</p>
+        </div>
+      </section>
+
+      <section style={s.chapterTeca} aria-labelledby="conheca-teca">
         <div style={s.editorialImageWrapLead}>
           <img
             src={copy.curiosity.image}
@@ -65,14 +78,10 @@ export function ConhecaMundoPage({
             style={s.editorialImageRound}
           />
         </div>
-        <div id="conheca-curiosity">
-          {copy.curiosity.lines.map((line) => (
-            <p key={line} style={s.proseLine}>
-              {line}
-            </p>
-          ))}
-          <p style={s.proseClosing}>{copy.curiosity.closing}</p>
-        </div>
+        <h2 id="conheca-teca" style={s.sectionTitle}>
+          {copy.curiosity.tecaTitle}
+        </h2>
+        <p style={s.proseCenter}>{copy.curiosity.tecaLead}</p>
       </section>
 
       <section style={s.chapter} aria-labelledby="conheca-journey">
@@ -104,7 +113,6 @@ export function ConhecaMundoPage({
       </section>
 
       <section style={s.sectionBreath} aria-labelledby="conheca-how">
-        <ChapterDots />
         <h2 id="conheca-how" style={s.sectionTitle}>
           {copy.howItWorks.title}
         </h2>
@@ -157,7 +165,6 @@ export function ConhecaMundoPage({
       </section>
 
       <section style={s.chapterTextOnly} aria-labelledby="conheca-audience">
-        <ChapterDots />
         <p style={s.chapterEpigraph}>{copy.audience.opener}</p>
         <h2 id="conheca-audience" style={s.sectionTitle}>
           {copy.audience.title}
@@ -169,7 +176,6 @@ export function ConhecaMundoPage({
       </section>
 
       <section style={s.chapterTextOnly} aria-labelledby="conheca-philosophy">
-        <ChapterDots />
         <div style={s.philosophyBlock}>
           <p style={s.chapterEpigraph}>{copy.philosophy.lead}</p>
           <h2 id="conheca-philosophy" style={s.sectionTitle}>
@@ -199,25 +205,21 @@ export function ConhecaMundoPage({
         </section>
 
         <section style={s.invitationBlock} aria-labelledby="conheca-invitation">
-          <ChapterDots />
           <h2 id="conheca-invitation" style={s.invitationTitle}>
             {copy.invitation.title}
           </h2>
           <div style={s.invitationActions}>
-            {copy.invitation.ctas.map((cta) => (
-              <FicharioEtiqueta
-                key={cta.label}
-                action
-                onClick={() => setScreen(cta.screen)}
-                className={homeCtaClassName(cta.tone)}
-                style={{
-                  ...homeCtaStyle(cta.tone),
-                  ...s.invitationCta,
-                }}
-              >
-                {cta.label}
-              </FicharioEtiqueta>
-            ))}
+            <FicharioEtiqueta
+              action
+              onClick={() => setScreen(copy.invitation.cta.screen)}
+              className={homeCtaClassName(copy.invitation.cta.tone)}
+              style={{
+                ...homeCtaStyle(copy.invitation.cta.tone),
+                ...s.invitationCta,
+              }}
+            >
+              {copy.invitation.cta.label}
+            </FicharioEtiqueta>
           </div>
         </section>
 

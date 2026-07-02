@@ -94,7 +94,12 @@ export const conhecaPageStyles: Record<string, CSSProperties> = {
 
   chapterFirst: {
     padding:
-      "clamp(64px, 14vw, 96px) clamp(22px, 5vw, 32px) clamp(72px, 16vw, 104px)",
+      "clamp(40px, 9vw, 64px) clamp(22px, 5vw, 32px) clamp(44px, 10vw, 68px)",
+  },
+
+  chapterTeca: {
+    padding:
+      "clamp(28px, 7vw, 44px) clamp(22px, 5vw, 32px) clamp(48px, 11vw, 72px)",
   },
 
   chapterTextOnly: {
@@ -114,7 +119,20 @@ export const conhecaPageStyles: Record<string, CSSProperties> = {
 
   sectionBreath: {
     padding:
-      "clamp(72px, 15vw, 104px) clamp(22px, 5vw, 32px)",
+      "clamp(44px, 10vw, 68px) clamp(22px, 5vw, 32px)",
+  },
+
+  manifestoTitle: {
+    ...tecaHierarchy.l6Micro,
+    textAlign: "center",
+    margin: "0 auto clamp(14px, 3.2vw, 20px)",
+    opacity: 0.78,
+    letterSpacing: "0.13em",
+  },
+
+  manifestoBlock: {
+    maxWidth: "34ch",
+    margin: "0 auto",
   },
 
   proseCenter: {
@@ -158,7 +176,7 @@ export const conhecaPageStyles: Record<string, CSSProperties> = {
     display: "flex",
     justifyContent: "center",
     margin:
-      "clamp(12px, 3vw, 20px) auto clamp(52px, 12vw, 72px)",
+      "clamp(4px, 1.2vw, 10px) auto clamp(24px, 5.5vw, 36px)",
   },
 
   editorialImageWrapInset: {
@@ -248,7 +266,7 @@ export const conhecaPageStyles: Record<string, CSSProperties> = {
   },
 
   howItWorks: {
-    margin: "clamp(48px, 11vw, 68px) auto",
+    margin: "clamp(24px, 5.5vw, 36px) auto",
     maxWidth: "280px",
     padding: "clamp(28px, 6vw, 36px) clamp(20px, 4.5vw, 28px)",
     borderRadius: "22px",
@@ -378,7 +396,7 @@ export const conhecaPageStyles: Record<string, CSSProperties> = {
   },
 
   closingChapter: {
-    marginTop: "clamp(24px, 5vw, 36px)",
+    marginTop: "clamp(12px, 3vw, 20px)",
     padding: "0 0 clamp(8px, 2vw, 12px)",
     background: `
       linear-gradient(180deg,
@@ -392,7 +410,7 @@ export const conhecaPageStyles: Record<string, CSSProperties> = {
 
   epilogue: {
     padding:
-      "clamp(56px, 12vw, 80px) clamp(22px, 5vw, 32px) clamp(72px, 16vw, 112px)",
+      "clamp(40px, 9vw, 60px) clamp(22px, 5vw, 32px) clamp(48px, 11vw, 72px)",
     textAlign: "center",
   },
 
@@ -427,7 +445,7 @@ export const conhecaPageStyles: Record<string, CSSProperties> = {
 
   invitationBlock: {
     padding:
-      "clamp(72px, 16vw, 104px) clamp(22px, 5vw, 32px) clamp(72px, 16vw, 104px)",
+      "clamp(32px, 7.5vw, 48px) clamp(22px, 5vw, 32px) clamp(28px, 6.5vw, 40px)",
     textAlign: "center",
   },
 
@@ -436,7 +454,7 @@ export const conhecaPageStyles: Record<string, CSSProperties> = {
     fontSize: "clamp(28px, 6.8vw, 38px)",
     fontWeight: 500,
     lineHeight: 1.18,
-    margin: "0 auto clamp(36px, 8vw, 48px)",
+    margin: "0 auto clamp(20px, 4.5vw, 28px)",
     maxWidth: "16ch",
     color: tecaColors.text,
   },
@@ -460,7 +478,7 @@ export const conhecaPageStyles: Record<string, CSSProperties> = {
 
   signatureBlock: {
     padding:
-      "clamp(64px, 14vw, 96px) clamp(22px, 5vw, 32px) clamp(40px, 9vw, 56px)",
+      "clamp(36px, 8vw, 52px) clamp(22px, 5vw, 32px) clamp(24px, 5.5vw, 36px)",
     textAlign: "center",
   },
 
@@ -489,7 +507,7 @@ export const conhecaPageStyles: Record<string, CSSProperties> = {
     ...tecaFont.poetic,
     fontSize: "clamp(17px, 4vw, 20px)",
     lineHeight: 1.55,
-    margin: "clamp(48px, 11vw, 68px) auto 0",
+    margin: "clamp(28px, 6.5vw, 42px) auto 0",
     maxWidth: "34ch",
     color: tecaColors.muted,
   },
@@ -498,7 +516,7 @@ export const conhecaPageStyles: Record<string, CSSProperties> = {
     display: "block",
     width: "clamp(248px, 62vw, 320px)",
     height: "auto",
-    margin: "clamp(64px, 14vw, 96px) auto 0",
+    margin: "clamp(36px, 8vw, 52px) auto 0",
     opacity: 0.98,
     filter: "drop-shadow(0 8px 24px rgba(90,60,30,0.11))",
   },
@@ -508,7 +526,7 @@ export const conhecaPageStyles: Record<string, CSSProperties> = {
     alignItems: "center",
     justifyContent: "center",
     gap: "9px",
-    padding: "0 0 clamp(28px, 6vw, 40px)",
+    padding: "0 0 clamp(16px, 3.8vw, 24px)",
   },
 
   chapterDot: {

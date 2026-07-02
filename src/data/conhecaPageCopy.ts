@@ -9,6 +9,7 @@ export const conhecaPageCopy = {
     imageAlt: "Cena de descoberta no Mundo da Teca",
   },
   curiosity: {
+    title: "Manifesto",
     lines: [
       "A infância continua curiosa.",
       "As crianças continuam fazendo perguntas.",
@@ -16,6 +17,8 @@ export const conhecaPageCopy = {
       "Continuam observando o mundo com encantamento.",
     ],
     closing: "Este é um lugar para preservar esse jeito de descobrir.",
+    tecaTitle: "Conheça a Teca",
+    tecaLead: "Uma presença que acolhe, provoca perguntas e abre caminhos de descoberta.",
     image: "/images/teca.webp",
     imageAlt: "Teca, anfitriã do Mundo da Teca",
   },
@@ -33,7 +36,7 @@ export const conhecaPageCopy = {
     title: "Como funciona?",
     steps: [
       "Escolha um universo.",
-      "Escolha uma brincadeira.",
+      "Escolha uma experiência.",
       "Brinque.",
       "Registre.",
       "Colecione.",
@@ -41,14 +44,14 @@ export const conhecaPageCopy = {
     ],
   },
   pillars: {
-    title: "Escolha por onde começar.",
+    title: "Explore o Mundo da Teca",
     subtitle:
-      "Cada caminho revela uma parte diferente do Mundo da Teca.",
+      "Quatro caminhos para continuar a jornada no seu próprio ritmo.",
     items: [
       {
         id: "universos",
         title: "Universos",
-        text: "Seis caminhos diferentes para descobrir, criar, imaginar e colecionar.",
+        text: "Seis caminhos para descobrir, criar, imaginar e colecionar com presença.",
         screen: "universos" as const,
         tone: "clubeExplorador" as const,
         featured: true,
@@ -56,7 +59,7 @@ export const conhecaPageCopy = {
       {
         id: "meu-mundo",
         title: "Meu Mundo",
-        text: "O lugar onde cada descoberta ganha uma história.",
+        text: "O lugar onde cada descoberta vira capítulo da sua própria história.",
         screen: "meu-mundo" as const,
         tone: "meuMundo" as const,
         featured: false,
@@ -64,7 +67,7 @@ export const conhecaPageCopy = {
       {
         id: "clube",
         title: "Clube",
-        text: "Receba novas experiências e materiais para continuar explorando todos os meses.",
+        text: "Novas experiências e materiais para manter a curiosidade viva todos os meses.",
         screen: "clube" as const,
         tone: "clubeColecionador" as const,
         featured: false,
@@ -72,7 +75,7 @@ export const conhecaPageCopy = {
       {
         id: "atelie",
         title: "Ateliê",
-        text: "Tesouros, papelaria e objetos para levar o Mundo da Teca para casa.",
+        text: "Tesouros e objetos para levar a experiência da descoberta para casa.",
         screen: "atelie" as const,
         tone: "atelie" as const,
         featured: false,
@@ -103,24 +106,12 @@ export const conhecaPageCopy = {
     closing: "É uma maneira de viver a infância.",
   },
   invitation: {
-    title: "Sua primeira descoberta começa aqui.",
-    ctas: [
-      {
-        label: "Explorar Universos",
-        screen: "universos" as const,
-        tone: "clubeExplorador" as const,
-      },
-      {
-        label: "Conhecer o Clube",
-        screen: "clube" as const,
-        tone: "clubeColecionador" as const,
-      },
-      {
-        label: "Visitar o Ateliê",
-        screen: "atelie" as const,
-        tone: "atelie" as const,
-      },
-    ],
+    title: "Sua jornada continua daqui.",
+    cta: {
+      label: "Começar a explorar",
+      screen: "universos" as const,
+      tone: "clubeExplorador" as const,
+    },
   },
   signature: {
     mantra: ["Observe.", "Descubra.", "Colecione."],
