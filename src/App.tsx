@@ -529,7 +529,7 @@ function AppContent() {
           </ClubGated>
         )}
 
-        <InstitutionalFooter setScreen={setScreen} />
+        <InstitutionalFooter />
 
         <BottomNav active={resolveNavActive(screen)} setScreen={setScreen} />
       </section>

@@ -22,7 +22,7 @@ export function Home({
 
   return (
     <WorldPortalLayout {...portal} variant="home">
-      <HomeAboutSection />
+      <HomeAboutSection onOpenStory={() => setScreen(appRoutes.conheca)} />
 
       <div style={styles.homeV2Journey}>
         <span style={styles.homeFicharioSpine} aria-hidden="true" />

@@ -892,6 +892,53 @@ export const styles: Record<string, CSSProperties> = {
     color: theme.muted,
   },
 
+  homeStoryBridgeTransition: {
+    ...tecaFont.poetic,
+    fontSize: "clamp(15px, 3.6vw, 17px)",
+    fontStyle: "italic",
+    lineHeight: 1.5,
+    margin: "clamp(22px, 5vw, 30px) auto 0",
+    maxWidth: "30ch",
+    textAlign: "center",
+    color: theme.muted,
+  },
+
+  homeStoryBridgeCard: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    gap: "8px",
+    width: "min(100%, 300px)",
+    margin: "clamp(20px, 4.5vw, 28px) auto 0",
+    padding: "clamp(16px, 3.8vw, 20px) clamp(14px, 3.2vw, 18px)",
+    borderRadius: "16px",
+    border: "1px dashed rgba(196, 165, 141, 0.3)",
+    background: "rgba(255, 253, 249, 0.62)",
+    cursor: "pointer",
+    WebkitTapHighlightColor: "transparent",
+    font: "inherit",
+    textAlign: "center",
+    transition: "transform 0.22s ease, box-shadow 0.22s ease",
+  },
+
+  homeStoryBridgeTitle: {
+    ...tecaFont.heading,
+    fontSize: "clamp(15px, 3.5vw, 17px)",
+    fontWeight: 500,
+    lineHeight: 1.25,
+    color: theme.text,
+    letterSpacing: "0.01em",
+  },
+
+  homeStoryBridgeLink: {
+    ...tecaFont.prose,
+    fontSize: "clamp(13px, 3vw, 14px)",
+    lineHeight: 1.35,
+    color: "#9a8475",
+    letterSpacing: "0.12px",
+    opacity: 0.92,
+  },
+
   homeReceptionTitle: {
     ...tecaFont.heading,
     fontSize: "clamp(24px, 5.5vw, 30px)",

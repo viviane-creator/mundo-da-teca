@@ -12,7 +12,11 @@ function HomeChapterDivider() {
   )
 }
 
-export function HomeAboutSection() {
+export function HomeAboutSection({
+  onOpenStory,
+}: {
+  onOpenStory: () => void
+}) {
   const copy = homeCopy.about
 
   return (
@@ -30,6 +34,17 @@ export function HomeAboutSection() {
 
         <p style={styles.homeChapterOpenerProse}>{copy.prose}</p>
         <p style={styles.homeChapterOpenerProseFollow}>{copy.proseFollow}</p>
+
+        <p style={styles.homeStoryBridgeTransition}>{copy.storyTransition}</p>
+
+        <button
+          type="button"
+          onClick={onOpenStory}
+          style={styles.homeStoryBridgeCard}
+        >
+          <span style={styles.homeStoryBridgeTitle}>{copy.storyCardTitle}</span>
+          <span style={styles.homeStoryBridgeLink}>{copy.storyCardLink}</span>
+        </button>
       </section>
     </div>
   )
