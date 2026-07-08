@@ -133,6 +133,7 @@
   z-index: 2;
   padding: clamp(28px, 7vw, 44px) 0 0;
   text-align: center;
+  overflow: visible;
 }
 
 .club-page__choice-header {
@@ -187,111 +188,197 @@
 .club-page__modalities {
   display: flex;
   flex-direction: column;
-  gap: clamp(20px, 5vw, 32px);
+  gap: clamp(12px, 3vw, 18px);
   width: 100%;
   max-width: min(100%, 640px);
   margin: 0 auto;
-  padding: 0 clamp(20px, 5vw, 28px);
+  padding: 0 clamp(16px, 4vw, 24px);
   box-sizing: border-box;
-}
-
-/* —— Bloco editorial por modalidade —— */
-
-.club-modality-block {
-  position: relative;
-  text-align: left;
-  padding: clamp(16px, 4vw, 24px) clamp(20px, 5vw, 28px);
   overflow: visible;
-  isolation: isolate;
 }
 
-.club-modality-block:nth-child(odd) {
+/* —— Card clicável por modalidade —— */
+
+.club-modality-card {
+  --club-card-accent: #c4a582;
+  --club-card-accent-dark: #b99b5c;
+  --club-card-accent-ink: #6b5238;
+  --club-card-border: #c4a582;
+  --club-card-border-hover: #b99b5c;
+  position: relative;
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: clamp(18px, 4.5vw, 24px) clamp(18px, 4.5vw, 22px)
+    clamp(16px, 4vw, 20px);
+  border: 1px dashed var(--club-card-border);
+  border-radius: 14px;
+  background: #faf6ef;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 253, 249, 0.72),
+    0 2px 10px rgba(90, 60, 30, 0.06);
   text-align: left;
+  color: inherit;
+  cursor: pointer;
+  overflow: hidden;
+  isolation: isolate;
+  transition:
+    transform 0.22s ease,
+    box-shadow 0.22s ease,
+    border-color 0.22s ease;
+  -webkit-tap-highlight-color: transparent;
 }
 
-.club-modality-block:nth-child(even) {
+.club-modality-card::before {
+  content: "";
+  position: absolute;
+  top: 10px;
+  bottom: 10px;
+  left: 0;
+  width: 5px;
+  border-radius: 0 4px 4px 0;
+  background: var(--club-card-accent-dark);
+  pointer-events: none;
+}
+
+.club-modality-card:nth-child(even)::before {
+  left: auto;
+  right: 0;
+  border-radius: 4px 0 0 4px;
+}
+
+.club-modality-card--explorador-digital {
+  --club-card-accent: #c9ad6a;
+  --club-card-accent-dark: #b99b5c;
+  --club-card-accent-ink: #5a4030;
+  --club-card-border: #b99b5c;
+  --club-card-border-hover: #a88e50;
+}
+
+.club-modality-card--mundo-descobertas {
+  --club-card-accent: #9ba88a;
+  --club-card-accent-dark: #8a9870;
+  --club-card-accent-ink: #424d38;
+  --club-card-border: #8a9870;
+  --club-card-border-hover: #7a8860;
+}
+
+.club-modality-card--mundo-tesouros {
+  --club-card-accent: #c8947f;
+  --club-card-accent-dark: #b47a63;
+  --club-card-accent-ink: #5a3828;
+  --club-card-border: #b47a63;
+  --club-card-border-hover: #a66e58;
+}
+
+.club-modality-card--expedicao-completa {
+  --club-card-accent: #8fa8c6;
+  --club-card-accent-dark: #7e96b8;
+  --club-card-accent-ink: #3e5568;
+  --club-card-border: #7e96b8;
+  --club-card-border-hover: #6e88aa;
+}
+
+.club-modality-card:nth-child(even) {
   text-align: right;
 }
 
-.club-modality-block__underlay {
+.club-modality-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--club-card-border-hover);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 253, 249, 0.5),
+    0 6px 18px rgba(90, 60, 30, 0.1);
+}
+
+.club-modality-card:focus-visible {
+  outline: 2px solid #9a8475;
+  outline-offset: 4px;
+}
+
+.club-modality-card__canvas {
   position: absolute;
-  inset: 0;
+  inset: -8%;
   z-index: 0;
   pointer-events: none;
+  overflow: visible;
 }
 
-.club-modality-block__content {
-  position: relative;
-  z-index: 1;
-}
-
-.club-modality-block__intro--mirror {
-  pointer-events: none;
-}
-
-.club-modality-block__seal--spacer,
-.club-modality-block__title--spacer {
-  visibility: hidden;
-}
-
-.club-modality-block__intro {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  margin: 0 0 clamp(10px, 2.5vw, 14px);
-}
-
-.club-modality-block:nth-child(even) .club-modality-block__intro {
-  align-items: flex-end;
-}
-
-.club-modality-block__title-wrap {
-  position: relative;
-  display: block;
-  width: fit-content;
-  max-width: 100%;
-  margin: 0;
-  padding: clamp(6px, 1.5vw, 10px) 0;
-  overflow: hidden;
-}
-
-.club-modality-block__stain {
+.club-modality-card__stain {
   position: absolute;
   top: 50%;
   left: 50%;
   display: block;
-  width: clamp(320px, 88vw, 520px);
+  width: clamp(380px, 128%, 680px);
   height: auto;
   max-width: none;
   object-fit: contain;
   object-position: center center;
   pointer-events: none;
   user-select: none;
-  z-index: 0;
-  transform: translate(-50%, -50%) scale(1.43, 1.859);
+  transform: translate(-50%, -50%) scale(1.53, 1.92);
   transform-origin: center center;
   mix-blend-mode: multiply;
-  opacity: 0.64;
+  opacity: 0.58;
 }
 
-.club-modality-block:nth-child(even) .club-modality-block__title-wrap {
-  text-align: right;
+.club-modality-card:nth-child(odd) .club-modality-card__stain {
+  left: 36%;
+  transform: translate(-50%, -50%) scale(1.53, 1.92);
 }
 
-.club-modality-block:nth-child(even) .club-modality-block__title {
-  text-align: right;
+.club-modality-card:nth-child(even) .club-modality-card__stain {
+  left: 64%;
+  transform: translate(-50%, -50%) scale(1.53, 1.92);
 }
 
-.club-modality-block__seal {
+.club-modality-card--explorador-digital .club-modality-card__stain {
+  object-position: 29% center;
+  left: 36%;
+  transform: translate(-55%, -50%) scale(1.53, 1.92);
+}
+
+.club-modality-card--mundo-descobertas .club-modality-card__stain {
+  object-position: 71% center;
+  left: 64%;
+  transform: translate(-45%, -50%) scale(1.53, 1.92);
+}
+
+.club-modality-card--mundo-tesouros .club-modality-card__stain {
+  object-position: 29% center;
+  left: 36%;
+  transform: translate(-55%, -50%) scale(1.53, 1.92);
+}
+
+.club-modality-card--expedicao-completa .club-modality-card__stain {
+  object-position: 71% center;
+  left: 64%;
+  transform: translate(-45%, -50%) scale(1.53, 1.92);
+}
+
+.club-modality-card__body {
   position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  max-width: 100%;
+  pointer-events: none;
+}
+
+.club-modality-card:nth-child(even) .club-modality-card__body {
+  align-items: flex-end;
+}
+
+.club-modality-card__seal {
   display: inline-block;
-  margin: 0 0 clamp(5px, 1.25vw, 7px);
+  margin: 0 0 clamp(6px, 1.5vw, 8px);
   padding: 4px 14px 5px;
   border: 1px solid transparent;
   border-radius: 999px;
   font-family: "Cormorant Garamond", serif;
-  font-size: clamp(13px, 3.4vw, 16px);
+  font-size: clamp(12px, 3.2vw, 15px);
   font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -299,193 +386,119 @@
   line-height: 1.1;
 }
 
-.club-modality-block--explorador-digital .club-modality-block__seal {
+.club-modality-card--explorador-digital .club-modality-card__seal {
   background: #c9ad6a;
   border-color: #b99b5c;
 }
 
-.club-modality-block--mundo-descobertas .club-modality-block__seal {
+.club-modality-card--mundo-descobertas .club-modality-card__seal {
   background: #9ba88a;
   border-color: #8a9870;
 }
 
-.club-modality-block--mundo-tesouros .club-modality-block__seal {
+.club-modality-card--mundo-tesouros .club-modality-card__seal {
   background: #c8947f;
   border-color: #b47a63;
 }
 
-.club-modality-block--expedicao-completa .club-modality-block__seal {
+.club-modality-card--expedicao-completa .club-modality-card__seal {
   background: #8fa8c6;
   border-color: #7e96b8;
 }
 
-.club-modality-block__title {
-  position: relative;
-  margin: 0;
-  font-size: clamp(26px, 6.5vw, 34px);
+.club-modality-card__title {
+  display: block;
+  margin: 0 0 clamp(8px, 2vw, 10px);
+  max-width: min(100%, 34ch);
+  font-size: clamp(24px, 6vw, 32px);
   line-height: 1.12;
   letter-spacing: 0.04em;
   color: #5a4030;
   text-shadow: 0 1px 2px rgba(255, 253, 249, 0.88);
 }
 
-.club-modality-block__layout {
-  display: flex;
-  align-items: center;
-  gap: clamp(10px, 3vw, 20px);
+.club-modality-card:nth-child(even) .club-modality-card__title {
+  text-align: right;
 }
 
-.club-modality-block:nth-child(odd) .club-modality-block__layout {
-  flex-direction: row;
-}
-
-.club-modality-block:nth-child(even) .club-modality-block__layout {
-  flex-direction: row-reverse;
-}
-
-.club-modality-block__copy {
-  flex: 1;
-  min-width: 0;
-}
-
-.club-modality-block__description {
-  margin: 0 0 clamp(10px, 2.5vw, 14px);
-  max-width: 46ch;
+.club-modality-card__description {
+  display: block;
+  margin: 0 0 clamp(8px, 2vw, 10px);
+  max-width: min(100%, 44ch);
   font-family: "Cormorant Garamond", serif;
-  font-size: clamp(18px, 4.5vw, 22px);
-  line-height: 1.44;
+  font-size: clamp(17px, 4.2vw, 20px);
+  line-height: 1.42;
   color: rgba(90, 64, 48, 0.9);
   text-shadow: 0 1px 2px rgba(255, 253, 249, 0.88);
 }
 
-.club-modality-block:nth-child(even) .club-modality-block__description {
-  margin-left: auto;
+.club-modality-card:nth-child(even) .club-modality-card__description {
   text-align: right;
 }
 
-.club-modality-block__benefits {
-  margin: 0 0 clamp(10px, 2.5vw, 14px);
+.club-modality-card__benefits {
+  margin: 0 0 clamp(8px, 2vw, 10px);
   padding: 0;
   list-style: none;
+  max-width: min(100%, 44ch);
 }
 
-.club-modality-block:nth-child(even) .club-modality-block__benefits {
-  margin-left: auto;
-}
-
-.club-modality-block__benefit {
+.club-modality-card__benefit {
   display: flex;
   align-items: flex-start;
   gap: 8px;
-  margin-bottom: clamp(3px, 0.85vw, 5px);
+  margin-bottom: clamp(2px, 0.6vw, 4px);
   font-family: "Cormorant Garamond", serif;
-  font-size: clamp(17px, 4.2vw, 20px);
-  line-height: 1.36;
+  font-size: clamp(16px, 4vw, 19px);
+  line-height: 1.34;
   color: rgba(90, 64, 48, 0.88);
   text-shadow: 0 1px 2px rgba(255, 253, 249, 0.88);
 }
 
-.club-modality-block__benefit:last-child {
+.club-modality-card__benefit:last-child {
   margin-bottom: 0;
 }
 
-.club-modality-block:nth-child(even) .club-modality-block__benefit {
-  justify-content: flex-end;
+.club-modality-card:nth-child(even) .club-modality-card__benefit {
+  flex-direction: row-reverse;
   text-align: right;
 }
 
-.club-modality-block__check {
+.club-modality-card__check {
   flex-shrink: 0;
   margin-top: 0.12em;
   font-size: 0.92em;
   color: rgba(106, 79, 60, 0.65);
 }
 
-.club-modality-block__price {
-  margin: clamp(4px, 1vw, 6px) 0 0;
+.club-modality-card__price {
+  display: block;
+  margin: clamp(2px, 0.6vw, 4px) 0 0;
   font-family: "Cormorant Garamond", serif;
-  font-size: clamp(22px, 5.4vw, 28px);
+  font-size: clamp(20px, 5vw, 26px);
   font-weight: 700;
-  font-style: normal;
   letter-spacing: 0.03em;
   color: #4a3628;
   text-shadow: 0 1px 3px rgba(255, 253, 249, 0.92);
 }
 
-.club-modality-block:nth-child(even) .club-modality-block__price {
-  margin-left: auto;
-}
-
-.club-modality-block__cta {
-  position: relative;
-  flex-shrink: 0;
-  align-self: center;
-  width: clamp(110px, 28.8vw, 142px);
-  min-height: clamp(130px, 31.2vw, 168px);
-  margin: 0;
-  padding: clamp(17px, 4.2vw, 22px) clamp(12px, 3vw, 17px);
-  border: 1px solid transparent;
-  border-radius: 52% 48% 58% 42% / 46% 54% 48% 52%;
-  background: #c9ad6a;
+.club-modality-card__action {
+  display: inline-block;
+  margin-top: clamp(8px, 2vw, 10px);
   font-family: "Cormorant Garamond", serif;
-  font-size: clamp(19px, 5.04vw, 24px);
+  font-size: clamp(16px, 4vw, 18px);
   font-weight: 600;
   font-style: italic;
-  line-height: 1.32;
   letter-spacing: 0.02em;
-  text-align: center;
-  color: #fffcf7;
-  cursor: pointer;
-  transform: rotate(-3deg);
-  box-shadow:
-    0 4px 14px rgba(90, 64, 48, 0.1),
-    inset 0 1px 0 rgba(255, 255, 255, 0.28);
-  transition:
-    transform 0.28s ease,
-    box-shadow 0.28s ease,
-    filter 0.28s ease;
-  -webkit-tap-highlight-color: transparent;
+  color: var(--club-card-accent-ink);
+  text-decoration: underline;
+  text-decoration-color: var(--club-card-accent-dark);
+  text-underline-offset: 3px;
 }
 
-.club-modality-block__cta:hover {
-  transform: rotate(-1deg) translateY(-2px);
-  box-shadow:
-    0 8px 20px rgba(90, 64, 48, 0.14),
-    inset 0 1px 0 rgba(255, 255, 255, 0.32);
-  filter: brightness(1.03);
-}
-
-.club-modality-block__cta:focus-visible {
-  outline: 2px solid #9a8475;
-  outline-offset: 4px;
-}
-
-.club-modality-block:nth-child(even) .club-modality-block__cta {
-  transform: rotate(3deg);
-}
-
-.club-modality-block:nth-child(even) .club-modality-block__cta:hover {
-  transform: rotate(1deg) translateY(-2px);
-}
-
-.club-modality-block--explorador-digital .club-modality-block__cta {
-  background: #c9ad6a;
-  border-color: #b99b5c;
-}
-
-.club-modality-block--mundo-descobertas .club-modality-block__cta {
-  background: #9ba88a;
-  border-color: #8a9870;
-}
-
-.club-modality-block--mundo-tesouros .club-modality-block__cta {
-  background: #c8947f;
-  border-color: #b47a63;
-}
-
-.club-modality-block--expedicao-completa .club-modality-block__cta {
-  background: #8fa8c6;
-  border-color: #7e96b8;
+.club-modality-card:hover .club-modality-card__action {
+  color: var(--club-card-accent-dark);
+  text-decoration-color: var(--club-card-accent-dark);
 }
 
 /* —— Comparação editorial —— */
@@ -636,18 +649,33 @@
 }
 
 @media (min-width: 720px) {
-  .club-modality-block__stain {
-    width: clamp(360px, 52vw, 480px);
+  .club-modality-card__stain {
+    width: clamp(420px, 118%, 720px);
+    transform: translate(-50%, -50%) scale(1.61, 2);
   }
 
-  .club-modality-block__layout {
-    gap: clamp(14px, 3vw, 24px);
+  .club-modality-card--explorador-digital .club-modality-card__stain {
+    transform: translate(-55%, -50%) scale(1.61, 2);
   }
 
-  .club-modality-block__cta {
-    width: clamp(125px, 16.8vw, 154px);
-    min-height: clamp(144px, 18vw, 182px);
-    font-size: clamp(20px, 2.64vw, 25px);
+  .club-modality-card--mundo-descobertas .club-modality-card__stain {
+    transform: translate(-45%, -50%) scale(1.61, 2);
+  }
+
+  .club-modality-card--mundo-tesouros .club-modality-card__stain {
+    transform: translate(-55%, -50%) scale(1.61, 2);
+  }
+
+  .club-modality-card--expedicao-completa .club-modality-card__stain {
+    transform: translate(-45%, -50%) scale(1.61, 2);
+  }
+
+  .club-modality-card__title {
+    font-size: clamp(26px, 3.6vw, 32px);
+  }
+
+  .club-modality-card__description {
+    font-size: clamp(18px, 2.4vw, 21px);
   }
 }
 
@@ -676,72 +704,75 @@
   }
 
   .club-page__modalities {
-    gap: clamp(32px, 8vw, 44px);
-    padding-inline: 16px;
+    gap: clamp(10px, 2.4vw, 14px);
+    padding-inline: 12px;
   }
 
-  .club-modality-block {
-    overflow: hidden;
-    padding: clamp(14px, 3.5vw, 20px) 14px;
+  .club-modality-card {
+    padding: clamp(13px, 3.2vw, 16px) clamp(14px, 3.5vw, 18px)
+      clamp(11px, 2.8vw, 14px);
   }
 
-  .club-modality-block__title-wrap {
-    overflow: hidden;
-    width: 100%;
-    max-width: 100%;
-    min-height: clamp(68px, 17vw, 88px);
-    padding-top: clamp(8px, 2vw, 12px);
-    padding-bottom: clamp(8px, 2vw, 12px);
+  .club-modality-card::before {
+    top: 8px;
+    bottom: 8px;
   }
 
-  .club-modality-block:nth-child(even) .club-modality-block__title-wrap {
-    margin-left: auto;
+  .club-modality-card__seal {
+    margin-bottom: clamp(5px, 1.2vw, 6px);
+    padding-block: 3px 4px;
   }
 
-  .club-modality-block__stain {
-    width: min(92vw, 480px);
-    opacity: 0.6;
-    transform: translate(-50%, -50%) scale(0.94, 1.14);
-  }
-
-  .club-modality-block:nth-child(odd) .club-modality-block__stain {
-    transform: translate(-54%, -50%) scale(0.94, 1.14);
-  }
-
-  .club-modality-block:nth-child(even) .club-modality-block__stain {
-    transform: translate(-46%, -50%) scale(0.94, 1.14);
-  }
-
-  .club-modality-block__title {
+  .club-modality-card__title {
+    margin-bottom: clamp(6px, 1.6vw, 8px);
+    line-height: 1.08;
     white-space: normal;
     max-width: min(100%, 34ch);
-    line-height: 1.14;
   }
 
-  .club-modality-block__layout,
-  .club-modality-block:nth-child(odd) .club-modality-block__layout,
-  .club-modality-block:nth-child(even) .club-modality-block__layout {
-    flex-direction: column;
-    align-items: stretch;
-    gap: clamp(16px, 4vw, 22px);
+  .club-modality-card__description {
+    margin-bottom: clamp(6px, 1.6vw, 8px);
+    line-height: 1.36;
   }
 
-  .club-modality-block__copy {
-    width: 100%;
-    max-width: 100%;
+  .club-modality-card__benefits {
+    margin-bottom: clamp(6px, 1.6vw, 8px);
   }
 
-  .club-modality-block__description {
-    max-width: 100%;
-    font-size: clamp(17px, 4.2vw, 20px);
+  .club-modality-card__benefit {
+    gap: 6px;
+    margin-bottom: clamp(1px, 0.4vw, 2px);
+    line-height: 1.28;
   }
 
-  .club-modality-block__cta {
-    align-self: flex-start;
+  .club-modality-card__price {
+    margin-top: clamp(1px, 0.4vw, 2px);
   }
 
-  .club-modality-block:nth-child(even) .club-modality-block__cta {
-    align-self: flex-end;
+  .club-modality-card__action {
+    margin-top: clamp(6px, 1.6vw, 8px);
+  }
+
+  .club-modality-card__stain {
+    width: clamp(340px, 132%, 620px);
+    opacity: 0.56;
+    transform: translate(-50%, -50%) scale(1.48, 1.85);
+  }
+
+  .club-modality-card--explorador-digital .club-modality-card__stain {
+    transform: translate(-55%, -50%) scale(1.48, 1.85);
+  }
+
+  .club-modality-card--mundo-descobertas .club-modality-card__stain {
+    transform: translate(-45%, -50%) scale(1.48, 1.85);
+  }
+
+  .club-modality-card--mundo-tesouros .club-modality-card__stain {
+    transform: translate(-55%, -50%) scale(1.48, 1.85);
+  }
+
+  .club-modality-card--expedicao-completa .club-modality-card__stain {
+    transform: translate(-45%, -50%) scale(1.48, 1.85);
   }
 
   .club-page__compare {

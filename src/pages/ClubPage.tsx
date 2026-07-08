@@ -83,74 +83,48 @@ export function ClubPage({
           <p className="club-page__choice-subtitle">{copy.choice.subtitle}</p>
         </header>
 
-        <div className="club-page__modalities">
+        <div className="club-page__modalities" role="list">
           {clubModalities.map((modality, index) => (
-            <article
+            <button
               key={modality.id}
-              className={`club-modality-block club-modality-block--${modality.id}`}
-              aria-labelledby={`club-modality-${modality.id}`}
+              type="button"
+              role="listitem"
+              className={`club-modality-card club-modality-card--${modality.id}`}
+              aria-label={`${clubSealLabel(modality.id)}. ${modality.title}. ${modality.price}. ${modality.ctaLabel}`}
+              onClick={() => setScreen(clubModalityScreen(modality.id))}
             >
-              <div className="club-modality-block__underlay" aria-hidden="true">
-                <div className="club-modality-block__intro club-modality-block__intro--mirror">
-                  <span className="club-modality-block__seal club-modality-block__seal--spacer">
-                    {clubSealLabel(modality.id)}
-                  </span>
-                  <div className="club-modality-block__title-wrap">
-                    <img
-                      className="club-modality-block__stain"
-                      src={homePlanStainSrc[modality.id]}
-                      alt=""
-                      decoding="async"
-                      draggable={false}
-                      loading={index === 0 ? "eager" : "lazy"}
-                    />
-                    <span className="club-modality-block__title club-modality-block__title--spacer">
-                      {modality.title}
-                    </span>
-                  </div>
-                </div>
-              </div>
-              <div className="club-modality-block__content">
-                <div className="club-modality-block__intro">
-                  <span className="club-modality-block__seal" aria-hidden="true">
-                    {clubSealLabel(modality.id)}
-                  </span>
-                  <div className="club-modality-block__title-wrap">
-                    <h3
-                      id={`club-modality-${modality.id}`}
-                      className="club-modality-block__title"
-                    >
-                      {modality.title}
-                    </h3>
-                  </div>
-                </div>
-                <div className="club-modality-block__layout">
-                <div className="club-modality-block__copy">
-                  <p className="club-modality-block__description">
-                    {modality.description}
-                  </p>
-                  <ul className="club-modality-block__benefits">
-                    {modality.benefits.map((benefit) => (
-                      <li key={benefit} className="club-modality-block__benefit">
-                        <span className="club-modality-block__check" aria-hidden="true">
-                          ✓
-                        </span>
-                        {benefit}
-                      </li>
-                    ))}
-                  </ul>
-                  <p className="club-modality-block__price">{modality.price}</p>
-                </div>
-                <button
-                  type="button"
-                  className="club-modality-block__cta"
-                  onClick={() => setScreen(clubModalityScreen(modality.id))}
-                >
-                  {modality.ctaLabel}
-                </button>
-              </div>
-              </div>
-            </article>
+              <span className="club-modality-card__canvas" aria-hidden="true">
+                <img
+                  className="club-modality-card__stain"
+                  src={homePlanStainSrc[modality.id]}
+                  alt=""
+                  decoding="async"
+                  draggable={false}
+                  loading={index === 0 ? "eager" : "lazy"}
+                />
+              </span>
+              <span className="club-modality-card__body">
+                <span className="club-modality-card__seal" aria-hidden="true">
+                  {clubSealLabel(modality.id)}
+                </span>
+                <span className="club-modality-card__title">{modality.title}</span>
+                <span className="club-modality-card__description">
+                  {modality.description}
+                </span>
+                <ul className="club-modality-card__benefits">
+                  {modality.benefits.map((benefit) => (
+                    <li key={benefit} className="club-modality-card__benefit">
+                      <span className="club-modality-card__check" aria-hidden="true">
+                        ✓
+                      </span>
+                      {benefit}
+                    </li>
+                  ))}
+                </ul>
+                <span className="club-modality-card__price">{modality.price}</span>
+                <span className="club-modality-card__action">{modality.ctaLabel}</span>
+              </span>
+            </button>
           ))}
         </div>
       </section>
