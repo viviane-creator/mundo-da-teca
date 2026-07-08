@@ -182,6 +182,7 @@
 
   /* —— Modalidade —— */
   .club-modality-page__hero,
+  .club-modality-page__includes,
   .club-modality-page__section,
   .club-modality-page__subscribe {
     max-width: var(--teca-editorial-prose);

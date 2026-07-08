@@ -149,6 +149,9 @@ export const clubComparisonCopy = {
 } as const
 
 export const clubModalityPagePlaceholders = {
+  benefits: {
+    title: "O que está incluído",
+  },
   renders: {
     title: "O que você recebe",
     text: "Espaço reservado para renders e ilustrações dos materiais desta modalidade.",

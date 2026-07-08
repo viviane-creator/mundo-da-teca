@@ -62,9 +62,28 @@ export function ClubModalityPage({
             <h1 className="club-modality-page__title">{modality.title}</h1>
           </div>
           <p className="club-modality-page__lead">{modality.description}</p>
-          <p className="club-modality-page__price">{modality.price}</p>
         </div>
       </header>
+
+      <section
+        className="club-modality-page__includes"
+        aria-labelledby={`${modalityId}-includes`}
+      >
+        <h2 id={`${modalityId}-includes`} className="club-modality-page__section-title">
+          {placeholders.benefits.title}
+        </h2>
+        <ul className="club-modality-page__benefits">
+          {modality.benefits.map((benefit) => (
+            <li key={benefit} className="club-modality-page__benefit">
+              <span className="club-modality-page__benefit-check" aria-hidden="true">
+                ✓
+              </span>
+              {benefit}
+            </li>
+          ))}
+        </ul>
+        <p className="club-modality-page__price">{modality.price}</p>
+      </section>
 
       <section
         className="club-modality-page__section"
