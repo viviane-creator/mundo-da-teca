@@ -20,7 +20,7 @@ export const homeCopy = {
   whatIs: {
     title: "O que é o Mundo da Teca?",
     paragraphs: [
-      "Uma plataforma de descobertas para crianças\nexplorarem, criarem e colecionarem longe das telas.",
+      "Uma plataforma de descobertas para crianças\nexplorarem, criarem e colecionarem.",
     ],
     cta: {
       label: "Quero entender mais",
