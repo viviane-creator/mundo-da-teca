@@ -1,6 +1,18 @@
 export const clubPageCopy = {
-  title: "O Clube Mundo da Teca",
-  intro:
-    "Todo mês, uma nova oportunidade para explorar, criar e colecionar descobertas.",
-  introFollow: "Escolha como deseja participar.",
+  documentTitle: "Clube",
+  hero: {
+    logo: "/logo/logo.webp",
+    logoAlt: "Mundo da Teca",
+    title: "Clube",
+    lines: ["Existe mais de uma forma de viver essa jornada."],
+  },
+  choice: {
+    title: "Escolha como deseja participar",
+    subtitle:
+      "Cada modalidade foi pensada para uma etapa diferente da jornada.",
+  },
+  finalCta: {
+    title: "Ainda não sabe qual escolher?",
+    text: "Conheça cada modalidade com calma. Cada página explica todos os detalhes antes da assinatura.",
+  },
 } as const

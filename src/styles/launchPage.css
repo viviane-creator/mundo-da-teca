@@ -1,0 +1,31 @@
+.launch-cover {
+  opacity: 0;
+  animation: launchCoverEnter 1.5s ease forwards;
+}
+
+.launch-cover--exit {
+  animation: none;
+  opacity: 0;
+  transition: opacity 0.85s ease;
+  pointer-events: none;
+}
+
+@keyframes launchCoverEnter {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.launch-cover__cta:hover {
+  background: rgba(255, 253, 249, 0.92);
+  border-color: #dcc9b4;
+}
+
+.launch-cover__cta:focus-visible {
+  outline: 2px solid #c9b39a;
+  outline-offset: 3px;
+}

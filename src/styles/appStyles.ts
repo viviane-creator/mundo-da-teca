@@ -1,5 +1,6 @@
 import type { CSSProperties } from "react"
 import { bottomNavTheme } from "../data/bottomNavTheme"
+import { heroCoverFadeStyle } from "./heroCoverFade"
 import { tecaColors, tecaFichario, tecaFont, tecaHierarchy, tecaObjects, tecaRadius, tecaSpacing, tecaType } from "../tecaVisual"
 
 const theme = {
@@ -8,6 +9,9 @@ const theme = {
   line: "#ead8c5",
   accent: "#c88757",
 }
+
+/** Subtítulo e rodapé do mapa — página Universos (mesmo tamanho) */
+const universosGuideTextSize = "clamp(18px, 4.2vw, 20px)"
 export const styles: Record<string, CSSProperties> = {
   main: {
     minHeight: "100vh",
@@ -52,13 +56,7 @@ export const styles: Record<string, CSSProperties> = {
   },
 
   heroFade: {
-    position: "absolute",
-    left: 0,
-    right: 0,
-    bottom: 0,
-    height: "130px",
-    background:
-      "linear-gradient(180deg, rgba(246,237,226,0) 0%, #f6ede2 92%)",
+    ...heroCoverFadeStyle,
   },
 
   homeContent: {
@@ -384,8 +382,8 @@ export const styles: Record<string, CSSProperties> = {
     marginTop: "24px",
     marginBottom: "18px",
     fontSize: "30px",
-    fontFamily: "'Cormorant Garamond', serif",
-    fontWeight: 400,
+    ...tecaFont.portalTitle,
+    lineHeight: 1.08,
   },
 
   homeSectionLead: {
@@ -743,14 +741,13 @@ export const styles: Record<string, CSSProperties> = {
 
   homeV2Journey: {
     position: "relative",
-    padding: "0 2px 0 8px",
-    marginTop: "clamp(8px, 2.2vw, 14px)",
-    borderRadius: "24px",
-    border: `1px dashed rgba(196, 165, 141, 0.32)`,
-    background:
-      "linear-gradient(168deg, #fffdf9 0%, #f8efe5 48%, #f0e4d6 100%)",
-    boxShadow: "inset 0 1px 0 rgba(255,255,255,0.88)",
-    overflow: "hidden",
+    padding: "0",
+    marginTop: "0",
+    borderRadius: "0",
+    border: "none",
+    background: "transparent",
+    boxShadow: "none",
+    overflow: "visible",
   },
 
   homeReceptionSection: {
@@ -769,8 +766,8 @@ export const styles: Record<string, CSSProperties> = {
 
   homeEditorialBridge: {
     position: "relative",
-    height: "24px",
-    marginTop: "-18px",
+    height: "clamp(28px, 7vw, 40px)",
+    marginTop: "0",
     marginBottom: "0",
     zIndex: 2,
     pointerEvents: "none",
@@ -780,13 +777,13 @@ export const styles: Record<string, CSSProperties> = {
     position: "absolute",
     left: "-24px",
     right: "-24px",
-    top: "-6px",
-    bottom: "-2px",
+    top: "-12px",
+    bottom: "-8px",
     background: `
-      radial-gradient(ellipse 88% 130% at 50% 100%, rgba(200, 135, 87, 0.065) 0%, transparent 74%),
-      radial-gradient(ellipse 52% 95% at 16% 58%, rgba(179, 129, 95, 0.04) 0%, transparent 70%),
-      radial-gradient(ellipse 50% 90% at 84% 52%, rgba(196, 165, 141, 0.035) 0%, transparent 68%),
-      linear-gradient(180deg, rgba(246, 237, 226, 0.5) 0%, rgba(246, 237, 226, 0.12) 58%, transparent 100%)
+      radial-gradient(ellipse 92% 140% at 50% 100%, rgba(200, 135, 87, 0.05) 0%, transparent 76%),
+      radial-gradient(ellipse 56% 100% at 16% 58%, rgba(179, 129, 95, 0.032) 0%, transparent 72%),
+      radial-gradient(ellipse 54% 96% at 84% 52%, rgba(196, 165, 141, 0.028) 0%, transparent 70%),
+      linear-gradient(180deg, rgba(246, 237, 226, 0.35) 0%, rgba(246, 237, 226, 0.08) 62%, transparent 100%)
     `,
   },
 
@@ -808,7 +805,8 @@ export const styles: Record<string, CSSProperties> = {
   homeAboutChapter: {
     position: "relative",
     zIndex: 1,
-    paddingBottom: "clamp(20px, 4.5vw, 28px)",
+    paddingBottom: "clamp(4px, 1vw, 8px)",
+    overflow: "visible",
   },
 
   homeTecaHostessFrame: {
@@ -1304,7 +1302,7 @@ export const styles: Record<string, CSSProperties> = {
 
   universosExploreMapWrap: {
     position: "relative",
-    overflow: "hidden",
+    overflow: "visible",
     marginTop: 0,
   },
 
@@ -1389,7 +1387,7 @@ export const styles: Record<string, CSSProperties> = {
 
   universosSubtitle: {
     ...tecaFont.prose,
-    fontSize: "clamp(15px, 3.5vw, 17px)",
+    fontSize: universosGuideTextSize,
     lineHeight: 1.5,
     textAlign: "center",
     margin: "0 auto clamp(28px, 6.5vw, 36px)",
@@ -1544,7 +1542,7 @@ export const styles: Record<string, CSSProperties> = {
     textAlign: "center",
     margin: "clamp(20px, 4.5vw, 28px) 0 0",
     fontFamily: "'Cormorant Garamond', serif",
-    fontSize: "14px",
+    fontSize: universosGuideTextSize,
     color: "#a89486",
     letterSpacing: "0.3px",
   },
@@ -4931,7 +4929,7 @@ export const styles: Record<string, CSSProperties> = {
   },
 
   institutionalFooter: {
-    marginTop: "48px",
+    marginTop: "clamp(8px, 2vw, 12px)",
     padding: "0 24px 12px",
     textAlign: "center",
   },
@@ -5056,6 +5054,7 @@ export const styles: Record<string, CSSProperties> = {
   institutionalFooterSocialLabel: {
     ...tecaHierarchy.l6Micro,
     margin: 0,
+    fontSize: "13.2px",
     opacity: 0.72,
     letterSpacing: "0.14em",
   },
@@ -5064,7 +5063,7 @@ export const styles: Record<string, CSSProperties> = {
     ...tecaFont.prose,
     display: "inline-block",
     margin: 0,
-    fontSize: "13px",
+    fontSize: "18.72px",
     lineHeight: 1.3,
     color: "#9a8475",
     textDecoration: "none",
@@ -5403,9 +5402,9 @@ export const styles: Record<string, CSSProperties> = {
   },
 
   clubGateTitle: {
-    ...tecaFont.heading,
+    ...tecaFont.portalTitle,
     fontSize: "26px",
-    lineHeight: 1.25,
+    lineHeight: 1.08,
     margin: "0 0 16px",
     maxWidth: "320px",
     color: tecaColors.text,

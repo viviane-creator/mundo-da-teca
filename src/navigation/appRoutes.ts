@@ -4,6 +4,8 @@ import { isPlayUniverseScreen } from "../playData"
 
 /** Destinos canônicos — nomes de produto vs. id técnico de tela */
 export const appRoutes = {
+  /** Página de abertura temporária — capa do livro */
+  launch: "launch",
   home: "home",
   /** Hub Brincadeiras / mapa de universos */
   brincadeiras: "universos",

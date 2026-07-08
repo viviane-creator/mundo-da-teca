@@ -7,6 +7,85 @@
     color 0.24s ease;
 }
 
+/* Hero — CTAs isolados da névoa; sem gradiente/inset no Safari iOS */
+.home-hero-cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 10px 12px;
+  margin-top: clamp(16px, 4vw, 22px);
+  pointer-events: auto;
+  position: relative;
+  z-index: 6;
+  isolation: isolate;
+}
+
+.home-hero-cta {
+  appearance: none;
+  -webkit-appearance: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  min-height: 44px;
+  margin: 0;
+  padding: 11px 22px;
+  border-radius: 6px;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(15px, 3.6vw, 17px);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  background-image: none;
+  background-clip: padding-box;
+  -webkit-tap-highlight-color: transparent;
+  transition:
+    background-color 0.24s ease,
+    border-color 0.24s ease,
+    box-shadow 0.24s ease,
+    transform 0.24s ease,
+    color 0.24s ease;
+}
+
+.home-hero-cta--primary {
+  background-color: #8fa8c6;
+  border: 1px solid #7e96b8;
+  color: #fffcf7;
+  box-shadow:
+    0 5px 16px rgba(90, 70, 50, 0.16),
+    0 1px 0 rgba(255, 255, 255, 0.22) inset;
+}
+
+.home-hero-cta--primary:hover {
+  background-color: #7e96b8;
+  border-color: #6e88aa;
+  box-shadow:
+    0 7px 20px rgba(90, 70, 50, 0.18),
+    0 1px 0 rgba(255, 255, 255, 0.24) inset;
+  transform: translateY(-1px);
+}
+
+.home-hero-cta--secondary {
+  background-color: rgba(255, 252, 247, 0.94);
+  border: 1px solid rgba(184, 149, 106, 0.58);
+  color: #6a4f3c;
+  box-shadow: 0 4px 14px rgba(90, 70, 50, 0.12);
+}
+
+.home-hero-cta--secondary:hover {
+  background-color: rgba(255, 253, 249, 1);
+  border-color: rgba(154, 123, 60, 0.62);
+  box-shadow: 0 6px 18px rgba(90, 70, 50, 0.14);
+  transform: translateY(-1px);
+}
+
+.home-hero-cta:focus-visible {
+  outline: 2px solid #9a8475;
+  outline-offset: 3px;
+}
+
 .home-cta-accent:hover {
   background: var(--home-cta-fill-hover) !important;
   border-color: var(--home-cta-border-hover) !important;

@@ -31,10 +31,12 @@ const shadow = {
   inset: "inset 0 1px 0 rgba(255,255,255,0.65)",
 }
 
-/** Caveat só em títulos de portal e nomes de universos */
+/** Caveat — títulos de portal e títulos de página (mesma voz do Ateliê) */
+export const tecaPageTitleFontFamily = "'Caveat', cursive"
+
 export const tecaFont = {
   portalTitle: {
-    fontFamily: "'Caveat', cursive",
+    fontFamily: tecaPageTitleFontFamily,
     fontWeight: 400,
     lineHeight: 0.95,
     color: tecaColors.text,
@@ -142,13 +144,13 @@ export const tecaHierarchy = {
   } satisfies CSSProperties,
 
   l3SectionTitle: {
-    ...tecaFont.heading,
+    ...tecaFont.portalTitle,
     fontSize: "28px",
-    fontWeight: 500,
+    fontWeight: 400,
     color: "#705a4d",
     textAlign: "center",
     margin: `${tecaSpacing.sectionTop}px 0 0`,
-    lineHeight: 1.1,
+    lineHeight: 1.08,
   } satisfies CSSProperties,
 
   l3SectionTitleFlush: {

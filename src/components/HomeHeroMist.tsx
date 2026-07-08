@@ -137,9 +137,9 @@ export const homeHeroMistZoneStyle: CSSProperties = {
 export const homeHeroMistZoneStyleHome: CSSProperties = {
   ...homeHeroMistZoneStyle,
   WebkitMaskImage:
-    "linear-gradient(to top, #000 0%, #000 38%, rgba(0,0,0,0.55) 62%, transparent 92%)",
+    "linear-gradient(to top, #000 0%, #000 26%, rgba(0,0,0,0.9) 42%, rgba(0,0,0,0.62) 58%, rgba(0,0,0,0.32) 74%, rgba(0,0,0,0.1) 88%, transparent 100%)",
   maskImage:
-    "linear-gradient(to top, #000 0%, #000 38%, rgba(0,0,0,0.55) 62%, transparent 92%)",
+    "linear-gradient(to top, #000 0%, #000 26%, rgba(0,0,0,0.9) 42%, rgba(0,0,0,0.62) 58%, rgba(0,0,0,0.32) 74%, rgba(0,0,0,0.1) 88%, transparent 100%)",
 }
 
 export const homeHeroTextMistSlotStyle: CSSProperties = {

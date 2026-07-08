@@ -1,0 +1,130 @@
+/* Brasão redondo — retrato institucional da Teca */
+.teca-crest {
+  --teca-crest-size: clamp(112px, 29vw, 118px);
+  --teca-crest-ink: #8b6f38;
+  --teca-crest-line: rgba(139, 111, 56, 0.42);
+  --teca-crest-paper: #ebe2d2;
+
+  position: relative;
+  width: var(--teca-crest-size);
+  height: var(--teca-crest-size);
+  margin: 0 auto;
+  flex-shrink: 0;
+}
+
+.teca-crest__halo {
+  position: absolute;
+  inset: -5px;
+  border-radius: 50%;
+  background: rgba(139, 111, 56, 0.06);
+  filter: blur(6px);
+  pointer-events: none;
+}
+
+.teca-crest__shield {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  padding: 5px;
+  background: var(--teca-crest-paper);
+  border: 2px solid var(--teca-crest-line);
+  box-shadow:
+    0 0 0 1px rgba(255, 253, 249, 0.55) inset,
+    0 0 0 3px rgba(139, 111, 56, 0.1),
+    0 4px 14px rgba(72, 48, 32, 0.08);
+}
+
+.teca-crest__ring {
+  position: absolute;
+  inset: 7px;
+  border-radius: 50%;
+  border: 1px solid rgba(139, 111, 56, 0.22);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.teca-crest__ring::before {
+  content: "";
+  position: absolute;
+  inset: 3px;
+  border-radius: 50%;
+  border: 1px dashed rgba(139, 111, 56, 0.28);
+}
+
+.teca-crest__points {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.teca-crest__points span {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: rgba(139, 111, 56, 0.38);
+  box-shadow: 0 0 0 1px rgba(255, 253, 249, 0.45);
+}
+
+.teca-crest__points span:nth-child(1) {
+  top: 4px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.teca-crest__points span:nth-child(2) {
+  right: 4px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.teca-crest__points span:nth-child(3) {
+  bottom: 4px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.teca-crest__points span:nth-child(4) {
+  left: 4px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.teca-crest__portrait {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  overflow: hidden;
+  background: #f5efe5;
+}
+
+.teca-crest__portrait img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center 18%;
+}
+
+.teca-crest__caption {
+  position: absolute;
+  left: 50%;
+  bottom: -2px;
+  transform: translateX(-50%);
+  z-index: 4;
+  padding: 1px 7px 2px;
+  border-radius: 999px;
+  border: 1px solid rgba(139, 111, 56, 0.28);
+  background: rgba(235, 226, 210, 0.92);
+  font-family: "Cormorant Garamond", serif;
+  font-size: 7px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(106, 79, 60, 0.72);
+  white-space: nowrap;
+  pointer-events: none;
+}

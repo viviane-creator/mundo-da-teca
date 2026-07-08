@@ -1,0 +1,20 @@
+/* Títulos de página — Caveat (mesma fonte do Ateliê) */
+
+:root {
+  --teca-font-page-title: "Caveat", cursive;
+}
+
+.home-chapter__title,
+.home-participate__title,
+.home-participate__title-text,
+.home-participate-invite__title,
+.club-page__hero-title,
+.club-page__choice-title,
+.club-page__choice-title-text,
+.club-modality-block__title,
+.club-modality-page__title,
+.club-modality-page__section-title {
+  font-family: var(--teca-font-page-title);
+  font-weight: 400;
+  text-transform: none;
+}

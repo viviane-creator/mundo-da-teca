@@ -1,7 +1,6 @@
-import { FicharioEtiqueta } from "../components/fichario"
 import { conhecaPageCopy } from "../data/conhecaPageCopy"
 import { conhecaPageStyles as s } from "../styles/conhecaPageStyles"
-import { homeCtaClassName, homeCtaStyle } from "../styles/homeCta"
+import "../styles/conhecaPage.css"
 
 function ChapterDots() {
   return (
@@ -22,80 +21,68 @@ export function ConhecaMundoPage({
 
   return (
     <article style={s.page}>
-      <header style={s.hero}>
-        <img
-          src={copy.hero.image}
-          alt={copy.hero.imageAlt}
-          width={1000}
-          height={1500}
-          loading="eager"
-          decoding="async"
-          style={s.heroImage}
-        />
-        <div style={s.heroVignette} aria-hidden="true" />
-        <div style={s.heroFade} aria-hidden="true" />
-        <div style={s.heroBody}>
-          <p style={s.pageKicker}>{copy.documentTitle}</p>
-          <h1 style={s.heroTitle}>{copy.hero.title}</h1>
-          <p style={s.heroText}>{copy.hero.text}</p>
+      <header className="conheca-hero">
+        <div className="conheca-hero__paper" aria-hidden="true">
+          <span className="conheca-hero__splash conheca-hero__splash--olive" />
+          <span className="conheca-hero__splash conheca-hero__splash--gold" />
+          <span className="conheca-hero__splash conheca-hero__splash--blue" />
+          <span className="conheca-hero__splash conheca-hero__splash--terracotta" />
+          <span className="conheca-hero__speckle" />
+        </div>
+        <div className="conheca-organic conheca-organic--paper conheca-organic--hero">
+          <h1 className="conheca-hero-title">{copy.documentTitle}</h1>
+          <p className="conheca-hero-lead">{copy.hero.text}</p>
         </div>
       </header>
 
       <section style={s.chapterFirst} aria-labelledby="conheca-curiosity">
-        <h2 id="conheca-curiosity" style={s.manifestoTitle}>
+        <h2 id="conheca-curiosity" style={s.sectionTitle}>
           {copy.curiosity.title}
         </h2>
-        <div style={s.manifestoBlock}>
+        <div className="conheca-organic conheca-organic--olive">
           {copy.curiosity.lines.map((line) => (
-            <p key={line} style={s.proseLine}>
+            <p key={line} className="conheca-organic__text">
               {line}
             </p>
           ))}
-          <p style={s.proseClosing}>{copy.curiosity.closing}</p>
+          <p className="conheca-organic__emphasis">{copy.curiosity.closing}</p>
         </div>
       </section>
 
-      <section style={s.chapter} aria-labelledby="conheca-journey">
-        <ChapterDots />
-        <p style={s.chapterEpigraph}>{copy.journey.epigraph}</p>
-        <h2 id="conheca-journey" style={s.sectionTitle}>
-          {copy.journey.title}
+      <section style={s.chapterCompact} aria-labelledby="conheca-journey">
+        <h2 id="conheca-journey" style={s.srOnly}>
+          Informações essenciais
         </h2>
-        <div style={s.editorialImageWrapInset}>
-          <img
-            src={copy.journey.image}
-            alt={copy.journey.imageAlt}
-            width={680}
-            height={480}
-            loading="lazy"
-            decoding="async"
-            style={s.editorialImageWide}
-          />
-        </div>
-        <p style={s.sectionLead}>{copy.journey.body}</p>
-        <ul style={s.journeySteps}>
-          {copy.journey.steps.map((step) => (
-            <li key={step} style={s.journeyStep}>
-              {step}
-            </li>
-          ))}
-        </ul>
-        <p style={s.proseClosing}>{copy.journey.closing}</p>
+        {copy.journey.steps.length > 0 ? (
+          <div className="conheca-organic conheca-organic--gold conheca-organic--compact">
+            <ul className="conheca-organic__list">
+              {copy.journey.steps.map((step) => (
+                <li key={step} className="conheca-organic__check">
+                  {step}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ) : null}
       </section>
 
       <section style={s.sectionBreath} aria-labelledby="conheca-how">
         <h2 id="conheca-how" style={s.sectionTitle}>
           {copy.howItWorks.title}
         </h2>
-        <div style={s.howItWorks}>
+        {copy.howItWorks.subtitle ? (
+          <p style={s.sectionSubtitle}>{copy.howItWorks.subtitle}</p>
+        ) : null}
+        <div className="conheca-how">
           {copy.howItWorks.steps.map((step, index) => (
-            <div key={step}>
-              <p style={s.howStep}>
-                <span style={s.howStepNumber}>{index + 1}.</span>
-                <span style={s.howStepText}>{step}</span>
+            <div key={step.title} className="conheca-how-step">
+              <p className="conheca-how-step__body">
+                <span className="conheca-how__number">{index + 1}.</span>
+                <span className="conheca-how__title">{step.title}</span>
+                <span className="conheca-how__text">{step.text}</span>
               </p>
               {index < copy.howItWorks.steps.length - 1 ? (
-                <span style={s.howArrow} aria-hidden="true">
+                <span className="conheca-how__arrow" aria-hidden="true">
                   ↓
                 </span>
               ) : null}
@@ -110,78 +97,83 @@ export function ConhecaMundoPage({
           {copy.pillars.title}
         </h2>
         <p style={s.sectionSubtitle}>{copy.pillars.subtitle}</p>
-        <div style={s.pillarGrid}>
+        <div className="conheca-pillar-grid">
           {copy.pillars.items.map((item) => (
             <button
               key={item.id}
               type="button"
-              style={{
-                ...s.pillarCard,
-                ...(item.featured ? s.pillarCardFeatured : {}),
-              }}
+              className={`conheca-pillar conheca-pillar--${item.id}${
+                item.featured ? " conheca-pillar--featured" : ""
+              }`}
               onClick={() => setScreen(item.screen)}
             >
-              <h3
-                style={{
-                  ...s.pillarTitle,
-                  ...(item.featured ? s.pillarTitleFeatured : {}),
-                }}
-              >
-                {item.title}
-              </h3>
-              <p style={s.pillarText}>{item.text}</p>
+              <span className="conheca-pillar__aba" aria-hidden="true">
+                {item.abaLabel}
+              </span>
+              <span className="conheca-pillar__panel">
+                <span className="conheca-pillar__cover-wrap">
+                  <img
+                    className="conheca-pillar__cover"
+                    src={item.cover}
+                    alt=""
+                    width={168}
+                    height={168}
+                    loading="lazy"
+                    decoding="async"
+                    draggable={false}
+                    aria-hidden="true"
+                  />
+                </span>
+                <span className="conheca-pillar__copy">
+                  <span className="conheca-pillar__title">{item.title}</span>
+                  <span className="conheca-pillar__text">{item.text}</span>
+                </span>
+              </span>
             </button>
           ))}
         </div>
       </section>
 
       <section style={s.chapterCompact} aria-labelledby="conheca-audience">
-        <p style={s.chapterEpigraph}>{copy.audience.opener}</p>
         <h2 id="conheca-audience" style={s.sectionTitle}>
           {copy.audience.title}
         </h2>
-        <p style={s.proseCenter}>{copy.audience.text}</p>
-        <p style={s.proseClosingCompact}>{copy.audience.closing}</p>
-      </section>
-
-      <section style={s.chapterCompact} aria-labelledby="conheca-philosophy">
-        <div style={s.philosophyBlock}>
-          <p style={s.chapterEpigraph}>{copy.philosophy.lead}</p>
-          <h2 id="conheca-philosophy" style={s.sectionTitle}>
-            {copy.philosophy.title}
-          </h2>
-          <ul style={s.philosophyList}>
-            {copy.philosophy.principles.map((principle) => (
-              <li key={principle} style={s.philosophyItem}>
-                {principle}
-              </li>
-            ))}
-          </ul>
+        <div className="conheca-organic conheca-organic--blue">
+          {copy.audience.paragraphs.map((paragraph) => (
+            <p key={paragraph} className="conheca-organic__text">
+              {paragraph}
+            </p>
+          ))}
         </div>
       </section>
 
       <section style={s.finalChapter} aria-labelledby="conheca-invitation">
         <ChapterDots />
-        <h2 id="conheca-invitation" style={s.invitationTitle}>
-          {copy.invitation.title}
-        </h2>
-        {copy.invitation.lines.map((line) => (
-          <p key={line} style={s.finalClosingLine}>
-            {line}
-          </p>
-        ))}
-        <div style={s.invitationActions}>
-          <FicharioEtiqueta
-            action
-            onClick={() => setScreen(copy.invitation.cta.screen)}
-            className={homeCtaClassName(copy.invitation.cta.tone)}
-            style={{
-              ...homeCtaStyle(copy.invitation.cta.tone),
-              ...s.invitationCta,
-            }}
-          >
-            {copy.invitation.cta.label}
-          </FicharioEtiqueta>
+        <div className="conheca-organic conheca-organic--warm conheca-organic--wide">
+          <h2 id="conheca-invitation" className="conheca-organic__title">
+            {copy.invitation.title}
+          </h2>
+          {copy.invitation.lines.map((line) => (
+            <p key={line} className="conheca-organic__text">
+              {line}
+            </p>
+          ))}
+          <div className="conheca-organic__actions">
+            <button
+              type="button"
+              className="home-organic-cta home-organic-cta--club"
+              onClick={() => setScreen(copy.invitation.cta.screen)}
+            >
+              {copy.invitation.cta.label}
+            </button>
+            <button
+              type="button"
+              className="home-organic-cta home-organic-cta--club home-organic-cta--tilt-alt"
+              onClick={() => setScreen(copy.invitation.secondaryCta.screen)}
+            >
+              {copy.invitation.secondaryCta.label}
+            </button>
+          </div>
         </div>
         <img
           src={copy.signature.logo}

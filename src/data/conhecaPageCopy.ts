@@ -1,76 +1,96 @@
+import { pageCovers } from "./pageCovers"
+
 export const conhecaPageCopy = {
   documentTitle: "Conheça o Mundo da Teca",
   hero: {
-    title: "Existe um mundo inteiro esperando para ser descoberto.",
     text:
-      "Aqui, a curiosidade das crianças vira descobertas, memórias e coleções que crescem junto com a infância.",
-    image: "/images/hero-home.webp",
-    imageAlt: "Cena de descoberta no Mundo da Teca",
+      "Experiências criativas, coleções e um clube — pensados para famílias viverem uma jornada de descobertas.",
   },
   curiosity: {
-    title: "Manifesto",
+    title: "O que é o Mundo da Teca?",
     lines: [
-      "A infância continua curiosa.",
-      "As crianças continuam fazendo perguntas.",
-      "Continuam imaginando.",
-      "Continuam observando o mundo com encantamento.",
+      "O Mundo da Teca é uma plataforma digital onde crianças e famílias encontram experiências para fazer em casa, organizadas em uma jornada de descobertas.",
     ],
-    closing: "Este é um lugar para preservar esse jeito de descobrir.",
+    closing:
+      "Ao entrar, você recebe acesso imediato à plataforma e pode começar a explorar no mesmo dia. Se escolher uma modalidade do Clube, sua família também participa das expedições mensais, recebendo novos capítulos dessa jornada em casa.",
   },
   journey: {
-    epigraph: "Não são apenas atividades.",
-    title: "Mais do que brincadeiras.",
-    body: "Cada experiência faz parte de uma jornada.",
-    steps: ["A criança brinca.", "Descobre.", "Registra.", "Coleciona."],
-    closing:
-      "E, pouco a pouco, constrói uma coleção única da própria infância.",
-    image: "/images/fichario-open.webp",
-    imageAlt: "Fichário de descobertas aberto",
+    epigraph: "",
+    title: "",
+    body: "",
+    steps: [
+      "✓ Acesso imediato à Plataforma Digital",
+      "✓ Jornada organizada em aproximadamente 6 meses",
+      "✓ Modalidades com envios físicos mensais",
+    ],
+    closing: "",
   },
   howItWorks: {
     title: "Como funciona?",
+    subtitle: "Uma jornada que acontece aos poucos.",
     steps: [
-      "Escolha um universo.",
-      "Escolha uma experiência.",
-      "Brinque.",
-      "Registre.",
-      "Colecione.",
-      "Recomece.",
+      {
+        title: "Escolha como participar.",
+        text: "Comece apenas pela plataforma digital ou escolha uma das modalidades do Clube.",
+      },
+      {
+        title: "Acesse imediatamente a plataforma.",
+        text: "Explore experiências, registre descobertas e acompanhe sua coleção.",
+      },
+      {
+        title: "Receba novos capítulos em casa.",
+        text: "Nas modalidades físicas, novos materiais chegam todos os meses para ampliar a experiência.",
+      },
+      {
+        title: "Construa uma coleção única.",
+        text: "Ao longo de aproximadamente seis meses, cada descoberta passa a fazer parte da história da criança.",
+      },
     ],
   },
   pillars: {
-    title: "Escolha por onde começar.",
-    subtitle:
-      "Cada caminho revela uma parte diferente do Mundo da Teca.",
+    title: "O ecossistema",
+    subtitle: "Tudo foi pensado para funcionar junto.",
     items: [
       {
-        id: "universos",
-        title: "Universos",
-        text: "Seis caminhos para descobrir, criar, imaginar e colecionar com presença.",
+        id: "plataforma-digital",
+        title: "Plataforma Digital",
+        text: "O ponto de partida de toda a jornada, com experiências, coleções e conteúdos exclusivos.",
+        abaLabel: "exploração",
+        cover: pageCovers.universos,
+        coverAlt: "Capa dos Universos",
         screen: "universos" as const,
         tone: "clubeExplorador" as const,
-        featured: true,
-      },
-      {
-        id: "meu-mundo",
-        title: "Meu Mundo",
-        text: "O lugar onde cada descoberta vira capítulo da sua própria história.",
-        screen: "meu-mundo" as const,
-        tone: "meuMundo" as const,
         featured: false,
       },
       {
         id: "clube",
         title: "Clube",
-        text: "Novas experiências e materiais para manter a curiosidade viva todos os meses.",
+        text: "Quatro maneiras de participar, com acesso digital imediato e modalidades que incluem envios físicos mensais.",
+        abaLabel: "clube",
+        cover: pageCovers.clube,
+        coverAlt: "Capa do Clube",
         screen: "clube" as const,
         tone: "clubeColecionador" as const,
+        featured: true,
+      },
+      {
+        id: "meu-mundo",
+        title: "Meu Mundo",
+        text: "O espaço onde a criança acompanha sua coleção e registra tudo o que descobriu.",
+        abaLabel: "meu mundo",
+        cover: pageCovers.meuMundo,
+        coverAlt: "Capa do Meu Mundo",
+        screen: "meu-mundo" as const,
+        tone: "meuMundo" as const,
         featured: false,
       },
       {
         id: "atelie",
         title: "Ateliê",
-        text: "Tesouros e objetos para levar a experiência da descoberta para casa.",
+        text: "Objetos, papelaria e coleções especiais para continuar explorando além da plataforma.",
+        abaLabel: "ateliê",
+        cover: pageCovers.atelie,
+        coverAlt: "Capa do Ateliê",
         screen: "atelie" as const,
         tone: "atelie" as const,
         featured: false,
@@ -78,29 +98,24 @@ export const conhecaPageCopy = {
     ],
   },
   audience: {
-    opener: "Não importa se são cinco minutos ou uma tarde inteira.",
     title: "Para quem é?",
-    text: "Famílias que acreditam que a infância merece tempo para observar, experimentar, imaginar e colecionar memórias.",
-    closing: "O importante é viver a descoberta.",
-  },
-  philosophy: {
-    title: "Nossa filosofia.",
-    lead: "Aqui, cada descoberta pode virar uma lembrança.",
-    principles: [
-      "A curiosidade vem antes da resposta.",
-      "A experiência vem antes da explicação.",
-      "A descoberta vem antes do conteúdo.",
-      "Cada criança constrói sua própria coleção.",
+    paragraphs: [
+      "Para famílias que acreditam que a curiosidade merece tempo e que uma boa pergunta vale mais do que uma resposta pronta.",
+      "Famílias em que algumas das melhores memórias da infância nascem quando pais e filhos descobrem algo juntos.",
     ],
   },
   invitation: {
     title: "Sua jornada começa aqui.",
     lines: [
-      "O Mundo da Teca não termina aqui.",
-      "Ele começa quando uma criança faz sua primeira descoberta.",
+      "Escolha a forma de participar e descubra um novo jeito de viver a infância em família.",
     ],
     cta: {
-      label: "Começar a explorar",
+      label: "Conhecer o Clube",
+      screen: "clube" as const,
+      tone: "clubeColecionador" as const,
+    },
+    secondaryCta: {
+      label: "Explorar universos",
       screen: "universos" as const,
       tone: "clubeExplorador" as const,
     },

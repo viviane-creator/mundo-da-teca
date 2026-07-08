@@ -1,111 +1,169 @@
-import { HomeAboutSection } from "../components/home/HomeAboutSection"
-import { HomeExploreMap } from "../components/HomeExploreMap"
-import { MeuMundoCollectionSeals } from "../components/MeuMundoCollectionSeals"
-import { FicharioDivisoria, FicharioEtiqueta } from "../components/fichario"
-import { ParticipationSection } from "../components/ParticipationSection"
 import { homeCopy } from "../data/homeCopy"
-import type { ParticipationPlanId } from "../data/participationPlans"
-import { appRoutes, resolveUniverseRoute } from "../navigation/appRoutes"
+import { clubSealLabel } from "../data/clubModalities"
+import { homePlanStainSrc } from "../data/homePlanStains"
+import { appRoutes } from "../navigation/appRoutes"
+import { clubModalityPath, clubModalityScreen } from "../navigation/clubNavigation"
 import { styles } from "../styles/appStyles"
-import { homeCtaClassName, homeCtaStyle } from "../styles/homeCta"
+import { HomeTecaHostess } from "../components/home/HomeTecaHostess"
 import { WorldPortalLayout, portalPages } from "../worldPortal"
+import "../styles/homePage.css"
+
+type HomeModality = (typeof homeCopy.participate.modalities)[number]
+
+function HomeTextSection({
+  id,
+  title,
+  paragraphs,
+  cta,
+}: {
+  id: string
+  title: string
+  paragraphs: readonly string[]
+  cta?: { label: string; onClick: () => void }
+}) {
+  return (
+    <section className="home-what-is" aria-labelledby={id}>
+      <div className="home-what-is__crest">
+        <HomeTecaHostess />
+      </div>
+      <h2 id={id} className="home-chapter__title">
+        {title}
+      </h2>
+      {paragraphs.map((paragraph, index) => (
+        <p
+          key={paragraph}
+          className={
+            index === 0
+              ? "home-chapter__prose"
+              : "home-chapter__prose home-chapter__prose--follow"
+          }
+        >
+          {paragraph.split("\n").map((line, lineIndex, lines) => (
+            <span key={line}>
+              {line}
+              {lineIndex < lines.length - 1 ? <br /> : null}
+            </span>
+          ))}
+        </p>
+      ))}
+      {cta ? (
+        <button
+          type="button"
+          className="home-organic-cta home-organic-cta--club home-organic-cta--tilt-alt home-what-is__cta"
+          onClick={cta.onClick}
+        >
+          {cta.label}
+        </button>
+      ) : null}
+    </section>
+  )
+}
+
+function HomeParticipateInvite({
+  modality,
+  setScreen,
+}: {
+  modality: HomeModality
+  setScreen: (screen: string) => void
+}) {
+  const stainSrc = homePlanStainSrc[modality.id]
+  const modalityScreen = clubModalityScreen(modality.id)
+
+  return (
+    <a
+      href={clubModalityPath(modality.id)}
+      className={`home-participate-invite home-participate-invite--${modality.id}`}
+      aria-label={`${clubSealLabel(modality.id)}. ${modality.name}. ${modality.summary}`}
+      onClick={(event) => {
+        event.preventDefault()
+        setScreen(modalityScreen)
+      }}
+    >
+      <span className="home-participate-invite__poster">
+        <img
+          className="home-participate-invite__stain"
+          src={stainSrc}
+          alt=""
+          aria-hidden="true"
+          decoding="async"
+          draggable={false}
+        />
+        <span className="home-participate-invite__copy">
+          <span className="home-participate-invite__seal" aria-hidden="true">
+            {clubSealLabel(modality.id)}
+          </span>
+          <span className="home-participate-invite__title">{modality.name}</span>
+          <span className="home-participate-invite__summary">{modality.summary}</span>
+        </span>
+      </span>
+    </a>
+  )
+}
 
 export function Home({
   setScreen,
-  onGoToClube,
 }: {
   setScreen: (screen: string) => void
-  onGoToClube: (planId: ParticipationPlanId) => void
 }) {
   const portal = portalPages.home
   const copy = homeCopy
+  const goToClube = () => setScreen(appRoutes.clube)
+  const goToConheca = () => setScreen(appRoutes.conheca)
 
   return (
     <WorldPortalLayout {...portal} variant="home">
-      <HomeAboutSection onOpenStory={() => setScreen(appRoutes.conheca)} />
+      <div className="home-sheet" style={styles.homeV2Journey}>
+        <span className="home-sheet__spine" style={styles.homeFicharioSpine} aria-hidden="true" />
 
-      <div style={styles.homeV2Journey}>
-        <span style={styles.homeFicharioSpine} aria-hidden="true" />
-
-        <FicharioDivisoria chapter="exploracao" style={styles.homeUniversosDivisoria}>
-          <div style={styles.homeExploreSectionPaperCompact}>
-            <p style={styles.homeV2SectionKicker}>{copy.universos.kicker}</p>
-            <h2 style={styles.homeSectionHeadingCompact}>
-              {copy.universos.title}
-            </h2>
-            <p style={styles.homeSectionSubtitleCompact}>
-              {copy.universos.subtitle}
-            </p>
-
-            <div style={styles.homeV2UniversosWrap}>
-              <HomeExploreMap
-                onSelect={(target) => setScreen(resolveUniverseRoute(target))}
-              />
-            </div>
-          </div>
-        </FicharioDivisoria>
-
-        <FicharioDivisoria chapter="meuMundo">
-          <div style={styles.homeV2MeuMundoCard}>
-            <div style={styles.homeV2MeuMundoHeroWash} aria-hidden="true" />
-            <div style={styles.homeV2MeuMundoInner}>
-              <span style={styles.homeV2MeuMundoSpine} aria-hidden="true" />
-              <div style={styles.homeV2MeuMundoPerforation} aria-hidden="true">
-                {[0, 1, 2, 3].map((hole) => (
-                  <span key={hole} style={styles.homeV2MeuMundoFuro} />
-                ))}
-              </div>
-              <div style={styles.homeV2MeuMundoHeader}>
-                <FicharioEtiqueta style={styles.homeV2MeuMundoIdEtiqueta}>
-                  coleção digital
-                </FicharioEtiqueta>
-                <span style={styles.homeV2MeuMundoStamp} aria-hidden="true">
-                  exp · 01
-                </span>
-              </div>
-              <h2 style={styles.homeV2ChapterPlaceTitle}>Meu Mundo</h2>
-              <p style={styles.homeV2ChapterSubtitleShort}>{copy.meuMundo.copy}</p>
-              <MeuMundoCollectionSeals />
-              <FicharioEtiqueta
-                action
-                onClick={() => setScreen(appRoutes.minhaColecao)}
-                className={homeCtaClassName("meuMundo")}
-                style={{
-                  ...styles.homeV2ChapterCta,
-                  ...homeCtaStyle("meuMundo"),
-                }}
-              >
-                {copy.meuMundo.cta}
-              </FicharioEtiqueta>
-            </div>
-          </div>
-        </FicharioDivisoria>
-
-        <FicharioDivisoria chapter="clube">
-          <ParticipationSection
-            variant="home-path"
-            onGoToClube={onGoToClube}
+        <div className="home-sheet__content" style={styles.homeAboutChapter}>
+          <HomeTextSection
+            id="home-what-is"
+            title={copy.whatIs.title}
+            paragraphs={copy.whatIs.paragraphs}
+            cta={{
+              label: copy.whatIs.cta.label,
+              onClick: goToConheca,
+            }}
           />
-        </FicharioDivisoria>
 
-        <FicharioDivisoria chapter="atelie" style={styles.homeV2ClubeEnd}>
-          <div style={styles.homeV2AtelierShop}>
-            <p style={styles.homeV2ChapterKicker}>{copy.atelier.kicker}</p>
-            <h2 style={styles.homeV2ChapterPlaceTitle}>Ateliê</h2>
-            <p style={styles.homeV2ChapterSubtitleShort}>{copy.atelier.copy}</p>
-            <FicharioEtiqueta
-              action
-              onClick={() => setScreen(appRoutes.atelie)}
-              className={homeCtaClassName("atelie")}
-              style={{
-                ...styles.homeV2ChapterCta,
-                ...homeCtaStyle("atelie"),
-              }}
+          <section
+            className="home-participate home-participate--sheet"
+            aria-labelledby="home-participate"
+          >
+            <div className="home-participate__frame">
+              <header className="home-participate__intro">
+                <h2 id="home-participate" className="home-participate__title home-participate__title--club">
+                  <span className="home-participate__title-text">{copy.participate.title}</span>
+                </h2>
+                {copy.participate.lead.map((line) => (
+                  <p key={line} className="home-participate__lead">
+                    {line}
+                  </p>
+                ))}
+              </header>
+
+              <div className="home-participate__invites">
+              {copy.participate.modalities.map((modality) => (
+                <HomeParticipateInvite
+                  key={modality.id}
+                  modality={modality}
+                  setScreen={setScreen}
+                />
+              ))}
+              </div>
+            </div>
+          </section>
+
+          <section className="home-clube-cta" aria-label="Conhecer o Clube">
+            <button
+              type="button"
+              className="home-organic-cta home-organic-cta--club"
+              onClick={goToClube}
             >
-              {copy.atelier.cta}
-            </FicharioEtiqueta>
-          </div>
-        </FicharioDivisoria>
+              {copy.finalCta.label}
+            </button>
+          </section>
+        </div>
       </div>
     </WorldPortalLayout>
   )

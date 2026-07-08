@@ -1,0 +1,687 @@
+/* ==========================================================
+   Clube — página de escolha editorial
+   ========================================================== */
+
+.club-page {
+  position: relative;
+  isolation: isolate;
+  background: #f6ede2;
+  padding-bottom: clamp(36px, 8vw, 56px);
+}
+
+/* —— Hero —— */
+
+.club-page__hero {
+  position: relative;
+  text-align: center;
+  margin-bottom: clamp(-28px, -6vw, -18px);
+}
+
+.club-page__hero-media {
+  position: relative;
+  overflow: visible;
+  min-height: min(68vh, 560px);
+}
+
+.club-page__hero-cover {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 42%;
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    #000 0%,
+    #000 58%,
+    rgba(0, 0, 0, 0.88) 72%,
+    rgba(0, 0, 0, 0.52) 84%,
+    rgba(0, 0, 0, 0.18) 94%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    #000 0%,
+    #000 58%,
+    rgba(0, 0, 0, 0.88) 72%,
+    rgba(0, 0, 0, 0.52) 84%,
+    rgba(0, 0, 0, 0.18) 94%,
+    transparent 100%
+  );
+}
+
+.club-page__hero-wash {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: clamp(-28px, -6vw, -18px);
+  height: min(72vh, 520px);
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    rgba(246, 237, 226, 0) 0%,
+    rgba(246, 237, 226, 0) 24%,
+    rgba(255, 251, 245, 0.05) 38%,
+    rgba(255, 251, 245, 0.14) 50%,
+    rgba(246, 237, 226, 0.28) 62%,
+    rgba(246, 237, 226, 0.5) 74%,
+    rgba(246, 237, 226, 0.74) 86%,
+    rgba(246, 237, 226, 0.92) 94%,
+    #f6ede2 100%
+  );
+}
+
+.club-page__hero-body {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  box-sizing: border-box;
+  padding: clamp(8px, 2vw, 12px) clamp(20px, 5vw, 28px) clamp(10px, 2.5vw, 14px);
+  text-align: center;
+}
+
+.club-page__hero-logo {
+  display: block;
+  width: clamp(108px, 26vw, 142px);
+  height: auto;
+  margin: 0 auto clamp(6px, 1.4vw, 10px);
+  opacity: 0.97;
+  filter: drop-shadow(0 3px 10px rgba(90, 60, 30, 0.12));
+}
+
+.club-page__hero-title {
+  margin: 0 auto clamp(4px, 1vw, 6px);
+  max-width: none;
+  font-size: clamp(34px, 8.2vw, 50px);
+  font-weight: 400;
+  line-height: 1.06;
+  letter-spacing: 0.01em;
+  color: #5a4030;
+  white-space: nowrap;
+}
+
+.club-page__hero-text {
+  margin: 0 auto clamp(2px, 0.6vw, 4px);
+  max-width: none;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(16.1px, 3.9vw, 19.6px);
+  line-height: 1.32;
+  color: rgba(90, 64, 48, 0.88);
+  white-space: nowrap;
+}
+
+.club-page__hero-text:last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 520px) {
+  .club-page__hero-text {
+    font-size: clamp(14.4px, 3.7vw, 17.3px);
+    white-space: nowrap;
+  }
+}
+
+/* —— Seção de escolha —— */
+
+.club-page__choice {
+  position: relative;
+  z-index: 2;
+  padding: clamp(28px, 7vw, 44px) 0 0;
+  text-align: center;
+}
+
+.club-page__choice-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto clamp(20px, 5vw, 28px);
+  padding: 0 clamp(20px, 5vw, 28px);
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.club-page__choice-title {
+  display: block;
+  width: fit-content;
+  max-width: 100%;
+  margin: 0 auto clamp(4px, 1vw, 6px);
+  padding: 0;
+  font-size: clamp(26px, 6.15vw, 35px);
+  font-weight: 400;
+  line-height: 1.08;
+  letter-spacing: normal;
+  text-align: center;
+  color: #6a4f3c;
+}
+
+.club-page__choice-title-text {
+  display: inline-block;
+  max-width: 100%;
+  letter-spacing: 0.01em;
+  padding-right: 0.01em;
+  white-space: nowrap;
+}
+
+.club-page__choice-subtitle {
+  display: block;
+  width: fit-content;
+  max-width: min(100%, 40ch);
+  margin: 0 auto;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(13px, 3.2vw, 17px);
+  line-height: 1.4;
+  letter-spacing: 0.005em;
+  text-align: center;
+  color: rgba(90, 64, 48, 0.82);
+}
+
+@media (max-width: 520px) {
+  .club-page__choice-title {
+    font-size: clamp(15px, 4.1vw, 19px);
+  }
+
+  .club-page__choice-title-text {
+    white-space: normal;
+    text-align: center;
+  }
+
+  .club-page__choice-subtitle {
+    font-size: clamp(10px, 2.8vw, 13px);
+    max-width: min(100%, 36ch);
+  }
+}
+
+.club-page__modalities {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(20px, 5vw, 32px);
+  width: 100%;
+  max-width: min(100%, 640px);
+  margin: 0 auto;
+  padding: 0 clamp(20px, 5vw, 28px);
+  box-sizing: border-box;
+}
+
+/* —— Bloco editorial por modalidade —— */
+
+.club-modality-block {
+  position: relative;
+  text-align: left;
+  padding: clamp(16px, 4vw, 24px) clamp(20px, 5vw, 28px);
+  overflow: visible;
+  isolation: isolate;
+}
+
+.club-modality-block:nth-child(odd) {
+  text-align: left;
+}
+
+.club-modality-block:nth-child(even) {
+  text-align: right;
+}
+
+.club-modality-block__underlay {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.club-modality-block__content {
+  position: relative;
+  z-index: 1;
+}
+
+.club-modality-block__intro--mirror {
+  pointer-events: none;
+}
+
+.club-modality-block__seal--spacer,
+.club-modality-block__title--spacer {
+  visibility: hidden;
+}
+
+.club-modality-block__intro {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 0 0 clamp(10px, 2.5vw, 14px);
+}
+
+.club-modality-block:nth-child(even) .club-modality-block__intro {
+  align-items: flex-end;
+}
+
+.club-modality-block__title-wrap {
+  position: relative;
+  display: block;
+  width: fit-content;
+  max-width: 100%;
+  margin: 0;
+  padding: clamp(6px, 1.5vw, 10px) 0;
+  overflow: visible;
+}
+
+.club-modality-block__stain {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: block;
+  width: clamp(320px, 88vw, 520px);
+  height: auto;
+  max-width: none;
+  object-fit: contain;
+  object-position: center center;
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+  transform: translate(-50%, -50%) scale(1.43, 1.859);
+  transform-origin: center center;
+  mix-blend-mode: multiply;
+  opacity: 0.64;
+}
+
+.club-modality-block:nth-child(even) .club-modality-block__title-wrap {
+  text-align: right;
+}
+
+.club-modality-block:nth-child(even) .club-modality-block__title {
+  text-align: right;
+}
+
+.club-modality-block__seal {
+  position: relative;
+  display: inline-block;
+  margin: 0 0 clamp(5px, 1.25vw, 7px);
+  padding: 4px 14px 5px;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(13px, 3.4vw, 16px);
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #fffcf7;
+  line-height: 1.1;
+}
+
+.club-modality-block--explorador-digital .club-modality-block__seal {
+  background: #c9ad6a;
+  border-color: #b99b5c;
+}
+
+.club-modality-block--mundo-descobertas .club-modality-block__seal {
+  background: #9ba88a;
+  border-color: #8a9870;
+}
+
+.club-modality-block--mundo-tesouros .club-modality-block__seal {
+  background: #c8947f;
+  border-color: #b47a63;
+}
+
+.club-modality-block--expedicao-completa .club-modality-block__seal {
+  background: #8fa8c6;
+  border-color: #7e96b8;
+}
+
+.club-modality-block__title {
+  position: relative;
+  margin: 0;
+  font-size: clamp(26px, 6.5vw, 34px);
+  line-height: 1.12;
+  letter-spacing: 0.04em;
+  color: #5a4030;
+  text-shadow: 0 1px 2px rgba(255, 253, 249, 0.88);
+}
+
+.club-modality-block__layout {
+  display: flex;
+  align-items: center;
+  gap: clamp(10px, 3vw, 20px);
+}
+
+.club-modality-block:nth-child(odd) .club-modality-block__layout {
+  flex-direction: row;
+}
+
+.club-modality-block:nth-child(even) .club-modality-block__layout {
+  flex-direction: row-reverse;
+}
+
+.club-modality-block__copy {
+  flex: 1;
+  min-width: 0;
+}
+
+.club-modality-block__description {
+  margin: 0 0 clamp(10px, 2.5vw, 14px);
+  max-width: 46ch;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(18px, 4.5vw, 22px);
+  line-height: 1.44;
+  color: rgba(90, 64, 48, 0.9);
+  text-shadow: 0 1px 2px rgba(255, 253, 249, 0.88);
+}
+
+.club-modality-block:nth-child(even) .club-modality-block__description {
+  margin-left: auto;
+  text-align: right;
+}
+
+.club-modality-block__benefits {
+  margin: 0 0 clamp(10px, 2.5vw, 14px);
+  padding: 0;
+  list-style: none;
+}
+
+.club-modality-block:nth-child(even) .club-modality-block__benefits {
+  margin-left: auto;
+}
+
+.club-modality-block__benefit {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin-bottom: clamp(3px, 0.85vw, 5px);
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(17px, 4.2vw, 20px);
+  line-height: 1.36;
+  color: rgba(90, 64, 48, 0.88);
+  text-shadow: 0 1px 2px rgba(255, 253, 249, 0.88);
+}
+
+.club-modality-block__benefit:last-child {
+  margin-bottom: 0;
+}
+
+.club-modality-block:nth-child(even) .club-modality-block__benefit {
+  justify-content: flex-end;
+  text-align: right;
+}
+
+.club-modality-block__check {
+  flex-shrink: 0;
+  margin-top: 0.12em;
+  font-size: 0.92em;
+  color: rgba(106, 79, 60, 0.65);
+}
+
+.club-modality-block__price {
+  margin: clamp(4px, 1vw, 6px) 0 0;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(22px, 5.4vw, 28px);
+  font-weight: 700;
+  font-style: normal;
+  letter-spacing: 0.03em;
+  color: #4a3628;
+  text-shadow: 0 1px 3px rgba(255, 253, 249, 0.92);
+}
+
+.club-modality-block:nth-child(even) .club-modality-block__price {
+  margin-left: auto;
+}
+
+.club-modality-block__cta {
+  position: relative;
+  flex-shrink: 0;
+  align-self: center;
+  width: clamp(110px, 28.8vw, 142px);
+  min-height: clamp(130px, 31.2vw, 168px);
+  margin: 0;
+  padding: clamp(17px, 4.2vw, 22px) clamp(12px, 3vw, 17px);
+  border: 1px solid transparent;
+  border-radius: 52% 48% 58% 42% / 46% 54% 48% 52%;
+  background: #c9ad6a;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(19px, 5.04vw, 24px);
+  font-weight: 600;
+  font-style: italic;
+  line-height: 1.32;
+  letter-spacing: 0.02em;
+  text-align: center;
+  color: #fffcf7;
+  cursor: pointer;
+  transform: rotate(-3deg);
+  box-shadow:
+    0 4px 14px rgba(90, 64, 48, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.28);
+  transition:
+    transform 0.28s ease,
+    box-shadow 0.28s ease,
+    filter 0.28s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.club-modality-block__cta:hover {
+  transform: rotate(-1deg) translateY(-2px);
+  box-shadow:
+    0 8px 20px rgba(90, 64, 48, 0.14),
+    inset 0 1px 0 rgba(255, 255, 255, 0.32);
+  filter: brightness(1.03);
+}
+
+.club-modality-block__cta:focus-visible {
+  outline: 2px solid #9a8475;
+  outline-offset: 4px;
+}
+
+.club-modality-block:nth-child(even) .club-modality-block__cta {
+  transform: rotate(3deg);
+}
+
+.club-modality-block:nth-child(even) .club-modality-block__cta:hover {
+  transform: rotate(1deg) translateY(-2px);
+}
+
+.club-modality-block--explorador-digital .club-modality-block__cta {
+  background: #c9ad6a;
+  border-color: #b99b5c;
+}
+
+.club-modality-block--mundo-descobertas .club-modality-block__cta {
+  background: #9ba88a;
+  border-color: #8a9870;
+}
+
+.club-modality-block--mundo-tesouros .club-modality-block__cta {
+  background: #c8947f;
+  border-color: #b47a63;
+}
+
+.club-modality-block--expedicao-completa .club-modality-block__cta {
+  background: #8fa8c6;
+  border-color: #7e96b8;
+}
+
+/* —— Comparação editorial —— */
+
+.club-page__compare {
+  margin-top: clamp(28px, 7vw, 40px);
+  padding: clamp(32px, 8vw, 48px) clamp(16px, 4vw, 24px);
+  border-top: 1px solid rgba(154, 132, 117, 0.22);
+  text-align: center;
+}
+
+.club-page__compare-title {
+  margin: 0 auto clamp(8px, 2vw, 12px);
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(22px, 5.2vw, 28px);
+  font-weight: 500;
+  color: #6a4f3c;
+}
+
+.club-page__compare-lead {
+  margin: 0 auto clamp(28px, 7vw, 36px);
+  max-width: 42ch;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(15px, 3.6vw, 18px);
+  line-height: 1.48;
+  color: rgba(90, 64, 48, 0.8);
+}
+
+.club-compare-sheet {
+  max-width: min(100%, 520px);
+  margin: 0 auto;
+  padding: clamp(20px, 5vw, 28px) clamp(14px, 3.5vw, 20px);
+  border: 1px solid rgba(154, 132, 117, 0.32);
+  background: rgba(255, 252, 247, 0.42);
+}
+
+.club-compare-sheet__columns {
+  display: flex;
+  justify-content: center;
+  gap: clamp(12px, 4vw, 24px);
+  margin-bottom: clamp(20px, 5vw, 28px);
+  padding-bottom: clamp(16px, 4vw, 22px);
+  border-bottom: 1px dashed rgba(154, 132, 117, 0.28);
+}
+
+.club-compare-sheet__column {
+  flex: 1;
+  max-width: 96px;
+  text-align: center;
+}
+
+.club-compare-sheet__column-spacer {
+  flex: 0 0 clamp(72px, 22vw, 96px);
+}
+
+.club-compare-sheet__illustration {
+  display: block;
+  width: clamp(44px, 12vw, 56px);
+  height: clamp(44px, 12vw, 56px);
+  margin: 0 auto clamp(8px, 2vw, 10px);
+  object-fit: contain;
+  opacity: 0.88;
+  filter: saturate(0.92);
+}
+
+.club-compare-sheet__column-label {
+  margin: 0;
+  font-family: "Nunito", sans-serif;
+  font-size: clamp(9px, 2.2vw, 10px);
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(106, 79, 60, 0.68);
+}
+
+.club-compare-sheet__row {
+  display: flex;
+  align-items: center;
+  gap: clamp(12px, 4vw, 24px);
+  padding: clamp(10px, 2.5vw, 14px) 0;
+  border-bottom: 1px solid rgba(154, 132, 117, 0.14);
+}
+
+.club-compare-sheet__row:last-child {
+  border-bottom: none;
+}
+
+.club-compare-sheet__row-label {
+  flex: 0 0 clamp(72px, 22vw, 96px);
+  margin: 0;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(14px, 3.4vw, 16px);
+  font-weight: 600;
+  font-style: italic;
+  text-align: left;
+  color: #6a4f3c;
+}
+
+.club-compare-sheet__marks {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  gap: clamp(12px, 4vw, 24px);
+}
+
+.club-compare-sheet__mark {
+  flex: 1;
+  max-width: 96px;
+  text-align: center;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(16px, 3.8vw, 18px);
+  color: rgba(106, 79, 60, 0.72);
+}
+
+.club-compare-sheet__mark--yes {
+  color: rgba(90, 64, 48, 0.88);
+}
+
+.club-compare-sheet__mark--no {
+  color: rgba(154, 132, 117, 0.55);
+}
+
+/* —— CTA final —— */
+
+.club-page__final {
+  margin-top: clamp(28px, 7vw, 40px);
+  padding: clamp(20px, 5vw, 28px) clamp(22px, 5vw, 32px);
+  text-align: center;
+}
+
+.club-page__final-title {
+  margin: 0 auto clamp(10px, 2.5vw, 14px);
+  max-width: 24ch;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(22px, 5.2vw, 28px);
+  font-weight: 500;
+  line-height: 1.2;
+  color: #6a4f3c;
+}
+
+.club-page__final-text {
+  margin: 0 auto;
+  max-width: 42ch;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(16px, 3.8vw, 19px);
+  line-height: 1.52;
+  color: rgba(90, 64, 48, 0.82);
+}
+
+@media (min-width: 720px) {
+  .club-modality-block__stain {
+    width: clamp(360px, 52vw, 480px);
+  }
+
+  .club-modality-block__layout {
+    gap: clamp(14px, 3vw, 24px);
+  }
+
+  .club-modality-block__cta {
+    width: clamp(125px, 16.8vw, 154px);
+    min-height: clamp(144px, 18vw, 182px);
+    font-size: clamp(20px, 2.64vw, 25px);
+  }
+}
+
+@media (max-width: 520px) {
+  .club-modality-block__layout,
+  .club-modality-block:nth-child(even) .club-modality-block__layout {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .club-modality-block__cta,
+  .club-modality-block:nth-child(even) .club-modality-block__cta {
+    align-self: center;
+    width: min(100%, 288px);
+    min-height: auto;
+    padding: 14px 24px;
+    font-size: clamp(20px, 5.4vw, 24px);
+    transform: rotate(-1deg);
+    border-radius: 999px;
+  }
+
+  .club-modality-block:nth-child(even) .club-modality-block__cta {
+    transform: rotate(1deg);
+  }
+}

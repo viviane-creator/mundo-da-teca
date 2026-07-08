@@ -1,9 +1,9 @@
 import type { CSSProperties, ReactNode } from "react"
 import { PageCover } from "./components/PageCover"
-import { HomeEditorialBridge } from "./components/home/HomeEditorialBridge"
 import { HomeHeroMist, HomeHeroTextMist, homeHeroMistZoneStyle, homeHeroMistZoneStyleHome } from "./components/HomeHeroMist"
 import { atelierPortalCopy } from "./data/atelierPortalCopy"
 import { pageCovers } from "./data/pageCovers"
+import { heroCoverFadeStyle } from "./styles/heroCoverFade"
 import { tecaColors, tecaFont, tecaHierarchy, tecaSpacing } from "./tecaVisual"
 
 const theme = {
@@ -25,7 +25,7 @@ export type PortalHeroProps = {
   title: string
   tagline: string
   compactTitle?: boolean
-  variant?: "home" | "portal" | "art"
+  variant?: "home" | "portal" | "art" | "footer"
 }
 
 export const portalPages = {
@@ -47,7 +47,7 @@ export const portalPages = {
     cover: pageCovers.universos,
     coverAlt: "Universos",
     title: "Universos",
-    tagline: "Cada universo convida a descobrir o mundo de um jeito diferente.",
+    tagline: "",
   },
   atelie: {
     cover: pageCovers.atelie,
@@ -119,6 +119,30 @@ const p: Record<string, CSSProperties> = {
     pointerEvents: "none",
     overflow: "visible",
   },
+  /** Universos e capas com logo + título no pé da imagem */
+  heroContentStackFooter: {
+    position: "absolute",
+    left: 0,
+    right: 0,
+    bottom: 0,
+    zIndex: 4,
+    padding:
+      "clamp(8px, 2vw, 12px) clamp(20px, 5vw, 28px) clamp(10px, 2.5vw, 14px)",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "flex-end",
+    gap: "clamp(4px, 1vw, 6px)",
+    textAlign: "center",
+    pointerEvents: "none",
+    overflow: "visible",
+  },
+  logoInFooter: {
+    width: "clamp(108px, 26vw, 142px)",
+    opacity: 0.97,
+    filter: "drop-shadow(0 3px 10px rgba(90,60,30,0.12))",
+    marginBottom: "clamp(2px, 0.6vw, 4px)",
+  },
   logoInMist: {
     width: "clamp(148px, 38vw, 190px)",
     opacity: 0.98,
@@ -142,20 +166,38 @@ const p: Record<string, CSSProperties> = {
     margin: 0,
     opacity: 0.85,
   },
-  homeHeroTitle: {
-    ...tecaFont.heading,
-    fontStyle: "normal",
-    fontWeight: 400,
+  homeHeroIntro: {
+    position: "relative",
+    zIndex: 5,
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    textAlign: "center",
+    marginTop: "calc(clamp(22px, 4.7vw, 32px) * 1.08 * -9)",
+    padding:
+      "clamp(18px, 4.5vw, 26px) clamp(20px, 5vw, 28px) clamp(8px, 2vw, 12px)",
+    gap: "clamp(4px, 1vw, 6px)",
+  },
+  homeHeroIntroLogo: {
+    width: "clamp(148px, 38vw, 190px)",
+    height: "auto",
+    marginBottom: "clamp(6px, 1.5vw, 10px)",
+    opacity: 0.98,
+    filter:
+      "drop-shadow(0 4px 14px rgba(90,60,30,0.13)) contrast(1.02) saturate(0.94) brightness(1.02)",
+  },
+  homeHeroIntroTitle: {
+    ...tecaFont.portalTitle,
     margin: 0,
-    fontSize: "clamp(24px, 5.2vw, 36px)",
-    lineHeight: 1.28,
-    letterSpacing: "0.015em",
+    fontSize: "clamp(22px, 4.7vw, 32px)",
+    lineHeight: 1.08,
+    letterSpacing: "0.01em",
     maxWidth: "min(520px, 90vw)",
     color: tecaColors.text,
     textShadow:
       "0 1px 3px rgba(255,253,249,0.9), 0 4px 26px rgba(255,253,249,0.84), 0 1px 0 rgba(90,60,30,0.07)",
   },
-  homeHeroTagline: {
+  homeHeroIntroTagline: {
     ...tecaFont.prose,
     fontStyle: "normal",
     margin: 0,
@@ -165,7 +207,6 @@ const p: Record<string, CSSProperties> = {
     lineHeight: 1.45,
     letterSpacing: "0.2px",
     maxWidth: "min(340px, 88vw)",
-    textAlign: "center",
     textShadow:
       "0 1px 3px rgba(255,253,249,0.94), 0 3px 22px rgba(255,253,249,0.88), 0 1px 0 rgba(90,60,30,0.1)",
   },
@@ -174,8 +215,17 @@ const p: Record<string, CSSProperties> = {
     margin: 0,
     lineHeight: 1.08,
   },
+  heroTitleFooter: {
+    ...tecaFont.portalTitle,
+    margin: 0,
+    fontSize: "clamp(29px, 7.2vw, 41px)",
+    lineHeight: 1.06,
+    letterSpacing: "0.01em",
+    color: tecaColors.text,
+    whiteSpace: "nowrap",
+  },
   titleCompact: {
-    fontSize: "48px",
+    fontSize: "57.6px",
   },
   heroTagline: {
     ...tecaHierarchy.l2Poetic,
@@ -187,8 +237,8 @@ const p: Record<string, CSSProperties> = {
   bodyHome: {
     position: "relative",
     zIndex: 6,
-    padding: "0 20px 0",
-    marginTop: "-14px",
+    padding: "0 20px clamp(16px, 4vw, 24px)",
+    marginTop: 0,
   },
   vignette: {
     position: "absolute",
@@ -198,31 +248,9 @@ const p: Record<string, CSSProperties> = {
     zIndex: 1,
     pointerEvents: "none",
   },
-  fadeHome: {
-    position: "absolute",
-    left: 0,
-    right: 0,
-    bottom: 0,
-    height: "56%",
-    background: `linear-gradient(180deg, rgba(246,237,226,0) 0%, rgba(255,251,245,0.16) 20%, rgba(246,237,226,0.46) 54%, rgba(246,237,226,0.78) 80%, ${theme.shell} 100%)`,
-    zIndex: 3,
-    pointerEvents: "none",
-    WebkitMaskImage:
-      "linear-gradient(to top, #000 0%, #000 60%, transparent 100%)",
-    maskImage: "linear-gradient(to top, #000 0%, #000 60%, transparent 100%)",
-  },
   fade: {
-    position: "absolute",
-    left: 0,
-    right: 0,
-    bottom: 0,
-    height: "50%",
-    background: `linear-gradient(180deg, rgba(246,237,226,0) 0%, rgba(255,251,245,0.32) 30%, rgba(246,237,226,0.68) 68%, ${theme.shell} 100%)`,
+    ...heroCoverFadeStyle,
     zIndex: 3,
-    pointerEvents: "none",
-    WebkitMaskImage:
-      "linear-gradient(to top, #000 0%, #000 48%, transparent 100%)",
-    maskImage: "linear-gradient(to top, #000 0%, #000 48%, transparent 100%)",
   },
   body: {
     position: "relative",
@@ -248,7 +276,7 @@ const p: Record<string, CSSProperties> = {
     ...tecaHierarchy.pageHeroBreath,
   },
   breathHome: {
-    height: `${Math.round(tecaSpacing.poeticToSection * 0.375)}px`,
+    height: "clamp(20px, 5vw, 28px)",
   },
   breathLarge: {
     height: `${tecaSpacing.poeticToSection}px`,
@@ -269,6 +297,45 @@ const p: Record<string, CSSProperties> = {
   },
 }
 
+function PortalMultiline({ text }: { text: string }) {
+  return text.split("\n").map((line, index, lines) => (
+    <span key={line}>
+      {line}
+      {index < lines.length - 1 ? <br /> : null}
+    </span>
+  ))
+}
+
+function HomeHeroIntro({
+  title,
+  tagline,
+}: {
+  title: string
+  tagline: string
+}) {
+  return (
+    <header style={p.homeHeroIntro} className="home-hero-intro">
+      <img
+        src="/logo/logo.webp"
+        alt="Mundo da Teca"
+        width={190}
+        height={80}
+        loading="eager"
+        decoding="async"
+        style={p.homeHeroIntroLogo}
+      />
+      <h1 style={p.homeHeroIntroTitle}>
+        <PortalMultiline text={title} />
+      </h1>
+      {tagline.trim() ? (
+        <p style={p.homeHeroIntroTagline}>
+          <PortalMultiline text={tagline} />
+        </p>
+      ) : null}
+    </header>
+  )
+}
+
 function PortalHeroOverlay({
   hero,
   vignetteHome = false,
@@ -278,6 +345,12 @@ function PortalHeroOverlay({
 }) {
   const variant = hero?.variant ?? "portal"
   const logoInArt = variant === "art"
+  const logoInFooter = variant === "footer"
+  const contentStackStyle = logoInArt
+    ? p.heroContentStackArt
+    : logoInFooter
+      ? p.heroContentStackFooter
+      : p.heroContentStack
 
   return (
     <>
@@ -286,7 +359,7 @@ function PortalHeroOverlay({
         <HomeHeroMist />
         {!vignetteHome ? <HomeHeroTextMist /> : null}
       </div>
-      <div style={vignetteHome ? p.fadeHome : p.fade} />
+      <div style={p.fade} />
       {logoInArt ? (
         <img
           src="/logo/logo.webp"
@@ -294,53 +367,49 @@ function PortalHeroOverlay({
           style={p.logoInArt}
         />
       ) : null}
-      <div style={logoInArt ? p.heroContentStackArt : p.heroContentStack}>
-        {!logoInArt ? (
-          <img
-            src="/logo/logo.webp"
-            alt="Mundo da Teca"
-            style={p.logoInMist}
-          />
-        ) : null}
-        {hero ? (
-          <>
-            {hero.kicker && variant !== "home" ? (
-              <p style={p.heroKicker}>{hero.kicker}</p>
-            ) : null}
-            <h1
-              style={{
-                ...(variant === "home" ? p.homeHeroTitle : p.heroTitle),
-                ...(hero.compactTitle && variant !== "home"
-                  ? p.titleCompact
-                  : {}),
-                position: "relative",
-                zIndex: 1,
-              }}
-            >
-              {hero.title.split("\n").map((line, index, lines) => (
-                <span key={line}>
-                  {line}
-                  {index < lines.length - 1 ? <br /> : null}
-                </span>
-              ))}
-            </h1>
-            <p
-              style={{
-                ...(variant === "home" ? p.homeHeroTagline : p.heroTagline),
-                position: "relative",
-                zIndex: 1,
-              }}
-            >
-              {hero.tagline.split("\n").map((line, index, lines) => (
-                <span key={line}>
-                  {line}
-                  {index < lines.length - 1 ? <br /> : null}
-                </span>
-              ))}
-            </p>
-          </>
-        ) : null}
-      </div>
+      {variant !== "home" ? (
+        <div style={contentStackStyle}>
+          {!logoInArt ? (
+            <img
+              src="/logo/logo.webp"
+              alt="Mundo da Teca"
+              style={logoInFooter ? p.logoInFooter : p.logoInMist}
+            />
+          ) : null}
+          {hero ? (
+            <>
+              {hero.kicker && variant !== "footer" ? (
+                <p style={p.heroKicker}>{hero.kicker}</p>
+              ) : null}
+              <h1
+                style={{
+                  ...(variant === "footer"
+                    ? p.heroTitleFooter
+                    : p.heroTitle),
+                  ...(hero.compactTitle && variant !== "footer"
+                    ? p.titleCompact
+                    : {}),
+                  position: "relative",
+                  zIndex: 1,
+                }}
+              >
+                <PortalMultiline text={hero.title} />
+              </h1>
+              {hero.tagline.trim() ? (
+                <p
+                  style={{
+                    ...p.heroTagline,
+                    position: "relative",
+                    zIndex: 1,
+                  }}
+                >
+                  <PortalMultiline text={hero.tagline} />
+                </p>
+              ) : null}
+            </>
+          ) : null}
+        </div>
+      ) : null}
     </>
   )
 }
@@ -423,7 +492,7 @@ export function WorldPortalLayout({
   breath = "normal",
   children,
 }: WorldPortalConfig & {
-  variant?: "default" | "home" | "art"
+  variant?: "default" | "home" | "art" | "footer"
   compactTitle?: boolean
   breath?: "normal" | "large" | "none"
   children: ReactNode
@@ -434,7 +503,13 @@ export function WorldPortalLayout({
     tagline,
     compactTitle,
     variant:
-      variant === "home" ? "home" : variant === "art" ? "art" : "portal",
+      variant === "home"
+        ? "home"
+        : variant === "art"
+          ? "art"
+          : variant === "footer"
+            ? "footer"
+            : "portal",
   }
 
   return (
@@ -447,8 +522,11 @@ export function WorldPortalLayout({
         <PortalHeroOverlay hero={hero} vignetteHome={variant === "home"} />
       </PageCover>
       <section style={variant === "home" ? p.bodyHome : p.body}>
-        {variant === "home" ? <HomeEditorialBridge /> : null}
+        {variant === "home" ? (
+          <HomeHeroIntro title={title} tagline={tagline} />
+        ) : null}
         <div
+          className={variant === "home" ? "home-body-breath" : undefined}
           style={
             variant === "home"
               ? p.breathHome

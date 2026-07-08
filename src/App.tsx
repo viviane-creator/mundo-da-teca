@@ -1,5 +1,7 @@
 import { useEffect, useState, type ReactNode } from "react"
 import "./fonts.css"
+import "./styles/tecaTypography.css"
+import "./styles/organicCta.css"
 import "./styles/homeCta.css"
 import {
   isPlayUniverseScreen,
@@ -53,10 +55,17 @@ import { BottomNav } from "./components/BottomNav"
 import { InstitutionalFooter } from "./components/InstitutionalFooter"
 import { Home } from "./pages/Home"
 import { ClubPage } from "./pages/ClubPage"
+import { ClubModalityPage } from "./pages/ClubModalityPage"
 import { ConhecaMundoPage } from "./pages/ConhecaMundoPage"
 import { CONHECA_SHARE_PATH, conhecaPageCopy } from "./data/conhecaPageCopy"
-import type { ParticipationPlanId } from "./data/participationPlans"
+import { clubPageCopy } from "./data/clubPageCopy"
 import { appRoutes } from "./navigation/appRoutes"
+import {
+  clubModalityIdFromScreen,
+  isClubModalityScreen,
+  pathForClubScreen,
+  screenFromClubPath,
+} from "./navigation/clubNavigation"
 import { MeuMundoPage } from "./pages/MeuMundoPage"
 import { BibliotecaPage } from "./pages/BibliotecaPage"
 import { AtelierProductPage } from "./pages/AtelierProductPage"
@@ -68,6 +77,12 @@ import { TopAccessLink } from "./components/TopAccessLink"
 import { LoginModal } from "./components/LoginModal"
 import { AccountModal } from "./components/AccountModal"
 import { ClubGateScreen } from "./components/ClubGateScreen"
+import { LaunchPage } from "./pages/LaunchPage"
+import { HOME_PREVIEW_PATH, LAUNCH_MODE } from "./config/launchGate"
+import {
+  applyLaunchPageMeta,
+  clearLaunchPageMeta,
+} from "./data/launchPageCopy"
 
 type Screen =
   | "home"
@@ -101,7 +116,12 @@ type Screen =
   | AtelierProductScreen
   | "meu-mundo"
   | "clube"
+  | "clube-explorador-digital"
+  | "clube-mundo-descobertas"
+  | "clube-mundo-tesouros"
+  | "clube-expedicao-completa"
   | "conheca"
+  | "launch"
 
 type SimpleSubScreen = Exclude<
   Screen,
@@ -121,7 +141,12 @@ type SimpleSubScreen = Exclude<
   | "minha-caixa"
   | "meu-mundo"
   | "clube"
+  | "clube-explorador-digital"
+  | "clube-mundo-descobertas"
+  | "clube-mundo-tesouros"
+  | "clube-expedicao-completa"
   | "conheca"
+  | "launch"
 >
 
 type SubPageContent = {
@@ -284,7 +309,19 @@ function readInitialScreen(): Screen {
   if (path === CONHECA_SHARE_PATH || path.endsWith("/conheca")) {
     return appRoutes.conheca
   }
-  return "home"
+  if (path === HOME_PREVIEW_PATH || path.endsWith("/home-preview")) {
+    return appRoutes.home
+  }
+  if (LAUNCH_MODE && path === "/") {
+    return appRoutes.launch
+  }
+
+  const clubScreen = screenFromClubPath(path)
+  if (clubScreen) {
+    return clubScreen as Screen
+  }
+
+  return appRoutes.home
 }
 
 function resolveNavActive(screen: Screen): string {
@@ -311,6 +348,10 @@ function resolveNavActive(screen: Screen): string {
   if (screen === "biblioteca") return "meu-mundo"
 
   if (isDiscoveryFlowScreen(screen)) return "meu-mundo"
+
+  if (screen === appRoutes.clube || isClubModalityScreen(screen)) {
+    return "clube"
+  }
 
   if (
     screen === "descobertas" ||
@@ -343,9 +384,6 @@ function ClubGated({
 
 function AppContent() {
   const [screen, setScreen] = useState<Screen>(readInitialScreen)
-  const [clubPlanFocus, setClubPlanFocus] = useState<ParticipationPlanId | null>(
-    null,
-  )
   const [box, setBox] = useState<AtelierGood[]>([])
   const [diaryEntries, setDiaryEntries] =
     useState<DiaryEntry[]>(initialDiaryEntries)
@@ -362,12 +400,6 @@ function AppContent() {
   }, [screen])
 
   useEffect(() => {
-    if (screen !== appRoutes.clube) {
-      setClubPlanFocus(null)
-    }
-  }, [screen])
-
-  useEffect(() => {
     const path = window.location.pathname.replace(/\/$/, "") || "/"
 
     if (screen === appRoutes.conheca) {
@@ -375,6 +407,34 @@ function AppContent() {
         window.history.pushState({ screen: appRoutes.conheca }, "", CONHECA_SHARE_PATH)
       }
       document.title = conhecaPageCopy.documentTitle
+      clearLaunchPageMeta()
+      return
+    }
+
+    if (LAUNCH_MODE) {
+      if (screen === appRoutes.launch) {
+        if (path !== "/") {
+          window.history.pushState({ screen: appRoutes.launch }, "", "/")
+        }
+        applyLaunchPageMeta()
+        return
+      }
+
+      if (screen === appRoutes.home) {
+        if (path !== HOME_PREVIEW_PATH) {
+          window.history.pushState({ screen: appRoutes.home }, "", HOME_PREVIEW_PATH)
+        }
+        clearLaunchPageMeta()
+        document.title = "Mundo da Teca"
+        return
+      }
+
+      if (path === CONHECA_SHARE_PATH || path === HOME_PREVIEW_PATH) {
+        window.history.pushState({ screen }, "", "/")
+      }
+
+      clearLaunchPageMeta()
+      document.title = "Mundo da Teca"
       return
     }
 
@@ -382,6 +442,20 @@ function AppContent() {
       window.history.pushState({ screen }, "", "/")
     }
 
+    const clubPath = pathForClubScreen(screen)
+    if (clubPath) {
+      if (path !== clubPath) {
+        window.history.pushState({ screen }, "", clubPath)
+      }
+      document.title =
+        screen === appRoutes.clube
+          ? clubPageCopy.documentTitle
+          : "Mundo da Teca"
+      clearLaunchPageMeta()
+      return
+    }
+
+    clearLaunchPageMeta()
     document.title = "Mundo da Teca"
   }, [screen])
 
@@ -394,20 +468,36 @@ function AppContent() {
     return () => window.removeEventListener("popstate", onPopState)
   }, [])
 
-  const goToClubePlan = (plan: ParticipationPlanId) => {
-    setClubPlanFocus(plan)
-    setScreen(appRoutes.clube)
-  }
+  const isLaunchScreen = LAUNCH_MODE && screen === appRoutes.launch
 
   return (
-    <main style={styles.main}>
-      <section style={styles.appShell}>
-        <TopAccessLink />
+    <main
+      style={{
+        ...styles.main,
+        ...(isLaunchScreen ? { padding: 0, overflow: "hidden" } : null),
+      }}
+    >
+      <section
+        style={{
+          ...styles.appShell,
+          ...(isLaunchScreen
+            ? {
+                paddingBottom: 0,
+                overflow: "hidden",
+                minHeight: "100vh",
+                maxHeight: "100vh",
+              }
+            : null),
+        }}
+      >
+        {!isLaunchScreen ? <TopAccessLink /> : null}
         <LoginModal setScreen={setScreen} />
         <AccountModal />
 
+        {screen === appRoutes.launch && <LaunchPage setScreen={setScreen} />}
+
         {screen === "home" && (
-          <Home setScreen={setScreen} onGoToClube={goToClubePlan} />
+          <Home setScreen={setScreen} />
         )}
 
         {screen === appRoutes.conheca && (
@@ -517,8 +607,13 @@ function AppContent() {
           />
         )}
 
-        {screen === "clube" && (
-          <ClubPage setScreen={setScreen} focusPlan={clubPlanFocus} />
+        {screen === "clube" && <ClubPage setScreen={setScreen} />}
+
+        {isClubModalityScreen(screen) && (
+          <ClubModalityPage
+            modalityId={clubModalityIdFromScreen(screen)}
+            setScreen={setScreen}
+          />
         )}
 
         {screen === "meu-mundo" && <MeuMundoPage setScreen={setScreen} />}
@@ -529,9 +624,11 @@ function AppContent() {
           </ClubGated>
         )}
 
-        <InstitutionalFooter />
+        {!isLaunchScreen ? <InstitutionalFooter /> : null}
 
-        <BottomNav active={resolveNavActive(screen)} setScreen={setScreen} />
+        {!isLaunchScreen ? (
+          <BottomNav active={resolveNavActive(screen)} setScreen={setScreen} />
+        ) : null}
       </section>
     </main>
   )

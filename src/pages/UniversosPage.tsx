@@ -2,6 +2,7 @@ import { universosPageCopy } from "../data/universosPageCopy"
 import { HomeExploreMap } from "../components/HomeExploreMap"
 import { styles } from "../styles/appStyles"
 import { WorldPortalLayout, portalPages } from "../worldPortal"
+import "../styles/universosPage.css"
 
 export function UniversosPage({
   setScreen,
@@ -12,7 +13,7 @@ export function UniversosPage({
   const copy = universosPageCopy
 
   return (
-    <WorldPortalLayout {...portal} breath="none">
+    <WorldPortalLayout {...portal} breath="none" variant="footer">
       <section style={styles.universosExploreSection} aria-label="Mapa de universos">
         <div style={styles.universosEditorialFlow}>
           <p style={styles.universosEpigraph}>{copy.epigraph}</p>
@@ -20,7 +21,11 @@ export function UniversosPage({
 
           <div style={styles.universosExploreMapWrap}>
             <div style={styles.editorialDecorContent}>
-              <HomeExploreMap onSelect={setScreen} variant="full" />
+              <div className="universos-map-frame">
+                <div className="universos-map-frame__inner">
+                  <HomeExploreMap onSelect={setScreen} variant="full" />
+                </div>
+              </div>
               <p style={styles.homeV2TrailEnd}>{copy.trailEnd}</p>
             </div>
           </div>

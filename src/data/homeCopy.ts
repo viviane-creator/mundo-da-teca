@@ -1,25 +1,75 @@
+export type HomeModalityId =
+  | "explorador-digital"
+  | "mundo-descobertas"
+  | "mundo-tesouros"
+  | "expedicao-completa"
+
+/** Manifesto reservado para a futura página Sobre */
+export const homeAboutManifesto = {
+  lines: [
+    "A infância continua curiosa.",
+    "Continua fazendo perguntas.",
+    "Continua inventando mundos dentro do mundo.",
+    "Continua encontrando tesouros onde os adultos passam depressa.",
+  ],
+  closing:
+    "O Mundo da Teca nasceu para preservar esse jeito lento, encantado e presente de descobrir.",
+} as const
+
 export const homeCopy = {
-  about: {
-    title: "Um convite à descoberta.",
-    prose:
-      "Aqui, cada universo convida a observar, criar, imaginar e colecionar — no ritmo da infância.",
-    proseFollow:
-      "Cada descoberta pode virar uma lembrança guardada para sempre.",
-    storyCardTitle: "Conheça o Mundo da Teca",
+  whatIs: {
+    title: "O que é o Mundo da Teca?",
+    paragraphs: [
+      "Uma plataforma de descobertas para crianças\nexplorarem, criarem e colecionarem longe das telas.",
+    ],
+    cta: {
+      label: "Quero entender mais",
+    },
   },
-  universos: {
-    kicker: "porta de entrada",
-    title: "Escolha por onde começar.",
-    subtitle:
-      "Seis caminhos diferentes para descobrir o mundo de um jeito novo.",
+
+  howItWorks: {
+    kicker: "Como funciona",
+    steps: [
+      "Escolha como participar",
+      "Receba novas descobertas",
+      "Brinque",
+      "Colecione",
+      "Continue explorando",
+    ],
   },
-  meuMundo: {
-    copy: "O lugar onde cada descoberta ganha uma história.",
-    cta: "Abrir Minha Coleção",
+
+  participate: {
+    title: "Clube",
+    lead: ["Escolha como sua família quer viver essa experiência."],
+    modalities: [
+      {
+        id: "explorador-digital" as const,
+        name: "Explorador Digital",
+        summary: "Para quem quer começar pelo digital.",
+      },
+      {
+        id: "mundo-descobertas" as const,
+        name: "Meu Mundo de Descobertas",
+        summary: "Todo mês, novas descobertas chegam à sua casa.",
+      },
+      {
+        id: "mundo-tesouros" as const,
+        name: "Meu Mundo de Tesouros",
+        summary: "Para quem gosta de guardar e cada descoberta.",
+      },
+      {
+        id: "expedicao-completa" as const,
+        name: "Expedição Completa",
+        summary: "A experiência mais completa do Mundo da Teca.",
+      },
+    ],
   },
-  atelier: {
-    kicker: "Leve para casa",
-    copy: "Tesouros, papelaria e objetos para continuar explorando.",
-    cta: "Entrar no Ateliê",
+
+  finalCta: {
+    title: "Ainda em dúvida?",
+    lines: [
+      "Compare todas as formas de participar e descubra qual combina mais com sua família.",
+    ],
+    label: "Quero entender todos",
   },
 } as const

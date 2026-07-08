@@ -1,0 +1,733 @@
+/* —— Hero — papel artesanal + aquarela salpicada —— */
+
+.conheca-hero {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+  padding: clamp(48px, 12vw, 56px) clamp(22px, 5vw, 32px)
+    clamp(16px, 4vw, 22px);
+  background: #f6ede2;
+}
+
+.conheca-hero__paper {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(
+      ellipse 92% 68% at 50% -8%,
+      rgba(255, 253, 249, 0.94) 0%,
+      rgba(255, 253, 249, 0) 68%
+    ),
+    linear-gradient(
+      180deg,
+      #faf6ef 0%,
+      #f6ede2 52%,
+      #f0e8da 100%
+    );
+}
+
+.conheca-hero__splash {
+  position: absolute;
+  pointer-events: none;
+  border-radius: 58% 42% 63% 37% / 48% 52% 48% 52%;
+  filter: blur(0.4px);
+  mix-blend-mode: multiply;
+}
+
+.conheca-hero__splash--olive {
+  top: 8%;
+  left: -10%;
+  width: min(52vw, 220px);
+  height: min(36vw, 148px);
+  opacity: 0.68;
+  transform: rotate(-16deg);
+  background: radial-gradient(
+    ellipse 72% 68% at 38% 42%,
+    rgba(155, 168, 138, 0.62) 0%,
+    rgba(155, 168, 138, 0.22) 52%,
+    rgba(155, 168, 138, 0) 74%
+  );
+}
+
+.conheca-hero__splash--gold {
+  top: 14%;
+  right: -12%;
+  width: min(48vw, 196px);
+  height: min(32vw, 132px);
+  opacity: 0.62;
+  transform: rotate(12deg);
+  background: radial-gradient(
+    ellipse 70% 64% at 58% 44%,
+    rgba(201, 173, 106, 0.58) 0%,
+    rgba(201, 173, 106, 0.18) 54%,
+    rgba(201, 173, 106, 0) 76%
+  );
+}
+
+.conheca-hero__splash--blue {
+  bottom: 6%;
+  left: 4%;
+  width: min(44vw, 180px);
+  height: min(28vw, 116px);
+  opacity: 0.58;
+  transform: rotate(-8deg);
+  background: radial-gradient(
+    ellipse 68% 62% at 42% 48%,
+    rgba(143, 168, 198, 0.55) 0%,
+    rgba(143, 168, 198, 0.16) 56%,
+    rgba(143, 168, 198, 0) 78%
+  );
+}
+
+.conheca-hero__splash--terracotta {
+  bottom: 10%;
+  right: 2%;
+  width: min(40vw, 164px);
+  height: min(26vw, 108px);
+  opacity: 0.55;
+  transform: rotate(18deg);
+  background: radial-gradient(
+    ellipse 66% 60% at 54% 46%,
+    rgba(200, 148, 127, 0.52) 0%,
+    rgba(200, 148, 127, 0.14) 58%,
+    rgba(200, 148, 127, 0) 80%
+  );
+}
+
+.conheca-hero__speckle {
+  position: absolute;
+  inset: 0;
+  opacity: 0.72;
+  background-image:
+    radial-gradient(circle at 8% 22%, rgba(155, 168, 138, 0.2) 1.1px, transparent 1.6px),
+    radial-gradient(circle at 16% 68%, rgba(201, 173, 106, 0.16) 0.9px, transparent 1.4px),
+    radial-gradient(circle at 24% 38%, rgba(143, 168, 198, 0.14) 1px, transparent 1.5px),
+    radial-gradient(circle at 34% 14%, rgba(179, 129, 95, 0.18) 1.2px, transparent 1.7px),
+    radial-gradient(circle at 42% 78%, rgba(155, 168, 138, 0.15) 0.8px, transparent 1.3px),
+    radial-gradient(circle at 52% 32%, rgba(200, 148, 127, 0.12) 1px, transparent 1.5px),
+    radial-gradient(circle at 58% 58%, rgba(201, 173, 106, 0.17) 1.1px, transparent 1.6px),
+    radial-gradient(circle at 66% 18%, rgba(143, 168, 198, 0.13) 0.9px, transparent 1.4px),
+    radial-gradient(circle at 72% 72%, rgba(155, 168, 138, 0.16) 1px, transparent 1.5px),
+    radial-gradient(circle at 78% 42%, rgba(179, 129, 95, 0.14) 1.2px, transparent 1.7px),
+    radial-gradient(circle at 86% 26%, rgba(201, 173, 106, 0.15) 0.8px, transparent 1.3px),
+    radial-gradient(circle at 92% 62%, rgba(143, 168, 198, 0.11) 1px, transparent 1.5px),
+    radial-gradient(circle at 12% 88%, rgba(200, 148, 127, 0.13) 1.1px, transparent 1.6px),
+    radial-gradient(circle at 48% 88%, rgba(155, 168, 138, 0.12) 0.9px, transparent 1.4px),
+    radial-gradient(circle at 88% 86%, rgba(179, 129, 95, 0.1) 1px, transparent 1.5px);
+}
+
+/* —— Painéis orgânicos — cores do ecossistema —— */
+
+.conheca-organic {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: fit-content;
+  max-width: min(calc(100% - 8px), 46ch);
+  margin-inline: auto;
+  padding: clamp(14px, 3.5vw, 20px) clamp(16px, 4vw, 22px);
+  box-shadow: 0 12px 28px rgba(90, 60, 30, 0.1);
+  isolation: isolate;
+  box-sizing: border-box;
+}
+
+.conheca-organic__text {
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(17px, 4vw, 20px);
+  line-height: 1.58;
+  text-align: center;
+  margin: 0 0 10px;
+  max-width: 42ch;
+  color: rgba(255, 252, 247, 0.92);
+}
+
+.conheca-organic__text:last-child,
+.conheca-organic__emphasis:last-child,
+.conheca-organic__check:last-child {
+  margin-bottom: 0;
+}
+
+.conheca-organic__text + .conheca-organic__text {
+  margin-top: clamp(10px, 2.5vw, 14px);
+}
+
+.conheca-organic__emphasis {
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(18px, 4vw, 21px);
+  font-weight: 500;
+  line-height: 1.42;
+  text-align: center;
+  margin: clamp(14px, 3.2vw, 18px) 0 0;
+  max-width: 40ch;
+  color: #fffcf7;
+}
+
+.conheca-organic__title {
+  margin: 0 0 clamp(12px, 2.8vw, 16px);
+  font-family: "Caveat", cursive;
+  font-size: clamp(26px, 6.2vw, 32px);
+  font-weight: 400;
+  line-height: 1.06;
+  text-align: center;
+  max-width: 34ch;
+  color: #fffcf7;
+}
+
+.conheca-organic__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+.conheca-organic__check {
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(16px, 3.8vw, 18px);
+  font-style: normal;
+  line-height: 1.5;
+  margin: 0 0 8px;
+  color: rgba(255, 252, 247, 0.94);
+}
+
+.conheca-organic__actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(18px, 4.5vw, 24px);
+  margin: clamp(20px, 4.5vw, 28px) 0 0;
+  padding: 0;
+  width: fit-content;
+  max-width: 100%;
+}
+
+.conheca-organic--compact {
+  padding: clamp(12px, 3vw, 16px) clamp(14px, 3.5vw, 18px);
+}
+
+.conheca-organic--hero {
+  z-index: 2;
+  max-width: min(calc(100% - 8px), 50ch);
+  padding: clamp(12px, 3vw, 16px) clamp(14px, 3.5vw, 20px);
+}
+
+.conheca-organic--wide {
+  max-width: min(calc(100% - 8px), 52ch);
+}
+
+.conheca-hero-title {
+  font-family: "Caveat", cursive;
+  font-size: clamp(28px, 6.5vw, 36px);
+  font-weight: 400;
+  line-height: 1.06;
+  margin: 0 0 10px;
+  max-width: 32ch;
+  text-align: center;
+}
+
+.conheca-hero-lead {
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(16px, 3.8vw, 19px);
+  line-height: 1.52;
+  margin: 0;
+  max-width: 44ch;
+  text-align: center;
+}
+
+.conheca-organic--paper {
+  border-radius: 58% 42% 56% 44% / 44% 56% 48% 52%;
+  border: 1px solid rgba(196, 165, 141, 0.42);
+  background-color: #ebe3d4;
+  background-image:
+    radial-gradient(
+      ellipse 92% 84% at 28% 22%,
+      rgba(255, 253, 249, 0.5) 0%,
+      rgba(255, 253, 249, 0) 54%
+    ),
+    radial-gradient(
+      ellipse 110% 100% at 50% 50%,
+      rgba(201, 173, 106, 0.55) 0%,
+      rgba(155, 168, 138, 0.42) 48%,
+      rgba(143, 168, 198, 0.28) 100%
+    );
+  box-shadow:
+    0 10px 24px rgba(90, 60, 30, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.28);
+  transform: rotate(0.25deg);
+}
+
+.conheca-organic--paper .conheca-hero-title,
+.conheca-organic--paper .conheca-hero-lead {
+  color: #6a4f3c;
+  text-shadow: none;
+}
+
+.conheca-organic--paper .conheca-hero-lead {
+  color: #8b7668;
+}
+
+.conheca-organic--olive {
+  border-radius: 54% 46% 58% 42% / 44% 56% 46% 54%;
+  border: 1px solid rgba(122, 136, 106, 0.55);
+  background-color: #9ba88a;
+  background-image:
+    radial-gradient(
+      ellipse 92% 84% at 28% 22%,
+      rgba(255, 253, 249, 0.28) 0%,
+      rgba(255, 253, 249, 0) 54%
+    ),
+    radial-gradient(
+      ellipse 118% 108% at 50% 50%,
+      #b5c4a4 36%,
+      #9ba88a 58%,
+      #8a9870 86%
+    );
+  box-shadow:
+    0 12px 28px rgba(90, 100, 72, 0.14),
+    inset 0 1px 0 rgba(255, 255, 255, 0.22);
+  transform: rotate(-0.55deg);
+}
+
+.conheca-organic--gold {
+  border-radius: 52% 48% 54% 46% / 48% 52% 50% 50%;
+  border: 1px solid rgba(168, 142, 80, 0.58);
+  background-color: #c9ad6a;
+  background-image:
+    radial-gradient(
+      ellipse 92% 84% at 72% 18%,
+      rgba(255, 253, 249, 0.26) 0%,
+      rgba(255, 253, 249, 0) 54%
+    ),
+    radial-gradient(
+      ellipse 118% 108% at 50% 50%,
+      #dcc88a 34%,
+      #c9ad6a 58%,
+      #b99b5c 86%
+    );
+  box-shadow:
+    0 12px 28px rgba(120, 90, 40, 0.14),
+    inset 0 1px 0 rgba(255, 255, 255, 0.22);
+  transform: rotate(0.65deg);
+}
+
+.conheca-organic--blue {
+  border-radius: 56% 44% 52% 48% / 46% 54% 44% 56%;
+  border: 1px solid rgba(110, 136, 168, 0.52);
+  background-color: #8fa8c6;
+  background-image:
+    radial-gradient(
+      ellipse 92% 84% at 22% 20%,
+      rgba(255, 253, 249, 0.26) 0%,
+      rgba(255, 253, 249, 0) 54%
+    ),
+    radial-gradient(
+      ellipse 118% 108% at 50% 50%,
+      #a5bdd4 36%,
+      #8fa8c6 58%,
+      #7f95a6 86%
+    );
+  box-shadow:
+    0 12px 28px rgba(80, 100, 130, 0.14),
+    inset 0 1px 0 rgba(255, 255, 255, 0.22);
+  transform: rotate(-0.4deg);
+}
+
+.conheca-organic--warm {
+  border-radius: 50% 50% 56% 44% / 42% 58% 46% 54%;
+  border: 1px solid rgba(168, 142, 80, 0.55);
+  background-color: #c9ad6a;
+  background-image:
+    radial-gradient(
+      ellipse 92% 84% at 50% 12%,
+      rgba(255, 253, 249, 0.28) 0%,
+      rgba(255, 253, 249, 0) 54%
+    ),
+    radial-gradient(
+      ellipse 118% 108% at 50% 55%,
+      #dcc88a 32%,
+      #c9ad6a 56%,
+      #b99b5c 84%
+    );
+  box-shadow:
+    0 12px 28px rgba(120, 90, 40, 0.14),
+    inset 0 1px 0 rgba(255, 255, 255, 0.22);
+  transform: rotate(0.45deg);
+  text-align: center;
+}
+
+/* —— Ecossistema — cards com aba, capa e mancha de cor —— */
+
+.conheca-pillar-grid {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(20px, 5vw, 28px);
+  margin-top: clamp(4px, 1vw, 8px);
+  padding: clamp(4px, 1vw, 8px) 0;
+}
+
+.conheca-pillar {
+  position: relative;
+  display: flex;
+  align-items: stretch;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font: inherit;
+  text-align: left;
+  isolation: isolate;
+  -webkit-tap-highlight-color: transparent;
+  transition:
+    transform 0.28s ease,
+    filter 0.28s ease;
+}
+
+.conheca-pillar:nth-child(1) {
+  transform: rotate(-0.7deg);
+}
+
+.conheca-pillar:nth-child(2) {
+  transform: rotate(0.85deg);
+}
+
+.conheca-pillar:nth-child(3) {
+  transform: rotate(-0.45deg);
+}
+
+.conheca-pillar:nth-child(4) {
+  transform: rotate(1deg);
+}
+
+.conheca-pillar:hover,
+.conheca-pillar:focus-visible {
+  transform: rotate(0deg) translateY(-3px) scale(1.012);
+  filter: drop-shadow(0 10px 22px rgba(90, 60, 30, 0.08));
+}
+
+.conheca-pillar:focus-visible {
+  outline: 2px solid rgba(155, 168, 138, 0.45);
+  outline-offset: 4px;
+}
+
+.conheca-pillar__aba {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: clamp(30px, 7.5vw, 36px);
+  margin-right: -1px;
+  padding: clamp(14px, 3.5vw, 18px) clamp(4px, 1vw, 6px);
+  border-radius: 14px 0 0 14px;
+  border: 1px solid rgba(72, 48, 32, 0.08);
+  border-right: none;
+  box-shadow: inset -1px 0 0 rgba(255, 255, 255, 0.1);
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(10px, 2.6vw, 11px);
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  line-height: 1.12;
+  color: #f8f4ee;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  white-space: nowrap;
+}
+
+.conheca-pillar__panel {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: clamp(14px, 3.5vw, 18px);
+  padding: clamp(14px, 3.5vw, 18px) clamp(16px, 4vw, 20px);
+  border-radius: 0 20px 20px 0;
+  border: 1px dashed rgba(196, 165, 141, 0.38);
+  background-color: #f4ede4;
+  background-image:
+    radial-gradient(
+      ellipse 88% 72% at 12% 18%,
+      rgba(255, 253, 249, 0.55) 0%,
+      rgba(255, 253, 249, 0) 58%
+    );
+  box-shadow:
+    0 8px 22px rgba(90, 60, 30, 0.05),
+    inset 0 1px 0 rgba(255, 255, 255, 0.88);
+  overflow: hidden;
+}
+
+.conheca-pillar__panel::before {
+  content: "";
+  position: absolute;
+  right: -12%;
+  top: -20%;
+  width: clamp(120px, 34vw, 168px);
+  height: clamp(120px, 34vw, 168px);
+  border-radius: 58% 42% 63% 37% / 44% 56% 44% 56%;
+  opacity: 0.38;
+  pointer-events: none;
+  background: var(--conheca-pillar-accent, rgba(155, 168, 138, 0.5));
+  filter: blur(0.5px);
+}
+
+.conheca-pillar__cover-wrap {
+  position: relative;
+  z-index: 1;
+  flex-shrink: 0;
+  transform: rotate(-4deg);
+  transition: transform 0.28s ease;
+}
+
+.conheca-pillar:nth-child(even) .conheca-pillar__cover-wrap {
+  transform: rotate(3deg);
+}
+
+.conheca-pillar:hover .conheca-pillar__cover-wrap {
+  transform: rotate(-1deg) scale(1.03);
+}
+
+.conheca-pillar:nth-child(even):hover .conheca-pillar__cover-wrap {
+  transform: rotate(1deg) scale(1.03);
+}
+
+.conheca-pillar__cover {
+  display: block;
+  width: clamp(68px, 17vw, 84px);
+  height: clamp(68px, 17vw, 84px);
+  object-fit: cover;
+  border-radius: 18px;
+  border: 2px solid rgba(255, 253, 249, 0.92);
+  box-shadow:
+    0 8px 18px rgba(90, 60, 30, 0.12),
+    0 0 0 1px rgba(196, 165, 141, 0.22);
+}
+
+.conheca-pillar__copy {
+  position: relative;
+  z-index: 1;
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(6px, 1.5vw, 8px);
+}
+
+.conheca-pillar__title {
+  margin: 0;
+  font-family: "Caveat", cursive;
+  font-size: clamp(22px, 5.2vw, 28px);
+  font-weight: 400;
+  line-height: 1.02;
+  color: #6a4f3c;
+}
+
+.conheca-pillar__text {
+  margin: 0;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(15px, 3.7vw, 17px);
+  line-height: 1.48;
+  color: #8b7668;
+}
+
+/* —— Cores por capítulo —— */
+
+.conheca-pillar--plataforma-digital {
+  --conheca-pillar-accent: rgba(127, 149, 166, 0.55);
+}
+
+.conheca-pillar--plataforma-digital .conheca-pillar__aba {
+  background: #7f95a6;
+}
+
+.conheca-pillar--plataforma-digital .conheca-pillar__panel {
+  border-color: rgba(127, 149, 166, 0.52);
+  background-color: #dce8f2;
+  background-image:
+    radial-gradient(
+      ellipse 100% 88% at 82% 18%,
+      rgba(127, 149, 166, 0.55) 0%,
+      rgba(127, 149, 166, 0) 62%
+    ),
+    radial-gradient(
+      ellipse 92% 84% at 18% 78%,
+      rgba(143, 168, 198, 0.38) 0%,
+      rgba(143, 168, 198, 0) 58%
+    );
+}
+
+.conheca-pillar--clube {
+  --conheca-pillar-accent: rgba(185, 155, 92, 0.58);
+}
+
+.conheca-pillar--clube .conheca-pillar__aba {
+  background: #b99b5c;
+}
+
+.conheca-pillar--clube .conheca-pillar__panel {
+  border-style: solid;
+  border-color: rgba(185, 155, 92, 0.58);
+  background-color: #f0e0bc;
+  background-image:
+    radial-gradient(
+      ellipse 100% 88% at 88% 16%,
+      rgba(201, 173, 106, 0.62) 0%,
+      rgba(201, 173, 106, 0) 64%
+    ),
+    linear-gradient(
+      168deg,
+      #f8eed8 0%,
+      #edd9a8 100%
+    );
+  box-shadow:
+    0 12px 28px rgba(120, 90, 40, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.72);
+}
+
+.conheca-pillar--clube .conheca-pillar__title {
+  font-size: clamp(24px, 5.8vw, 32px);
+}
+
+.conheca-pillar--meu-mundo {
+  --conheca-pillar-accent: rgba(138, 152, 112, 0.55);
+}
+
+.conheca-pillar--meu-mundo .conheca-pillar__aba {
+  background: #8a9870;
+}
+
+.conheca-pillar--meu-mundo .conheca-pillar__panel {
+  border-color: rgba(138, 152, 112, 0.52);
+  background-color: #e4ead8;
+  background-image:
+    radial-gradient(
+      ellipse 100% 86% at 84% 22%,
+      rgba(155, 168, 138, 0.58) 0%,
+      rgba(155, 168, 138, 0) 62%
+    );
+}
+
+.conheca-pillar--atelie {
+  --conheca-pillar-accent: rgba(180, 122, 99, 0.52);
+}
+
+.conheca-pillar--atelie .conheca-pillar__aba {
+  background: #b47a63;
+}
+
+.conheca-pillar--atelie .conheca-pillar__panel {
+  border-color: rgba(180, 122, 99, 0.52);
+  background-color: #f2ddd2;
+  background-image:
+    radial-gradient(
+      ellipse 100% 88% at 86% 18%,
+      rgba(200, 148, 127, 0.58) 0%,
+      rgba(200, 148, 127, 0) 62%
+    );
+}
+
+.conheca-pillar--clube .conheca-pillar__cover {
+  box-shadow:
+    0 10px 22px rgba(120, 90, 40, 0.14),
+    0 0 0 1px rgba(185, 155, 92, 0.28);
+}
+
+/* —— Como funciona — bloco orgânico terracota —— */
+
+.conheca-how {
+  position: relative;
+  display: block;
+  width: fit-content;
+  max-width: min(calc(100% - 8px), 44ch);
+  margin: clamp(20px, 4.5vw, 28px) auto;
+  padding: clamp(18px, 4.5vw, 26px) clamp(16px, 4vw, 22px);
+  border-radius: 54% 46% 58% 42% / 44% 56% 48% 52%;
+  border: 1px solid rgba(180, 122, 99, 0.48);
+  background-color: #c8947f;
+  background-image:
+    radial-gradient(
+      ellipse 92% 84% at 22% 16%,
+      rgba(255, 253, 249, 0.28) 0%,
+      rgba(255, 253, 249, 0) 54%
+    ),
+    radial-gradient(
+      ellipse 118% 108% at 50% 50%,
+      #d4a894 34%,
+      #c8947f 58%,
+      #b47a63 84%
+    );
+  box-shadow:
+    0 12px 28px rgba(120, 70, 50, 0.14),
+    inset 0 1px 0 rgba(255, 255, 255, 0.22);
+  transform: rotate(-0.35deg);
+  box-sizing: border-box;
+}
+
+.conheca-how::before {
+  content: "";
+  position: absolute;
+  top: 8%;
+  right: 7%;
+  width: clamp(48px, 12vw, 64px);
+  height: clamp(48px, 12vw, 64px);
+  border-radius: 52% 48% 58% 42% / 44% 56% 44% 56%;
+  background: rgba(255, 253, 249, 0.1);
+  pointer-events: none;
+}
+
+.conheca-how-step {
+  width: fit-content;
+  max-width: 100%;
+  margin-inline: auto;
+}
+
+.conheca-how-step__body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  margin: 0;
+  padding: 0;
+}
+
+.conheca-how__number {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(255, 252, 247, 0.82);
+  margin: 0 0 2px;
+}
+
+.conheca-how__title {
+  margin: 0 0 6px;
+  font-family: "Caveat", cursive;
+  font-size: clamp(21px, 5vw, 26px);
+  font-weight: 400;
+  line-height: 1.04;
+  text-align: center;
+  color: #fffcf7;
+}
+
+.conheca-how__text {
+  margin: 0;
+  max-width: 38ch;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(16px, 3.8vw, 18px);
+  line-height: 1.5;
+  text-align: center;
+  color: rgba(255, 252, 247, 0.92);
+}
+
+.conheca-how__arrow {
+  display: block;
+  margin: clamp(10px, 2.5vw, 14px) auto clamp(8px, 2vw, 12px);
+  font-family: "Cormorant Garamond", serif;
+  font-size: 19px;
+  line-height: 1;
+  color: rgba(255, 252, 247, 0.52);
+}
