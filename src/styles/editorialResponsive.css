@@ -1,0 +1,411 @@
+/* ==========================================================
+   Mundo da Teca — Direção de Arte Responsiva
+   Tablet (768+) e Desktop (1024+)
+   Mobile permanece intacto — regras apenas em min-width
+   ========================================================== */
+
+@media (min-width: 768px) {
+  :root {
+    --teca-shell-max: min(1140px, calc(100vw - 48px));
+    --teca-editorial-prose: min(720px, calc(100% - 56px));
+    --teca-editorial-gutter: clamp(28px, 4vw, 48px);
+    --teca-section-gap: clamp(40px, 5vw, 56px);
+  }
+
+  .app-main {
+    padding: 20px 24px !important;
+    background: #e3dbd0;
+  }
+
+  .app-shell {
+    max-width: var(--teca-shell-max) !important;
+    min-height: min(96vh, 1200px) !important;
+    border-radius: 28px !important;
+    box-shadow:
+      0 28px 80px rgba(90, 60, 30, 0.14),
+      inset 0 1px 0 rgba(255, 253, 249, 0.65) !important;
+  }
+
+  .world-portal-body {
+    padding-left: var(--teca-editorial-gutter) !important;
+    padding-right: var(--teca-editorial-gutter) !important;
+  }
+
+  .world-portal-body--home {
+    padding-left: clamp(24px, 4vw, 40px) !important;
+    padding-right: clamp(24px, 4vw, 40px) !important;
+  }
+
+  /* —— Tipografia editorial — leve ampliação —— */
+  .home-what-is .home-chapter__title,
+  .home-chapter__title {
+    font-size: clamp(32px, 3.2vw, 38px);
+  }
+
+  .home-what-is .home-chapter__prose,
+  .home-chapter__prose {
+    font-size: clamp(17px, 1.6vw, 19px);
+    max-width: var(--teca-editorial-prose);
+  }
+
+  .home-participate__title--club {
+    font-size: clamp(36px, 3.4vw, 42px);
+  }
+
+  .home-participate__title-text {
+    white-space: nowrap;
+    max-width: none;
+  }
+
+  .home-participate__lead {
+    font-size: clamp(19px, 1.8vw, 22px);
+    max-width: min(100%, 36ch);
+  }
+
+  .conheca-page__title {
+    font-size: clamp(34px, 3.2vw, 42px);
+  }
+
+  .conheca-page__lead,
+  .conheca-page__text {
+    font-size: clamp(18px, 1.65vw, 21px);
+  }
+
+  .club-page__choice-title-text {
+    white-space: nowrap;
+    max-width: none;
+  }
+
+  .club-page__hero-title {
+    max-width: none;
+    white-space: nowrap;
+    font-size: clamp(38px, 3.6vw, 48px);
+  }
+
+  .club-page__hero-text {
+    font-size: clamp(17px, 1.6vw, 20px);
+    max-width: min(100%, 44ch);
+  }
+
+  .club-page__choice-title {
+    font-size: clamp(30px, 2.8vw, 36px);
+  }
+
+  /* —— Home — folha editorial —— */
+  .home-sheet__content {
+    max-width: var(--teca-editorial-prose);
+    margin-inline: auto;
+  }
+
+  .home-what-is,
+  .home-participate--sheet,
+  .home-clube-cta {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .home-participate--sheet {
+    padding-top: clamp(32px, 4vw, 44px);
+    padding-bottom: clamp(16px, 2vw, 20px);
+  }
+
+  .home-participate__frame {
+    max-width: min(100%, 680px);
+    padding: clamp(24px, 3vw, 28px) clamp(18px, 2.5vw, 22px)
+      clamp(16px, 2vw, 20px);
+  }
+
+  .home-participate__intro {
+    margin-bottom: clamp(28px, 3.5vw, 36px);
+  }
+
+  .home-participate-invite__poster {
+    min-height: clamp(190px, 18vw, 220px);
+  }
+
+  .home-participate-invite__stain {
+    opacity: 0.64;
+  }
+
+  .home-clube-cta {
+    padding-top: clamp(36px, 4vw, 48px);
+    padding-bottom: clamp(20px, 2.5vw, 28px);
+  }
+
+  /* —— Conheça —— */
+  .conheca-page__hero {
+    padding-top: clamp(44px, 5vw, 56px);
+    padding-bottom: clamp(28px, 3.5vw, 36px);
+  }
+
+  .conheca-page__sheet {
+    max-width: var(--teca-editorial-prose);
+    padding-inline: 0;
+  }
+
+  .conheca-page__prose,
+  .conheca-page__prose--center {
+    max-width: min(100%, 52ch);
+  }
+
+  .conheca-page__chapter {
+    padding-block: clamp(8px, 1.2vw, 14px);
+  }
+
+  .conheca-page__divider {
+    margin-block: clamp(28px, 3.5vw, 36px);
+  }
+
+  /* —— Clube — container editorial —— */
+  .club-page__choice-header,
+  .club-page__compare,
+  .club-page__final {
+    max-width: var(--teca-editorial-prose);
+    margin-inline: auto;
+    padding-inline: 0;
+  }
+
+  .club-page__modalities {
+    max-width: min(100%, 680px);
+    padding-inline: 0;
+    gap: clamp(14px, 2vw, 18px);
+  }
+
+  .club-page__choice {
+    padding-top: clamp(36px, 4.5vw, 52px);
+  }
+
+  .club-compare-sheet {
+    max-width: min(100%, 640px);
+    margin-inline: auto;
+  }
+
+  /* —— Modalidade —— */
+  .club-modality-page__hero,
+  .club-modality-page__section,
+  .club-modality-page__subscribe {
+    max-width: var(--teca-editorial-prose);
+    margin-inline: auto;
+    padding-inline: 0;
+  }
+
+  .club-modality-page__back {
+    max-width: var(--teca-editorial-prose);
+    margin-inline: auto;
+    display: flex;
+    width: calc(100% - var(--teca-editorial-gutter) * 2);
+    padding-inline: 0;
+  }
+
+  .club-modality-page__section-text,
+  .club-modality-page__placeholder-text {
+    font-size: clamp(16px, 1.5vw, 18px);
+  }
+
+  /* —— Ateliê —— */
+  .atelier-showcase {
+    max-width: var(--teca-editorial-prose);
+    margin-inline: auto;
+  }
+
+  /* —— Nav inferior — permanece editorial, não estica —— */
+  .bottom-nav {
+    left: 50% !important;
+    right: auto !important;
+    transform: translateX(-50%);
+    width: min(560px, calc(100% - 48px)) !important;
+    max-width: 560px !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --teca-shell-max: min(1160px, calc(100vw - 80px));
+    --teca-editorial-prose: min(740px, calc(100% - 80px));
+    --teca-editorial-gutter: clamp(40px, 5vw, 64px);
+    --teca-section-gap: clamp(48px, 6vw, 72px);
+  }
+
+  .app-main {
+    padding: 32px 40px !important;
+  }
+
+  .app-shell {
+    border-radius: 24px !important;
+  }
+
+  /* —— Livro aberto — lombada visível na Home —— */
+  .home-sheet {
+    position: relative;
+    max-width: calc(var(--teca-editorial-prose) + 28px);
+    margin-inline: auto;
+    padding-left: 20px;
+  }
+
+  .home-sheet__spine {
+    display: block;
+  }
+
+  .home-sheet__content {
+    max-width: 100%;
+  }
+
+  .home-what-is {
+    padding-bottom: clamp(40px, 4.5vw, 52px);
+  }
+
+  .home-participate__invites {
+    gap: clamp(12px, 1.5vw, 16px);
+  }
+
+  .home-participate-invite__stain {
+    width: clamp(560px, 92%, 820px);
+    opacity: 0.68;
+  }
+
+  /* —— Clube — cards em duas colunas —— */
+  .club-page__modalities {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    max-width: min(1040px, calc(100% - 48px));
+    gap: clamp(16px, 2vw, 22px);
+    align-items: stretch;
+  }
+
+  .club-modality-card {
+    height: 100%;
+  }
+
+  .club-modality-card__stain {
+    opacity: 0.62;
+  }
+
+  .club-page__compare,
+  .club-page__final {
+    max-width: min(820px, calc(100% - 48px));
+  }
+
+  .club-compare-sheet {
+    max-width: min(760px, 100%);
+  }
+
+  /* —— Conheça — ecossistema permanece coluna única —— */
+  .conheca-page__eco-grid {
+    gap: clamp(14px, 1.8vw, 18px);
+  }
+
+  .conheca-eco-card__cover-wrap {
+    width: clamp(64px, 6vw, 80px);
+    height: clamp(64px, 6vw, 80px);
+  }
+
+  /* —— Direção de arte — manchas apenas em telas maiores —— */
+  .app-shell::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    border-radius: inherit;
+    background:
+      radial-gradient(
+        ellipse 42% 28% at 0% 18%,
+        rgba(155, 168, 138, 0.07) 0%,
+        rgba(155, 168, 138, 0) 72%
+      ),
+      radial-gradient(
+        ellipse 38% 24% at 100% 82%,
+        rgba(201, 173, 106, 0.06) 0%,
+        rgba(201, 173, 106, 0) 70%
+      );
+  }
+
+  .club-page::after {
+    content: "";
+    position: absolute;
+    top: 8%;
+    right: 2%;
+    width: min(320px, 28vw);
+    height: min(240px, 20vw);
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.42;
+    border-radius: 58% 42% 63% 37% / 48% 52% 48% 52%;
+    mix-blend-mode: multiply;
+    background: radial-gradient(
+      ellipse 72% 68% at 42% 44%,
+      rgba(201, 173, 106, 0.38) 0%,
+      rgba(201, 173, 106, 0.12) 52%,
+      rgba(201, 173, 106, 0) 74%
+    );
+  }
+
+  .conheca-page::before {
+    content: "";
+    position: absolute;
+    top: 6%;
+    left: -2%;
+    width: min(280px, 24vw);
+    height: min(200px, 18vw);
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.38;
+    border-radius: 42% 58% 37% 63% / 52% 48% 52% 48%;
+    mix-blend-mode: multiply;
+    background: radial-gradient(
+      ellipse 70% 64% at 38% 42%,
+      rgba(155, 168, 138, 0.42) 0%,
+      rgba(155, 168, 138, 0.1) 54%,
+      rgba(155, 168, 138, 0) 76%
+    );
+  }
+
+  .conheca-page::after {
+    content: "";
+    position: absolute;
+    bottom: 12%;
+    right: 1%;
+    width: min(260px, 22vw);
+    height: min(180px, 16vw);
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.32;
+    border-radius: 63% 37% 58% 42% / 39% 61% 39% 58%;
+    mix-blend-mode: multiply;
+    background: radial-gradient(
+      ellipse 68% 62% at 58% 48%,
+      rgba(143, 168, 198, 0.36) 0%,
+      rgba(143, 168, 198, 0.08) 56%,
+      rgba(143, 168, 198, 0) 76%
+    );
+  }
+
+  .club-modality-page::before {
+    content: "";
+    position: absolute;
+    top: 14%;
+    left: 3%;
+    width: min(240px, 20vw);
+    height: min(180px, 15vw);
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.28;
+    border-radius: 52% 48% 58% 42% / 44% 56% 44% 56%;
+    mix-blend-mode: multiply;
+    background: radial-gradient(
+      ellipse 72% 68% at 40% 40%,
+      rgba(185, 155, 92, 0.34) 0%,
+      rgba(185, 155, 92, 0) 72%
+    );
+  }
+
+  .club-modality-page__stain {
+    opacity: 0.58 !important;
+  }
+}
+
+@media (min-width: 1280px) {
+  .home-participate__frame {
+    max-width: min(100%, 720px);
+  }
+}

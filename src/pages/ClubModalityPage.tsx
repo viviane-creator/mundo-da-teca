@@ -20,7 +20,7 @@ export function ClubModalityPage({
   const placeholders = clubModalityPagePlaceholders
 
   useEffect(() => {
-    document.title = `${modality.title} — Clube`
+    document.title = `${modality.title} — Clube Mundo da Teca`
   }, [modality.title])
 
   return (
@@ -30,7 +30,7 @@ export function ClubModalityPage({
         className="club-modality-page__back"
         onClick={() => setScreen(appRoutes.clube)}
       >
-        ← Voltar ao Clube
+        ← Voltar ao Clube Mundo da Teca
       </button>
 
       <header className="club-modality-page__hero">

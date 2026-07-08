@@ -154,7 +154,7 @@ export function Home({
             </div>
           </section>
 
-          <section className="home-clube-cta" aria-label="Conhecer o Clube">
+          <section className="home-clube-cta" aria-label="Conhecer o Clube Mundo da Teca">
             <button
               type="button"
               className="home-organic-cta home-organic-cta--club"

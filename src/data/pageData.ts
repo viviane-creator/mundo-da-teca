@@ -17,7 +17,7 @@ export const pageData = {
     cover: "/covers/atelie.webp",
   },
   clube: {
-    title: "Clube da Teca",
+    title: "Clube Mundo da Teca",
     intro: "para famílias do Mundo da Teca.",
     cover: "/covers/clube.webp",
   },

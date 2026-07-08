@@ -83,6 +83,7 @@ import {
   applyLaunchPageMeta,
   clearLaunchPageMeta,
 } from "./data/launchPageCopy"
+import "./styles/editorialResponsive.css"
 
 type Screen =
   | "home"

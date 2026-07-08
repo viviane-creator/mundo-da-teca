@@ -64,8 +64,8 @@ export const portalPages = {
   },
   clube: {
     cover: pageCovers.clube,
-    coverAlt: "Clube da Teca",
-    title: "Clube da Teca",
+    coverAlt: "Clube Mundo da Teca",
+    title: "Clube Mundo da Teca",
     tagline: "Descobrir. Registrar. Colecionar.",
   },
   meuMundo: {

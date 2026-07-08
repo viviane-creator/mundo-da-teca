@@ -39,7 +39,7 @@ export const homeCopy = {
   },
 
   participate: {
-    title: "Clube",
+    title: "Clube Mundo da Teca",
     lead: ["Escolha como quer viver essa experiência."],
     modalities: [
       {

@@ -1,9 +1,9 @@
 export const clubPageCopy = {
-  documentTitle: "Clube",
+  documentTitle: "Clube Mundo da Teca",
   hero: {
     logo: "/logo/logo.webp",
     logoAlt: "Mundo da Teca",
-    title: "Clube",
+    title: "Clube Mundo da Teca",
     lines: ["Existe mais de uma forma de viver essa jornada."],
   },
   choice: {

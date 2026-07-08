@@ -22,7 +22,7 @@ export function AtelierShopPage() {
       <section style={worldPortalStyles.body}>
         <p style={styles.atelierPageIntro}>{atelierPortalCopy.pageIntro}</p>
 
-        <div style={styles.atelierShowcase}>
+        <div className="atelier-showcase" style={styles.atelierShowcase}>
           <div style={styles.atelierEmptyPlaceholder} aria-label={atelierEmptyState.label}>
             <AtelierComingSoonVisual compact />
             <p style={styles.atelierEmptyPlaceholderLabel}>{atelierEmptyState.label}</p>
