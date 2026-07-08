@@ -687,9 +687,29 @@
 
   .club-modality-block__title-wrap {
     overflow: hidden;
-    min-height: clamp(72px, 18vw, 96px);
+    width: 100%;
+    max-width: 100%;
+    min-height: clamp(68px, 17vw, 88px);
     padding-top: clamp(8px, 2vw, 12px);
     padding-bottom: clamp(8px, 2vw, 12px);
+  }
+
+  .club-modality-block:nth-child(even) .club-modality-block__title-wrap {
+    margin-left: auto;
+  }
+
+  .club-modality-block__stain {
+    width: min(92vw, 480px);
+    opacity: 0.6;
+    transform: translate(-50%, -50%) scale(0.94, 1.14);
+  }
+
+  .club-modality-block:nth-child(odd) .club-modality-block__stain {
+    transform: translate(-54%, -50%) scale(0.94, 1.14);
+  }
+
+  .club-modality-block:nth-child(even) .club-modality-block__stain {
+    transform: translate(-46%, -50%) scale(0.94, 1.14);
   }
 
   .club-modality-block__title {

@@ -655,6 +655,32 @@
     margin-right: 0;
   }
 
+  .home-participate-invite__poster {
+    min-height: clamp(148px, 36vw, 182px);
+  }
+
+  .home-participate-invite__stain {
+    width: min(118vw, 580px);
+    opacity: 0.6;
+    transform: translate(-50%, -50%) scale(0.94, 1.14);
+  }
+
+  .home-participate-invite--explorador-digital .home-participate-invite__stain {
+    transform: translate(-55%, -50%) scale(0.94, 1.14);
+  }
+
+  .home-participate-invite--mundo-descobertas .home-participate-invite__stain {
+    transform: translate(-45%, -50%) scale(0.94, 1.14);
+  }
+
+  .home-participate-invite--mundo-tesouros .home-participate-invite__stain {
+    transform: translate(-55%, -50%) scale(0.94, 1.14);
+  }
+
+  .home-participate-invite--expedicao-completa .home-participate-invite__stain {
+    transform: translate(-45%, -50%) scale(0.94, 1.14);
+  }
+
   .home-participate-invite__copy {
     max-width: min(100%, 100%);
     gap: clamp(6px, 1.5vw, 8px);
