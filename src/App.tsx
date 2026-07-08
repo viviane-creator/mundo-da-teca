@@ -443,6 +443,10 @@ function AppContent() {
       window.history.pushState({ screen }, "", "/")
     }
 
+    if (path === HOME_PREVIEW_PATH || path.endsWith("/home-preview")) {
+      window.history.replaceState({ screen: appRoutes.home }, "", "/")
+    }
+
     const clubPath = pathForClubScreen(screen)
     if (clubPath) {
       if (path !== clubPath) {
