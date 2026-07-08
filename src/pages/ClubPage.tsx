@@ -90,7 +90,7 @@ export function ClubPage({
               type="button"
               role="listitem"
               className={`club-modality-card club-modality-card--${modality.id}`}
-              aria-label={`${clubSealLabel(modality.id)}. ${modality.title}. ${modality.price}. ${modality.ctaLabel}`}
+              aria-label={`${clubSealLabel(modality.id)}. ${modality.title}. ${modality.price}`}
               onClick={() => setScreen(clubModalityScreen(modality.id))}
             >
               <span className="club-modality-card__canvas" aria-hidden="true">
@@ -103,26 +103,27 @@ export function ClubPage({
                   loading={index === 0 ? "eager" : "lazy"}
                 />
               </span>
-              <span className="club-modality-card__body">
+              <span className="club-modality-card__layout">
+                <span className="club-modality-card__body">
+                  <span className="club-modality-card__title">{modality.title}</span>
+                  <span className="club-modality-card__description">
+                    {modality.description}
+                  </span>
+                  <ul className="club-modality-card__benefits">
+                    {modality.benefits.map((benefit) => (
+                      <li key={benefit} className="club-modality-card__benefit">
+                        <span className="club-modality-card__check" aria-hidden="true">
+                          ✓
+                        </span>
+                        {benefit}
+                      </li>
+                    ))}
+                  </ul>
+                  <span className="club-modality-card__price">{modality.price}</span>
+                </span>
                 <span className="club-modality-card__seal" aria-hidden="true">
                   {clubSealLabel(modality.id)}
                 </span>
-                <span className="club-modality-card__title">{modality.title}</span>
-                <span className="club-modality-card__description">
-                  {modality.description}
-                </span>
-                <ul className="club-modality-card__benefits">
-                  {modality.benefits.map((benefit) => (
-                    <li key={benefit} className="club-modality-card__benefit">
-                      <span className="club-modality-card__check" aria-hidden="true">
-                        ✓
-                      </span>
-                      {benefit}
-                    </li>
-                  ))}
-                </ul>
-                <span className="club-modality-card__price">{modality.price}</span>
-                <span className="club-modality-card__action">{modality.ctaLabel}</span>
               </span>
             </button>
           ))}

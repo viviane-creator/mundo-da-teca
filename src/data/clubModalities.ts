@@ -76,7 +76,7 @@ export const clubModalities: ClubModality[] = [
       "Objetos colecionáveis",
       "Todos os benefícios",
     ],
-    price: "R$ 107,10 / mês",
+    price: "R$ 105,90 / mês",
     ctaLabel: "Conhecer Expedição",
     ctaTone: "clubeColecionador",
   },
