@@ -119,50 +119,9 @@
     right: 10px !important;
   }
 
-  .club-page__hero-media {
-    min-height: min(58vh, 440px);
-  }
+  /* Clube — regras em clubPage.css */
 
-  .club-page__hero-body {
-    padding-inline: 16px !important;
-  }
-
-  /* —— Clube — manchas contidas —— */
-  .club-modality-block {
-    overflow: hidden;
-    padding-left: 16px !important;
-    padding-right: 16px !important;
-  }
-
-  .club-modality-block__title-wrap {
-    overflow: hidden;
-    padding-top: clamp(10px, 2.5vw, 14px) !important;
-    padding-bottom: clamp(10px, 2.5vw, 14px) !important;
-  }
-
-  .club-modality-block__stain {
-    width: min(120vw, 520px) !important;
-    opacity: 0.52 !important;
-    transform: translate(-50%, -50%) scale(0.86, 1.02) !important;
-  }
-
-  .club-modality-block__title {
-    white-space: normal !important;
-    max-width: min(100%, 34ch) !important;
-    line-height: 1.14 !important;
-  }
-
-  .club-modality-block__description {
-    white-space: normal !important;
-    max-width: min(100%, 36ch) !important;
-  }
-
-  .club-page__modalities {
-    gap: clamp(28px, 7vw, 36px) !important;
-    padding-inline: 16px !important;
-  }
-
-  /* —— Clube modalidade (página interna) —— */
+  /* —— Conheça —— */
   .club-modality-page__hero {
     overflow: hidden;
     padding-inline: 16px !important;

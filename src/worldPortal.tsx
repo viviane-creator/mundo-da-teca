@@ -173,16 +173,21 @@ const p: Record<string, CSSProperties> = {
     flexDirection: "column",
     alignItems: "center",
     textAlign: "center",
-    marginTop: "calc(clamp(22px, 4.7vw, 32px) * 1.08 * -9)",
+    marginTop: "calc(clamp(22px, 4.7vw, 32px) * 1.08 * -5)",
     padding:
-      "clamp(18px, 4.5vw, 26px) clamp(20px, 5vw, 28px) clamp(8px, 2vw, 12px)",
+      "clamp(8px, 2vw, 12px) clamp(20px, 5vw, 28px) clamp(8px, 2vw, 12px)",
     gap: "clamp(4px, 1vw, 6px)",
   },
-  homeHeroIntroLogo: {
+  homeCoverLogo: {
+    position: "absolute",
+    left: "50%",
+    top: "44%",
+    transform: "translate(-50%, -50%)",
+    zIndex: 5,
     width: "clamp(148px, 38vw, 190px)",
     height: "auto",
-    marginBottom: "clamp(6px, 1.5vw, 10px)",
     opacity: 0.98,
+    pointerEvents: "none",
     filter:
       "drop-shadow(0 4px 14px rgba(90,60,30,0.13)) contrast(1.02) saturate(0.94) brightness(1.02)",
   },
@@ -317,15 +322,6 @@ function HomeHeroIntro({
 }) {
   return (
     <header style={p.homeHeroIntro} className="home-hero-intro">
-      <img
-        src="/logo/logo.webp"
-        alt="Mundo da Teca"
-        width={190}
-        height={80}
-        loading="eager"
-        decoding="async"
-        style={p.homeHeroIntroLogo}
-      />
       <h1 style={p.homeHeroIntroTitle}>
         <PortalMultiline text={title} />
       </h1>
@@ -530,6 +526,18 @@ export function WorldPortalLayout({
         alt={coverAlt}
         priority={variant === "home"}
       >
+        {variant === "home" ? (
+          <img
+            className="home-cover-logo"
+            src="/logo/logo.webp"
+            alt="Mundo da Teca"
+            width={190}
+            height={80}
+            loading="eager"
+            decoding="async"
+            style={p.homeCoverLogo}
+          />
+        ) : null}
         <PortalHeroOverlay hero={hero} vignetteHome={variant === "home"} />
       </PageCover>
       <section

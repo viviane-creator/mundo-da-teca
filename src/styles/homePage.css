@@ -14,6 +14,22 @@
   overflow: visible;
 }
 
+/* —— Hero Home — logo centralizada na capa —— */
+.home-cover-logo {
+  top: 44%;
+}
+
+@media (max-width: 767px) {
+  .home-cover-logo {
+    top: 42%;
+    width: clamp(132px, 34vw, 168px) !important;
+  }
+
+  .home-hero-intro {
+    margin-top: calc(clamp(22px, 4.7vw, 32px) * 1.08 * -4.5) !important;
+  }
+}
+
 .home-body-breath {
   /* altura definida inline; desktop em @media */
 }
@@ -253,12 +269,12 @@
 .home-participate__invites {
   display: flex;
   flex-direction: column;
-  gap: clamp(7px, 1.8vw, 13px);
+  gap: clamp(4px, 1vw, 8px);
   width: 100%;
   max-width: 100%;
   margin: 0;
   padding: 0;
-  overflow: visible;
+  overflow: hidden;
 }
 
 /* —— Planos — mancha de fundo + texto —— */
@@ -286,7 +302,7 @@
 }
 
 .home-participate-invite:nth-child(2) {
-  margin-top: clamp(10px, 2.5vw, 16px);
+  margin-top: 0;
 }
 
 .home-participate-invite:focus-visible {
@@ -303,9 +319,9 @@
   position: relative;
   display: flex;
   align-items: center;
-  min-height: clamp(152px, 38vw, 190px);
-  padding: clamp(6px, 1.6vw, 10px) clamp(20px, 5vw, 28px);
-  overflow: visible;
+  min-height: clamp(128px, 32vw, 168px);
+  padding: clamp(4px, 1vw, 8px) clamp(20px, 5vw, 28px);
+  overflow: hidden;
 }
 
 .home-participate-invite:nth-child(odd) .home-participate-invite__poster {
@@ -607,14 +623,18 @@
   outline-offset: 4px;
 }
 
-/* —— Mobile — planos do Clube com mais respiro —— */
+/* —— Mobile — planos do Clube —— */
 @media (max-width: 767px) {
   .home-participate__intro {
     margin-bottom: clamp(26px, 6.5vw, 34px);
   }
 
   .home-participate__invites {
-    gap: clamp(36px, 9vw, 48px);
+    gap: clamp(2px, 0.6vw, 6px) !important;
+  }
+
+  .home-participate-invite {
+    overflow: hidden;
   }
 
   .home-participate-invite:nth-child(2) {
@@ -622,32 +642,32 @@
   }
 
   .home-participate-invite__poster {
-    min-height: clamp(176px, 44vw, 212px);
-    padding-top: clamp(14px, 3.5vw, 18px);
-    padding-bottom: clamp(14px, 3.5vw, 18px);
+    min-height: clamp(120px, 30vw, 152px);
+    padding-top: clamp(6px, 1.5vw, 10px);
+    padding-bottom: clamp(6px, 1.5vw, 10px);
     overflow: hidden;
   }
 
   .home-participate-invite__stain {
-    width: min(132vw, 640px);
-    opacity: 0.56;
-    transform: translate(-50%, -50%) scale(0.88, 1.05);
+    width: min(112vw, 520px);
+    opacity: 0.52;
+    transform: translate(-50%, -50%) scale(0.72, 0.92);
   }
 
   .home-participate-invite--explorador-digital .home-participate-invite__stain {
-    transform: translate(-52%, -50%) scale(0.88, 1.05);
+    transform: translate(-52%, -50%) scale(0.72, 0.92);
   }
 
   .home-participate-invite--mundo-descobertas .home-participate-invite__stain {
-    transform: translate(-48%, -50%) scale(0.88, 1.05);
+    transform: translate(-48%, -50%) scale(0.72, 0.92);
   }
 
   .home-participate-invite--mundo-tesouros .home-participate-invite__stain {
-    transform: translate(-52%, -50%) scale(0.88, 1.05);
+    transform: translate(-52%, -50%) scale(0.72, 0.92);
   }
 
   .home-participate-invite--expedicao-completa .home-participate-invite__stain {
-    transform: translate(-48%, -50%) scale(0.88, 1.05);
+    transform: translate(-48%, -50%) scale(0.72, 0.92);
   }
 
   .home-participate-invite__copy {
@@ -721,17 +741,11 @@
   }
 
   .home-participate__invites {
-    display: flex;
-    flex-direction: column;
-    gap: clamp(7px, 1.8vw, 13px);
-    width: 100%;
-    max-width: 100%;
-    margin-left: 0;
-    margin-right: 0;
+    gap: clamp(4px, 1vw, 8px);
   }
 
   .home-participate-invite__poster {
-    min-height: 180px;
+    min-height: 152px;
   }
 
   .home-participate-invite__stain {

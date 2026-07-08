@@ -40,7 +40,7 @@ export const homeCopy = {
 
   participate: {
     title: "Clube",
-    lead: ["Escolha como sua família quer viver essa experiência."],
+    lead: ["Escolha como quer viver essa experiência."],
     modalities: [
       {
         id: "explorador-digital" as const,

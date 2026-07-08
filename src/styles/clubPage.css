@@ -128,8 +128,6 @@
   }
 }
 
-/* —— Seção de escolha —— */
-
 .club-page__choice {
   position: relative;
   z-index: 2;
@@ -177,28 +175,14 @@
   max-width: min(100%, 40ch);
   margin: 0 auto;
   font-family: "Cormorant Garamond", serif;
-  font-size: clamp(13px, 3.2vw, 17px);
+  font-size: clamp(15px, 3.6vw, 17px);
   line-height: 1.4;
   letter-spacing: 0.005em;
   text-align: center;
   color: rgba(90, 64, 48, 0.82);
 }
 
-@media (max-width: 520px) {
-  .club-page__choice-title {
-    font-size: clamp(15px, 4.1vw, 19px);
-  }
-
-  .club-page__choice-title-text {
-    white-space: normal;
-    text-align: center;
-  }
-
-  .club-page__choice-subtitle {
-    font-size: clamp(10px, 2.8vw, 13px);
-    max-width: min(100%, 36ch);
-  }
-}
+/* —— Seção de escolha — modalidades —— */
 
 .club-page__modalities {
   display: flex;
@@ -269,7 +253,7 @@
   max-width: 100%;
   margin: 0;
   padding: clamp(6px, 1.5vw, 10px) 0;
-  overflow: visible;
+  overflow: hidden;
 }
 
 .club-modality-block__stain {
@@ -667,11 +651,101 @@
   }
 }
 
-@media (max-width: 520px) {
+@media (max-width: 767px) {
+  .club-page__hero-media {
+    min-height: min(56vh, 420px);
+  }
+
+  .club-page__hero-body {
+    padding-inline: 16px;
+  }
+
+  .club-page__choice-header {
+    padding-inline: 16px;
+    margin-bottom: clamp(24px, 6vw, 32px);
+  }
+
+  .club-page__choice-title-text {
+    white-space: normal;
+    line-height: 1.12;
+  }
+
+  .club-page__choice-subtitle {
+    font-size: clamp(15px, 3.8vw, 17px);
+    max-width: min(100%, 38ch);
+  }
+
+  .club-page__modalities {
+    gap: clamp(32px, 8vw, 44px);
+    padding-inline: 16px;
+  }
+
+  .club-modality-block {
+    overflow: hidden;
+    padding: clamp(14px, 3.5vw, 20px) 14px;
+    text-align: left;
+  }
+
+  .club-modality-block:nth-child(even) {
+    text-align: left;
+  }
+
+  .club-modality-block__intro,
+  .club-modality-block:nth-child(even) .club-modality-block__intro {
+    align-items: flex-start;
+  }
+
+  .club-modality-block__title-wrap {
+    overflow: hidden;
+    min-height: clamp(64px, 16vw, 88px);
+    padding-top: clamp(8px, 2vw, 12px);
+    padding-bottom: clamp(8px, 2vw, 12px);
+  }
+
+  .club-modality-block__stain {
+    width: min(100vw, 480px);
+    opacity: 0.5;
+    transform: translate(-50%, -50%) scale(0.78, 0.95);
+  }
+
+  .club-modality-block__title,
+  .club-modality-block:nth-child(even) .club-modality-block__title {
+    text-align: left;
+    white-space: normal;
+    max-width: min(100%, 34ch);
+    line-height: 1.14;
+  }
+
   .club-modality-block__layout,
   .club-modality-block:nth-child(even) .club-modality-block__layout {
     flex-direction: column;
     align-items: stretch;
+    gap: clamp(16px, 4vw, 22px);
+  }
+
+  .club-modality-block__description,
+  .club-modality-block:nth-child(even) .club-modality-block__description {
+    margin-left: 0;
+    text-align: left;
+    max-width: 100%;
+    font-size: clamp(17px, 4.2vw, 20px);
+  }
+
+  .club-modality-block__benefits,
+  .club-modality-block:nth-child(even) .club-modality-block__benefits {
+    margin-left: 0;
+  }
+
+  .club-modality-block__benefit,
+  .club-modality-block:nth-child(even) .club-modality-block__benefit {
+    justify-content: flex-start;
+    text-align: left;
+  }
+
+  .club-modality-block__price,
+  .club-modality-block:nth-child(even) .club-modality-block__price {
+    margin-left: 0;
+    text-align: left;
   }
 
   .club-modality-block__cta,
@@ -680,12 +754,33 @@
     width: min(100%, 288px);
     min-height: auto;
     padding: 14px 24px;
-    font-size: clamp(20px, 5.4vw, 24px);
+    font-size: clamp(19px, 4.8vw, 22px);
     transform: rotate(-1deg);
     border-radius: 999px;
   }
 
   .club-modality-block:nth-child(even) .club-modality-block__cta {
     transform: rotate(1deg);
+  }
+
+  .club-page__compare {
+    padding-inline: 12px;
+  }
+
+  .club-compare-sheet {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-inline: 12px;
+  }
+
+  .club-compare-sheet__column-label {
+    font-size: clamp(8px, 2vw, 9px);
+    letter-spacing: 0.1em;
+  }
+
+  .club-compare-sheet__row-label {
+    flex: 0 0 clamp(64px, 20vw, 80px);
+    font-size: clamp(13px, 3.2vw, 15px);
+    line-height: 1.3;
   }
 }
