@@ -20,7 +20,14 @@ export const homeCopy = {
   whatIs: {
     title: "O que é o Mundo da Teca?",
     paragraphs: [
-      "Uma plataforma de descobertas para crianças\nexplorarem, criarem e colecionarem.",
+      "O Mundo da Teca é uma plataforma digital onde crianças e famílias encontram experiências para fazer em casa, organizadas em uma jornada de descobertas.",
+    ],
+    closing:
+      "Ao entrar, você recebe acesso imediato à plataforma e pode começar a explorar no mesmo dia. Se escolher uma modalidade do Clube, sua família também participa das expedições mensais, recebendo novos capítulos dessa jornada em casa.",
+    highlights: [
+      "Acesso imediato à Plataforma Digital",
+      "Jornada organizada em aproximadamente 6 meses",
+      "Modalidades com envios físicos mensais",
     ],
     cta: {
       label: "Quero entender mais",

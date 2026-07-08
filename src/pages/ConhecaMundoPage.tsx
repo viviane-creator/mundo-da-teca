@@ -26,39 +26,6 @@ export function ConhecaMundoPage({
       </header>
 
       <div className="conheca-page__sheet">
-        <section className="conheca-page__chapter" aria-labelledby="conheca-curiosity">
-          <h2 id="conheca-curiosity" className="conheca-page__chapter-title">
-            {copy.curiosity.title}
-          </h2>
-          <div className="conheca-page__prose">
-            {copy.curiosity.lines.map((line) => (
-              <p key={line} className="conheca-page__text">
-                {line}
-              </p>
-            ))}
-            <p className="conheca-page__text conheca-page__text--emphasis">
-              {copy.curiosity.closing}
-            </p>
-          </div>
-        </section>
-
-        {copy.journey.steps.length > 0 ? (
-          <>
-            <ConhecaDivider />
-            <section className="conheca-page__chapter" aria-label="Informações essenciais">
-              <ul className="conheca-page__highlights">
-                {copy.journey.steps.map((step) => (
-                  <li key={step} className="conheca-page__highlight">
-                    {step}
-                  </li>
-                ))}
-              </ul>
-            </section>
-          </>
-        ) : null}
-
-        <ConhecaDivider />
-
         <section className="conheca-page__chapter" aria-labelledby="conheca-how">
           <h2 id="conheca-how" className="conheca-page__chapter-title">
             {copy.howItWorks.title}

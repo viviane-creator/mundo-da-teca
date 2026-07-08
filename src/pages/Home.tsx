@@ -14,11 +14,15 @@ function HomeTextSection({
   id,
   title,
   paragraphs,
+  closing,
+  highlights,
   cta,
 }: {
   id: string
   title: string
   paragraphs: readonly string[]
+  closing?: string
+  highlights?: readonly string[]
   cta?: { label: string; onClick: () => void }
 }) {
   return (
@@ -46,6 +50,18 @@ function HomeTextSection({
           ))}
         </p>
       ))}
+      {closing ? (
+        <p className="home-chapter__prose home-chapter__prose--emphasis">{closing}</p>
+      ) : null}
+      {highlights && highlights.length > 0 ? (
+        <ul className="home-what-is__highlights">
+          {highlights.map((item) => (
+            <li key={item} className="home-what-is__highlight">
+              {item}
+            </li>
+          ))}
+        </ul>
+      ) : null}
       {cta ? (
         <button
           type="button"
@@ -120,6 +136,8 @@ export function Home({
             id="home-what-is"
             title={copy.whatIs.title}
             paragraphs={copy.whatIs.paragraphs}
+            closing={copy.whatIs.closing}
+            highlights={copy.whatIs.highlights}
             cta={{
               label: copy.whatIs.cta.label,
               onClick: goToConheca,
