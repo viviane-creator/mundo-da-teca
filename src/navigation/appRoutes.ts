@@ -9,8 +9,6 @@ export const appRoutes = {
   home: "home",
   /** Hub Brincadeiras / mapa de universos */
   brincadeiras: "universos",
-  /** Página institucional compartilhável */
-  conheca: "conheca",
   /** Minha Coleção (fichário digital) */
   minhaColecao: "meu-mundo",
   clube: "clube",

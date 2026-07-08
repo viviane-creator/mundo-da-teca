@@ -56,8 +56,7 @@ import { InstitutionalFooter } from "./components/InstitutionalFooter"
 import { Home } from "./pages/Home"
 import { ClubPage } from "./pages/ClubPage"
 import { ClubModalityPage } from "./pages/ClubModalityPage"
-import { ConhecaMundoPage } from "./pages/ConhecaMundoPage"
-import { CONHECA_SHARE_PATH, conhecaPageCopy } from "./data/conhecaPageCopy"
+import { CONHECA_SHARE_PATH } from "./data/conhecaPageCopy"
 import { clubPageCopy } from "./data/clubPageCopy"
 import { appRoutes } from "./navigation/appRoutes"
 import {
@@ -121,7 +120,6 @@ type Screen =
   | "clube-mundo-descobertas"
   | "clube-mundo-tesouros"
   | "clube-expedicao-completa"
-  | "conheca"
   | "launch"
 
 type SimpleSubScreen = Exclude<
@@ -146,7 +144,6 @@ type SimpleSubScreen = Exclude<
   | "clube-mundo-descobertas"
   | "clube-mundo-tesouros"
   | "clube-expedicao-completa"
-  | "conheca"
   | "launch"
 >
 
@@ -308,7 +305,7 @@ function isDiscoveryFlowScreen(screen: Screen): boolean {
 function readInitialScreen(): Screen {
   const path = window.location.pathname.replace(/\/$/, "") || "/"
   if (path === CONHECA_SHARE_PATH || path.endsWith("/conheca")) {
-    return appRoutes.conheca
+    return appRoutes.home
   }
   if (path === HOME_PREVIEW_PATH || path.endsWith("/home-preview")) {
     return appRoutes.home
@@ -326,8 +323,6 @@ function readInitialScreen(): Screen {
 }
 
 function resolveNavActive(screen: Screen): string {
-  if (screen === appRoutes.conheca) return "home"
-
   if (
     screen === "figurinhas" ||
     screen === "minha-caixa" ||
@@ -402,15 +397,6 @@ function AppContent() {
 
   useEffect(() => {
     const path = window.location.pathname.replace(/\/$/, "") || "/"
-
-    if (screen === appRoutes.conheca) {
-      if (path !== CONHECA_SHARE_PATH) {
-        window.history.pushState({ screen: appRoutes.conheca }, "", CONHECA_SHARE_PATH)
-      }
-      document.title = conhecaPageCopy.documentTitle
-      clearLaunchPageMeta()
-      return
-    }
 
     if (LAUNCH_MODE) {
       if (screen === appRoutes.launch) {
@@ -505,10 +491,6 @@ function AppContent() {
 
         {screen === "home" && (
           <Home setScreen={setScreen} />
-        )}
-
-        {screen === appRoutes.conheca && (
-          <ConhecaMundoPage setScreen={setScreen} />
         )}
 
         {screen === "descobertas" && (

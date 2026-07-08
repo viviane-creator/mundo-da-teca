@@ -26,25 +26,6 @@ export function ConhecaMundoPage({
       </header>
 
       <div className="conheca-page__sheet">
-        <section className="conheca-page__chapter" aria-labelledby="conheca-how">
-          <h2 id="conheca-how" className="conheca-page__chapter-title">
-            {copy.howItWorks.title}
-          </h2>
-          {copy.howItWorks.subtitle ? (
-            <p className="conheca-page__chapter-lead">{copy.howItWorks.subtitle}</p>
-          ) : null}
-          <ol className="conheca-page__flow">
-            {copy.howItWorks.steps.map((step) => (
-              <li key={step.title} className="conheca-page__flow-step">
-                <span className="conheca-page__flow-title">{step.title}</span>
-                <span className="conheca-page__flow-text">{step.text}</span>
-              </li>
-            ))}
-          </ol>
-        </section>
-
-        <ConhecaDivider />
-
         <section className="conheca-page__chapter" aria-labelledby="conheca-pillars">
           <h2 id="conheca-pillars" className="conheca-page__chapter-title">
             {copy.pillars.title}

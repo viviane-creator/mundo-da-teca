@@ -15,14 +15,12 @@ function HomeTextSection({
   title,
   paragraphs,
   closing,
-  highlights,
   cta,
 }: {
   id: string
   title: string
   paragraphs: readonly string[]
   closing?: string
-  highlights?: readonly string[]
   cta?: { label: string; onClick: () => void }
 }) {
   return (
@@ -52,15 +50,6 @@ function HomeTextSection({
       ))}
       {closing ? (
         <p className="home-chapter__prose home-chapter__prose--emphasis">{closing}</p>
-      ) : null}
-      {highlights && highlights.length > 0 ? (
-        <ul className="home-what-is__highlights">
-          {highlights.map((item) => (
-            <li key={item} className="home-what-is__highlight">
-              {item}
-            </li>
-          ))}
-        </ul>
       ) : null}
       {cta ? (
         <button
@@ -124,7 +113,6 @@ export function Home({
   const portal = portalPages.home
   const copy = homeCopy
   const goToClube = () => setScreen(appRoutes.clube)
-  const goToConheca = () => setScreen(appRoutes.conheca)
 
   return (
     <WorldPortalLayout {...portal} variant="home">
@@ -137,12 +125,24 @@ export function Home({
             title={copy.whatIs.title}
             paragraphs={copy.whatIs.paragraphs}
             closing={copy.whatIs.closing}
-            highlights={copy.whatIs.highlights}
-            cta={{
-              label: copy.whatIs.cta.label,
-              onClick: goToConheca,
-            }}
           />
+
+          <section className="home-how-it-works" aria-labelledby="home-how-it-works">
+            <h2 id="home-how-it-works" className="home-chapter__title">
+              {copy.howItWorks.title}
+            </h2>
+            {copy.howItWorks.subtitle ? (
+              <p className="home-how-it-works__lead">{copy.howItWorks.subtitle}</p>
+            ) : null}
+            <ol className="home-how-it-works__flow">
+              {copy.howItWorks.steps.map((step) => (
+                <li key={step.title} className="home-how-it-works__flow-step">
+                  <span className="home-how-it-works__flow-title">{step.title}</span>
+                  <span className="home-how-it-works__flow-text">{step.text}</span>
+                </li>
+              ))}
+            </ol>
+          </section>
 
           <section
             className="home-participate home-participate--sheet"

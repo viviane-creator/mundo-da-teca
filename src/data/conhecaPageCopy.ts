@@ -19,26 +19,9 @@ export const conhecaPageCopy = {
     closing: "",
   },
   howItWorks: {
-    title: "Como funciona?",
-    subtitle: "Uma jornada que acontece aos poucos.",
-    steps: [
-      {
-        title: "Escolha como participar.",
-        text: "Comece apenas pela plataforma digital ou escolha uma das modalidades do Clube.",
-      },
-      {
-        title: "Acesse imediatamente a plataforma.",
-        text: "Explore experiências, registre descobertas e acompanhe sua coleção.",
-      },
-      {
-        title: "Receba novos capítulos em casa.",
-        text: "Nas modalidades físicas, novos materiais chegam todos os meses para ampliar a experiência.",
-      },
-      {
-        title: "Construa uma coleção única.",
-        text: "Ao longo de aproximadamente seis meses, cada descoberta passa a fazer parte da história da criança.",
-      },
-    ],
+    title: "",
+    subtitle: "",
+    steps: [] as const,
   },
   pillars: {
     title: "O ecossistema",

@@ -10,6 +10,7 @@ export const clubPageCopy = {
     title: "Escolha como deseja participar",
     subtitle:
       "Cada modalidade foi pensada para uma etapa diferente da jornada.",
+    detailsCta: "Ver detalhes",
   },
   finalCta: {
     title: "Ainda não sabe qual escolher?",

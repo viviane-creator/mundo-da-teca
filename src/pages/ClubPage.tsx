@@ -85,13 +85,11 @@ export function ClubPage({
 
         <div className="club-page__modalities" role="list">
           {clubModalities.map((modality, index) => (
-            <button
+            <article
               key={modality.id}
-              type="button"
               role="listitem"
               className={`club-modality-card club-modality-card--${modality.id}`}
               aria-label={`${clubSealLabel(modality.id)}. ${modality.title}. ${modality.price}`}
-              onClick={() => setScreen(clubModalityScreen(modality.id))}
             >
               <span className="club-modality-card__canvas" aria-hidden="true">
                 <img
@@ -120,12 +118,19 @@ export function ClubPage({
                     ))}
                   </ul>
                   <span className="club-modality-card__price">{modality.price}</span>
+                  <button
+                    type="button"
+                    className="club-modality-card__details-cta"
+                    onClick={() => setScreen(clubModalityScreen(modality.id))}
+                  >
+                    {copy.choice.detailsCta}
+                  </button>
                 </span>
                 <span className="club-modality-card__seal" aria-hidden="true">
                   {clubSealLabel(modality.id)}
                 </span>
               </span>
-            </button>
+            </article>
           ))}
         </div>
       </section>
