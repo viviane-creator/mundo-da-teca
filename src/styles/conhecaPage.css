@@ -460,6 +460,20 @@
   overflow: hidden;
 }
 
+.conheca-pillar__panel--text {
+  display: block;
+  padding: clamp(16px, 4vw, 22px) clamp(18px, 4.5vw, 24px);
+}
+
+.conheca-pillar__panel--text .conheca-pillar__copy {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(6px, 1.5vw, 8px);
+  width: 100%;
+}
+
 .conheca-pillar__panel::before {
   content: "";
   position: absolute;
@@ -731,3 +745,492 @@
   line-height: 1;
   color: rgba(255, 252, 247, 0.52);
 }
+
+/* —— Página Conheça — folha editorial alinhada ao Clube e Home —— */
+
+.conheca-page {
+  position: relative;
+  isolation: isolate;
+  background: #f6ede2;
+  padding-bottom: clamp(36px, 8vw, 56px);
+}
+
+.conheca-page__hero {
+  position: relative;
+  padding: clamp(36px, 9vw, 52px) clamp(20px, 5vw, 28px)
+    clamp(24px, 6vw, 32px);
+  text-align: center;
+}
+
+.conheca-page__hero::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: min(92vw, 420px);
+  height: 1px;
+  transform: translateX(-50%);
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(154, 132, 117, 0.34) 18%,
+    rgba(154, 132, 117, 0.34) 82%,
+    transparent 100%
+  );
+}
+
+.conheca-page__title {
+  margin: 0 auto clamp(10px, 2.5vw, 14px);
+  max-width: min(100%, 34ch);
+  font-size: clamp(30px, 7.2vw, 40px);
+  line-height: 1.08;
+  letter-spacing: 0.01em;
+  color: #5a4030;
+}
+
+.conheca-page__lead {
+  margin: 0 auto;
+  max-width: min(100%, 48ch);
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(17px, 4.2vw, 20px);
+  line-height: 1.5;
+  color: rgba(90, 64, 48, 0.82);
+}
+
+.conheca-page__sheet {
+  width: 100%;
+  max-width: min(100%, 640px);
+  margin: 0 auto;
+  padding: clamp(8px, 2vw, 12px) clamp(16px, 4vw, 24px) 0;
+  box-sizing: border-box;
+}
+
+.conheca-page__chapter {
+  padding: clamp(4px, 1vw, 8px) 0;
+}
+
+.conheca-page__chapter--center,
+.conheca-page__chapter--final {
+  text-align: center;
+}
+
+.conheca-page__divider {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: clamp(8px, 2vw, 10px);
+  margin: clamp(22px, 5.5vw, 30px) 0;
+}
+
+.conheca-page__divider-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: rgba(154, 132, 117, 0.38);
+}
+
+.conheca-page__divider-dot:nth-child(2) {
+  transform: scale(1.18);
+  background: rgba(154, 132, 117, 0.52);
+}
+
+.conheca-page__chapter-title {
+  margin: 0 0 clamp(10px, 2.5vw, 14px);
+  font-size: clamp(26px, 6.4vw, 34px);
+  line-height: 1.1;
+  letter-spacing: 0.02em;
+  color: #6a4f3c;
+}
+
+.conheca-page__chapter--center .conheca-page__chapter-title,
+.conheca-page__chapter--final .conheca-page__chapter-title {
+  margin-inline: auto;
+  max-width: min(100%, 30ch);
+}
+
+.conheca-page__chapter-lead {
+  margin: 0 0 clamp(16px, 4vw, 22px);
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(16px, 3.8vw, 18px);
+  line-height: 1.48;
+  color: rgba(90, 64, 48, 0.76);
+}
+
+.conheca-page__chapter--center .conheca-page__chapter-lead {
+  margin-inline: auto;
+  max-width: min(100%, 40ch);
+}
+
+.conheca-page__prose {
+  max-width: min(100%, 52ch);
+}
+
+.conheca-page__prose--center {
+  margin-inline: auto;
+}
+
+.conheca-page__text {
+  margin: 0 0 clamp(12px, 3vw, 16px);
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(17px, 4.2vw, 20px);
+  line-height: 1.52;
+  color: rgba(90, 64, 48, 0.88);
+}
+
+.conheca-page__text:last-child {
+  margin-bottom: 0;
+}
+
+.conheca-page__text--emphasis {
+  color: #5a4030;
+}
+
+.conheca-page__highlights {
+  margin: 0;
+  padding: clamp(16px, 4vw, 22px) clamp(18px, 4.5vw, 24px);
+  list-style: none;
+  border: 1px dashed rgba(154, 132, 117, 0.32);
+  border-radius: 14px;
+  background: #faf6ef;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 253, 249, 0.72),
+    0 2px 10px rgba(90, 60, 30, 0.05);
+}
+
+.conheca-page__highlight {
+  position: relative;
+  margin: 0 0 clamp(8px, 2vw, 10px);
+  padding-left: 1.4em;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(16px, 3.8vw, 18px);
+  line-height: 1.46;
+  color: rgba(90, 64, 48, 0.9);
+}
+
+.conheca-page__highlight::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  top: 0.02em;
+  color: #b8956a;
+}
+
+.conheca-page__highlight:last-child {
+  margin-bottom: 0;
+}
+
+.conheca-page__flow {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: conheca-flow;
+}
+
+.conheca-page__flow-step {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(4px, 1vw, 6px);
+  margin: 0 0 clamp(18px, 4.5vw, 24px);
+  padding: 0 0 clamp(18px, 4.5vw, 24px) clamp(34px, 8.5vw, 42px);
+  border-bottom: 1px solid rgba(154, 132, 117, 0.16);
+  counter-increment: conheca-flow;
+}
+
+.conheca-page__flow-step:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.conheca-page__flow-step::before {
+  content: counter(conheca-flow);
+  position: absolute;
+  left: 0;
+  top: 0.04em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: clamp(24px, 6vw, 28px);
+  height: clamp(24px, 6vw, 28px);
+  border-radius: 50%;
+  background: rgba(185, 149, 106, 0.14);
+  border: 1px solid rgba(185, 149, 106, 0.28);
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(14px, 3.4vw, 16px);
+  font-weight: 700;
+  color: #9a7b3c;
+}
+
+.conheca-page__flow-title {
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(18px, 4.4vw, 21px);
+  font-weight: 600;
+  line-height: 1.34;
+  color: #5a4030;
+}
+
+.conheca-page__flow-text {
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(16px, 3.8vw, 18px);
+  line-height: 1.5;
+  color: rgba(90, 64, 48, 0.86);
+}
+
+.conheca-page__eco-grid {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(12px, 3vw, 16px);
+  margin-top: clamp(6px, 1.5vw, 10px);
+}
+
+.conheca-eco-card {
+  --conheca-eco-accent: #b99b5c;
+  --conheca-eco-accent-dark: #b99b5c;
+  position: relative;
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border: 4px solid var(--conheca-eco-accent-dark);
+  border-radius: 14px;
+  background: #faf6ef;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 253, 249, 0.72),
+    0 2px 10px rgba(90, 60, 30, 0.06);
+  text-align: left;
+  color: inherit;
+  cursor: pointer;
+  overflow: hidden;
+  isolation: isolate;
+  transition:
+    transform 0.22s ease,
+    box-shadow 0.22s ease,
+    border-color 0.22s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.conheca-eco-card:nth-child(even) {
+  text-align: right;
+}
+
+.conheca-eco-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--conheca-eco-accent);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 253, 249, 0.5),
+    0 6px 18px rgba(90, 60, 30, 0.1);
+}
+
+.conheca-eco-card:focus-visible {
+  outline: 2px solid #9a8475;
+  outline-offset: 4px;
+}
+
+.conheca-eco-card__layout {
+  display: flex;
+  align-items: stretch;
+  width: 100%;
+}
+
+.conheca-eco-card:nth-child(odd) .conheca-eco-card__layout {
+  flex-direction: row;
+}
+
+.conheca-eco-card:nth-child(even) .conheca-eco-card__layout {
+  flex-direction: row-reverse;
+}
+
+.conheca-eco-card__body {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: clamp(12px, 3vw, 16px);
+  padding: clamp(14px, 3.5vw, 18px) clamp(16px, 4vw, 20px);
+  pointer-events: none;
+}
+
+.conheca-eco-card:nth-child(odd) .conheca-eco-card__body {
+  flex-direction: row;
+}
+
+.conheca-eco-card:nth-child(even) .conheca-eco-card__body {
+  flex-direction: row-reverse;
+}
+
+.conheca-eco-card__cover-wrap {
+  flex-shrink: 0;
+  width: clamp(56px, 14vw, 72px);
+  height: clamp(56px, 14vw, 72px);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 3px 10px rgba(90, 60, 30, 0.1);
+}
+
+.conheca-eco-card__cover {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.conheca-eco-card__copy {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(4px, 1vw, 6px);
+  min-width: 0;
+}
+
+.conheca-eco-card:nth-child(even) .conheca-eco-card__copy {
+  align-items: flex-end;
+}
+
+.conheca-eco-card__title {
+  font-size: clamp(22px, 5.4vw, 28px);
+  line-height: 1.08;
+  color: #5a4030;
+}
+
+.conheca-eco-card__text {
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(15px, 3.7vw, 17px);
+  line-height: 1.44;
+  color: rgba(90, 64, 48, 0.88);
+  text-align: inherit;
+  max-width: min(100%, 44ch);
+}
+
+.conheca-eco-card__tab {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  align-self: stretch;
+  width: clamp(34px, 8.5vw, 42px);
+  padding: clamp(11px, 2.6vw, 14px) clamp(5px, 1.2vw, 7px);
+  background: var(--conheca-eco-accent-dark);
+  border: 1px solid rgba(255, 252, 247, 0.14);
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(10px, 2.6vw, 12px);
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  line-height: 1.12;
+  color: #fffcf7;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.conheca-eco-card:nth-child(odd) .conheca-eco-card__tab {
+  border-left: none;
+  border-radius: 0 10px 10px 0;
+}
+
+.conheca-eco-card:nth-child(even) .conheca-eco-card__tab {
+  border-right: none;
+  border-radius: 10px 0 0 10px;
+}
+
+.conheca-eco-card--plataforma-digital {
+  --conheca-eco-accent: #8fa8c6;
+  --conheca-eco-accent-dark: #7e96b8;
+}
+
+.conheca-eco-card--clube {
+  --conheca-eco-accent: #c9ad6a;
+  --conheca-eco-accent-dark: #b99b5c;
+}
+
+.conheca-eco-card--meu-mundo {
+  --conheca-eco-accent: #9ba88a;
+  --conheca-eco-accent-dark: #8a9870;
+}
+
+.conheca-eco-card--atelie {
+  --conheca-eco-accent: #c8947f;
+  --conheca-eco-accent-dark: #b47a63;
+}
+
+.conheca-page__actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(10px, 2.5vw, 14px);
+  margin-top: clamp(18px, 4.5vw, 24px);
+}
+
+.conheca-page__link {
+  margin: 0;
+  padding: 0 0 2px;
+  border: none;
+  border-bottom: 1px solid rgba(184, 149, 106, 0.38);
+  background: none;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(17px, 4.2vw, 20px);
+  font-weight: 600;
+  line-height: 1.4;
+  color: #b8956a;
+  cursor: pointer;
+  transition:
+    color 0.22s ease,
+    border-color 0.22s ease;
+}
+
+.conheca-page__link:hover {
+  color: #9a7b3c;
+  border-bottom-color: rgba(154, 123, 60, 0.55);
+}
+
+.conheca-page__link--secondary {
+  font-weight: 500;
+  color: rgba(106, 79, 60, 0.82);
+  border-bottom-color: rgba(154, 132, 117, 0.32);
+}
+
+.conheca-page__link--secondary:hover {
+  color: #6a4f3c;
+  border-bottom-color: rgba(106, 79, 60, 0.45);
+}
+
+.conheca-page__signature {
+  display: block;
+  width: min(100%, 220px);
+  height: auto;
+  margin: clamp(24px, 6vw, 32px) auto 0;
+  opacity: 0.92;
+  filter: drop-shadow(0 3px 10px rgba(90, 60, 30, 0.08));
+}
+
+@media (max-width: 767px) {
+  .conheca-page__sheet {
+    padding-inline: 12px;
+  }
+
+  .conheca-page__hero {
+    padding-inline: 16px;
+  }
+
+  .conheca-eco-card__body {
+    padding: clamp(12px, 3vw, 15px) clamp(12px, 3vw, 14px);
+    gap: clamp(10px, 2.5vw, 12px);
+  }
+
+  .conheca-eco-card__cover-wrap {
+    width: clamp(52px, 13vw, 64px);
+    height: clamp(52px, 13vw, 64px);
+  }
+
+  .conheca-eco-card__tab {
+    width: clamp(30px, 7.8vw, 36px);
+    font-size: clamp(9px, 2.4vw, 11px);
+  }
+
+  .conheca-page__flow-step {
+    padding-left: clamp(30px, 7.5vw, 36px);
+  }
+}
+

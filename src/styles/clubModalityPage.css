@@ -224,10 +224,7 @@
 }
 
 .club-modality-page__subscribe-cta {
-  min-width: min(100%, 280px);
-  padding: 13px 28px !important;
-  border-radius: 6px !important;
-  font-size: clamp(16px, 3.8vw, 18px) !important;
+  margin-inline: auto;
 }
 
 .club-modality-page__subscribe-note {

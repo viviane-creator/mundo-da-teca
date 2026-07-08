@@ -1,8 +1,15 @@
 import { styles } from "../styles/appStyles"
 
-export function AtelierComingSoonVisual() {
+export function AtelierComingSoonVisual({ compact = false }: { compact?: boolean }) {
   return (
-    <div style={styles.atelierShowcaseComingSoonBlock} aria-hidden="true">
+    <div
+      style={
+        compact
+          ? styles.atelierShowcaseComingSoonCompact
+          : styles.atelierShowcaseComingSoonBlock
+      }
+      aria-hidden="true"
+    >
       <svg
         style={styles.atelierShowcaseComingSoonSymbol}
         viewBox="0 0 24 24"

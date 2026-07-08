@@ -1,18 +1,11 @@
 import { AtelierComingSoonVisual } from "./components/AtelierComingSoonVisual"
-import { AtelierFeaturedCard } from "./components/AtelierFeaturedCard"
-import {
-  atelierComingSoonItems,
-  atelierFeaturedItems,
-  atelierShowcaseFootnote,
-} from "./data/atelierShowcase"
+import { atelierEmptyState } from "./data/atelierShowcase"
 import { atelierPortalCopy } from "./data/atelierPortalCopy"
 import { pageCovers } from "./data/pageCovers"
 import { styles } from "./styles/appStyles"
 import { WorldPortalCover, worldPortalStyles } from "./worldPortal"
 
-type SetScreen = (screen: string) => void
-
-export function AtelierShopPage({ setScreen }: { setScreen: SetScreen }) {
+export function AtelierShopPage() {
   return (
     <>
       <WorldPortalCover
@@ -27,26 +20,14 @@ export function AtelierShopPage({ setScreen }: { setScreen: SetScreen }) {
         }}
       />
       <section style={worldPortalStyles.body}>
-        <p style={styles.clubFichaHint}>{atelierPortalCopy.pageIntro}</p>
+        <p style={styles.atelierPageIntro}>{atelierPortalCopy.pageIntro}</p>
 
         <div style={styles.atelierShowcase}>
-          {atelierFeaturedItems.map((item) => (
-            <AtelierFeaturedCard key={item.id} item={item} setScreen={setScreen} />
-          ))}
-
-          <div style={styles.atelierShowcaseGrid}>
-            {atelierComingSoonItems.map((item) => (
-              <article key={item.id} style={styles.atelierShowcaseCard}>
-                <AtelierComingSoonVisual />
-                <div style={styles.atelierShowcaseCardBody}>
-                  <span style={styles.atelierShowcaseBadge}>{item.statusLabel}</span>
-                  <h3 style={styles.atelierShowcaseCardTitle}>{item.title}</h3>
-                </div>
-              </article>
-            ))}
+          <div style={styles.atelierEmptyPlaceholder} aria-label={atelierEmptyState.label}>
+            <AtelierComingSoonVisual compact />
+            <p style={styles.atelierEmptyPlaceholderLabel}>{atelierEmptyState.label}</p>
+            <p style={styles.atelierEmptyPlaceholderNote}>{atelierEmptyState.note}</p>
           </div>
-
-          <p style={styles.atelierShowcaseFootnote}>{atelierShowcaseFootnote}</p>
         </div>
       </section>
     </>

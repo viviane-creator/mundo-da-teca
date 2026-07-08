@@ -2214,6 +2214,40 @@ export const styles: Record<string, CSSProperties> = {
     gap: "20px",
   },
 
+  atelierEmptyPlaceholder: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
+    gap: "14px",
+    minHeight: "min(320px, 72vw)",
+    padding: "clamp(28px, 7vw, 40px) clamp(20px, 5vw, 28px)",
+    borderRadius: "18px",
+    border: "1px dashed rgba(196, 165, 141, 0.38)",
+    background: "rgba(255, 253, 249, 0.72)",
+    boxShadow: "0 10px 28px rgba(120,90,60,0.06)",
+    textAlign: "center",
+    boxSizing: "border-box",
+  },
+
+  atelierEmptyPlaceholderLabel: {
+    ...tecaFont.heading,
+    margin: 0,
+    fontSize: "clamp(20px, 5.2vw, 24px)",
+    lineHeight: 1.15,
+    color: "#705a4d",
+  },
+
+  atelierEmptyPlaceholderNote: {
+    ...tecaHierarchy.l5Body,
+    margin: 0,
+    maxWidth: "32ch",
+    fontSize: "clamp(15px, 3.8vw, 17px)",
+    lineHeight: 1.5,
+    color: theme.muted,
+    fontStyle: "italic",
+  },
+
   atelierShowcaseFeatured: {
     position: "relative",
     display: "flex",
@@ -2355,6 +2389,15 @@ export const styles: Record<string, CSSProperties> = {
     background: "rgba(255, 253, 249, 0.94)",
     borderBottom: "1px dashed rgba(196, 165, 141, 0.34)",
     boxSizing: "border-box",
+  },
+
+  atelierShowcaseComingSoonCompact: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    width: "56px",
+    height: "56px",
+    flexShrink: 0,
   },
 
   atelierShowcaseComingSoonSymbol: {
@@ -3077,6 +3120,13 @@ export const styles: Record<string, CSSProperties> = {
     textTransform: "uppercase",
     color: "rgba(168, 142, 80, 0.75)",
     fontWeight: 600,
+  },
+
+  atelierPageIntro: {
+    margin: "-8px 0 16px",
+    fontSize: "17.5px",
+    ...tecaFont.prose,
+    color: "#9a8475",
   },
 
   clubFichaHint: {
@@ -3854,7 +3904,7 @@ export const styles: Record<string, CSSProperties> = {
 
   meuMundoPortalTitle: {
     ...tecaFont.portalTitle,
-    fontSize: "clamp(28px, 7.5vw, 34px)",
+    fontSize: "clamp(30px, 8.2vw, 38px)",
     fontWeight: 500,
     color: "#553d30",
     margin: 0,
@@ -3865,8 +3915,8 @@ export const styles: Record<string, CSSProperties> = {
   meuMundoPortalText: {
     ...tecaHierarchy.l5Body,
     margin: 0,
-    fontSize: "16px",
-    lineHeight: 1.5,
+    fontSize: "clamp(18px, 4.6vw, 20px)",
+    lineHeight: 1.52,
     color: theme.muted,
     maxWidth: "38ch",
   },

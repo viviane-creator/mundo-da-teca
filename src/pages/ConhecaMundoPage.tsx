@@ -1,13 +1,12 @@
 import { conhecaPageCopy } from "../data/conhecaPageCopy"
-import { conhecaPageStyles as s } from "../styles/conhecaPageStyles"
 import "../styles/conhecaPage.css"
 
-function ChapterDots() {
+function ConhecaDivider() {
   return (
-    <div style={s.chapterDots} aria-hidden="true">
-      <span style={s.chapterDot} />
-      <span style={{ ...s.chapterDot, ...s.chapterDotMid }} />
-      <span style={s.chapterDot} />
+    <div className="conheca-page__divider" aria-hidden="true">
+      <span className="conheca-page__divider-dot" />
+      <span className="conheca-page__divider-dot" />
+      <span className="conheca-page__divider-dot" />
     </div>
   )
 }
@@ -20,171 +19,166 @@ export function ConhecaMundoPage({
   const copy = conhecaPageCopy
 
   return (
-    <article style={s.page}>
-      <header className="conheca-hero">
-        <div className="conheca-hero__paper" aria-hidden="true">
-          <span className="conheca-hero__splash conheca-hero__splash--olive" />
-          <span className="conheca-hero__splash conheca-hero__splash--gold" />
-          <span className="conheca-hero__splash conheca-hero__splash--blue" />
-          <span className="conheca-hero__splash conheca-hero__splash--terracotta" />
-          <span className="conheca-hero__speckle" />
-        </div>
-        <div className="conheca-organic conheca-organic--paper conheca-organic--hero">
-          <h1 className="conheca-hero-title">{copy.documentTitle}</h1>
-          <p className="conheca-hero-lead">{copy.hero.text}</p>
-        </div>
+    <article className="conheca-page">
+      <header className="conheca-page__hero">
+        <h1 className="conheca-page__title">{copy.documentTitle}</h1>
+        <p className="conheca-page__lead">{copy.hero.text}</p>
       </header>
 
-      <section style={s.chapterFirst} aria-labelledby="conheca-curiosity">
-        <h2 id="conheca-curiosity" style={s.sectionTitle}>
-          {copy.curiosity.title}
-        </h2>
-        <div className="conheca-organic conheca-organic--olive">
-          {copy.curiosity.lines.map((line) => (
-            <p key={line} className="conheca-organic__text">
-              {line}
-            </p>
-          ))}
-          <p className="conheca-organic__emphasis">{copy.curiosity.closing}</p>
-        </div>
-      </section>
-
-      <section style={s.chapterCompact} aria-labelledby="conheca-journey">
-        <h2 id="conheca-journey" style={s.srOnly}>
-          Informações essenciais
-        </h2>
-        {copy.journey.steps.length > 0 ? (
-          <div className="conheca-organic conheca-organic--gold conheca-organic--compact">
-            <ul className="conheca-organic__list">
-              {copy.journey.steps.map((step) => (
-                <li key={step} className="conheca-organic__check">
-                  {step}
-                </li>
-              ))}
-            </ul>
-          </div>
-        ) : null}
-      </section>
-
-      <section style={s.sectionBreath} aria-labelledby="conheca-how">
-        <h2 id="conheca-how" style={s.sectionTitle}>
-          {copy.howItWorks.title}
-        </h2>
-        {copy.howItWorks.subtitle ? (
-          <p style={s.sectionSubtitle}>{copy.howItWorks.subtitle}</p>
-        ) : null}
-        <div className="conheca-how">
-          {copy.howItWorks.steps.map((step, index) => (
-            <div key={step.title} className="conheca-how-step">
-              <p className="conheca-how-step__body">
-                <span className="conheca-how__number">{index + 1}.</span>
-                <span className="conheca-how__title">{step.title}</span>
-                <span className="conheca-how__text">{step.text}</span>
+      <div className="conheca-page__sheet">
+        <section className="conheca-page__chapter" aria-labelledby="conheca-curiosity">
+          <h2 id="conheca-curiosity" className="conheca-page__chapter-title">
+            {copy.curiosity.title}
+          </h2>
+          <div className="conheca-page__prose">
+            {copy.curiosity.lines.map((line) => (
+              <p key={line} className="conheca-page__text">
+                {line}
               </p>
-              {index < copy.howItWorks.steps.length - 1 ? (
-                <span className="conheca-how__arrow" aria-hidden="true">
-                  ↓
-                </span>
-              ) : null}
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section style={s.chapter} aria-labelledby="conheca-pillars">
-        <ChapterDots />
-        <h2 id="conheca-pillars" style={s.sectionTitle}>
-          {copy.pillars.title}
-        </h2>
-        <p style={s.sectionSubtitle}>{copy.pillars.subtitle}</p>
-        <div className="conheca-pillar-grid">
-          {copy.pillars.items.map((item) => (
-            <button
-              key={item.id}
-              type="button"
-              className={`conheca-pillar conheca-pillar--${item.id}${
-                item.featured ? " conheca-pillar--featured" : ""
-              }`}
-              onClick={() => setScreen(item.screen)}
-            >
-              <span className="conheca-pillar__aba" aria-hidden="true">
-                {item.abaLabel}
-              </span>
-              <span className="conheca-pillar__panel">
-                <span className="conheca-pillar__cover-wrap">
-                  <img
-                    className="conheca-pillar__cover"
-                    src={item.cover}
-                    alt=""
-                    width={168}
-                    height={168}
-                    loading="lazy"
-                    decoding="async"
-                    draggable={false}
-                    aria-hidden="true"
-                  />
-                </span>
-                <span className="conheca-pillar__copy">
-                  <span className="conheca-pillar__title">{item.title}</span>
-                  <span className="conheca-pillar__text">{item.text}</span>
-                </span>
-              </span>
-            </button>
-          ))}
-        </div>
-      </section>
-
-      <section style={s.chapterCompact} aria-labelledby="conheca-audience">
-        <h2 id="conheca-audience" style={s.sectionTitle}>
-          {copy.audience.title}
-        </h2>
-        <div className="conheca-organic conheca-organic--blue">
-          {copy.audience.paragraphs.map((paragraph) => (
-            <p key={paragraph} className="conheca-organic__text">
-              {paragraph}
+            ))}
+            <p className="conheca-page__text conheca-page__text--emphasis">
+              {copy.curiosity.closing}
             </p>
-          ))}
-        </div>
-      </section>
+          </div>
+        </section>
 
-      <section style={s.finalChapter} aria-labelledby="conheca-invitation">
-        <ChapterDots />
-        <div className="conheca-organic conheca-organic--warm conheca-organic--wide">
-          <h2 id="conheca-invitation" className="conheca-organic__title">
+        {copy.journey.steps.length > 0 ? (
+          <>
+            <ConhecaDivider />
+            <section className="conheca-page__chapter" aria-label="Informações essenciais">
+              <ul className="conheca-page__highlights">
+                {copy.journey.steps.map((step) => (
+                  <li key={step} className="conheca-page__highlight">
+                    {step}
+                  </li>
+                ))}
+              </ul>
+            </section>
+          </>
+        ) : null}
+
+        <ConhecaDivider />
+
+        <section className="conheca-page__chapter" aria-labelledby="conheca-how">
+          <h2 id="conheca-how" className="conheca-page__chapter-title">
+            {copy.howItWorks.title}
+          </h2>
+          {copy.howItWorks.subtitle ? (
+            <p className="conheca-page__chapter-lead">{copy.howItWorks.subtitle}</p>
+          ) : null}
+          <ol className="conheca-page__flow">
+            {copy.howItWorks.steps.map((step) => (
+              <li key={step.title} className="conheca-page__flow-step">
+                <span className="conheca-page__flow-title">{step.title}</span>
+                <span className="conheca-page__flow-text">{step.text}</span>
+              </li>
+            ))}
+          </ol>
+        </section>
+
+        <ConhecaDivider />
+
+        <section className="conheca-page__chapter" aria-labelledby="conheca-pillars">
+          <h2 id="conheca-pillars" className="conheca-page__chapter-title">
+            {copy.pillars.title}
+          </h2>
+          <p className="conheca-page__chapter-lead">{copy.pillars.subtitle}</p>
+          <div className="conheca-page__eco-grid">
+            {copy.pillars.items.map((item) => (
+              <button
+                key={item.id}
+                type="button"
+                className={`conheca-eco-card conheca-eco-card--${item.id}`}
+                aria-label={`${item.title}. ${item.text}`}
+                onClick={() => setScreen(item.screen)}
+              >
+                <span className="conheca-eco-card__layout">
+                  <span className="conheca-eco-card__body">
+                    <span className="conheca-eco-card__cover-wrap">
+                      <img
+                        className="conheca-eco-card__cover"
+                        src={item.cover}
+                        alt=""
+                        width={72}
+                        height={72}
+                        loading="lazy"
+                        decoding="async"
+                        draggable={false}
+                        aria-hidden="true"
+                      />
+                    </span>
+                    <span className="conheca-eco-card__copy">
+                      <span className="conheca-eco-card__title">{item.title}</span>
+                      <span className="conheca-eco-card__text">{item.text}</span>
+                    </span>
+                  </span>
+                  <span className="conheca-eco-card__tab" aria-hidden="true">
+                    {item.abaLabel}
+                  </span>
+                </span>
+              </button>
+            ))}
+          </div>
+        </section>
+
+        <ConhecaDivider />
+
+        <section className="conheca-page__chapter conheca-page__chapter--center" aria-labelledby="conheca-audience">
+          <h2 id="conheca-audience" className="conheca-page__chapter-title">
+            {copy.audience.title}
+          </h2>
+          <div className="conheca-page__prose conheca-page__prose--center">
+            {copy.audience.paragraphs.map((paragraph) => (
+              <p key={paragraph} className="conheca-page__text">
+                {paragraph}
+              </p>
+            ))}
+          </div>
+        </section>
+
+        <ConhecaDivider />
+
+        <section
+          className="conheca-page__chapter conheca-page__chapter--final"
+          aria-labelledby="conheca-invitation"
+        >
+          <h2 id="conheca-invitation" className="conheca-page__chapter-title">
             {copy.invitation.title}
           </h2>
-          {copy.invitation.lines.map((line) => (
-            <p key={line} className="conheca-organic__text">
-              {line}
-            </p>
-          ))}
-          <div className="conheca-organic__actions">
+          <div className="conheca-page__prose conheca-page__prose--center">
+            {copy.invitation.lines.map((line) => (
+              <p key={line} className="conheca-page__text">
+                {line}
+              </p>
+            ))}
+          </div>
+          <div className="conheca-page__actions">
             <button
               type="button"
-              className="home-organic-cta home-organic-cta--club"
+              className="conheca-page__link"
               onClick={() => setScreen(copy.invitation.cta.screen)}
             >
               {copy.invitation.cta.label}
             </button>
             <button
               type="button"
-              className="home-organic-cta home-organic-cta--club home-organic-cta--tilt-alt"
+              className="conheca-page__link conheca-page__link--secondary"
               onClick={() => setScreen(copy.invitation.secondaryCta.screen)}
             >
               {copy.invitation.secondaryCta.label}
             </button>
           </div>
-        </div>
-        <img
-          src={copy.signature.logo}
-          alt={copy.signature.logoAlt}
-          width={400}
-          height={120}
-          loading="lazy"
-          decoding="async"
-          style={s.signatureLogo}
-        />
-      </section>
+          <img
+            className="conheca-page__signature"
+            src={copy.signature.logo}
+            alt={copy.signature.logoAlt}
+            width={400}
+            height={120}
+            loading="lazy"
+            decoding="async"
+          />
+        </section>
+      </div>
     </article>
   )
 }

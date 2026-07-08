@@ -5,5 +5,5 @@ export const atelierPortalCopy = {
     "Objetos criados para guardar descobertas, organizar coleções e continuar explorando.",
   pageTitle: "O Ateliê",
   pageIntro:
-    "Um lugar para encontrar tesouros que tornam as descobertas ainda mais especiais.",
+    "Objetos especiais para levar as descobertas para casa — em breve por aqui.",
 } as const

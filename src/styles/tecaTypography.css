@@ -13,7 +13,10 @@
 .club-page__choice-title-text,
 .club-modality-card__title,
 .club-modality-page__title,
-.club-modality-page__section-title {
+.club-modality-page__section-title,
+.conheca-page__title,
+.conheca-page__chapter-title,
+.conheca-eco-card__title {
   font-family: var(--teca-font-page-title);
   font-weight: 400;
   text-transform: none;

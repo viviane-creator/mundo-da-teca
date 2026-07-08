@@ -19,9 +19,9 @@ export const conhecaPageCopy = {
     title: "",
     body: "",
     steps: [
-      "✓ Acesso imediato à Plataforma Digital",
-      "✓ Jornada organizada em aproximadamente 6 meses",
-      "✓ Modalidades com envios físicos mensais",
+      "Acesso imediato à Plataforma Digital",
+      "Jornada organizada em aproximadamente 6 meses",
+      "Modalidades com envios físicos mensais",
     ],
     closing: "",
   },

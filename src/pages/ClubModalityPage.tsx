@@ -7,7 +7,6 @@ import {
 } from "../data/clubModalities"
 import { homePlanStainSrc } from "../data/homePlanStains"
 import { appRoutes } from "../navigation/appRoutes"
-import { homeCtaClassName, homeCtaStyle } from "../styles/homeCta"
 import "../styles/clubModalityPage.css"
 
 export function ClubModalityPage({
@@ -118,8 +117,7 @@ export function ClubModalityPage({
         </h2>
         <button
           type="button"
-          className={`club-modality-page__subscribe-cta ${homeCtaClassName(modality.ctaTone)}`}
-          style={homeCtaStyle(modality.ctaTone)}
+          className="home-organic-cta home-organic-cta--club club-modality-page__subscribe-cta"
         >
           {placeholders.subscribe.label}
         </button>

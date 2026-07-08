@@ -562,7 +562,7 @@ function AppContent() {
           <UniversosPage setScreen={setScreen} />
         )}
 
-        {screen === "atelie" && <AtelierShopPage setScreen={setScreen} />}
+        {screen === "atelie" && <AtelierShopPage />}
 
         {isAtelierProductScreen(screen) && (() => {
           const good = getAtelierGoodById(getAtelierProductId(screen))
