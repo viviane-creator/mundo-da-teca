@@ -26,7 +26,7 @@ export const homeCopy = {
       "Ao entrar, você recebe acesso imediato à plataforma e pode começar a explorar no mesmo dia. Se escolher uma modalidade do Clube, sua família também participa das expedições mensais, recebendo novos capítulos dessa jornada em casa.",
     highlights: [
       "Acesso imediato à Plataforma Digital",
-      "Jornada organizada em aproximadamente 6 meses",
+      "Jornada organizada em 6 meses",
       "Modalidades com envios físicos mensais",
     ],
     cta: {
