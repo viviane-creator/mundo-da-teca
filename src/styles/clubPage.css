@@ -717,10 +717,16 @@
   }
 
   .club-modality-block__layout,
+  .club-modality-block:nth-child(odd) .club-modality-block__layout,
   .club-modality-block:nth-child(even) .club-modality-block__layout {
     flex-direction: column;
     align-items: stretch;
     gap: clamp(16px, 4vw, 22px);
+  }
+
+  .club-modality-block__copy {
+    width: 100%;
+    max-width: 100%;
   }
 
   .club-modality-block__description,
