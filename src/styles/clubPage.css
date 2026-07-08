@@ -683,34 +683,16 @@
   .club-modality-block {
     overflow: hidden;
     padding: clamp(14px, 3.5vw, 20px) 14px;
-    text-align: left;
-  }
-
-  .club-modality-block:nth-child(even) {
-    text-align: left;
-  }
-
-  .club-modality-block__intro,
-  .club-modality-block:nth-child(even) .club-modality-block__intro {
-    align-items: flex-start;
   }
 
   .club-modality-block__title-wrap {
     overflow: hidden;
-    min-height: clamp(64px, 16vw, 88px);
+    min-height: clamp(72px, 18vw, 96px);
     padding-top: clamp(8px, 2vw, 12px);
     padding-bottom: clamp(8px, 2vw, 12px);
   }
 
-  .club-modality-block__stain {
-    width: min(100vw, 480px);
-    opacity: 0.5;
-    transform: translate(-50%, -50%) scale(0.78, 0.95);
-  }
-
-  .club-modality-block__title,
-  .club-modality-block:nth-child(even) .club-modality-block__title {
-    text-align: left;
+  .club-modality-block__title {
     white-space: normal;
     max-width: min(100%, 34ch);
     line-height: 1.14;
@@ -729,44 +711,17 @@
     max-width: 100%;
   }
 
-  .club-modality-block__description,
-  .club-modality-block:nth-child(even) .club-modality-block__description {
-    margin-left: 0;
-    text-align: left;
+  .club-modality-block__description {
     max-width: 100%;
     font-size: clamp(17px, 4.2vw, 20px);
   }
 
-  .club-modality-block__benefits,
-  .club-modality-block:nth-child(even) .club-modality-block__benefits {
-    margin-left: 0;
-  }
-
-  .club-modality-block__benefit,
-  .club-modality-block:nth-child(even) .club-modality-block__benefit {
-    justify-content: flex-start;
-    text-align: left;
-  }
-
-  .club-modality-block__price,
-  .club-modality-block:nth-child(even) .club-modality-block__price {
-    margin-left: 0;
-    text-align: left;
-  }
-
-  .club-modality-block__cta,
-  .club-modality-block:nth-child(even) .club-modality-block__cta {
-    align-self: center;
-    width: min(100%, 288px);
-    min-height: auto;
-    padding: 14px 24px;
-    font-size: clamp(19px, 4.8vw, 22px);
-    transform: rotate(-1deg);
-    border-radius: 999px;
+  .club-modality-block__cta {
+    align-self: flex-start;
   }
 
   .club-modality-block:nth-child(even) .club-modality-block__cta {
-    transform: rotate(1deg);
+    align-self: flex-end;
   }
 
   .club-page__compare {

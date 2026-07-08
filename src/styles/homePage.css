@@ -269,12 +269,12 @@
 .home-participate__invites {
   display: flex;
   flex-direction: column;
-  gap: clamp(4px, 1vw, 8px);
+  gap: clamp(7px, 1.8vw, 13px);
   width: 100%;
   max-width: 100%;
   margin: 0;
   padding: 0;
-  overflow: hidden;
+  overflow: visible;
 }
 
 /* —— Planos — mancha de fundo + texto —— */
@@ -319,8 +319,8 @@
   position: relative;
   display: flex;
   align-items: center;
-  min-height: clamp(128px, 32vw, 168px);
-  padding: clamp(4px, 1vw, 8px) clamp(20px, 5vw, 28px);
+  min-height: clamp(152px, 38vw, 190px);
+  padding: clamp(6px, 1.6vw, 10px) clamp(20px, 5vw, 28px);
   overflow: hidden;
 }
 
@@ -630,44 +630,29 @@
   }
 
   .home-participate__invites {
-    gap: clamp(2px, 0.6vw, 6px) !important;
+    gap: clamp(14px, 3.5vw, 22px);
   }
 
-  .home-participate-invite {
-    overflow: hidden;
+  .home-participate-invite:nth-child(odd) .home-participate-invite__poster {
+    justify-content: flex-start;
   }
 
-  .home-participate-invite:nth-child(2) {
-    margin-top: 0;
+  .home-participate-invite:nth-child(even) .home-participate-invite__poster {
+    justify-content: flex-end;
   }
 
-  .home-participate-invite__poster {
-    min-height: clamp(120px, 30vw, 152px);
-    padding-top: clamp(6px, 1.5vw, 10px);
-    padding-bottom: clamp(6px, 1.5vw, 10px);
-    overflow: hidden;
+  .home-participate-invite:nth-child(odd) .home-participate-invite__copy {
+    align-items: flex-start;
+    text-align: left;
+    margin-right: auto;
+    margin-left: 0;
   }
 
-  .home-participate-invite__stain {
-    width: min(112vw, 520px);
-    opacity: 0.52;
-    transform: translate(-50%, -50%) scale(0.72, 0.92);
-  }
-
-  .home-participate-invite--explorador-digital .home-participate-invite__stain {
-    transform: translate(-52%, -50%) scale(0.72, 0.92);
-  }
-
-  .home-participate-invite--mundo-descobertas .home-participate-invite__stain {
-    transform: translate(-48%, -50%) scale(0.72, 0.92);
-  }
-
-  .home-participate-invite--mundo-tesouros .home-participate-invite__stain {
-    transform: translate(-52%, -50%) scale(0.72, 0.92);
-  }
-
-  .home-participate-invite--expedicao-completa .home-participate-invite__stain {
-    transform: translate(-48%, -50%) scale(0.72, 0.92);
+  .home-participate-invite:nth-child(even) .home-participate-invite__copy {
+    align-items: flex-end;
+    text-align: right;
+    margin-left: auto;
+    margin-right: 0;
   }
 
   .home-participate-invite__copy {
@@ -741,11 +726,11 @@
   }
 
   .home-participate__invites {
-    gap: clamp(4px, 1vw, 8px);
+    gap: clamp(7px, 1.8vw, 13px);
   }
 
   .home-participate-invite__poster {
-    min-height: 152px;
+    min-height: 180px;
   }
 
   .home-participate-invite__stain {
