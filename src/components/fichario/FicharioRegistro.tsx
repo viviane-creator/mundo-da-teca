@@ -19,30 +19,68 @@ const discoveryRegistroValor: CSSProperties = {
   lineHeight: 1.45,
 }
 
+const discoveryRegistroRowLarge: CSSProperties = {
+  ...discoveryRegistroRow,
+  fontSize: "26px",
+  lineHeight: 1.45,
+  gap: "16px",
+}
+
+const discoveryRegistroLabelLarge: CSSProperties = {
+  ...discoveryRegistroLabel,
+  fontSize: "24px",
+  minWidth: "156px",
+  letterSpacing: "2.4px",
+}
+
+const discoveryRegistroValorLarge: CSSProperties = {
+  ...discoveryRegistroValor,
+  fontSize: "26px",
+  lineHeight: 1.45,
+}
+
 export function FicharioRegistro({
   fields,
   style,
   labelColor,
   variant = "default",
+  enlarged = false,
 }: {
   fields: ReadonlyArray<{ label: string; value: string }>
   style?: CSSProperties
   labelColor?: string
   variant?: "default" | "discovery"
+  enlarged?: boolean
 }) {
   const rowStyle =
-    variant === "discovery" ? discoveryRegistroRow : tecaFichario.registroRow()
+    variant === "discovery"
+      ? enlarged
+        ? discoveryRegistroRowLarge
+        : discoveryRegistroRow
+      : tecaFichario.registroRow()
   const labelStyle =
     variant === "discovery"
-      ? discoveryRegistroLabel
+      ? enlarged
+        ? discoveryRegistroLabelLarge
+        : discoveryRegistroLabel
       : tecaFichario.registroLabel()
   const valueStyle =
     variant === "discovery"
-      ? discoveryRegistroValor
+      ? enlarged
+        ? discoveryRegistroValorLarge
+        : discoveryRegistroValor
       : tecaFichario.registroValor()
 
   return (
-    <div style={{ ...tecaFichario.registro(), ...style }}>
+    <div
+      style={{
+        ...tecaFichario.registro(),
+        ...(variant === "discovery" && enlarged
+          ? { gap: "8px", paddingTop: "20px" }
+          : {}),
+        ...style,
+      }}
+    >
       {fields.map((field) => (
         <p key={field.label} style={rowStyle}>
           <span

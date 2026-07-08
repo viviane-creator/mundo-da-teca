@@ -59,11 +59,11 @@ export function PlayExperienceCard({
         style={{
           position: "absolute",
           left: 0,
-          top: expanded ? "14px" : "18%",
+          top: expanded ? "28px" : "18%",
           bottom: expanded ? undefined : "18%",
-          width: "2px",
-          height: expanded ? "28px" : undefined,
-          borderRadius: "1px",
+          width: "4px",
+          height: expanded ? "56px" : undefined,
+          borderRadius: "2px",
           background: accent.ink,
           opacity: 0.42,
         }}
@@ -75,7 +75,7 @@ export function PlayExperienceCard({
         style={{
           ...styles.experienceAccordionTrigger,
           ...(expanded ? styles.experienceAccordionTriggerOpen : {}),
-          paddingLeft: "18px",
+          paddingLeft: "36px",
         }}
       >
         <span
@@ -103,6 +103,7 @@ export function PlayExperienceCard({
         <div style={styles.experienceAccordionPanel}>
           <FicharioFicha
             variant="descoberta"
+            enlarged
             codigo={formatFichaCodigo(universeId, index)}
             catalogAccent={accent}
             image={neutralImage || hideImage ? undefined : imageSrc}
@@ -129,6 +130,7 @@ export function PlayExperienceCard({
 
             <FicharioRegistro
               variant="discovery"
+              enlarged
               labelColor={accent.ink}
               fields={discoveryMetaFields.map((field) => ({
                 label: field.label,

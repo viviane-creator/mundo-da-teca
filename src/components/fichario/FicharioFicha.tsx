@@ -7,6 +7,7 @@ const FURO_COUNT = 5
 function FichaCatalogChrome({
   codigo,
   compact = false,
+  enlarged = false,
   label = "ficha nº",
   accentInk,
   accentBorder,
@@ -14,6 +15,7 @@ function FichaCatalogChrome({
 }: {
   codigo?: string
   compact?: boolean
+  enlarged?: boolean
   label?: string
   accentInk?: string
   accentBorder?: string
@@ -22,18 +24,34 @@ function FichaCatalogChrome({
   const codigoStyle = accentInk
     ? {
         ...tecaFichario.fichaCodigo(),
+        fontSize: enlarged ? "18px" : "9px",
+        letterSpacing: enlarged ? "3px" : "1.5px",
         color: accentInk,
         opacity: 0.9,
         border: `1px solid ${accentBorder ?? accentInk}`,
         borderRadius: "999px",
-        padding: "2px 8px",
+        padding: enlarged ? "4px 16px" : "2px 8px",
         background: accentBadgeBg ?? "transparent",
       }
-    : tecaFichario.fichaCodigo()
+    : {
+        ...tecaFichario.fichaCodigo(),
+        ...(enlarged
+          ? { fontSize: "18px", letterSpacing: "3px", padding: "4px 16px" }
+          : {}),
+      }
 
   const codigoCompactStyle = accentInk
-    ? { ...tecaFichario.fichaCodigoCompact(), color: accentInk, opacity: 0.9 }
-    : tecaFichario.fichaCodigoCompact()
+    ? {
+        ...tecaFichario.fichaCodigoCompact(),
+        fontSize: enlarged ? "16px" : "8px",
+        letterSpacing: enlarged ? "2.6px" : "1.3px",
+        color: accentInk,
+        opacity: 0.9,
+      }
+    : {
+        ...tecaFichario.fichaCodigoCompact(),
+        ...(enlarged ? { fontSize: "16px", letterSpacing: "2.6px" } : {}),
+      }
 
   if (compact) {
     if (!codigo) return null
@@ -45,10 +63,29 @@ function FichaCatalogChrome({
   }
 
   return (
-    <div style={tecaFichario.fichaPerforacaoWrap()}>
-      <div style={tecaFichario.fichaPerforacao()} aria-hidden="true">
+    <div
+      style={{
+        ...tecaFichario.fichaPerforacaoWrap(),
+        ...(enlarged
+          ? { gap: "20px", padding: "14px 28px 12px" }
+          : {}),
+      }}
+    >
+      <div
+        style={{
+          ...tecaFichario.fichaPerforacao(),
+          ...(enlarged ? { gap: "10px" } : {}),
+        }}
+        aria-hidden="true"
+      >
         {Array.from({ length: FURO_COUNT }, (_, index) => (
-          <span key={index} style={tecaFichario.fichaFuro()} />
+          <span
+            key={index}
+            style={{
+              ...tecaFichario.fichaFuro(),
+              ...(enlarged ? { width: "10px", height: "10px" } : {}),
+            }}
+          />
         ))}
       </div>
       {codigo && (
@@ -70,6 +107,7 @@ export function FicharioFicha({
   catalogAccent,
   selected = false,
   compact = false,
+  enlarged = false,
   flat = false,
   variant = "descoberta",
   layout = "vertical",
@@ -92,6 +130,7 @@ export function FicharioFicha({
   catalogAccent?: Pick<UniverseAccent, "ink" | "border" | "badgeBg">
   selected?: boolean
   compact?: boolean
+  enlarged?: boolean
   flat?: boolean
   variant?: "descoberta" | "referencia" | "memoria" | "complemento"
   layout?: "vertical" | "horizontal"
@@ -155,7 +194,7 @@ export function FicharioFicha({
           : flat
             ? {
                 ...tecaFichario.ficha(),
-                padding: "18px 16px 16px",
+                padding: enlarged ? "36px 32px 32px" : "18px 16px 16px",
                 ...(selected ? tecaFichario.fichaSelected() : {}),
                 ...tecaTilt(tilt ?? 0),
               }
@@ -194,7 +233,7 @@ export function FicharioFicha({
             display: "block",
             background: "rgba(248,239,228,0.55)",
             border: `1px dashed ${tecaFichario.material.lineSoft}`,
-            borderRadius: "12px",
+            borderRadius: enlarged ? "24px" : "12px",
           }
         : imageVariant === "editorialCapa"
           ? tecaFichario.fichaEditorialCapaImage()
@@ -205,7 +244,9 @@ export function FicharioFicha({
       ? tecaFichario.fichaMemoriaBody()
       : flat
         ? undefined
-        : tecaFichario.fichaBody()
+        : enlarged
+          ? { padding: "24px 32px 28px" }
+          : tecaFichario.fichaBody()
 
   const article = (
     <article style={{ ...fichaStyle, ...style }}>
@@ -215,6 +256,7 @@ export function FicharioFicha({
             <FichaCatalogChrome
               codigo={codigo}
               compact={compact}
+              enlarged={enlarged}
               label={chromeLabel}
               accentInk={catalogAccent?.ink}
               accentBorder={catalogAccent?.border}
@@ -254,6 +296,7 @@ export function FicharioFicha({
             <FichaCatalogChrome
               codigo={codigo}
               compact={compact}
+              enlarged={enlarged}
               label={chromeLabel}
               accentInk={catalogAccent?.ink}
               accentBorder={catalogAccent?.border}
@@ -324,7 +367,7 @@ export function FicharioFicha({
                 display: "block",
                 background: "#fffdf9",
                 ...(imageVariant === "squareCapa"
-                  ? { borderRadius: "12px" }
+                  ? { borderRadius: enlarged ? "24px" : "12px" }
                   : {}),
               }}
               aria-hidden="true"

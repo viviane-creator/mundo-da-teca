@@ -1946,7 +1946,7 @@ export const styles: Record<string, CSSProperties> = {
     display: "flex",
     flexDirection: "column",
     gap: 0,
-    borderRadius: "18px",
+    borderRadius: "36px",
     overflow: "hidden",
     border: `1px dashed rgba(196, 165, 141, 0.38)`,
     boxShadow: "0 10px 28px rgba(120,90,60,0.05)",
@@ -1965,24 +1965,24 @@ export const styles: Record<string, CSSProperties> = {
     width: "100%",
     border: "none",
     background: "transparent",
-    padding: "15px 16px 15px 14px",
+    padding: "30px 32px 30px 28px",
     display: "flex",
     alignItems: "center",
-    gap: "10px",
+    gap: "20px",
     cursor: "pointer",
     textAlign: "left",
     WebkitTapHighlightColor: "transparent",
   },
 
   experienceAccordionTriggerOpen: {
-    paddingBottom: "12px",
+    paddingBottom: "24px",
   },
 
   experienceAccordionArrow: {
     flexShrink: 0,
-    width: "16px",
+    width: "32px",
     fontFamily: "'Cormorant Garamond', serif",
-    fontSize: "17px",
+    fontSize: "34px",
     lineHeight: 1,
     color: "#b3815f",
     opacity: 0.9,
@@ -1990,7 +1990,7 @@ export const styles: Record<string, CSSProperties> = {
 
   experienceAccordionTitle: {
     ...tecaFichario.fichaTitle(),
-    fontSize: "22px",
+    fontSize: "44px",
     lineHeight: 1.15,
     margin: 0,
     flex: 1,
@@ -1999,14 +1999,14 @@ export const styles: Record<string, CSSProperties> = {
 
   experienceAccordionSeal: {
     flexShrink: 0,
-    maxWidth: "74px",
-    fontSize: "6.5px",
+    maxWidth: "148px",
+    fontSize: "13px",
     letterSpacing: "0.12em",
     textTransform: "uppercase",
     color: "#a67c52",
     border: "1px solid #e2cdb8",
     borderRadius: "999px",
-    padding: "4px 7px",
+    padding: "8px 14px",
     background: "rgba(248, 236, 223, 0.7)",
     fontFamily: "'Cormorant Garamond', serif",
     fontWeight: 600,
@@ -2015,10 +2015,10 @@ export const styles: Record<string, CSSProperties> = {
   },
 
   experienceAccordionPanel: {
-    padding: "0 10px 18px",
+    padding: "0 20px 36px",
     display: "flex",
     flexDirection: "column",
-    gap: "4px",
+    gap: "8px",
   },
 
   experienceStackItem: {
@@ -2071,9 +2071,9 @@ export const styles: Record<string, CSSProperties> = {
   },
 
   experienceCardInvite: {
-    margin: "0 0 12px",
+    margin: "0 0 24px",
     ...tecaHierarchy.l5Body,
-    fontSize: "16px",
+    fontSize: "32px",
     lineHeight: 1.5,
     color: theme.muted,
   },
@@ -2097,27 +2097,27 @@ export const styles: Record<string, CSSProperties> = {
   experienceDetail: {
     background: "transparent",
     borderRadius: tecaRadius.lg,
-    padding: "12px 4px 4px",
+    padding: "24px 8px 8px",
     border: "none",
     borderTop: `1px dashed rgba(196, 165, 141, 0.35)`,
   },
 
   experienceDetailTitle: {
-    margin: "0 0 14px",
+    margin: "0 0 28px",
     textAlign: "center",
     fontFamily: "'Cormorant Garamond', serif",
-    fontSize: "26px",
+    fontSize: "52px",
     color: theme.text,
   },
 
   experienceDetailSection: {
-    marginBottom: "12px",
+    marginBottom: "24px",
   },
 
   experienceDetailLabel: {
-    margin: "0 0 4px",
-    fontSize: "9px",
-    letterSpacing: "2px",
+    margin: "0 0 8px",
+    fontSize: "18px",
+    letterSpacing: "4px",
     textTransform: "uppercase",
     color: "#b3815f",
     fontWeight: 700,
@@ -2126,7 +2126,7 @@ export const styles: Record<string, CSSProperties> = {
   experienceDetailText: {
     margin: 0,
     fontFamily: "'Cormorant Garamond', serif",
-    fontSize: "16px",
+    fontSize: "32px",
     lineHeight: 1.5,
     color: "#7a6254",
   },

@@ -107,7 +107,7 @@ export function PlayUniversePage({
             ...styles.experienceCollectionTitle,
             paddingBottom: "10px",
             borderBottom: `1px solid ${accent.line}`,
-            maxWidth: "220px",
+            maxWidth: "440px",
             marginLeft: "auto",
             marginRight: "auto",
           }}
