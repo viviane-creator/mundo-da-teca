@@ -222,10 +222,12 @@ const p: Record<string, CSSProperties> = {
     lineHeight: 1.06,
     letterSpacing: "0.01em",
     color: tecaColors.text,
-    whiteSpace: "nowrap",
   },
   titleCompact: {
-    fontSize: "57.6px",
+    fontSize: "clamp(32px, 8.5vw, 57.6px)",
+    lineHeight: 1.06,
+    maxWidth: "min(100%, 14ch)",
+    marginInline: "auto",
   },
   heroTagline: {
     ...tecaHierarchy.l2Poetic,
@@ -364,6 +366,7 @@ function PortalHeroOverlay({
         <img
           src="/logo/logo.webp"
           alt="Mundo da Teca"
+          className="world-portal-logo-art"
           style={p.logoInArt}
         />
       ) : null}
@@ -382,6 +385,13 @@ function PortalHeroOverlay({
                 <p style={p.heroKicker}>{hero.kicker}</p>
               ) : null}
               <h1
+                className={
+                  variant === "footer"
+                    ? "world-portal-hero-title-footer"
+                    : hero.compactTitle && variant !== "footer"
+                      ? "world-portal-title-compact"
+                      : undefined
+                }
                 style={{
                   ...(variant === "footer"
                     ? p.heroTitleFooter
@@ -449,6 +459,7 @@ export function WorldPortalHeader({
     <header style={p.header}>
       {kicker && <p style={p.kicker}>{kicker}</p>}
       <h1
+        className={compactTitle ? "world-portal-title-compact" : undefined}
         style={{
           ...p.title,
           ...(compactTitle ? p.titleCompact : {}),
@@ -521,7 +532,10 @@ export function WorldPortalLayout({
       >
         <PortalHeroOverlay hero={hero} vignetteHome={variant === "home"} />
       </PageCover>
-      <section style={variant === "home" ? p.bodyHome : p.body}>
+      <section
+        className={`world-portal-body${variant === "home" ? " world-portal-body--home" : ""}`}
+        style={variant === "home" ? p.bodyHome : p.body}
+      >
         {variant === "home" ? (
           <HomeHeroIntro title={title} tagline={tagline} />
         ) : null}

@@ -94,23 +94,21 @@
 
 .club-page__hero-title {
   margin: 0 auto clamp(4px, 1vw, 6px);
-  max-width: none;
+  max-width: min(100%, 16ch);
   font-size: clamp(34px, 8.2vw, 50px);
   font-weight: 400;
   line-height: 1.06;
   letter-spacing: 0.01em;
   color: #5a4030;
-  white-space: nowrap;
 }
 
 .club-page__hero-text {
   margin: 0 auto clamp(2px, 0.6vw, 4px);
-  max-width: none;
+  max-width: min(100%, 42ch);
   font-family: "Cormorant Garamond", serif;
   font-size: clamp(16.1px, 3.9vw, 19.6px);
   line-height: 1.32;
   color: rgba(90, 64, 48, 0.88);
-  white-space: nowrap;
 }
 
 .club-page__hero-text:last-child {
@@ -118,9 +116,15 @@
 }
 
 @media (max-width: 520px) {
+  .club-page__hero-title {
+    white-space: normal;
+    max-width: min(100%, 14ch);
+  }
+
   .club-page__hero-text {
     font-size: clamp(14.4px, 3.7vw, 17.3px);
-    white-space: nowrap;
+    line-height: 1.38;
+    white-space: normal;
   }
 }
 

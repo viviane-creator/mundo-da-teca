@@ -11,7 +11,7 @@ export function BottomNav({
   setScreen: (screen: string) => void
 }) {
   return (
-    <nav style={styles.bottomNav} aria-label="Navegação principal">
+    <nav className="bottom-nav" style={styles.bottomNav} aria-label="Navegação principal">
       {bottomNavItems.map((item) => {
         const isActive = active === item.screen
 
@@ -26,8 +26,14 @@ export function BottomNav({
               ...styles.navButton,
               ...(isActive ? styles.navButtonActive : null),
             }}
+            className="bottom-nav__button"
           >
             <span
+              className={
+                isActive
+                  ? "bottom-nav__active-cluster"
+                  : "bottom-nav__item-content"
+              }
               style={
                 isActive ? styles.navActiveCluster : styles.navItemContent
               }
@@ -36,8 +42,9 @@ export function BottomNav({
                 <span style={styles.navActiveCapsule} aria-hidden="true" />
               ) : null}
 
-              <span style={styles.navIconWrap}>
+              <span className="bottom-nav__icon-wrap" style={styles.navIconWrap}>
                 <span
+                  className="bottom-nav__icon-frame"
                   style={{
                     ...styles.navIconFrame,
                     opacity: isActive ? 1 : 0.88,
@@ -49,6 +56,11 @@ export function BottomNav({
               </span>
 
               <span
+                className={
+                  isActive
+                    ? "bottom-nav__label bottom-nav__label--active"
+                    : "bottom-nav__label"
+                }
                 style={{
                   ...styles.navLabel,
                   color: isActive

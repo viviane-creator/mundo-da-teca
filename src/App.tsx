@@ -2,7 +2,7 @@ import { useEffect, useState, type ReactNode } from "react"
 import "./fonts.css"
 import "./styles/tecaTypography.css"
 import "./styles/organicCta.css"
-import "./styles/homeCta.css"
+import "./styles/mobile.css"
 import {
   isPlayUniverseScreen,
   playUniverses,
@@ -472,12 +472,14 @@ function AppContent() {
 
   return (
     <main
+      className="app-main"
       style={{
         ...styles.main,
         ...(isLaunchScreen ? { padding: 0, overflow: "hidden" } : null),
       }}
     >
       <section
+        className="app-shell"
         style={{
           ...styles.appShell,
           ...(isLaunchScreen

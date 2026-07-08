@@ -3849,7 +3849,7 @@ export const styles: Record<string, CSSProperties> = {
     justifyContent: "center",
     gap: "10px",
     width: "100%",
-    paddingRight: "84px",
+    paddingRight: "clamp(68px, 18vw, 84px)",
   },
 
   meuMundoPortalTitle: {
@@ -4907,8 +4907,8 @@ export const styles: Record<string, CSSProperties> = {
     position: "relative",
     zIndex: 1,
     fontFamily: "'Cormorant Garamond', serif",
-    fontSize: "8.5px",
-    letterSpacing: "0.12em",
+    fontSize: "clamp(7px, 2vw, 8.5px)",
+    letterSpacing: "0.1em",
     textTransform: "uppercase",
     fontWeight: 500,
     color: bottomNavTheme.inkInactive,
@@ -4922,10 +4922,11 @@ export const styles: Record<string, CSSProperties> = {
   },
 
   navLabelActive: {
-    maxWidth: "none",
-    overflow: "visible",
-    textOverflow: "clip",
-    letterSpacing: "0.08em",
+    maxWidth: "100%",
+    overflow: "hidden",
+    textOverflow: "ellipsis",
+    whiteSpace: "nowrap",
+    letterSpacing: "0.06em",
   },
 
   institutionalFooter: {
