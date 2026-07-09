@@ -1,0 +1,62 @@
+/* ==========================================================
+   Home — faixa temporária de pré-lançamento
+   Remover junto com HomePreLaunchNotice.tsx
+   ========================================================== */
+
+.home-prelaunch-notice {
+  position: relative;
+  z-index: 1;
+  margin: 0 clamp(16px, 4vw, 24px) clamp(18px, 4.5vw, 28px);
+  padding: clamp(22px, 5vw, 30px) clamp(20px, 5vw, 28px);
+  text-align: center;
+  background: linear-gradient(180deg, #fffdf9 0%, #f8efe5 100%);
+  border: 1px solid rgba(196, 165, 141, 0.38);
+  border-radius: 18px;
+  box-shadow: 0 6px 18px rgba(120, 90, 60, 0.04);
+}
+
+.home-prelaunch-notice__glyph {
+  display: block;
+  width: 28px;
+  height: 28px;
+  margin: 0 auto clamp(12px, 3vw, 16px);
+  opacity: 0.9;
+}
+
+.home-prelaunch-notice__copy {
+  max-width: min(100%, 42ch);
+  margin: 0 auto;
+}
+
+.home-prelaunch-notice__lead {
+  margin: 0 0 clamp(8px, 2vw, 10px);
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(22px, 5.2vw, 26px);
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: 0.01em;
+  color: #4a3728;
+}
+
+.home-prelaunch-notice__line,
+.home-prelaunch-notice__body,
+.home-prelaunch-notice__closing {
+  margin: 0;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(16px, 3.8vw, 18px);
+  line-height: 1.5;
+  color: #6a5848;
+}
+
+.home-prelaunch-notice__line {
+  margin-bottom: clamp(10px, 2.5vw, 14px);
+}
+
+.home-prelaunch-notice__body {
+  margin-bottom: clamp(12px, 3vw, 16px);
+}
+
+.home-prelaunch-notice__closing {
+  color: #5a4030;
+  font-style: italic;
+}

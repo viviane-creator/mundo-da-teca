@@ -194,7 +194,7 @@ const p: Record<string, CSSProperties> = {
   homeHeroIntroTitle: {
     ...tecaFont.portalTitle,
     margin: 0,
-    fontSize: "clamp(26px, 5.64vw, 38px)",
+    fontSize: "clamp(30px, 6.49vw, 44px)",
     lineHeight: 1.08,
     letterSpacing: "0.01em",
     maxWidth: "min(520px, 90vw)",

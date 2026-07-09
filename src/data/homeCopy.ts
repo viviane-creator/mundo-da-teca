@@ -32,19 +32,19 @@ export const homeCopy = {
     steps: [
       {
         title: "Escolha como participar.",
-        text: "Comece apenas pela plataforma digital ou escolha uma das modalidades do Clube.",
+        text: "Comece pela Plataforma Digital ou escolha uma das modalidades do Clube para viver a experiência da forma que mais combina com a sua família.",
       },
       {
-        title: "Acesse imediatamente a plataforma.",
-        text: "Explore experiências, registre descobertas e acompanhe sua coleção.",
+        title: "Comece imediatamente.",
+        text: "Assim que entrar, seu acesso à Plataforma Digital é liberado para explorar experiências, registrar descobertas e acompanhar sua coleção.",
       },
       {
         title: "Receba novos capítulos em casa.",
-        text: "Nas modalidades físicas, novos materiais chegam todos os meses para ampliar a experiência.",
+        text: "Nas modalidades com envios físicos, novos materiais chegam todos os meses à sua casa, ampliando a jornada de descobertas.",
       },
       {
-        title: "Construa uma coleção única.",
-        text: "Ao longo de seis meses, cada descoberta passa a fazer parte da história da criança.",
+        title: "Veja sua coleção crescer.",
+        text: "Ao longo de seis meses, cada nova descoberta passa a fazer parte de uma coleção única, construída pela própria criança.",
       },
     ],
   },
@@ -56,22 +56,26 @@ export const homeCopy = {
       {
         id: "explorador-digital" as const,
         name: "Explorador Digital",
-        summary: "Para quem quer começar pelo digital.",
+        summary:
+          "Toda a experiência do Mundo da Teca na plataforma digital. Explore, registre e acompanhe sua jornada desde o primeiro dia.",
       },
       {
         id: "mundo-descobertas" as const,
         name: "Meu Mundo de Descobertas",
-        summary: "Todo mês, novas descobertas chegam à sua casa.",
+        summary:
+          "Além do acesso digital, receba todos os meses novos materiais para registrar, criar e ampliar cada descoberta.",
       },
       {
         id: "mundo-tesouros" as const,
         name: "Meu Mundo de Tesouros",
-        summary: "Para quem gosta de guardar e cada descoberta.",
+        summary:
+          "Além do acesso digital, receba objetos e pequenos tesouros que transformam cada descoberta em uma lembrança para guardar.",
       },
       {
         id: "expedicao-completa" as const,
         name: "Expedição Completa",
-        summary: "A experiência mais completa do Mundo da Teca.",
+        summary:
+          "A jornada completa: plataforma digital, materiais de registro e tesouros que chegam à sua casa todos os meses.",
       },
     ],
   },
@@ -81,6 +85,6 @@ export const homeCopy = {
     lines: [
       "Compare todas as formas de participar e descubra qual combina mais com sua família.",
     ],
-    label: "Quero entender todos",
+    label: "Escolher como participar",
   },
 } as const

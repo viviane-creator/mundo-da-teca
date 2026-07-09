@@ -269,21 +269,21 @@
 }
 
 .club-modality-page__subscribe-cta.home-organic-cta {
-  max-width: min(96vw, 960px);
-  padding: clamp(33px, 8.4vw, 42px) clamp(54px, 13.8vw, 78px);
-  font-size: clamp(54px, 13.5vw, 66px);
+  max-width: min(96vw, 480px);
+  padding: clamp(16px, 4.2vw, 21px) clamp(27px, 6.9vw, 39px);
+  font-size: clamp(27px, 6.75vw, 33px);
   line-height: 1.18;
   letter-spacing: 0.01em;
-  filter: drop-shadow(0 9px 30px rgba(90, 100, 72, 0.14));
+  filter: drop-shadow(0 5px 15px rgba(90, 100, 72, 0.14));
 }
 
 .club-modality-page__subscribe-cta.home-organic-cta:focus-visible {
   outline-width: 3px;
-  outline-offset: 15px;
+  outline-offset: 8px;
 }
 
 .club-modality-page__subscribe-cta.home-organic-cta--club:hover {
-  filter: drop-shadow(0 18px 48px rgba(90, 100, 72, 0.18)) brightness(1.03);
+  filter: drop-shadow(0 9px 24px rgba(90, 100, 72, 0.18)) brightness(1.03);
 }
 
 .club-modality-page__subscribe-note {

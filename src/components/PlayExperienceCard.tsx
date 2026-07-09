@@ -103,7 +103,6 @@ export function PlayExperienceCard({
         <div style={styles.experienceAccordionPanel}>
           <FicharioFicha
             variant="descoberta"
-            enlarged
             codigo={formatFichaCodigo(universeId, index)}
             catalogAccent={accent}
             image={neutralImage || hideImage ? undefined : imageSrc}
@@ -130,7 +129,6 @@ export function PlayExperienceCard({
 
             <FicharioRegistro
               variant="discovery"
-              enlarged
               labelColor={accent.ink}
               fields={discoveryMetaFields.map((field) => ({
                 label: field.label,

@@ -1,9 +1,11 @@
+import { SHOW_HOME_PRELAUNCH_NOTICE } from "../config/launchGate"
 import { homeCopy } from "../data/homeCopy"
 import { clubSealLabel } from "../data/clubModalities"
 import { homePlanStainSrc } from "../data/homePlanStains"
 import { appRoutes } from "../navigation/appRoutes"
 import { clubModalityPath, clubModalityScreen } from "../navigation/clubNavigation"
 import { styles } from "../styles/appStyles"
+import { HomePreLaunchNotice } from "../components/home/HomePreLaunchNotice"
 import { HomeTecaHostess } from "../components/home/HomeTecaHostess"
 import { WorldPortalLayout, portalPages } from "../worldPortal"
 import "../styles/homePage.css"
@@ -120,6 +122,8 @@ export function Home({
         <span className="home-sheet__spine" style={styles.homeFicharioSpine} aria-hidden="true" />
 
         <div className="home-sheet__content" style={styles.homeAboutChapter}>
+          {SHOW_HOME_PRELAUNCH_NOTICE ? <HomePreLaunchNotice /> : null}
+
           <HomeTextSection
             id="home-what-is"
             title={copy.whatIs.title}
