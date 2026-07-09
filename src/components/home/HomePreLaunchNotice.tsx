@@ -29,6 +29,25 @@ function PreLaunchCompassGlyph() {
   )
 }
 
+function PreLaunchHeartIcon() {
+  return (
+    <svg
+      className="home-prelaunch-notice__heart"
+      viewBox="0 0 24 24"
+      fill="none"
+      aria-hidden="true"
+    >
+      <path
+        d="M12 20.4 10.55 19.1C5.4 14.5 2 11.45 2 7.75 2 4.75 4.4 2.4 7.35 2.4c1.7 0 3.35.8 4.4 2.05C12.8 3.2 14.45 2.4 16.15 2.4 19.1 2.4 21.5 4.75 21.5 7.75c0 3.7-3.4 6.75-8.55 11.35L12 20.4Z"
+        fill="#B89A62"
+        stroke="#8A7348"
+        strokeWidth="1"
+        strokeLinejoin="round"
+      />
+    </svg>
+  )
+}
+
 export function HomePreLaunchNotice() {
   return (
     <aside
@@ -38,7 +57,8 @@ export function HomePreLaunchNotice() {
       <PreLaunchCompassGlyph />
       <div className="home-prelaunch-notice__copy">
         <p className="home-prelaunch-notice__lead">
-          Bem-vindo ao Mundo da Teca.
+          Bem-vindo ao Mundo da Teca
+          <PreLaunchHeartIcon />
         </p>
         <p className="home-prelaunch-notice__line">Que bom ter você por aqui.</p>
         <p className="home-prelaunch-notice__body">

@@ -30,12 +30,21 @@
 
 .home-prelaunch-notice__lead {
   margin: 0 0 clamp(8px, 2vw, 10px);
-  font-family: "Cormorant Garamond", serif;
-  font-size: clamp(22px, 5.2vw, 26px);
+  font-family: var(--teca-font-page-title);
+  font-size: clamp(25px, 6vw, 30px);
   font-weight: 400;
   line-height: 1.2;
   letter-spacing: 0.01em;
   color: #4a3728;
+  text-transform: none;
+}
+
+.home-prelaunch-notice__heart {
+  display: inline-block;
+  width: 0.78em;
+  height: 0.78em;
+  margin-left: 0.2em;
+  vertical-align: -0.06em;
 }
 
 .home-prelaunch-notice__line,
