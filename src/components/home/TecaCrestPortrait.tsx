@@ -1,4 +1,4 @@
-import type { CSSProperties } from "react"
+﻿import type { CSSProperties } from "react"
 import "../../styles/tecaCrest.css"
 
 type TecaCrestPortraitProps = {
@@ -12,7 +12,7 @@ type TecaCrestPortraitProps = {
 /** Retrato da Teca em brasão redondo — peça editorial reutilizável */
 export function TecaCrestPortrait({
   src = "/images/teca.webp",
-  alt = "Teca, anfitriã do Mundo da Teca",
+  alt = "Teca, anfitriã da daTeca",
   caption = "Teca",
   size,
   className,

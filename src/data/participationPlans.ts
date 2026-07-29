@@ -1,4 +1,4 @@
-export type ParticipationPlanId = "explorador" | "colecionador"
+﻿export type ParticipationPlanId = "explorador" | "colecionador"
 
 export type ParticipationPlan = {
   id: ParticipationPlanId
@@ -7,8 +7,8 @@ export type ParticipationPlan = {
   ctaLabel: string
 }
 
-export const whatIsMundoDaTeca = [
-  "Mundo da Teca é um ecossistema de descobertas para crianças curiosas.",
+export const whatIsDaTeca = [
+  "A daTeca é um ecossistema de descobertas para crianças curiosas.",
   "Aqui, cada experiência convida a observar, experimentar, registrar e colecionar o mundo de um jeito mais lento, criativo e encantado.",
 ] as const
 
@@ -65,7 +65,7 @@ export const homeParticipationJourneys: Record<
   colecionador: {
     journeyTitle: "Colecionador",
     journeyText:
-      "Leve o Mundo da Teca para casa com materiais físicos e conteúdos para continuar explorando longe das telas.",
+      "Leve a daTeca para casa com materiais físicos e conteúdos para continuar explorando longe das telas.",
     pathCta: "Receber em Casa",
     decor: [],
   },

@@ -1,4 +1,4 @@
-import { useAuth } from "../auth/authContext"
+﻿import { useAuth } from "../auth/authContext"
 import {
   bemVindoDeVoltaText,
   descobertasEsperandoText,
@@ -26,7 +26,7 @@ export function AccountModal() {
         <span aria-hidden style={styles.authModalSpine} />
         <p style={styles.authModalKicker}>minha conta</p>
         <h2 id="account-modal-title" style={styles.authModalTitle}>
-          Bem-vindo ao Mundo da Teca.
+          Bem-vindo à daTeca.
         </h2>
         <p style={styles.authModalText}>
           {bemVindoDeVoltaText(user.childName)}

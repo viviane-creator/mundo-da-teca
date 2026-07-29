@@ -1,4 +1,4 @@
-import "../../styles/homePreLaunchNotice.css"
+﻿import "../../styles/homePreLaunchNotice.css"
 
 /**
  * Faixa temporária de pré-lançamento na Home.
@@ -57,7 +57,7 @@ export function HomePreLaunchNotice() {
       <PreLaunchCompassGlyph />
       <div className="home-prelaunch-notice__copy">
         <p className="home-prelaunch-notice__lead">
-          Bem-vindo ao Mundo da Teca
+          Bem-vindo à daTeca
           <PreLaunchHeartIcon />
         </p>
         <p className="home-prelaunch-notice__line">Que bom ter você por aqui.</p>

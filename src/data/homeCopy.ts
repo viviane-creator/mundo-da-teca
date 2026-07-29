@@ -1,4 +1,4 @@
-export type HomeModalityId =
+﻿export type HomeModalityId =
   | "explorador-digital"
   | "mundo-descobertas"
   | "mundo-tesouros"
@@ -13,14 +13,14 @@ export const homeAboutManifesto = {
     "Continua encontrando tesouros onde os adultos passam depressa.",
   ],
   closing:
-    "O Mundo da Teca nasceu para preservar esse jeito lento, encantado e presente de descobrir.",
+    "A daTeca nasceu para preservar esse jeito lento, encantado e presente de descobrir.",
 } as const
 
 export const homeCopy = {
   whatIs: {
-    title: "O que é o Mundo da Teca?",
+    title: "O que é a daTeca?",
     paragraphs: [
-      "O Mundo da Teca é uma plataforma de descobertas para famílias.",
+      "A daTeca é uma plataforma de descobertas para famílias.",
       "Aqui, crianças exploram experiências criativas, registram o que descobrem e constroem, aos poucos, uma coleção que cresce junto com a infância.",
     ],
     closing: "",
@@ -50,14 +50,14 @@ export const homeCopy = {
   },
 
   participate: {
-    title: "Clube Mundo da Teca",
+    title: "Clube daTeca",
     lead: ["Escolha como quer viver essa experiência."],
     modalities: [
       {
         id: "explorador-digital" as const,
         name: "Explorador Digital",
         summary:
-          "Toda a experiência do Mundo da Teca na plataforma digital. Explore, registre e acompanhe sua jornada desde o primeiro dia.",
+          "Toda a experiência da daTeca na plataforma digital. Explore, registre e acompanhe sua jornada desde o primeiro dia.",
       },
       {
         id: "mundo-descobertas" as const,

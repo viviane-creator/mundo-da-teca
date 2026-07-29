@@ -1,4 +1,4 @@
-import { childFirstName } from "../auth/childPersonalization"
+﻿import { childFirstName } from "../auth/childPersonalization"
 import { childProfileCardLabels } from "../auth/childProfileView"
 import type { ChildProfile } from "../types/childProfile"
 import { styles } from "../styles/appStyles"
@@ -75,7 +75,7 @@ export function ClubMemberCard({
       <span aria-hidden="true" style={styles.clubMemberCardSeal} />
 
       <header style={styles.clubMemberCardHeader}>
-        <p style={styles.clubMemberCardIssuer}>Mundo da Teca</p>
+        <p style={styles.clubMemberCardIssuer}>daTeca</p>
         <p style={styles.clubMemberNumber}>{labels.explorerNumber}</p>
       </header>
 

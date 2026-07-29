@@ -1,4 +1,4 @@
-import { SHOW_HOME_PRELAUNCH_NOTICE } from "../config/launchGate"
+﻿import { SHOW_HOME_PRELAUNCH_NOTICE } from "../config/launchGate"
 import { homeCopy } from "../data/homeCopy"
 import { clubSealLabel } from "../data/clubModalities"
 import { homePlanStainSrc } from "../data/homePlanStains"
@@ -176,7 +176,7 @@ export function Home({
             </div>
           </section>
 
-          <section className="home-clube-cta" aria-label="Conhecer o Clube Mundo da Teca">
+          <section className="home-clube-cta" aria-label="Conhecer o Clube daTeca">
             <button
               type="button"
               className="home-organic-cta home-organic-cta--club"

@@ -1,7 +1,7 @@
-import { pageCovers } from "./pageCovers"
+﻿import { pageCovers } from "./pageCovers"
 
 export const conhecaPageCopy = {
-  documentTitle: "Conheça o Mundo da Teca",
+  documentTitle: "Conheça a daTeca",
   hero: {
     text:
       "Experiências criativas, coleções e um clube — pensados para famílias viverem uma jornada de descobertas.",
@@ -98,7 +98,7 @@ export const conhecaPageCopy = {
   },
   signature: {
     logo: "/logo/logo.webp",
-    logoAlt: "Mundo da Teca",
+    logoAlt: "daTeca",
   },
 } as const
 

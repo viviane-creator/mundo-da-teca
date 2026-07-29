@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react"
+﻿import { useCallback, useState } from "react"
 import { launchPageCopy } from "../data/launchPageCopy"
 import { launchPageStyles as s } from "../styles/launchPageStyles"
 import { appRoutes } from "../navigation/appRoutes"
@@ -26,7 +26,7 @@ export function LaunchPage({
   return (
     <article
       style={s.page}
-      aria-label="Capa do Mundo da Teca"
+      aria-label="Capa da daTeca"
       className={`launch-cover${exiting ? " launch-cover--exit" : ""}`}
     >
       <img

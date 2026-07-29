@@ -1,4 +1,4 @@
-import type { HomeModalityId } from "./homeCopy"
+﻿import type { HomeModalityId } from "./homeCopy"
 import type { HomeCtaTone } from "../styles/homeCta"
 
 export type ClubModalityId = HomeModalityId
@@ -20,7 +20,7 @@ export const clubModalities: ClubModality[] = [
     chapter: "I",
     title: "Explorador Digital",
     description:
-      "Comece pela plataforma digital e tenha acesso às experiências, universos e coleções do Mundo da Teca.",
+      "Comece pela plataforma digital e tenha acesso às experiências, universos e coleções da daTeca.",
     benefits: [
       "Plataforma Digital",
       "Todas as experiências digitais",
@@ -68,7 +68,7 @@ export const clubModalities: ClubModality[] = [
     id: "expedicao-completa",
     chapter: "IV",
     title: "Expedição Completa",
-    description: "A experiência completa do Mundo da Teca.",
+    description: "A experiência completa da daTeca.",
     benefits: [
       "Plataforma Digital",
       "Fichário Oficial",
@@ -101,7 +101,7 @@ export const clubComparisonCopy = {
       key: "plataforma" as const,
       label: "Plataforma",
       illustration: "/assets/editorial/plans/plan-explorador.webp",
-      illustrationAlt: "Plataforma digital do Mundo da Teca",
+      illustrationAlt: "Plataforma digital da daTeca",
     },
     {
       key: "fichario" as const,

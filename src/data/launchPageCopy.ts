@@ -1,18 +1,18 @@
-export const launchPageCopy = {
+﻿export const launchPageCopy = {
   documentTitle:
-    "Mundo da Teca — Existe um mundo inteiro esperando para ser descoberto",
+    "daTeca — Existe um mundo inteiro esperando para ser descoberto",
   metaDescription:
     "Menos tempo nas telas. Mais tempo explorando, criando e colecionando descobertas.",
   ogImage: "/images/hero-home.webp",
   logo: "/logo/logo.webp",
-  logoAlt: "Mundo da Teca",
+  logoAlt: "daTeca",
   title: "Existe um mundo inteiro esperando para ser descoberto.",
   text: [
     "Menos tempo nas telas.",
     "Mais tempo explorando, criando e colecionando descobertas.",
   ],
   illustration: "/images/hero-home.webp",
-  illustrationAlt: "Ilustração do Mundo da Teca",
+  illustrationAlt: "Ilustração da daTeca",
   cta: "Abrir o livro",
 } as const
 
@@ -55,7 +55,7 @@ export function applyLaunchPageMeta() {
 }
 
 export function clearLaunchPageMeta() {
-  document.title = "Mundo da Teca"
+  document.title = "daTeca"
   for (const { attr, key } of META_KEYS) {
     document.querySelector(`meta[${attr}="${key}"]`)?.remove()
   }

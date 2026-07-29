@@ -1,4 +1,4 @@
-import { useEffect, useState, type FormEvent } from "react"
+﻿import { useEffect, useState, type FormEvent } from "react"
 import {
   formatBirthDateInput,
   isCompleteBirthDate,
@@ -15,13 +15,13 @@ import { styles } from "../styles/appStyles"
 
 type AccessStep = "welcome" | "signup" | "login" | "success" | "welcomeBack"
 
-const RETURN_TITLE = "Bem-vindo ao Mundo da Teca."
+const RETURN_TITLE = "Bem-vindo à daTeca."
 
 function SignupTitle({ id }: { id?: string }) {
   return (
     <h2 id={id} style={styles.authModalTitleStack}>
-      <span style={styles.authModalTitleLead}>Vamos preparar o seu</span>
-      <span style={styles.authModalTitleBrand}>Mundo da Teca.</span>
+      <span style={styles.authModalTitleLead}>Vamos preparar a</span>
+      <span style={styles.authModalTitleBrand}>daTeca.</span>
     </h2>
   )
 }
@@ -89,7 +89,7 @@ export function LoginModal({
     const found = loginByEmail(trimmedEmail, { keepModalOpen: true })
     if (!found) {
       setLoginError(
-        "Não encontramos este e-mail. Que tal preparar um Mundo da Teca?",
+        "Não encontramos este e-mail. Que tal conhecer a daTeca?",
       )
       return
     }
@@ -244,7 +244,7 @@ export function LoginModal({
               {RETURN_TITLE}
             </h2>
             <p style={styles.authModalText}>
-              Seu Mundo da Teca está esperando por você.
+              A daTeca está esperando por você.
             </p>
 
             <form onSubmit={handleLogin} style={styles.authForm}>

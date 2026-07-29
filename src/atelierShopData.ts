@@ -1,4 +1,4 @@
-import type { AtelierPoeticScreen } from "./atelierSubPages"
+﻿import type { AtelierPoeticScreen } from "./atelierSubPages"
 
 export type AtelierCollection =
   | "Álbum das Descobertas"
@@ -11,7 +11,7 @@ export type AtelierCollection =
   | "Coleção Correio"
   | "Coleção Vento"
   | "Linha Ateliê"
-  | "ABUH × Mundo da Teca"
+  | "ABUH × daTeca"
 
 export type AtelierSectionId =
   | "figurinhas"
@@ -358,7 +358,7 @@ export const atelierGoods: AtelierGood[] = [
   {
     id: "imprimiveis",
     title: "imprimíveis",
-    poetic: "materiais para imprimir e continuar o mundo da teca em casa.",
+    poetic: "materiais para imprimir e continuar a daTeca em casa.",
     image: atelierGoodImage("imprimiveis"),
     price: 22,
     clubPrice: clubPriceFrom(22),
@@ -368,7 +368,7 @@ export const atelierGoods: AtelierGood[] = [
     collection: "Linha Ateliê",
     isClubExclusive: false,
     description:
-      "arquivo digital com materiais calmos para imprimir em casa e continuar o Mundo da Teca — papel comum já basta.",
+      "arquivo digital com materiais calmos para imprimir em casa e continuar a daTeca — papel comum já basta.",
     section: "papelaria",
     visualKind: "standard",
   },
@@ -420,13 +420,13 @@ export const atelierGoods: AtelierGood[] = [
     isLimited: true,
     stock: 8,
     madeToOrder: false,
-    collection: "ABUH × Mundo da Teca",
+    collection: "ABUH × daTeca",
     isClubExclusive: false,
     description:
       "calendário de mesa com imagens contemplativas, papel espesso e argola de linho. um encontro quieto entre dois universos que acreditam em olhar devagar.",
     section: "especiais",
     visualKind: "collab",
-    collabPartner: "ABUH × Mundo da Teca",
+    collabPartner: "ABUH × daTeca",
     poeticScreen: "calendario-abuh",
     poeticLinkLabel: "conhecer este encontro",
   },

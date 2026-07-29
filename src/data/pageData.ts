@@ -1,4 +1,4 @@
-import { atelierPortalCopy } from "./atelierPortalCopy"
+﻿import { atelierPortalCopy } from "./atelierPortalCopy"
 
 export const pageData = {
   descobertas: {
@@ -17,8 +17,8 @@ export const pageData = {
     cover: "/covers/atelie.webp",
   },
   clube: {
-    title: "Clube Mundo da Teca",
-    intro: "para famílias do Mundo da Teca.",
+    title: "Clube daTeca",
+    intro: "para famílias da daTeca.",
     cover: "/covers/clube.webp",
   },
 } as const

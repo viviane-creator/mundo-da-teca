@@ -1,4 +1,4 @@
-export const institutionalFooterCopy = {
+﻿export const institutionalFooterCopy = {
   instagramLabel: "Instagram",
-  handle: "@mundodateca →",
+  handle: "daTeca →",
 } as const

@@ -1,4 +1,4 @@
-import type { CSSProperties, ReactNode } from "react"
+﻿import type { CSSProperties, ReactNode } from "react"
 import { PageCover } from "./components/PageCover"
 import { HomeHeroMist, HomeHeroTextMist, homeHeroMistZoneStyle, homeHeroMistZoneStyleHome } from "./components/HomeHeroMist"
 import { atelierPortalCopy } from "./data/atelierPortalCopy"
@@ -31,7 +31,7 @@ export type PortalHeroProps = {
 export const portalPages = {
   home: {
     cover: pageCovers.home,
-    coverAlt: "Mundo da Teca",
+    coverAlt: "daTeca",
     title: "Existe um mundo inteiro\nesperando para ser descoberto.",
     tagline:
       "Menos tempo nas telas.\nMais tempo explorando, criando e colecionando descobertas.",
@@ -64,8 +64,8 @@ export const portalPages = {
   },
   clube: {
     cover: pageCovers.clube,
-    coverAlt: "Clube Mundo da Teca",
-    title: "Clube Mundo da Teca",
+    coverAlt: "Clube daTeca",
+    title: "Clube daTeca",
     tagline: "Descobrir. Registrar. Colecionar.",
   },
   meuMundo: {
@@ -361,7 +361,7 @@ function PortalHeroOverlay({
       {logoInArt ? (
         <img
           src="/logo/logo.webp"
-          alt="Mundo da Teca"
+          alt="daTeca"
           className="world-portal-logo-art"
           style={p.logoInArt}
         />
@@ -371,7 +371,7 @@ function PortalHeroOverlay({
           {!logoInArt ? (
             <img
               src="/logo/logo.webp"
-              alt="Mundo da Teca"
+              alt="daTeca"
               style={logoInFooter ? p.logoInFooter : p.logoInMist}
             />
           ) : null}
@@ -530,7 +530,7 @@ export function WorldPortalLayout({
           <img
             className="home-cover-logo"
             src="/logo/logo.webp"
-            alt="Mundo da Teca"
+            alt="daTeca"
             width={190}
             height={80}
             loading="eager"

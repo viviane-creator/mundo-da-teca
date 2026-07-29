@@ -1,4 +1,4 @@
-export type AtelierSubPageParent = "atelie" | "figurinhas"
+﻿export type AtelierSubPageParent = "atelie" | "figurinhas"
 
 export type AtelierSubPageContent = {
   parent: AtelierSubPageParent
@@ -78,7 +78,7 @@ export const atelierPoeticPages: Record<
     poetic:
       "dias pequenos também merecem ser lembrados — um calendário para acompanhar o ano devagar.",
     image: "/cards/atelie/calendario-abuh.png",
-    noteLabel: "ABUH × Mundo da Teca",
+    noteLabel: "ABUH × daTeca",
     noteText:
       "dois universos que acreditam em olhar devagar se encontram nesta peça de mesa. imagens contemplativas, papel espesso, argola de linho. não é publi — é convite para marcar o tempo com cuidado, mês após mês.",
   },

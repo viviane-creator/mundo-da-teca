@@ -1,4 +1,4 @@
-import { useEffect, useState, type ReactNode } from "react"
+﻿import { useEffect, useState, type ReactNode } from "react"
 import "./fonts.css"
 import "./styles/tecaTypography.css"
 import "./styles/organicCta.css"
@@ -56,8 +56,10 @@ import { InstitutionalFooter } from "./components/InstitutionalFooter"
 import { Home } from "./pages/Home"
 import { ClubPage } from "./pages/ClubPage"
 import { ClubModalityPage } from "./pages/ClubModalityPage"
+import { KitPage } from "./pages/KitPage"
 import { CONHECA_SHARE_PATH } from "./data/conhecaPageCopy"
 import { clubPageCopy } from "./data/clubPageCopy"
+import { kitPageCopy } from "./data/kitPageCopy"
 import { appRoutes } from "./navigation/appRoutes"
 import {
   clubModalityIdFromScreen,
@@ -65,6 +67,10 @@ import {
   pathForClubScreen,
   screenFromClubPath,
 } from "./navigation/clubNavigation"
+import {
+  pathForKitScreen,
+  screenFromKitPath,
+} from "./navigation/kitNavigation"
 import { MeuMundoPage } from "./pages/MeuMundoPage"
 import { BibliotecaPage } from "./pages/BibliotecaPage"
 import { AtelierProductPage } from "./pages/AtelierProductPage"
@@ -120,6 +126,7 @@ type Screen =
   | "clube-mundo-descobertas"
   | "clube-mundo-tesouros"
   | "clube-expedicao-completa"
+  | "kit"
   | "launch"
 
 type SimpleSubScreen = Exclude<
@@ -144,6 +151,7 @@ type SimpleSubScreen = Exclude<
   | "clube-mundo-descobertas"
   | "clube-mundo-tesouros"
   | "clube-expedicao-completa"
+  | "kit"
   | "launch"
 >
 
@@ -239,7 +247,7 @@ const subPageData: Record<SimpleSubScreen, SubPageContent> = {
   imprimiveis: {
     parent: "atelie",
     title: "imprimíveis",
-    poetic: "materiais para imprimir e continuar o mundo da teca em casa.",
+    poetic: "materiais para imprimir e continuar a daTeca em casa.",
     image: "/cards/atelie/imprimiveis.png",
     noteLabel: "ateliê",
     noteText: "imprima com calma e deixe a criança escolher por onde começar.",
@@ -317,6 +325,11 @@ function readInitialScreen(): Screen {
   const clubScreen = screenFromClubPath(path)
   if (clubScreen) {
     return clubScreen as Screen
+  }
+
+  const kitScreen = screenFromKitPath(path)
+  if (kitScreen) {
+    return kitScreen as Screen
   }
 
   return appRoutes.home
@@ -412,7 +425,30 @@ function AppContent() {
           window.history.pushState({ screen: appRoutes.home }, "", HOME_PREVIEW_PATH)
         }
         clearLaunchPageMeta()
-        document.title = "Mundo da Teca"
+        document.title = "daTeca"
+        return
+      }
+
+      const launchClubPath = pathForClubScreen(screen)
+      if (launchClubPath) {
+        if (path !== launchClubPath) {
+          window.history.pushState({ screen }, "", launchClubPath)
+        }
+        document.title =
+          screen === appRoutes.clube
+            ? clubPageCopy.documentTitle
+            : "daTeca"
+        clearLaunchPageMeta()
+        return
+      }
+
+      const launchKitPath = pathForKitScreen(screen)
+      if (launchKitPath) {
+        if (path !== launchKitPath) {
+          window.history.pushState({ screen }, "", launchKitPath)
+        }
+        document.title = kitPageCopy.documentTitle
+        clearLaunchPageMeta()
         return
       }
 
@@ -421,7 +457,7 @@ function AppContent() {
       }
 
       clearLaunchPageMeta()
-      document.title = "Mundo da Teca"
+      document.title = "daTeca"
       return
     }
 
@@ -441,13 +477,23 @@ function AppContent() {
       document.title =
         screen === appRoutes.clube
           ? clubPageCopy.documentTitle
-          : "Mundo da Teca"
+          : "daTeca"
+      clearLaunchPageMeta()
+      return
+    }
+
+    const kitPath = pathForKitScreen(screen)
+    if (kitPath) {
+      if (path !== kitPath) {
+        window.history.pushState({ screen }, "", kitPath)
+      }
+      document.title = kitPageCopy.documentTitle
       clearLaunchPageMeta()
       return
     }
 
     clearLaunchPageMeta()
-    document.title = "Mundo da Teca"
+    document.title = "daTeca"
   }, [screen])
 
   useEffect(() => {
@@ -604,6 +650,8 @@ function AppContent() {
             setScreen={setScreen}
           />
         )}
+
+        {screen === appRoutes.kit && <KitPage />}
 
         {screen === "meu-mundo" && <MeuMundoPage setScreen={setScreen} />}
 

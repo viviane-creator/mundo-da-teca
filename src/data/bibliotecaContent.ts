@@ -1,4 +1,4 @@
-export const bibliotecaContent = {
+﻿export const bibliotecaContent = {
   cover: "/images/biblioteca-capa.webp",
   coverAlt: "Biblioteca",
   kicker: "biblioteca",
@@ -9,6 +9,6 @@ export const bibliotecaContent = {
   shelfSectionTitle: "Escolha por onde continuar",
   growthTitle: "Sua biblioteca está crescendo.",
   growthText:
-    "Novos materiais chegam conforme o Mundo da Teca evolui. Volte sempre para descobrir novas páginas, registros e coleções.",
+    "Novos materiais chegam conforme a daTeca evolui. Volte sempre para descobrir novas páginas, registros e coleções.",
   openKitLabel: "Abrir",
 } as const

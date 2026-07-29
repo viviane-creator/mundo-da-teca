@@ -12,6 +12,7 @@ export const appRoutes = {
   /** Minha Coleção (fichário digital) */
   minhaColecao: "meu-mundo",
   clube: "clube",
+  kit: "kit",
   atelie: "atelie",
   bauDeTesouros: toAtelierProductScreen("bau"),
 } as const
