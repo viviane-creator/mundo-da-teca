@@ -18,10 +18,13 @@
 .conheca-page__title,
 .conheca-page__chapter-title,
 .conheca-eco-card__title,
-.kit-page__hero-title,
-.kit-page__section-title,
+.kit-hero__title,
+.kit-chapter__title,
 .kit-water__title,
-.kit-final__title {
+.kit-adventure__name,
+.kit-pricing__title,
+.kit-faq__title,
+.kit-promise__item {
   font-family: var(--teca-font-page-title);
   font-weight: 400;
   text-transform: none;

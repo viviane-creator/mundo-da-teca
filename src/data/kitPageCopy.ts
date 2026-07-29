@@ -1,21 +1,10 @@
 import { socialLinks } from "./socialLinks"
 
-export type KitExperience = {
+export type KitAdventure = {
   id: string
   name: string
+  line: string
   image: string
-}
-
-export type KitProblemItem = {
-  id: string
-  label: string
-  icon: "search" | "flask" | "cart" | "scale"
-}
-
-export type KitContentItem = {
-  id: string
-  label: string
-  icon: "vial" | "bottle" | "tools" | "book" | "box" | "spark"
 }
 
 export type KitGallerySlot = {
@@ -27,220 +16,264 @@ export type KitGallerySlot = {
 }
 
 export const kitPageCopy = {
-  documentTitle: "Kit de Experiências daTeca — R$ 89,90",
+  documentTitle: "Kit de Experiências daTeca",
   metaDescription:
-    "Kit de Experiências daTeca com nove descobertas prontas. Você só precisa adicionar água. R$ 89,90 + frete R$ 10 para todo o Brasil. Primeiro lote: 100 unidades.",
+    "As melhores descobertas da infância não acontecem na tela. Kit de Experiências daTeca — você só precisa adicionar água. R$ 89,90 + frete R$ 10.",
   canonicalPath: "/kit",
-  ogImage: "/images/bau-tesouros-open.webp",
+  ogImage: "/images/hero-home.webp",
   orderUrl: socialLinks.instagram,
+
   hero: {
-    image: "/images/bau-tesouros-open.webp",
-    imageAlt: "Caixa do Kit de Experiências daTeca",
-    logo: "/logo/logo.webp",
-    logoAlt: "daTeca",
-    title: "Kit de Experiências daTeca",
-    subtitle:
-      "Nove descobertas prontas para transformar uma tarde em casa numa pequena expedição.",
-    highlight: "Você só precisa adicionar água.",
-    cta: "Quero meu Kit",
+    image: "/images/hero-home.webp",
+    imageAlt: "Um mundo de descobertas esperando para ser explorado",
+    title: "Existe um mundo inteiro esperando para ser descoberto.",
+    subtitleLead:
+      "As melhores descobertas da infância não acontecem na tela.",
+    subtitleFollow:
+      "Acontecem quando uma pergunta vira uma experiência.",
+    cta: "Quero começar minha primeira expedição.",
   },
-  discovery: {
-    title: "Transforme uma tarde comum em uma grande descoberta.",
-    text: "Longe das telas, perto um do outro. Uma caixa pensada para despertar curiosidade, observar o mundo e guardar memórias — com calma, presença e imaginação.",
-    image: "/images/laboratorio/pocoes-cores-vivas.webp",
-    imageAlt: "Experiência colorida do Kit daTeca",
-  },
-  problem: {
-    title: "O problema",
-    lead: "Para viver uma experiência em casa, as famílias normalmente precisam:",
-    items: [
-      { id: "materiais", label: "Procurar materiais", icon: "search" },
-      { id: "pesquisar", label: "Pesquisar experiências", icon: "flask" },
-      { id: "comprar", label: "Comprar ingredientes", icon: "cart" },
-      { id: "separar", label: "Separar quantidades", icon: "scale" },
-    ] satisfies KitProblemItem[],
-  },
-  solution: {
-    title: "A solução",
-    text: "O kit chega praticamente completo. Materiais organizados, experiências prontas e um manual ilustrado — para a descoberta começar sem correria.",
-    image: "/images/fichario-open.webp",
-    imageAlt: "Kit aberto com materiais organizados",
-    items: [
-      "Ingredientes já separados",
-      "Frascos e acessórios",
-      "Manual ilustrado",
-      "Experiências prontas para viver",
+
+  childhood: {
+    kicker: "Capítulo I",
+    title: "A infância mudou.",
+    lines: [
+      "As crianças continuam curiosas.",
+      "Elas ainda fazem perguntas.",
+      "Ainda inventam mundos.",
+      "Ainda encontram tesouros onde os adultos passam depressa.",
     ],
-    waterNote: "A família precisa fornecer apenas água.",
+    closing:
+      "O que mudou é o espaço para experimentar com as próprias mãos.",
+    image: "/images/teca.webp",
+    imageAlt: "A anfitriã da daTeca",
   },
-  contents: {
-    title: "O que vem dentro",
-    subtitle: "Tudo organizado para a expedição começar.",
-    image: "/images/universos/laboratorio-capa.webp",
-    imageAlt: "Conteúdo visual do Kit de Experiências",
-    items: [
-      { id: "ingredientes", label: "Ingredientes separados", icon: "vial" },
-      { id: "frascos", label: "Frascos", icon: "bottle" },
-      { id: "acessorios", label: "Acessórios", icon: "tools" },
-      { id: "manual", label: "Manual ilustrado", icon: "book" },
-      { id: "materiais", label: "Materiais organizados", icon: "box" },
-      { id: "experiencias", label: "Experiências prontas", icon: "spark" },
-    ] satisfies KitContentItem[],
+
+  brand: {
+    kicker: "Capítulo II",
+    title: "Foi por isso que nasceu a daTeca.",
+    text: "Um lugar para preservar o jeito lento, encantado e presente de descobrir — em família, longe da pressa.",
+    image: "/images/mapa-exploracao.webp",
+    imageAlt: "Mapa de exploração da daTeca",
+    secondaryImage: "/images/fichario-open.webp",
+    secondaryAlt: "Registros de uma jornada de descobertas",
   },
-  experiences: {
-    title: "As experiências",
-    subtitle: "Nove capítulos de curiosidade para viver em família.",
+
+  product: {
+    kicker: "Capítulo III",
+    title: "O Kit",
+    lead: "Uma caixa que convida a família a sair da rotina e entrar numa pequena expedição.",
+    image: "/images/bau-tesouros-open.webp",
+    imageAlt: "Kit de Experiências daTeca aberto",
+    details: [
+      {
+        id: "materiais",
+        image: "/images/laboratorio/pocoes-cores-vivas.webp",
+        alt: "Materiais e cores do kit",
+        caption: "Materiais",
+      },
+      {
+        id: "frascos",
+        image: "/images/laboratorio/monstro-que-respira.webp",
+        alt: "Frascos e texturas",
+        caption: "Frascos",
+      },
+      {
+        id: "manual",
+        image: "/images/laboratorio/carta-invisivel.webp",
+        alt: "Manual e papéis",
+        caption: "Manual",
+      },
+      {
+        id: "texturas",
+        image: "/images/laboratorio/papel-artesanal.webp",
+        alt: "Papéis e texturas",
+        caption: "Texturas",
+      },
+    ],
+  },
+
+  water: {
+    title: "Só água.",
+    line: "Todo o resto já está aqui.",
+    whisper: "Você só precisa adicionar água.",
+  },
+
+  adventures: {
+    kicker: "Capítulo IV",
+    title: "Pequenas aventuras",
+    lead: "Cada experiência é um convite. Um instante em que a curiosidade ganha forma.",
     items: [
       {
         id: "tornado-na-garrafa",
         name: "Tornado na Garrafa",
+        line: "Um tornado cabe dentro de uma garrafa. E dentro da imaginação de uma criança.",
         image: "/images/laboratorio/pintura-flutuante.webp",
       },
       {
         id: "materia-mutante",
         name: "Matéria Mutante",
+        line: "Quando a matéria muda de ideia, a criança muda o olhar.",
         image: "/images/laboratorio/leite-psicodelico.webp",
       },
       {
         id: "monstro-que-respira",
         name: "Monstro que Respira",
+        line: "Nem todo monstro assusta. Alguns só pedem um pouco de atenção.",
         image: "/images/laboratorio/monstro-que-respira.webp",
       },
       {
         id: "vulcao-ativo",
         name: "Vulcão Ativo",
+        line: "Uma erupção pequena. Uma emoção enorme.",
         image: "/images/laboratorio/pocoes-cores-vivas.webp",
       },
       {
         id: "lava-viva",
         name: "Lava Viva",
+        line: "Cores que se movem. Perguntas que não param.",
         image: "/images/laboratorio/tintas-nascidas-da-cozinha.webp",
       },
       {
         id: "agua-que-anda",
         name: "Água que Anda",
+        line: "Água que escolhe um caminho. E leva a conversa junto.",
         image: "/images/laboratorio/agua-que-anda.webp",
       },
       {
         id: "pedra-liquida",
         name: "Pedra Líquida",
+        line: "O sólido e o líquido trocam de lugar — e a tarde inteira acompanha.",
         image: "/images/laboratorio/agua-solida.webp",
       },
       {
         id: "cobra-arco-iris",
         name: "Cobra Arco-Íris",
+        line: "Uma serpente de cores nasce na mesa da cozinha.",
         image: "/images/laboratorio/cobra-de-espuma.webp",
       },
       {
         id: "neve-dagua",
         name: "Neve d'Água",
+        line: "Neve sem inverno. Só curiosidade e um pouco de água.",
         image: "/images/laboratorio/ovo-saltador.webp",
       },
-    ] satisfies KitExperience[],
+    ] satisfies KitAdventure[],
   },
-  water: {
-    title: "Você só precisa adicionar água.",
-    text: "O diferencial do kit: ele chega pronto para a descoberta. Em casa, a família acrescenta apenas água — e a expedição começa.",
-  },
-  gallery: {
-    title: "Galeria",
-    subtitle: "Fotos, vídeos e a Estela realizando experiências.",
-    slots: [
+
+  box: {
+    kicker: "Capítulo V",
+    title: "A caixa",
+    lead: "Não é só embalagem. É um objeto que a criança vai querer abrir, reabrir e guardar.",
+    frames: [
       {
-        id: "foto-1",
-        kind: "photo",
-        label: "Foto da experiência",
-        src: "/images/laboratorio/monstro-que-respira.webp",
-        alt: "Monstro que Respira",
+        id: "aberta",
+        image: "/images/bau-tesouros-open.webp",
+        alt: "Caixa aberta",
+        caption: "Aberta",
       },
       {
-        id: "foto-2",
-        kind: "photo",
-        label: "Foto da experiência",
-        src: "/images/laboratorio/agua-que-anda.webp",
-        alt: "Água que Anda",
+        id: "organizacao",
+        image: "/images/fichario-open.webp",
+        alt: "Organização dos materiais",
+        caption: "Organização",
       },
       {
-        id: "video-estela-1",
-        kind: "video",
-        label: "Estela realizando experiências",
+        id: "detalhe",
+        image: "/images/laboratorio/papel-artesanal.webp",
+        alt: "Detalhe de papel e textura",
+        caption: "Papel",
       },
       {
-        id: "foto-3",
-        kind: "photo",
-        label: "Foto da experiência",
-        src: "/images/laboratorio/cobra-de-espuma.webp",
-        alt: "Cobra Arco-Íris",
-      },
-      {
-        id: "video-estela-2",
-        kind: "video",
-        label: "Vídeo da descoberta",
-      },
-      {
-        id: "foto-4",
-        kind: "photo",
-        label: "Foto da experiência",
-        src: "/images/laboratorio/pocoes-cores-vivas.webp",
-        alt: "Poções e cores do kit",
-      },
-    ] satisfies KitGallerySlot[],
-  },
-  benefits: {
-    title: "O que a família leva",
-    items: [
-      {
-        id: "curiosidade",
-        title: "Mais curiosidade.",
-        text: "Perguntas, hipóteses e o prazer de descobrir com as próprias mãos.",
-      },
-      {
-        id: "tempo",
-        title: "Mais tempo juntos.",
-        text: "Uma tarde compartilhada, sem pressa e com presença.",
-      },
-      {
-        id: "telas",
-        title: "Menos telas.",
-        text: "Atenção no que acontece na mesa, no frasco, no olhar um do outro.",
-      },
-      {
-        id: "pratica",
-        title: "Aprendizado pela prática.",
-        text: "Ciência viva, sensorial e memorável — sem parecer aula.",
-      },
-      {
-        id: "memorias",
-        title: "Momentos inesquecíveis.",
-        text: "Histórias que ficam: o vulcão, a neve, a água que anda.",
+        id: "carimbo",
+        image: "/images/laboratorio/carimbos-improvaveis.webp",
+        alt: "Detalhe de carimbo e marca",
+        caption: "Marca",
       },
     ],
   },
-  pricing: {
-    kicker: "Kit",
-    title: "Kit de Experiências daTeca",
-    priceLabel: "R$ 89,90",
-    priceValue: "89.90",
-    shippingLabel: "Frete",
-    shippingValue: "R$ 10,00",
-    shippingNote: "para todo o Brasil",
-    batchLabel: "Primeiro lote",
-    batchValue: "100 unidades",
-    waterReminder: "Você só precisa adicionar água.",
-    cta: "Quero meu Kit",
+
+  promise: {
+    kicker: "Capítulo VI",
+    title: "O que realmente estamos entregando",
+    items: [
+      "Mais perguntas.",
+      "Mais conversa.",
+      "Mais imaginação.",
+      "Mais autonomia.",
+      "Mais tempo juntos.",
+      "Mais memórias.",
+    ],
+    closing: "Não é uma caixa. São tardes que ficam.",
   },
+
+  gallery: {
+    kicker: "Capítulo VII",
+    title: "Galeria",
+    slots: [
+      {
+        id: "g1",
+        kind: "photo",
+        label: "Descoberta",
+        src: "/images/laboratorio/monstro-que-respira.webp",
+        alt: "Experiência em família",
+      },
+      {
+        id: "g2",
+        kind: "photo",
+        label: "Textura",
+        src: "/images/laboratorio/agua-que-anda.webp",
+        alt: "Água em movimento",
+      },
+      {
+        id: "g3",
+        kind: "video",
+        label: "Estela na expedição",
+      },
+      {
+        id: "g4",
+        kind: "photo",
+        label: "Cores",
+        src: "/images/laboratorio/cobra-de-espuma.webp",
+        alt: "Cores da experiência",
+      },
+      {
+        id: "g5",
+        kind: "video",
+        label: "Um instante em casa",
+      },
+      {
+        id: "g6",
+        kind: "photo",
+        label: "Mesa",
+        src: "/images/laboratorio/pocoes-cores-vivas.webp",
+        alt: "Mesa de descobertas",
+      },
+    ] satisfies KitGallerySlot[],
+  },
+
+  pricing: {
+    title: "Kit de Experiências daTeca",
+    price: "R$ 89,90",
+    priceValue: "89.90",
+    shipping: "Frete R$ 10,00",
+    shippingNote: "para todo o Brasil",
+    batch: "Primeiro lote limitado a 100 unidades.",
+    reminder: "Você só precisa adicionar água.",
+    cta: "Quero começar minha primeira expedição.",
+  },
+
   faq: {
-    title: "Perguntas frequentes",
+    title: "Perguntas",
     items: [
       {
         question: "Qual idade?",
         answer:
-          "Pensado para famílias com crianças curiosas, sempre com supervisão de um adulto. A descoberta acontece juntos.",
+          "Para famílias com crianças curiosas, sempre com um adulto por perto. A descoberta acontece juntos.",
       },
       {
         question: "Preciso comprar ingredientes?",
-        answer:
-          "Não. O kit chega praticamente completo, com ingredientes e materiais organizados.",
+        answer: "Não. O kit chega praticamente completo.",
       },
       {
         question: "O que preciso ter em casa?",
@@ -249,26 +282,18 @@ export const kitPageCopy = {
       {
         question: "É seguro?",
         answer:
-          "As experiências foram pensadas para o cotidiano familiar, com materiais organizados e manual ilustrado. Sempre com supervisão de um adulto.",
+          "Experiências pensadas para o cotidiano familiar, com materiais organizados e manual ilustrado. Sempre com supervisão.",
       },
       {
         question: "Como funciona o envio?",
-        answer:
-          "Enviamos para todo o Brasil com frete fixo de R$ 10,00.",
+        answer: "Para todo o Brasil, com frete fixo de R$ 10,00.",
       },
       {
-        question: "Prazo de postagem.",
+        question: "Prazo de postagem",
         answer:
-          "Os pedidos do primeiro lote são postados conforme a ordem de chegada, com cuidado em cada caixa.",
+          "Os pedidos do primeiro lote saem conforme a ordem de chegada.",
       },
     ],
-  },
-  finalCta: {
-    title: "Seu filho vai viver algo incrível.",
-    text: "Reserve o Kit de Experiências daTeca e transforme a próxima tarde em uma expedição. Você só precisa adicionar água.",
-    image: "/images/hero-home.webp",
-    imageAlt: "Universo visual da daTeca",
-    cta: "Quero meu Kit",
   },
 } as const
 
@@ -345,10 +370,7 @@ export function applyKitPageMeta() {
     name: pricing.title,
     description: metaDescription,
     image: [imageUrl],
-    brand: {
-      "@type": "Brand",
-      name: "daTeca",
-    },
+    brand: { "@type": "Brand", name: "daTeca" },
     offers: {
       "@type": "Offer",
       url: pageUrl,

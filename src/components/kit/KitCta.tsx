@@ -5,20 +5,17 @@ type KitCtaProps = {
   label: string
   variant?: "scroll" | "order"
   className?: string
-  large?: boolean
 }
 
 export function KitCta({
   label,
   variant = "scroll",
   className = "",
-  large = false,
 }: KitCtaProps) {
   const classes = [
     "home-organic-cta",
     "home-organic-cta--club",
-    "kit-page__cta",
-    large ? "kit-page__cta--large" : "",
+    "kit-cta",
     className,
   ]
     .filter(Boolean)

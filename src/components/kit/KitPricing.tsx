@@ -1,5 +1,6 @@
 import { kitPageCopy } from "../../data/kitPageCopy"
 import { KitCta } from "./KitCta"
+import { KitReveal } from "./KitReveal"
 
 export function KitPricing() {
   const { pricing } = kitPageCopy
@@ -10,28 +11,19 @@ export function KitPricing() {
       className="kit-pricing"
       aria-labelledby="kit-pricing-title"
     >
-      <p className="kit-pricing__kicker">{pricing.kicker}</p>
-      <h2 id="kit-pricing-title" className="kit-page__section-title">
-        {pricing.title}
-      </h2>
-      <p className="kit-pricing__price">{pricing.priceLabel}</p>
-      <dl className="kit-pricing__meta">
-        <div className="kit-pricing__row">
-          <dt>{pricing.shippingLabel}</dt>
-          <dd>
-            <strong>{pricing.shippingValue}</strong>
-            <span>{pricing.shippingNote}</span>
-          </dd>
-        </div>
-        <div className="kit-pricing__row">
-          <dt>{pricing.batchLabel}</dt>
-          <dd>
-            <strong>{pricing.batchValue}</strong>
-          </dd>
-        </div>
-      </dl>
-      <p className="kit-page__water-note">{pricing.waterReminder}</p>
-      <KitCta label={pricing.cta} variant="order" large />
+      <KitReveal>
+        <h2 id="kit-pricing-title" className="kit-pricing__title">
+          {pricing.title}
+        </h2>
+        <p className="kit-pricing__price">{pricing.price}</p>
+        <p className="kit-pricing__shipping">
+          {pricing.shipping}
+          <span>{pricing.shippingNote}</span>
+        </p>
+        <p className="kit-pricing__batch">{pricing.batch}</p>
+        <p className="kit-pricing__reminder">{pricing.reminder}</p>
+        <KitCta label={pricing.cta} variant="order" />
+      </KitReveal>
     </section>
   )
 }

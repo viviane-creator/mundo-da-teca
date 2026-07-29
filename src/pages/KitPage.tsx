@@ -1,17 +1,16 @@
 import { useEffect } from "react"
 import {
-  KitBenefits,
-  KitContents,
-  KitDiscovery,
-  KitExperiences,
+  KitAdventures,
+  KitBox,
+  KitBrand,
+  KitChildhood,
   KitFaq,
-  KitFinalCta,
   KitGallery,
   KitHero,
   KitPricing,
-  KitProblem,
-  KitSolution,
-  KitWaterDifferential,
+  KitProduct,
+  KitPromise,
+  KitWater,
 } from "../components/kit"
 import { applyKitPageMeta, clearKitPageMeta } from "../data/kitPageCopy"
 import "../styles/kitPage.css"
@@ -27,17 +26,16 @@ export function KitPage() {
   return (
     <article className="kit-page">
       <KitHero />
-      <KitDiscovery />
-      <KitProblem />
-      <KitSolution />
-      <KitContents />
-      <KitExperiences />
-      <KitWaterDifferential />
+      <KitChildhood />
+      <KitBrand />
+      <KitProduct />
+      <KitWater />
+      <KitAdventures />
+      <KitBox />
+      <KitPromise />
       <KitGallery />
-      <KitBenefits />
       <KitPricing />
       <KitFaq />
-      <KitFinalCta />
     </article>
   )
 }
