@@ -19,7 +19,9 @@
 .conheca-page__chapter-title,
 .conheca-eco-card__title,
 .kit-page__hero-title,
-.kit-page__section-title {
+.kit-page__section-title,
+.kit-water__title,
+.kit-final__title {
   font-family: var(--teca-font-page-title);
   font-weight: 400;
   text-transform: none;

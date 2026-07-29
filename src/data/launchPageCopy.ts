@@ -55,7 +55,6 @@ export function applyLaunchPageMeta() {
 }
 
 export function clearLaunchPageMeta() {
-  document.title = "daTeca"
   for (const { attr, key } of META_KEYS) {
     document.querySelector(`meta[${attr}="${key}"]`)?.remove()
   }

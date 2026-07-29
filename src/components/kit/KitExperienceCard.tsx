@@ -10,7 +10,7 @@ export function KitExperienceCard({
   return (
     <article
       className="kit-experience-card"
-      style={{ animationDelay: `${index * 40}ms` }}
+      style={{ animationDelay: `${Math.min(index, 8) * 45}ms` }}
     >
       <div className="kit-experience-card__media">
         <img

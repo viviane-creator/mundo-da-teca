@@ -59,7 +59,7 @@ import { ClubModalityPage } from "./pages/ClubModalityPage"
 import { KitPage } from "./pages/KitPage"
 import { CONHECA_SHARE_PATH } from "./data/conhecaPageCopy"
 import { clubPageCopy } from "./data/clubPageCopy"
-import { kitPageCopy } from "./data/kitPageCopy"
+import { applyKitPageMeta } from "./data/kitPageCopy"
 import { appRoutes } from "./navigation/appRoutes"
 import {
   clubModalityIdFromScreen,
@@ -447,8 +447,8 @@ function AppContent() {
         if (path !== launchKitPath) {
           window.history.pushState({ screen }, "", launchKitPath)
         }
-        document.title = kitPageCopy.documentTitle
         clearLaunchPageMeta()
+        applyKitPageMeta()
         return
       }
 
@@ -487,8 +487,8 @@ function AppContent() {
       if (path !== kitPath) {
         window.history.pushState({ screen }, "", kitPath)
       }
-      document.title = kitPageCopy.documentTitle
       clearLaunchPageMeta()
+      applyKitPageMeta()
       return
     }
 
