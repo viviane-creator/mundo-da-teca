@@ -42,7 +42,10 @@ export const caixaLaboratorioData = {
     imageAlt: "Caixa Laboratório da daTeca aberta com materiais",
     price: "R$ 89,90",
     shipping: `+ R$ ${entryProduct.shippingBRL.toFixed(0)},00 de frete para todo o Brasil`,
-    batch: `Preço especial do primeiro lote — somente ${entryProduct.firstBatchUnits} unidades.`,
+    batchSeal: {
+      line1: "PREÇO ESPECIAL DO PRIMEIRO LOTE",
+      line2: `SOMENTE ${entryProduct.firstBatchUnits} UNIDADES`,
+    },
     cta: "QUERO MINHA CAIXA LABORATÓRIO",
     note: "Compra única. Não é assinatura.",
   },
@@ -72,8 +75,6 @@ export const caixaLaboratorioData = {
   contents: {
     title: "Tudo organizado. Tudo pronto para começar.",
     text: "Dentro da Caixa Laboratório, a criança encontra os ingredientes, recipientes e ferramentas utilizados nas experiências.",
-    image: caixaLaboratorioImages.caixaAberta,
-    imageAlt: "Materiais da Caixa Laboratório organizados",
     items: [
       "Ingredientes separados e identificados",
       "Frascos e potinhos para as experiências",
