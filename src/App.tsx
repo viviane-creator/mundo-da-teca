@@ -57,9 +57,11 @@ import { Home } from "./pages/Home"
 import { ClubPage } from "./pages/ClubPage"
 import { ClubModalityPage } from "./pages/ClubModalityPage"
 import { KitPage } from "./pages/KitPage"
+import { CaixaLaboratorioPage } from "./pages/CaixaLaboratorio/CaixaLaboratorioPage"
 import { CONHECA_SHARE_PATH } from "./data/conhecaPageCopy"
 import { clubPageCopy } from "./data/clubPageCopy"
 import { applyKitPageMeta } from "./data/kitPageCopy"
+import { applyCaixaLaboratorioMeta } from "./pages/CaixaLaboratorio/caixaLaboratorioData"
 import {
   CLUB_MARKETING_ENABLED,
   SHOW_BAU_AND_FICHARIO_PRODUCTS,
@@ -71,6 +73,10 @@ import {
   pathForClubScreen,
   screenFromClubPath,
 } from "./navigation/clubNavigation"
+import {
+  pathForCaixaLaboratorioScreen,
+  screenFromCaixaLaboratorioPath,
+} from "./navigation/caixaLaboratorioNavigation"
 import {
   pathForKitScreen,
   screenFromKitPath,
@@ -131,6 +137,7 @@ type Screen =
   | "clube-mundo-tesouros"
   | "clube-expedicao-completa"
   | "kit"
+  | "caixa-laboratorio"
   | "launch"
 
 type SimpleSubScreen = Exclude<
@@ -156,6 +163,7 @@ type SimpleSubScreen = Exclude<
   | "clube-mundo-tesouros"
   | "clube-expedicao-completa"
   | "kit"
+  | "caixa-laboratorio"
   | "launch"
 >
 
@@ -336,6 +344,11 @@ function readInitialScreen(): Screen {
     return kitScreen as Screen
   }
 
+  const caixaLaboratorioScreen = screenFromCaixaLaboratorioPath(path)
+  if (caixaLaboratorioScreen) {
+    return caixaLaboratorioScreen as Screen
+  }
+
   return appRoutes.home
 }
 
@@ -475,6 +488,16 @@ function AppContent() {
         return
       }
 
+      const launchCaixaPath = pathForCaixaLaboratorioScreen(screen)
+      if (launchCaixaPath) {
+        if (path !== launchCaixaPath) {
+          window.history.pushState({ screen }, "", launchCaixaPath)
+        }
+        clearLaunchPageMeta()
+        applyCaixaLaboratorioMeta()
+        return
+      }
+
       if (path === CONHECA_SHARE_PATH || path === HOME_PREVIEW_PATH) {
         window.history.pushState({ screen }, "", "/")
       }
@@ -515,6 +538,16 @@ function AppContent() {
       return
     }
 
+    const caixaPath = pathForCaixaLaboratorioScreen(screen)
+    if (caixaPath) {
+      if (path !== caixaPath) {
+        window.history.pushState({ screen }, "", caixaPath)
+      }
+      clearLaunchPageMeta()
+      applyCaixaLaboratorioMeta()
+      return
+    }
+
     clearLaunchPageMeta()
     document.title = "daTeca"
   }, [screen])
@@ -529,6 +562,8 @@ function AppContent() {
   }, [])
 
   const isLaunchScreen = LAUNCH_MODE && screen === appRoutes.launch
+  const isCaixaLaboratorioLanding = screen === appRoutes.caixaLaboratorio
+  const hideChrome = isLaunchScreen || isCaixaLaboratorioLanding
 
   return (
     <main
@@ -536,6 +571,7 @@ function AppContent() {
       style={{
         ...styles.main,
         ...(isLaunchScreen ? { padding: 0, overflow: "hidden" } : null),
+        ...(isCaixaLaboratorioLanding ? { padding: 0 } : null),
       }}
     >
       <section
@@ -550,9 +586,16 @@ function AppContent() {
                 maxHeight: "100vh",
               }
             : null),
+          ...(isCaixaLaboratorioLanding
+            ? {
+                paddingBottom: 0,
+                maxWidth: "100%",
+                borderRadius: 0,
+              }
+            : null),
         }}
       >
-        {!isLaunchScreen ? <TopAccessLink /> : null}
+        {!hideChrome ? <TopAccessLink /> : null}
         <LoginModal setScreen={setScreen} />
         <AccountModal />
 
@@ -678,6 +721,8 @@ function AppContent() {
 
         {screen === appRoutes.kit && <KitPage />}
 
+        {screen === appRoutes.caixaLaboratorio && <CaixaLaboratorioPage />}
+
         {screen === "meu-mundo" && <MeuMundoPage setScreen={setScreen} />}
 
         {screen === "biblioteca" && (
@@ -688,7 +733,7 @@ function AppContent() {
 
         {!isLaunchScreen ? <InstitutionalFooter /> : null}
 
-        {!isLaunchScreen ? (
+        {!hideChrome ? (
           <BottomNav active={resolveNavActive(screen)} setScreen={setScreen} />
         ) : null}
       </section>

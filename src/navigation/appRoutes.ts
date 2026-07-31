@@ -13,6 +13,8 @@ export const appRoutes = {
   minhaColecao: "meu-mundo",
   clube: "clube",
   kit: "kit",
+  /** Landing de vendas — Caixa Laboratório (fora do menu) */
+  caixaLaboratorio: "caixa-laboratorio",
   atelie: "atelie",
   bauDeTesouros: toAtelierProductScreen("bau"),
 } as const

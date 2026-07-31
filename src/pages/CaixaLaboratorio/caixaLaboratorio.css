@@ -1,0 +1,415 @@
+/* ==========================================================
+   Landing — Caixa Laboratório da daTeca
+   Isolada do restante do site. Mobile-first.
+   ========================================================== */
+
+.clx-page {
+  position: relative;
+  isolation: isolate;
+  color: #5a4030;
+  overflow: clip;
+  min-height: 100svh;
+  background: #3d2c22;
+}
+
+.clx-page__backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.clx-page__backdrop-image,
+.clx-page__backdrop .clx-placeholder {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 36%;
+}
+
+.clx-page__backdrop-veil {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(61, 44, 34, 0.28) 0%,
+    rgba(61, 44, 34, 0.42) 38%,
+    rgba(61, 44, 34, 0.62) 72%,
+    rgba(48, 34, 26, 0.78) 100%
+  );
+}
+
+.clx-page__foreground {
+  position: relative;
+  z-index: 1;
+  padding-bottom: clamp(48px, 10vw, 80px);
+}
+
+.clx-page a.clx-cta {
+  text-decoration: none;
+}
+
+.clx-cta {
+  max-width: min(92vw, 340px);
+}
+
+/* —— Header simplificado —— */
+
+.clx-header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 16px;
+  background: rgba(255, 253, 249, 0.72);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 253, 249, 0.28);
+}
+
+.clx-header__logo {
+  display: block;
+  width: clamp(88px, 24vw, 118px);
+  height: auto;
+}
+
+.clx-header__cta.home-organic-cta {
+  max-width: none;
+  padding: 10px 16px;
+  font-size: clamp(16px, 4vw, 20px);
+  line-height: 1.15;
+}
+
+/* —— Shared sections —— */
+
+.clx-section {
+  padding: clamp(40px, 8vw, 72px) clamp(18px, 5vw, 28px);
+  max-width: 720px;
+  margin: clamp(16px, 3vw, 24px) auto;
+  text-align: center;
+  background: rgba(248, 241, 231, 0.88);
+  border: 1px solid rgba(255, 253, 249, 0.35);
+  border-radius: 22px;
+  box-shadow: 0 12px 36px rgba(40, 28, 20, 0.12);
+  backdrop-filter: blur(8px);
+}
+
+.clx-section__title {
+  margin: 0 auto clamp(12px, 3vw, 18px);
+  max-width: 16ch;
+  font-family: var(--teca-font-page-title, "Caveat", cursive);
+  font-size: clamp(32px, 8vw, 44px);
+  font-weight: 400;
+  line-height: 1.08;
+  color: #4a3728;
+}
+
+.clx-section__lead {
+  margin: 0 auto clamp(28px, 6vw, 40px);
+  max-width: 34ch;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(17px, 4.2vw, 20px);
+  line-height: 1.45;
+  color: rgba(106, 79, 60, 0.88);
+}
+
+.clx-frame {
+  margin: 0;
+  overflow: hidden;
+  border-radius: 10px;
+  background: #efe4d4;
+  border: 1px solid rgba(196, 165, 141, 0.28);
+}
+
+.clx-frame img,
+.clx-frame .clx-placeholder {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.clx-frame--square img,
+.clx-frame--square .clx-placeholder {
+  aspect-ratio: 1 / 1;
+}
+
+.clx-placeholder {
+  background:
+    linear-gradient(160deg, #f7efe5 0%, #efe3d4 55%, #e6d8c8 100%);
+}
+
+/* —— Hero —— */
+
+.clx-hero {
+  position: relative;
+  min-height: min(88svh, 720px);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  background: transparent;
+}
+
+.clx-hero__content {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 520px);
+  padding: clamp(28px, 7vw, 48px) clamp(20px, 5vw, 28px) clamp(40px, 9vw, 64px);
+  text-align: center;
+}
+
+.clx-hero__kicker {
+  margin: 0 0 12px;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 12px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(255, 253, 249, 0.78);
+}
+
+.clx-hero__title {
+  margin: 0 auto 14px;
+  max-width: 14ch;
+  font-family: var(--teca-font-page-title, "Caveat", cursive);
+  font-size: clamp(40px, 10vw, 56px);
+  font-weight: 400;
+  line-height: 1.02;
+  color: #fffdf9;
+}
+
+.clx-hero__subtitle {
+  margin: 0 auto clamp(24px, 5vw, 34px);
+  max-width: 30ch;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(17px, 4.2vw, 20px);
+  line-height: 1.4;
+  color: rgba(255, 253, 249, 0.9);
+}
+
+/* —— Contents —— */
+
+.clx-contents__media {
+  display: grid;
+  gap: 12px;
+  margin-bottom: clamp(24px, 5vw, 36px);
+}
+
+@media (min-width: 640px) {
+  .clx-contents__media {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.clx-contents__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 10px;
+  text-align: left;
+  max-width: 34ch;
+  margin-inline: auto;
+}
+
+.clx-contents__list li {
+  position: relative;
+  padding-left: 1.2em;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(17px, 4vw, 19px);
+  line-height: 1.4;
+  color: #6a5848;
+}
+
+.clx-contents__list li::before {
+  content: "·";
+  position: absolute;
+  left: 0;
+  color: #b89a62;
+}
+
+/* —— Experiences —— */
+
+.clx-experiences {
+  max-width: 920px;
+}
+
+.clx-experiences__grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+@media (min-width: 720px) {
+  .clx-experiences__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+  }
+}
+
+.clx-experiences__name {
+  margin: 8px 0 0;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(15px, 3.6vw, 17px);
+  color: #6a5848;
+}
+
+/* —— Water —— */
+
+.clx-water {
+  padding: clamp(48px, 10vw, 80px) clamp(20px, 5vw, 28px);
+  max-width: 720px;
+  margin: clamp(16px, 3vw, 24px) auto;
+  text-align: center;
+  background: rgba(238, 244, 245, 0.86);
+  border: 1px solid rgba(255, 253, 249, 0.35);
+  border-radius: 22px;
+  box-shadow: 0 12px 36px rgba(40, 28, 20, 0.12);
+  backdrop-filter: blur(8px);
+  color: #5a6a72;
+}
+
+.clx-water__drop {
+  margin: 0 auto 16px;
+  color: #8aa4ad;
+  opacity: 0.85;
+}
+
+.clx-water__title {
+  margin: 0 0 10px;
+  font-family: var(--teca-font-page-title, "Caveat", cursive);
+  font-size: clamp(40px, 10vw, 56px);
+  font-weight: 400;
+  color: #4a5960;
+}
+
+.clx-water__line {
+  margin: 0 0 8px;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(20px, 4.8vw, 24px);
+  color: #5a6a72;
+}
+
+.clx-water__whisper {
+  margin: 0;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(16px, 3.8vw, 18px);
+  font-style: italic;
+  color: rgba(90, 106, 114, 0.82);
+}
+
+/* —— Benefits —— */
+
+.clx-benefits__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 14px;
+  text-align: left;
+  max-width: 36ch;
+  margin-inline: auto;
+}
+
+.clx-benefits__list li {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(17px, 4vw, 19px);
+  line-height: 1.4;
+  color: #6a5848;
+}
+
+.clx-benefits__list li span {
+  color: #b89a62;
+  flex-shrink: 0;
+}
+
+/* —— Pricing —— */
+
+.clx-pricing {
+  background: rgba(255, 253, 249, 0.92);
+}
+
+.clx-pricing__price {
+  margin: 0 0 10px;
+  font-family: var(--teca-font-page-title, "Caveat", cursive);
+  font-size: clamp(44px, 11vw, 60px);
+  line-height: 1;
+  color: #4a3728;
+}
+
+.clx-pricing__shipping {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin: 0 0 14px;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(18px, 4.2vw, 20px);
+  color: #6a5848;
+}
+
+.clx-pricing__shipping span {
+  font-size: 0.9em;
+  color: rgba(106, 88, 72, 0.75);
+}
+
+.clx-pricing__batch,
+.clx-pricing__reminder {
+  margin: 0 0 8px;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(16px, 3.8vw, 18px);
+  color: #7a6254;
+}
+
+.clx-pricing__reminder {
+  margin-bottom: clamp(22px, 5vw, 30px);
+  font-style: italic;
+}
+
+/* —— FAQ —— */
+
+.clx-faq__list {
+  display: grid;
+  gap: 10px;
+  text-align: left;
+}
+
+.clx-faq__item {
+  border: 1px solid rgba(196, 165, 141, 0.35);
+  border-radius: 14px;
+  background: rgba(255, 253, 249, 0.72);
+  padding: 14px 16px;
+}
+
+.clx-faq__item summary {
+  cursor: pointer;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(18px, 4.2vw, 20px);
+  color: #4a3728;
+  list-style: none;
+}
+
+.clx-faq__item summary::-webkit-details-marker {
+  display: none;
+}
+
+.clx-faq__item p {
+  margin: 10px 0 0;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(16px, 3.8vw, 18px);
+  line-height: 1.45;
+  color: #6a5848;
+}
+
+/* —— Final CTA —— */
+
+.clx-final {
+  padding-bottom: clamp(24px, 6vw, 40px);
+}
