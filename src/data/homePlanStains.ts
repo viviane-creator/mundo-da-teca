@@ -1,4 +1,4 @@
-import type { HomeModalityId } from "./homeCopy"
+import type { HomeModalityId } from "./clubModalities"
 
 export const homePlanStainSrc: Record<HomeModalityId, string> = {
   "explorador-digital": "/assets/editorial/plans/plan-explorador.webp",

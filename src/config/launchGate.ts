@@ -14,3 +14,5 @@ export const HOME_PREVIEW_PATH = "/home-preview"
  * No lançamento oficial: desligar aqui ou apagar HomePreLaunchNotice.
  */
 export const SHOW_HOME_PRELAUNCH_NOTICE = true
+
+/** Estratégia de produto (Clube único, Caixa Laboratório, flags): `productStrategy.ts` */

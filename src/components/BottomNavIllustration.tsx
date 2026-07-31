@@ -183,7 +183,6 @@ const illustrations: Record<
   home: NavCompassRose,
   universos: NavFoldedMap,
   meuMundo: NavFichario,
-  clube: NavExplorerCard,
   atelie: NavTreasureChest,
 }
 

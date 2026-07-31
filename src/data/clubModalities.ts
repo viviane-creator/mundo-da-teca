@@ -1,7 +1,19 @@
-﻿import type { HomeModalityId } from "./homeCopy"
+﻿/**
+ * @deprecated Modelo de quatro modalidades descontinuado.
+ * Ver `config/productStrategy.ts`. Páginas do Clube estão desligadas.
+ * Manter apenas para não quebrar imports legados até a remoção definitiva.
+ */
 import type { HomeCtaTone } from "../styles/homeCta"
 
-export type ClubModalityId = HomeModalityId
+/** @deprecated */
+export type ClubModalityId =
+  | "explorador-digital"
+  | "mundo-descobertas"
+  | "mundo-tesouros"
+  | "expedicao-completa"
+
+/** @deprecated alias legado */
+export type HomeModalityId = ClubModalityId
 
 export type ClubModality = {
   id: ClubModalityId

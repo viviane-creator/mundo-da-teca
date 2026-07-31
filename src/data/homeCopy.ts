@@ -1,10 +1,4 @@
-﻿export type HomeModalityId =
-  | "explorador-digital"
-  | "mundo-descobertas"
-  | "mundo-tesouros"
-  | "expedicao-completa"
-
-/** Manifesto reservado para a futura página Sobre */
+﻿/** Manifesto reservado para a futura página Sobre */
 export const homeAboutManifesto = {
   lines: [
     "A infância continua curiosa.",
@@ -16,11 +10,16 @@ export const homeAboutManifesto = {
     "A daTeca nasceu para preservar esse jeito lento, encantado e presente de descobrir.",
 } as const
 
+/**
+ * Home institucional simplificada.
+ * Planos/modalidades foram descontinuados — ver `config/productStrategy.ts`.
+ * A landing da Caixa Laboratório será a próxima etapa de conversão.
+ */
 export const homeCopy = {
   whatIs: {
     title: "O que é a daTeca?",
     paragraphs: [
-      "A daTeca é uma plataforma de descobertas para famílias.",
+      "A daTeca é um mundo de descobertas para famílias.",
       "Aqui, crianças exploram experiências criativas, registram o que descobrem e constroem, aos poucos, uma coleção que cresce junto com a infância.",
     ],
     closing: "",
@@ -31,60 +30,21 @@ export const homeCopy = {
     subtitle: "Uma jornada que acontece aos poucos.",
     steps: [
       {
-        title: "Escolha como participar.",
-        text: "Comece pela Plataforma Digital ou escolha uma das modalidades do Clube para viver a experiência da forma que mais combina com a sua família.",
+        title: "Comece pela Caixa Laboratório.",
+        text: "O primeiro passo da daTeca é uma caixa física especial — a base da coleção, com manual, ingredientes, frascos, materiais e ferramentas para começar.",
       },
       {
-        title: "Comece imediatamente.",
-        text: "Assim que entrar, seu acesso à Plataforma Digital é liberado para explorar experiências, registrar descobertas e acompanhar sua coleção.",
+        title: "Explore com as próprias mãos.",
+        text: "Cada experiência convida a família a experimentar, observar e registrar descobertas no ritmo da infância.",
       },
       {
-        title: "Receba novos capítulos em casa.",
-        text: "Nas modalidades com envios físicos, novos materiais chegam todos os meses à sua casa, ampliando a jornada de descobertas.",
+        title: "Veja a coleção crescer.",
+        text: "Com o tempo, novos capítulos e materiais vão ampliando a jornada — sem planos para escolher, sem comparativos.",
       },
       {
-        title: "Veja sua coleção crescer.",
-        text: "Ao longo de seis meses, cada nova descoberta passa a fazer parte de uma coleção única, construída pela própria criança.",
+        title: "Em breve, o Clube.",
+        text: "Depois da validação da Caixa Laboratório, o Clube da daTeca chegará como uma assinatura única e simples: um envio por mês, sem upgrades.",
       },
     ],
-  },
-
-  participate: {
-    title: "Clube daTeca",
-    lead: ["Escolha como quer viver essa experiência."],
-    modalities: [
-      {
-        id: "explorador-digital" as const,
-        name: "Explorador Digital",
-        summary:
-          "Toda a experiência da daTeca na plataforma digital. Explore, registre e acompanhe sua jornada desde o primeiro dia.",
-      },
-      {
-        id: "mundo-descobertas" as const,
-        name: "Meu Mundo de Descobertas",
-        summary:
-          "Além do acesso digital, receba todos os meses novos materiais para registrar, criar e ampliar cada descoberta.",
-      },
-      {
-        id: "mundo-tesouros" as const,
-        name: "Meu Mundo de Tesouros",
-        summary:
-          "Além do acesso digital, receba objetos e pequenos tesouros que transformam cada descoberta em uma lembrança para guardar.",
-      },
-      {
-        id: "expedicao-completa" as const,
-        name: "Expedição Completa",
-        summary:
-          "A jornada completa: plataforma digital, materiais de registro e tesouros que chegam à sua casa todos os meses.",
-      },
-    ],
-  },
-
-  finalCta: {
-    title: "Ainda em dúvida?",
-    lines: [
-      "Compare todas as formas de participar e descubra qual combina mais com sua família.",
-    ],
-    label: "Escolher como participar",
   },
 } as const

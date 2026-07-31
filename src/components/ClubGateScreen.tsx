@@ -65,9 +65,9 @@ export function ClubGateScreen({
               ...tecaFichario.etiquetaAction(),
               ...styles.clubGateButtonSecondary,
             }}
-            onClick={() => setScreen(appRoutes.clube)}
+            onClick={() => setScreen(appRoutes.home)}
           >
-            Conhecer o Clube
+            Voltar ao início
           </button>
         </div>
       </div>

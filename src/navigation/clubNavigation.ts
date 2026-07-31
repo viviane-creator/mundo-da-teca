@@ -1,3 +1,4 @@
+import { CLUB_MARKETING_ENABLED } from "../config/productStrategy"
 import type { ClubModalityId } from "../data/clubModalities"
 import { appRoutes } from "./appRoutes"
 
@@ -59,6 +60,20 @@ export function clubModalityPath(id: ClubModalityId): string {
 
 export function screenFromClubPath(path: string): string | null {
   const normalized = path.replace(/\/$/, "") || "/"
+  const isClubPath =
+    normalized === CLUB_HUB_PATH ||
+    normalized.endsWith("/clube") ||
+    Object.values(clubModalityRoutes).some(
+      (route) =>
+        normalized === route.path || normalized.endsWith(route.path),
+    )
+
+  if (!isClubPath) return null
+
+  // Rotas antigas do Clube redirecionam para a Home enquanto o marketing estiver off.
+  if (!CLUB_MARKETING_ENABLED) {
+    return appRoutes.home
+  }
 
   if (normalized === CLUB_HUB_PATH || normalized.endsWith("/clube")) {
     return appRoutes.clube
@@ -74,6 +89,8 @@ export function screenFromClubPath(path: string): string | null {
 }
 
 export function pathForClubScreen(screen: string): string | null {
+  if (!CLUB_MARKETING_ENABLED) return null
+
   if (screen === appRoutes.clube) return CLUB_HUB_PATH
 
   if (isClubModalityScreen(screen)) {

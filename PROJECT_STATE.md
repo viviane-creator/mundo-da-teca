@@ -27,17 +27,22 @@ A experiência deve parecer:
 
 ## 2. Arquitetura atual
 
-Fluxo principal de informação:
+Fonte de verdade: `src/config/productStrategy.ts`.
+
+Fluxo principal de informação (fase atual):
 
 ```
-INÍCIO → apresentação do produto + planos + CTA Brincadeiras
-CLUBE → planos Explorador / Colecionador
-BRINCADEIRAS → 6 universos + experiências
-MINHA COLEÇÃO (Meu Fichário) → coração do produto · fichário digital
-ATELIÊ → área complementar · tesouros físicos/digitais
+INÍCIO → apresentação institucional simplificada
+UNIVERSOS → 6 universos + experiências
+MEU MUNDO → coleção digital / diário / biblioteca
+ATELIÊ → área complementar (sem Baú/Fichário físicos por enquanto)
 ```
 
-**Descobertas** permanece no código como legado, fora do menu principal. Conteúdo migrando gradualmente para Meu Fichário.
+**Prioridade comercial atual:** validar a **Caixa Laboratório da daTeca** (R$ 89,90 + frete R$ 10).  
+Landing de conversão ainda não implementada.
+
+**Clube antigo (4 modalidades):** descontinuado e desligado (`CLUB_MARKETING_ENABLED = false`).  
+**Futuro:** um único Clube da daTeca (assinatura única, sem planos/comparativos) — página ainda não criada.
 
 Roteamento: state `screen` em `App.tsx` + render condicional. Sem router externo.
 
@@ -48,12 +53,12 @@ Roteamento: state `screen` em `App.tsx` + render condicional. Sem router externo
 | # | Label | Screen | Peso |
 |---|-------|--------|------|
 | 1 | Início | `home` | Principal |
-| 2 | Clube | `clube` | Principal |
-| 3 | Brincadeiras | `brincadeiras` | Principal |
-| 4 | Minha Coleção | `minha-colecao` | Principal |
-| 5 | Ateliê | `atelie` | Secundário (visual mais discreto no BottomNav) |
+| 2 | Universos | `universos` | Principal |
+| 3 | Meu Mundo | `meu-mundo` | Principal |
+| 4 | Ateliê | `atelie` | Secundário |
 
-Arquivo: `src/data/navigation.ts`
+Arquivo: `src/data/bottomNav.ts`  
+Clube removido do menu até a nova página do Clube.
 
 ---
 
@@ -80,28 +85,26 @@ Conceito de coleção aprovado (futuro): **6 universos × 12 páginas = 72 pági
 
 ---
 
-## 5. Planos do Clube
+## 5. Produto e Clube (nova estratégia)
 
-### Explorador (digital)
+### Descontinuado
 
-- acesso digital
-- experiências
-- 6 universos
-- coleção digital
+Não existem mais as quatro modalidades:
+Explorador Digital · Meu Mundo de Descobertas · Meu Mundo de Tesouros · Expedição Completa.
 
-### Colecionador (físico + digital)
+Sem planos. Sem comparativos. Sem escolha entre assinaturas.
 
-- tudo do Explorador
-- fichário físico
-- novas páginas para a coleção
-- materiais para experiências
-- adesivos, selos e pequenos tesouros do Ateliê
+### Produto de entrada (prioridade)
 
-**Nesta fase:** CTAs visuais apenas. Sem checkout, login ou lógica de assinatura.
+**Caixa Laboratório da daTeca** — R$ 89,90 · frete R$ 10 para todo o Brasil · primeiro lote 100 unidades.
 
-Dados: `src/data/participationPlans.ts`  
-- `participationPlans` — versão resumida (Home)  
-- `clubParticipationPlans` — versão detalhada (Clube)
+### Clube futuro (ainda não no site)
+
+Um único **Clube da daTeca**: assinatura fixa, envio físico mensal, sem upgrades.  
+Primeiro envio = base da coleção (Caixa Laboratório + manual + ingredientes + frascos + materiais + ferramentas).  
+Baú e Fichário físicos: existem no projeto, mas **não aparecem no site** nesta fase (`SHOW_BAU_AND_FICHARIO_PRODUCTS = false`).
+
+Config: `src/config/productStrategy.ts`
 
 ---
 
@@ -112,37 +115,24 @@ Arquivo: `src/pages/Home.tsx`
 ```
 Hero (WorldPortalLayout)
   ↓
-"O que é o Mundo da Teca?"
+Faixa de pré-lançamento (opcional)
   ↓
-"Escolha como participar"
-  ├── Explorador → Clube
-  └── Colecionador → Clube
+"O que é a daTeca?"
   ↓
-"Conheça as brincadeiras"
-  └── Botão "Ver brincadeiras" → screen brincadeiras
+"Como funciona?" (jornada sem planos/modalidades)
 ```
 
-**Sem** listagem de universos na Home. Universos existem apenas em Brincadeiras.
+**Sem** seção de modalidades, **sem** CTA para o Clube antigo.  
+Próxima etapa: landing de conversão da Caixa Laboratório.
 
 ---
 
 ## 7. Estrutura do Clube
 
-Arquivo: `src/pages/ClubPage.tsx`
+Páginas antigas (`ClubPage`, `ClubModalityPage`) permanecem no código, mas **desligadas**.  
+Rotas `/clube` e `/clube/*` redirecionam para a Home.
 
-```
-Capa (WorldPortalLayout)
-  ↓
-"escolha seu plano"
-  ├── PlanCard — Explorador
-  └── PlanCard — Colecionador
-  ↓
-SoftNote "a coleção"
-  ↓
-Carteirinha da Teca (secundária, no final)
-```
-
-A carteirinha deixou de ser protagonista. Planos são o foco.
+A nova página do Clube será criada do zero após a validação da Caixa Laboratório.
 
 ---
 

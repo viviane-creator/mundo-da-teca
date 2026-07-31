@@ -1,4 +1,5 @@
-﻿import type { AtelierPoeticScreen } from "./atelierSubPages"
+﻿import { SHOW_BAU_AND_FICHARIO_PRODUCTS } from "./config/productStrategy"
+import type { AtelierPoeticScreen } from "./atelierSubPages"
 
 export type AtelierCollection =
   | "Álbum das Descobertas"
@@ -135,17 +136,28 @@ export function getFigurinhasSeasonalTeasers() {
   ]
 }
 
+function isCatalogVisible(good: AtelierGood): boolean {
+  if (!SHOW_BAU_AND_FICHARIO_PRODUCTS && good.id === "bau") {
+    return false
+  }
+  return true
+}
+
 export function getAtelierCatalogSections() {
   return atelierSections
     .map((section) => ({
       ...section,
-      goods: atelierGoods.filter((good) => good.section === section.id),
+      goods: atelierGoods.filter(
+        (good) => good.section === section.id && isCatalogVisible(good),
+      ),
     }))
     .filter((section) => section.goods.length > 0)
 }
 
 export function getAtelierGoodById(id: string): AtelierGood | undefined {
-  return atelierGoods.find((good) => good.id === id)
+  const good = atelierGoods.find((item) => item.id === id)
+  if (!good || !isCatalogVisible(good)) return undefined
+  return good
 }
 
 export function getAtelierSectionTitle(sectionId: AtelierSectionId): string {

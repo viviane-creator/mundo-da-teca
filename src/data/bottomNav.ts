@@ -4,7 +4,6 @@ export type BottomNavIllustrationId =
   | "home"
   | "universos"
   | "meuMundo"
-  | "clube"
   | "atelie"
 
 export type BottomNavItem = {
@@ -15,18 +14,13 @@ export type BottomNavItem = {
   activeTint: string
 }
 
+/** Menu principal — Clube antigo removido até a nova página do Clube. */
 export const bottomNavItems: BottomNavItem[] = [
   {
     label: "Início",
     screen: appRoutes.home,
     illustration: "home",
     activeTint: "#A8947E",
-  },
-  {
-    label: "Clube",
-    screen: appRoutes.clube,
-    illustration: "clube",
-    activeTint: "#B99B5C",
   },
   {
     label: "Universos",

@@ -60,6 +60,10 @@ import { KitPage } from "./pages/KitPage"
 import { CONHECA_SHARE_PATH } from "./data/conhecaPageCopy"
 import { clubPageCopy } from "./data/clubPageCopy"
 import { applyKitPageMeta } from "./data/kitPageCopy"
+import {
+  CLUB_MARKETING_ENABLED,
+  SHOW_BAU_AND_FICHARIO_PRODUCTS,
+} from "./config/productStrategy"
 import { appRoutes } from "./navigation/appRoutes"
 import {
   clubModalityIdFromScreen,
@@ -349,7 +353,7 @@ function resolveNavActive(screen: Screen): string {
     if (parent === "atelie" || parent === "figurinhas") return "atelie"
     if (parent === "descobertas") return "meu-mundo"
     if (parent === "universos") return "universos"
-    if (parent === "clube") return "clube"
+    if (parent === "clube") return appRoutes.home
   }
 
   if (isPlayUniverseScreen(screen)) return "universos"
@@ -359,7 +363,7 @@ function resolveNavActive(screen: Screen): string {
   if (isDiscoveryFlowScreen(screen)) return "meu-mundo"
 
   if (screen === appRoutes.clube || isClubModalityScreen(screen)) {
-    return "clube"
+    return appRoutes.home
   }
 
   if (
@@ -406,6 +410,25 @@ function AppContent() {
 
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: "instant" })
+  }, [screen])
+
+  useEffect(() => {
+    if (
+      !CLUB_MARKETING_ENABLED &&
+      (screen === appRoutes.clube || isClubModalityScreen(screen))
+    ) {
+      setScreen(appRoutes.home)
+    }
+  }, [screen])
+
+  useEffect(() => {
+    if (
+      !SHOW_BAU_AND_FICHARIO_PRODUCTS &&
+      isAtelierProductScreen(screen) &&
+      getAtelierProductId(screen) === "bau"
+    ) {
+      setScreen(appRoutes.atelie)
+    }
   }, [screen])
 
   useEffect(() => {
@@ -642,9 +665,11 @@ function AppContent() {
           />
         )}
 
-        {screen === "clube" && <ClubPage setScreen={setScreen} />}
+        {CLUB_MARKETING_ENABLED && screen === "clube" && (
+          <ClubPage setScreen={setScreen} />
+        )}
 
-        {isClubModalityScreen(screen) && (
+        {CLUB_MARKETING_ENABLED && isClubModalityScreen(screen) && (
           <ClubModalityPage
             modalityId={clubModalityIdFromScreen(screen)}
             setScreen={setScreen}

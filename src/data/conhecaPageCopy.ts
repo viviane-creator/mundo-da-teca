@@ -41,11 +41,11 @@ export const conhecaPageCopy = {
       {
         id: "clube",
         title: "Clube",
-        text: "Quatro maneiras de participar, com acesso digital imediato e modalidades que incluem envios físicos mensais.",
+        text: "Em breve, um Clube único e simples — uma assinatura, envios mensais e uma coleção que cresce aos poucos.",
         abaLabel: "clube",
         cover: pageCovers.clube,
         coverAlt: "Capa do Clube",
-        screen: "clube" as const,
+        screen: "home" as const,
         tone: "clubeColecionador" as const,
         featured: true,
       },
@@ -83,11 +83,11 @@ export const conhecaPageCopy = {
   invitation: {
     title: "Sua jornada começa aqui.",
     lines: [
-      "Escolha a forma de participar e descubra um novo jeito de viver a infância em família.",
+      "Comece pela Caixa Laboratório e descubra um novo jeito de viver a infância em família.",
     ],
     cta: {
-      label: "Conhecer o Clube",
-      screen: "clube" as const,
+      label: "Conhecer a daTeca",
+      screen: "home" as const,
       tone: "clubeColecionador" as const,
     },
     secondaryCta: {

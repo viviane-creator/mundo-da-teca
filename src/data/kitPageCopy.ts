@@ -55,7 +55,7 @@ export const kitPageCopy = {
     text: "Um lugar para preservar o jeito lento, encantado e presente de descobrir — em família, longe da pressa.",
     image: "/images/mapa-exploracao.webp",
     imageAlt: "Mapa de exploração da daTeca",
-    secondaryImage: "/images/fichario-open.webp",
+    secondaryImage: "/images/laboratorio/papel-artesanal.webp",
     secondaryAlt: "Registros de uma jornada de descobertas",
   },
 
@@ -63,8 +63,8 @@ export const kitPageCopy = {
     kicker: "Capítulo III",
     title: "O Kit",
     lead: "Uma caixa que convida a família a sair da rotina e entrar numa pequena expedição.",
-    image: "/images/bau-tesouros-open.webp",
-    imageAlt: "Kit de Experiências daTeca aberto",
+    image: "/images/laboratorio/pocoes-cores-vivas.webp",
+    imageAlt: "Kit de Experiências daTeca",
     details: [
       {
         id: "materiais",
@@ -168,13 +168,13 @@ export const kitPageCopy = {
     frames: [
       {
         id: "aberta",
-        image: "/images/bau-tesouros-open.webp",
+        image: "/images/laboratorio/pocoes-cores-vivas.webp",
         alt: "Caixa aberta",
         caption: "Aberta",
       },
       {
         id: "organizacao",
-        image: "/images/fichario-open.webp",
+        image: "/images/laboratorio/monstro-que-respira.webp",
         alt: "Organização dos materiais",
         caption: "Organização",
       },

@@ -1,4 +1,4 @@
-import type { HomeModalityId } from "../data/homeCopy"
+import type { HomeModalityId } from "../data/clubModalities"
 import type {
   EditorialArtifactType,
   EditorialObjectDefinition,

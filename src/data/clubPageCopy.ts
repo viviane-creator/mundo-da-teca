@@ -1,4 +1,8 @@
-﻿export const clubPageCopy = {
+﻿/**
+ * @deprecated Hub do Clube com quatro modalidades — descontinuado.
+ * Marketing desligado via CLUB_MARKETING_ENABLED em productStrategy.ts.
+ */
+export const clubPageCopy = {
   documentTitle: "Clube daTeca",
   hero: {
     logo: "/logo/logo.webp",
