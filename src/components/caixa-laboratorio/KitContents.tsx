@@ -11,24 +11,14 @@ export function KitContents() {
       </h2>
       <p className="clx-section__lead">{contents.lead}</p>
 
-      <div className="clx-contents__media">
-        <figure className="clx-frame">
-          <LandingImage
-            src={contents.image}
-            alt={contents.imageAlt}
-            width={1200}
-            height={900}
-          />
-        </figure>
-        <figure className="clx-frame">
-          <LandingImage
-            src={contents.materialsImage}
-            alt={contents.materialsAlt}
-            width={1200}
-            height={900}
-          />
-        </figure>
-      </div>
+      <figure className="clx-contents__single">
+        <LandingImage
+          className="clx-contents__single-image"
+          src={contents.image}
+          alt={contents.imageAlt}
+          loading="eager"
+        />
+      </figure>
 
       <ul className="clx-contents__list">
         {contents.items.map((item) => (

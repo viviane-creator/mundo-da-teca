@@ -5,8 +5,7 @@ const IMG = "/images/caixa-laboratorio"
 
 export const caixaLaboratorioImages = {
   heroCaixaFechada: `${IMG}/hero-caixa-fechada.webp`,
-  caixaAberta: `${IMG}/caixa-aberta.webp`,
-  materiais: `${IMG}/materiais.webp`,
+  caixaExperiencias: `${IMG}/caixa-experiencias.webp`,
   experienciasCompletas: `${IMG}/experiencias-completas.webp`,
 } as const
 
@@ -37,10 +36,8 @@ export const caixaLaboratorioData = {
   contents: {
     title: "O que vem na caixa",
     lead: "Tudo o que a família precisa para abrir a primeira expedição.",
-    image: caixaLaboratorioImages.caixaAberta,
-    imageAlt: "Caixa Laboratório aberta com materiais",
-    materialsImage: caixaLaboratorioImages.materiais,
-    materialsAlt: "Materiais e ingredientes organizados",
+    image: caixaLaboratorioImages.caixaExperiencias,
+    imageAlt: "Caixa Laboratório da daTeca com materiais e experiências",
     items: [
       "Caixa Laboratório da daTeca",
       "Manual ilustrado",

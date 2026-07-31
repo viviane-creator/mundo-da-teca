@@ -191,16 +191,21 @@
 
 /* —— Contents —— */
 
-.clx-contents__media {
-  display: grid;
-  gap: 12px;
-  margin-bottom: clamp(24px, 5vw, 36px);
+.clx-contents__single {
+  margin: 0 auto clamp(24px, 5vw, 36px);
+  max-width: min(100%, 560px);
 }
 
-@media (min-width: 640px) {
-  .clx-contents__media {
-    grid-template-columns: 1fr 1fr;
-  }
+.clx-contents__single-image,
+.clx-contents__single .clx-placeholder {
+  display: block;
+  width: 100%;
+  height: auto;
+  min-height: 180px;
+  aspect-ratio: unset;
+  object-fit: contain;
+  border-radius: 14px;
+  background: rgba(255, 253, 249, 0.55);
 }
 
 .clx-contents__list {
