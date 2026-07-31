@@ -55,6 +55,7 @@
 /* —— CTA —— */
 
 .clx-cta {
+  box-sizing: border-box;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -96,17 +97,29 @@
 }
 
 .clx-cta--primary {
+  display: flex;
   width: 100%;
-  max-width: 400px;
-  margin-inline: auto;
-  padding: 15px 18px;
+  max-width: 100%;
+  margin-left: 0;
+  margin-right: 0;
+  margin-inline: 0;
+  padding: 15px 12px;
   border-radius: 999px;
-  font-size: clamp(15px, 3.7vw, 18px);
+  font-size: clamp(14px, 3.5vw, 17px);
   line-height: 1.2;
   text-transform: uppercase;
   letter-spacing: 0.01em;
+  white-space: normal;
   background: linear-gradient(180deg, #62865d 0%, #4f6f4b 100%);
   box-shadow: 0 8px 22px rgba(70, 100, 66, 0.28);
+}
+
+.clx-buy .clx-cta--primary,
+.clx-hero__offer .clx-cta--primary {
+  width: 100%;
+  max-width: 100%;
+  margin-left: 0;
+  margin-right: 0;
 }
 
 /* —— Shared —— */
@@ -215,11 +228,31 @@
 }
 
 .clx-payment-note {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
   margin: 4px 0 0;
   font-family: "Cormorant Garamond", serif;
   font-size: clamp(15px, 3.8vw, 17px);
   line-height: 1.35;
   color: var(--clx-muted);
+}
+
+.clx-payment-note__icon {
+  display: inline-flex;
+  color: var(--clx-green-deep);
+  flex-shrink: 0;
+}
+
+.clx-hero__offer .clx-payment-note {
+  justify-content: center;
+}
+
+@media (min-width: 860px) {
+  .clx-hero__offer .clx-payment-note {
+    justify-content: flex-start;
+  }
 }
 
 .clx-placeholder {
@@ -276,9 +309,11 @@
 .clx-hero__copy,
 .clx-hero__media,
 .clx-hero__benefits,
+.clx-hero__water,
 .clx-hero__offer {
   position: relative;
   z-index: 1;
+  min-width: 0;
 }
 
 .clx-hero__kicker {
@@ -363,6 +398,44 @@
   color: #3d2c20;
 }
 
+.clx-hero__water {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 14px;
+  background: rgba(232, 240, 244, 0.92);
+  border: 1px solid rgba(106, 130, 148, 0.28);
+}
+
+.clx-hero__water-icon {
+  flex-shrink: 0;
+  margin-top: 1px;
+  color: var(--clx-blue);
+}
+
+.clx-hero__water-copy {
+  min-width: 0;
+}
+
+.clx-hero__water-title {
+  margin: 0 0 2px;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(14px, 3.6vw, 16px);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  line-height: 1.25;
+  color: #3f4e55;
+}
+
+.clx-hero__water-text {
+  margin: 0;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(14px, 3.5vw, 16px);
+  line-height: 1.3;
+  color: #45555d;
+}
+
 .clx-hero__offer {
   text-align: center;
   padding: 16px 14px 18px;
@@ -370,13 +443,16 @@
   background: linear-gradient(180deg, #fffdf8 0%, #f7efe4 100%);
   border: 1px solid rgba(154, 132, 117, 0.34);
   box-shadow: 0 10px 26px rgba(90, 60, 30, 0.1);
+  overflow: hidden;
 }
 
 .clx-seal {
+  box-sizing: border-box;
   display: inline-flex;
   flex-direction: column;
   align-items: center;
   gap: 2px;
+  max-width: 100%;
   margin: 4px 0 14px;
   padding: 8px 14px;
   border-radius: 999px;
@@ -398,16 +474,13 @@
   margin-bottom: 10px;
 }
 
-.clx-hero__offer .clx-cta--primary {
-  max-width: 100%;
-}
-
 @media (min-width: 860px) {
   .clx-hero {
     grid-template-columns: minmax(280px, 0.92fr) minmax(340px, 1.08fr);
     grid-template-areas:
       "copy media"
       "benefits media"
+      "water media"
       "offer media";
     align-items: start;
     column-gap: 22px;
@@ -429,6 +502,10 @@
     grid-area: benefits;
   }
 
+  .clx-hero__water {
+    grid-area: water;
+  }
+
   .clx-hero__offer {
     grid-area: offer;
     text-align: left;
@@ -445,10 +522,6 @@
 
   .clx-seal {
     align-items: flex-start;
-  }
-
-  .clx-hero__offer .clx-cta--primary {
-    margin-left: 0;
   }
 }
 
@@ -653,6 +726,7 @@
 /* —— Buy card —— */
 
 .clx-buy {
+  box-sizing: border-box;
   margin: 0 clamp(16px, 4vw, 24px) clamp(16px, 3.5vw, 24px);
   padding: clamp(18px, 4.5vw, 24px) clamp(16px, 4vw, 22px);
   max-width: 520px;
@@ -662,6 +736,7 @@
   background: var(--clx-paper);
   border: 1px solid var(--clx-line);
   box-shadow: 0 10px 28px rgba(90, 60, 30, 0.08);
+  overflow: hidden;
 }
 
 .clx-buy__title {

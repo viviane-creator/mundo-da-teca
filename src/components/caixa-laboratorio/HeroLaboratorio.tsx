@@ -68,6 +68,29 @@ export function HeroLaboratorio() {
         ))}
       </ul>
 
+      <aside className="clx-hero__water" aria-label={hero.waterCallout.title}>
+        <svg
+          className="clx-hero__water-icon"
+          viewBox="0 0 64 64"
+          width="22"
+          height="22"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <path
+            d="M32 8c8 12 16 22 16 32a16 16 0 11-32 0c0-10 8-20 16-32z"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinejoin="round"
+          />
+        </svg>
+        <div className="clx-hero__water-copy">
+          <p className="clx-hero__water-title">{hero.waterCallout.title}</p>
+          <p className="clx-hero__water-text">{hero.waterCallout.text}</p>
+        </div>
+      </aside>
+
       <div className="clx-hero__offer">
         <p className="clx-price">{hero.price}</p>
         <p className="clx-shipping">{hero.shipping}</p>
@@ -77,7 +100,30 @@ export function HeroLaboratorio() {
         </p>
         <LandingCta label={hero.cta} origin="hero" />
         <p className="clx-note">{hero.note}</p>
-        <p className="clx-payment-note">{hero.paymentNote}</p>
+        <p className="clx-payment-note">
+          <span className="clx-payment-note__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="14" height="14" focusable="false">
+              <path
+                d="M7 10V8a5 5 0 0110 0v2"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.7"
+                strokeLinecap="round"
+              />
+              <rect
+                x="5"
+                y="10"
+                width="14"
+                height="10"
+                rx="2"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.7"
+              />
+            </svg>
+          </span>
+          {hero.paymentNote}
+        </p>
       </div>
     </section>
   )

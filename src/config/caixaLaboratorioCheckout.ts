@@ -3,20 +3,16 @@ import { entryProduct } from "./productStrategy"
 /**
  * Checkout Hotmart — Caixa Laboratório da daTeca
  *
- * Único ponto de configuração do link de pagamento.
- * Não inventar URL. Não usar Instagram nem links fictícios.
+ * Único ponto do link de pagamento. Todos os botões de compra usam isto.
+ * Não usar Instagram nos botões de compra.
  *
- * Em `.env` / Vercel Environment Variables (Vite):
- *   VITE_HOTMART_CHECKOUT_URL=https://pay.hotmart.com/...
- *
- * (Equivalente Vite de NEXT_PUBLIC_HOTMART_CHECKOUT_URL.)
- *
- * Enquanto a variável estiver vazia, os botões de compra
- * aparecem mas não navegam — evite publicar um botão quebrado.
+ * Também aceita override via VITE_HOTMART_CHECKOUT_URL no .env / Vercel.
  */
-export const HOTMART_CHECKOUT_URL = String(
-  import.meta.env.VITE_HOTMART_CHECKOUT_URL ?? "",
-).trim()
+const checkoutUrl = "https://pay.hotmart.com/E106973036N"
+
+export const HOTMART_CHECKOUT_URL =
+  checkoutUrl.trim() ||
+  String(import.meta.env.VITE_HOTMART_CHECKOUT_URL ?? "").trim()
 
 /** `true` somente quando o link oficial da Hotmart estiver configurado. */
 export const isHotmartCheckoutReady = HOTMART_CHECKOUT_URL.length > 0

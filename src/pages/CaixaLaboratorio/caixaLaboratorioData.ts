@@ -12,7 +12,7 @@ export const caixaLaboratorioImages = {
 export const caixaLaboratorioData = {
   documentTitle: "Caixa Laboratório da daTeca — R$ 89,90",
   metaDescription:
-    "Caixa Laboratório da daTeca: 9 experiências guiadas, materiais organizados e manual ilustrado. R$ 89,90 + frete R$ 10 para todo o Brasil.",
+    "Caixa Laboratório da daTeca: 9 experiências guiadas, materiais organizados e manual ilustrado. R$ 89,90. Frete calculado pelo CEP no checkout.",
   canonicalPath: "/caixa-laboratorio",
   ogImage: caixaLaboratorioImages.caixaAberta,
   /** Sempre o link central Hotmart — ver `caixaLaboratorioCheckout.ts`. */
@@ -37,14 +37,18 @@ export const caixaLaboratorioData = {
     image: caixaLaboratorioImages.caixaAberta,
     imageAlt: "Caixa Laboratório da daTeca aberta com materiais",
     price: "R$ 89,90",
-    shipping: `+ R$ ${entryProduct.shippingBRL.toFixed(0)},00 de frete para todo o Brasil`,
+    shipping: "Frete calculado pelo CEP no checkout.",
     batchSeal: {
       line1: "PREÇO ESPECIAL DO PRIMEIRO LOTE",
       line2: `SOMENTE ${entryProduct.firstBatchUnits} UNIDADES`,
     },
     cta: "QUERO MINHA CAIXA LABORATÓRIO",
-    note: "Compra única. Não é assinatura.",
+    note: "Compra única.",
     paymentNote: "Pagamento seguro pela Hotmart.",
+    waterCallout: {
+      title: "VOCÊ SÓ ADICIONA ÁGUA.",
+      text: "Todo o restante já vai organizado dentro da caixa.",
+    },
   },
 
   discoveries: {
@@ -96,10 +100,10 @@ export const caixaLaboratorioData = {
       "9 experiências guiadas + materiais para a criança criar suas próprias descobertas.",
     price: "R$ 89,90",
     priceValue: String(entryProduct.priceBRL),
-    shipping: `Frete fixo de R$ ${entryProduct.shippingBRL.toFixed(0)},00 para todo o Brasil.`,
+    shipping: "Frete calculado pelo CEP no checkout.",
     batch: `Preço especial do primeiro lote — somente ${entryProduct.firstBatchUnits} unidades.`,
     cta: "QUERO MINHA CAIXA LABORATÓRIO",
-    note: "Compra única. Não é assinatura.",
+    note: "Compra única.",
     paymentNote: "Pagamento seguro pela Hotmart.",
   },
 
@@ -127,9 +131,9 @@ export const caixaLaboratorioData = {
           "Não. A Caixa Laboratório é uma compra única. Você recebe a caixa completa com os materiais e o manual das experiências.",
       },
       {
-        question: "Qual é o valor do frete e para onde vocês enviam?",
+        question: "Como é calculado o frete?",
         answer:
-          "O frete deste primeiro lote custa R$ 10,00 para todo o Brasil.",
+          "O valor e o prazo de entrega são calculados no checkout de acordo com o CEP informado. Enviamos para todo o Brasil.",
       },
     ],
   },
@@ -222,11 +226,6 @@ export function applyCaixaLaboratorioMeta() {
       availability: "https://schema.org/LimitedAvailability",
       shippingDetails: {
         "@type": "OfferShippingDetails",
-        shippingRate: {
-          "@type": "MonetaryAmount",
-          value: "10.00",
-          currency: "BRL",
-        },
         shippingDestination: {
           "@type": "DefinedRegion",
           addressCountry: "BR",
