@@ -16,6 +16,7 @@ export const caixaLaboratorioImages = {
   experienciaPedraLiquida: `${IMG}/experiencia-pedra-liquida.webp`,
   experienciaCobraArcoIris: `${IMG}/experiencia-cobra-arco-iris.webp`,
   experienciaNeveDagua: `${IMG}/experiencia-neve-dagua.webp`,
+  experienciaCriar: `${IMG}/experiencia-criar.webp`,
 } as const
 
 export const caixaLaboratorioData = {
@@ -61,7 +62,7 @@ export const caixaLaboratorioData = {
 
   experiences: {
     title: "Experiências que esperam por vocês",
-    lead: "Nove descobertas para transformar curiosidade em experimento.",
+    lead: "Nove descobertas prontas — e materiais para a criança inventar a décima.",
     items: [
       {
         id: "tornado",
@@ -107,6 +108,11 @@ export const caixaLaboratorioData = {
         id: "neve-dagua",
         name: "Neve d'água",
         image: caixaLaboratorioImages.experienciaNeveDagua,
+      },
+      {
+        id: "criar",
+        name: "A décima é sua",
+        image: caixaLaboratorioImages.experienciaCriar,
       },
     ],
   },
