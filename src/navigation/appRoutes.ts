@@ -15,6 +15,8 @@ export const appRoutes = {
   kit: "kit",
   /** Landing de vendas — Caixa Laboratório (fora do menu) */
   caixaLaboratorio: "caixa-laboratorio",
+  /** Pós-compra Hotmart (página externa configurável na Hotmart) */
+  pedidoConfirmado: "pedido-confirmado",
   atelie: "atelie",
   bauDeTesouros: toAtelierProductScreen("bau"),
 } as const

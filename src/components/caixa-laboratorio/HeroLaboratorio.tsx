@@ -75,8 +75,9 @@ export function HeroLaboratorio() {
           <span className="clx-seal__line">{hero.batchSeal.line1}</span>
           <span className="clx-seal__line">{hero.batchSeal.line2}</span>
         </p>
-        <LandingCta label={hero.cta} />
+        <LandingCta label={hero.cta} origin="hero" />
         <p className="clx-note">{hero.note}</p>
+        <p className="clx-payment-note">{hero.paymentNote}</p>
       </div>
     </section>
   )

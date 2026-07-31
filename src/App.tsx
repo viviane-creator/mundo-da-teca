@@ -58,6 +58,7 @@ import { ClubPage } from "./pages/ClubPage"
 import { ClubModalityPage } from "./pages/ClubModalityPage"
 import { KitPage } from "./pages/KitPage"
 import { CaixaLaboratorioPage } from "./pages/CaixaLaboratorio/CaixaLaboratorioPage"
+import { PedidoConfirmadoPage } from "./pages/CaixaLaboratorio/PedidoConfirmadoPage"
 import { CONHECA_SHARE_PATH } from "./data/conhecaPageCopy"
 import { clubPageCopy } from "./data/clubPageCopy"
 import { applyKitPageMeta } from "./data/kitPageCopy"
@@ -77,6 +78,10 @@ import {
   pathForCaixaLaboratorioScreen,
   screenFromCaixaLaboratorioPath,
 } from "./navigation/caixaLaboratorioNavigation"
+import {
+  pathForPedidoConfirmadoScreen,
+  screenFromPedidoConfirmadoPath,
+} from "./navigation/pedidoConfirmadoNavigation"
 import {
   pathForKitScreen,
   screenFromKitPath,
@@ -138,6 +143,7 @@ type Screen =
   | "clube-expedicao-completa"
   | "kit"
   | "caixa-laboratorio"
+  | "pedido-confirmado"
   | "launch"
 
 type SimpleSubScreen = Exclude<
@@ -164,6 +170,7 @@ type SimpleSubScreen = Exclude<
   | "clube-expedicao-completa"
   | "kit"
   | "caixa-laboratorio"
+  | "pedido-confirmado"
   | "launch"
 >
 
@@ -349,6 +356,11 @@ function readInitialScreen(): Screen {
     return caixaLaboratorioScreen as Screen
   }
 
+  const pedidoConfirmadoScreen = screenFromPedidoConfirmadoPath(path)
+  if (pedidoConfirmadoScreen) {
+    return pedidoConfirmadoScreen as Screen
+  }
+
   return appRoutes.home
 }
 
@@ -498,6 +510,16 @@ function AppContent() {
         return
       }
 
+      const launchPedidoPath = pathForPedidoConfirmadoScreen(screen)
+      if (launchPedidoPath) {
+        if (path !== launchPedidoPath) {
+          window.history.pushState({ screen }, "", launchPedidoPath)
+        }
+        clearLaunchPageMeta()
+        document.title = "Pedido recebido — daTeca"
+        return
+      }
+
       if (path === CONHECA_SHARE_PATH || path === HOME_PREVIEW_PATH) {
         window.history.pushState({ screen }, "", "/")
       }
@@ -548,6 +570,16 @@ function AppContent() {
       return
     }
 
+    const pedidoPath = pathForPedidoConfirmadoScreen(screen)
+    if (pedidoPath) {
+      if (path !== pedidoPath) {
+        window.history.pushState({ screen }, "", pedidoPath)
+      }
+      clearLaunchPageMeta()
+      document.title = "Pedido recebido — daTeca"
+      return
+    }
+
     clearLaunchPageMeta()
     document.title = "daTeca"
   }, [screen])
@@ -563,7 +595,9 @@ function AppContent() {
 
   const isLaunchScreen = LAUNCH_MODE && screen === appRoutes.launch
   const isCaixaLaboratorioLanding = screen === appRoutes.caixaLaboratorio
-  const hideChrome = isLaunchScreen || isCaixaLaboratorioLanding
+  const isPedidoConfirmado = screen === appRoutes.pedidoConfirmado
+  const hideChrome =
+    isLaunchScreen || isCaixaLaboratorioLanding || isPedidoConfirmado
 
   return (
     <main
@@ -571,7 +605,9 @@ function AppContent() {
       style={{
         ...styles.main,
         ...(isLaunchScreen ? { padding: 0, overflow: "hidden" } : null),
-        ...(isCaixaLaboratorioLanding ? { padding: 0 } : null),
+        ...(isCaixaLaboratorioLanding || isPedidoConfirmado
+          ? { padding: 0 }
+          : null),
       }}
     >
       <section
@@ -586,7 +622,7 @@ function AppContent() {
                 maxHeight: "100vh",
               }
             : null),
-          ...(isCaixaLaboratorioLanding
+          ...(isCaixaLaboratorioLanding || isPedidoConfirmado
             ? {
                 paddingBottom: 0,
                 maxWidth: "100%",
@@ -723,6 +759,10 @@ function AppContent() {
 
         {screen === appRoutes.caixaLaboratorio && <CaixaLaboratorioPage />}
 
+        {screen === appRoutes.pedidoConfirmado && (
+          <PedidoConfirmadoPage setScreen={setScreen} />
+        )}
+
         {screen === "meu-mundo" && <MeuMundoPage setScreen={setScreen} />}
 
         {screen === "biblioteca" && (
@@ -731,7 +771,9 @@ function AppContent() {
           </ClubGated>
         )}
 
-        {!isLaunchScreen && !isCaixaLaboratorioLanding ? (
+        {!isLaunchScreen &&
+        !isCaixaLaboratorioLanding &&
+        !isPedidoConfirmado ? (
           <InstitutionalFooter />
         ) : null}
 

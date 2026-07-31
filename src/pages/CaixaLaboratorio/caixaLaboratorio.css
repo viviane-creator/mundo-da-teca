@@ -75,6 +75,18 @@
   transform: translateY(-1px);
 }
 
+.clx-cta--pending {
+  cursor: default;
+  opacity: 0.88;
+  filter: none;
+  transform: none;
+}
+
+.clx-cta--pending:hover {
+  filter: none;
+  transform: none;
+}
+
 .clx-cta--header {
   flex-shrink: 0;
   padding: 8px 12px;
@@ -200,6 +212,14 @@
   margin-bottom: 0;
   font-style: italic;
   color: var(--clx-soft);
+}
+
+.clx-payment-note {
+  margin: 4px 0 0;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(15px, 3.8vw, 17px);
+  line-height: 1.35;
+  color: var(--clx-muted);
 }
 
 .clx-placeholder {
@@ -731,4 +751,43 @@
   color: var(--clx-green-deep);
   text-decoration: underline;
   text-underline-offset: 3px;
+}
+
+/* —— Pedido confirmado (pós-Hotmart) —— */
+
+.clx-confirm {
+  min-height: 100svh;
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  gap: 16px;
+  padding: clamp(32px, 8vw, 64px) clamp(20px, 5vw, 32px);
+  text-align: center;
+  background:
+    radial-gradient(ellipse 70% 40% at 50% 0%, rgba(127, 149, 166, 0.12), transparent 55%),
+    linear-gradient(180deg, #faf6ef 0%, var(--clx-cream) 100%);
+  color: var(--clx-ink);
+}
+
+.clx-confirm__title {
+  margin: 0;
+  max-width: 18ch;
+  font-family: var(--teca-font-page-title, "Caveat", cursive);
+  font-size: clamp(32px, 8vw, 44px);
+  font-weight: 400;
+  line-height: 1.1;
+  color: var(--clx-ink);
+}
+
+.clx-confirm__text {
+  margin: 0 0 8px;
+  max-width: 34ch;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(17px, 4.2vw, 19px);
+  line-height: 1.45;
+  color: var(--clx-muted);
+}
+
+.clx-confirm .clx-cta--primary {
+  max-width: 280px;
 }

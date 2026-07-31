@@ -17,8 +17,9 @@ export function PricingSection() {
       <p className="clx-price">{buy.price}</p>
       <p className="clx-shipping">{buy.shipping}</p>
       <p className="clx-batch">{buy.batch}</p>
-      <LandingCta label={buy.cta} />
+      <LandingCta label={buy.cta} origin="bloco_final" />
       <p className="clx-note">{buy.note}</p>
+      <p className="clx-payment-note">{buy.paymentNote}</p>
     </section>
   )
 }

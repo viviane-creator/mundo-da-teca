@@ -14,7 +14,7 @@ export function LandingHeader() {
         height={44}
         decoding="async"
       />
-      <LandingCta label={header.cta} variant="header" />
+      <LandingCta label={header.cta} variant="header" origin="header" />
     </header>
   )
 }

@@ -1,3 +1,4 @@
+import { HOTMART_CHECKOUT_URL } from "../../config/caixaLaboratorioCheckout"
 import { entryProduct } from "../../config/productStrategy"
 import { socialLinks } from "../../data/socialLinks"
 
@@ -8,19 +9,14 @@ export const caixaLaboratorioImages = {
   experienciasCompletas: `${IMG}/experiencias-completas.webp`,
 } as const
 
-/**
- * Link único de compra da landing (header, hero e bloco final).
- * Substitua este valor por WhatsApp ou checkout quando estiver pronto.
- */
-export const CAIXA_LABORATORIO_ORDER_URL = socialLinks.instagram
-
 export const caixaLaboratorioData = {
   documentTitle: "Caixa Laboratório da daTeca — R$ 89,90",
   metaDescription:
     "Caixa Laboratório da daTeca: 9 experiências guiadas, materiais organizados e manual ilustrado. R$ 89,90 + frete R$ 10 para todo o Brasil.",
   canonicalPath: "/caixa-laboratorio",
   ogImage: caixaLaboratorioImages.caixaAberta,
-  orderUrl: CAIXA_LABORATORIO_ORDER_URL,
+  /** Sempre o link central Hotmart — ver `caixaLaboratorioCheckout.ts`. */
+  orderUrl: HOTMART_CHECKOUT_URL,
 
   header: {
     logoSrc: "/logo/logo.webp",
@@ -48,6 +44,7 @@ export const caixaLaboratorioData = {
     },
     cta: "QUERO MINHA CAIXA LABORATÓRIO",
     note: "Compra única. Não é assinatura.",
+    paymentNote: "Pagamento seguro pela Hotmart.",
   },
 
   discoveries: {
@@ -103,6 +100,7 @@ export const caixaLaboratorioData = {
     batch: `Preço especial do primeiro lote — somente ${entryProduct.firstBatchUnits} unidades.`,
     cta: "QUERO MINHA CAIXA LABORATÓRIO",
     note: "Compra única. Não é assinatura.",
+    paymentNote: "Pagamento seguro pela Hotmart.",
   },
 
   faq: {
