@@ -7,16 +7,7 @@ export const caixaLaboratorioImages = {
   heroCaixaFechada: `${IMG}/hero-caixa-fechada.webp`,
   caixaAberta: `${IMG}/caixa-aberta.webp`,
   materiais: `${IMG}/materiais.webp`,
-  experienciaTornado: `${IMG}/experiencia-tornado.webp`,
-  experienciaMateriaMutante: `${IMG}/experiencia-materia-mutante.webp`,
-  experienciaMonstro: `${IMG}/experiencia-monstro.webp`,
-  experienciaVulcao: `${IMG}/experiencia-vulcao.webp`,
-  experienciaLavaViva: `${IMG}/experiencia-lava-viva.webp`,
-  experienciaAguaQueAnda: `${IMG}/experiencia-agua-que-anda.webp`,
-  experienciaPedraLiquida: `${IMG}/experiencia-pedra-liquida.webp`,
-  experienciaCobraArcoIris: `${IMG}/experiencia-cobra-arco-iris.webp`,
-  experienciaNeveDagua: `${IMG}/experiencia-neve-dagua.webp`,
-  experienciaCriar: `${IMG}/experiencia-criar.webp`,
+  experienciasCompletas: `${IMG}/experiencias-completas.webp`,
 } as const
 
 export const caixaLaboratorioData = {
@@ -63,58 +54,9 @@ export const caixaLaboratorioData = {
   experiences: {
     title: "Experiências que esperam por vocês",
     lead: "Nove descobertas prontas — e materiais para a criança inventar a décima.",
-    items: [
-      {
-        id: "tornado",
-        name: "Tornado",
-        image: caixaLaboratorioImages.experienciaTornado,
-      },
-      {
-        id: "materia-mutante",
-        name: "Matéria mutante",
-        image: caixaLaboratorioImages.experienciaMateriaMutante,
-      },
-      {
-        id: "monstro",
-        name: "Monstro que respira",
-        image: caixaLaboratorioImages.experienciaMonstro,
-      },
-      {
-        id: "vulcao",
-        name: "Vulcão",
-        image: caixaLaboratorioImages.experienciaVulcao,
-      },
-      {
-        id: "lava-viva",
-        name: "Lava viva",
-        image: caixaLaboratorioImages.experienciaLavaViva,
-      },
-      {
-        id: "agua-que-anda",
-        name: "Água que anda",
-        image: caixaLaboratorioImages.experienciaAguaQueAnda,
-      },
-      {
-        id: "pedra-liquida",
-        name: "Pedra líquida",
-        image: caixaLaboratorioImages.experienciaPedraLiquida,
-      },
-      {
-        id: "cobra-arco-iris",
-        name: "Cobra arco-íris",
-        image: caixaLaboratorioImages.experienciaCobraArcoIris,
-      },
-      {
-        id: "neve-dagua",
-        name: "Neve d'água",
-        image: caixaLaboratorioImages.experienciaNeveDagua,
-      },
-      {
-        id: "criar",
-        name: "A décima é sua",
-        image: caixaLaboratorioImages.experienciaCriar,
-      },
-    ],
+    image: caixaLaboratorioImages.experienciasCompletas,
+    imageAlt:
+      "As dez experiências da Caixa Laboratório da daTeca reunidas",
   },
 
   water: {

@@ -233,23 +233,21 @@
 /* —— Experiences —— */
 
 .clx-experiences {
-  max-width: 920px;
+  max-width: 720px;
 }
 
-.clx-experiences__grid {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: clamp(8px, 2vw, 16px);
+.clx-experiences__collage {
+  margin: 0 auto;
+  max-width: min(100%, 520px);
 }
 
-.clx-experiences__name {
-  margin: 8px 0 0;
-  font-family: "Cormorant Garamond", serif;
-  font-size: clamp(15px, 3.6vw, 17px);
-  color: #6a5848;
+.clx-experiences__collage img,
+.clx-experiences__collage .clx-placeholder {
+  aspect-ratio: auto;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  background: transparent;
 }
 
 /* —— Water —— */

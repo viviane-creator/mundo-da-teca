@@ -14,21 +14,14 @@ export function ExperiencesGrid() {
       </h2>
       <p className="clx-section__lead">{experiences.lead}</p>
 
-      <ul className="clx-experiences__grid">
-        {experiences.items.map((item) => (
-          <li key={item.id} className="clx-experiences__item">
-            <figure className="clx-frame clx-frame--square">
-              <LandingImage
-                src={item.image}
-                alt={item.name}
-                width={800}
-                height={800}
-              />
-            </figure>
-            <p className="clx-experiences__name">{item.name}</p>
-          </li>
-        ))}
-      </ul>
+      <figure className="clx-frame clx-experiences__collage">
+        <LandingImage
+          src={experiences.image}
+          alt={experiences.imageAlt}
+          width={1200}
+          height={1500}
+        />
+      </figure>
     </section>
   )
 }
