@@ -1,60 +1,36 @@
 /* ==========================================================
-   Landing — Caixa Laboratório da daTeca
-   Isolada do restante do site. Mobile-first.
+   Landing comercial — Caixa Laboratório da daTeca
+   Mobile-first, curta e objetiva.
    ========================================================== */
 
 .clx-page {
+  --clx-cream: #f7f0e6;
+  --clx-paper: #fffdf9;
+  --clx-ink: #4a3728;
+  --clx-muted: #6a5848;
+  --clx-soft: #8a7a6a;
+  --clx-line: rgba(154, 132, 117, 0.28);
+  --clx-green: #6f8f6a;
+  --clx-green-deep: #5a7a56;
+  --clx-blue: #7f95a6;
+  --clx-terra: #b47a63;
+
   position: relative;
   isolation: isolate;
-  color: #5a4030;
-  overflow: clip;
   min-height: 100svh;
-  background: #3d2c22;
+  background:
+    radial-gradient(ellipse 90% 40% at 10% 0%, rgba(127, 149, 166, 0.1), transparent 55%),
+    radial-gradient(ellipse 70% 35% at 90% 20%, rgba(180, 122, 99, 0.08), transparent 50%),
+    linear-gradient(180deg, #faf6ef 0%, var(--clx-cream) 45%, #f3ebe0 100%);
+  color: var(--clx-ink);
+  overflow-x: clip;
 }
 
-.clx-page__backdrop {
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-}
-
-.clx-page__backdrop-image,
-.clx-page__backdrop .clx-placeholder {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center 36%;
-}
-
-.clx-page__backdrop-veil {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    180deg,
-    rgba(61, 44, 34, 0.28) 0%,
-    rgba(61, 44, 34, 0.42) 38%,
-    rgba(61, 44, 34, 0.62) 72%,
-    rgba(48, 34, 26, 0.78) 100%
-  );
-}
-
-.clx-page__foreground {
-  position: relative;
-  z-index: 1;
-  padding-bottom: clamp(48px, 10vw, 80px);
-}
-
-.clx-page a.clx-cta {
+.clx-page a {
   text-decoration: none;
 }
 
-.clx-cta {
-  max-width: min(92vw, 340px);
-}
-
-/* —— Header simplificado —— */
+/* —— Header —— */
 
 .clx-header {
   position: sticky;
@@ -64,338 +40,437 @@
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-  padding: 10px 16px;
-  background: rgba(255, 253, 249, 0.72);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(255, 253, 249, 0.28);
+  padding: 8px 14px;
+  background: rgba(250, 246, 239, 0.92);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--clx-line);
 }
 
 .clx-header__logo {
   display: block;
-  width: clamp(88px, 24vw, 118px);
+  width: clamp(84px, 22vw, 108px);
   height: auto;
 }
 
-.clx-header__cta.home-organic-cta {
-  max-width: none;
-  padding: 10px 16px;
-  font-size: clamp(16px, 4vw, 20px);
-  line-height: 1.15;
+/* —— CTA —— */
+
+.clx-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border: none;
+  cursor: pointer;
+  font-family: "Cormorant Garamond", serif;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: #fffdf9;
+  background: linear-gradient(180deg, var(--clx-green) 0%, var(--clx-green-deep) 100%);
+  box-shadow: 0 6px 18px rgba(90, 122, 86, 0.22);
+  transition: filter 0.2s ease, transform 0.2s ease;
 }
 
-/* —— Shared sections —— */
+.clx-cta:hover {
+  filter: brightness(1.04);
+  transform: translateY(-1px);
+}
+
+.clx-cta--header {
+  flex-shrink: 0;
+  padding: 8px 12px;
+  border-radius: 999px;
+  font-size: 14px;
+  line-height: 1.1;
+}
+
+.clx-cta--primary {
+  width: 100%;
+  max-width: 360px;
+  margin-inline: auto;
+  padding: 14px 18px;
+  border-radius: 999px;
+  font-size: clamp(16px, 4vw, 18px);
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+/* —— Shared —— */
 
 .clx-section {
-  padding: clamp(40px, 8vw, 72px) clamp(18px, 5vw, 28px);
+  padding: clamp(28px, 6vw, 40px) clamp(16px, 4vw, 24px);
   max-width: 720px;
-  margin: clamp(16px, 3vw, 24px) auto;
-  text-align: center;
-  background: rgba(248, 241, 231, 0.88);
-  border: 1px solid rgba(255, 253, 249, 0.35);
-  border-radius: 22px;
-  box-shadow: 0 12px 36px rgba(40, 28, 20, 0.12);
-  backdrop-filter: blur(8px);
+  margin: 0 auto;
 }
 
 .clx-section__title {
-  margin: 0 auto clamp(12px, 3vw, 18px);
-  max-width: 16ch;
+  margin: 0 0 10px;
   font-family: var(--teca-font-page-title, "Caveat", cursive);
-  font-size: clamp(32px, 8vw, 44px);
+  font-size: clamp(28px, 7vw, 38px);
   font-weight: 400;
-  line-height: 1.08;
-  color: #4a3728;
+  line-height: 1.1;
+  color: var(--clx-ink);
+  text-align: center;
 }
 
-.clx-section__lead {
-  margin: 0 auto clamp(28px, 6vw, 40px);
-  max-width: 34ch;
+.clx-section__text {
+  margin: 0 auto 18px;
+  max-width: 38ch;
   font-family: "Cormorant Garamond", serif;
-  font-size: clamp(17px, 4.2vw, 20px);
+  font-size: clamp(16px, 3.8vw, 18px);
   line-height: 1.45;
-  color: rgba(106, 79, 60, 0.88);
+  color: var(--clx-muted);
+  text-align: center;
 }
 
-.clx-frame {
+.clx-checklist {
+  list-style: none;
   margin: 0;
-  overflow: hidden;
-  border-radius: 10px;
-  background: #efe4d4;
-  border: 1px solid rgba(196, 165, 141, 0.28);
+  padding: 0;
+  display: grid;
+  gap: 8px;
 }
 
-.clx-frame img,
-.clx-frame .clx-placeholder {
+.clx-checklist li {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(16px, 3.8vw, 18px);
+  line-height: 1.35;
+  color: var(--clx-muted);
+}
+
+.clx-checklist li span {
+  color: var(--clx-green-deep);
+  flex-shrink: 0;
+  font-weight: 700;
+}
+
+.clx-checklist--block {
+  max-width: 40ch;
+  margin-inline: auto;
+  text-align: left;
+}
+
+.clx-media {
+  margin: 0 auto 18px;
+  max-width: min(100%, 560px);
+}
+
+.clx-media__image,
+.clx-media .clx-placeholder,
+.clx-hero__image,
+.clx-hero .clx-placeholder {
   display: block;
   width: 100%;
-  aspect-ratio: 4 / 3;
-  object-fit: cover;
+  height: auto;
+  min-height: 160px;
+  border-radius: 16px;
+  object-fit: contain;
+  background: rgba(255, 253, 249, 0.65);
 }
 
-.clx-frame--square img,
-.clx-frame--square .clx-placeholder {
-  aspect-ratio: 1 / 1;
+.clx-price {
+  margin: 0 0 4px;
+  font-family: var(--teca-font-page-title, "Caveat", cursive);
+  font-size: clamp(40px, 10vw, 52px);
+  line-height: 1;
+  color: var(--clx-ink);
+}
+
+.clx-shipping,
+.clx-batch,
+.clx-note {
+  margin: 0 0 8px;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(15px, 3.6vw, 17px);
+  line-height: 1.35;
+  color: var(--clx-muted);
+}
+
+.clx-batch {
+  margin-bottom: 14px;
+  color: var(--clx-terra);
+}
+
+.clx-note {
+  margin-top: 10px;
+  margin-bottom: 0;
+  font-style: italic;
+  color: var(--clx-soft);
 }
 
 .clx-placeholder {
-  background:
-    linear-gradient(160deg, #f7efe5 0%, #efe3d4 55%, #e6d8c8 100%);
+  background: linear-gradient(160deg, #f7efe5 0%, #efe3d4 55%, #e6d8c8 100%);
 }
 
 /* —— Hero —— */
 
 .clx-hero {
-  position: relative;
-  min-height: min(88svh, 720px);
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  background: transparent;
-}
-
-.clx-hero__content {
-  position: relative;
-  z-index: 1;
-  width: min(100%, 520px);
-  padding: clamp(28px, 7vw, 48px) clamp(20px, 5vw, 28px) clamp(40px, 9vw, 64px);
-  text-align: center;
+  display: grid;
+  gap: 18px;
+  padding: clamp(18px, 4vw, 28px) clamp(16px, 4vw, 24px) clamp(24px, 5vw, 32px);
+  max-width: 980px;
+  margin: 0 auto;
 }
 
 .clx-hero__kicker {
-  margin: 0 0 12px;
+  margin: 0 0 8px;
   font-family: "Cormorant Garamond", serif;
-  font-size: 12px;
-  letter-spacing: 0.22em;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: rgba(255, 253, 249, 0.78);
+  color: var(--clx-blue);
 }
 
 .clx-hero__title {
-  margin: 0 auto 14px;
-  max-width: 14ch;
+  margin: 0 0 10px;
   font-family: var(--teca-font-page-title, "Caveat", cursive);
-  font-size: clamp(40px, 10vw, 56px);
+  font-size: clamp(32px, 8.5vw, 46px);
   font-weight: 400;
-  line-height: 1.02;
-  color: #fffdf9;
+  line-height: 1.05;
+  color: var(--clx-ink);
 }
 
-.clx-hero__subtitle {
-  margin: 0 auto clamp(24px, 5vw, 34px);
-  max-width: 30ch;
-  font-family: "Cormorant Garamond", serif;
-  font-size: clamp(17px, 4.2vw, 20px);
-  line-height: 1.4;
-  color: rgba(255, 253, 249, 0.9);
-}
-
-/* —— Contents —— */
-
-.clx-contents__single {
-  margin: 0 auto clamp(24px, 5vw, 36px);
-  max-width: min(100%, 560px);
-}
-
-.clx-contents__single-image,
-.clx-contents__single .clx-placeholder {
-  display: block;
-  width: 100%;
-  height: auto;
-  min-height: 180px;
-  aspect-ratio: unset;
-  object-fit: contain;
-  border-radius: 14px;
-  background: rgba(255, 253, 249, 0.55);
-}
-
-.clx-contents__list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: grid;
-  gap: 10px;
-  text-align: left;
-  max-width: 34ch;
-  margin-inline: auto;
-}
-
-.clx-contents__list li {
-  position: relative;
-  padding-left: 1.2em;
+.clx-hero__text {
+  margin: 0 0 14px;
+  max-width: 36ch;
   font-family: "Cormorant Garamond", serif;
   font-size: clamp(17px, 4vw, 19px);
   line-height: 1.4;
-  color: #6a5848;
+  color: var(--clx-muted);
 }
 
-.clx-contents__list li::before {
-  content: "·";
-  position: absolute;
-  left: 0;
-  color: #b89a62;
+.clx-hero__media {
+  margin: 0;
 }
 
-/* —— Experiences —— */
-
-.clx-experiences {
-  max-width: 720px;
+.clx-hero__offer {
+  text-align: center;
+  padding: 18px 16px;
+  border-radius: 18px;
+  background: var(--clx-paper);
+  border: 1px solid var(--clx-line);
+  box-shadow: 0 8px 22px rgba(90, 60, 30, 0.06);
 }
 
-.clx-experiences__collage {
+@media (min-width: 860px) {
+  .clx-hero {
+    grid-template-columns: 1.05fr 0.95fr;
+    grid-template-areas:
+      "copy media"
+      "offer media";
+    align-items: start;
+    gap: 28px 36px;
+    padding-top: 28px;
+  }
+
+  .clx-hero__copy {
+    grid-area: copy;
+  }
+
+  .clx-hero__media {
+    grid-area: media;
+  }
+
+  .clx-hero__offer {
+    grid-area: offer;
+    text-align: left;
+  }
+
+  .clx-hero__offer .clx-cta--primary {
+    margin-left: 0;
+  }
+}
+
+/* —— Discoveries —— */
+
+.clx-discoveries__body {
+  display: grid;
+  gap: 18px;
+  margin-bottom: 18px;
+}
+
+.clx-discoveries__list {
+  list-style: none;
   margin: 0 auto;
-  max-width: min(100%, 560px);
-  overflow: visible;
-  border: none;
-  background: transparent;
-  border-radius: 14px;
+  padding: 0;
+  display: grid;
+  gap: 8px;
+  max-width: 34ch;
+  text-align: left;
 }
 
-.clx-experiences__collage-image,
-.clx-experiences__collage .clx-placeholder {
-  display: block;
-  width: 100%;
-  height: auto;
-  min-height: 220px;
-  aspect-ratio: unset;
-  object-fit: contain;
+.clx-discoveries__list li {
+  display: flex;
+  gap: 10px;
+  align-items: baseline;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(16px, 3.8vw, 18px);
+  color: var(--clx-muted);
+}
+
+.clx-discoveries__num {
+  flex-shrink: 0;
+  min-width: 1.6em;
+  font-size: 0.85em;
+  letter-spacing: 0.04em;
+  color: var(--clx-terra);
+}
+
+.clx-discoveries__body .clx-media {
+  margin-bottom: 0;
+  max-width: min(100%, 640px);
+}
+
+@media (min-width: 860px) {
+  .clx-section.clx-discoveries {
+    max-width: 920px;
+  }
+
+  .clx-discoveries__body {
+    grid-template-columns: minmax(220px, 0.9fr) minmax(280px, 1.1fr);
+    align-items: center;
+    gap: 28px;
+  }
+
+  .clx-discoveries__list {
+    margin: 0;
+  }
+}
+
+.clx-tenth {
+  margin-top: 8px;
+  padding: 14px 16px;
   border-radius: 14px;
-  background: rgba(255, 253, 249, 0.55);
+  background: rgba(255, 253, 249, 0.72);
+  border: 1px dashed var(--clx-line);
+  text-align: center;
+}
+
+.clx-tenth__title {
+  margin: 0 0 6px;
+  font-family: var(--teca-font-page-title, "Caveat", cursive);
+  font-size: clamp(22px, 5.5vw, 28px);
+  font-weight: 400;
+  color: var(--clx-ink);
+}
+
+.clx-tenth__text {
+  margin: 0 auto;
+  max-width: 36ch;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(15px, 3.6vw, 17px);
+  line-height: 1.4;
+  color: var(--clx-muted);
+}
+
+.clx-tenth__text + .clx-tenth__text {
+  margin-top: 6px;
 }
 
 /* —— Water —— */
 
 .clx-water {
-  padding: clamp(48px, 10vw, 80px) clamp(20px, 5vw, 28px);
+  margin: 0 clamp(16px, 4vw, 24px) clamp(20px, 4vw, 28px);
+  padding: clamp(22px, 5vw, 28px) clamp(16px, 4vw, 22px);
   max-width: 720px;
-  margin: clamp(16px, 3vw, 24px) auto;
+  margin-inline: auto;
   text-align: center;
-  background: rgba(238, 244, 245, 0.86);
-  border: 1px solid rgba(255, 253, 249, 0.35);
-  border-radius: 22px;
-  box-shadow: 0 12px 36px rgba(40, 28, 20, 0.12);
-  backdrop-filter: blur(8px);
-  color: #5a6a72;
+  border-radius: 18px;
+  background: linear-gradient(180deg, rgba(238, 244, 245, 0.95), rgba(247, 240, 230, 0.9));
+  border: 1px solid rgba(127, 149, 166, 0.22);
 }
 
 .clx-water__drop {
-  margin: 0 auto 16px;
-  color: #8aa4ad;
+  margin: 0 auto 8px;
+  color: var(--clx-blue);
   opacity: 0.85;
 }
 
 .clx-water__title {
-  margin: 0 0 10px;
+  margin: 0 0 8px;
   font-family: var(--teca-font-page-title, "Caveat", cursive);
-  font-size: clamp(40px, 10vw, 56px);
+  font-size: clamp(26px, 6.5vw, 34px);
   font-weight: 400;
+  line-height: 1.1;
   color: #4a5960;
 }
 
-.clx-water__line {
-  margin: 0 0 8px;
+.clx-water__text,
+.clx-water__note {
+  margin: 0 auto;
+  max-width: 34ch;
   font-family: "Cormorant Garamond", serif;
-  font-size: clamp(20px, 4.8vw, 24px);
+  font-size: clamp(15px, 3.6vw, 17px);
+  line-height: 1.4;
   color: #5a6a72;
 }
 
-.clx-water__whisper {
-  margin: 0;
-  font-family: "Cormorant Garamond", serif;
-  font-size: clamp(16px, 3.8vw, 18px);
-  font-style: italic;
-  color: rgba(90, 106, 114, 0.82);
+.clx-water__text {
+  margin-bottom: 6px;
 }
 
-/* —— Benefits —— */
+.clx-water__note {
+  font-style: italic;
+}
 
-.clx-benefits__list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: grid;
-  gap: 14px;
-  text-align: left;
-  max-width: 36ch;
+/* —— Buy card —— */
+
+.clx-buy {
+  margin: 0 clamp(16px, 4vw, 24px) clamp(20px, 4vw, 28px);
+  padding: clamp(22px, 5vw, 28px) clamp(16px, 4vw, 22px);
+  max-width: 520px;
   margin-inline: auto;
+  text-align: center;
+  border-radius: 20px;
+  background: var(--clx-paper);
+  border: 1px solid var(--clx-line);
+  box-shadow: 0 10px 28px rgba(90, 60, 30, 0.08);
 }
 
-.clx-benefits__list li {
-  display: flex;
-  gap: 10px;
-  align-items: flex-start;
-  font-family: "Cormorant Garamond", serif;
-  font-size: clamp(17px, 4vw, 19px);
-  line-height: 1.4;
-  color: #6a5848;
-}
-
-.clx-benefits__list li span {
-  color: #b89a62;
-  flex-shrink: 0;
-}
-
-/* —— Pricing —— */
-
-.clx-pricing {
-  background: rgba(255, 253, 249, 0.92);
-}
-
-.clx-pricing__price {
-  margin: 0 0 10px;
-  font-family: var(--teca-font-page-title, "Caveat", cursive);
-  font-size: clamp(44px, 11vw, 60px);
-  line-height: 1;
-  color: #4a3728;
-}
-
-.clx-pricing__shipping {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  margin: 0 0 14px;
-  font-family: "Cormorant Garamond", serif;
-  font-size: clamp(18px, 4.2vw, 20px);
-  color: #6a5848;
-}
-
-.clx-pricing__shipping span {
-  font-size: 0.9em;
-  color: rgba(106, 88, 72, 0.75);
-}
-
-.clx-pricing__batch,
-.clx-pricing__reminder {
+.clx-buy__title {
   margin: 0 0 8px;
+  font-family: var(--teca-font-page-title, "Caveat", cursive);
+  font-size: clamp(28px, 7vw, 36px);
+  font-weight: 400;
+  color: var(--clx-ink);
+}
+
+.clx-buy__summary {
+  margin: 0 auto 12px;
+  max-width: 32ch;
   font-family: "Cormorant Garamond", serif;
   font-size: clamp(16px, 3.8vw, 18px);
-  color: #7a6254;
-}
-
-.clx-pricing__reminder {
-  margin-bottom: clamp(22px, 5vw, 30px);
-  font-style: italic;
+  line-height: 1.4;
+  color: var(--clx-muted);
 }
 
 /* —— FAQ —— */
 
+.clx-faq {
+  padding-bottom: clamp(20px, 4vw, 28px);
+}
+
 .clx-faq__list {
   display: grid;
-  gap: 10px;
+  gap: 8px;
   text-align: left;
 }
 
 .clx-faq__item {
-  border: 1px solid rgba(196, 165, 141, 0.35);
-  border-radius: 14px;
-  background: rgba(255, 253, 249, 0.72);
-  padding: 14px 16px;
+  border: 1px solid var(--clx-line);
+  border-radius: 12px;
+  background: rgba(255, 253, 249, 0.8);
+  padding: 12px 14px;
 }
 
 .clx-faq__item summary {
   cursor: pointer;
   font-family: "Cormorant Garamond", serif;
-  font-size: clamp(18px, 4.2vw, 20px);
-  color: #4a3728;
+  font-size: clamp(16px, 3.8vw, 18px);
+  color: var(--clx-ink);
   list-style: none;
 }
 
@@ -404,15 +479,42 @@
 }
 
 .clx-faq__item p {
-  margin: 10px 0 0;
+  margin: 8px 0 0;
   font-family: "Cormorant Garamond", serif;
-  font-size: clamp(16px, 3.8vw, 18px);
+  font-size: clamp(15px, 3.5vw, 16px);
   line-height: 1.45;
-  color: #6a5848;
+  color: var(--clx-muted);
 }
 
-/* —— Final CTA —— */
+/* —— Footer —— */
 
-.clx-final {
-  padding-bottom: clamp(24px, 6vw, 40px);
+.clx-footer {
+  padding: clamp(24px, 5vw, 36px) 16px clamp(28px, 6vw, 40px);
+  text-align: center;
+  border-top: 1px solid var(--clx-line);
+  background: rgba(250, 246, 239, 0.7);
+}
+
+.clx-footer__brand {
+  margin: 0 0 6px;
+  font-family: var(--teca-font-page-title, "Caveat", cursive);
+  font-size: clamp(26px, 6vw, 32px);
+  color: var(--clx-ink);
+}
+
+.clx-footer__text {
+  margin: 0 auto 12px;
+  max-width: 28ch;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 15px;
+  line-height: 1.4;
+  color: var(--clx-muted);
+}
+
+.clx-footer__link {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 16px;
+  color: var(--clx-green-deep);
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }

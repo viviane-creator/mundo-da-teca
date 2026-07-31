@@ -10,11 +10,11 @@ export function LandingHeader() {
         className="clx-header__logo"
         src={header.logoSrc}
         alt={header.logoAlt}
-        width={120}
-        height={48}
+        width={112}
+        height={44}
         decoding="async"
       />
-      <LandingCta label={header.cta} variant="order" className="clx-header__cta" />
+      <LandingCta label={header.cta} variant="header" />
     </header>
   )
 }

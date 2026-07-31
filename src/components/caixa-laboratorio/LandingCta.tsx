@@ -1,47 +1,32 @@
-import { caixaLaboratorioData } from "../../pages/CaixaLaboratorio/caixaLaboratorioData"
+import { CAIXA_LABORATORIO_ORDER_URL } from "../../pages/CaixaLaboratorio/caixaLaboratorioData"
 
 type LandingCtaProps = {
   label: string
-  variant?: "scroll" | "order"
+  variant?: "primary" | "header"
   className?: string
-}
-
-function scrollToPricing() {
-  document
-    .getElementById("clx-pricing")
-    ?.scrollIntoView({ behavior: "smooth", block: "start" })
 }
 
 export function LandingCta({
   label,
-  variant = "scroll",
+  variant = "primary",
   className = "",
 }: LandingCtaProps) {
   const classes = [
-    "home-organic-cta",
-    "home-organic-cta--club",
     "clx-cta",
+    variant === "header" ? "clx-cta--header" : "clx-cta--primary",
     className,
   ]
     .filter(Boolean)
     .join(" ")
 
-  if (variant === "order") {
-    return (
-      <a
-        className={classes}
-        href={caixaLaboratorioData.orderUrl}
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        {label}
-      </a>
-    )
-  }
-
   return (
-    <button type="button" className={classes} onClick={scrollToPricing}>
+    <a
+      className={classes}
+      href={CAIXA_LABORATORIO_ORDER_URL}
+      target="_blank"
+      rel="noopener noreferrer"
+    >
       {label}
-    </button>
+    </a>
   )
 }

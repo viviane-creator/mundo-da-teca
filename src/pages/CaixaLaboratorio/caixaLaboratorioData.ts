@@ -4,18 +4,23 @@ import { socialLinks } from "../../data/socialLinks"
 const IMG = "/images/caixa-laboratorio"
 
 export const caixaLaboratorioImages = {
-  heroCaixaFechada: `${IMG}/hero-caixa-fechada.webp`,
-  caixaExperiencias: `${IMG}/caixa-experiencias.webp`,
+  caixaAberta: `${IMG}/caixa-experiencias.webp`,
   experienciasCompletas: `${IMG}/experiencias-completas.webp`,
 } as const
 
+/**
+ * Destino único de compra da landing.
+ * Troque aqui quando o checkout estiver pronto.
+ */
+export const CAIXA_LABORATORIO_ORDER_URL = socialLinks.instagram
+
 export const caixaLaboratorioData = {
-  documentTitle: "Caixa Laboratório da daTeca",
+  documentTitle: "Caixa Laboratório da daTeca — R$ 89,90",
   metaDescription:
-    "Caixa Laboratório da daTeca — a primeira expedição física da marca. Manual, ingredientes, frascos e ferramentas para começar. R$ 89,90 + frete R$ 10 para todo o Brasil.",
+    "Caixa Laboratório da daTeca: 9 experiências guiadas, materiais organizados e manual ilustrado. R$ 89,90 + frete R$ 10 para todo o Brasil.",
   canonicalPath: "/caixa-laboratorio",
-  ogImage: "/covers/home.webp",
-  orderUrl: socialLinks.instagram,
+  ogImage: caixaLaboratorioImages.caixaAberta,
+  orderUrl: CAIXA_LABORATORIO_ORDER_URL,
 
   header: {
     logoSrc: "/logo/logo.webp",
@@ -24,106 +29,117 @@ export const caixaLaboratorioData = {
   },
 
   hero: {
-    image: "/covers/home.webp",
-    imageAlt: "daTeca",
-    kicker: "Primeira expedição física",
-    title: "Caixa Laboratório da daTeca",
-    subtitle:
-      "A base da coleção. Uma caixa para explorar, experimentar e descobrir com as próprias mãos.",
-    cta: "Quero começar",
+    kicker: "CAIXA LABORATÓRIO DATeCA",
+    title: "9 descobertas dentro de uma caixa.",
+    text: "Uma caixa completa para a criança experimentar, criar e descobrir com as próprias mãos.",
+    benefits: [
+      "9 experiências guiadas",
+      "Materiais organizados",
+      "Manual ilustrado",
+      "Laboratório livre para novas invenções",
+    ],
+    image: caixaLaboratorioImages.caixaAberta,
+    imageAlt: "Caixa Laboratório da daTeca aberta com materiais",
+    price: "R$ 89,90",
+    shipping: `+ R$ ${entryProduct.shippingBRL.toFixed(0)},00 de frete para todo o Brasil`,
+    batch: `Primeiro lote: ${entryProduct.firstBatchUnits} unidades.`,
+    cta: "QUERO MINHA CAIXA LABORATÓRIO",
+    note: "Compra única. Não é assinatura.",
+  },
+
+  discoveries: {
+    title: "9 experiências prontas para começar.",
+    text: "Cada experiência foi pensada para provocar curiosidade, surpresa e vontade de descobrir o que acontece.",
+    items: [
+      "Tornado na Garrafa",
+      "Matéria Mutante",
+      "Monstro que Respira",
+      "Vulcão Ativo",
+      "Lava Viva",
+      "Água que Anda",
+      "Pedra Líquida",
+      "Cobra Arco-Íris",
+      "Neve d’Água",
+    ],
+    image: caixaLaboratorioImages.experienciasCompletas,
+    imageAlt: "As nove experiências da Caixa Laboratório da daTeca",
+    tenthTitle: "E a décima descoberta?",
+    tenthLead: "Essa é inventada pela própria criança.",
+    tenthText:
+      "A caixa também inclui materiais para misturar, testar e criar novas experiências.",
   },
 
   contents: {
-    title: "O que vem na caixa",
-    lead: "Tudo o que a família precisa para abrir a primeira expedição.",
-    image: caixaLaboratorioImages.caixaExperiencias,
-    imageAlt: "Caixa Laboratório da daTeca com materiais e experiências",
+    title: "Tudo organizado. Tudo pronto para começar.",
+    text: "Dentro da Caixa Laboratório, a criança encontra os ingredientes, recipientes e ferramentas utilizados nas experiências.",
+    image: caixaLaboratorioImages.caixaAberta,
+    imageAlt: "Materiais da Caixa Laboratório organizados",
     items: [
-      "Caixa Laboratório da daTeca",
-      "Manual ilustrado",
-      "Ingredientes organizados",
-      "Frascos",
-      "Materiais",
-      "Ferramentas básicas para começar",
+      "Ingredientes separados e identificados",
+      "Frascos e potinhos para as experiências",
+      "Pipetas, copinhos e colheres",
+      "Corantes",
+      "Óculos de proteção",
+      "Materiais para as 9 descobertas",
+      "Materiais extras para o laboratório livre",
+      "Manual ilustrado com o passo a passo",
     ],
-  },
-
-  experiences: {
-    title: "Experiências que esperam por vocês",
-    lead: "Nove descobertas prontas — e materiais para a criança inventar a décima.",
-    image: caixaLaboratorioImages.experienciasCompletas,
-    imageAlt:
-      "As dez experiências da Caixa Laboratório da daTeca reunidas",
   },
 
   water: {
-    title: "Só água.",
-    line: "Todo o resto já está na caixa.",
-    whisper: "Você só precisa adicionar água.",
+    title: "Em casa, você só precisa adicionar água.",
+    text: "Os outros materiais necessários para as experiências já vão organizados dentro da caixa.",
+    note: "Abra a caixa, escolha uma descoberta e comece.",
   },
 
-  benefits: {
-    title: "Por que começar por aqui",
-    items: [
-      "Primeira experiência física da daTeca",
-      "Base completa para a coleção",
-      "Manual ilustrado para acompanhar cada descoberta",
-      "Ingredientes e ferramentas organizados",
-      "Pensada para famílias explorarem juntas",
-      "Frete único para todo o Brasil",
-    ],
-  },
-
-  pricing: {
+  buy: {
     title: "Caixa Laboratório da daTeca",
+    summary:
+      "9 experiências guiadas + materiais para a criança criar suas próprias descobertas.",
     price: "R$ 89,90",
     priceValue: String(entryProduct.priceBRL),
-    shipping: `Frete R$ ${entryProduct.shippingBRL.toFixed(0)},00`,
-    shippingNote: `para ${entryProduct.shippingScope}`,
-    batch: `Primeiro lote: ${entryProduct.firstBatchUnits} unidades`,
-    reminder: "Enquanto houver disponibilidade neste lote.",
-    cta: "Quero a minha caixa",
+    shipping: `Frete fixo de R$ ${entryProduct.shippingBRL.toFixed(0)},00 para todo o Brasil.`,
+    batch: `Primeiro lote com ${entryProduct.firstBatchUnits} unidades.`,
+    cta: "QUERO MINHA CAIXA LABORATÓRIO",
+    note: "Compra única. Não é assinatura.",
   },
 
   faq: {
     title: "Perguntas frequentes",
     items: [
       {
-        question: "O que é a Caixa Laboratório?",
+        question: "O que vem na Caixa Laboratório?",
         answer:
-          "É o primeiro envio físico da daTeca: uma caixa completa com manual, ingredientes, frascos, materiais e ferramentas básicas para começar a coleção.",
+          "A caixa inclui os ingredientes, frascos, potinhos, pipetas, copinhos, colheres, corantes, óculos de proteção e outros materiais utilizados nas nove experiências. Ela também acompanha um manual ilustrado e materiais extras para a criança criar novas descobertas.",
       },
       {
-        question: "Preciso de algum material em casa?",
+        question: "Preciso comprar algum outro material?",
         answer:
-          "Na maioria das experiências, basta adicionar água. O restante já vem organizado na caixa.",
+          "Não. Para realizar as experiências, a família só precisa adicionar água. Os demais materiais necessários já vão organizados dentro da caixa.",
       },
       {
-        question: "Qual o valor do frete?",
-        answer: "O frete é R$ 10,00 para todo o Brasil.",
+        question: "Para qual idade a caixa é indicada?",
+        answer:
+          "A Caixa Laboratório foi pensada especialmente para crianças de 6 a 10 anos. As experiências devem ser realizadas com a presença e a participação de um adulto.",
       },
       {
-        question: "Quantas unidades existem neste lote?",
+        question: "A Caixa Laboratório é uma assinatura?",
         answer:
-          "O primeiro lote tem 100 unidades. Assim que acabar, avisaremos sobre a próxima disponibilidade.",
+          "Não. A Caixa Laboratório é uma compra única. Você recebe a caixa completa com os materiais e o manual das experiências.",
       },
       {
-        question: "Isso é uma assinatura?",
+        question: "Qual é o valor do frete e para onde vocês enviam?",
         answer:
-          "Não. Nesta etapa você compra a Caixa Laboratório avulsa. O Clube da daTeca chegará depois, como uma assinatura única e simples.",
-      },
-      {
-        question: "A caixa inclui Baú ou Fichário?",
-        answer:
-          "Ainda não. Baú e Fichário fazem parte da jornada futura e serão lançados em outro momento.",
+          "O frete deste primeiro lote custa R$ 10,00 para todo o Brasil.",
       },
     ],
   },
 
-  finalCta: {
-    title: "Sua primeira expedição começa aqui.",
-    text: "Garanta a Caixa Laboratório e abra um mundo de descobertas em família.",
-    cta: "Quero a minha caixa",
+  footer: {
+    brand: "daTeca",
+    text: "Experiências para descobrir, criar e brincar com as próprias mãos.",
+    instagramLabel: "Instagram",
+    instagramUrl: socialLinks.instagram,
   },
 } as const
 
@@ -173,7 +189,7 @@ function setJsonLd(data: Record<string, unknown>) {
 }
 
 export function applyCaixaLaboratorioMeta() {
-  const { documentTitle, metaDescription, ogImage, canonicalPath, pricing } =
+  const { documentTitle, metaDescription, ogImage, canonicalPath, buy } =
     caixaLaboratorioData
   const origin = window.location.origin
   const pageUrl = new URL(canonicalPath, origin).href
@@ -195,7 +211,7 @@ export function applyCaixaLaboratorioMeta() {
   setJsonLd({
     "@context": "https://schema.org",
     "@type": "Product",
-    name: pricing.title,
+    name: buy.title,
     description: metaDescription,
     image: [imageUrl],
     brand: { "@type": "Brand", name: "daTeca" },
@@ -203,7 +219,7 @@ export function applyCaixaLaboratorioMeta() {
       "@type": "Offer",
       url: pageUrl,
       priceCurrency: "BRL",
-      price: pricing.priceValue,
+      price: buy.priceValue,
       availability: "https://schema.org/LimitedAvailability",
       shippingDetails: {
         "@type": "OfferShippingDetails",

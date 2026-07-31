@@ -731,7 +731,9 @@ function AppContent() {
           </ClubGated>
         )}
 
-        {!isLaunchScreen ? <InstitutionalFooter /> : null}
+        {!isLaunchScreen && !isCaixaLaboratorioLanding ? (
+          <InstitutionalFooter />
+        ) : null}
 
         {!hideChrome ? (
           <BottomNav active={resolveNavActive(screen)} setScreen={setScreen} />
