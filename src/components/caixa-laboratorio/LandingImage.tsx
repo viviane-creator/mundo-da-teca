@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 /** Imagem da landing com placeholder discreto se o arquivo ainda não existir. */
 export function LandingImage({
@@ -19,6 +19,10 @@ export function LandingImage({
   fetchPriority?: "high" | "low" | "auto"
 }) {
   const [failed, setFailed] = useState(false)
+
+  useEffect(() => {
+    setFailed(false)
+  }, [src])
 
   if (failed) {
     return (

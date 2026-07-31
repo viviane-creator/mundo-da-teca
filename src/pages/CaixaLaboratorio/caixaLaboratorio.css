@@ -238,16 +238,23 @@
 
 .clx-experiences__collage {
   margin: 0 auto;
-  max-width: min(100%, 520px);
+  max-width: min(100%, 560px);
+  overflow: visible;
+  border: none;
+  background: transparent;
+  border-radius: 14px;
 }
 
-.clx-experiences__collage img,
+.clx-experiences__collage-image,
 .clx-experiences__collage .clx-placeholder {
-  aspect-ratio: auto;
+  display: block;
   width: 100%;
   height: auto;
+  min-height: 220px;
+  aspect-ratio: unset;
   object-fit: contain;
-  background: transparent;
+  border-radius: 14px;
+  background: rgba(255, 253, 249, 0.55);
 }
 
 /* —— Water —— */

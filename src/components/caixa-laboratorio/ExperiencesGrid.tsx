@@ -14,12 +14,13 @@ export function ExperiencesGrid() {
       </h2>
       <p className="clx-section__lead">{experiences.lead}</p>
 
-      <figure className="clx-frame clx-experiences__collage">
+      <figure className="clx-experiences__collage">
         <LandingImage
+          className="clx-experiences__collage-image"
           src={experiences.image}
           alt={experiences.imageAlt}
-          width={1200}
-          height={1500}
+          loading="eager"
+          fetchPriority="high"
         />
       </figure>
     </section>
