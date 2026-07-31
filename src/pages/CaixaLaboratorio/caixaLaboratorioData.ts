@@ -9,8 +9,8 @@ export const caixaLaboratorioImages = {
 } as const
 
 /**
- * Destino único de compra da landing.
- * Troque aqui quando o checkout estiver pronto.
+ * Link único de compra da landing (header, hero e bloco final).
+ * Substitua este valor por WhatsApp ou checkout quando estiver pronto.
  */
 export const CAIXA_LABORATORIO_ORDER_URL = socialLinks.instagram
 
@@ -29,7 +29,7 @@ export const caixaLaboratorioData = {
   },
 
   hero: {
-    kicker: "CAIXA LABORATÓRIO DATeCA",
+    kicker: "CAIXA LABORATÓRIO daTeca",
     title: "9 descobertas dentro de uma caixa.",
     text: "Uma caixa completa para a criança experimentar, criar e descobrir com as próprias mãos.",
     benefits: [
@@ -42,7 +42,7 @@ export const caixaLaboratorioData = {
     imageAlt: "Caixa Laboratório da daTeca aberta com materiais",
     price: "R$ 89,90",
     shipping: `+ R$ ${entryProduct.shippingBRL.toFixed(0)},00 de frete para todo o Brasil`,
-    batch: `Primeiro lote: ${entryProduct.firstBatchUnits} unidades.`,
+    batch: `Preço especial do primeiro lote — somente ${entryProduct.firstBatchUnits} unidades.`,
     cta: "QUERO MINHA CAIXA LABORATÓRIO",
     note: "Compra única. Não é assinatura.",
   },
@@ -99,7 +99,7 @@ export const caixaLaboratorioData = {
     price: "R$ 89,90",
     priceValue: String(entryProduct.priceBRL),
     shipping: `Frete fixo de R$ ${entryProduct.shippingBRL.toFixed(0)},00 para todo o Brasil.`,
-    batch: `Primeiro lote com ${entryProduct.firstBatchUnits} unidades.`,
+    batch: `Preço especial do primeiro lote — somente ${entryProduct.firstBatchUnits} unidades.`,
     cta: "QUERO MINHA CAIXA LABORATÓRIO",
     note: "Compra única. Não é assinatura.",
   },
