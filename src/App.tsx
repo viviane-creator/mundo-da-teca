@@ -76,6 +76,7 @@ import {
   screenFromClubPath,
 } from "./navigation/clubNavigation"
 import {
+  hrefForCaixaLaboratorioScreen,
   pathForCaixaLaboratorioScreen,
   screenFromCaixaLaboratorioPath,
 } from "./navigation/caixaLaboratorioNavigation"
@@ -512,10 +513,11 @@ function AppContent() {
         return
       }
 
-      const launchCaixaPath = pathForCaixaLaboratorioScreen(screen)
-      if (launchCaixaPath) {
+      const launchCaixaHref = hrefForCaixaLaboratorioScreen(screen)
+      if (launchCaixaHref) {
+        const launchCaixaPath = pathForCaixaLaboratorioScreen(screen)!
         if (path !== launchCaixaPath) {
-          window.history.pushState({ screen }, "", launchCaixaPath)
+          window.history.pushState({ screen }, "", launchCaixaHref)
         }
         clearLaunchPageMeta()
         applyCaixaLaboratorioMeta()
@@ -572,10 +574,11 @@ function AppContent() {
       return
     }
 
-    const caixaPath = pathForCaixaLaboratorioScreen(screen)
-    if (caixaPath) {
+    const caixaHref = hrefForCaixaLaboratorioScreen(screen)
+    if (caixaHref) {
+      const caixaPath = pathForCaixaLaboratorioScreen(screen)!
       if (path !== caixaPath) {
-        window.history.pushState({ screen }, "", caixaPath)
+        window.history.pushState({ screen }, "", caixaHref)
       }
       clearLaunchPageMeta()
       applyCaixaLaboratorioMeta()

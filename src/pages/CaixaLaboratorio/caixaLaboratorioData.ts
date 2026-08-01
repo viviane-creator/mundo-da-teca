@@ -10,9 +10,9 @@ export const caixaLaboratorioImages = {
 } as const
 
 export const caixaLaboratorioData = {
-  documentTitle: "Caixa Laboratório da daTeca — R$ 89,90",
+  documentTitle: "Manual de Descobertas + Caixa Laboratório da daTeca",
   metaDescription:
-    "Caixa Laboratório da daTeca: 10 descobertas — 9 experiências guiadas e a décima inventada pela criança. Preço de lançamento R$ 89,90. Frete calculado pelo CEP no checkout.",
+    "Baixe o Manual de Descobertas da daTeca e conheça a Caixa Laboratório: 9 experiências guiadas e a décima inventada pela criança. Preço de lançamento R$ 89,90.",
   canonicalPath: "/caixa-laboratorio",
   ogImage: caixaLaboratorioImages.caixaAberta,
   /** Sempre o link central Hotmart — ver `caixaLaboratorioCheckout.ts`. */
@@ -22,6 +22,32 @@ export const caixaLaboratorioData = {
     logoSrc: "/logo/logo.webp",
     logoAlt: "daTeca",
     cta: "Quero a minha",
+  },
+
+  /**
+   * Presente para quem chega pelo Instagram (comentário QUERO).
+   * Só aparece com `/caixa-laboratorio?manual=true`.
+   */
+  manualGift: {
+    kicker: "Presente da daTeca",
+    title: "💛 Seu Manual de Descobertas está pronto!",
+    paragraphs: [
+      "Que alegria ter você por aqui.",
+      "Preparei este Manual de Descobertas com o passo a passo das 9 experiências apresentadas nos vídeos.",
+      "Espero que ele renda muitos momentos especiais para você e sua família.",
+    ],
+    cta: "📖 Baixar Manual",
+    pdfHref: "/manual-descobertas.pdf",
+    pdfFileName: "manual-descobertas.pdf",
+    welcomeLines: [
+      "✨ Este é apenas o começo.",
+      "Bem-vindo à daTeca.",
+    ],
+  },
+
+  offerBridge: {
+    title: "Você só precisa adicionar água.",
+    text: "Enquanto o Manual de Descobertas ensina o passo a passo, a Caixa Laboratório reúne praticamente tudo para viver essas experiências em casa.",
   },
 
   hero: {

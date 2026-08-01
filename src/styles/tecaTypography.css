@@ -25,7 +25,9 @@
 .kit-pricing__title,
 .kit-faq__title,
 .kit-promise__item,
-.prelaunch-page__title {
+.prelaunch-page__title,
+.clx-manual__title,
+.clx-bridge__title {
   font-family: var(--teca-font-page-title);
   font-weight: 400;
   text-transform: none;

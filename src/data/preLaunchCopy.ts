@@ -7,7 +7,7 @@ export const preLaunchCopy = {
     "O primeiro lote será limitado a 100 unidades.",
   ],
   closing: "Esperamos você no lançamento.",
-  primaryCta: "← Voltar para a página inicial",
+  primaryCta: "← Voltar para a página de vendas",
   secondaryCta: "Conhecer a daTeca",
   footer: "Brincar. Criar. Descobrir. Explorar.",
   countdownLabel: "Abertura das vendas",

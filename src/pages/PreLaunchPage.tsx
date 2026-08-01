@@ -43,7 +43,7 @@ export function PreLaunchPage({ setScreen }: PreLaunchPageProps) {
           <button
             type="button"
             className="clx-cta clx-cta--primary prelaunch-page__primary"
-            onClick={() => setScreen(appRoutes.home)}
+            onClick={() => setScreen(appRoutes.caixaLaboratorio)}
           >
             {preLaunchCopy.primaryCta}
           </button>
