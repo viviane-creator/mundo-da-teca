@@ -14,6 +14,8 @@
   --clx-green-deep: #5a7a56;
   --clx-blue: #6a8294;
   --clx-terra: #a86a52;
+  --clx-ocre: #d4894a;
+  --clx-ocre-deep: #c06f35;
 
   position: relative;
   isolation: isolate;
@@ -66,8 +68,8 @@
   font-weight: 600;
   letter-spacing: 0.02em;
   color: #fffdf9;
-  background: linear-gradient(180deg, var(--clx-green) 0%, var(--clx-green-deep) 100%);
-  box-shadow: 0 6px 18px rgba(90, 122, 86, 0.22);
+  background: linear-gradient(180deg, var(--clx-ocre) 0%, var(--clx-ocre-deep) 100%);
+  box-shadow: 0 6px 18px rgba(176, 100, 48, 0.28);
   transition: filter 0.2s ease, transform 0.2s ease;
 }
 
@@ -118,8 +120,8 @@
   text-transform: uppercase;
   letter-spacing: 0.01em;
   white-space: normal;
-  background: linear-gradient(180deg, #62865d 0%, #4f6f4b 100%);
-  box-shadow: 0 8px 22px rgba(70, 100, 66, 0.28);
+  background: linear-gradient(180deg, #d4894a 0%, #b8632e 100%);
+  box-shadow: 0 8px 22px rgba(176, 100, 48, 0.3);
 }
 
 .clx-buy .clx-cta--primary,
