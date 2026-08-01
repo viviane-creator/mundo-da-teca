@@ -28,14 +28,26 @@ export const caixaLaboratorioData = {
     kicker: "CAIXA LABORATÓRIO daTeca",
     titleNum: "10",
     titleRest: " descobertas dentro de uma caixa.",
-    subtitleLead: "Nove prontas para começar.",
-    subtitleHighlight: "A décima é inventada pela própria criança.",
     text: "Uma caixa completa para experimentar, criar e descobrir com as próprias mãos.",
+    cards: {
+      tenth: {
+        eyebrowPrefix: "9 + 1",
+        eyebrowSuffix: " DESCOBERTAS",
+        title: "A décima é inventada pela criança.",
+        text: "Nove experiências vêm prontas para começar. A última nasce da curiosidade e da imaginação.",
+      },
+      water: {
+        eyebrow: "TUDO PRONTO",
+        titleLead: "Você ",
+        titleEmphasis: "só adiciona água",
+        titleEnd: ".",
+        text: "Os outros materiais necessários já vão separados e organizados dentro da caixa.",
+      },
+    },
     benefits: [
-      "9 experiências guiadas",
       "Materiais organizados",
       "Manual ilustrado",
-      "Tudo para inventar a décima descoberta",
+      "Frascos, pipetas e ferramentas incluídos",
     ],
     image: caixaLaboratorioImages.caixaAberta,
     imageAlt: "Caixa Laboratório da daTeca aberta com materiais",
@@ -48,10 +60,6 @@ export const caixaLaboratorioData = {
     cta: "QUERO MINHA CAIXA LABORATÓRIO",
     note: "Compra única.",
     paymentNote: "Pagamento seguro pela Hotmart.",
-    waterCallout: {
-      title: "VOCÊ SÓ ADICIONA ÁGUA.",
-      text: "Todo o restante já vai organizado dentro da caixa.",
-    },
   },
 
   discoveries: {

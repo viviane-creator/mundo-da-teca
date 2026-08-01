@@ -31,8 +31,62 @@ function HeroDecor() {
   )
 }
 
+function TenthCardArt() {
+  return (
+    <svg
+      className="clx-hero-card__art"
+      viewBox="0 0 120 48"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <g
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.4"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <path d="M18 10h12v8c0 7-2.5 12-6 12s-6-5-6-12V10z" />
+        <path d="M24 30v8" />
+        <circle cx="24" cy="42" r="3.5" />
+        <path d="M48 16l3 7 7 3-7 3-3 7-3-7-7-3 7-3z" opacity="0.7" />
+        <path d="M72 18c12 2 22 6 28 14" strokeDasharray="2 3" />
+        <path d="M94 28l8 4-8 4" />
+        <path d="M42 40h28" strokeDasharray="2 3" opacity="0.55" />
+      </g>
+    </svg>
+  )
+}
+
+function WaterCardArt() {
+  return (
+    <svg
+      className="clx-hero-card__art"
+      viewBox="0 0 120 48"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <g
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.4"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <path d="M24 8c6 9 12 16 12 24a12 12 0 11-24 0c0-8 6-15 12-24z" />
+        <path d="M52 28c8-4 14-4 22 0s14 4 22 0" opacity="0.65" />
+        <path d="M56 36c7-3 12-3 18 0s12 3 18 0" opacity="0.45" />
+        <circle cx="88" cy="16" r="3" opacity="0.5" />
+        <circle cx="98" cy="22" r="2" opacity="0.4" />
+        <circle cx="78" cy="20" r="1.5" opacity="0.35" />
+      </g>
+    </svg>
+  )
+}
+
 export function HeroLaboratorio() {
   const { hero } = caixaLaboratorioData
+  const { tenth, water } = hero.cards
 
   return (
     <section className="clx-hero" aria-labelledby="clx-hero-title">
@@ -45,8 +99,6 @@ export function HeroLaboratorio() {
           <span className="clx-hero__title-num">{hero.titleNum}</span>
           {hero.titleRest}
         </h1>
-        <p className="clx-hero__subtitle-lead">{hero.subtitleLead}</p>
-        <p className="clx-hero__subtitle-highlight">{hero.subtitleHighlight}</p>
         <p className="clx-hero__text">{hero.text}</p>
       </div>
 
@@ -61,6 +113,31 @@ export function HeroLaboratorio() {
         />
       </figure>
 
+      <div className="clx-hero__cards">
+        <article className="clx-hero-card clx-hero-card--tenth">
+          <TenthCardArt />
+          <p className="clx-hero-card__eyebrow">
+            <span className="clx-hero-card__eyebrow-accent">
+              {tenth.eyebrowPrefix}
+            </span>
+            {tenth.eyebrowSuffix}
+          </p>
+          <h2 className="clx-hero-card__title">{tenth.title}</h2>
+          <p className="clx-hero-card__text">{tenth.text}</p>
+        </article>
+
+        <article className="clx-hero-card clx-hero-card--water">
+          <WaterCardArt />
+          <p className="clx-hero-card__eyebrow">{water.eyebrow}</p>
+          <h2 className="clx-hero-card__title">
+            {water.titleLead}
+            <span className="clx-hero-card__emphasis">{water.titleEmphasis}</span>
+            {water.titleEnd}
+          </h2>
+          <p className="clx-hero-card__text">{water.text}</p>
+        </article>
+      </div>
+
       <ul className="clx-checklist clx-hero__benefits">
         {hero.benefits.map((item) => (
           <li key={item}>
@@ -69,29 +146,6 @@ export function HeroLaboratorio() {
           </li>
         ))}
       </ul>
-
-      <aside className="clx-hero__water" aria-label={hero.waterCallout.title}>
-        <svg
-          className="clx-hero__water-icon"
-          viewBox="0 0 64 64"
-          width="22"
-          height="22"
-          aria-hidden="true"
-          focusable="false"
-        >
-          <path
-            d="M32 8c8 12 16 22 16 32a16 16 0 11-32 0c0-10 8-20 16-32z"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinejoin="round"
-          />
-        </svg>
-        <div className="clx-hero__water-copy">
-          <p className="clx-hero__water-title">{hero.waterCallout.title}</p>
-          <p className="clx-hero__water-text">{hero.waterCallout.text}</p>
-        </div>
-      </aside>
 
       <div className="clx-hero__offer">
         <p className="clx-price">{hero.price}</p>
