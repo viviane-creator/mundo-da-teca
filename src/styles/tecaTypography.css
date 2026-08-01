@@ -24,7 +24,8 @@
 .kit-adventure__name,
 .kit-pricing__title,
 .kit-faq__title,
-.kit-promise__item {
+.kit-promise__item,
+.prelaunch-page__title {
   font-family: var(--teca-font-page-title);
   font-weight: 400;
   text-transform: none;

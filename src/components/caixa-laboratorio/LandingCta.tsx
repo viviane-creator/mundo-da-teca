@@ -4,6 +4,8 @@ import {
   trackBeginCheckout,
   type CheckoutClickOrigin,
 } from "../../config/caixaLaboratorioCheckout"
+import { isSalesOpen } from "../../config/salesLaunch"
+import { navigateToPreLaunch } from "../../navigation/preLaunchNavigation"
 
 type LandingCtaProps = {
   label: string
@@ -18,25 +20,25 @@ export function LandingCta({
   variant = "primary",
   className = "",
 }: LandingCtaProps) {
+  const salesOpen = isSalesOpen()
+  const checkoutReady = isHotmartCheckoutReady
+  const goToCheckout = salesOpen && checkoutReady
+
   const classes = [
     "clx-cta",
     variant === "header" ? "clx-cta--header" : "clx-cta--primary",
-    !isHotmartCheckoutReady ? "clx-cta--pending" : "",
+    !goToCheckout ? "clx-cta--prelaunch" : "",
     className,
   ]
     .filter(Boolean)
     .join(" ")
 
-  if (!isHotmartCheckoutReady) {
+  if (!goToCheckout) {
     return (
       <button
         type="button"
         className={classes}
-        aria-disabled="true"
-        title="Checkout Hotmart em configuração"
-        onClick={(event) => {
-          event.preventDefault()
-        }}
+        onClick={() => navigateToPreLaunch()}
       >
         {label}
       </button>

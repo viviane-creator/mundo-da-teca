@@ -88,6 +88,10 @@
   transform: none;
 }
 
+.clx-cta--prelaunch {
+  cursor: pointer;
+}
+
 .clx-cta--header {
   flex-shrink: 0;
   padding: 7px 11px;

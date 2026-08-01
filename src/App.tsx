@@ -59,6 +59,7 @@ import { ClubModalityPage } from "./pages/ClubModalityPage"
 import { KitPage } from "./pages/KitPage"
 import { CaixaLaboratorioPage } from "./pages/CaixaLaboratorio/CaixaLaboratorioPage"
 import { PedidoConfirmadoPage } from "./pages/CaixaLaboratorio/PedidoConfirmadoPage"
+import { PreLaunchPage } from "./pages/PreLaunchPage"
 import { CONHECA_SHARE_PATH } from "./data/conhecaPageCopy"
 import { clubPageCopy } from "./data/clubPageCopy"
 import { applyKitPageMeta } from "./data/kitPageCopy"
@@ -82,6 +83,10 @@ import {
   pathForPedidoConfirmadoScreen,
   screenFromPedidoConfirmadoPath,
 } from "./navigation/pedidoConfirmadoNavigation"
+import {
+  pathForPreLaunchScreen,
+  screenFromPreLaunchPath,
+} from "./navigation/preLaunchNavigation"
 import {
   pathForKitScreen,
   screenFromKitPath,
@@ -143,6 +148,7 @@ type Screen =
   | "clube-expedicao-completa"
   | "kit"
   | "caixa-laboratorio"
+  | "pre-lancamento"
   | "pedido-confirmado"
   | "launch"
 
@@ -170,6 +176,7 @@ type SimpleSubScreen = Exclude<
   | "clube-expedicao-completa"
   | "kit"
   | "caixa-laboratorio"
+  | "pre-lancamento"
   | "pedido-confirmado"
   | "launch"
 >
@@ -359,6 +366,11 @@ function readInitialScreen(): Screen {
   const pedidoConfirmadoScreen = screenFromPedidoConfirmadoPath(path)
   if (pedidoConfirmadoScreen) {
     return pedidoConfirmadoScreen as Screen
+  }
+
+  const preLaunchScreen = screenFromPreLaunchPath(path)
+  if (preLaunchScreen) {
+    return preLaunchScreen as Screen
   }
 
   return appRoutes.home
@@ -580,6 +592,16 @@ function AppContent() {
       return
     }
 
+    const preLaunchPath = pathForPreLaunchScreen(screen)
+    if (preLaunchPath) {
+      if (path !== preLaunchPath) {
+        window.history.pushState({ screen }, "", preLaunchPath)
+      }
+      clearLaunchPageMeta()
+      document.title = "Pré-lançamento — daTeca"
+      return
+    }
+
     clearLaunchPageMeta()
     document.title = "daTeca"
   }, [screen])
@@ -596,8 +618,12 @@ function AppContent() {
   const isLaunchScreen = LAUNCH_MODE && screen === appRoutes.launch
   const isCaixaLaboratorioLanding = screen === appRoutes.caixaLaboratorio
   const isPedidoConfirmado = screen === appRoutes.pedidoConfirmado
+  const isPreLaunch = screen === appRoutes.preLancamento
   const hideChrome =
-    isLaunchScreen || isCaixaLaboratorioLanding || isPedidoConfirmado
+    isLaunchScreen ||
+    isCaixaLaboratorioLanding ||
+    isPedidoConfirmado ||
+    isPreLaunch
 
   return (
     <main
@@ -605,7 +631,9 @@ function AppContent() {
       style={{
         ...styles.main,
         ...(isLaunchScreen ? { padding: 0, overflow: "hidden" } : null),
-        ...(isCaixaLaboratorioLanding || isPedidoConfirmado
+        ...(isCaixaLaboratorioLanding ||
+        isPedidoConfirmado ||
+        isPreLaunch
           ? { padding: 0 }
           : null),
       }}
@@ -622,7 +650,9 @@ function AppContent() {
                 maxHeight: "100vh",
               }
             : null),
-          ...(isCaixaLaboratorioLanding || isPedidoConfirmado
+          ...(isCaixaLaboratorioLanding ||
+          isPedidoConfirmado ||
+          isPreLaunch
             ? {
                 paddingBottom: 0,
                 maxWidth: "100%",
@@ -759,6 +789,10 @@ function AppContent() {
 
         {screen === appRoutes.caixaLaboratorio && <CaixaLaboratorioPage />}
 
+        {screen === appRoutes.preLancamento && (
+          <PreLaunchPage setScreen={setScreen} />
+        )}
+
         {screen === appRoutes.pedidoConfirmado && (
           <PedidoConfirmadoPage setScreen={setScreen} />
         )}
@@ -773,7 +807,8 @@ function AppContent() {
 
         {!isLaunchScreen &&
         !isCaixaLaboratorioLanding &&
-        !isPedidoConfirmado ? (
+        !isPedidoConfirmado &&
+        !isPreLaunch ? (
           <InstitutionalFooter />
         ) : null}
 
