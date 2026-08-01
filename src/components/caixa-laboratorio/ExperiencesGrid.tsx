@@ -57,40 +57,30 @@ export function ExperiencesGrid() {
             <circle cx="40" cy="62" r="5" />
             <path d="M52 28c8 2 12 8 10 16" opacity="0.55" />
             <path d="M18 48c6-1 10 3 9 9" opacity="0.45" />
+            <path d="M58 52l4 8 8 3-8 3-4 8-4-8-8-3 8-3z" opacity="0.45" />
           </g>
         </svg>
-        <svg
-          className="clx-tenth__arrow"
-          viewBox="0 0 64 24"
-          width="48"
-          height="18"
-          aria-hidden="true"
-          focusable="false"
-        >
-          <path
-            d="M4 12c14-8 28-8 42 0"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-          />
-          <path
-            d="M40 6l10 6-10 6"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </svg>
+        <p className="clx-tenth__num" aria-hidden="true">
+          10
+        </p>
         <h3 id="clx-tenth-title" className="clx-tenth__title">
           {discoveries.tenthTitle}
         </h3>
         <p className="clx-tenth__lead">{discoveries.tenthLead}</p>
         <p className="clx-tenth__text">{discoveries.tenthText}</p>
-        <p className="clx-tenth__blank" aria-hidden="true">
-          10. ________________
-        </p>
+        <div className="clx-tenth__open">
+          <p className="clx-tenth__open-name">
+            <span className="clx-tenth__open-num">10.</span> A descoberta que{" "}
+            <span className="clx-tenth__emphasis">ainda</span> não existe.
+          </p>
+          <p className="clx-tenth__open-hint">
+            {discoveries.tenthNameHintLead}
+            <span className="clx-tenth__emphasis">
+              {discoveries.tenthNameHintEmphasis}
+            </span>
+            {discoveries.tenthNameHintEnd}
+          </p>
+        </div>
       </aside>
     </section>
   )

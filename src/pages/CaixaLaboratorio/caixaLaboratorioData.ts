@@ -12,7 +12,7 @@ export const caixaLaboratorioImages = {
 export const caixaLaboratorioData = {
   documentTitle: "Caixa Laboratório da daTeca — R$ 89,90",
   metaDescription:
-    "Caixa Laboratório da daTeca: 10 descobertas — 9 experiências guiadas e a décima inventada pela criança. R$ 89,90. Frete calculado pelo CEP no checkout.",
+    "Caixa Laboratório da daTeca: 10 descobertas — 9 experiências guiadas e a décima inventada pela criança. Preço de lançamento R$ 89,90. Frete calculado pelo CEP no checkout.",
   canonicalPath: "/caixa-laboratorio",
   ogImage: caixaLaboratorioImages.caixaAberta,
   /** Sempre o link central Hotmart — ver `caixaLaboratorioCheckout.ts`. */
@@ -51,15 +51,21 @@ export const caixaLaboratorioData = {
     ],
     image: caixaLaboratorioImages.caixaAberta,
     imageAlt: "Caixa Laboratório da daTeca aberta com materiais",
-    price: "R$ 89,90",
-    shipping: "Frete calculado pelo CEP no checkout.",
-    batchSeal: {
-      line1: "PREÇO ESPECIAL DO PRIMEIRO LOTE",
-      line2: `SOMENTE ${entryProduct.firstBatchUnits} UNIDADES`,
-    },
     cta: "QUERO MINHA CAIXA LABORATÓRIO",
     note: "Compra única.",
     paymentNote: "Pagamento seguro pela Hotmart.",
+  },
+
+  /** Mesmo bloco de preço no hero e no fechamento. */
+  pricing: {
+    label: "PREÇO DE LANÇAMENTO",
+    price: "R$ 89,90",
+    priceValue: String(entryProduct.priceBRL),
+    nextLotLabel: "Próximo lote:",
+    nextPrice: "R$ 119,90",
+    savings: "Você economiza R$ 30 neste primeiro lote.",
+    units: `Somente ${entryProduct.firstBatchUnits} unidades neste valor.`,
+    shipping: "Frete calculado pelo CEP no checkout.",
   },
 
   discoveries: {
@@ -82,6 +88,10 @@ export const caixaLaboratorioData = {
     tenthLead: "Essa é inventada pela própria criança.",
     tenthText:
       "A caixa também inclui materiais para misturar, testar e criar novas experiências.",
+    tenthName: "A descoberta que ainda não existe.",
+    tenthNameHintLead: "Essa ganha nome ",
+    tenthNameHintEmphasis: "quando a criança inventar",
+    tenthNameHintEnd: ".",
   },
 
   contents: {
@@ -111,10 +121,6 @@ export const caixaLaboratorioData = {
     title: "Caixa Laboratório da daTeca",
     summary:
       "10 descobertas para viver: 9 experiências guiadas e a décima inventada pela criança.",
-    price: "R$ 89,90",
-    priceValue: String(entryProduct.priceBRL),
-    shipping: "Frete calculado pelo CEP no checkout.",
-    batch: `Preço especial do primeiro lote — somente ${entryProduct.firstBatchUnits} unidades.`,
     cta: "QUERO MINHA CAIXA LABORATÓRIO",
     note: "Compra única.",
     paymentNote: "Pagamento seguro pela Hotmart.",
@@ -206,7 +212,7 @@ function setJsonLd(data: Record<string, unknown>) {
 }
 
 export function applyCaixaLaboratorioMeta() {
-  const { documentTitle, metaDescription, ogImage, canonicalPath, buy } =
+  const { documentTitle, metaDescription, ogImage, canonicalPath, buy, pricing } =
     caixaLaboratorioData
   const origin = window.location.origin
   const pageUrl = new URL(canonicalPath, origin).href
@@ -236,7 +242,7 @@ export function applyCaixaLaboratorioMeta() {
       "@type": "Offer",
       url: pageUrl,
       priceCurrency: "BRL",
-      price: buy.priceValue,
+      price: pricing.priceValue,
       availability: "https://schema.org/LimitedAvailability",
       shippingDetails: {
         "@type": "OfferShippingDetails",
