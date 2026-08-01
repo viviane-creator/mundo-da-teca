@@ -46,8 +46,8 @@ export const caixaLaboratorioData = {
   },
 
   offerBridge: {
-    title: "Você só precisa adicionar água.",
-    text: "Enquanto o Manual de Descobertas ensina o passo a passo, a Caixa Laboratório reúne praticamente tudo para viver essas experiências em casa.",
+    title: "Quer viver essas descobertas sem sair atrás de material?",
+    text: "O Manual ensina o passo a passo. A Caixa Laboratório já traz ingredientes, frascos e ferramentas organizados — para a família abrir e começar, sem lista de compras e sem improvisar.",
   },
 
   hero: {
