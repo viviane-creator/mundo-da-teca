@@ -21,7 +21,7 @@ export const caixaLaboratorioData = {
   header: {
     logoSrc: "/logo/logo.webp",
     logoAlt: "daTeca",
-    cta: "Quero a minha",
+    cta: "Quero garantir a minha Caixa Laboratório",
   },
 
   /**

@@ -5,7 +5,7 @@ export function ManualGiftHero() {
 
   return (
     <section className="clx-manual" aria-labelledby="clx-manual-title">
-      <div className="clx-manual__inner">
+      <div className="clx-manual__card">
         <p className="clx-manual__kicker">{manualGift.kicker}</p>
         <h1 id="clx-manual-title" className="clx-manual__title">
           {manualGift.title}
