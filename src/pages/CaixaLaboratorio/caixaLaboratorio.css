@@ -48,7 +48,7 @@
 
 .clx-header__logo {
   display: block;
-  width: clamp(84px, 22vw, 108px);
+  width: clamp(96px, 24vw, 128px);
   height: auto;
 }
 
@@ -337,6 +337,30 @@
 .clx-hero__title-num {
   color: var(--clx-terra);
   font-weight: 600;
+}
+
+.clx-hero__subtitle-lead {
+  margin: 0 0 4px;
+  max-width: 34ch;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(17px, 4.2vw, 19px);
+  line-height: 1.3;
+  color: var(--clx-ink);
+}
+
+.clx-hero__subtitle-highlight {
+  margin: 0 0 12px;
+  max-width: 34ch;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(18px, 4.4vw, 20px);
+  font-style: italic;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--clx-terra);
+  text-decoration: underline;
+  text-decoration-color: rgba(168, 106, 82, 0.35);
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 4px;
 }
 
 .clx-hero__text {
@@ -648,24 +672,53 @@
 }
 
 .clx-tenth {
-  margin-top: 4px;
-  padding: 14px 16px;
-  border-radius: 14px;
-  background: rgba(255, 253, 249, 0.72);
-  border: 1px dashed var(--clx-line);
+  position: relative;
+  margin-top: 10px;
+  padding: clamp(22px, 5vw, 28px) clamp(18px, 4vw, 24px);
+  border-radius: 22px;
+  background: linear-gradient(
+    180deg,
+    rgba(232, 242, 238, 0.95) 0%,
+    rgba(236, 244, 246, 0.92) 100%
+  );
+  border: 1.5px solid rgba(106, 130, 148, 0.28);
+  box-shadow: 0 8px 22px rgba(74, 90, 80, 0.06);
   text-align: center;
 }
 
+.clx-tenth__doodle {
+  display: block;
+  margin: 0 auto 6px;
+  color: rgba(90, 122, 110, 0.55);
+}
+
+.clx-tenth__arrow {
+  display: block;
+  margin: 0 auto 10px;
+  color: rgba(168, 106, 82, 0.55);
+}
+
 .clx-tenth__title {
-  margin: 0 0 6px;
+  margin: 0 0 8px;
   font-family: var(--teca-font-page-title, "Caveat", cursive);
-  font-size: clamp(22px, 5.5vw, 28px);
+  font-size: clamp(26px, 6.5vw, 34px);
   font-weight: 400;
   color: var(--clx-ink);
 }
 
+.clx-tenth__lead {
+  margin: 0 auto 8px;
+  max-width: 30ch;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(18px, 4.4vw, 20px);
+  font-style: italic;
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--clx-terra);
+}
+
 .clx-tenth__text {
-  margin: 0 auto;
+  margin: 0 auto 14px;
   max-width: 36ch;
   font-family: "Cormorant Garamond", serif;
   font-size: clamp(16px, 4vw, 18px);
@@ -673,8 +726,17 @@
   color: var(--clx-muted);
 }
 
-.clx-tenth__text + .clx-tenth__text {
-  margin-top: 6px;
+.clx-tenth__blank {
+  margin: 0 auto;
+  max-width: 22ch;
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: 1.5px dashed rgba(106, 130, 148, 0.35);
+  background: rgba(255, 253, 249, 0.65);
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(15px, 3.8vw, 17px);
+  letter-spacing: 0.04em;
+  color: rgba(74, 55, 40, 0.45);
 }
 
 /* —— Water —— */
@@ -737,6 +799,14 @@
   border: 1px solid var(--clx-line);
   box-shadow: 0 10px 28px rgba(90, 60, 30, 0.08);
   overflow: hidden;
+}
+
+.clx-buy__logo {
+  display: block;
+  width: clamp(56px, 14vw, 72px);
+  height: auto;
+  margin: 0 auto 10px;
+  opacity: 0.95;
 }
 
 .clx-buy__title {
@@ -804,11 +874,11 @@
   background: rgba(250, 246, 239, 0.7);
 }
 
-.clx-footer__brand {
-  margin: 0 0 6px;
-  font-family: var(--teca-font-page-title, "Caveat", cursive);
-  font-size: clamp(26px, 6vw, 32px);
-  color: var(--clx-ink);
+.clx-footer__logo {
+  display: block;
+  width: clamp(72px, 18vw, 96px);
+  height: auto;
+  margin: 0 auto 10px;
 }
 
 .clx-footer__text {

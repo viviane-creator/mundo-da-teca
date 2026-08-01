@@ -5,7 +5,14 @@ export function LandingFooter() {
 
   return (
     <footer className="clx-footer">
-      <p className="clx-footer__brand">{footer.brand}</p>
+      <img
+        className="clx-footer__logo"
+        src={footer.logoSrc}
+        alt={footer.logoAlt}
+        width={96}
+        height={96}
+        decoding="async"
+      />
       <p className="clx-footer__text">{footer.text}</p>
       <a
         className="clx-footer__link"

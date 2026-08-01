@@ -10,6 +10,14 @@ export function PricingSection() {
       className="clx-buy"
       aria-labelledby="clx-buy-title"
     >
+      <img
+        className="clx-buy__logo"
+        src={buy.logoSrc}
+        alt={buy.logoAlt}
+        width={72}
+        height={72}
+        decoding="async"
+      />
       <h2 id="clx-buy-title" className="clx-buy__title">
         {buy.title}
       </h2>

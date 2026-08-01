@@ -42,9 +42,11 @@ export function HeroLaboratorio() {
       <div className="clx-hero__copy">
         <p className="clx-hero__kicker">{hero.kicker}</p>
         <h1 id="clx-hero-title" className="clx-hero__title">
-          <span className="clx-hero__title-num">9</span>
-          {" descobertas dentro de uma caixa."}
+          <span className="clx-hero__title-num">{hero.titleNum}</span>
+          {hero.titleRest}
         </h1>
+        <p className="clx-hero__subtitle-lead">{hero.subtitleLead}</p>
+        <p className="clx-hero__subtitle-highlight">{hero.subtitleHighlight}</p>
         <p className="clx-hero__text">{hero.text}</p>
       </div>
 

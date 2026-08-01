@@ -12,7 +12,7 @@ export const caixaLaboratorioImages = {
 export const caixaLaboratorioData = {
   documentTitle: "Caixa Laboratório da daTeca — R$ 89,90",
   metaDescription:
-    "Caixa Laboratório da daTeca: 9 experiências guiadas, materiais organizados e manual ilustrado. R$ 89,90. Frete calculado pelo CEP no checkout.",
+    "Caixa Laboratório da daTeca: 10 descobertas — 9 experiências guiadas e a décima inventada pela criança. R$ 89,90. Frete calculado pelo CEP no checkout.",
   canonicalPath: "/caixa-laboratorio",
   ogImage: caixaLaboratorioImages.caixaAberta,
   /** Sempre o link central Hotmart — ver `caixaLaboratorioCheckout.ts`. */
@@ -26,13 +26,16 @@ export const caixaLaboratorioData = {
 
   hero: {
     kicker: "CAIXA LABORATÓRIO daTeca",
-    title: "9 descobertas dentro de uma caixa.",
-    text: "Uma caixa completa para a criança experimentar, criar e descobrir com as próprias mãos.",
+    titleNum: "10",
+    titleRest: " descobertas dentro de uma caixa.",
+    subtitleLead: "Nove prontas para começar.",
+    subtitleHighlight: "A décima é inventada pela própria criança.",
+    text: "Uma caixa completa para experimentar, criar e descobrir com as próprias mãos.",
     benefits: [
       "9 experiências guiadas",
       "Materiais organizados",
       "Manual ilustrado",
-      "Laboratório livre para novas invenções",
+      "Tudo para inventar a décima descoberta",
     ],
     image: caixaLaboratorioImages.caixaAberta,
     imageAlt: "Caixa Laboratório da daTeca aberta com materiais",
@@ -95,9 +98,11 @@ export const caixaLaboratorioData = {
   },
 
   buy: {
+    logoSrc: "/logo/logo.webp",
+    logoAlt: "daTeca",
     title: "Caixa Laboratório da daTeca",
     summary:
-      "9 experiências guiadas + materiais para a criança criar suas próprias descobertas.",
+      "10 descobertas para viver: 9 experiências guiadas e a décima inventada pela criança.",
     price: "R$ 89,90",
     priceValue: String(entryProduct.priceBRL),
     shipping: "Frete calculado pelo CEP no checkout.",
@@ -139,7 +144,8 @@ export const caixaLaboratorioData = {
   },
 
   footer: {
-    brand: "daTeca",
+    logoSrc: "/logo/logo.webp",
+    logoAlt: "daTeca",
     text: "Experiências para descobrir, criar e brincar com as próprias mãos.",
     instagramLabel: "Instagram",
     instagramUrl: socialLinks.instagram,
