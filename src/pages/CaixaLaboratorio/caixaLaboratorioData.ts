@@ -5,7 +5,10 @@ import { socialLinks } from "../../data/socialLinks"
 const IMG = "/images/caixa-laboratorio"
 
 export const caixaLaboratorioImages = {
-  caixaAberta: `${IMG}/caixa-experiencias.webp`,
+  /** Banner de convite com a caixa aberta (hero). */
+  convite: `${IMG}/caixa-convite.webp`,
+  /** Infográfico com o que vem na caixa (conteúdos). */
+  experiencias: `${IMG}/caixa-experiencias.webp`,
   experienciasCompletas: `${IMG}/experiencias-completas.webp`,
 } as const
 
@@ -14,7 +17,7 @@ export const caixaLaboratorioData = {
   metaDescription:
     "Baixe o Manual de Descobertas da daTeca e conheça a Caixa Laboratório: 9 experiências guiadas e a décima inventada pela criança. Preço de lançamento R$ 89,90.",
   canonicalPath: "/caixa-laboratorio",
-  ogImage: caixaLaboratorioImages.caixaAberta,
+  ogImage: caixaLaboratorioImages.convite,
   /** Sempre o link central Hotmart — ver `caixaLaboratorioCheckout.ts`. */
   orderUrl: HOTMART_CHECKOUT_URL,
 
@@ -75,8 +78,9 @@ export const caixaLaboratorioData = {
       "Manual ilustrado",
       "Frascos, pipetas e ferramentas incluídos",
     ],
-    image: caixaLaboratorioImages.caixaAberta,
-    imageAlt: "Caixa Laboratório da daTeca aberta com materiais",
+    image: caixaLaboratorioImages.convite,
+    imageAlt:
+      "Caixa Laboratório da daTeca: uma tarde de descobertas começa aqui",
     cta: "QUERO MINHA CAIXA LABORATÓRIO",
     note: "Compra única.",
     paymentNote: "Pagamento seguro pela Hotmart.",
@@ -123,6 +127,9 @@ export const caixaLaboratorioData = {
   contents: {
     title: "Tudo organizado. Tudo pronto para começar.",
     text: "Dentro da Caixa Laboratório, a criança encontra os ingredientes, recipientes e ferramentas utilizados nas experiências.",
+    image: caixaLaboratorioImages.experiencias,
+    imageAlt:
+      "O que vem na Caixa Laboratório da daTeca: frascos, equipamentos, líquidos, pózinhos e materiais para inventar",
     items: [
       "Ingredientes separados e identificados",
       "Frascos e potinhos para as experiências",
