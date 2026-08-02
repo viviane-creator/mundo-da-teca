@@ -2,7 +2,7 @@
  * Abertura oficial das vendas da Caixa Laboratório.
  * Até esta data, os botões de compra levam à página de pré-lançamento.
  */
-export const SALES_LAUNCH_AT = new Date("2026-08-02T12:00:00-03:00")
+export const SALES_LAUNCH_AT = new Date("2026-08-02T14:00:00-03:00")
 
 const forcePreLaunch =
   String(import.meta.env.VITE_FORCE_PRE_LAUNCH ?? "").trim() === "true"
@@ -59,7 +59,7 @@ export function getUrgencyLine(now: Date = new Date()): string {
   const today = brazilCalendarDay(now)
   const launchDay = brazilCalendarDay(SALES_LAUNCH_AT)
   if (today === launchDay) {
-    return "Falta pouco. Hoje, ao meio-dia, abrimos oficialmente o primeiro lote."
+    return "Falta pouco. Hoje, às 14h, abrimos oficialmente o primeiro lote."
   }
-  return "Falta muito pouco. Amanhã, ao meio-dia, abrimos oficialmente o primeiro lote."
+  return "Falta muito pouco. Amanhã, às 14h, abrimos oficialmente o primeiro lote."
 }
