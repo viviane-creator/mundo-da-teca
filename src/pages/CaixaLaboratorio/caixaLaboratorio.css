@@ -12,17 +12,25 @@
   --clx-line: rgba(154, 132, 117, 0.28);
   --clx-green: #6f8f6a;
   --clx-green-deep: #5a7a56;
-  --clx-blue: #6a8294;
-  --clx-terra: #a86a52;
-  --clx-ocre: #d4894a;
-  --clx-ocre-deep: #c06f35;
+  --clx-blue: #4a7c78;
+  --clx-terra: #b86f35;
+  --clx-ocre: #c47a3a;
+  --clx-ocre-deep: #a8622c;
+  /* Aquarelas terrosas (sólidas, sem degradê) */
+  --clx-splash-orange: #c47a3a;
+  --clx-splash-gold: #c9a24a;
+  --clx-splash-teal: #4a8a82;
+  --clx-splash-deep: #2f5c58;
+  --clx-splash-ink: #f7efe4;
+  --clx-splash-accent: #f0ddb0;
 
   position: relative;
   isolation: isolate;
   min-height: 100svh;
   background:
-    radial-gradient(ellipse 90% 40% at 10% 0%, rgba(127, 149, 166, 0.1), transparent 55%),
-    radial-gradient(ellipse 70% 35% at 90% 20%, rgba(180, 122, 99, 0.08), transparent 50%),
+    radial-gradient(ellipse 80% 38% at 8% 0%, rgba(239, 139, 58, 0.16), transparent 55%),
+    radial-gradient(ellipse 70% 36% at 92% 12%, rgba(42, 168, 164, 0.14), transparent 52%),
+    radial-gradient(ellipse 55% 28% at 70% 100%, rgba(240, 193, 75, 0.1), transparent 50%),
     linear-gradient(180deg, #faf6ef 0%, var(--clx-cream) 45%, #f3ebe0 100%);
   color: var(--clx-ink);
   overflow-x: clip;
@@ -68,7 +76,7 @@
   font-weight: 600;
   letter-spacing: 0.02em;
   color: #fffdf9;
-  background: linear-gradient(180deg, var(--clx-ocre) 0%, var(--clx-ocre-deep) 100%);
+  background: #b86f35;
   box-shadow: 0 6px 18px rgba(176, 100, 48, 0.28);
   transition: filter 0.2s ease, transform 0.2s ease;
 }
@@ -120,7 +128,7 @@
   text-transform: uppercase;
   letter-spacing: 0.01em;
   white-space: normal;
-  background: linear-gradient(180deg, #d4894a 0%, #b8632e 100%);
+  background: #b86f35;
   box-shadow: 0 8px 22px rgba(176, 100, 48, 0.3);
 }
 
@@ -154,18 +162,32 @@
   gap: clamp(8px, 2vw, 12px);
   padding: clamp(22px, 5vw, 30px) clamp(18px, 4.5vw, 26px) clamp(18px, 4vw, 24px);
   border-radius: 22px;
-  border: 1px solid rgba(179, 129, 95, 0.28);
-  background:
-    radial-gradient(
-      ellipse 80% 55% at 50% 0%,
-      rgba(255, 253, 249, 0.98) 0%,
-      rgba(255, 253, 249, 0.94) 55%,
-      rgba(247, 240, 230, 0.96) 100%
-    );
-  box-shadow:
-    0 10px 28px rgba(74, 55, 40, 0.07),
-    0 1px 0 rgba(255, 253, 249, 0.8) inset;
+  border: none;
+  background: #c47a3a;
+  color: #f7efe4;
+  box-shadow: 0 12px 30px rgba(176, 100, 48, 0.22);
   animation: clxManualIn 0.9s ease both;
+}
+
+.clx-manual__card .clx-manual__kicker,
+.clx-manual__card .clx-manual__title,
+.clx-manual__card .clx-manual__copy p,
+.clx-manual__card .clx-manual__welcome p {
+  color: #f7efe4;
+}
+
+.clx-manual__card .clx-manual__kicker {
+  opacity: 0.92;
+}
+
+.clx-manual__card .clx-manual__copy p {
+  opacity: 0.95;
+}
+
+.clx-manual__card .clx-manual__download {
+  background: #2f5c58;
+  color: #f7efe4;
+  box-shadow: 0 8px 20px rgba(15, 70, 68, 0.28);
 }
 
 @keyframes clxManualIn {
@@ -342,7 +364,7 @@
 }
 
 .clx-checklist li span {
-  color: var(--clx-green-deep);
+  color: var(--clx-splash-orange);
   flex-shrink: 0;
   font-weight: 700;
 }
@@ -525,6 +547,7 @@
 .clx-hero__copy,
 .clx-hero__media,
 .clx-hero__cards,
+.clx-hero__materials,
 .clx-hero__benefits,
 .clx-hero__offer {
   position: relative;
@@ -572,6 +595,28 @@
   place-items: center;
 }
 
+.clx-hero__materials {
+  margin: 2px 0 0;
+  padding: 0;
+  display: grid;
+  place-items: center;
+  width: 100%;
+}
+
+.clx-hero__materials-image,
+.clx-hero__materials .clx-placeholder {
+  display: block;
+  width: 100%;
+  max-width: min(100%, 420px);
+  height: auto;
+  margin-inline: auto;
+  border-radius: 18px;
+  object-fit: contain;
+  box-shadow:
+    0 14px 28px rgba(74, 55, 40, 0.12),
+    0 3px 10px rgba(74, 55, 40, 0.06);
+}
+
 .clx-hero__blob {
   position: absolute;
   z-index: 0;
@@ -617,30 +662,19 @@
   display: flex;
   flex-direction: column;
   min-height: 100%;
-  padding: 11px 13px 12px;
-  border-radius: 16px;
-  border: 1px solid transparent;
-  box-shadow: 0 4px 14px rgba(74, 55, 40, 0.05);
+  padding: 12px 14px 13px;
+  border-radius: 18px;
+  border: none;
+  box-shadow: 0 8px 20px rgba(74, 55, 40, 0.14);
+  color: #f7efe4;
 }
 
 .clx-hero-card--tenth {
-  background: linear-gradient(
-    180deg,
-    rgba(236, 242, 234, 0.98) 0%,
-    rgba(243, 245, 236, 0.94) 100%
-  );
-  border-color: rgba(111, 143, 106, 0.28);
-  color: #4a5c48;
+  background: #c47a3a;
 }
 
 .clx-hero-card--water {
-  background: linear-gradient(
-    180deg,
-    rgba(226, 238, 244, 0.98) 0%,
-    rgba(236, 244, 247, 0.94) 100%
-  );
-  border-color: rgba(106, 130, 148, 0.3);
-  color: #4a6170;
+  background: #4a8a82;
 }
 
 .clx-hero-card__art {
@@ -648,15 +682,13 @@
   width: 80px;
   height: 32px;
   margin-bottom: 5px;
-  opacity: 0.72;
+  opacity: 0.95;
+  color: #f7efe4;
 }
 
-.clx-hero-card--tenth .clx-hero-card__art {
-  color: #6a8564;
-}
-
+.clx-hero-card--tenth .clx-hero-card__art,
 .clx-hero-card--water .clx-hero-card__art {
-  color: #6a8294;
+  color: #f7efe4;
 }
 
 .clx-hero-card__eyebrow {
@@ -666,11 +698,11 @@
   font-weight: 700;
   letter-spacing: 0.1em;
   line-height: 1.2;
-  color: inherit;
+  color: #f7efe4;
 }
 
 .clx-hero-card__eyebrow-accent {
-  color: var(--clx-terra);
+  color: #f0ddb0;
 }
 
 .clx-hero-card__title {
@@ -679,14 +711,19 @@
   font-size: clamp(18px, 4.4vw, 20px);
   font-weight: 600;
   line-height: 1.25;
-  color: var(--clx-ink);
+  color: #f7efe4;
+}
+
+.clx-hero-card--tenth .clx-hero-card__title,
+.clx-hero-card--water .clx-hero-card__title {
+  color: #f7efe4;
 }
 
 .clx-hero-card__emphasis {
-  color: #3d6a7a;
+  color: #f0ddb0;
   font-weight: 700;
   text-decoration: underline;
-  text-decoration-color: rgba(106, 130, 148, 0.45);
+  text-decoration-color: rgba(255, 250, 242, 0.7);
   text-decoration-thickness: 1.5px;
   text-underline-offset: 3px;
 }
@@ -696,7 +733,12 @@
   font-family: "Cormorant Garamond", serif;
   font-size: clamp(15px, 3.8vw, 16px);
   line-height: 1.35;
-  color: var(--clx-muted);
+  color: rgba(255, 250, 242, 0.94);
+}
+
+.clx-hero-card--tenth .clx-hero-card__text,
+.clx-hero-card--water .clx-hero-card__text {
+  color: rgba(255, 250, 242, 0.94);
 }
 
 .clx-hero__benefits {
@@ -716,10 +758,11 @@
   text-align: center;
   padding: 12px 14px 14px;
   border-radius: 18px;
-  background: linear-gradient(180deg, #fffdf8 0%, #f7efe4 100%);
-  border: 1px solid rgba(154, 132, 117, 0.34);
-  box-shadow: 0 8px 22px rgba(90, 60, 30, 0.09);
+  background: #c47a3a;
+  border: none;
+  box-shadow: 0 10px 24px rgba(176, 100, 48, 0.22);
   overflow: hidden;
+  color: #f7efe4;
 }
 
 .clx-seal {
@@ -732,9 +775,9 @@
   margin: 2px 0 10px;
   padding: 6px 12px;
   border-radius: 999px;
-  border: 1.5px dashed rgba(168, 106, 82, 0.55);
-  background: rgba(255, 248, 240, 0.95);
-  box-shadow: 0 2px 0 rgba(168, 106, 82, 0.12);
+  border: 1.5px dashed rgba(255, 250, 242, 0.65);
+  background: #2f5c58;
+  box-shadow: none;
 }
 
 .clx-seal__line {
@@ -743,7 +786,34 @@
   font-weight: 700;
   letter-spacing: 0.08em;
   line-height: 1.25;
-  color: var(--clx-terra);
+  color: #f7efe4;
+}
+
+.clx-hero__offer .clx-price-label,
+.clx-hero__offer .clx-price,
+.clx-hero__offer .clx-price-next,
+.clx-hero__offer .clx-price-units,
+.clx-hero__offer .clx-shipping,
+.clx-hero__offer .clx-note {
+  color: #f7efe4;
+}
+
+.clx-hero__offer .clx-price-next__value {
+  text-decoration-color: rgba(255, 250, 242, 0.55);
+}
+
+.clx-hero__offer .clx-price-savings {
+  border-color: rgba(255, 250, 242, 0.55);
+  background: #2f5c58;
+  color: #f7efe4;
+  text-decoration-color: rgba(255, 250, 242, 0.55);
+}
+
+.clx-hero__offer .clx-cta--primary,
+.clx-buy .clx-cta--primary {
+  background: #2f5c58;
+  color: #f7efe4;
+  box-shadow: 0 8px 20px rgba(15, 70, 68, 0.3);
 }
 
 .clx-hero__offer .clx-shipping {
@@ -760,6 +830,7 @@
     grid-template-areas:
       "copy media"
       "cards cards"
+      "materials materials"
       "benefits benefits"
       "offer offer";
     align-items: start;
@@ -784,6 +855,15 @@
     grid-template-columns: 1fr 1fr;
     gap: 12px;
     align-items: stretch;
+  }
+
+  .clx-hero__materials {
+    grid-area: materials;
+  }
+
+  .clx-hero__materials-image,
+  .clx-hero__materials .clx-placeholder {
+    max-width: min(100%, 440px);
   }
 
   .clx-hero__benefits {
@@ -866,18 +946,30 @@
   align-items: flex-start;
   padding: 9px 12px;
   border-radius: 12px;
-  background: rgba(255, 253, 249, 0.78);
-  border: 1px solid rgba(154, 132, 117, 0.18);
+  border: none;
   font-family: "Cormorant Garamond", serif;
   font-size: clamp(17px, 4.2vw, 19px);
   line-height: 1.35;
-  color: var(--clx-ink);
+  color: #f7efe4;
+}
+
+.clx-contents__list li:nth-child(odd) {
+  background: #c47a3a;
+}
+
+.clx-contents__list li:nth-child(even) {
+  background: #4a8a82;
 }
 
 .clx-contents__list li span {
-  color: var(--clx-green-deep);
+  color: #f0ddb0;
   flex-shrink: 0;
   font-weight: 700;
+}
+
+.clx-contents__list li:nth-child(odd) span,
+.clx-contents__list li:nth-child(even) span {
+  color: #f0ddb0;
 }
 
 @media (min-width: 720px) {
@@ -959,26 +1051,23 @@
   margin-top: 10px;
   padding: clamp(22px, 5vw, 28px) clamp(18px, 4vw, 24px);
   border-radius: 22px;
-  background: linear-gradient(
-    180deg,
-    rgba(232, 242, 238, 0.95) 0%,
-    rgba(236, 244, 246, 0.92) 100%
-  );
-  border: 1.5px solid rgba(106, 130, 148, 0.28);
-  box-shadow: 0 8px 22px rgba(74, 90, 80, 0.06);
+  background: #c47a3a;
+  border: none;
+  box-shadow: 0 10px 26px rgba(176, 100, 48, 0.2);
   text-align: center;
+  color: #f7efe4;
 }
 
 .clx-tenth__doodle {
   display: block;
   margin: 0 auto 6px;
-  color: rgba(90, 122, 110, 0.55);
+  color: #f0ddb0;
 }
 
 .clx-tenth__arrow {
   display: block;
   margin: 0 auto 10px;
-  color: rgba(168, 106, 82, 0.55);
+  color: #f7efe4;
 }
 
 .clx-tenth__title {
@@ -986,7 +1075,7 @@
   font-family: var(--teca-font-page-title, "Caveat", cursive);
   font-size: clamp(26px, 6.5vw, 34px);
   font-weight: 400;
-  color: var(--clx-ink);
+  color: #f7efe4;
 }
 
 .clx-tenth__lead {
@@ -997,7 +1086,7 @@
   font-style: italic;
   font-weight: 600;
   line-height: 1.35;
-  color: var(--clx-terra);
+  color: #f0ddb0;
 }
 
 .clx-tenth__text {
@@ -1006,7 +1095,7 @@
   font-family: "Cormorant Garamond", serif;
   font-size: clamp(16px, 4vw, 18px);
   line-height: 1.4;
-  color: var(--clx-muted);
+  color: rgba(255, 250, 242, 0.94);
 }
 
 .clx-tenth__num {
@@ -1014,7 +1103,7 @@
   font-family: var(--teca-font-page-title, "Caveat", cursive);
   font-size: clamp(42px, 10vw, 56px);
   line-height: 1;
-  color: rgba(106, 130, 148, 0.35);
+  color: rgba(255, 250, 242, 0.45);
 }
 
 .clx-tenth__open {
@@ -1022,8 +1111,8 @@
   max-width: 28ch;
   padding: 12px 14px;
   border-radius: 14px;
-  border: 1.5px dashed rgba(106, 130, 148, 0.32);
-  background: rgba(255, 253, 249, 0.72);
+  border: 1.5px dashed rgba(255, 250, 242, 0.55);
+  background: #2f5c58;
 }
 
 .clx-tenth__open-name {
@@ -1032,11 +1121,11 @@
   font-size: clamp(17px, 4.2vw, 19px);
   font-weight: 600;
   line-height: 1.3;
-  color: var(--clx-ink);
+  color: #f7efe4;
 }
 
 .clx-tenth__open-num {
-  color: var(--clx-terra);
+  color: #f0ddb0;
 }
 
 .clx-tenth__open-hint {
@@ -1044,15 +1133,15 @@
   font-family: "Cormorant Garamond", serif;
   font-size: clamp(15px, 3.8vw, 17px);
   line-height: 1.35;
-  color: var(--clx-muted);
+  color: rgba(255, 250, 242, 0.92);
 }
 
 .clx-tenth__emphasis {
-  color: var(--clx-terra);
+  color: #f0ddb0;
   font-style: italic;
   font-weight: 700;
   text-decoration: underline;
-  text-decoration-color: rgba(168, 106, 82, 0.35);
+  text-decoration-color: rgba(255, 250, 242, 0.55);
   text-decoration-thickness: 1px;
   text-underline-offset: 3px;
 }
@@ -1071,14 +1160,16 @@
   margin-inline: auto;
   text-align: center;
   border-radius: 18px;
-  background: linear-gradient(180deg, rgba(238, 244, 245, 0.95), rgba(247, 240, 230, 0.9));
-  border: 1px solid rgba(127, 149, 166, 0.22);
+  background: #4a8a82;
+  border: none;
+  box-shadow: 0 10px 24px rgba(15, 90, 88, 0.2);
+  color: #f7efe4;
 }
 
 .clx-water__drop {
   margin: 0 auto 8px;
-  color: var(--clx-blue);
-  opacity: 0.85;
+  color: #f7efe4;
+  opacity: 0.95;
 }
 
 .clx-water__title {
@@ -1087,7 +1178,7 @@
   font-size: clamp(26px, 6.5vw, 34px);
   font-weight: 400;
   line-height: 1.1;
-  color: #3f4e55;
+  color: #f7efe4;
 }
 
 .clx-water__text,
@@ -1097,7 +1188,7 @@
   font-family: "Cormorant Garamond", serif;
   font-size: clamp(16px, 4vw, 18px);
   line-height: 1.4;
-  color: #45555d;
+  color: rgba(255, 250, 242, 0.94);
 }
 
 .clx-water__text {
@@ -1118,10 +1209,11 @@
   margin-inline: auto;
   text-align: center;
   border-radius: 20px;
-  background: var(--clx-paper);
-  border: 1px solid var(--clx-line);
-  box-shadow: 0 10px 28px rgba(90, 60, 30, 0.08);
+  background: #c47a3a;
+  border: none;
+  box-shadow: 0 12px 30px rgba(176, 100, 48, 0.22);
   overflow: hidden;
+  color: #f7efe4;
 }
 
 .clx-buy__logo {
@@ -1130,6 +1222,7 @@
   height: auto;
   margin: 0 auto 10px;
   opacity: 0.95;
+  filter: brightness(0) invert(1);
 }
 
 .clx-buy__title {
@@ -1137,7 +1230,7 @@
   font-family: var(--teca-font-page-title, "Caveat", cursive);
   font-size: clamp(28px, 7vw, 36px);
   font-weight: 400;
-  color: var(--clx-ink);
+  color: #f7efe4;
 }
 
 .clx-buy__summary {
@@ -1146,7 +1239,32 @@
   font-family: "Cormorant Garamond", serif;
   font-size: clamp(17px, 4.2vw, 19px);
   line-height: 1.4;
-  color: var(--clx-muted);
+  color: rgba(255, 250, 242, 0.94);
+}
+
+.clx-buy .clx-price-label,
+.clx-buy .clx-price,
+.clx-buy .clx-price-next,
+.clx-buy .clx-price-units,
+.clx-buy .clx-shipping,
+.clx-buy .clx-note {
+  color: #f7efe4;
+}
+
+.clx-buy .clx-price-next__value {
+  text-decoration-color: rgba(255, 250, 242, 0.55);
+}
+
+.clx-buy .clx-price-savings {
+  border-color: rgba(255, 250, 242, 0.55);
+  background: #2f5c58;
+  color: #f7efe4;
+  text-decoration-color: rgba(255, 250, 242, 0.55);
+}
+
+.clx-buy .clx-seal {
+  background: #2f5c58;
+  border-color: rgba(255, 250, 242, 0.65);
 }
 
 /* —— FAQ —— */
@@ -1162,17 +1280,25 @@
 }
 
 .clx-faq__item {
-  border: 1px solid var(--clx-line);
+  border: none;
   border-radius: 12px;
-  background: rgba(255, 253, 249, 0.8);
   padding: 12px 14px;
+  color: #f7efe4;
+}
+
+.clx-faq__item:nth-child(odd) {
+  background: #c47a3a;
+}
+
+.clx-faq__item:nth-child(even) {
+  background: #4a8a82;
 }
 
 .clx-faq__item summary {
   cursor: pointer;
   font-family: "Cormorant Garamond", serif;
   font-size: clamp(17px, 4.2vw, 19px);
-  color: var(--clx-ink);
+  color: #f7efe4;
   list-style: none;
 }
 
@@ -1185,7 +1311,7 @@
   font-family: "Cormorant Garamond", serif;
   font-size: clamp(16px, 4vw, 18px);
   line-height: 1.45;
-  color: var(--clx-muted);
+  color: rgba(255, 250, 242, 0.94);
 }
 
 /* —— Footer —— */

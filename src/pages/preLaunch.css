@@ -183,7 +183,7 @@
   font-weight: 600;
   letter-spacing: 0.02em;
   color: #fffdf9;
-  background: linear-gradient(180deg, var(--clx-ocre) 0%, var(--clx-ocre-deep) 100%);
+  background: #b86f35;
   box-shadow: 0 6px 18px rgba(176, 100, 48, 0.28);
   transition: filter 0.2s ease, transform 0.2s ease;
 }

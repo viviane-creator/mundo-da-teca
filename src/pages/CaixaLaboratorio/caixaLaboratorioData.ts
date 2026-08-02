@@ -8,7 +8,7 @@ export const caixaLaboratorioImages = {
   /** Banner de convite com a caixa aberta (hero). */
   convite: `${IMG}/caixa-convite.webp`,
   /** Infográfico com o que vem na caixa (conteúdos). */
-  experiencias: `${IMG}/caixa-experiencias.webp`,
+  materiais: `${IMG}/caixa-materiais.webp`,
   experienciasCompletas: `${IMG}/experiencias-completas.webp`,
 } as const
 
@@ -80,7 +80,10 @@ export const caixaLaboratorioData = {
     ],
     image: caixaLaboratorioImages.convite,
     imageAlt:
-      "Caixa Laboratório da daTeca: uma tarde de descobertas começa aqui",
+      "Caixa Laboratório da daTeca: um mundo de descobertas começa aqui",
+    materialsImage: caixaLaboratorioImages.materiais,
+    materialsImageAlt:
+      "O que vem na Caixa Laboratório da daTeca: frascos, equipamentos, líquidos, pózinhos e materiais para inventar",
     cta: "QUERO MINHA CAIXA LABORATÓRIO",
     note: "Compra única.",
     paymentNote: "Pagamento seguro pela Hotmart.",
@@ -127,7 +130,7 @@ export const caixaLaboratorioData = {
   contents: {
     title: "Tudo organizado. Tudo pronto para começar.",
     text: "Dentro da Caixa Laboratório, a criança encontra os ingredientes, recipientes e ferramentas utilizados nas experiências.",
-    image: caixaLaboratorioImages.experiencias,
+    image: caixaLaboratorioImages.materiais,
     imageAlt:
       "O que vem na Caixa Laboratório da daTeca: frascos, equipamentos, líquidos, pózinhos e materiais para inventar",
     items: [
