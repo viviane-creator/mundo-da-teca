@@ -4,12 +4,22 @@ import { socialLinks } from "../../data/socialLinks"
 
 const IMG = "/images/caixa-laboratorio"
 
+/**
+ * Subir este valor sempre que trocar os WebPs da landing.
+ * Evita cache do CDN/navegador servir a imagem antiga sob o mesmo nome.
+ */
+export const CAIXA_IMAGE_VERSION = "20260802d"
+
+function caixaImg(fileName: string): string {
+  return `${IMG}/${fileName}?v=${CAIXA_IMAGE_VERSION}`
+}
+
 export const caixaLaboratorioImages = {
   /** Banner de convite com a caixa aberta (hero). */
-  convite: `${IMG}/caixa-convite.webp`,
+  convite: caixaImg("caixa-convite.webp"),
   /** Infográfico com o que vem na caixa (conteúdos). */
-  materiais: `${IMG}/caixa-materiais.webp`,
-  experienciasCompletas: `${IMG}/experiencias-completas.webp`,
+  materiais: caixaImg("caixa-materiais.webp"),
+  experienciasCompletas: caixaImg("experiencias-completas.webp"),
 } as const
 
 export const caixaLaboratorioData = {
