@@ -668,7 +668,10 @@
 }
 
 .clx-hero-card--tenth {
-  background: #c47a3a;
+  background: rgba(255, 253, 249, 0.8);
+  border: 1px solid var(--clx-line);
+  color: var(--clx-ink);
+  box-shadow: 0 4px 14px rgba(74, 55, 40, 0.05);
 }
 
 .clx-hero-card--water {
@@ -684,7 +687,11 @@
   color: #f7efe4;
 }
 
-.clx-hero-card--tenth .clx-hero-card__art,
+.clx-hero-card--tenth .clx-hero-card__art {
+  color: #c47a3a;
+  opacity: 0.8;
+}
+
 .clx-hero-card--water .clx-hero-card__art {
   color: #f7efe4;
 }
@@ -699,8 +706,16 @@
   color: #f7efe4;
 }
 
+.clx-hero-card--tenth .clx-hero-card__eyebrow {
+  color: var(--clx-ink);
+}
+
 .clx-hero-card__eyebrow-accent {
   color: #f0ddb0;
+}
+
+.clx-hero-card--tenth .clx-hero-card__eyebrow-accent {
+  color: #c47a3a;
 }
 
 .clx-hero-card__title {
@@ -712,7 +727,10 @@
   color: #f7efe4;
 }
 
-.clx-hero-card--tenth .clx-hero-card__title,
+.clx-hero-card--tenth .clx-hero-card__title {
+  color: var(--clx-ink);
+}
+
 .clx-hero-card--water .clx-hero-card__title {
   color: #f7efe4;
 }
@@ -734,7 +752,10 @@
   color: rgba(255, 250, 242, 0.94);
 }
 
-.clx-hero-card--tenth .clx-hero-card__text,
+.clx-hero-card--tenth .clx-hero-card__text {
+  color: var(--clx-muted);
+}
+
 .clx-hero-card--water .clx-hero-card__text {
   color: rgba(255, 250, 242, 0.94);
 }
@@ -1027,23 +1048,23 @@
   margin-top: 10px;
   padding: clamp(22px, 5vw, 28px) clamp(18px, 4vw, 24px);
   border-radius: 22px;
-  background: #c47a3a;
-  border: none;
-  box-shadow: 0 10px 26px rgba(176, 100, 48, 0.2);
+  background: rgba(255, 253, 249, 0.8);
+  border: 1px solid var(--clx-line);
+  box-shadow: 0 4px 14px rgba(74, 55, 40, 0.05);
   text-align: center;
-  color: #f7efe4;
+  color: var(--clx-ink);
 }
 
 .clx-tenth__doodle {
   display: block;
   margin: 0 auto 6px;
-  color: #f0ddb0;
+  color: rgba(196, 122, 58, 0.7);
 }
 
 .clx-tenth__arrow {
   display: block;
   margin: 0 auto 10px;
-  color: #f7efe4;
+  color: rgba(196, 122, 58, 0.65);
 }
 
 .clx-tenth__title {
@@ -1051,7 +1072,7 @@
   font-family: var(--teca-font-page-title, "Caveat", cursive);
   font-size: clamp(26px, 6.5vw, 34px);
   font-weight: 400;
-  color: #f7efe4;
+  color: var(--clx-ink);
 }
 
 .clx-tenth__lead {
@@ -1062,7 +1083,7 @@
   font-style: italic;
   font-weight: 600;
   line-height: 1.35;
-  color: #f0ddb0;
+  color: #c47a3a;
 }
 
 .clx-tenth__text {
@@ -1071,7 +1092,7 @@
   font-family: "Cormorant Garamond", serif;
   font-size: clamp(16px, 4vw, 18px);
   line-height: 1.4;
-  color: rgba(255, 250, 242, 0.94);
+  color: var(--clx-muted);
 }
 
 .clx-tenth__num {
@@ -1079,7 +1100,7 @@
   font-family: var(--teca-font-page-title, "Caveat", cursive);
   font-size: clamp(42px, 10vw, 56px);
   line-height: 1;
-  color: rgba(255, 250, 242, 0.45);
+  color: rgba(196, 122, 58, 0.35);
 }
 
 .clx-tenth__open {
@@ -1087,8 +1108,8 @@
   max-width: 28ch;
   padding: 12px 14px;
   border-radius: 14px;
-  border: 1.5px dashed rgba(255, 250, 242, 0.55);
-  background: #2f5c58;
+  border: 1.5px dashed rgba(154, 132, 117, 0.4);
+  background: rgba(255, 253, 249, 0.95);
 }
 
 .clx-tenth__open-name {
@@ -1097,11 +1118,11 @@
   font-size: clamp(17px, 4.2vw, 19px);
   font-weight: 600;
   line-height: 1.3;
-  color: #f7efe4;
+  color: var(--clx-ink);
 }
 
 .clx-tenth__open-num {
-  color: #f0ddb0;
+  color: #c47a3a;
 }
 
 .clx-tenth__open-hint {
@@ -1109,15 +1130,15 @@
   font-family: "Cormorant Garamond", serif;
   font-size: clamp(15px, 3.8vw, 17px);
   line-height: 1.35;
-  color: rgba(255, 250, 242, 0.92);
+  color: var(--clx-muted);
 }
 
 .clx-tenth__emphasis {
-  color: #f0ddb0;
+  color: #c47a3a;
   font-style: italic;
   font-weight: 700;
   text-decoration: underline;
-  text-decoration-color: rgba(255, 250, 242, 0.55);
+  text-decoration-color: rgba(196, 122, 58, 0.35);
   text-decoration-thickness: 1px;
   text-underline-offset: 3px;
 }
