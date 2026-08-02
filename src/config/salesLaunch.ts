@@ -1,15 +1,13 @@
-import { BRAZIL_NATIONAL_OPEN_AT } from "./floripaSoftLaunch"
-
 /**
- * Abertura do checkout Hotmart (após a pré-venda por WhatsApp).
- * Enquanto a pré-venda estiver ativa, os botões vão para o WhatsApp.
+ * Abertura do checkout Hotmart — Caixa Laboratório da daTeca.
+ * Com vendas abertas, os botões da landing vão para a Hotmart.
  */
-export const SALES_LAUNCH_AT = BRAZIL_NATIONAL_OPEN_AT
+export const SALES_LAUNCH_AT = new Date("2026-08-02T00:00:00-03:00")
 
 const forcePreLaunch =
   String(import.meta.env.VITE_FORCE_PRE_LAUNCH ?? "").trim() === "true"
 
-/** Vendas abertas (após 02/08) — a menos que o pré-lançamento esteja forçado. */
+/** Vendas abertas na Hotmart — a menos que o pré-lançamento esteja forçado. */
 export function isSalesOpen(now: Date = new Date()): boolean {
   if (forcePreLaunch) return false
   return now.getTime() >= SALES_LAUNCH_AT.getTime()
@@ -56,12 +54,12 @@ function brazilCalendarDay(date: Date): string {
 
 export function getUrgencyLine(now: Date = new Date()): string {
   if (isSalesOpen(now)) {
-    return "As vendas estão abertas. Bem-vindo ao lançamento."
+    return "As vendas estão abertas. Garanta a sua Caixa Laboratório."
   }
   const today = brazilCalendarDay(now)
   const launchDay = brazilCalendarDay(SALES_LAUNCH_AT)
   if (today === launchDay) {
-    return "A pré-venda está aberta pelo WhatsApp na página da Caixa Laboratório."
+    return "O lançamento é hoje. Em breve você poderá garantir a sua caixa."
   }
-  return "A pré-venda está aberta pelo WhatsApp na página da Caixa Laboratório."
+  return "O lançamento está chegando. Em breve você poderá garantir a sua caixa."
 }

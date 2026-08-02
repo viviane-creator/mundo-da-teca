@@ -3,7 +3,7 @@
  * Pedidos via WhatsApp + Pix para todo o Brasil.
  * Desligar com `WHATSAPP_PRESALE_ENABLED = false` quando for para Hotmart.
  */
-export const WHATSAPP_PRESALE_ENABLED = true
+export const WHATSAPP_PRESALE_ENABLED = false
 
 /** Mantido para compatibilidade — abertura Hotmart futura. */
 export const BRAZIL_NATIONAL_OPEN_AT = new Date("2026-08-10T12:00:00-03:00")

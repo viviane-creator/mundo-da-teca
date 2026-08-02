@@ -2,7 +2,7 @@ export const preLaunchCopy = {
   documentTitle: "Pré-lançamento — Caixa Laboratório da daTeca",
   title: "Você chegou antes do lançamento!",
   paragraphs: [
-    "A Caixa Laboratório da daTeca está em pré-venda pelo WhatsApp, com envio para todo o Brasil.",
+    "A Caixa Laboratório da daTeca está quase pronta para você.",
     "Estamos preparando os últimos detalhes para que sua experiência seja incrível desde o primeiro momento.",
     "O primeiro lote será limitado a 100 unidades.",
   ],
