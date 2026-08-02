@@ -1,5 +1,8 @@
 export { ExperiencesGrid } from "./ExperiencesGrid"
 export { FaqSection } from "./FaqSection"
+export { FloripaHowToOrder } from "./FloripaHowToOrder"
+export { FloripaIntro } from "./FloripaIntro"
+export { FloripaLaunchBanner } from "./FloripaLaunchBanner"
 export { HeroLaboratorio } from "./HeroLaboratorio"
 export { KitContents } from "./KitContents"
 export { LandingCta } from "./LandingCta"

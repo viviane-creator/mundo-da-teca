@@ -1,6 +1,10 @@
 import { caixaLaboratorioData } from "../../pages/CaixaLaboratorio/caixaLaboratorioData"
 import { LandingCta } from "./LandingCta"
 import type { CheckoutClickOrigin } from "../../config/caixaLaboratorioCheckout"
+import {
+  floripaSoftLaunchCopy,
+  isFloripaSoftLaunchActive,
+} from "../../config/floripaSoftLaunch"
 
 type OfferPricingProps = {
   origin: CheckoutClickOrigin
@@ -8,6 +12,25 @@ type OfferPricingProps = {
 
 export function OfferPricing({ origin }: OfferPricingProps) {
   const { pricing, hero } = caixaLaboratorioData
+  const floripaActive = isFloripaSoftLaunchActive()
+  const floripa = floripaSoftLaunchCopy.pricing
+
+  if (floripaActive) {
+    return (
+      <>
+        <p className="clx-price-label">{floripa.label}</p>
+        <p className="clx-price">{floripa.price}</p>
+        <p className="clx-floripa-ship">{floripa.shippingBrazil}</p>
+        <p className="clx-floripa-ship clx-floripa-ship--soft">
+          {floripa.shippingFloripa}
+        </p>
+        <p className="clx-floripa-pay">{floripa.payment}</p>
+        <LandingCta label={floripaSoftLaunchCopy.ctaLabel} origin={origin} />
+        <p className="clx-floripa-delivery-notice">{floripa.deliveryNotice}</p>
+        <p className="clx-note">{floripa.note}</p>
+      </>
+    )
+  }
 
   return (
     <>

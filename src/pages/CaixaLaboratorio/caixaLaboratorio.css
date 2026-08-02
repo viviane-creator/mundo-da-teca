@@ -1294,6 +1294,188 @@
   text-underline-offset: 3px;
 }
 
+/* —— Abertura especial Florianópolis (temporária) —— */
+
+.clx-floripa-banner {
+  position: relative;
+  z-index: 21;
+  padding: 12px 16px 13px;
+  text-align: center;
+  background: #4a8a82;
+  color: #f7efe4;
+  border-bottom: 1px solid rgba(47, 92, 88, 0.35);
+}
+
+.clx-floripa-banner__title {
+  margin: 0 0 4px;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(12px, 3.2vw, 13px);
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #f7efe4;
+}
+
+.clx-floripa-banner__lead {
+  margin: 0 auto 4px;
+  max-width: 40ch;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(15px, 3.8vw, 17px);
+  line-height: 1.35;
+  color: #f7efe4;
+}
+
+.clx-floripa-banner__note {
+  margin: 0 auto;
+  max-width: 42ch;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(13px, 3.3vw, 14px);
+  font-style: italic;
+  line-height: 1.35;
+  color: rgba(247, 239, 228, 0.88);
+}
+
+.clx-floripa-intro {
+  padding: clamp(22px, 5vw, 32px) clamp(20px, 5vw, 32px) clamp(8px, 2vw, 14px);
+  max-width: 520px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.clx-floripa-intro__title {
+  margin: 0 0 12px;
+  font-family: var(--teca-font-page-title, "Caveat", cursive);
+  font-size: clamp(30px, 7.5vw, 40px);
+  font-weight: 400;
+  line-height: 1.1;
+  color: var(--clx-ink);
+}
+
+.clx-floripa-intro__copy {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 0 0 14px;
+}
+
+.clx-floripa-intro__copy p {
+  margin: 0 auto;
+  max-width: 36ch;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(16px, 4vw, 18px);
+  line-height: 1.45;
+  color: var(--clx-muted);
+}
+
+.clx-floripa-intro__closing {
+  margin: 0 auto;
+  max-width: 32ch;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(16px, 4vw, 18px);
+  font-style: italic;
+  font-weight: 600;
+  line-height: 1.4;
+  color: #2f5c58;
+}
+
+.clx-floripa-howto {
+  margin: 0 clamp(16px, 4vw, 24px) clamp(16px, 3.5vw, 24px);
+  padding: clamp(20px, 4.5vw, 28px) clamp(16px, 4vw, 22px);
+  max-width: 520px;
+  margin-inline: auto;
+  text-align: center;
+  border-radius: 18px;
+  background: rgba(255, 253, 249, 0.88);
+  border: 1px solid rgba(154, 132, 117, 0.22);
+}
+
+.clx-floripa-howto__title {
+  margin: 0 0 14px;
+  font-family: var(--teca-font-page-title, "Caveat", cursive);
+  font-size: clamp(28px, 6.5vw, 34px);
+  font-weight: 400;
+  color: var(--clx-ink);
+}
+
+.clx-floripa-howto__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 10px;
+  text-align: left;
+}
+
+.clx-floripa-howto__list li {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(16px, 4vw, 18px);
+  line-height: 1.4;
+  color: var(--clx-ink);
+}
+
+.clx-floripa-howto__num {
+  flex-shrink: 0;
+  min-width: 1.6em;
+  font-size: 0.9em;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: #c47a3a;
+}
+
+.clx-floripa-pay,
+.clx-floripa-ship {
+  margin: 0 0 6px;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(16px, 4vw, 18px);
+  line-height: 1.35;
+  color: #f7efe4;
+}
+
+.clx-floripa-ship {
+  font-weight: 600;
+}
+
+.clx-floripa-ship--soft {
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+.clx-floripa-pay {
+  margin-bottom: 12px;
+}
+
+.clx-floripa-delivery-notice {
+  margin: 10px 0 8px;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(13px, 3.4vw, 15px);
+  line-height: 1.4;
+  color: rgba(247, 239, 228, 0.9);
+}
+
+.clx-faq__floripa-note {
+  margin: 16px auto 0;
+  max-width: 34ch;
+  text-align: center;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(15px, 3.8vw, 17px);
+  font-style: italic;
+  line-height: 1.4;
+  color: #2f5c58;
+}
+
+.clx-page--floripa .clx-cta--whatsapp {
+  background: #2f5c58;
+  box-shadow: 0 8px 20px rgba(15, 70, 68, 0.28);
+}
+
+.clx-page--floripa .clx-hero__offer .clx-price-label,
+.clx-page--floripa .clx-buy .clx-price-label {
+  color: #f0ddb0;
+}
+
 /* —— Pedido confirmado (pós-Hotmart) —— */
 
 .clx-confirm {

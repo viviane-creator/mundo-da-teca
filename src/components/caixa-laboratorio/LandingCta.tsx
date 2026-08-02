@@ -4,6 +4,11 @@ import {
   trackBeginCheckout,
   type CheckoutClickOrigin,
 } from "../../config/caixaLaboratorioCheckout"
+import {
+  floripaSoftLaunchCopy,
+  getFloripaWhatsAppUrl,
+  isFloripaSoftLaunchActive,
+} from "../../config/floripaSoftLaunch"
 import { isSalesOpen } from "../../config/salesLaunch"
 import { navigateToPreLaunch } from "../../navigation/preLaunchNavigation"
 
@@ -20,18 +25,40 @@ export function LandingCta({
   variant = "primary",
   className = "",
 }: LandingCtaProps) {
+  const floripaActive = isFloripaSoftLaunchActive()
   const salesOpen = isSalesOpen()
   const checkoutReady = isHotmartCheckoutReady
-  const goToCheckout = salesOpen && checkoutReady
+  const goToCheckout = !floripaActive && salesOpen && checkoutReady
+
+  const resolvedLabel = floripaActive
+    ? variant === "header"
+      ? floripaSoftLaunchCopy.headerCtaLabel
+      : floripaSoftLaunchCopy.ctaLabel
+    : label
 
   const classes = [
     "clx-cta",
     variant === "header" ? "clx-cta--header" : "clx-cta--primary",
-    !goToCheckout ? "clx-cta--prelaunch" : "",
+    !goToCheckout && !floripaActive ? "clx-cta--prelaunch" : "",
+    floripaActive ? "clx-cta--whatsapp" : "",
     className,
   ]
     .filter(Boolean)
     .join(" ")
+
+  if (floripaActive) {
+    return (
+      <a
+        className={classes}
+        href={getFloripaWhatsAppUrl()}
+        target="_blank"
+        rel="noopener noreferrer"
+        onClick={() => trackBeginCheckout(origin)}
+      >
+        {resolvedLabel}
+      </a>
+    )
+  }
 
   if (!goToCheckout) {
     return (
@@ -40,7 +67,7 @@ export function LandingCta({
         className={classes}
         onClick={() => navigateToPreLaunch()}
       >
-        {label}
+        {resolvedLabel}
       </button>
     )
   }
@@ -51,7 +78,7 @@ export function LandingCta({
       href={HOTMART_CHECKOUT_URL}
       onClick={() => trackBeginCheckout(origin)}
     >
-      {label}
+      {resolvedLabel}
     </a>
   )
 }

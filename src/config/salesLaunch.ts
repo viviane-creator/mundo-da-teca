@@ -1,8 +1,10 @@
+import { BRAZIL_NATIONAL_OPEN_AT } from "./floripaSoftLaunch"
+
 /**
- * Abertura oficial das vendas da Caixa Laboratório.
- * Até esta data, os botões de compra levam à página de pré-lançamento.
+ * Abertura do checkout Hotmart (após a pré-venda por WhatsApp).
+ * Enquanto a pré-venda estiver ativa, os botões vão para o WhatsApp.
  */
-export const SALES_LAUNCH_AT = new Date("2026-08-02T14:00:00-03:00")
+export const SALES_LAUNCH_AT = BRAZIL_NATIONAL_OPEN_AT
 
 const forcePreLaunch =
   String(import.meta.env.VITE_FORCE_PRE_LAUNCH ?? "").trim() === "true"
@@ -59,7 +61,7 @@ export function getUrgencyLine(now: Date = new Date()): string {
   const today = brazilCalendarDay(now)
   const launchDay = brazilCalendarDay(SALES_LAUNCH_AT)
   if (today === launchDay) {
-    return "Falta pouco. Hoje, às 14h, abrimos oficialmente o primeiro lote."
+    return "A pré-venda está aberta pelo WhatsApp na página da Caixa Laboratório."
   }
-  return "Falta muito pouco. Amanhã, às 14h, abrimos oficialmente o primeiro lote."
+  return "A pré-venda está aberta pelo WhatsApp na página da Caixa Laboratório."
 }

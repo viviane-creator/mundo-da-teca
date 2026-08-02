@@ -1,3 +1,5 @@
+import { isFloripaSoftLaunchActive } from "../../config/floripaSoftLaunch"
+
 /**
  * Blocos independentes da landing Caixa Laboratório.
  * Ativar, ocultar ou reordenar sem duplicar a página.
@@ -5,10 +7,12 @@
 export type CaixaLandingBlockId =
   | "manual"
   | "bridge"
+  | "floripaIntro"
   | "hero"
   | "experiences"
   | "contents"
   | "water"
+  | "howToOrder"
   | "pricing"
   | "faq"
 
@@ -18,6 +22,18 @@ export const CAIXA_SALES_BLOCKS: CaixaLandingBlockId[] = [
   "experiences",
   "contents",
   "water",
+  "pricing",
+  "faq",
+]
+
+/** Ordem na abertura especial Florianópolis. */
+export const CAIXA_FLORIPA_BLOCKS: CaixaLandingBlockId[] = [
+  "floripaIntro",
+  "hero",
+  "experiences",
+  "contents",
+  "water",
+  "howToOrder",
   "pricing",
   "faq",
 ]
@@ -42,5 +58,21 @@ export function readManualGiftQuery(
 export function resolveCaixaLandingBlocks(
   showManualGift: boolean,
 ): CaixaLandingBlockId[] {
-  return showManualGift ? CAIXA_MANUAL_ENTRY_BLOCKS : CAIXA_SALES_BLOCKS
+  if (showManualGift) {
+    if (!isFloripaSoftLaunchActive()) return CAIXA_MANUAL_ENTRY_BLOCKS
+    return [
+      "manual",
+      "bridge",
+      "floripaIntro",
+      "hero",
+      "experiences",
+      "contents",
+      "water",
+      "howToOrder",
+      "pricing",
+      "faq",
+    ]
+  }
+  if (isFloripaSoftLaunchActive()) return CAIXA_FLORIPA_BLOCKS
+  return CAIXA_SALES_BLOCKS
 }

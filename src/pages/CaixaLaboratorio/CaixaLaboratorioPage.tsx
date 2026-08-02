@@ -2,6 +2,9 @@ import { useEffect, useState, type ReactNode } from "react"
 import {
   ExperiencesGrid,
   FaqSection,
+  FloripaHowToOrder,
+  FloripaIntro,
+  FloripaLaunchBanner,
   HeroLaboratorio,
   KitContents,
   LandingFooter,
@@ -11,6 +14,7 @@ import {
   PricingSection,
   WaterOnlySection,
 } from "../../components/caixa-laboratorio"
+import { isFloripaSoftLaunchActive } from "../../config/floripaSoftLaunch"
 import {
   resolveCaixaLandingBlocks,
   readManualGiftQuery,
@@ -25,10 +29,12 @@ import "./caixaLaboratorio.css"
 const blockRenderers: Record<CaixaLandingBlockId, () => ReactNode> = {
   manual: () => <ManualGiftHero />,
   bridge: () => <ManualOfferBridge />,
+  floripaIntro: () => <FloripaIntro />,
   hero: () => <HeroLaboratorio />,
   experiences: () => <ExperiencesGrid />,
   contents: () => <KitContents />,
   water: () => <WaterOnlySection />,
+  howToOrder: () => <FloripaHowToOrder />,
   pricing: () => <PricingSection />,
   faq: () => <FaqSection />,
 }
@@ -37,6 +43,7 @@ export function CaixaLaboratorioPage() {
   const [showManualGift, setShowManualGift] = useState(() =>
     readManualGiftQuery(),
   )
+  const floripaActive = isFloripaSoftLaunchActive()
 
   useEffect(() => {
     applyCaixaLaboratorioMeta()
@@ -56,8 +63,15 @@ export function CaixaLaboratorioPage() {
 
   return (
     <article
-      className={`clx-page${showManualGift ? " clx-page--manual-entry" : ""}`}
+      className={[
+        "clx-page",
+        showManualGift ? "clx-page--manual-entry" : "",
+        floripaActive ? "clx-page--floripa" : "",
+      ]
+        .filter(Boolean)
+        .join(" ")}
     >
+      {floripaActive ? <FloripaLaunchBanner /> : null}
       <LandingHeader />
       {blocks.map((blockId) => (
         <div key={blockId} data-clx-block={blockId}>
