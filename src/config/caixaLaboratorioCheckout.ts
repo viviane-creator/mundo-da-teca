@@ -8,7 +8,7 @@ import { entryProduct } from "./productStrategy"
  *
  * Também aceita override via VITE_HOTMART_CHECKOUT_URL no .env / Vercel.
  */
-const checkoutUrl = "https://pay.hotmart.com/E106973036N"
+const checkoutUrl = "https://pay.hotmart.com/D106988435D"
 
 export const HOTMART_CHECKOUT_URL =
   checkoutUrl.trim() ||
