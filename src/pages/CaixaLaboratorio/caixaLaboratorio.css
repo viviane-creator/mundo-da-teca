@@ -547,7 +547,6 @@
 .clx-hero__copy,
 .clx-hero__media,
 .clx-hero__cards,
-.clx-hero__materials,
 .clx-hero__benefits,
 .clx-hero__offer {
   position: relative;
@@ -593,28 +592,6 @@
   margin: 0;
   display: grid;
   place-items: center;
-}
-
-.clx-hero__materials {
-  margin: 2px 0 0;
-  padding: 0;
-  display: grid;
-  place-items: center;
-  width: 100%;
-}
-
-.clx-hero__materials-image,
-.clx-hero__materials .clx-placeholder {
-  display: block;
-  width: 100%;
-  max-width: min(100%, 420px);
-  height: auto;
-  margin-inline: auto;
-  border-radius: 18px;
-  object-fit: contain;
-  box-shadow:
-    0 14px 28px rgba(74, 55, 40, 0.12),
-    0 3px 10px rgba(74, 55, 40, 0.06);
 }
 
 .clx-hero__blob {
@@ -830,7 +807,6 @@
     grid-template-areas:
       "copy media"
       "cards cards"
-      "materials materials"
       "benefits benefits"
       "offer offer";
     align-items: start;
@@ -855,15 +831,6 @@
     grid-template-columns: 1fr 1fr;
     gap: 12px;
     align-items: stretch;
-  }
-
-  .clx-hero__materials {
-    grid-area: materials;
-  }
-
-  .clx-hero__materials-image,
-  .clx-hero__materials .clx-placeholder {
-    max-width: min(100%, 440px);
   }
 
   .clx-hero__benefits {
@@ -946,30 +913,18 @@
   align-items: flex-start;
   padding: 9px 12px;
   border-radius: 12px;
-  border: none;
+  background: rgba(255, 253, 249, 0.78);
+  border: 1px solid rgba(154, 132, 117, 0.18);
   font-family: "Cormorant Garamond", serif;
   font-size: clamp(17px, 4.2vw, 19px);
   line-height: 1.35;
-  color: #f7efe4;
-}
-
-.clx-contents__list li:nth-child(odd) {
-  background: #c47a3a;
-}
-
-.clx-contents__list li:nth-child(even) {
-  background: #4a8a82;
+  color: var(--clx-ink);
 }
 
 .clx-contents__list li span {
-  color: #f0ddb0;
+  color: var(--clx-green-deep);
   flex-shrink: 0;
   font-weight: 700;
-}
-
-.clx-contents__list li:nth-child(odd) span,
-.clx-contents__list li:nth-child(even) span {
-  color: #f0ddb0;
 }
 
 @media (min-width: 720px) {
@@ -1280,25 +1235,17 @@
 }
 
 .clx-faq__item {
-  border: none;
+  border: 1px solid var(--clx-line);
   border-radius: 12px;
+  background: rgba(255, 253, 249, 0.8);
   padding: 12px 14px;
-  color: #f7efe4;
-}
-
-.clx-faq__item:nth-child(odd) {
-  background: #c47a3a;
-}
-
-.clx-faq__item:nth-child(even) {
-  background: #4a8a82;
 }
 
 .clx-faq__item summary {
   cursor: pointer;
   font-family: "Cormorant Garamond", serif;
   font-size: clamp(17px, 4.2vw, 19px);
-  color: #f7efe4;
+  color: var(--clx-ink);
   list-style: none;
 }
 
@@ -1311,7 +1258,7 @@
   font-family: "Cormorant Garamond", serif;
   font-size: clamp(16px, 4vw, 18px);
   line-height: 1.45;
-  color: rgba(255, 250, 242, 0.94);
+  color: var(--clx-muted);
 }
 
 /* —— Footer —— */

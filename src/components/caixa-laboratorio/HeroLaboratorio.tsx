@@ -138,14 +138,6 @@ export function HeroLaboratorio() {
         </article>
       </div>
 
-      <figure className="clx-hero__materials">
-        <LandingImage
-          className="clx-hero__materials-image"
-          src={hero.materialsImage}
-          alt={hero.materialsImageAlt}
-        />
-      </figure>
-
       <ul className="clx-checklist clx-hero__benefits">
         {hero.benefits.map((item) => (
           <li key={item}>

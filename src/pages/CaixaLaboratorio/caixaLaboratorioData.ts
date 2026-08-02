@@ -81,9 +81,6 @@ export const caixaLaboratorioData = {
     image: caixaLaboratorioImages.convite,
     imageAlt:
       "Caixa Laboratório da daTeca: um mundo de descobertas começa aqui",
-    materialsImage: caixaLaboratorioImages.materiais,
-    materialsImageAlt:
-      "O que vem na Caixa Laboratório da daTeca: frascos, equipamentos, líquidos, pózinhos e materiais para inventar",
     cta: "QUERO MINHA CAIXA LABORATÓRIO",
     note: "Compra única.",
     paymentNote: "Pagamento seguro pela Hotmart.",
