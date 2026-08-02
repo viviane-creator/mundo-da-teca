@@ -25,7 +25,7 @@ export const FLORIPA_WHATSAPP_PHONE =
   phoneFromEnv.length >= 12 ? phoneFromEnv : DEFAULT_WHATSAPP_PHONE
 
 export const FLORIPA_WHATSAPP_MESSAGE =
-  "Oi! Quero garantir minha Caixa Laboratório da daTeca na pré-venda. 💛"
+  "Oi! Quero garantir minha Caixa Laboratório da daTeca na pré-venda. 💛\n\nNome:\nCidade/UF:\nQuantidade de caixas:"
 
 export function isFloripaSoftLaunchActive(): boolean {
   return WHATSAPP_PRESALE_ENABLED
@@ -33,10 +33,7 @@ export function isFloripaSoftLaunchActive(): boolean {
 
 export function getFloripaWhatsAppUrl(): string {
   const text = encodeURIComponent(FLORIPA_WHATSAPP_MESSAGE)
-  if (FLORIPA_WHATSAPP_PHONE.length >= 12) {
-    return `https://wa.me/${FLORIPA_WHATSAPP_PHONE}?text=${text}`
-  }
-  return `https://wa.me/?text=${text}`
+  return `https://wa.me/${FLORIPA_WHATSAPP_PHONE}?text=${text}`
 }
 
 export const floripaSoftLaunchCopy = {
@@ -56,7 +53,7 @@ export const floripaSoftLaunchCopy = {
       "As primeiras descobertas já podem começar. Pré-venda pelo WhatsApp, com envio para todo o Brasil.",
   },
   ctaLabel: "QUERO GARANTIR MINHA CAIXA",
-  headerCtaLabel: "Quero garantir minha caixa",
+  headerCtaLabel: "QUERO GARANTIR MINHA CAIXA",
   pricing: {
     label: "Valor especial de lançamento",
     price: "R$ 89,90",

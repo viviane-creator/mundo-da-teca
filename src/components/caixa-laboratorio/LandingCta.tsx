@@ -30,11 +30,7 @@ export function LandingCta({
   const checkoutReady = isHotmartCheckoutReady
   const goToCheckout = !floripaActive && salesOpen && checkoutReady
 
-  const resolvedLabel = floripaActive
-    ? variant === "header"
-      ? floripaSoftLaunchCopy.headerCtaLabel
-      : floripaSoftLaunchCopy.ctaLabel
-    : label
+  const resolvedLabel = floripaActive ? floripaSoftLaunchCopy.ctaLabel : label
 
   const classes = [
     "clx-cta",
