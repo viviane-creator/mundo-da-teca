@@ -64,6 +64,27 @@
 
 /* —— CTA —— */
 
+.clx-balanced-lines__line {
+  text-wrap: balance;
+}
+
+.clx-floripa-intro__title,
+.clx-floripa-howto__title,
+.clx-section__title,
+.clx-bridge__title,
+.clx-hero__title,
+.clx-hero-card__title,
+.clx-tenth__title,
+.clx-water__title,
+.clx-buy__title,
+.clx-buy__summary,
+.clx-floripa-intro__closing,
+.clx-floripa-banner__note,
+.clx-floripa-delivery-notice,
+.clx-faq__floripa-note {
+  text-wrap: balance;
+}
+
 .clx-cta {
   box-sizing: border-box;
   display: inline-flex;

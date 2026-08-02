@@ -1,4 +1,5 @@
 import { caixaLaboratorioData } from "../../pages/CaixaLaboratorio/caixaLaboratorioData"
+import { BalancedLines } from "./BalancedLines"
 import { LandingImage } from "./LandingImage"
 
 export function KitContents() {
@@ -9,9 +10,12 @@ export function KitContents() {
       className="clx-section clx-contents"
       aria-labelledby="clx-contents-title"
     >
-      <h2 id="clx-contents-title" className="clx-section__title">
-        {contents.title}
-      </h2>
+      <BalancedLines
+        as="h2"
+        id="clx-contents-title"
+        className="clx-section__title"
+        lines={contents.titleLines}
+      />
       <p className="clx-section__text">{contents.text}</p>
 
       <figure className="clx-contents__media">

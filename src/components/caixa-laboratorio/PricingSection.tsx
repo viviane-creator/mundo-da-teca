@@ -1,4 +1,5 @@
 import { caixaLaboratorioData } from "../../pages/CaixaLaboratorio/caixaLaboratorioData"
+import { BalancedLines } from "./BalancedLines"
 import { OfferPricing } from "./OfferPricing"
 
 export function PricingSection() {
@@ -18,10 +19,13 @@ export function PricingSection() {
         height={72}
         decoding="async"
       />
-      <h2 id="clx-buy-title" className="clx-buy__title">
-        {buy.title}
-      </h2>
-      <p className="clx-buy__summary">{buy.summary}</p>
+      <BalancedLines
+        as="h2"
+        id="clx-buy-title"
+        className="clx-buy__title"
+        lines={buy.titleLines}
+      />
+      <BalancedLines as="p" className="clx-buy__summary" lines={buy.summaryLines} />
       <OfferPricing origin="bloco_final" />
     </section>
   )

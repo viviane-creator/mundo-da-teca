@@ -1,4 +1,5 @@
 import { caixaLaboratorioData } from "../../pages/CaixaLaboratorio/caixaLaboratorioData"
+import { BalancedLines } from "./BalancedLines"
 import { LandingImage } from "./LandingImage"
 
 export function ExperiencesGrid() {
@@ -9,9 +10,12 @@ export function ExperiencesGrid() {
       className="clx-section clx-discoveries"
       aria-labelledby="clx-discoveries-title"
     >
-      <h2 id="clx-discoveries-title" className="clx-section__title">
-        {discoveries.title}
-      </h2>
+      <BalancedLines
+        as="h2"
+        id="clx-discoveries-title"
+        className="clx-section__title"
+        lines={discoveries.titleLines}
+      />
       <p className="clx-section__text">{discoveries.text}</p>
 
       <div className="clx-discoveries__body">
@@ -63,9 +67,12 @@ export function ExperiencesGrid() {
         <p className="clx-tenth__num" aria-hidden="true">
           10
         </p>
-        <h3 id="clx-tenth-title" className="clx-tenth__title">
-          {discoveries.tenthTitle}
-        </h3>
+        <BalancedLines
+          as="h3"
+          id="clx-tenth-title"
+          className="clx-tenth__title"
+          lines={discoveries.tenthTitleLines}
+        />
         <p className="clx-tenth__lead">{discoveries.tenthLead}</p>
         <p className="clx-tenth__text">{discoveries.tenthText}</p>
         <div className="clx-tenth__open">

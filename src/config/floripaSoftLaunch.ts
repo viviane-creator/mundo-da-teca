@@ -40,17 +40,22 @@ export const floripaSoftLaunchCopy = {
   banner: {
     title: "Pré-venda aberta",
     lead: "Pedidos para todo o Brasil pelo WhatsApp.",
-    note: "Frete fixo de R$ 20 para todo o Brasil e entrega gratuita em Florianópolis.",
+    noteLines: [
+      "Frete fixo de R$ 20 para todo o Brasil",
+      "e entrega gratuita em Florianópolis.",
+    ],
   },
   intro: {
-    title: "A Caixa Laboratório está em pré-venda.",
+    titleLines: ["A Caixa Laboratório", "está em pré-venda."],
     paragraphs: [
       "Garanta uma das primeiras unidades da Caixa Laboratório da daTeca diretamente pelo WhatsApp.",
       "Envios para todo o Brasil com frete fixo de R$ 20.",
       "Entrega gratuita em Florianópolis.",
     ],
-    closing:
-      "As primeiras descobertas já podem começar. Pré-venda pelo WhatsApp, com envio para todo o Brasil.",
+    closingLines: [
+      "As primeiras descobertas já podem começar.",
+      "Pré-venda pelo WhatsApp, com envio para todo o Brasil.",
+    ],
   },
   ctaLabel: "QUERO GARANTIR MINHA CAIXA",
   headerCtaLabel: "QUERO GARANTIR MINHA CAIXA",
@@ -60,12 +65,14 @@ export const floripaSoftLaunchCopy = {
     shippingBrazil: "Frete fixo para todo o Brasil: R$ 20",
     shippingFloripa: "Entrega gratuita em Florianópolis",
     payment: "Pagamento por Pix.",
-    deliveryNotice:
-      "Frete fixo de R$ 20 para entregas em todo o Brasil. Para endereços em Florianópolis, a entrega é gratuita — válida somente no município de Florianópolis.",
+    deliveryNoticeLines: [
+      "Frete fixo de R$ 20 para entregas em todo o Brasil.",
+      "Para endereços em Florianópolis, a entrega é gratuita — válida somente no município de Florianópolis.",
+    ],
     note: "Pré-venda pelo WhatsApp.",
   },
   howTo: {
-    title: "Como garantir a sua",
+    titleLines: ["Como garantir", "a sua"],
     steps: [
       "Clique no botão e fale conosco pelo WhatsApp.",
       "Informe seu nome, endereço completo e quantidade desejada.",

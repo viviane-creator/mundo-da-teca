@@ -36,7 +36,6 @@ export function LandingCta({
     "clx-cta",
     variant === "header" ? "clx-cta--header" : "clx-cta--primary",
     !goToCheckout && !floripaActive ? "clx-cta--prelaunch" : "",
-    floripaActive ? "clx-cta--whatsapp" : "",
     className,
   ]
     .filter(Boolean)

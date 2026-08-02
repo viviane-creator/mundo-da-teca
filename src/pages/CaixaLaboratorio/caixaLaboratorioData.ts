@@ -59,20 +59,23 @@ export const caixaLaboratorioData = {
   },
 
   offerBridge: {
-    title: "Quer viver essas descobertas sem sair atrás de material?",
+    titleLines: [
+      "Quer viver essas descobertas",
+      "sem sair atrás de material?",
+    ],
     text: "O Manual ensina o passo a passo. A Caixa Laboratório já traz ingredientes, frascos e ferramentas organizados — para a família abrir e começar, sem lista de compras e sem improvisar.",
   },
 
   hero: {
     kicker: "CAIXA LABORATÓRIO daTeca",
     titleNum: "10",
-    titleRest: " descobertas dentro de uma caixa.",
+    titleRestLines: [" descobertas", "dentro de uma caixa."],
     text: "Uma caixa completa para experimentar, criar e descobrir com as próprias mãos.",
     cards: {
       tenth: {
         eyebrowPrefix: "9 + 1",
         eyebrowSuffix: " DESCOBERTAS",
-        title: "A décima é inventada pela criança.",
+        titleLines: ["A décima é inventada", "pela criança."],
         text: "Nove experiências vêm prontas para começar. A última nasce da curiosidade e da imaginação.",
       },
       water: {
@@ -109,7 +112,7 @@ export const caixaLaboratorioData = {
   },
 
   discoveries: {
-    title: "9 experiências prontas para começar.",
+    titleLines: ["9 experiências prontas", "para começar."],
     text: "Cada experiência foi pensada para provocar curiosidade, surpresa e vontade de descobrir o que acontece.",
     items: [
       "Tornado na Garrafa",
@@ -124,7 +127,7 @@ export const caixaLaboratorioData = {
     ],
     image: caixaLaboratorioImages.experienciasCompletas,
     imageAlt: "As nove experiências da Caixa Laboratório da daTeca",
-    tenthTitle: "E a décima descoberta?",
+    tenthTitleLines: ["E a décima", "descoberta?"],
     tenthLead: "Essa é inventada pela própria criança.",
     tenthText:
       "A caixa também inclui materiais para misturar, testar e criar novas experiências.",
@@ -135,7 +138,7 @@ export const caixaLaboratorioData = {
   },
 
   contents: {
-    title: "Tudo organizado. Tudo pronto para começar.",
+    titleLines: ["Tudo organizado.", "Tudo pronto para começar."],
     text: "Dentro da Caixa Laboratório, a criança encontra os ingredientes, recipientes e ferramentas utilizados nas experiências.",
     image: caixaLaboratorioImages.materiais,
     imageAlt:
@@ -153,7 +156,7 @@ export const caixaLaboratorioData = {
   },
 
   water: {
-    title: "Em casa, você só precisa adicionar água.",
+    titleLines: ["Em casa, você só precisa", "adicionar água."],
     text: "Os outros materiais necessários para as experiências já vão organizados dentro da caixa.",
     note: "Abra a caixa, escolha uma descoberta e comece.",
   },
@@ -161,9 +164,11 @@ export const caixaLaboratorioData = {
   buy: {
     logoSrc: "/logo/logo.webp",
     logoAlt: "daTeca",
-    title: "Caixa Laboratório da daTeca",
-    summary:
-      "10 descobertas para viver: 9 experiências guiadas e a décima inventada pela criança.",
+    titleLines: ["Caixa Laboratório", "da daTeca"],
+    summaryLines: [
+      "10 descobertas para viver:",
+      "9 experiências guiadas e a décima inventada pela criança.",
+    ],
     cta: "QUERO MINHA CAIXA LABORATÓRIO",
     note: "Compra única.",
     paymentNote: "Pagamento seguro pela Hotmart.",

@@ -1,4 +1,5 @@
 import { caixaLaboratorioData } from "../../pages/CaixaLaboratorio/caixaLaboratorioData"
+import { BalancedLines } from "./BalancedLines"
 import { LandingImage } from "./LandingImage"
 import { OfferPricing } from "./OfferPricing"
 
@@ -97,7 +98,7 @@ export function HeroLaboratorio() {
         <p className="clx-hero__kicker">{hero.kicker}</p>
         <h1 id="clx-hero-title" className="clx-hero__title">
           <span className="clx-hero__title-num">{hero.titleNum}</span>
-          {hero.titleRest}
+          <BalancedLines lines={hero.titleRestLines} />
         </h1>
         <p className="clx-hero__text">{hero.text}</p>
       </div>
@@ -122,7 +123,9 @@ export function HeroLaboratorio() {
             </span>
             {tenth.eyebrowSuffix}
           </p>
-          <h2 className="clx-hero-card__title">{tenth.title}</h2>
+          <h2 className="clx-hero-card__title">
+            <BalancedLines lines={tenth.titleLines} />
+          </h2>
           <p className="clx-hero-card__text">{tenth.text}</p>
         </article>
 

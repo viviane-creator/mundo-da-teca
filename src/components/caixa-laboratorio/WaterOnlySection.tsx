@@ -1,4 +1,5 @@
 import { caixaLaboratorioData } from "../../pages/CaixaLaboratorio/caixaLaboratorioData"
+import { BalancedLines } from "./BalancedLines"
 
 export function WaterOnlySection() {
   const { water } = caixaLaboratorioData
@@ -16,9 +17,12 @@ export function WaterOnlySection() {
           />
         </svg>
       </div>
-      <h2 id="clx-water-title" className="clx-water__title">
-        {water.title}
-      </h2>
+      <BalancedLines
+        as="h2"
+        id="clx-water-title"
+        className="clx-water__title"
+        lines={water.titleLines}
+      />
       <p className="clx-water__text">{water.text}</p>
       <p className="clx-water__note">{water.note}</p>
     </section>

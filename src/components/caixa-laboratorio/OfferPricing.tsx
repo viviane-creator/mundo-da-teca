@@ -1,5 +1,6 @@
 import { caixaLaboratorioData } from "../../pages/CaixaLaboratorio/caixaLaboratorioData"
 import { LandingCta } from "./LandingCta"
+import { BalancedLines } from "./BalancedLines"
 import type { CheckoutClickOrigin } from "../../config/caixaLaboratorioCheckout"
 import {
   floripaSoftLaunchCopy,
@@ -26,7 +27,9 @@ export function OfferPricing({ origin }: OfferPricingProps) {
         </p>
         <p className="clx-floripa-pay">{floripa.payment}</p>
         <LandingCta label={floripaSoftLaunchCopy.ctaLabel} origin={origin} />
-        <p className="clx-floripa-delivery-notice">{floripa.deliveryNotice}</p>
+        <p className="clx-floripa-delivery-notice">
+          <BalancedLines lines={floripa.deliveryNoticeLines} />
+        </p>
         <p className="clx-note">{floripa.note}</p>
       </>
     )
