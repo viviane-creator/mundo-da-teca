@@ -103,6 +103,7 @@ import { TopAccessLink } from "./components/TopAccessLink"
 import { LoginModal } from "./components/LoginModal"
 import { AccountModal } from "./components/AccountModal"
 import { ClubGateScreen } from "./components/ClubGateScreen"
+import { MetaPixelTracker } from "./analytics/MetaPixelTracker"
 import { LaunchPage } from "./pages/LaunchPage"
 import { HOME_PREVIEW_PATH, LAUNCH_MODE } from "./config/launchGate"
 import {
@@ -665,6 +666,7 @@ function AppContent() {
         }}
       >
         {!hideChrome ? <TopAccessLink /> : null}
+        <MetaPixelTracker screen={screen} />
         <LoginModal setScreen={setScreen} />
         <AccountModal />
 
