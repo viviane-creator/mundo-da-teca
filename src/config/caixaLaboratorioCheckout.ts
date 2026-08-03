@@ -1,4 +1,5 @@
 import { entryProduct } from "./productStrategy"
+import { trackMetaInitiateCheckout, initMetaPixel } from "../analytics/metaPixel"
 
 /**
  * Checkout Hotmart — Caixa Laboratório da daTeca
@@ -61,4 +62,8 @@ export function trackBeginCheckout(origem: CheckoutClickOrigin) {
       checkout_origin: origem,
     })
   }
+
+  void initMetaPixel().then(() => {
+    trackMetaInitiateCheckout()
+  })
 }
