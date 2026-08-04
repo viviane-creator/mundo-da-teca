@@ -74,23 +74,6 @@ export function Home({
           />
 
           <HomeFirstProductCard setScreen={setScreen} />
-
-          <section className="home-how-it-works" aria-labelledby="home-how-it-works">
-            <h2 id="home-how-it-works" className="home-chapter__title">
-              {copy.howItWorks.title}
-            </h2>
-            {copy.howItWorks.subtitle ? (
-              <p className="home-how-it-works__lead">{copy.howItWorks.subtitle}</p>
-            ) : null}
-            <ol className="home-how-it-works__flow">
-              {copy.howItWorks.steps.map((step) => (
-                <li key={step.title} className="home-how-it-works__flow-step">
-                  <span className="home-how-it-works__flow-title">{step.title}</span>
-                  <span className="home-how-it-works__flow-text">{step.text}</span>
-                </li>
-              ))}
-            </ol>
-          </section>
         </div>
       </div>
     </WorldPortalLayout>
