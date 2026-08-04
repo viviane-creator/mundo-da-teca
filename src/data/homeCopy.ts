@@ -16,6 +16,17 @@ export const homeAboutManifesto = {
  * A landing da Caixa Laboratório será a próxima etapa de conversão.
  */
 export const homeCopy = {
+  welcomeNotice: {
+    lead: "Bem-vindo à daTeca",
+    paragraphs: [
+      "Que bom ter você por aqui.",
+      "A daTeca está sendo construída descoberta por descoberta.",
+      "Aos poucos, novos kits, experiências, coleções e novidades vão ganhando vida por aqui, sempre com o mesmo propósito: despertar a curiosidade e criar momentos inesquecíveis em família.",
+    ],
+    closing:
+      "Enquanto isso, fique à vontade para explorar. Este é apenas o começo.",
+  },
+
   whatIs: {
     title: "O que é a daTeca?",
     paragraphs: [
