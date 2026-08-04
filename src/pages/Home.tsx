@@ -2,6 +2,7 @@
 import { homeCopy } from "../data/homeCopy"
 import { styles } from "../styles/appStyles"
 import { HomePreLaunchNotice } from "../components/home/HomePreLaunchNotice"
+import { HomeFirstProductCard } from "../components/home/HomeFirstProductCard"
 import { HomeTecaHostess } from "../components/home/HomeTecaHostess"
 import { WorldPortalLayout, portalPages } from "../worldPortal"
 import "../styles/homePage.css"
@@ -50,9 +51,8 @@ function HomeTextSection({
 }
 
 export function Home({
-  setScreen: _setScreen,
+  setScreen,
 }: {
-  /** Mantido para a API do App; CTAs de conversão virão na landing da Caixa. */
   setScreen: (screen: string) => void
 }) {
   const portal = portalPages.home
@@ -72,6 +72,8 @@ export function Home({
             paragraphs={copy.whatIs.paragraphs}
             closing={copy.whatIs.closing}
           />
+
+          <HomeFirstProductCard setScreen={setScreen} />
 
           <section className="home-how-it-works" aria-labelledby="home-how-it-works">
             <h2 id="home-how-it-works" className="home-chapter__title">
