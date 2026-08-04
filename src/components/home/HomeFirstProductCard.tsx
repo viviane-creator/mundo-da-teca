@@ -1,6 +1,7 @@
 import { DaTecaInText } from "../brand/DaTecaInText"
 import { homeCopy } from "../../data/homeCopy"
 import { appRoutes } from "../../navigation/appRoutes"
+import "../../styles/homePage.css"
 
 type HomeFirstProductCardProps = {
   setScreen: (screen: string) => void
