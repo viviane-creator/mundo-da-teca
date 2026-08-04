@@ -1,7 +1,8 @@
-﻿import "../../styles/homePreLaunchNotice.css"
+﻿import { homeCopy } from "../../data/homeCopy"
+import "../../styles/homePreLaunchNotice.css"
 
 /**
- * Faixa temporária de pré-lançamento na Home.
+ * Faixa de boas-vindas na Home.
  * Remover: desligar SHOW_HOME_PRELAUNCH_NOTICE em config/launchGate.ts
  * (ou apagar este componente + o CSS + o uso em Home.tsx).
  */
@@ -49,26 +50,29 @@ function PreLaunchHeartIcon() {
 }
 
 export function HomePreLaunchNotice() {
+  const copy = homeCopy.welcomeNotice
+
   return (
-    <aside
-      className="home-prelaunch-notice"
-      aria-label="Aviso de pré-lançamento"
-    >
+    <aside className="home-prelaunch-notice" aria-label="Mensagem de boas-vindas">
       <PreLaunchCompassGlyph />
       <div className="home-prelaunch-notice__copy">
         <p className="home-prelaunch-notice__lead">
-          Bem-vindo à daTeca
+          {copy.lead}
           <PreLaunchHeartIcon />
         </p>
-        <p className="home-prelaunch-notice__line">Que bom ter você por aqui.</p>
-        <p className="home-prelaunch-notice__body">
-          Pode explorar à vontade. Estamos nos últimos preparativos para o
-          lançamento oficial e, muito em breve, este será um lugar cheio de
-          descobertas para crianças e famílias.
-        </p>
-        <p className="home-prelaunch-notice__closing">
-          Enquanto isso, sinta-se em casa.
-        </p>
+        {copy.paragraphs.map((paragraph, index) => (
+          <p
+            key={paragraph}
+            className={
+              index === 0
+                ? "home-prelaunch-notice__line"
+                : "home-prelaunch-notice__body"
+            }
+          >
+            {paragraph}
+          </p>
+        ))}
+        <p className="home-prelaunch-notice__closing">{copy.closing}</p>
       </div>
     </aside>
   )
