@@ -42,27 +42,4 @@ export const homeCopy = {
     text: "Uma caixa completa com 10 descobertas para experimentar, criar e brincar com as próprias mãos — o primeiro passo da jornada daTeca.",
     cta: "Conhecer a Caixa Laboratório",
   },
-
-  howItWorks: {
-    title: "Como funciona?",
-    subtitle: "Uma jornada que acontece aos poucos.",
-    steps: [
-      {
-        title: "Comece pela Caixa Laboratório.",
-        text: "O primeiro passo da daTeca é uma caixa física especial — a base da coleção, com manual, ingredientes, frascos, materiais e ferramentas para começar.",
-      },
-      {
-        title: "Explore com as próprias mãos.",
-        text: "Cada experiência convida a família a experimentar, observar e registrar descobertas no ritmo da infância.",
-      },
-      {
-        title: "Veja a coleção crescer.",
-        text: "Com o tempo, novos capítulos e materiais vão ampliando a jornada — sem planos para escolher, sem comparativos.",
-      },
-      {
-        title: "Em breve, o Clube.",
-        text: "Depois da validação da Caixa Laboratório, o Clube da daTeca chegará como uma assinatura única e simples: um envio por mês, sem upgrades.",
-      },
-    ],
-  },
 } as const
