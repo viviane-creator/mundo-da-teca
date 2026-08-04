@@ -14,7 +14,7 @@
   font-weight: 400;
   font-size: 0.84em;
   line-height: 1;
-  margin-right: 0.1em;
+  margin-right: 0.02em;
   letter-spacing: 0;
   -webkit-font-smoothing: antialiased;
 }
@@ -34,7 +34,7 @@
 
 .dateca-wordmark--small .dateca-wordmark__da {
   font-size: 0.9em;
-  margin-right: 0.09em;
+  margin-right: 0.02em;
 }
 
 .dateca-wordmark--medium {
@@ -48,7 +48,7 @@
 
 .dateca-wordmark--large .dateca-wordmark__da {
   font-size: 0.82em;
-  margin-right: 0.11em;
+  margin-right: 0.03em;
 }
 
 .dateca-wordmark--inherit {
