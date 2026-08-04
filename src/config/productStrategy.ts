@@ -1,5 +1,5 @@
 /**
- * Estratégia comercial da daTeca — fonte de verdade do posicionamento atual.
+ * Estratégia comercial daTeca — fonte de verdade do posicionamento atual.
  *
  * Modelo descontinuado (NÃO usar em UI ou cópia nova):
  * - Explorador Digital
@@ -25,7 +25,7 @@ export const SHOW_BAU_AND_FICHARIO_PRODUCTS = false
  */
 export const entryProduct = {
   id: "caixa-laboratorio",
-  name: "Caixa Laboratório da daTeca",
+  name: "Caixa Laboratório daTeca",
   priceBRL: 89.9,
   shippingBRL: 10,
   shippingScope: "todo o Brasil",
@@ -37,12 +37,12 @@ export const entryProduct = {
  * Um só Clube. Assinatura única. Valor fixo. Sem upgrades.
  */
 export const clubVision = {
-  name: "Clube da daTeca",
+  name: "Clube daTeca",
   model: "single-subscription" as const,
   firstShipment: {
-    name: "Caixa Laboratório da daTeca",
+    name: "Caixa Laboratório daTeca",
     includes: [
-      "Caixa Laboratório da daTeca",
+      "Caixa Laboratório daTeca",
       "Manual ilustrado",
       "Ingredientes organizados",
       "Frascos",

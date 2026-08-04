@@ -12,7 +12,7 @@ type TecaCrestPortraitProps = {
 /** Retrato da Teca em brasão redondo — peça editorial reutilizável */
 export function TecaCrestPortrait({
   src = "/images/teca.webp",
-  alt = "Teca, anfitriã da daTeca",
+  alt = "Teca, anfitriã daTeca",
   caption = "Teca",
   size,
   className,

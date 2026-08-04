@@ -18,7 +18,7 @@ export const pageData = {
   },
   clube: {
     title: "Clube daTeca",
-    intro: "para famílias da daTeca.",
+    intro: "para famílias daTeca.",
     cover: "/covers/clube.webp",
   },
 } as const

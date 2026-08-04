@@ -26,7 +26,7 @@ export function LaunchPage({
   return (
     <article
       style={s.page}
-      aria-label="Capa da daTeca"
+      aria-label="Capa daTeca"
       className={`launch-cover${exiting ? " launch-cover--exit" : ""}`}
     >
       <img

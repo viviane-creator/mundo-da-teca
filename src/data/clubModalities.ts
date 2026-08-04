@@ -32,7 +32,7 @@ export const clubModalities: ClubModality[] = [
     chapter: "I",
     title: "Explorador Digital",
     description:
-      "Comece pela plataforma digital e tenha acesso às experiências, universos e coleções da daTeca.",
+      "Comece pela plataforma digital e tenha acesso às experiências, universos e coleções daTeca.",
     benefits: [
       "Plataforma Digital",
       "Todas as experiências digitais",
@@ -80,7 +80,7 @@ export const clubModalities: ClubModality[] = [
     id: "expedicao-completa",
     chapter: "IV",
     title: "Expedição Completa",
-    description: "A experiência completa da daTeca.",
+    description: "A experiência completa daTeca.",
     benefits: [
       "Plataforma Digital",
       "Fichário Oficial",
@@ -113,7 +113,7 @@ export const clubComparisonCopy = {
       key: "plataforma" as const,
       label: "Plataforma",
       illustration: "/assets/editorial/plans/plan-explorador.webp",
-      illustrationAlt: "Plataforma digital da daTeca",
+      illustrationAlt: "Plataforma digital daTeca",
     },
     {
       key: "fichario" as const,

@@ -1,3 +1,4 @@
+import { DaTecaInText } from "../brand/DaTecaInText"
 import { homeCopy } from "../../data/homeCopy"
 import { appRoutes } from "../../navigation/appRoutes"
 
@@ -16,9 +17,11 @@ export function HomeFirstProductCard({ setScreen }: HomeFirstProductCardProps) {
       <div className="home-first-product__card">
         <p className="home-first-product__eyebrow">{copy.eyebrow}</p>
         <h2 id="home-first-product-title" className="home-first-product__title">
-          {copy.title}
+          <DaTecaInText text={copy.title} wordmarkSize="inherit" />
         </h2>
-        <p className="home-first-product__text">{copy.text}</p>
+        <p className="home-first-product__text">
+          <DaTecaInText text={copy.text} wordmarkSize="inherit" />
+        </p>
         <button
           type="button"
           className="home-first-product__cta"

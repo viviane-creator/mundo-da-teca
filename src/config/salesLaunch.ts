@@ -1,5 +1,5 @@
 /**
- * Abertura do checkout Hotmart — Caixa Laboratório da daTeca.
+ * Abertura do checkout Hotmart — Caixa Laboratório daTeca.
  * Com vendas abertas, os botões da landing vão para a Hotmart.
  */
 export const SALES_LAUNCH_AT = new Date("2026-08-02T00:00:00-03:00")

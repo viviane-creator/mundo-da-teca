@@ -38,11 +38,11 @@ MEU MUNDO → coleção digital / diário / biblioteca
 ATELIÊ → área complementar (sem Baú/Fichário físicos por enquanto)
 ```
 
-**Prioridade comercial atual:** validar a **Caixa Laboratório da daTeca** (R$ 89,90 + frete R$ 10).  
+**Prioridade comercial atual:** validar a **Caixa Laboratório daTeca** (R$ 89,90 + frete R$ 10).  
 Landing de conversão ainda não implementada.
 
 **Clube antigo (4 modalidades):** descontinuado e desligado (`CLUB_MARKETING_ENABLED = false`).  
-**Futuro:** um único Clube da daTeca (assinatura única, sem planos/comparativos) — página ainda não criada.
+**Futuro:** um único Clube daTeca (assinatura única, sem planos/comparativos) — página ainda não criada.
 
 Roteamento: state `screen` em `App.tsx` + render condicional. Sem router externo.
 
@@ -96,11 +96,11 @@ Sem planos. Sem comparativos. Sem escolha entre assinaturas.
 
 ### Produto de entrada (prioridade)
 
-**Caixa Laboratório da daTeca** — R$ 89,90 · frete R$ 10 para todo o Brasil · primeiro lote 100 unidades.
+**Caixa Laboratório daTeca** — R$ 89,90 · frete R$ 10 para todo o Brasil · primeiro lote 100 unidades.
 
 ### Clube futuro (ainda não no site)
 
-Um único **Clube da daTeca**: assinatura fixa, envio físico mensal, sem upgrades.  
+Um único **Clube daTeca**: assinatura fixa, envio físico mensal, sem upgrades.  
 Primeiro envio = base da coleção (Caixa Laboratório + manual + ingredientes + frascos + materiais + ferramentas).  
 Baú e Fichário físicos: existem no projeto, mas **não aparecem no site** nesta fase (`SHOW_BAU_AND_FICHARIO_PRODUCTS = false`).
 

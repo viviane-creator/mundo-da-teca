@@ -1,4 +1,6 @@
 ﻿import { useEffect, useState, type FormEvent } from "react"
+import { DaTecaInText } from "./brand/DaTecaInText"
+import { DaTecaWordmark } from "./brand/DaTecaWordmark"
 import {
   formatBirthDateInput,
   isCompleteBirthDate,
@@ -21,7 +23,9 @@ function SignupTitle({ id }: { id?: string }) {
   return (
     <h2 id={id} style={styles.authModalTitleStack}>
       <span style={styles.authModalTitleLead}>Vamos preparar a</span>
-      <span style={styles.authModalTitleBrand}>daTeca.</span>
+      <span style={styles.authModalTitleBrand}>
+        <DaTecaWordmark size="inherit" />.
+      </span>
     </h2>
   )
 }
@@ -241,10 +245,10 @@ export function LoginModal({
         {step === "login" && (
           <div key="login" className="auth-modal-step">
             <h2 id="access-modal-title" style={styles.authModalTitle}>
-              {RETURN_TITLE}
+              <DaTecaInText text={RETURN_TITLE} wordmarkSize="inherit" />
             </h2>
             <p style={styles.authModalText}>
-              A daTeca está esperando por você.
+              A <DaTecaWordmark size="inherit" /> está esperando por você.
             </p>
 
             <form onSubmit={handleLogin} style={styles.authForm}>
@@ -265,7 +269,12 @@ export function LoginModal({
               </label>
 
               {loginError ? (
-                <p style={styles.authModalHint}>{loginError}</p>
+                <p style={styles.authModalHint}>
+                  <DaTecaInText
+                    text={loginError}
+                    wordmarkSize="inherit"
+                  />
+                </p>
               ) : null}
 
               <div style={styles.authActions}>
@@ -314,7 +323,7 @@ export function LoginModal({
         {step === "welcomeBack" && (
           <div key="welcomeBack" className="auth-modal-step">
             <h2 id="access-modal-title" style={styles.authModalTitle}>
-              {RETURN_TITLE}
+              <DaTecaInText text={RETURN_TITLE} wordmarkSize="inherit" />
             </h2>
             <p style={styles.authModalText}>
               {bemVindoDeVoltaText(welcomedChildName)}

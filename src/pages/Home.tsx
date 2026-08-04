@@ -1,4 +1,5 @@
-﻿import { SHOW_HOME_PRELAUNCH_NOTICE } from "../config/launchGate"
+﻿import { DaTecaInText } from "../components/brand/DaTecaInText"
+import { SHOW_HOME_PRELAUNCH_NOTICE } from "../config/launchGate"
 import { homeCopy } from "../data/homeCopy"
 import { styles } from "../styles/appStyles"
 import { HomePreLaunchNotice } from "../components/home/HomePreLaunchNotice"
@@ -24,7 +25,7 @@ function HomeTextSection({
         <HomeTecaHostess />
       </div>
       <h2 id={id} className="home-chapter__title">
-        {title}
+        <DaTecaInText text={title} wordmarkSize="inherit" />
       </h2>
       {paragraphs.map((paragraph, index) => (
         <p
@@ -37,14 +38,16 @@ function HomeTextSection({
         >
           {paragraph.split("\n").map((line, lineIndex, lines) => (
             <span key={line}>
-              {line}
+              <DaTecaInText text={line} wordmarkSize="inherit" />
               {lineIndex < lines.length - 1 ? <br /> : null}
             </span>
           ))}
         </p>
       ))}
       {closing ? (
-        <p className="home-chapter__prose home-chapter__prose--emphasis">{closing}</p>
+        <p className="home-chapter__prose home-chapter__prose--emphasis">
+          <DaTecaInText text={closing} wordmarkSize="inherit" />
+        </p>
       ) : null}
     </section>
   )

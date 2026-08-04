@@ -1,4 +1,5 @@
-﻿import { homeCopy } from "../../data/homeCopy"
+﻿import { DaTecaInText } from "../brand/DaTecaInText"
+import { homeCopy } from "../../data/homeCopy"
 import "../../styles/homePreLaunchNotice.css"
 
 /**
@@ -57,7 +58,7 @@ export function HomePreLaunchNotice() {
       <PreLaunchCompassGlyph />
       <div className="home-prelaunch-notice__copy">
         <p className="home-prelaunch-notice__lead">
-          {copy.lead}
+          <DaTecaInText text={copy.lead} wordmarkSize="inherit" />
           <PreLaunchHeartIcon />
         </p>
         {copy.paragraphs.map((paragraph, index) => (
@@ -69,7 +70,7 @@ export function HomePreLaunchNotice() {
                 : "home-prelaunch-notice__body"
             }
           >
-            {paragraph}
+            <DaTecaInText text={paragraph} wordmarkSize="inherit" />
           </p>
         ))}
         <p className="home-prelaunch-notice__closing">{copy.closing}</p>

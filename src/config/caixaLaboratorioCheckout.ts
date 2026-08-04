@@ -2,7 +2,7 @@ import { entryProduct } from "./productStrategy"
 import { trackMetaInitiateCheckout, initMetaPixel } from "../analytics/metaPixel"
 
 /**
- * Checkout Hotmart — Caixa Laboratório da daTeca
+ * Checkout Hotmart — Caixa Laboratório daTeca
  *
  * Único ponto do link de pagamento. Todos os botões de compra usam isto.
  * Não usar Instagram nos botões de compra.
