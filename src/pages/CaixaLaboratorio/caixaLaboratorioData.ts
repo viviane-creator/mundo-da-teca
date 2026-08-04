@@ -8,7 +8,7 @@ const IMG = "/images/caixa-laboratorio"
  * Subir este valor sempre que trocar os WebPs da landing.
  * Evita cache do CDN/navegador servir a imagem antiga sob o mesmo nome.
  */
-export const CAIXA_IMAGE_VERSION = "20260802e"
+export const CAIXA_IMAGE_VERSION = "20260804a"
 
 function caixaImg(fileName: string): string {
   return `${IMG}/${fileName}?v=${CAIXA_IMAGE_VERSION}`
@@ -27,7 +27,7 @@ export const caixaLaboratorioData = {
   metaDescription:
     "Baixe o Manual de Descobertas daTeca e conheça a Caixa Laboratório: 9 experiências guiadas e a décima inventada pela criança. Preço de lançamento R$ 89,90.",
   canonicalPath: "/caixa-laboratorio",
-  ogImage: caixaLaboratorioImages.convite,
+  ogImage: caixaLaboratorioImages.experienciasCompletas,
   /** Sempre o link central Hotmart — ver `caixaLaboratorioCheckout.ts`. */
   orderUrl: HOTMART_CHECKOUT_URL,
 
@@ -91,9 +91,9 @@ export const caixaLaboratorioData = {
       "Manual ilustrado",
       "Frascos, pipetas e ferramentas incluídos",
     ],
-    image: caixaLaboratorioImages.convite,
+    image: caixaLaboratorioImages.experienciasCompletas,
     imageAlt:
-      "Caixa Laboratório daTeca: um mundo de descobertas começa aqui",
+      "Criança explorando descobertas com a Caixa Laboratório daTeca",
     cta: "QUERO MINHA CAIXA LABORATÓRIO",
     note: "Compra única.",
     paymentNote: "Pagamento seguro pela Hotmart.",
@@ -125,8 +125,9 @@ export const caixaLaboratorioData = {
       "Cobra Arco-Íris",
       "Neve d’Água",
     ],
-    image: caixaLaboratorioImages.experienciasCompletas,
-    imageAlt: "As nove experiências da Caixa Laboratório daTeca",
+    image: caixaLaboratorioImages.materiais,
+    imageAlt:
+      "O que vem na Caixa Laboratório daTeca: frascos, equipamentos, líquidos, pózinhos e materiais para inventar",
     tenthTitleLines: ["E a décima", "descoberta?"],
     tenthLead: "Essa é inventada pela própria criança.",
     tenthText:
@@ -140,9 +141,9 @@ export const caixaLaboratorioData = {
   contents: {
     titleLines: ["Tudo organizado.", "Tudo pronto para começar."],
     text: "Dentro da Caixa Laboratório, a criança encontra os ingredientes, recipientes e ferramentas utilizados nas experiências.",
-    image: caixaLaboratorioImages.materiais,
+    image: caixaLaboratorioImages.convite,
     imageAlt:
-      "O que vem na Caixa Laboratório daTeca: frascos, equipamentos, líquidos, pózinhos e materiais para inventar",
+      "Caixa Laboratório daTeca: um mundo de descobertas começa aqui",
     items: [
       "Ingredientes separados e identificados",
       "Frascos e potinhos para as experiências",
