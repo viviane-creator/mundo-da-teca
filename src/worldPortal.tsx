@@ -1,4 +1,5 @@
 ﻿import type { CSSProperties, ReactNode } from "react"
+import { DaTecaInText } from "./components/brand/DaTecaInText"
 import { PageCover } from "./components/PageCover"
 import { HomeHeroMist, HomeHeroTextMist, homeHeroMistZoneStyle, homeHeroMistZoneStyleHome } from "./components/HomeHeroMist"
 import { atelierPortalCopy } from "./data/atelierPortalCopy"
@@ -304,10 +305,16 @@ const p: Record<string, CSSProperties> = {
   },
 }
 
-function PortalMultiline({ text }: { text: string }) {
+function PortalMultiline({
+  text,
+  wordmarkSize = "inherit",
+}: {
+  text: string
+  wordmarkSize?: "small" | "medium" | "large" | "inherit"
+}) {
   return text.split("\n").map((line, index, lines) => (
     <span key={line}>
-      {line}
+      <DaTecaInText text={line} wordmarkSize={wordmarkSize} />
       {index < lines.length - 1 ? <br /> : null}
     </span>
   ))

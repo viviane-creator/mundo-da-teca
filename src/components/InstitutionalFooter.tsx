@@ -1,3 +1,4 @@
+import { DaTecaWordmark } from "./brand/DaTecaWordmark"
 import { institutionalFooterCopy } from "../data/institutionalFooterCopy"
 import { socialLinks } from "../data/socialLinks"
 import { styles } from "../styles/appStyles"
@@ -15,7 +16,7 @@ export function InstitutionalFooter() {
           rel="noopener noreferrer"
           style={styles.institutionalFooterHandle}
         >
-          {copy.handle}
+          <DaTecaWordmark size="small" /> →
         </a>
       </div>
     </footer>

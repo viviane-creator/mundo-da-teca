@@ -1,3 +1,4 @@
+import { DaTecaInText } from "../brand/DaTecaInText"
 import { caixaLaboratorioData } from "../../pages/CaixaLaboratorio/caixaLaboratorioData"
 
 export function ManualGiftHero() {
@@ -6,7 +7,9 @@ export function ManualGiftHero() {
   return (
     <section className="clx-manual" aria-labelledby="clx-manual-title">
       <div className="clx-manual__card">
-        <p className="clx-manual__kicker">{manualGift.kicker}</p>
+        <p className="clx-manual__kicker">
+          <DaTecaInText text={manualGift.kicker} wordmarkSize="inherit" />
+        </p>
         <h1 id="clx-manual-title" className="clx-manual__title">
           {manualGift.title}
         </h1>
@@ -26,7 +29,9 @@ export function ManualGiftHero() {
 
         <div className="clx-manual__welcome">
           {manualGift.welcomeLines.map((line) => (
-            <p key={line}>{line}</p>
+            <p key={line}>
+              <DaTecaInText text={line} wordmarkSize="inherit" />
+            </p>
           ))}
         </div>
       </div>

@@ -25,7 +25,7 @@ export const FLORIPA_WHATSAPP_PHONE =
   phoneFromEnv.length >= 12 ? phoneFromEnv : DEFAULT_WHATSAPP_PHONE
 
 export const FLORIPA_WHATSAPP_MESSAGE =
-  "Oi! Quero garantir minha Caixa Laboratório da daTeca na pré-venda. 💛\n\nNome:\nCidade/UF:\nQuantidade de caixas:"
+  "Oi! Quero garantir minha Caixa Laboratório daTeca na pré-venda. 💛\n\nNome:\nCidade/UF:\nQuantidade de caixas:"
 
 export function isFloripaSoftLaunchActive(): boolean {
   return WHATSAPP_PRESALE_ENABLED
@@ -48,7 +48,7 @@ export const floripaSoftLaunchCopy = {
   intro: {
     titleLines: ["A Caixa Laboratório", "está em pré-venda."],
     paragraphs: [
-      "Garanta uma das primeiras unidades da Caixa Laboratório da daTeca diretamente pelo WhatsApp.",
+      "Garanta uma das primeiras unidades da Caixa Laboratório daTeca diretamente pelo WhatsApp.",
       "Envios para todo o Brasil com frete fixo de R$ 20.",
       "Entrega gratuita em Florianópolis.",
     ],

@@ -46,7 +46,7 @@ export const kitPageCopy = {
     closing:
       "O que mudou é o espaço para experimentar com as próprias mãos.",
     image: "/images/teca.webp",
-    imageAlt: "A anfitriã da daTeca",
+    imageAlt: "A anfitriã daTeca",
   },
 
   brand: {
@@ -54,7 +54,7 @@ export const kitPageCopy = {
     title: "Foi por isso que nasceu a daTeca.",
     text: "Um lugar para preservar o jeito lento, encantado e presente de descobrir — em família, longe da pressa.",
     image: "/images/mapa-exploracao.webp",
-    imageAlt: "Mapa de exploração da daTeca",
+    imageAlt: "Mapa de exploração daTeca",
     secondaryImage: "/images/laboratorio/papel-artesanal.webp",
     secondaryAlt: "Registros de uma jornada de descobertas",
   },

@@ -12,7 +12,7 @@
     "Mais tempo explorando, criando e colecionando descobertas.",
   ],
   illustration: "/images/hero-home.webp",
-  illustrationAlt: "Ilustração da daTeca",
+  illustrationAlt: "Ilustração daTeca",
   cta: "Abrir o livro",
 } as const
 

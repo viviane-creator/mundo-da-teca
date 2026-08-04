@@ -23,9 +23,9 @@ export const caixaLaboratorioImages = {
 } as const
 
 export const caixaLaboratorioData = {
-  documentTitle: "Manual de Descobertas + Caixa Laboratório da daTeca",
+  documentTitle: "Manual de Descobertas + Caixa Laboratório daTeca",
   metaDescription:
-    "Baixe o Manual de Descobertas da daTeca e conheça a Caixa Laboratório: 9 experiências guiadas e a décima inventada pela criança. Preço de lançamento R$ 89,90.",
+    "Baixe o Manual de Descobertas daTeca e conheça a Caixa Laboratório: 9 experiências guiadas e a décima inventada pela criança. Preço de lançamento R$ 89,90.",
   canonicalPath: "/caixa-laboratorio",
   ogImage: caixaLaboratorioImages.convite,
   /** Sempre o link central Hotmart — ver `caixaLaboratorioCheckout.ts`. */
@@ -42,7 +42,7 @@ export const caixaLaboratorioData = {
    * Só aparece com `/caixa-laboratorio?manual=true`.
    */
   manualGift: {
-    kicker: "Presente da daTeca",
+    kicker: "Presente daTeca",
     title: "💛 Seu Manual de Descobertas está pronto!",
     paragraphs: [
       "Que alegria ter você por aqui.",
@@ -93,7 +93,7 @@ export const caixaLaboratorioData = {
     ],
     image: caixaLaboratorioImages.convite,
     imageAlt:
-      "Caixa Laboratório da daTeca: um mundo de descobertas começa aqui",
+      "Caixa Laboratório daTeca: um mundo de descobertas começa aqui",
     cta: "QUERO MINHA CAIXA LABORATÓRIO",
     note: "Compra única.",
     paymentNote: "Pagamento seguro pela Hotmart.",
@@ -126,7 +126,7 @@ export const caixaLaboratorioData = {
       "Neve d’Água",
     ],
     image: caixaLaboratorioImages.experienciasCompletas,
-    imageAlt: "As nove experiências da Caixa Laboratório da daTeca",
+    imageAlt: "As nove experiências da Caixa Laboratório daTeca",
     tenthTitleLines: ["E a décima", "descoberta?"],
     tenthLead: "Essa é inventada pela própria criança.",
     tenthText:
@@ -142,7 +142,7 @@ export const caixaLaboratorioData = {
     text: "Dentro da Caixa Laboratório, a criança encontra os ingredientes, recipientes e ferramentas utilizados nas experiências.",
     image: caixaLaboratorioImages.materiais,
     imageAlt:
-      "O que vem na Caixa Laboratório da daTeca: frascos, equipamentos, líquidos, pózinhos e materiais para inventar",
+      "O que vem na Caixa Laboratório daTeca: frascos, equipamentos, líquidos, pózinhos e materiais para inventar",
     items: [
       "Ingredientes separados e identificados",
       "Frascos e potinhos para as experiências",
@@ -164,7 +164,7 @@ export const caixaLaboratorioData = {
   buy: {
     logoSrc: "/logo/logo.webp",
     logoAlt: "daTeca",
-    titleLines: ["Caixa Laboratório", "da daTeca"],
+    titleLines: ["Caixa Laboratório", "daTeca"],
     summaryLines: [
       "10 descobertas para viver:",
       "9 experiências guiadas e a décima inventada pela criança.",

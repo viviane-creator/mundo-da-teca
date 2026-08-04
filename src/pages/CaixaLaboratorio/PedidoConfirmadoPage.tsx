@@ -1,3 +1,4 @@
+import { DaTecaWordmark } from "../../components/brand/DaTecaWordmark"
 import { appRoutes } from "../../navigation/appRoutes"
 import "./caixaLaboratorio.css"
 
@@ -24,7 +25,7 @@ export function PedidoConfirmadoPage({ setScreen }: PedidoConfirmadoPageProps) {
         className="clx-cta clx-cta--primary"
         onClick={() => setScreen(appRoutes.home)}
       >
-        VOLTAR PARA A daTeca
+        VOLTAR PARA A <DaTecaWordmark size="inherit" />
       </button>
     </article>
   )

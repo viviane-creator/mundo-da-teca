@@ -1,3 +1,4 @@
+import { DaTecaInText } from "../brand/DaTecaInText"
 import { caixaLaboratorioData } from "../../pages/CaixaLaboratorio/caixaLaboratorioData"
 import { BalancedLines } from "./BalancedLines"
 import { LandingImage } from "./LandingImage"
@@ -95,7 +96,9 @@ export function HeroLaboratorio() {
       <HeroDecor />
 
       <div className="clx-hero__copy">
-        <p className="clx-hero__kicker">{hero.kicker}</p>
+        <p className="clx-hero__kicker">
+          <DaTecaInText text={hero.kicker} wordmarkSize="inherit" />
+        </p>
         <h1 id="clx-hero-title" className="clx-hero__title">
           <span className="clx-hero__title-num">{hero.titleNum}</span>
           <BalancedLines lines={hero.titleRestLines} />

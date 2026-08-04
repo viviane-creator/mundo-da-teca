@@ -38,8 +38,8 @@ export const homeCopy = {
 
   firstProduct: {
     eyebrow: "Primeiro produto disponível",
-    title: "Caixa Laboratório da daTeca",
-    text: "Uma caixa completa com 10 descobertas para experimentar, criar e brincar com as próprias mãos — o primeiro passo da jornada daTeca.",
+    title: "Caixa Laboratório daTeca",
+    text: "Uma caixa completa com 10 descobertas para experimentar, criar e brincar com as próprias mãos — o primeiro passo da jornadaTeca.",
     cta: "Conhecer a Caixa Laboratório",
   },
 } as const

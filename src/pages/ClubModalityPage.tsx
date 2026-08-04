@@ -1,4 +1,5 @@
-﻿import { useEffect } from "react"
+﻿import { DaTecaInText } from "../components/brand/DaTecaInText"
+import { useEffect } from "react"
 import {
   clubModalityById,
   clubModalityPagePlaceholders,
@@ -30,7 +31,7 @@ export function ClubModalityPage({
         className="club-modality-page__back"
         onClick={() => setScreen(appRoutes.clube)}
       >
-        ← Voltar ao Clube daTeca
+        ← Voltar ao <DaTecaInText text="Clube daTeca" wordmarkSize="inherit" />
       </button>
 
       <header className="club-modality-page__hero">
