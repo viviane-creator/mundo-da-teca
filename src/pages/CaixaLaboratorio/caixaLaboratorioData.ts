@@ -147,7 +147,7 @@ export const caixaLaboratorioData = {
         num: 3,
         name: "Monstro que Respira",
         hint: "Ele realmente parece respirar.",
-        hintExtra: "Um daqueles momentos em que todo mundo para para olhar.",
+        hintExtra: "Uma reação silenciosa que prende o olhar de perto.",
         image: caixaImg("experiencia-monstro.webp"),
       },
       {
