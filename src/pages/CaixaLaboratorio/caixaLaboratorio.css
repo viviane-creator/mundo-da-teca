@@ -1093,10 +1093,27 @@
   margin-top: 2px;
 }
 
+.clx-discovery-card--tenth .clx-discovery-card__image,
+.clx-discovery-card--tenth .clx-placeholder {
+  object-fit: contain;
+  background: rgba(255, 253, 249, 0.92);
+}
+
 .clx-discovery-card--free-lab .clx-discovery-card__image,
 .clx-discovery-card--free-lab .clx-placeholder {
   object-fit: contain;
   background: rgba(255, 253, 249, 0.92);
+}
+
+.clx-discoveries__observation {
+  margin: 14px auto 0;
+  max-width: 42ch;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(15px, 3.8vw, 17px);
+  font-style: italic;
+  line-height: 1.45;
+  text-align: center;
+  color: var(--clx-muted);
 }
 
 .clx-discoveries-continue {

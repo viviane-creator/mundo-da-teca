@@ -29,7 +29,7 @@ export const caixaLaboratorioImages = {
 export const caixaLaboratorioData = {
   documentTitle: "Caixa Laboratório daTeca — 10 descobertas para experimentar em família",
   metaDescription:
-    "Caixa Laboratório daTeca: kit completo com mais de 45 itens, experiências guiadas e Laboratório Livre. Preço de lançamento R$ 89,90 + frete promocional R$ 9,90.",
+    "Caixa Laboratório daTeca: kit completo com mais de 45 itens, 9 experiências guiadas e a décima inventada pela criança. Preço de lançamento R$ 89,90 + frete promocional R$ 9,90.",
   canonicalPath: "/caixa-laboratorio",
   ogImage: caixaLaboratorioImages.experienciasCompletas,
   /** Sempre o link central Hotmart — ver `caixaLaboratorioCheckout.ts`. */
@@ -80,8 +80,8 @@ export const caixaLaboratorioData = {
       tenth: {
         eyebrowPrefix: "9 + 1",
         eyebrowSuffix: " DESCOBERTAS",
-        titleLines: ["E o Laboratório Livre?", "A sua própria descoberta."],
-        text: "As experiências guiadas vêm no manual. O Laboratório Livre é aberto — frascos, pipetas e equipamentos para inventar.",
+        titleLines: ["E a décima", "descoberta?"],
+        text: "Nove experiências vêm guiadas no manual. A décima nasce da curiosidade — misturar, testar e inventar.",
       },
       ready: {
         eyebrow: "TUDO ORGANIZADO",
@@ -94,7 +94,7 @@ export const caixaLaboratorioData = {
     benefits: [
       "Frascos, pipetas e equipamentos incluídos",
       "Manual ilustrado passo a passo",
-      "Materiais extras para o Laboratório Livre",
+      "Materiais extras para a décima descoberta",
     ],
     image: caixaLaboratorioImages.experienciasCompletas,
     imageAlt:
@@ -125,88 +125,81 @@ export const caixaLaboratorioData = {
   ],
 
   discoveries: {
-    titleLines: ["Uma tarde inteira", "de descobertas."],
-    text: "Oito experiências guiadas e um laboratório livre — cada convite para brincar, observar e estar presente, juntos.",
+    titleLines: ["9 experiências prontas", "para começar."],
+    text: "Cada card é um convite para curiosidade, surpresa e presença — juntos.",
     items: [
       {
         num: 1,
         name: "Tornado na Garrafa",
-        hint:
-          "Gire as garrafas outra vez — o redemoinho volta, e a diversão também. Uma experiência que se repete quantas vezes a criança quiser.",
+        hint: "Basta girar outra vez.",
+        hintExtra: "O redemoinho volta a aparecer sempre que a curiosidade chamar.",
         image: caixaImg("experiencia-tornado.webp"),
       },
       {
         num: 2,
         name: "Matéria Mutante",
-        hint:
-          "A criança cria seu próprio slime e leva o resultado adiante: para brincar, esticar e explorar durante muito tempo.",
+        hint: "Uma mistura que muda de personalidade.",
+        hintExtra:
+          "Depois de pronta, continua convidando a apertar, esticar e descobrir.",
         image: caixaImg("experiencia-materia-mutante.webp"),
       },
       {
         num: 3,
         name: "Monstro que Respira",
-        hint:
-          "Montagem, reação e surpresa — o balão do monstrinho parece respirar diante dos olhos, num instante de pura fascinação.",
+        hint: "Ele realmente parece respirar.",
+        hintExtra: "Um daqueles momentos em que todo mundo para para olhar.",
         image: caixaImg("experiencia-monstro.webp"),
       },
       {
         num: 4,
         name: "Vulcão Ativo",
-        hint:
-          "A criança monta seu vulcão, prepara tudo com calma e assiste à erupção — do começo ao fim, cerca de quinze minutos de descoberta.",
+        hint: "Uma erupção em miniatura.",
+        hintExtra: "Preparar faz parte da diversão. Assistir é a recompensa.",
         image: caixaImg("experiencia-vulcao.webp"),
       },
       {
         num: 5,
         name: "Lava Viva",
-        hint:
-          "Cores que fluem como lava num instante hipnotizante — breve, visual e cheia de encanto compartilhado.",
+        hint: "Bolhas que nunca cansam de encantar.",
+        hintExtra: "Uma reação rápida que prende o olhar do começo ao fim.",
         image: caixaImg("experiencia-lava-viva.webp"),
       },
       {
         num: 6,
         name: "Água que Anda",
-        hint:
-          "As cores caminham devagar entre os recipientes — e, ao longo de cerca de duas horas, a criança acompanha a transformação, voltando para ver o que mudou.",
+        hint: "A água desafia o caminho esperado.",
+        hintExtra:
+          "Uma descoberta que acontece aos poucos, revelando uma surpresa de cada vez.",
         image: caixaImg("experiencia-agua-que-anda.webp"),
       },
       {
-        num: 8,
+        num: 7,
         name: "Cobra Arco-Íris",
-        hint:
-          "A cobra cresce enquanto a reação acontece — movimento, cor e risadas à beira da mesa.",
+        hint: "Quanto mais espuma, maior a cobra.",
+        hintExtra: "Uma explosão de cores, bolhas e risadas.",
         image: caixaImg("experiencia-cobra-arco-iris.webp"),
       },
       {
-        num: 9,
+        num: 8,
         name: "Neve d’Água",
-        hint:
-          "O pó vira neve macia nas mãos — uma transformação delicada que convida a sentir e explorar.",
+        hint: "Um pozinho que vira neve.",
+        hintExtra: "Uma transformação macia que dá vontade de tocar.",
         image: caixaImg("experiencia-neve-dagua.webp"),
       },
       {
-        num: 10,
-        name: "Laboratório Livre",
-        subtitle: "A sua própria descoberta.",
-        hint:
-          "Depois das experiências guiadas, a Caixa Laboratório continua sendo um pequeno laboratório de invenções.",
+        num: 9,
+        name: "A Décima Descoberta",
+        hint: "A melhor descoberta é aquela que ainda não existe.",
         hintExtra:
-          "Frascos, pipetas e equipamentos para testar ideias, criar combinações e imaginar novas descobertas — sem passo a passo, só curiosidade e experimentação.",
+          "Misture, teste, invente e dê vida às suas próprias experiências.",
         image: caixaImg("decima.webp"),
         imageAlt:
-          "Frascos, pipetas, recipientes e equipamentos organizados para o Laboratório Livre",
-        variant: "freeLab",
+          "Pipetas, frascos, potinhos, recipientes e equipamentos da Caixa Laboratório daTeca",
+        variant: "tenth",
       },
     ],
-    continuation: {
-      titleLines: ["As descobertas podem", "continuar."],
-      paragraphs: [
-        "Algumas experiências podem ser repetidas imediatamente.",
-        "Outras utilizam materiais consumíveis que podem ser repostos sempre que a família desejar.",
-        "Os ingredientes são simples e fáceis de encontrar.",
-        "Para quem preferir praticidade, a daTeca também oferecerá o Kit de Reposição, com os materiais novamente separados e organizados para continuar explorando.",
-      ],
-    },
+    observation:
+      "Todas as experiências podem ser vividas novamente com materiais de reposição, vendidos pela daTeca ou encontrados facilmente em papelarias, mercados e farmácias.",
   },
 
   contents: {
@@ -223,7 +216,7 @@ export const caixaLaboratorioData = {
       "Corantes e líquidos das experiências",
       "Óculos de proteção e equipamentos",
       "Materiais para as experiências guiadas",
-      "Materiais extras para o laboratório livre",
+      "Materiais extras para a décima descoberta",
       "Manual ilustrado com o passo a passo",
     ],
   },
@@ -246,7 +239,7 @@ export const caixaLaboratorioData = {
     titleLines: ["Caixa Laboratório", "daTeca"],
     summaryLines: [
       "10 descobertas para viver:",
-      "Experiências guiadas e o Laboratório Livre.",
+      "9 experiências guiadas e a décima inventada pela criança.",
     ],
     cta: "QUERO MINHA CAIXA LABORATÓRIO",
     note: "Compra única.",
@@ -259,12 +252,12 @@ export const caixaLaboratorioData = {
       {
         question: "O que vem na Caixa Laboratório?",
         answer:
-          "A caixa inclui os ingredientes, frascos, potinhos, pipetas, copinhos, colheres, corantes, óculos de proteção e outros materiais utilizados nas experiências guiadas. Ela também acompanha um manual ilustrado e equipamentos para o Laboratório Livre.",
+          "A caixa inclui os ingredientes, frascos, potinhos, pipetas, copinhos, colheres, corantes, óculos de proteção e outros materiais utilizados nas nove experiências guiadas. Ela também acompanha um manual ilustrado e equipamentos para a décima descoberta.",
       },
       {
         question: "Preciso comprar algum outro material?",
         answer:
-          "Não. A caixa traz tudo organizado para as experiências guiadas e para o Laboratório Livre. Em casa, a família só precisa adicionar água.",
+          "Não. A caixa traz tudo organizado para as nove experiências guiadas e para a décima descoberta. Em casa, a família só precisa adicionar água.",
       },
       {
         question: "Para qual idade a caixa é indicada?",

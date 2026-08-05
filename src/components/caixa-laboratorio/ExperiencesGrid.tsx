@@ -19,23 +19,20 @@ export function ExperiencesGrid() {
       <p className="clx-section__text">{discoveries.text}</p>
 
       <ol className="clx-discoveries__grid">
-        {discoveries.items.map((item) => {
-          const cardNum = item.num
-
-          return (
+        {discoveries.items.map((item) => (
           <li
             key={`${item.num}-${item.name}`}
             className={[
               "clx-discovery-card",
-              "variant" in item && item.variant === "freeLab"
-                ? "clx-discovery-card--free-lab"
+              "variant" in item && item.variant === "tenth"
+                ? "clx-discovery-card--tenth"
                 : "",
             ]
               .filter(Boolean)
               .join(" ")}
           >
             <span className="clx-discovery-card__num">
-              {String(cardNum).padStart(2, "0")}
+              {String(item.num).padStart(2, "0")}
             </span>
             <figure className="clx-discovery-card__media">
               <LandingImage
@@ -46,9 +43,6 @@ export function ExperiencesGrid() {
               />
             </figure>
             <h3 className="clx-discovery-card__name">{item.name}</h3>
-            {"subtitle" in item && item.subtitle ? (
-              <p className="clx-discovery-card__subtitle">{item.subtitle}</p>
-            ) : null}
             <p className="clx-discovery-card__hint">{item.hint}</p>
             {"hintExtra" in item && item.hintExtra ? (
               <p className="clx-discovery-card__hint clx-discovery-card__hint--extra">
@@ -56,28 +50,10 @@ export function ExperiencesGrid() {
               </p>
             ) : null}
           </li>
-          )
-        })}
+        ))}
       </ol>
 
-      <aside
-        className="clx-discoveries-continue"
-        aria-labelledby="clx-discoveries-continue-title"
-      >
-        <BalancedLines
-          as="h3"
-          id="clx-discoveries-continue-title"
-          className="clx-discoveries-continue__title"
-          lines={discoveries.continuation.titleLines}
-        />
-        <div className="clx-discoveries-continue__body">
-          {discoveries.continuation.paragraphs.map((paragraph) => (
-            <p key={paragraph} className="clx-discoveries-continue__text">
-              {paragraph}
-            </p>
-          ))}
-        </div>
-      </aside>
+      <p className="clx-discoveries__observation">{discoveries.observation}</p>
     </section>
   )
 }
