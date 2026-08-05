@@ -12,6 +12,7 @@ export type CaixaLandingBlockId =
   | "experiences"
   | "contents"
   | "water"
+  | "brandMoment"
   | "howToOrder"
   | "pricing"
   | "faq"
@@ -19,9 +20,10 @@ export type CaixaLandingBlockId =
 /** Ordem padrão da página de vendas (sem o presente do manual). */
 export const CAIXA_SALES_BLOCKS: CaixaLandingBlockId[] = [
   "hero",
-  "experiences",
   "contents",
+  "experiences",
   "water",
+  "brandMoment",
   "pricing",
   "faq",
 ]
@@ -30,9 +32,10 @@ export const CAIXA_SALES_BLOCKS: CaixaLandingBlockId[] = [
 export const CAIXA_FLORIPA_BLOCKS: CaixaLandingBlockId[] = [
   "floripaIntro",
   "hero",
-  "experiences",
   "contents",
+  "experiences",
   "water",
+  "brandMoment",
   "howToOrder",
   "pricing",
   "faq",
@@ -65,9 +68,10 @@ export function resolveCaixaLandingBlocks(
       "bridge",
       "floripaIntro",
       "hero",
-      "experiences",
       "contents",
+      "experiences",
       "water",
+      "brandMoment",
       "howToOrder",
       "pricing",
       "faq",

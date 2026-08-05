@@ -60,7 +60,7 @@ function TenthCardArt() {
   )
 }
 
-function WaterCardArt() {
+function ReadyCardArt() {
   return (
     <svg
       className="clx-hero-card__art"
@@ -75,12 +75,13 @@ function WaterCardArt() {
         strokeLinecap="round"
         strokeLinejoin="round"
       >
-        <path d="M24 8c6 9 12 16 12 24a12 12 0 11-24 0c0-8 6-15 12-24z" />
-        <path d="M52 28c8-4 14-4 22 0s14 4 22 0" opacity="0.65" />
-        <path d="M56 36c7-3 12-3 18 0s12 3 18 0" opacity="0.45" />
-        <circle cx="88" cy="16" r="3" opacity="0.5" />
-        <circle cx="98" cy="22" r="2" opacity="0.4" />
-        <circle cx="78" cy="20" r="1.5" opacity="0.35" />
+        <path d="M14 20h28v18H14z" />
+        <path d="M14 20l14-8 14 8" />
+        <path d="M28 28v10" opacity="0.55" />
+        <path d="M58 24h18" strokeDasharray="2 3" opacity="0.65" />
+        <path d="M58 32h24" strokeDasharray="2 3" opacity="0.45" />
+        <circle cx="92" cy="18" r="3" opacity="0.5" />
+        <circle cx="102" cy="24" r="2" opacity="0.4" />
       </g>
     </svg>
   )
@@ -88,7 +89,7 @@ function WaterCardArt() {
 
 export function HeroLaboratorio() {
   const { hero } = caixaLaboratorioData
-  const { tenth, water } = hero.cards
+  const { tenth, ready } = hero.cards
 
   return (
     <section className="clx-hero" aria-labelledby="clx-hero-title">
@@ -103,6 +104,7 @@ export function HeroLaboratorio() {
           <span className="clx-hero__title-num">{hero.titleNum}</span>
           <BalancedLines lines={hero.titleRestLines} />
         </h1>
+        <p className="clx-hero__subtitle">{hero.subtitle}</p>
         <p className="clx-hero__text">{hero.text}</p>
       </div>
 
@@ -133,14 +135,14 @@ export function HeroLaboratorio() {
         </article>
 
         <article className="clx-hero-card clx-hero-card--water">
-          <WaterCardArt />
-          <p className="clx-hero-card__eyebrow">{water.eyebrow}</p>
+          <ReadyCardArt />
+          <p className="clx-hero-card__eyebrow">{ready.eyebrow}</p>
           <h2 className="clx-hero-card__title">
-            {water.titleLead}
-            <span className="clx-hero-card__emphasis">{water.titleEmphasis}</span>
-            {water.titleEnd}
+            {ready.titleLead}
+            <span className="clx-hero-card__emphasis">{ready.titleEmphasis}</span>
+            {ready.titleEnd}
           </h2>
-          <p className="clx-hero-card__text">{water.text}</p>
+          <p className="clx-hero-card__text">{ready.text}</p>
         </article>
       </div>
 
