@@ -38,7 +38,7 @@ MEU MUNDO → coleção digital / diário / biblioteca
 ATELIÊ → área complementar (sem Baú/Fichário físicos por enquanto)
 ```
 
-**Prioridade comercial atual:** validar a **Caixa Laboratório daTeca** (R$ 89,90 + frete R$ 10).  
+**Prioridade comercial atual:** validar a **Caixa Laboratório daTeca** (R$ 89,90 + frete promocional R$ 9,90).  
 Landing de conversão ainda não implementada.
 
 **Clube antigo (4 modalidades):** descontinuado e desligado (`CLUB_MARKETING_ENABLED = false`).  
@@ -96,7 +96,7 @@ Sem planos. Sem comparativos. Sem escolha entre assinaturas.
 
 ### Produto de entrada (prioridade)
 
-**Caixa Laboratório daTeca** — R$ 89,90 · frete R$ 10 para todo o Brasil · primeiro lote 100 unidades.
+**Caixa Laboratório daTeca** — R$ 89,90 · frete promocional R$ 9,90 para todo o Brasil · primeiro lote 100 unidades.
 
 ### Clube futuro (ainda não no site)
 

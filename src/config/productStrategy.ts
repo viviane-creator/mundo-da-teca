@@ -27,10 +27,24 @@ export const entryProduct = {
   id: "caixa-laboratorio",
   name: "Caixa Laboratório daTeca",
   priceBRL: 89.9,
-  shippingBRL: 10,
+  shippingBRL: 9.9,
   shippingScope: "todo o Brasil",
   firstBatchUnits: 100,
 } as const
+
+function formatBRL(value: number): string {
+  return value.toLocaleString("pt-BR", {
+    style: "currency",
+    currency: "BRL",
+  })
+}
+
+/** Copy padrão de frete promocional — Caixa Laboratório e páginas relacionadas. */
+export const entryProductShippingLabel = `Frete promocional fixo: ${formatBRL(entryProduct.shippingBRL)} para ${entryProduct.shippingScope}.`
+
+export const entryProductShippingShort = `Frete promocional fixo: ${formatBRL(entryProduct.shippingBRL)}`
+
+export const entryProductShippingFaqAnswer = `Frete promocional fixo de ${formatBRL(entryProduct.shippingBRL)} para ${entryProduct.shippingScope}. O valor já aparece no checkout da Hotmart.`
 
 /**
  * Visão do Clube único (futuro — página ainda não implementada).

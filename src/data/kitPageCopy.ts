@@ -1,4 +1,9 @@
 import { socialLinks } from "./socialLinks"
+import {
+  entryProduct,
+  entryProductShippingFaqAnswer,
+  entryProductShippingShort,
+} from "../config/productStrategy"
 
 export type KitAdventure = {
   id: string
@@ -18,7 +23,7 @@ export type KitGallerySlot = {
 export const kitPageCopy = {
   documentTitle: "Kit de Experiências daTeca",
   metaDescription:
-    "As melhores descobertas da infância não acontecem na tela. Kit de Experiências daTeca — você só precisa adicionar água. R$ 89,90 + frete R$ 10.",
+    "As melhores descobertas da infância não acontecem na tela. Kit de Experiências daTeca — você só precisa adicionar água. R$ 89,90 + frete promocional R$ 9,90.",
   canonicalPath: "/kit",
   ogImage: "/images/hero-home.webp",
   orderUrl: socialLinks.instagram,
@@ -256,8 +261,8 @@ export const kitPageCopy = {
     title: "Kit de Experiências daTeca",
     price: "R$ 89,90",
     priceValue: "89.90",
-    shipping: "Frete R$ 10,00",
-    shippingNote: "para todo o Brasil",
+    shipping: entryProductShippingShort,
+    shippingNote: `para ${entryProduct.shippingScope}`,
     batch: "Primeiro lote limitado a 100 unidades.",
     reminder: "Você só precisa adicionar água.",
     cta: "Quero começar minha primeira expedição.",
@@ -286,7 +291,7 @@ export const kitPageCopy = {
       },
       {
         question: "Como funciona o envio?",
-        answer: "Para todo o Brasil, com frete fixo de R$ 10,00.",
+        answer: entryProductShippingFaqAnswer,
       },
       {
         question: "Prazo de postagem",
@@ -381,7 +386,7 @@ export function applyKitPageMeta() {
         "@type": "OfferShippingDetails",
         shippingRate: {
           "@type": "MonetaryAmount",
-          value: "10.00",
+          value: String(entryProduct.shippingBRL),
           currency: "BRL",
         },
         shippingDestination: {

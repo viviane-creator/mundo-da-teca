@@ -1,5 +1,9 @@
 import { HOTMART_CHECKOUT_URL } from "../../config/caixaLaboratorioCheckout"
-import { entryProduct } from "../../config/productStrategy"
+import {
+  entryProduct,
+  entryProductShippingFaqAnswer,
+  entryProductShippingLabel,
+} from "../../config/productStrategy"
 import { socialLinks } from "../../data/socialLinks"
 
 const IMG = "/images/caixa-laboratorio"
@@ -108,7 +112,7 @@ export const caixaLaboratorioData = {
     nextPrice: "R$ 119,90",
     savings: "Você economiza R$ 30 neste primeiro lote.",
     units: `Somente ${entryProduct.firstBatchUnits} unidades neste valor.`,
-    shipping: "Frete calculado pelo CEP no checkout.",
+    shipping: entryProductShippingLabel,
   },
 
   discoveries: {
@@ -199,9 +203,8 @@ export const caixaLaboratorioData = {
           "Não. A Caixa Laboratório é uma compra única. Você recebe a caixa completa com os materiais e o manual das experiências.",
       },
       {
-        question: "Como é calculado o frete?",
-        answer:
-          "O valor e o prazo de entrega são calculados no checkout de acordo com o CEP informado. Enviamos para todo o Brasil.",
+        question: "Como funciona o frete?",
+        answer: entryProductShippingFaqAnswer,
       },
     ],
   },
@@ -295,6 +298,11 @@ export function applyCaixaLaboratorioMeta() {
       availability: "https://schema.org/LimitedAvailability",
       shippingDetails: {
         "@type": "OfferShippingDetails",
+        shippingRate: {
+          "@type": "MonetaryAmount",
+          value: String(entryProduct.shippingBRL),
+          currency: "BRL",
+        },
         shippingDestination: {
           "@type": "DefinedRegion",
           addressCountry: "BR",
