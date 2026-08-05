@@ -20,7 +20,7 @@ export function FaqSection() {
       <div className="clx-faq__list">
         {faq.items.map((item) => {
           const answer =
-            presaleActive && item.question === "Como é calculado o frete?"
+            presaleActive && item.question === "Como funciona o frete?"
               ? PRESALE_SHIPPING_ANSWER
               : item.answer
 
