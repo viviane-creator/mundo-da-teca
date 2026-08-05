@@ -12,7 +12,7 @@ const IMG = "/images/caixa-laboratorio"
  * Subir este valor sempre que trocar os WebPs da landing.
  * Evita cache do CDN/navegador servir a imagem antiga sob o mesmo nome.
  */
-export const CAIXA_IMAGE_VERSION = "20260805a"
+export const CAIXA_IMAGE_VERSION = "20260805b"
 
 function caixaImg(fileName: string): string {
   return `${IMG}/${fileName}?v=${CAIXA_IMAGE_VERSION}`
@@ -174,20 +174,27 @@ export const caixaLaboratorioData = {
       },
       {
         num: 7,
+        name: "Pedra Líquida",
+        hint: "Um líquido encontra outro — e algo sólido nasce nas mãos.",
+        hintExtra: "O sólido e o líquido trocam de lugar diante dos olhos.",
+        image: caixaImg("experiencia-pedra-liquida.webp"),
+      },
+      {
+        num: 8,
         name: "Cobra Arco-Íris",
         hint: "Quanto mais espuma, maior a cobra.",
         hintExtra: "Uma explosão de cores, bolhas e risadas.",
         image: caixaImg("experiencia-cobra-arco-iris.webp"),
       },
       {
-        num: 8,
+        num: 9,
         name: "Neve d’Água",
         hint: "Um pozinho que vira neve.",
         hintExtra: "Uma transformação macia que dá vontade de tocar.",
         image: caixaImg("experiencia-neve-dagua.webp"),
       },
       {
-        num: 9,
+        num: 10,
         name: "A Décima Descoberta",
         hint: "A melhor descoberta é aquela que ainda não existe.",
         hintExtra:
