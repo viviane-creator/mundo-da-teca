@@ -17,7 +17,6 @@ export function KitContents() {
         lines={contents.titleLines}
       />
       <p className="clx-contents__lead">{contents.lead}</p>
-      <p className="clx-section__text">{contents.text}</p>
 
       <figure className="clx-contents__media">
         <LandingImage

@@ -105,7 +105,6 @@ export function HeroLaboratorio() {
           <BalancedLines lines={hero.titleRestLines} />
         </h1>
         <p className="clx-hero__subtitle">{hero.subtitle}</p>
-        <p className="clx-hero__text">{hero.text}</p>
       </div>
 
       <figure className="clx-hero__media">

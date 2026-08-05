@@ -33,6 +33,7 @@ export function ExperiencesGrid() {
               />
             </figure>
             <h3 className="clx-discovery-card__name">{item.name}</h3>
+            <span className="clx-discovery-card__badge">{item.badge}</span>
             <p className="clx-discovery-card__hint">{item.hint}</p>
           </li>
         ))}

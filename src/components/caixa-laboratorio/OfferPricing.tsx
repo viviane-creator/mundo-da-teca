@@ -47,7 +47,10 @@ export function OfferPricing({ origin }: OfferPricingProps) {
       <p className="clx-price-units">{pricing.units}</p>
       <ul className="clx-offer-trust">
         {offerTrust.map((item) => (
-          <li key={item}>{item}</li>
+          <li key={item}>
+            <span aria-hidden="true">✓</span>
+            {item}
+          </li>
         ))}
       </ul>
       <LandingCta label={hero.cta} origin={origin} />

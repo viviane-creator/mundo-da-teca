@@ -75,8 +75,7 @@ export const caixaLaboratorioData = {
     titleNum: "10",
     titleRestLines: [" descobertas", "dentro de uma caixa."],
     subtitle:
-      "Um kit completo de experimentos para famílias — pronto para abrir, explorar e criar juntos.",
-    text: "Uma caixa completa para experimentar, criar e descobrir com as próprias mãos.",
+      "Um kit completo de experiências para famílias — pronto para abrir, explorar e criar juntos.",
     cards: {
       tenth: {
         eyebrowPrefix: "9 + 1",
@@ -93,7 +92,7 @@ export const caixaLaboratorioData = {
       },
     },
     benefits: [
-      "Cerca de 45 itens, cuidadosamente separados",
+      "Frascos, pipetas e equipamentos incluídos",
       "Manual ilustrado passo a passo",
       "Materiais extras para inventar além das nove experiências",
     ],
@@ -118,7 +117,7 @@ export const caixaLaboratorioData = {
   },
 
   offerTrust: [
-    entryProductShippingLabel,
+    "Frete promocional R$ 9,90 para todo Brasil",
     "Envio em até 5 dias úteis",
     "Checkout seguro pela Hotmart",
     "Garantia oficial Hotmart",
@@ -132,46 +131,55 @@ export const caixaLaboratorioData = {
       {
         name: "Tornado na Garrafa",
         hint: "Um redemoinho ganha forma dentro da garrafa.",
+        badge: "15 min",
         image: caixaImg("experiencia-tornado.webp"),
       },
       {
         name: "Matéria Mutante",
         hint: "Um líquido muda de forma diante dos olhos.",
+        badge: "20 min",
         image: caixaImg("experiencia-materia-mutante.webp"),
       },
       {
         name: "Monstro que Respira",
         hint: "Uma reação faz o frasco parecer respirar.",
+        badge: "15 min",
         image: caixaImg("experiencia-monstro.webp"),
       },
       {
         name: "Vulcão Ativo",
         hint: "Uma erupção acontece em miniatura.",
+        badge: "20 min",
         image: caixaImg("experiencia-vulcao.webp"),
       },
       {
         name: "Lava Viva",
         hint: "Um fluxo colorido se move como lava.",
+        badge: "Pode repetir",
         image: caixaImg("experiencia-lava-viva.webp"),
       },
       {
         name: "Água que Anda",
         hint: "A água parece desafiar a gravidade.",
+        badge: "15 min",
         image: caixaImg("experiencia-agua-que-anda.webp"),
       },
       {
         name: "Pedra Líquida",
         hint: "Um líquido se transforma em algo sólido.",
+        badge: "20 min",
         image: caixaImg("experiencia-pedra-liquida.webp"),
       },
       {
         name: "Cobra Arco-Íris",
         hint: "Cores se espalham em movimento.",
+        badge: "Várias vezes",
         image: caixaImg("experiencia-cobra-arco-iris.webp"),
       },
       {
         name: "Neve d’Água",
         hint: "Flocos surgem de uma reação delicada.",
+        badge: "Repetível",
         image: caixaImg("experiencia-neve-dagua.webp"),
       },
     ],
@@ -187,8 +195,7 @@ export const caixaLaboratorioData = {
 
   contents: {
     titleLines: ["Tudo organizado.", "Tudo pronto para começar."],
-    lead: "Cerca de 45 itens, cuidadosamente separados dentro da caixa.",
-    text: "Ingredientes, recipientes, frascos, equipamentos e manual ilustrado — tudo identificado e pronto para a família abrir e começar.",
+    lead: "Mais de 45 itens cuidadosamente organizados dentro da caixa.",
     closing: "Sem precisar comprar materiais. Sem improvisar.",
     image: caixaLaboratorioImages.materiais,
     imageAlt:

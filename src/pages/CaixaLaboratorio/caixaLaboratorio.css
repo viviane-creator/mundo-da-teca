@@ -130,7 +130,7 @@
   flex: 1 1 auto;
   max-width: min(100%, 280px);
   margin-left: auto;
-  padding: 7px 12px;
+  padding: 8px 12px;
   border-radius: 999px;
   font-size: clamp(11px, 2.8vw, 14px);
   line-height: 1.15;
@@ -1071,6 +1071,20 @@
   color: var(--clx-ink);
 }
 
+.clx-discovery-card__badge {
+  align-self: flex-start;
+  padding: 2px 8px;
+  border-radius: 999px;
+  border: 1px solid rgba(154, 132, 117, 0.22);
+  background: rgba(255, 253, 249, 0.72);
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(11px, 2.8vw, 12px);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  line-height: 1.2;
+  color: var(--clx-soft);
+}
+
 .clx-discovery-card__hint {
   margin: 0;
   font-family: "Cormorant Garamond", serif;
@@ -1352,16 +1366,41 @@
   padding: 0;
   max-width: 34ch;
   display: grid;
-  gap: 3px;
+  gap: 4px;
   font-family: "Cormorant Garamond", serif;
   font-size: clamp(14px, 3.5vw, 16px);
   line-height: 1.35;
   color: var(--clx-soft);
 }
 
+.clx-offer-trust li {
+  display: flex;
+  gap: 6px;
+  align-items: baseline;
+}
+
+.clx-offer-trust li span {
+  flex-shrink: 0;
+  font-weight: 700;
+  color: var(--clx-green-deep);
+}
+
+.clx-hero__offer .clx-offer-trust li span {
+  color: var(--clx-green-deep);
+}
+
+.clx-buy .clx-offer-trust li span {
+  color: rgba(220, 240, 210, 0.95);
+}
+
 .clx-hero__offer .clx-offer-trust,
 .clx-buy .clx-offer-trust {
   text-align: center;
+}
+
+.clx-hero__offer .clx-offer-trust li,
+.clx-buy .clx-offer-trust li {
+  justify-content: center;
 }
 
 .clx-hero__offer .clx-offer-trust {
