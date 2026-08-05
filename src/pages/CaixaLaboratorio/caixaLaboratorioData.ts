@@ -175,8 +175,8 @@ export const caixaLaboratorioData = {
       {
         num: 7,
         name: "Pedra Líquida",
-        hint: "Um líquido encontra outro — e algo sólido nasce nas mãos.",
-        hintExtra: "O sólido e o líquido trocam de lugar diante dos olhos.",
+        hint: "Algo entre sólido e líquido nas mãos.",
+        hintExtra: "Uma matéria que muda de ideia conforme se toca.",
         image: caixaImg("experiencia-pedra-liquida.webp"),
       },
       {
