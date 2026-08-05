@@ -19,13 +19,12 @@ export function ExperiencesGrid() {
       <p className="clx-section__text">{discoveries.text}</p>
 
       <ol className="clx-discoveries__grid">
-        {discoveries.items.map((item, index) => {
-          const cardNum =
-            "variant" in item && item.variant === "freeLab" ? 10 : index + 1
+        {discoveries.items.map((item) => {
+          const cardNum = item.num
 
           return (
           <li
-            key={item.name}
+            key={`${item.num}-${item.name}`}
             className={[
               "clx-discovery-card",
               "variant" in item && item.variant === "freeLab"

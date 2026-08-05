@@ -12,7 +12,7 @@ const IMG = "/images/caixa-laboratorio"
  * Subir este valor sempre que trocar os WebPs da landing.
  * Evita cache do CDN/navegador servir a imagem antiga sob o mesmo nome.
  */
-export const CAIXA_IMAGE_VERSION = "20260804a"
+export const CAIXA_IMAGE_VERSION = "20260805a"
 
 function caixaImg(fileName: string): string {
   return `${IMG}/${fileName}?v=${CAIXA_IMAGE_VERSION}`
@@ -126,64 +126,73 @@ export const caixaLaboratorioData = {
 
   discoveries: {
     titleLines: ["Uma tarde inteira", "de descobertas."],
-    text: "Experiências guiadas e um laboratório livre — cada convite para brincar, observar e estar presente, juntos.",
+    text: "Oito experiências guiadas e um laboratório livre — cada convite para brincar, observar e estar presente, juntos.",
     items: [
       {
+        num: 1,
         name: "Tornado na Garrafa",
         hint:
           "Gire as garrafas outra vez — o redemoinho volta, e a diversão também. Uma experiência que se repete quantas vezes a criança quiser.",
         image: caixaImg("experiencia-tornado.webp"),
       },
       {
+        num: 2,
         name: "Matéria Mutante",
         hint:
           "A criança cria seu próprio slime e leva o resultado adiante: para brincar, esticar e explorar durante muito tempo.",
         image: caixaImg("experiencia-materia-mutante.webp"),
       },
       {
+        num: 3,
         name: "Monstro que Respira",
         hint:
           "Montagem, reação e surpresa — o balão do monstrinho parece respirar diante dos olhos, num instante de pura fascinação.",
         image: caixaImg("experiencia-monstro.webp"),
       },
       {
+        num: 4,
         name: "Vulcão Ativo",
         hint:
           "A criança monta seu vulcão, prepara tudo com calma e assiste à erupção — do começo ao fim, cerca de quinze minutos de descoberta.",
         image: caixaImg("experiencia-vulcao.webp"),
       },
       {
+        num: 5,
         name: "Lava Viva",
         hint:
           "Cores que fluem como lava num instante hipnotizante — breve, visual e cheia de encanto compartilhado.",
         image: caixaImg("experiencia-lava-viva.webp"),
       },
       {
+        num: 6,
         name: "Água que Anda",
         hint:
           "As cores caminham devagar entre os recipientes — e, ao longo de cerca de duas horas, a criança acompanha a transformação, voltando para ver o que mudou.",
         image: caixaImg("experiencia-agua-que-anda.webp"),
       },
       {
+        num: 8,
         name: "Cobra Arco-Íris",
         hint:
           "A cobra cresce enquanto a reação acontece — movimento, cor e risadas à beira da mesa.",
         image: caixaImg("experiencia-cobra-arco-iris.webp"),
       },
       {
+        num: 9,
         name: "Neve d’Água",
         hint:
           "O pó vira neve macia nas mãos — uma transformação delicada que convida a sentir e explorar.",
         image: caixaImg("experiencia-neve-dagua.webp"),
       },
       {
+        num: 10,
         name: "Laboratório Livre",
         subtitle: "A sua própria descoberta.",
         hint:
           "Depois das experiências guiadas, a Caixa Laboratório continua sendo um pequeno laboratório de invenções.",
         hintExtra:
           "Frascos, pipetas e equipamentos para testar ideias, criar combinações e imaginar novas descobertas — sem passo a passo, só curiosidade e experimentação.",
-        image: caixaLaboratorioImages.materiais,
+        image: caixaImg("decima.webp"),
         imageAlt:
           "Frascos, pipetas, recipientes e equipamentos organizados para o Laboratório Livre",
         variant: "freeLab",
