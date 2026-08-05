@@ -18,27 +18,25 @@ export function ExperiencesGrid() {
       />
       <p className="clx-section__text">{discoveries.text}</p>
 
-      <div className="clx-discoveries__body">
-        <ol className="clx-discoveries__list">
-          {discoveries.items.map((name, index) => (
-            <li key={name}>
-              <span className="clx-discoveries__num">
-                {String(index + 1).padStart(2, "0")}
-              </span>
-              <span>{name}</span>
-            </li>
-          ))}
-        </ol>
-
-        <figure className="clx-media">
-          <LandingImage
-            className="clx-media__image"
-            src={discoveries.image}
-            alt={discoveries.imageAlt}
-            loading="eager"
-          />
-        </figure>
-      </div>
+      <ol className="clx-discoveries__grid">
+        {discoveries.items.map((item, index) => (
+          <li key={item.name} className="clx-discovery-card">
+            <span className="clx-discovery-card__num">
+              {String(index + 1).padStart(2, "0")}
+            </span>
+            <figure className="clx-discovery-card__media">
+              <LandingImage
+                className="clx-discovery-card__image"
+                src={item.image}
+                alt={item.name}
+                loading="lazy"
+              />
+            </figure>
+            <h3 className="clx-discovery-card__name">{item.name}</h3>
+            <p className="clx-discovery-card__hint">{item.hint}</p>
+          </li>
+        ))}
+      </ol>
 
       <aside className="clx-tenth" aria-labelledby="clx-tenth-title">
         <svg

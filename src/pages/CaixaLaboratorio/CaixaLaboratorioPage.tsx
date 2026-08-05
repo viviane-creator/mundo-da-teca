@@ -1,5 +1,6 @@
 import { useEffect, useState, type ReactNode } from "react"
 import {
+  BrandMomentSection,
   ExperiencesGrid,
   FaqSection,
   FloripaHowToOrder,
@@ -34,6 +35,7 @@ const blockRenderers: Record<CaixaLandingBlockId, () => ReactNode> = {
   experiences: () => <ExperiencesGrid />,
   contents: () => <KitContents />,
   water: () => <WaterOnlySection />,
+  brandMoment: () => <BrandMomentSection />,
   howToOrder: () => <FloripaHowToOrder />,
   pricing: () => <PricingSection />,
   faq: () => <FaqSection />,

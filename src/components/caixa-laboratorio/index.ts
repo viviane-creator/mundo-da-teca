@@ -1,3 +1,4 @@
+export { BrandMomentSection } from "./BrandMomentSection"
 export { ExperiencesGrid } from "./ExperiencesGrid"
 export { FaqSection } from "./FaqSection"
 export { FloripaHowToOrder } from "./FloripaHowToOrder"

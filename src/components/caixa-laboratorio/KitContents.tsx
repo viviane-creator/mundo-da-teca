@@ -16,6 +16,7 @@ export function KitContents() {
         className="clx-section__title"
         lines={contents.titleLines}
       />
+      <p className="clx-contents__lead">{contents.lead}</p>
       <p className="clx-section__text">{contents.text}</p>
 
       <figure className="clx-contents__media">
@@ -23,6 +24,7 @@ export function KitContents() {
           className="clx-contents__image"
           src={contents.image}
           alt={contents.imageAlt}
+          loading="eager"
         />
       </figure>
 
@@ -34,6 +36,8 @@ export function KitContents() {
           </li>
         ))}
       </ul>
+
+      <p className="clx-contents__closing">{contents.closing}</p>
     </section>
   )
 }
