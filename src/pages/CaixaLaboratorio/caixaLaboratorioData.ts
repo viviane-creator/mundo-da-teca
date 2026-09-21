@@ -32,7 +32,7 @@ export const caixaLaboratorioData = {
   documentTitle:
     "Caixa Laboratório daTeca — presente de Dia das Crianças que vira laboratório em casa",
   metaDescription:
-    "Presente de Dia das Crianças: Caixa Laboratório daTeca com 9 experiências guiadas e uma décima para inventar. É só acrescentar água — materiais organizados e manual ilustrado. R$ 129,00.",
+    "Presente de Dia das Crianças: Caixa Laboratório daTeca com 9 experiências guiadas. É só acrescentar água — materiais organizados, manual ilustrado e convite para explorar e inventar. R$ 129,00.",
   canonicalPath: "/caixa-laboratorio",
   ogImage: caixaLaboratorioImages.presente,
   /** Sempre o link central Hotmart — ver `caixaLaboratorioCheckout.ts`. */
@@ -77,7 +77,7 @@ export const caixaLaboratorioData = {
     titleAccessible:
       "Neste Dia das Crianças, dê um presente que vira um laboratório de descobertas.",
     subtitle:
-      "A criança abre a caixa, acrescenta água e começa a explorar. São 9 experiências guiadas e uma décima para inventar do seu jeito — com os materiais organizados e instruções ilustradas.",
+      "A criança abre a caixa, acrescenta água e começa a explorar. São 9 experiências guiadas — com os materiais organizados, instruções ilustradas e materiais que também convidam a explorar e inventar.",
     ageNote: "Para crianças de 6 a 10 anos, com a supervisão de um adulto.",
     cards: {
       ready: {
@@ -91,7 +91,7 @@ export const caixaLaboratorioData = {
     benefits: [
       "Ingredientes, frascos e equipamentos incluídos",
       "Manual ilustrado passo a passo",
-      "Materiais extras para a décima experiência",
+      "Materiais que convidam a explorar e inventar",
     ],
     image: caixaLaboratorioImages.presente,
     imageAlt:
@@ -117,8 +117,8 @@ export const caixaLaboratorioData = {
     introImage: caixaImg("cartas.webp"),
     introImageAlt:
       "Cartas ilustradas passo a passo das experiências da Caixa Laboratório daTeca",
-    titleLines: ["10 experiências", "para explorar."],
-    text: "Nove vêm guiadas no manual. A décima é criação livre — um convite para curiosidade, surpresa e presença juntos.",
+    titleLines: ["9 experiências guiadas.", "Depois, a curiosidade continua."],
+    text: "Nove experiências com passo a passo no manual. Os materiais da caixa também convidam a criança a explorar e inventar — um convite para curiosidade, surpresa e presença juntos.",
     items: [
       {
         num: 1,
@@ -186,15 +186,13 @@ export const caixaLaboratorioData = {
         image: caixaImg("experiencia-neve-dagua.webp"),
       },
       {
-        num: 10,
-        name: "Sua Experiência",
-        hint: "A melhor descoberta é aquela que ainda não existe.",
-        hintExtra:
-          "Misture, teste, invente e dê vida às suas próprias experiências.",
+        name: "Agora é sua vez de inventar",
+        hint: "Depois de seguir as experiências, explore os materiais, faça perguntas e invente suas próprias descobertas com a supervisão de um adulto.",
         image: caixaImg("decima.webp"),
         imageAlt:
-          "Pipetas, frascos, potinhos, recipientes e equipamentos da Caixa Laboratório daTeca",
-        variant: "tenth",
+          "Materiais da Caixa Laboratório daTeca para explorar e inventar novas descobertas",
+        variant: "invent",
+        hideNum: true,
       },
     ],
   },
@@ -213,7 +211,7 @@ export const caixaLaboratorioData = {
       "Corantes e líquidos das experiências",
       "Óculos de proteção e equipamentos",
       "Materiais para as nove experiências guiadas",
-      "Materiais extras para a décima experiência",
+      "Materiais que convidam a explorar e inventar",
       "Manual ilustrado com o passo a passo",
     ],
   },
@@ -236,7 +234,7 @@ export const caixaLaboratorioData = {
     titleLines: ["Caixa Laboratório", "daTeca"],
     summaryLines: [
       "Presente de Dia das Crianças:",
-      "9 experiências guiadas e uma décima para inventar.",
+      "9 experiências guiadas. Depois, a curiosidade continua.",
     ],
     cta: "Quero presentear com a Caixa Laboratório",
     note: "Compra única.",
@@ -249,12 +247,12 @@ export const caixaLaboratorioData = {
       {
         question: "O que vem na Caixa Laboratório?",
         answer:
-          "A caixa inclui os ingredientes, frascos, potinhos, pipetas, copinhos, colheres, corantes, óculos de proteção e outros materiais utilizados nas nove experiências guiadas. Ela também acompanha um manual ilustrado e equipamentos para a décima descoberta.",
+          "A caixa inclui os ingredientes, frascos, potinhos, pipetas, copinhos, colheres, corantes, óculos de proteção e outros materiais utilizados nas nove experiências guiadas. Ela também acompanha manual ilustrado e materiais que convidam a criança a explorar e inventar.",
       },
       {
         question: "Preciso comprar algum outro material?",
         answer:
-          "Não. A caixa traz tudo organizado para as nove experiências guiadas e para a décima experiência. Em casa, é só acrescentar água.",
+          "Não. A caixa traz tudo organizado para as nove experiências guiadas. Os demais materiais também convidam a criança a explorar e inventar. Em casa, é só acrescentar água.",
       },
       {
         question: "Para qual idade a caixa é indicada?",

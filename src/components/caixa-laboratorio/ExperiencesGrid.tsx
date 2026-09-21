@@ -35,19 +35,22 @@ export function ExperiencesGrid() {
       <ol className="clx-discoveries__grid">
         {discoveries.items.map((item) => (
           <li
-            key={`${item.num}-${item.name}`}
+            key={item.name}
             className={[
               "clx-discovery-card",
-              "variant" in item && item.variant === "tenth"
+              "variant" in item &&
+              (item.variant === "tenth" || item.variant === "invent")
                 ? "clx-discovery-card--tenth"
                 : "",
             ]
               .filter(Boolean)
               .join(" ")}
           >
-            <span className="clx-discovery-card__num">
-              {String(item.num).padStart(2, "0")}
-            </span>
+            {"hideNum" in item && item.hideNum ? null : (
+              <span className="clx-discovery-card__num">
+                {String(item.num).padStart(2, "0")}
+              </span>
+            )}
             <figure className="clx-discovery-card__media">
               {"image" in item && item.image ? (
                 <LandingImage
