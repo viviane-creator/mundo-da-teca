@@ -10,6 +10,20 @@ export function ExperiencesGrid() {
       className="clx-section clx-discoveries"
       aria-labelledby="clx-discoveries-title"
     >
+      {"introImage" in discoveries && discoveries.introImage ? (
+        <figure className="clx-discoveries__intro">
+          <LandingImage
+            className="clx-discoveries__intro-image"
+            src={discoveries.introImage}
+            alt={
+              "introImageAlt" in discoveries && discoveries.introImageAlt
+                ? discoveries.introImageAlt
+                : ""
+            }
+            loading="lazy"
+          />
+        </figure>
+      ) : null}
       <BalancedLines
         as="h2"
         id="clx-discoveries-title"

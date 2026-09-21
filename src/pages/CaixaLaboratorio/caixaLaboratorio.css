@@ -1131,6 +1131,22 @@
 
 /* —— Discoveries —— */
 
+.clx-discoveries__intro {
+  margin: 0 auto 12px;
+  width: min(100%, 360px);
+  padding: 0;
+}
+
+.clx-discoveries__intro-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 14px;
+  box-shadow:
+    0 12px 26px rgba(74, 55, 40, 0.1),
+    0 2px 8px rgba(74, 55, 40, 0.05);
+}
+
 .clx-discoveries__grid {
   list-style: none;
   margin: 0 0 14px;

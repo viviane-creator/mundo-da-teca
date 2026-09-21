@@ -12,7 +12,7 @@ const IMG = "/images/caixa-laboratorio"
  * Subir este valor sempre que trocar os WebPs da landing.
  * Evita cache do CDN/navegador servir a imagem antiga sob o mesmo nome.
  */
-export const CAIXA_IMAGE_VERSION = "20260921i"
+export const CAIXA_IMAGE_VERSION = "20260921j"
 
 function caixaImg(fileName: string): string {
   return `${IMG}/${fileName}?v=${CAIXA_IMAGE_VERSION}`
@@ -80,12 +80,6 @@ export const caixaLaboratorioData = {
       "A criança abre a caixa, acrescenta água e começa a explorar. São 9 experiências guiadas e uma décima para inventar do seu jeito — com os materiais organizados e instruções ilustradas.",
     ageNote: "Para crianças de 6 a 10 anos, com a supervisão de um adulto.",
     cards: {
-      tenth: {
-        eyebrowPrefix: "9 + 1",
-        eyebrowSuffix: " EXPERIÊNCIAS",
-        titleLines: ["E a décima?", "Sua Experiência."],
-        text: "Nove experiências vêm guiadas no manual. A décima nasce da curiosidade — misturar, testar e inventar.",
-      },
       ready: {
         eyebrow: "É SÓ ACRESCENTAR ÁGUA",
         titleLead: "Abriu a caixa, ",
@@ -120,6 +114,9 @@ export const caixaLaboratorioData = {
   offerTrust: ["Checkout seguro pela Hotmart"],
 
   discoveries: {
+    introImage: caixaImg("cartas.webp"),
+    introImageAlt:
+      "Cartas ilustradas passo a passo das experiências da Caixa Laboratório daTeca",
     titleLines: ["10 experiências", "para explorar."],
     text: "Nove vêm guiadas no manual. A décima é criação livre — um convite para curiosidade, surpresa e presença juntos.",
     items: [
