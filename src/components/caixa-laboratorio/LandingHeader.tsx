@@ -1,5 +1,4 @@
 import { caixaLaboratorioData } from "../../pages/CaixaLaboratorio/caixaLaboratorioData"
-import { LandingCta } from "./LandingCta"
 
 export function LandingHeader() {
   const { header } = caixaLaboratorioData
@@ -14,7 +13,6 @@ export function LandingHeader() {
         height={44}
         decoding="async"
       />
-      <LandingCta label={header.cta} variant="header" origin="header" />
     </header>
   )
 }

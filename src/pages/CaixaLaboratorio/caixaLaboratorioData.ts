@@ -12,14 +12,16 @@ const IMG = "/images/caixa-laboratorio"
  * Subir este valor sempre que trocar os WebPs da landing.
  * Evita cache do CDN/navegador servir a imagem antiga sob o mesmo nome.
  */
-export const CAIXA_IMAGE_VERSION = "20260921f"
+export const CAIXA_IMAGE_VERSION = "20260921h"
 
 function caixaImg(fileName: string): string {
   return `${IMG}/${fileName}?v=${CAIXA_IMAGE_VERSION}`
 }
 
 export const caixaLaboratorioImages = {
-  /** Poster de campanha — caixa e materiais (hero). */
+  /** Abertura da campanha — criança explorando (hero). */
+  presente: caixaImg("presente.webp"),
+  /** Poster de campanha — caixa e materiais. */
   convite: caixaImg("caixa-convite.webp"),
   /** Vista de cima da caixa aberta — conteúdos da campanha. */
   materiais: caixaImg("caixa-materiais.webp"),
@@ -32,7 +34,7 @@ export const caixaLaboratorioData = {
   metaDescription:
     "Presente de Dia das Crianças: Caixa Laboratório daTeca com 9 experiências guiadas e uma décima para inventar. É só acrescentar água — materiais organizados e manual ilustrado. R$ 129,00.",
   canonicalPath: "/caixa-laboratorio",
-  ogImage: caixaLaboratorioImages.convite,
+  ogImage: caixaLaboratorioImages.presente,
   /** Sempre o link central Hotmart — ver `caixaLaboratorioCheckout.ts`. */
   orderUrl: HOTMART_CHECKOUT_URL,
 
@@ -72,12 +74,8 @@ export const caixaLaboratorioData = {
   },
 
   hero: {
-    kicker: "DIA DAS CRIANÇAS • CAIXA LABORATÓRIO daTeca",
-    titleLines: [
-      "Neste Dia das Crianças,",
-      "dê um presente que vira",
-      "um laboratório de descobertas.",
-    ],
+    titleAccessible:
+      "Neste Dia das Crianças, dê um presente que vira um laboratório de descobertas.",
     subtitle:
       "A criança abre a caixa, acrescenta água e começa a explorar. São 9 experiências guiadas e uma décima para inventar do seu jeito — com os materiais organizados e instruções ilustradas.",
     ageNote: "Para crianças de 6 a 10 anos, com a supervisão de um adulto.",
@@ -101,9 +99,9 @@ export const caixaLaboratorioData = {
       "Manual ilustrado passo a passo",
       "Materiais extras para a décima experiência",
     ],
-    image: caixaLaboratorioImages.convite,
+    image: caixaLaboratorioImages.presente,
     imageAlt:
-      "Poster Dia das Crianças: Caixa Laboratório daTeca fechada com materiais das experiências organizados ao redor",
+      "Criança explorando uma experiência com a Caixa Laboratório daTeca — presente de Dia das Crianças que desperta a curiosidade",
     cta: "Quero presentear com a Caixa Laboratório",
     note: "Compra única.",
     paymentNote: "Pagamento seguro pela Hotmart.",
@@ -128,8 +126,9 @@ export const caixaLaboratorioData = {
       {
         num: 1,
         name: "Tinta Invisível",
-        hint: "Uma mensagem escondida que só aparece quando a luz encontra.",
-        hintExtra: "Segredos revelados diante dos olhos atentos.",
+        hint: "Um desenho escondido aparece quando o revelador passa pelo papel.",
+        hintExtra: "Segredos que só se revelam passo a passo.",
+        image: caixaImg("tinta-invisivel.webp"),
       },
       {
         num: 2,
@@ -173,6 +172,7 @@ export const caixaLaboratorioData = {
         name: "Força que Move",
         hint: "Algo se move sem ser empurrado.",
         hintExtra: "Um encontro entre magnetismo e curiosidade.",
+        image: caixaImg("força-que-move.webp"),
       },
       {
         num: 8,
@@ -200,8 +200,6 @@ export const caixaLaboratorioData = {
         variant: "tenth",
       },
     ],
-    observation:
-      "Todas as experiências podem ser vividas novamente com materiais de reposição, vendidos pela daTeca ou encontrados facilmente em papelarias, mercados e farmácias.",
   },
 
   contents: {

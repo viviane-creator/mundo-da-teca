@@ -1,4 +1,3 @@
-import { DaTecaInText } from "../brand/DaTecaInText"
 import { caixaLaboratorioData } from "../../pages/CaixaLaboratorio/caixaLaboratorioData"
 import { BalancedLines } from "./BalancedLines"
 import { LandingCta } from "./LandingCta"
@@ -93,16 +92,23 @@ export function HeroLaboratorio() {
   const { tenth, ready } = hero.cards
 
   return (
-    <section className="clx-hero" aria-labelledby="clx-hero-title">
+    <section className="clx-hero clx-hero--presente-open" aria-labelledby="clx-hero-title">
       <div className="clx-hero__wash" aria-hidden="true" />
       <HeroDecor />
 
+      <figure className="clx-hero__media clx-hero__media--presente">
+        <LandingImage
+          className="clx-hero__image clx-hero__image--presente"
+          src={hero.image}
+          alt={hero.imageAlt}
+          loading="eager"
+          fetchPriority="high"
+        />
+      </figure>
+
       <div className="clx-hero__copy">
-        <p className="clx-hero__kicker">
-          <DaTecaInText text={hero.kicker} wordmarkSize="inherit" />
-        </p>
-        <h1 id="clx-hero-title" className="clx-hero__title clx-hero__title--campaign">
-          <BalancedLines lines={hero.titleLines} />
+        <h1 id="clx-hero-title" className="clx-sr-only">
+          {hero.titleAccessible}
         </h1>
         <p className="clx-hero__subtitle">{hero.subtitle}</p>
         <p className="clx-hero__age">{hero.ageNote}</p>
@@ -110,16 +116,6 @@ export function HeroLaboratorio() {
           <LandingCta label={hero.cta} origin="hero" />
         </div>
       </div>
-
-      <figure className="clx-hero__media clx-hero__media--convite">
-        <LandingImage
-          className="clx-hero__image clx-hero__image--convite"
-          src={hero.image}
-          alt={hero.imageAlt}
-          loading="eager"
-          fetchPriority="high"
-        />
-      </figure>
 
       <div className="clx-hero__cards">
         <article className="clx-hero-card clx-hero-card--tenth">

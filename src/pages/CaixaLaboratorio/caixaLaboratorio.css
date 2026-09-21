@@ -51,9 +51,8 @@
   z-index: 20;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 10px;
-  padding: 5px 14px;
+  justify-content: center;
+  padding: 8px 14px;
   background: rgba(250, 246, 239, 0.92);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--clx-line);
@@ -523,6 +522,18 @@
 
 /* —— Hero —— */
 
+.clx-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 .clx-hero {
   position: relative;
   isolation: isolate;
@@ -691,16 +702,26 @@
     0 3px 10px rgba(74, 55, 40, 0.06);
 }
 
-.clx-hero__media--convite .clx-hero__blob {
+.clx-hero__media--convite .clx-hero__blob,
+.clx-hero__media--presente .clx-hero__blob {
   display: none;
 }
 
-.clx-hero__image--convite {
+.clx-hero__image--convite,
+.clx-hero__image--presente {
   max-width: min(100%, 340px);
   border-radius: 14px;
   box-shadow:
     0 12px 24px rgba(74, 55, 40, 0.1),
     0 2px 8px rgba(74, 55, 40, 0.05);
+}
+
+.clx-hero--presente-open {
+  gap: 12px;
+}
+
+.clx-hero--presente-open .clx-hero__media--presente {
+  margin-top: 2px;
 }
 
 .clx-hero__cards {
@@ -912,6 +933,35 @@
     padding: 16px 24px 22px;
   }
 
+  .clx-hero--presente-open {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "media"
+      "copy"
+      "cards"
+      "benefits"
+      "offer";
+    max-width: 560px;
+  }
+
+  .clx-hero--presente-open .clx-hero__copy {
+    text-align: center;
+  }
+
+  .clx-hero--presente-open .clx-hero__subtitle,
+  .clx-hero--presente-open .clx-hero__age {
+    margin-inline: auto;
+    text-align: center;
+  }
+
+  .clx-hero--presente-open .clx-hero__cta-early {
+    justify-content: center;
+  }
+
+  .clx-hero--presente-open .clx-hero__media {
+    align-self: stretch;
+  }
+
   .clx-hero__copy {
     grid-area: copy;
     align-self: center;
@@ -968,8 +1018,9 @@
     max-width: min(100%, 440px);
   }
 
-  .clx-hero__image--convite {
-    max-width: min(100%, 380px);
+  .clx-hero__image--convite,
+  .clx-hero__image--presente {
+    max-width: min(100%, 480px);
   }
 
   .clx-seal {

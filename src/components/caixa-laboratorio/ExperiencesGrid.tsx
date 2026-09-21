@@ -61,8 +61,6 @@ export function ExperiencesGrid() {
           </li>
         ))}
       </ol>
-
-      <p className="clx-discoveries__observation">{discoveries.observation}</p>
     </section>
   )
 }
