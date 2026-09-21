@@ -81,7 +81,6 @@ export const caixaLaboratorioData = {
     ageNote: "Para crianças de 6 a 10 anos, com a supervisão de um adulto.",
     cards: {
       ready: {
-        eyebrow: "É SÓ ACRESCENTAR ÁGUA",
         titleLead: "Abriu a caixa, ",
         titleEmphasis: "escolheu uma experiência",
         titleEnd: " e começou.",

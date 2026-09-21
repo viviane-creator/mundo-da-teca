@@ -107,7 +107,6 @@ export function HeroLaboratorio() {
       <div className="clx-hero__cards">
         <article className="clx-hero-card clx-hero-card--water">
           <ReadyCardArt />
-          <p className="clx-hero-card__eyebrow">{ready.eyebrow}</p>
           <h2 className="clx-hero-card__title">
             {ready.titleLead}
             <span className="clx-hero-card__emphasis">{ready.titleEmphasis}</span>
