@@ -12,7 +12,7 @@ const IMG = "/images/caixa-laboratorio"
  * Subir este valor sempre que trocar os WebPs da landing.
  * Evita cache do CDN/navegador servir a imagem antiga sob o mesmo nome.
  */
-export const CAIXA_IMAGE_VERSION = "20260921j"
+export const CAIXA_IMAGE_VERSION = "20260921l"
 
 function caixaImg(fileName: string): string {
   return `${IMG}/${fileName}?v=${CAIXA_IMAGE_VERSION}`
@@ -96,6 +96,9 @@ export const caixaLaboratorioData = {
     image: caixaLaboratorioImages.presente,
     imageAlt:
       "Criança explorando uma experiência com a Caixa Laboratório daTeca — presente de Dia das Crianças que desperta a curiosidade",
+    conviteImage: caixaLaboratorioImages.convite,
+    conviteImageAlt:
+      "Caixa Laboratório daTeca fechada, com materiais das experiências organizados ao redor da embalagem",
     cta: "Quero presentear com a Caixa Laboratório",
     note: "Compra única.",
     paymentNote: "Pagamento seguro pela Hotmart.",

@@ -23,7 +23,7 @@ export function KitContents() {
           className="clx-contents__image clx-contents__image--poster"
           src={contents.image}
           alt={contents.imageAlt}
-          loading="eager"
+          loading="lazy"
         />
       </figure>
 

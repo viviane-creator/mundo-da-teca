@@ -724,6 +724,10 @@
   margin-top: 2px;
 }
 
+.clx-hero--presente-open .clx-hero__media--convite {
+  margin: 4px auto 2px;
+}
+
 .clx-hero__cards {
   display: grid;
   grid-template-columns: 1fr;
@@ -938,10 +942,15 @@
     grid-template-areas:
       "media"
       "copy"
+      "convite"
       "cards"
       "benefits"
       "offer";
     max-width: 560px;
+  }
+
+  .clx-hero--presente-open .clx-hero__media--convite {
+    grid-area: convite;
   }
 
   .clx-hero--presente-open .clx-hero__copy {
