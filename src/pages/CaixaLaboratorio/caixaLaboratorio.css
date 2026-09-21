@@ -601,15 +601,44 @@
   font-weight: 600;
 }
 
+.clx-hero__title--campaign {
+  font-size: clamp(28px, 7.2vw, 42px);
+  line-height: 1.08;
+}
+
 .clx-hero__subtitle {
   margin: 0 auto 4px;
-  max-width: 38ch;
+  max-width: 42ch;
   font-family: "Cormorant Garamond", serif;
   font-size: clamp(17px, 4.2vw, 19px);
   font-weight: 600;
   line-height: 1.35;
   text-align: center;
   color: var(--clx-ink);
+}
+
+.clx-hero__age {
+  margin: 0 auto 10px;
+  max-width: 36ch;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(15px, 3.8vw, 17px);
+  font-weight: 600;
+  line-height: 1.35;
+  text-align: center;
+  color: var(--clx-muted);
+}
+
+.clx-hero__cta-early {
+  display: flex;
+  justify-content: center;
+  margin: 4px 0 2px;
+}
+
+.clx-hero__cta-early .clx-cta--primary {
+  width: 100%;
+  max-width: 360px;
+  min-height: 48px;
+  font-size: clamp(15px, 3.8vw, 17px);
 }
 
 .clx-hero__text {
@@ -660,6 +689,18 @@
   box-shadow:
     0 14px 28px rgba(74, 55, 40, 0.12),
     0 3px 10px rgba(74, 55, 40, 0.06);
+}
+
+.clx-hero__media--convite .clx-hero__blob {
+  display: none;
+}
+
+.clx-hero__image--convite {
+  max-width: min(100%, 340px);
+  border-radius: 14px;
+  box-shadow:
+    0 12px 24px rgba(74, 55, 40, 0.1),
+    0 2px 8px rgba(74, 55, 40, 0.05);
 }
 
 .clx-hero__cards {
@@ -876,6 +917,20 @@
     align-self: center;
   }
 
+  .clx-hero__subtitle,
+  .clx-hero__age {
+    margin-inline: 0;
+    text-align: left;
+  }
+
+  .clx-hero__cta-early {
+    justify-content: flex-start;
+  }
+
+  .clx-hero__cta-early .clx-cta--primary {
+    max-width: 100%;
+  }
+
   .clx-hero__media {
     grid-area: media;
     align-self: center;
@@ -911,6 +966,10 @@
   .clx-hero__image,
   .clx-hero .clx-placeholder {
     max-width: min(100%, 440px);
+  }
+
+  .clx-hero__image--convite {
+    max-width: min(100%, 380px);
   }
 
   .clx-seal {
@@ -962,6 +1021,12 @@
   box-shadow:
     0 12px 26px rgba(74, 55, 40, 0.1),
     0 2px 8px rgba(74, 55, 40, 0.05);
+}
+
+.clx-contents__image--poster {
+  max-width: min(100%, 360px);
+  margin-inline: auto;
+  border-radius: 14px;
 }
 
 .clx-contents__doodles {
@@ -1054,6 +1119,7 @@
 }
 
 .clx-discovery-card__image,
+.clx-discovery-card__placeholder,
 .clx-discovery-card .clx-placeholder {
   display: block;
   width: 100%;
@@ -1093,7 +1159,12 @@
   margin-top: 2px;
 }
 
+.clx-discovery-card__placeholder {
+  border-radius: 12px;
+}
+
 .clx-discovery-card--tenth .clx-discovery-card__image,
+.clx-discovery-card--tenth .clx-discovery-card__placeholder,
 .clx-discovery-card--tenth .clx-placeholder {
   object-fit: contain;
   background: rgba(255, 253, 249, 0.92);

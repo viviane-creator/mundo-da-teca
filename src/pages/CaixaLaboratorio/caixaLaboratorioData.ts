@@ -1,8 +1,8 @@
 import { HOTMART_CHECKOUT_URL } from "../../config/caixaLaboratorioCheckout"
 import {
+  caixaLaboratorioShippingFaqAnswer,
+  caixaLaboratorioShippingNote,
   entryProduct,
-  entryProductShippingFaqAnswer,
-  entryProductShippingLabel,
 } from "../../config/productStrategy"
 import { socialLinks } from "../../data/socialLinks"
 
@@ -12,33 +12,34 @@ const IMG = "/images/caixa-laboratorio"
  * Subir este valor sempre que trocar os WebPs da landing.
  * Evita cache do CDN/navegador servir a imagem antiga sob o mesmo nome.
  */
-export const CAIXA_IMAGE_VERSION = "20260805b"
+export const CAIXA_IMAGE_VERSION = "20260921f"
 
 function caixaImg(fileName: string): string {
   return `${IMG}/${fileName}?v=${CAIXA_IMAGE_VERSION}`
 }
 
 export const caixaLaboratorioImages = {
-  /** Banner de convite com a caixa aberta (hero). */
+  /** Poster de campanha — caixa e materiais (hero). */
   convite: caixaImg("caixa-convite.webp"),
-  /** Infográfico com o que vem na caixa (conteúdos). */
+  /** Vista de cima da caixa aberta — conteúdos da campanha. */
   materiais: caixaImg("caixa-materiais.webp"),
   experienciasCompletas: caixaImg("experiencias-completas.webp"),
 } as const
 
 export const caixaLaboratorioData = {
-  documentTitle: "Caixa Laboratório daTeca — 10 descobertas para experimentar em família",
+  documentTitle:
+    "Caixa Laboratório daTeca — presente de Dia das Crianças que vira laboratório em casa",
   metaDescription:
-    "Caixa Laboratório daTeca: kit completo com mais de 45 itens, 9 experiências guiadas e a décima inventada pela criança. Preço de lançamento R$ 89,90 + frete promocional R$ 9,90.",
+    "Presente de Dia das Crianças: Caixa Laboratório daTeca com 9 experiências guiadas e uma décima para inventar. É só acrescentar água — materiais organizados e manual ilustrado. R$ 129,00.",
   canonicalPath: "/caixa-laboratorio",
-  ogImage: caixaLaboratorioImages.experienciasCompletas,
+  ogImage: caixaLaboratorioImages.convite,
   /** Sempre o link central Hotmart — ver `caixaLaboratorioCheckout.ts`. */
   orderUrl: HOTMART_CHECKOUT_URL,
 
   header: {
     logoSrc: "/logo/logo.webp",
     logoAlt: "daTeca",
-    cta: "Quero garantir a minha Caixa Laboratório",
+    cta: "Quero presentear com a Caixa Laboratório",
   },
 
   /**
@@ -71,101 +72,81 @@ export const caixaLaboratorioData = {
   },
 
   hero: {
-    kicker: "CAIXA LABORATÓRIO daTeca",
-    titleNum: "10",
-    titleRestLines: [" descobertas", "dentro de uma caixa."],
+    kicker: "DIA DAS CRIANÇAS • CAIXA LABORATÓRIO daTeca",
+    titleLines: [
+      "Neste Dia das Crianças,",
+      "dê um presente que vira",
+      "um laboratório de descobertas.",
+    ],
     subtitle:
-      "Um kit completo de experiências para famílias — pronto para abrir, explorar e criar juntos.",
+      "A criança abre a caixa, acrescenta água e começa a explorar. São 9 experiências guiadas e uma décima para inventar do seu jeito — com os materiais organizados e instruções ilustradas.",
+    ageNote: "Para crianças de 6 a 10 anos, com a supervisão de um adulto.",
     cards: {
       tenth: {
         eyebrowPrefix: "9 + 1",
-        eyebrowSuffix: " DESCOBERTAS",
-        titleLines: ["E a décima", "descoberta?"],
+        eyebrowSuffix: " EXPERIÊNCIAS",
+        titleLines: ["E a décima?", "Sua Experiência."],
         text: "Nove experiências vêm guiadas no manual. A décima nasce da curiosidade — misturar, testar e inventar.",
       },
       ready: {
-        eyebrow: "TUDO ORGANIZADO",
+        eyebrow: "É SÓ ACRESCENTAR ÁGUA",
         titleLead: "Abriu a caixa, ",
-        titleEmphasis: "escolheu uma descoberta",
+        titleEmphasis: "escolheu uma experiência",
         titleEnd: " e começou.",
-        text: "Sem lista de compras. Sem correr atrás de material.",
+        text: "Os materiais das experiências guiadas já vão organizados dentro da caixa.",
       },
     },
     benefits: [
-      "Frascos, pipetas e equipamentos incluídos",
+      "Ingredientes, frascos e equipamentos incluídos",
       "Manual ilustrado passo a passo",
-      "Materiais extras para a décima descoberta",
+      "Materiais extras para a décima experiência",
     ],
-    image: caixaLaboratorioImages.experienciasCompletas,
+    image: caixaLaboratorioImages.convite,
     imageAlt:
-      "Criança explorando descobertas com a Caixa Laboratório daTeca",
-    cta: "QUERO MINHA CAIXA LABORATÓRIO",
+      "Poster Dia das Crianças: Caixa Laboratório daTeca fechada com materiais das experiências organizados ao redor",
+    cta: "Quero presentear com a Caixa Laboratório",
     note: "Compra única.",
     paymentNote: "Pagamento seguro pela Hotmart.",
   },
 
   /** Mesmo bloco de preço no hero e no fechamento. */
   pricing: {
-    label: "PREÇO DE LANÇAMENTO",
-    price: "R$ 89,90",
+    price: entryProduct.priceBRL.toLocaleString("pt-BR", {
+      style: "currency",
+      currency: "BRL",
+    }),
     priceValue: String(entryProduct.priceBRL),
-    nextLotLabel: "Próximo lote:",
-    nextPrice: "R$ 119,90",
-    savings: "Você economiza R$ 30 neste primeiro lote.",
-    units: `Somente ${entryProduct.firstBatchUnits} unidades neste valor.`,
-    shipping: entryProductShippingLabel,
+    shippingNote: caixaLaboratorioShippingNote,
   },
 
-  offerTrust: [
-    "Frete promocional R$ 9,90 para todo Brasil",
-    "Envio em até 5 dias úteis",
-    "Checkout seguro pela Hotmart",
-    "Garantia oficial Hotmart",
-    "Parcelamento em até 10x",
-  ],
+  offerTrust: ["Checkout seguro pela Hotmart"],
 
   discoveries: {
-    titleLines: ["9 experiências prontas", "para começar."],
-    text: "Cada card é um convite para curiosidade, surpresa e presença — juntos.",
+    titleLines: ["10 experiências", "para explorar."],
+    text: "Nove vêm guiadas no manual. A décima é criação livre — um convite para curiosidade, surpresa e presença juntos.",
     items: [
       {
         num: 1,
+        name: "Tinta Invisível",
+        hint: "Uma mensagem escondida que só aparece quando a luz encontra.",
+        hintExtra: "Segredos revelados diante dos olhos atentos.",
+      },
+      {
+        num: 2,
+        name: "Pedra Líquida",
+        hint: "Algo entre sólido e líquido nas mãos.",
+        hintExtra: "Uma matéria que muda de ideia conforme se toca.",
+        image: caixaImg("experiencia-pedra-liquida.webp"),
+      },
+      {
+        num: 3,
         name: "Tornado na Garrafa",
         hint: "Basta girar outra vez.",
         hintExtra: "O redemoinho volta a aparecer sempre que a curiosidade chamar.",
         image: caixaImg("experiencia-tornado.webp"),
       },
       {
-        num: 2,
-        name: "Matéria Mutante",
-        hint: "Uma mistura que muda de personalidade.",
-        hintExtra:
-          "Depois de pronta, continua convidando a apertar, esticar e descobrir.",
-        image: caixaImg("experiencia-materia-mutante.webp"),
-      },
-      {
-        num: 3,
-        name: "Monstro que Respira",
-        hint: "Ele realmente parece respirar.",
-        hintExtra: "Uma reação silenciosa que prende o olhar de perto.",
-        image: caixaImg("experiencia-monstro.webp"),
-      },
-      {
         num: 4,
-        name: "Vulcão Ativo",
-        hint: "Uma erupção em miniatura.",
-        hintExtra: "Preparar faz parte da diversão. Assistir é a recompensa.",
-        image: caixaImg("experiencia-vulcao.webp"),
-      },
-      {
-        num: 5,
-        name: "Lava Viva",
-        hint: "Bolhas que nunca cansam de encantar.",
-        hintExtra: "Uma reação rápida que prende o olhar do começo ao fim.",
-        image: caixaImg("experiencia-lava-viva.webp"),
-      },
-      {
-        num: 6,
         name: "Água que Anda",
         hint: "A água desafia o caminho esperado.",
         hintExtra:
@@ -173,17 +154,31 @@ export const caixaLaboratorioData = {
         image: caixaImg("experiencia-agua-que-anda.webp"),
       },
       {
+        num: 5,
+        name: "Matéria Mutante",
+        hint: "Uma mistura que muda de personalidade.",
+        hintExtra:
+          "Depois de pronta, continua convidando a apertar, esticar e descobrir.",
+        image: caixaImg("experiencia-materia-mutante.webp"),
+      },
+      {
+        num: 6,
+        name: "Monstro que Respira",
+        hint: "Ele realmente parece respirar.",
+        hintExtra: "Uma reação silenciosa que prende o olhar de perto.",
+        image: caixaImg("experiencia-monstro.webp"),
+      },
+      {
         num: 7,
-        name: "Pedra Líquida",
-        hint: "Algo entre sólido e líquido nas mãos.",
-        hintExtra: "Uma matéria que muda de ideia conforme se toca.",
-        image: caixaImg("experiencia-pedra-liquida.webp"),
+        name: "Força que Move",
+        hint: "Algo se move sem ser empurrado.",
+        hintExtra: "Um encontro entre magnetismo e curiosidade.",
       },
       {
         num: 8,
-        name: "Cobra Arco-Íris",
+        name: "Cobra de Espuma",
         hint: "Quanto mais espuma, maior a cobra.",
-        hintExtra: "Uma explosão de cores, bolhas e risadas.",
+        hintExtra: "Bolhas que crescem e risadas que acompanham.",
         image: caixaImg("experiencia-cobra-arco-iris.webp"),
       },
       {
@@ -195,7 +190,7 @@ export const caixaLaboratorioData = {
       },
       {
         num: 10,
-        name: "A Décima Descoberta",
+        name: "Sua Experiência",
         hint: "A melhor descoberta é aquela que ainda não existe.",
         hintExtra:
           "Misture, teste, invente e dê vida às suas próprias experiências.",
@@ -210,34 +205,34 @@ export const caixaLaboratorioData = {
   },
 
   contents: {
-    titleLines: ["Tudo organizado.", "Tudo pronto para começar."],
-    lead: "Mais de 45 itens cuidadosamente organizados dentro da caixa.",
+    titleLines: ["Tudo organizado."],
+    lead: "Frascos, ferramentas, ingredientes identificados e manual ilustrado — separados dentro da caixa.",
     closing: "Sem precisar comprar materiais. Sem improvisar.",
     image: caixaLaboratorioImages.materiais,
     imageAlt:
-      "O que vem na Caixa Laboratório daTeca: frascos, equipamentos, ingredientes e materiais organizados",
+      "Vista de cima da Caixa Laboratório daTeca aberta, com frascos, ingredientes, óculos de proteção e manual organizados",
     items: [
       "Ingredientes separados e identificados",
       "Frascos, potinhos e recipientes",
       "Pipetas, copinhos e colheres",
       "Corantes e líquidos das experiências",
       "Óculos de proteção e equipamentos",
-      "Materiais para as experiências guiadas",
-      "Materiais extras para a décima descoberta",
+      "Materiais para as nove experiências guiadas",
+      "Materiais extras para a décima experiência",
       "Manual ilustrado com o passo a passo",
     ],
   },
 
   brandMoment: {
     titleLines: ["Existe um mundo inteiro", "esperando para ser descoberto."],
-    text: "A daTeca acredita que a infância continua curiosa — e que as melhores descobertas acontecem longe das telas, com tempo, presença e as mãos na experiência.",
-    note: "A Caixa Laboratório é uma porta de entrada para esse universo.",
+    text: "A daTeca acredita que a infância continua curiosa — e que as melhores descobertas acontecem com tempo, presença e as mãos na experiência.",
+    note: "Um presente que também convida a um tempo fora das telas — sem pressa, só curiosidade compartilhada.",
   },
 
   water: {
-    titleLines: ["Em casa, você só precisa", "adicionar água."],
-    text: "Os ingredientes, frascos, equipamentos e demais materiais já vão separados e organizados dentro da caixa.",
-    note: "Abriu, escolheu uma descoberta e começou.",
+    titleLines: ["É só acrescentar água."],
+    text: "Os ingredientes, frascos, equipamentos e demais materiais das experiências guiadas já vão separados e organizados dentro da caixa.",
+    note: "Abriu, escolheu uma experiência e começou.",
   },
 
   buy: {
@@ -245,10 +240,10 @@ export const caixaLaboratorioData = {
     logoAlt: "daTeca",
     titleLines: ["Caixa Laboratório", "daTeca"],
     summaryLines: [
-      "10 descobertas para viver:",
-      "9 experiências guiadas e a décima inventada pela criança.",
+      "Presente de Dia das Crianças:",
+      "9 experiências guiadas e uma décima para inventar.",
     ],
-    cta: "QUERO MINHA CAIXA LABORATÓRIO",
+    cta: "Quero presentear com a Caixa Laboratório",
     note: "Compra única.",
     paymentNote: "Pagamento seguro pela Hotmart.",
   },
@@ -264,7 +259,7 @@ export const caixaLaboratorioData = {
       {
         question: "Preciso comprar algum outro material?",
         answer:
-          "Não. A caixa traz tudo organizado para as nove experiências guiadas e para a décima descoberta. Em casa, a família só precisa adicionar água.",
+          "Não. A caixa traz tudo organizado para as nove experiências guiadas e para a décima experiência. Em casa, é só acrescentar água.",
       },
       {
         question: "Para qual idade a caixa é indicada?",
@@ -278,22 +273,22 @@ export const caixaLaboratorioData = {
       },
       {
         question: "Como funciona o frete?",
-        answer: entryProductShippingFaqAnswer,
+        answer: caixaLaboratorioShippingFaqAnswer,
       },
       {
         question: "Em quanto tempo a caixa é enviada?",
         answer:
-          "Após a confirmação do pagamento, o envio acontece em até 5 dias úteis. O prazo de entrega varia conforme a região e a transportadora.",
+          "Após a confirmação do pagamento, preparamos e enviamos o pedido. O prazo de entrega varia conforme seu CEP — consulte no checkout da Hotmart.",
       },
       {
         question: "Posso parcelar a compra?",
         answer:
-          "Sim. O checkout pela Hotmart permite parcelamento em até 10x, conforme as opções disponíveis no momento da compra.",
+          "O checkout pela Hotmart pode oferecer opções de parcelamento. Consulte as condições disponíveis no momento da compra.",
       },
       {
         question: "Como funciona a garantia?",
         answer:
-          "A compra é processada pela Hotmart, que oferece garantia oficial conforme as condições informadas no checkout.",
+          "A compra é processada pela Hotmart. Consulte as condições de garantia informadas no checkout.",
       },
       {
         question: "E quando algum material acabar?",
@@ -380,7 +375,7 @@ export function applyCaixaLaboratorioMeta() {
   setJsonLd({
     "@context": "https://schema.org",
     "@type": "Product",
-    name: buy.title,
+    name: buy.titleLines.join(" "),
     description: metaDescription,
     image: [imageUrl],
     brand: { "@type": "Brand", name: "daTeca" },
@@ -389,19 +384,7 @@ export function applyCaixaLaboratorioMeta() {
       url: pageUrl,
       priceCurrency: "BRL",
       price: pricing.priceValue,
-      availability: "https://schema.org/LimitedAvailability",
-      shippingDetails: {
-        "@type": "OfferShippingDetails",
-        shippingRate: {
-          "@type": "MonetaryAmount",
-          value: String(entryProduct.shippingBRL),
-          currency: "BRL",
-        },
-        shippingDestination: {
-          "@type": "DefinedRegion",
-          addressCountry: "BR",
-        },
-      },
+      availability: "https://schema.org/InStock",
     },
   })
 }

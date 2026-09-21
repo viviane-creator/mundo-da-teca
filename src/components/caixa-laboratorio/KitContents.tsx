@@ -20,7 +20,7 @@ export function KitContents() {
 
       <figure className="clx-contents__media">
         <LandingImage
-          className="clx-contents__image"
+          className="clx-contents__image clx-contents__image--poster"
           src={contents.image}
           alt={contents.imageAlt}
           loading="eager"

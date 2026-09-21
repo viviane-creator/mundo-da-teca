@@ -26,7 +26,7 @@ export const SHOW_BAU_AND_FICHARIO_PRODUCTS = false
 export const entryProduct = {
   id: "caixa-laboratorio",
   name: "Caixa Laboratório daTeca",
-  priceBRL: 89.9,
+  priceBRL: 129,
   shippingBRL: 9.9,
   shippingScope: "todo o Brasil",
   firstBatchUnits: 100,
@@ -39,12 +39,26 @@ function formatBRL(value: number): string {
   })
 }
 
-/** Copy padrão de frete promocional — Caixa Laboratório e páginas relacionadas. */
+/** Frete fixo — Caixa Laboratório (campanha). */
+export const caixaLaboratorioShipping = {
+  fixedBRL: 10,
+  fixedRegions: "Sul e Sudeste",
+} as const
+
+export const caixaLaboratorioShippingNote = `Frete fixo de ${formatBRL(caixaLaboratorioShipping.fixedBRL)} para ${caixaLaboratorioShipping.fixedRegions}. Consulte frete e prazo para demais regiões no checkout.`
+
+export const caixaLaboratorioShippingFaqAnswer = `Frete fixo de ${formatBRL(caixaLaboratorioShipping.fixedBRL)} para endereços no ${caixaLaboratorioShipping.fixedRegions}. Para Norte, Nordeste e Centro-Oeste, consulte o frete e o prazo de entrega para seu CEP no checkout da Hotmart.`
+
+/** Copy de frete — consulta no checkout (outras páginas). */
+export const entryProductShippingConsultLabel =
+  "Consulte o frete e o prazo de entrega para seu CEP."
+
+/** Copy padrão de frete promocional — legado / outras páginas. */
 export const entryProductShippingLabel = `Frete promocional fixo: ${formatBRL(entryProduct.shippingBRL)} para ${entryProduct.shippingScope}.`
 
 export const entryProductShippingShort = `Frete promocional fixo: ${formatBRL(entryProduct.shippingBRL)}`
 
-export const entryProductShippingFaqAnswer = `Frete promocional fixo de ${formatBRL(entryProduct.shippingBRL)} para ${entryProduct.shippingScope}. O valor já aparece no checkout da Hotmart.`
+export const entryProductShippingFaqAnswer = `${entryProductShippingConsultLabel} O valor e o prazo aparecem no checkout da Hotmart, conforme seu endereço.`
 
 /**
  * Visão do Clube único (futuro — página ainda não implementada).

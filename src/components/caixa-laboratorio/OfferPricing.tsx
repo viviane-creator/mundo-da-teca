@@ -37,14 +37,10 @@ export function OfferPricing({ origin }: OfferPricingProps) {
 
   return (
     <>
-      <p className="clx-price-label">{pricing.label}</p>
       <p className="clx-price">{pricing.price}</p>
-      <p className="clx-price-next">
-        {pricing.nextLotLabel}{" "}
-        <span className="clx-price-next__value">{pricing.nextPrice}</span>
-      </p>
-      <p className="clx-price-savings">{pricing.savings}</p>
-      <p className="clx-price-units">{pricing.units}</p>
+      {"shippingNote" in pricing && pricing.shippingNote ? (
+        <p className="clx-shipping">{pricing.shippingNote}</p>
+      ) : null}
       <ul className="clx-offer-trust">
         {offerTrust.map((item) => (
           <li key={item}>

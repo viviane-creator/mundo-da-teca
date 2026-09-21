@@ -35,12 +35,21 @@ export function ExperiencesGrid() {
               {String(item.num).padStart(2, "0")}
             </span>
             <figure className="clx-discovery-card__media">
-              <LandingImage
-                className="clx-discovery-card__image"
-                src={item.image}
-                alt={"imageAlt" in item && item.imageAlt ? item.imageAlt : item.name}
-                loading="lazy"
-              />
+              {"image" in item && item.image ? (
+                <LandingImage
+                  className="clx-discovery-card__image"
+                  src={item.image}
+                  alt={
+                    "imageAlt" in item && item.imageAlt ? item.imageAlt : item.name
+                  }
+                  loading="lazy"
+                />
+              ) : (
+                <div
+                  className="clx-discovery-card__placeholder clx-placeholder"
+                  aria-hidden="true"
+                />
+              )}
             </figure>
             <h3 className="clx-discovery-card__name">{item.name}</h3>
             <p className="clx-discovery-card__hint">{item.hint}</p>

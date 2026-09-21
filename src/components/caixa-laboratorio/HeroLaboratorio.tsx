@@ -1,6 +1,7 @@
 import { DaTecaInText } from "../brand/DaTecaInText"
 import { caixaLaboratorioData } from "../../pages/CaixaLaboratorio/caixaLaboratorioData"
 import { BalancedLines } from "./BalancedLines"
+import { LandingCta } from "./LandingCta"
 import { LandingImage } from "./LandingImage"
 import { OfferPricing } from "./OfferPricing"
 
@@ -100,17 +101,19 @@ export function HeroLaboratorio() {
         <p className="clx-hero__kicker">
           <DaTecaInText text={hero.kicker} wordmarkSize="inherit" />
         </p>
-        <h1 id="clx-hero-title" className="clx-hero__title">
-          <span className="clx-hero__title-num">{hero.titleNum}</span>
-          <BalancedLines lines={hero.titleRestLines} />
+        <h1 id="clx-hero-title" className="clx-hero__title clx-hero__title--campaign">
+          <BalancedLines lines={hero.titleLines} />
         </h1>
         <p className="clx-hero__subtitle">{hero.subtitle}</p>
+        <p className="clx-hero__age">{hero.ageNote}</p>
+        <div className="clx-hero__cta-early">
+          <LandingCta label={hero.cta} origin="hero" />
+        </div>
       </div>
 
-      <figure className="clx-hero__media">
-        <div className="clx-hero__blob" aria-hidden="true" />
+      <figure className="clx-hero__media clx-hero__media--convite">
         <LandingImage
-          className="clx-hero__image"
+          className="clx-hero__image clx-hero__image--convite"
           src={hero.image}
           alt={hero.imageAlt}
           loading="eager"
