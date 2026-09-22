@@ -1292,10 +1292,6 @@
   border-radius: 12px;
 }
 
-.clx-discovery-card--tenth .clx-discovery-card__media {
-  aspect-ratio: 4 / 3;
-}
-
 .clx-discoveries__observation {
   margin: 14px auto 0;
   max-width: 42ch;
