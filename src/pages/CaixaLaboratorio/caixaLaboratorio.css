@@ -708,7 +708,8 @@
 }
 
 .clx-hero__image--convite,
-.clx-hero__image--presente {
+.clx-hero__image--presente,
+.clx-hero__image--poster-9 {
   max-width: min(100%, 340px);
   border-radius: 14px;
   box-shadow:
@@ -724,7 +725,8 @@
   margin-top: 2px;
 }
 
-.clx-hero--presente-open .clx-hero__media--convite {
+.clx-hero--presente-open .clx-hero__media--convite,
+.clx-hero--presente-open .clx-hero__media--poster-9 {
   margin: 4px auto 2px;
 }
 
@@ -942,15 +944,23 @@
     grid-template-areas:
       "media"
       "copy"
-      "convite"
       "cards"
       "benefits"
-      "offer";
+      "offer"
+      "poster";
     max-width: 560px;
   }
 
   .clx-hero--presente-open .clx-hero__media--convite {
     grid-area: convite;
+  }
+
+  .clx-hero--presente-open .clx-hero__media--poster-9 {
+    grid-area: poster;
+  }
+
+  .clx-hero--presente-open .clx-hero__offer {
+    grid-area: offer;
   }
 
   .clx-hero--presente-open .clx-hero__copy {
@@ -1028,7 +1038,8 @@
   }
 
   .clx-hero__image--convite,
-  .clx-hero__image--presente {
+  .clx-hero__image--presente,
+  .clx-hero__image--poster-9 {
     max-width: min(100%, 480px);
   }
 
@@ -1663,7 +1674,8 @@
   margin-inline: auto;
 }
 
-.clx-caixa-fechada__image {
+.clx-caixa-fechada__image,
+.clx-hero__image--poster-9 {
   display: block;
   width: 100%;
   max-width: min(100%, 420px);

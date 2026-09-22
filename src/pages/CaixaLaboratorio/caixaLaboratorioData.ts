@@ -12,7 +12,7 @@ const IMG = "/images/caixa-laboratorio"
  * Subir este valor sempre que trocar os WebPs da landing.
  * Evita cache do CDN/navegador servir a imagem antiga sob o mesmo nome.
  */
-export const CAIXA_IMAGE_VERSION = "20260922h"
+export const CAIXA_IMAGE_VERSION = "20260922i"
 
 function caixaImg(fileName: string): string {
   return `${IMG}/${fileName}?v=${CAIXA_IMAGE_VERSION}`
@@ -21,8 +21,10 @@ function caixaImg(fileName: string): string {
 export const caixaLaboratorioImages = {
   /** Abertura da campanha — criança explorando (hero). */
   abertura: caixaImg("abertura-crianca-9-guiadas.webp"),
-  /** Caixa fechada — antes do CTA final da página. */
-  caixaFechada: caixaImg("caixa-fechada-9-guiadas.webp"),
+  /** Pôster campanha 9 guiadas — após o 1º bloco de preço no hero. */
+  caixaFechada9Guiadas: caixaImg("caixa-fechada-9-guiadas.webp"),
+  /** Foto da caixa fechada — antes do último bloco de preço. */
+  caixaFechada: caixaImg("caixa-fechada.webp"),
   /** Vista de cima da caixa aberta — conteúdos da campanha. */
   materiais: caixaImg("caixa-materiais.webp"),
 } as const
@@ -94,6 +96,9 @@ export const caixaLaboratorioData = {
     image: caixaLaboratorioImages.abertura,
     imageAlt:
       "Criança explorando uma experiência com a Caixa Laboratório daTeca — 9 experiências guiadas",
+    poster9Guiadas: caixaLaboratorioImages.caixaFechada9Guiadas,
+    poster9GuiadasAlt:
+      "Dia das Crianças — Caixa Laboratório daTeca: um presente que vira descoberta, 9 experiências guiadas",
     cta: "Quero presentear com a Caixa Laboratório",
     note: "Compra única.",
     paymentNote: "Pagamento seguro pela Hotmart.",
@@ -368,9 +373,13 @@ export function applyCaixaLaboratorioMeta() {
   const origin = window.location.origin
   const pageUrl = new URL(canonicalPath, origin).href
   const imageUrl = new URL(ogImage, origin).href
+  const poster9GuiadasUrl = new URL(
+    caixaLaboratorioImages.caixaFechada9Guiadas,
+    origin,
+  ).href
   const caixaFechadaUrl = new URL(caixaLaboratorioImages.caixaFechada, origin).href
 
-  setHeroImagePreloads([imageUrl, caixaFechadaUrl])
+  setHeroImagePreloads([imageUrl, poster9GuiadasUrl, caixaFechadaUrl])
 
   document.title = documentTitle
   setMeta("name", "description", metaDescription)
@@ -390,7 +399,7 @@ export function applyCaixaLaboratorioMeta() {
     "@type": "Product",
     name: buy.titleLines.join(" "),
     description: metaDescription,
-    image: [imageUrl, caixaFechadaUrl],
+    image: [imageUrl, poster9GuiadasUrl, caixaFechadaUrl],
     brand: { "@type": "Brand", name: "daTeca" },
     offers: {
       "@type": "Offer",

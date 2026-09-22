@@ -113,6 +113,15 @@ export function HeroLaboratorio() {
       <div className="clx-hero__offer">
         <OfferPricing origin="hero" />
       </div>
+
+      <figure className="clx-hero__media clx-hero__media--poster-9">
+        <LandingImage
+          className="clx-hero__image clx-hero__image--poster-9"
+          src={hero.poster9Guiadas}
+          alt={hero.poster9GuiadasAlt}
+          loading="lazy"
+        />
+      </figure>
     </section>
   )
 }
