@@ -31,33 +31,6 @@ function HeroDecor() {
   )
 }
 
-function ReadyCardArt() {
-  return (
-    <svg
-      className="clx-hero-card__art"
-      viewBox="0 0 120 48"
-      aria-hidden="true"
-      focusable="false"
-    >
-      <g
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1.4"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      >
-        <path d="M14 20h28v18H14z" />
-        <path d="M14 20l14-8 14 8" />
-        <path d="M28 28v10" opacity="0.55" />
-        <path d="M58 24h18" strokeDasharray="2 3" opacity="0.65" />
-        <path d="M58 32h24" strokeDasharray="2 3" opacity="0.45" />
-        <circle cx="92" cy="18" r="3" opacity="0.5" />
-        <circle cx="102" cy="24" r="2" opacity="0.4" />
-      </g>
-    </svg>
-  )
-}
-
 export function HeroLaboratorio() {
   const { hero } = caixaLaboratorioData
   const { ready } = hero.cards
@@ -90,7 +63,6 @@ export function HeroLaboratorio() {
 
       <div className="clx-hero__cards">
         <article className="clx-hero-card clx-hero-card--water">
-          <ReadyCardArt />
           <h2 className="clx-hero-card__title">{ready.title}</h2>
           <p className="clx-hero-card__text">{ready.text}</p>
         </article>

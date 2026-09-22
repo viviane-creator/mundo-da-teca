@@ -896,11 +896,6 @@
   color: inherit;
 }
 
-.clx-hero__offer--cta-only .clx-cta--primary {
-  background: #b86f35;
-  color: #fffdf9;
-  box-shadow: 0 6px 18px rgba(176, 100, 48, 0.28);
-}
 
 .clx-seal {
   box-sizing: border-box;
@@ -946,11 +941,17 @@
   text-decoration-color: rgba(255, 250, 242, 0.55);
 }
 
-.clx-hero__offer .clx-cta--primary,
+.clx-hero__offer:not(.clx-hero__offer--cta-only) .clx-cta--primary,
 .clx-buy .clx-cta--primary {
   background: var(--clx-splash-blue-deep);
   color: #f7efe4;
   box-shadow: 0 8px 20px var(--clx-splash-blue-shadow-deep);
+}
+
+.clx-hero__offer--cta-only .clx-cta--primary {
+  background: var(--clx-ocre);
+  color: #f7efe4;
+  box-shadow: 0 12px 30px rgba(176, 100, 48, 0.22);
 }
 
 .clx-hero__offer .clx-shipping {
