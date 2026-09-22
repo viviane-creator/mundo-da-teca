@@ -35,14 +35,19 @@ export function OfferPricing({ origin }: OfferPricingProps) {
     )
   }
 
+  const purchaseNote =
+    "purchaseTypeNote" in pricing && pricing.purchaseTypeNote
+      ? pricing.purchaseTypeNote
+      : hero.note
+
   return (
     <>
-      {origin === "hero" && "offerLead" in pricing && pricing.offerLead ? (
-        <p className="clx-offer-lead">{pricing.offerLead}</p>
-      ) : null}
       <p className="clx-price">{pricing.price}</p>
-      {"shippingNote" in pricing && pricing.shippingNote ? (
-        <p className="clx-shipping">{pricing.shippingNote}</p>
+      {"shippingLine1" in pricing && pricing.shippingLine1 ? (
+        <p className="clx-shipping">{pricing.shippingLine1}</p>
+      ) : null}
+      {"shippingLine2" in pricing && pricing.shippingLine2 ? (
+        <p className="clx-shipping clx-shipping--soft">{pricing.shippingLine2}</p>
       ) : null}
       <ul className="clx-offer-trust">
         {offerTrust.map((item) => (
@@ -53,7 +58,10 @@ export function OfferPricing({ origin }: OfferPricingProps) {
         ))}
       </ul>
       <LandingCta label={hero.cta} origin={origin} />
-      <p className="clx-note">{hero.note}</p>
+      {"dispatchNote" in pricing && pricing.dispatchNote ? (
+        <p className="clx-dispatch-note">{pricing.dispatchNote}</p>
+      ) : null}
+      <p className="clx-note">{purchaseNote}</p>
     </>
   )
 }

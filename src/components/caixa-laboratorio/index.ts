@@ -1,5 +1,6 @@
 export { BrandMomentSection } from "./BrandMomentSection"
 export { ExperiencesGrid } from "./ExperiencesGrid"
+export { FreeExplorationSection } from "./FreeExplorationSection"
 export { FaqSection } from "./FaqSection"
 export { FloripaHowToOrder } from "./FloripaHowToOrder"
 export { FloripaIntro } from "./FloripaIntro"

@@ -2,6 +2,7 @@ import { useEffect, useState, type ReactNode } from "react"
 import {
   BrandMomentSection,
   ExperiencesGrid,
+  FreeExplorationSection,
   FaqSection,
   FloripaHowToOrder,
   FloripaIntro,
@@ -33,6 +34,7 @@ const blockRenderers: Record<CaixaLandingBlockId, () => ReactNode> = {
   floripaIntro: () => <FloripaIntro />,
   hero: () => <HeroLaboratorio />,
   experiences: () => <ExperiencesGrid />,
+  freeExploration: () => <FreeExplorationSection />,
   contents: () => <KitContents />,
   water: () => <WaterOnlySection />,
   brandMoment: () => <BrandMomentSection />,

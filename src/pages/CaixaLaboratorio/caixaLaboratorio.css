@@ -481,6 +481,21 @@
   color: var(--clx-muted);
 }
 
+.clx-shipping--soft {
+  margin-top: -4px;
+  font-size: clamp(15px, 3.6vw, 17px);
+  color: var(--clx-soft);
+}
+
+.clx-dispatch-note {
+  margin: 10px 0 0;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(14px, 3.4vw, 15px);
+  line-height: 1.35;
+  text-align: center;
+  color: var(--clx-soft);
+}
+
 .clx-note {
   margin-top: 10px;
   margin-bottom: 0;
@@ -896,6 +911,31 @@
   color: inherit;
 }
 
+.clx-hero--presente-open .clx-hero__offer {
+  margin-top: 10px;
+}
+
+.clx-hero--presente-open .clx-hero__copy {
+  margin-top: 12px;
+}
+
+.clx-hero__dispatch {
+  margin: 10px 0 0;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(14px, 3.4vw, 15px);
+  line-height: 1.35;
+  text-align: center;
+  color: var(--clx-soft);
+}
+
+.clx-hero-card--compact {
+  padding: 14px 16px;
+}
+
+.clx-hero-card--compact .clx-hero-card__title {
+  margin: 0;
+}
+
 
 .clx-seal {
   box-sizing: border-box;
@@ -980,8 +1020,8 @@
     grid-template-columns: 1fr;
     grid-template-areas:
       "media"
-      "copy"
       "offer"
+      "copy"
       "cards"
       "poster";
     max-width: 560px;
@@ -1326,6 +1366,10 @@
   color: var(--clx-muted);
 }
 
+.clx-free-exploration {
+  padding-top: 0;
+}
+
 .clx-discoveries-continue {
   margin-top: 12px;
   padding: clamp(22px, 5vw, 28px) clamp(18px, 4vw, 24px);
@@ -1335,6 +1379,22 @@
   box-shadow: 0 4px 14px rgba(74, 55, 40, 0.05);
   text-align: center;
   color: var(--clx-ink);
+}
+
+.clx-free-exploration .clx-discoveries-continue {
+  margin-top: 0;
+}
+
+.clx-discoveries-continue__media {
+  margin: 0 auto 14px;
+  max-width: min(100%, 300px);
+}
+
+.clx-discoveries-continue__image {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 14px;
 }
 
 .clx-discoveries-continue__title {
@@ -1754,8 +1814,14 @@
 .clx-buy .clx-price-next,
 .clx-buy .clx-price-units,
 .clx-buy .clx-shipping,
-.clx-buy .clx-note {
+.clx-buy .clx-note,
+.clx-buy .clx-dispatch-note {
   color: #f7efe4;
+}
+
+.clx-buy .clx-shipping--soft,
+.clx-buy .clx-dispatch-note {
+  color: rgba(255, 250, 242, 0.82);
 }
 
 .clx-buy .clx-price-next__value {

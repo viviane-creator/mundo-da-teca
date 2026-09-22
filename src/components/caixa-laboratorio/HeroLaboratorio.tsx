@@ -50,6 +50,13 @@ export function HeroLaboratorio() {
         />
       </figure>
 
+      <div className="clx-hero__offer clx-hero__offer--cta-only">
+        <LandingCta label={hero.cta} origin="hero" />
+        {hero.dispatchNote ? (
+          <p className="clx-hero__dispatch">{hero.dispatchNote}</p>
+        ) : null}
+      </div>
+
       <div className="clx-hero__copy">
         <h1 id="clx-hero-title" className="clx-sr-only">
           {hero.titleAccessible}
@@ -57,14 +64,12 @@ export function HeroLaboratorio() {
         <p className="clx-hero__subtitle">{hero.subtitle}</p>
       </div>
 
-      <div className="clx-hero__offer clx-hero__offer--cta-only">
-        <LandingCta label={hero.cta} origin="hero" />
-      </div>
-
       <div className="clx-hero__cards">
-        <article className="clx-hero-card clx-hero-card--water">
+        <article className="clx-hero-card clx-hero-card--water clx-hero-card--compact">
           <h2 className="clx-hero-card__title">{ready.title}</h2>
-          <p className="clx-hero-card__text">{ready.text}</p>
+          {ready.text ? (
+            <p className="clx-hero-card__text">{ready.text}</p>
+          ) : null}
         </article>
       </div>
 

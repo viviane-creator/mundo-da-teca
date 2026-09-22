@@ -1,9 +1,5 @@
 import { HOTMART_CHECKOUT_URL } from "../../config/caixaLaboratorioCheckout"
-import {
-  caixaLaboratorioShippingFaqAnswer,
-  caixaLaboratorioShippingNote,
-  entryProduct,
-} from "../../config/productStrategy"
+import { entryProduct } from "../../config/productStrategy"
 import { socialLinks } from "../../data/socialLinks"
 
 const IMG = "/images/caixa-laboratorio"
@@ -44,7 +40,7 @@ export const caixaLaboratorioData = {
   header: {
     logoSrc: "/logo/logo.webp",
     logoAlt: "daTeca",
-    cta: "Quero presentear com a Caixa Laboratório",
+    cta: "QUERO PRESENTEAR COM A CAIXA LABORATÓRIO",
   },
 
   /**
@@ -80,11 +76,12 @@ export const caixaLaboratorioData = {
     titleAccessible:
       "Neste Dia das Crianças, dê um presente que vira um laboratório de descobertas.",
     subtitle:
-      "Uma caixa com materiais organizados e instruções ilustradas para a criança abrir, escolher uma experiência e começar. Para crianças de 6 a 10 anos, com supervisão de um adulto.",
+      "Tudo organizado, identificado e guiado para a criança abrir a caixa, escolher uma experiência e começar. Para crianças de 6 a 10 anos, com supervisão de um adulto.",
+    dispatchNote: "Envio em até 5 dias úteis.",
     cards: {
       ready: {
         title: "Abriu a caixa, escolheu uma experiência e começou.",
-        text: "Os materiais já vêm organizados para acompanhar o manual ilustrado.",
+        text: "",
       },
     },
     image: caixaLaboratorioImages.abertura,
@@ -93,21 +90,22 @@ export const caixaLaboratorioData = {
     poster9Guiadas: caixaLaboratorioImages.caixaFechada9Guiadas,
     poster9GuiadasAlt:
       "Dia das Crianças — Caixa Laboratório daTeca: um presente que vira descoberta, 9 experiências guiadas",
-    cta: "Quero presentear com a Caixa Laboratório",
-    note: "Compra única.",
+    cta: "QUERO PRESENTEAR COM A CAIXA LABORATÓRIO",
+    note: "Compra única. Não é assinatura.",
     paymentNote: "Pagamento seguro pela Hotmart.",
   },
 
   /** Mesmo bloco de preço no hero e no fechamento. */
   pricing: {
-    offerLead:
-      "9 experiências guiadas · materiais incluídos · é só acrescentar água",
     price: entryProduct.priceBRL.toLocaleString("pt-BR", {
       style: "currency",
       currency: "BRL",
     }),
     priceValue: entryProduct.priceBRL.toFixed(2),
-    shippingNote: caixaLaboratorioShippingNote,
+    shippingLine1: "Frete fixo de R$ 10 para Sul e Sudeste.",
+    shippingLine2: "Frete e prazo calculados no checkout.",
+    dispatchNote: "Envio em até 5 dias úteis.",
+    purchaseTypeNote: "Compra única. Não é assinatura.",
   },
 
   offerTrust: ["Checkout seguro pela Hotmart"],
@@ -116,8 +114,8 @@ export const caixaLaboratorioData = {
     introImage: caixaImg("cartas.webp"),
     introImageAlt:
       "Cartas ilustradas passo a passo das experiências da Caixa Laboratório daTeca",
-    titleLines: ["9 experiências guiadas.", "Depois, a curiosidade continua."],
-    text: "O manual conduz nove experiências. Depois, os materiais convidam a criança a explorar e criar novas descobertas.",
+    titleLines: ["9 experiências guiadas."],
+    text: "O manual ilustrado conduz cada experiência passo a passo.",
     items: [
       {
         num: 1,
@@ -173,16 +171,15 @@ export const caixaLaboratorioData = {
         hint: "Um pozinho se transforma em neve ao receber água.",
         image: caixaImg("experiencia-neve-dagua.webp"),
       },
-      {
-        name: "Invente do seu jeito",
-        hint: "Com os materiais da caixa, a brincadeira continua.",
-        image: caixaImg("decima.webp"),
-        imageAlt:
-          "Materiais da Caixa Laboratório daTeca para explorar e inventar novas descobertas",
-        variant: "invent",
-        hideNum: true,
-      },
     ],
+  },
+
+  freeExploration: {
+    titleLines: ["E depois, a curiosidade continua."],
+    text: "Depois das experiências guiadas, os materiais que permanecem na caixa convidam a criança a testar ideias, combinar possibilidades e inventar do seu jeito.",
+    image: caixaImg("decima.webp"),
+    imageAlt:
+      "Criança explorando com pipeta e frascos da Caixa Laboratório daTeca",
   },
 
   contents: {
@@ -220,8 +217,8 @@ export const caixaLaboratorioData = {
     image: caixaLaboratorioImages.caixaFechada2,
     imageAlt:
       "Caixa Laboratório daTeca fechada — vista alternativa antes da compra",
-    cta: "Quero presentear com a Caixa Laboratório",
-    note: "Compra única.",
+    cta: "QUERO PRESENTEAR COM A CAIXA LABORATÓRIO",
+    note: "Compra única. Não é assinatura.",
     paymentNote: "Pagamento seguro pela Hotmart.",
   },
 
@@ -231,46 +228,51 @@ export const caixaLaboratorioData = {
       {
         question: "O que vem na Caixa Laboratório?",
         answer:
-          "A caixa inclui os ingredientes, frascos, potinhos, pipetas, copinhos, colheres, corantes, óculos de proteção e outros materiais utilizados nas nove experiências guiadas. Ela também acompanha manual ilustrado e materiais que convidam a criança a explorar e inventar.",
+          "A caixa vem com os materiais e ferramentas necessários para realizar 9 experiências guiadas, além de um manual ilustrado com o passo a passo. Os ingredientes vêm separados e identificados para facilitar o uso.",
       },
       {
         question: "Preciso comprar algum outro material?",
         answer:
-          "Não. A caixa traz tudo organizado para as nove experiências guiadas. Os demais materiais também convidam a criança a explorar e inventar. Em casa, é só acrescentar água.",
+          "Para as experiências guiadas, os materiais principais já estão na caixa. É só acrescentar água.",
       },
       {
-        question: "Para qual idade a caixa é indicada?",
+        question: "Para qual idade a Caixa Laboratório é indicada?",
         answer:
-          "A Caixa Laboratório foi pensada especialmente para crianças de 6 a 10 anos. As experiências devem ser realizadas com a presença e a participação de um adulto.",
+          "Ela foi pensada principalmente para crianças de 6 a 10 anos, sempre com a supervisão de um adulto.",
       },
       {
-        question: "A Caixa Laboratório é uma assinatura?",
+        question: "É uma assinatura?",
+        answer: "Não. A Caixa Laboratório é uma compra única.",
+      },
+      {
+        question: "Quantas experiências vêm na caixa?",
         answer:
-          "Não. A Caixa Laboratório é uma compra única. Você recebe a caixa completa com os materiais e o manual das experiências.",
+          "São 9 experiências guiadas. Depois delas, alguns materiais ainda podem ser usados para novas explorações e brincadeiras livres.",
       },
       {
         question: "Como funciona o frete?",
-        answer: caixaLaboratorioShippingFaqAnswer,
+        answer:
+          "O frete é fixo em R$ 10 para Sul e Sudeste. Para as demais regiões, valor e prazo são calculados no checkout.",
       },
       {
         question: "Em quanto tempo a caixa é enviada?",
         answer:
-          "Após a confirmação do pagamento, preparamos e enviamos o pedido. O prazo de entrega varia conforme seu CEP — consulte no checkout da Hotmart.",
+          "O pedido é preparado e enviado em até 5 dias úteis após a confirmação do pagamento.",
       },
       {
-        question: "Posso parcelar a compra?",
+        question: "Precisa de supervisão de um adulto?",
         answer:
-          "O checkout pela Hotmart pode oferecer opções de parcelamento. Consulte as condições disponíveis no momento da compra.",
+          "Sim. A proposta é que a criança explore com autonomia, mas sempre com um adulto por perto durante as experiências.",
       },
       {
-        question: "Como funciona a garantia?",
+        question: "Os materiais vêm identificados?",
         answer:
-          "A compra é processada pela Hotmart. Consulte as condições de garantia informadas no checkout.",
+          "Sim. Os ingredientes e materiais vêm organizados e identificados para facilitar o uso junto ao manual.",
       },
       {
-        question: "E quando algum material acabar?",
+        question: "Posso dar de presente?",
         answer:
-          "Frascos, potinhos, pipetas e outros equipamentos podem ser reutilizados. Alguns ingredientes são consumidos durante as experiências; para repeti-las, será necessário repô-los conforme as orientações do manual.",
+          "Sim. A Caixa Laboratório foi pensada também como presente e reúne as experiências e os materiais em uma única embalagem.",
       },
     ],
   },
