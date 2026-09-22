@@ -1651,19 +1651,29 @@
   color: #f7efe4;
 }
 
-.clx-buy__media {
-  margin: 0 auto 14px;
-  max-width: min(100%, 320px);
+.clx-buy-wrap {
+  display: grid;
+  gap: clamp(14px, 3.5vw, 20px);
 }
 
-.clx-buy__image {
+.clx-caixa-fechada {
+  margin: 0;
+  padding: 0 clamp(16px, 4vw, 24px);
+  max-width: 520px;
+  margin-inline: auto;
+}
+
+.clx-caixa-fechada__image {
   display: block;
   width: 100%;
+  max-width: min(100%, 420px);
   height: auto;
-  border-radius: 14px;
+  margin-inline: auto;
+  border-radius: 18px;
+  object-fit: contain;
   box-shadow:
-    0 12px 24px rgba(40, 28, 18, 0.22),
-    0 2px 8px rgba(40, 28, 18, 0.12);
+    0 14px 28px rgba(74, 55, 40, 0.12),
+    0 3px 10px rgba(74, 55, 40, 0.06);
 }
 
 .clx-buy__summary {

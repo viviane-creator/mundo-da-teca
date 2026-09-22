@@ -7,34 +7,38 @@ export function PricingSection() {
   const { buy } = caixaLaboratorioData
 
   return (
-    <section
-      id="clx-buy"
-      className="clx-buy"
-      aria-labelledby="clx-buy-title"
-    >
-      <img
-        className="clx-buy__logo"
-        src={buy.logoSrc}
-        alt={buy.logoAlt}
-        width={72}
-        height={72}
-        decoding="async"
-      />
-      <BalancedLines
-        as="h2"
-        id="clx-buy-title"
-        className="clx-buy__title"
-        lines={buy.titleLines}
-      />
-      <figure className="clx-buy__media">
+    <div className="clx-buy-wrap">
+      <figure className="clx-caixa-fechada" aria-label={buy.imageAlt}>
         <LandingImage
-          className="clx-buy__image"
+          className="clx-caixa-fechada__image"
           src={buy.image}
           alt={buy.imageAlt}
-          loading="lazy"
+          loading="eager"
+          fetchPriority="high"
         />
       </figure>
-      <OfferPricing origin="bloco_final" />
-    </section>
+
+      <section
+        id="clx-buy"
+        className="clx-buy"
+        aria-labelledby="clx-buy-title"
+      >
+        <img
+          className="clx-buy__logo"
+          src={buy.logoSrc}
+          alt={buy.logoAlt}
+          width={72}
+          height={72}
+          decoding="async"
+        />
+        <BalancedLines
+          as="h2"
+          id="clx-buy-title"
+          className="clx-buy__title"
+          lines={buy.titleLines}
+        />
+        <OfferPricing origin="bloco_final" />
+      </section>
+    </div>
   )
 }
