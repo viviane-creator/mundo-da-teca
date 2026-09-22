@@ -89,21 +89,6 @@ export function HeroLaboratorio() {
         </div>
       </div>
 
-      {"conviteImage" in hero && hero.conviteImage ? (
-        <figure className="clx-hero__media clx-hero__media--convite">
-          <LandingImage
-            className="clx-hero__image clx-hero__image--convite"
-            src={hero.conviteImage}
-            alt={
-              "conviteImageAlt" in hero && hero.conviteImageAlt
-                ? hero.conviteImageAlt
-                : ""
-            }
-            loading="eager"
-          />
-        </figure>
-      ) : null}
-
       <div className="clx-hero__cards">
         <article className="clx-hero-card clx-hero-card--water">
           <ReadyCardArt />

@@ -1651,6 +1651,21 @@
   color: #f7efe4;
 }
 
+.clx-buy__media {
+  margin: 0 auto 14px;
+  max-width: min(100%, 320px);
+}
+
+.clx-buy__image {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 14px;
+  box-shadow:
+    0 12px 24px rgba(40, 28, 18, 0.22),
+    0 2px 8px rgba(40, 28, 18, 0.12);
+}
+
 .clx-buy__summary {
   margin: 0 auto 12px;
   max-width: 34ch;

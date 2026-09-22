@@ -1,5 +1,6 @@
 import { caixaLaboratorioData } from "../../pages/CaixaLaboratorio/caixaLaboratorioData"
 import { BalancedLines } from "./BalancedLines"
+import { LandingImage } from "./LandingImage"
 import { OfferPricing } from "./OfferPricing"
 
 export function PricingSection() {
@@ -25,7 +26,14 @@ export function PricingSection() {
         className="clx-buy__title"
         lines={buy.titleLines}
       />
-      <BalancedLines as="p" className="clx-buy__summary" lines={buy.summaryLines} />
+      <figure className="clx-buy__media">
+        <LandingImage
+          className="clx-buy__image"
+          src={buy.image}
+          alt={buy.imageAlt}
+          loading="lazy"
+        />
+      </figure>
       <OfferPricing origin="bloco_final" />
     </section>
   )
