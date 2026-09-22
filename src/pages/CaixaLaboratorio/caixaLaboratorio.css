@@ -944,9 +944,9 @@
     grid-template-areas:
       "media"
       "copy"
+      "offer"
       "cards"
       "benefits"
-      "offer"
       "poster";
     max-width: 560px;
   }

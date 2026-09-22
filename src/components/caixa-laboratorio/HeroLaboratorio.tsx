@@ -85,6 +85,10 @@ export function HeroLaboratorio() {
         <p className="clx-hero__age">{hero.ageNote}</p>
       </div>
 
+      <div className="clx-hero__offer">
+        <OfferPricing origin="hero" />
+      </div>
+
       <div className="clx-hero__cards">
         <article className="clx-hero-card clx-hero-card--water">
           <ReadyCardArt />
@@ -105,10 +109,6 @@ export function HeroLaboratorio() {
           </li>
         ))}
       </ul>
-
-      <div className="clx-hero__offer">
-        <OfferPricing origin="hero" />
-      </div>
 
       <figure className="clx-hero__media clx-hero__media--poster-9">
         <LandingImage
