@@ -76,7 +76,7 @@ export const caixaLaboratorioData = {
     titleAccessible:
       "Neste Dia das Crianças, dê um presente que vira um laboratório de descobertas.",
     subtitle:
-      "Tudo organizado, identificado e guiado para a criança abrir a caixa, escolher uma experiência e começar. Para crianças de 6 a 10 anos, com supervisão de um adulto.",
+      "Tudo organizado, identificado e guiado para a criança abrir a caixa, escolher uma experiência e começar. Para crianças de 5 a 10 anos, com supervisão de um adulto.",
     dispatchNote: "Envio em até 3 dias úteis.",
     cards: {
       ready: {
@@ -238,7 +238,7 @@ export const caixaLaboratorioData = {
       {
         question: "Para qual idade a Caixa Laboratório é indicada?",
         answer:
-          "Ela foi pensada principalmente para crianças de 6 a 10 anos, sempre com a supervisão de um adulto.",
+          "Ela foi pensada principalmente para crianças de 5 a 10 anos, sempre com a supervisão de um adulto.",
       },
       {
         question: "É uma assinatura?",
