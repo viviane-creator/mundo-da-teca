@@ -18,6 +18,21 @@ export function KitContents() {
       />
       <p className="clx-contents__lead">{contents.lead}</p>
 
+      {"closedImage" in contents && contents.closedImage ? (
+        <figure className="clx-contents__media">
+          <LandingImage
+            className="clx-contents__image clx-contents__image--closed"
+            src={contents.closedImage}
+            alt={
+              "closedImageAlt" in contents && contents.closedImageAlt
+                ? contents.closedImageAlt
+                : ""
+            }
+            loading="lazy"
+          />
+        </figure>
+      ) : null}
+
       <figure className="clx-contents__media">
         <LandingImage
           className="clx-contents__image clx-contents__image--poster"
@@ -36,7 +51,9 @@ export function KitContents() {
         ))}
       </ul>
 
-      <p className="clx-contents__closing">{contents.closing}</p>
+      {"closing" in contents && contents.closing ? (
+        <p className="clx-contents__closing">{contents.closing}</p>
+      ) : null}
     </section>
   )
 }

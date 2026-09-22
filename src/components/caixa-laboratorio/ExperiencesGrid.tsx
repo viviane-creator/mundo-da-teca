@@ -70,11 +70,6 @@ export function ExperiencesGrid() {
             </figure>
             <h3 className="clx-discovery-card__name">{item.name}</h3>
             <p className="clx-discovery-card__hint">{item.hint}</p>
-            {"hintExtra" in item && item.hintExtra ? (
-              <p className="clx-discovery-card__hint clx-discovery-card__hint--extra">
-                {item.hintExtra}
-              </p>
-            ) : null}
           </li>
         ))}
       </ol>

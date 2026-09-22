@@ -24,7 +24,9 @@ export function WaterOnlySection() {
         lines={water.titleLines}
       />
       <p className="clx-water__text">{water.text}</p>
-      <p className="clx-water__note">{water.note}</p>
+      {"note" in water && water.note ? (
+        <p className="clx-water__note">{water.note}</p>
+      ) : null}
     </section>
   )
 }

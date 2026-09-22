@@ -37,6 +37,9 @@ export function OfferPricing({ origin }: OfferPricingProps) {
 
   return (
     <>
+      {origin === "hero" && "offerLead" in pricing && pricing.offerLead ? (
+        <p className="clx-offer-lead">{pricing.offerLead}</p>
+      ) : null}
       <p className="clx-price">{pricing.price}</p>
       {"shippingNote" in pricing && pricing.shippingNote ? (
         <p className="clx-shipping">{pricing.shippingNote}</p>

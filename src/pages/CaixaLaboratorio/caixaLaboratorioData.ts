@@ -78,21 +78,13 @@ export const caixaLaboratorioData = {
     titleAccessible:
       "Neste Dia das Crianças, dê um presente que vira um laboratório de descobertas.",
     subtitle:
-      "A criança abre a caixa, acrescenta água e começa a explorar. São 9 experiências guiadas — com os materiais organizados, instruções ilustradas e materiais que também convidam a explorar e inventar.",
-    ageNote: "Para crianças de 6 a 10 anos, com a supervisão de um adulto.",
+      "Uma caixa com materiais organizados e instruções ilustradas para a criança abrir, escolher uma experiência e começar. Para crianças de 6 a 10 anos, com supervisão de um adulto.",
     cards: {
       ready: {
-        titleLead: "Abriu a caixa, ",
-        titleEmphasis: "escolheu uma experiência",
-        titleEnd: " e começou.",
-        text: "Os materiais das experiências guiadas já vão organizados dentro da caixa.",
+        title: "Abriu a caixa, escolheu uma experiência e começou.",
+        text: "Os materiais já vêm organizados para acompanhar o manual ilustrado.",
       },
     },
-    benefits: [
-      "Ingredientes, frascos e equipamentos incluídos",
-      "Manual ilustrado passo a passo",
-      "Materiais que convidam a explorar e inventar",
-    ],
     image: caixaLaboratorioImages.abertura,
     imageAlt:
       "Criança explorando uma experiência com a Caixa Laboratório daTeca — 9 experiências guiadas",
@@ -106,6 +98,8 @@ export const caixaLaboratorioData = {
 
   /** Mesmo bloco de preço no hero e no fechamento. */
   pricing: {
+    offerLead:
+      "9 experiências guiadas · materiais incluídos · é só acrescentar água",
     price: entryProduct.priceBRL.toLocaleString("pt-BR", {
       style: "currency",
       currency: "BRL",
@@ -121,76 +115,65 @@ export const caixaLaboratorioData = {
     introImageAlt:
       "Cartas ilustradas passo a passo das experiências da Caixa Laboratório daTeca",
     titleLines: ["9 experiências guiadas.", "Depois, a curiosidade continua."],
-    text: "Nove experiências com passo a passo no manual. Os materiais da caixa também convidam a criança a explorar e inventar — um convite para curiosidade, surpresa e presença juntos.",
+    text: "O manual conduz nove experiências. Depois, os materiais convidam a criança a explorar e criar novas descobertas.",
     items: [
       {
         num: 1,
         name: "Tinta Invisível",
         hint: "Um desenho escondido aparece quando o revelador passa pelo papel.",
-        hintExtra: "Segredos que só se revelam passo a passo.",
         image: caixaImg("tinta-invisivel.webp"),
       },
       {
         num: 2,
         name: "Pedra Líquida",
-        hint: "Algo entre sólido e líquido nas mãos.",
-        hintExtra: "Uma matéria que muda de ideia conforme se toca.",
+        hint: "Uma mistura que muda de comportamento quando a criança a toca.",
         image: caixaImg("experiencia-pedra-liquida.webp"),
       },
       {
         num: 3,
         name: "Tornado na Garrafa",
-        hint: "Basta girar outra vez.",
-        hintExtra: "O redemoinho volta a aparecer sempre que a curiosidade chamar.",
+        hint: "Um redemoinho aparece quando a garrafa gira.",
         image: caixaImg("experiencia-tornado.webp"),
       },
       {
         num: 4,
         name: "Água que Anda",
-        hint: "A água desafia o caminho esperado.",
-        hintExtra:
-          "Uma descoberta que acontece aos poucos, revelando uma surpresa de cada vez.",
+        hint: "A água colorida passa de um copo para outro.",
         image: caixaImg("experiencia-agua-que-anda.webp"),
       },
       {
         num: 5,
         name: "Matéria Mutante",
-        hint: "Uma mistura que muda de personalidade.",
-        hintExtra:
-          "Depois de pronta, continua convidando a apertar, esticar e descobrir.",
+        hint: "Uma mistura para apertar, esticar e observar.",
         image: caixaImg("experiencia-materia-mutante.webp"),
       },
       {
         num: 6,
         name: "Monstro que Respira",
-        hint: "Ele realmente parece respirar.",
-        hintExtra: "Uma reação silenciosa que prende o olhar de perto.",
+        hint: "Uma reação faz o balão se encher.",
         image: caixaImg("experiencia-monstro-que-respira.webp"),
       },
       {
         num: 7,
         name: "Força que Move",
-        hint: "Algo se move sem ser empurrado.",
-        hintExtra: "Um encontro entre magnetismo e curiosidade.",
+        hint: "O magnetismo move pequenos fragmentos sem tocá-los.",
         image: caixaImg("força-que-move.webp"),
       },
       {
         num: 8,
         name: "Cobra de Espuma",
-        hint: "Quanto mais espuma, maior a cobra.",
-        hintExtra: "Bolhas que crescem e risadas que acompanham.",
+        hint: "O sopro faz uma cobra de bolhas crescer.",
         image: caixaImg("experiencia-cobra-arco-iris.webp"),
       },
       {
         num: 9,
         name: "Neve d’Água",
-        hint: "Um pozinho que vira neve.",
-        hintExtra: "Uma transformação macia que dá vontade de tocar.",
+        hint: "Um pozinho se transforma em neve ao receber água.",
         image: caixaImg("experiencia-neve-dagua.webp"),
       },
       {
         name: "Agora é sua vez de inventar",
-        hint: "Depois de seguir as experiências, explore os materiais, faça perguntas e invente suas próprias descobertas com a supervisão de um adulto.",
+        hint: "Depois das experiências guiadas, explore os materiais e crie novas descobertas com supervisão de um adulto.",
         image: caixaImg("decima.webp"),
         imageAlt:
           "Materiais da Caixa Laboratório daTeca para explorar e inventar novas descobertas",
@@ -202,19 +185,17 @@ export const caixaLaboratorioData = {
 
   contents: {
     titleLines: ["Tudo organizado."],
-    lead: "Frascos, ferramentas, ingredientes identificados e manual ilustrado — separados dentro da caixa.",
-    closing: "Sem precisar comprar materiais. Sem improvisar.",
+    lead: "Ingredientes identificados, ferramentas e manual ilustrado dentro da caixa.",
+    closedImage: caixaLaboratorioImages.caixaFechada,
+    closedImageAlt:
+      "Caixa Laboratório daTeca fechada, com materiais das experiências organizados ao redor da embalagem",
     image: caixaLaboratorioImages.materiais,
     imageAlt:
       "Vista de cima da Caixa Laboratório daTeca aberta, com frascos, ingredientes, óculos de proteção e manual organizados",
     items: [
       "Ingredientes separados e identificados",
-      "Frascos, potinhos e recipientes",
-      "Pipetas, copinhos e colheres",
-      "Corantes e líquidos das experiências",
-      "Óculos de proteção e equipamentos",
-      "Materiais para as nove experiências guiadas",
-      "Materiais que convidam a explorar e inventar",
+      "Frascos, copinhos e ferramentas",
+      "Óculos de proteção e materiais de apoio",
       "Manual ilustrado com o passo a passo",
     ],
   },
@@ -227,8 +208,7 @@ export const caixaLaboratorioData = {
 
   water: {
     titleLines: ["É só acrescentar água."],
-    text: "Os ingredientes, frascos, equipamentos e demais materiais das experiências guiadas já vão separados e organizados dentro da caixa.",
-    note: "Abriu, escolheu uma experiência e começou.",
+    text: "Os ingredientes e materiais das experiências guiadas já estão na caixa.",
   },
 
   buy: {
@@ -288,7 +268,7 @@ export const caixaLaboratorioData = {
       {
         question: "E quando algum material acabar?",
         answer:
-          "Vários itens da caixa podem ser reutilizados diversas vezes — frascos, potinhos, pipetas e equipamentos. Os consumíveis, como pózinhos e corantes, são fáceis de encontrar no dia a dia. Em breve, a daTeca também disponibilizará kits oficiais de reposição.",
+          "Frascos, potinhos, pipetas e outros equipamentos podem ser reutilizados. Alguns ingredientes são consumidos durante as experiências; para repeti-las, será necessário repô-los conforme as orientações do manual.",
       },
     ],
   },

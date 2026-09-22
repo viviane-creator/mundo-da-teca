@@ -82,7 +82,6 @@ export function HeroLaboratorio() {
           {hero.titleAccessible}
         </h1>
         <p className="clx-hero__subtitle">{hero.subtitle}</p>
-        <p className="clx-hero__age">{hero.ageNote}</p>
       </div>
 
       <div className="clx-hero__offer">
@@ -92,23 +91,10 @@ export function HeroLaboratorio() {
       <div className="clx-hero__cards">
         <article className="clx-hero-card clx-hero-card--water">
           <ReadyCardArt />
-          <h2 className="clx-hero-card__title">
-            {ready.titleLead}
-            <span className="clx-hero-card__emphasis">{ready.titleEmphasis}</span>
-            {ready.titleEnd}
-          </h2>
+          <h2 className="clx-hero-card__title">{ready.title}</h2>
           <p className="clx-hero-card__text">{ready.text}</p>
         </article>
       </div>
-
-      <ul className="clx-checklist clx-hero__benefits">
-        {hero.benefits.map((item) => (
-          <li key={item}>
-            <span aria-hidden="true">✓</span>
-            {item}
-          </li>
-        ))}
-      </ul>
 
       <figure className="clx-hero__media clx-hero__media--poster-9">
         <LandingImage
