@@ -1,5 +1,4 @@
 import { caixaLaboratorioData } from "../../pages/CaixaLaboratorio/caixaLaboratorioData"
-import { LandingCta } from "./LandingCta"
 import { LandingImage } from "./LandingImage"
 import { OfferPricing } from "./OfferPricing"
 
@@ -84,9 +83,6 @@ export function HeroLaboratorio() {
         </h1>
         <p className="clx-hero__subtitle">{hero.subtitle}</p>
         <p className="clx-hero__age">{hero.ageNote}</p>
-        <div className="clx-hero__cta-early">
-          <LandingCta label={hero.cta} origin="hero" />
-        </div>
       </div>
 
       <div className="clx-hero__cards">
