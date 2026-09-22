@@ -1,6 +1,6 @@
 import { caixaLaboratorioData } from "../../pages/CaixaLaboratorio/caixaLaboratorioData"
 import { LandingImage } from "./LandingImage"
-import { OfferPricing } from "./OfferPricing"
+import { LandingCta } from "./LandingCta"
 
 function HeroDecor() {
   return (
@@ -84,8 +84,8 @@ export function HeroLaboratorio() {
         <p className="clx-hero__subtitle">{hero.subtitle}</p>
       </div>
 
-      <div className="clx-hero__offer">
-        <OfferPricing origin="hero" />
+      <div className="clx-hero__offer clx-hero__offer--cta-only">
+        <LandingCta label={hero.cta} origin="hero" />
       </div>
 
       <div className="clx-hero__cards">

@@ -887,6 +887,21 @@
   color: #f7efe4;
 }
 
+.clx-hero__offer--cta-only {
+  padding: 0;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  overflow: visible;
+  color: inherit;
+}
+
+.clx-hero__offer--cta-only .clx-cta--primary {
+  background: #b86f35;
+  color: #fffdf9;
+  box-shadow: 0 6px 18px rgba(176, 100, 48, 0.28);
+}
+
 .clx-seal {
   box-sizing: border-box;
   display: inline-flex;
