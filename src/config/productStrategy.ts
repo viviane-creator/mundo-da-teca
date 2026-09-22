@@ -26,7 +26,7 @@ export const SHOW_BAU_AND_FICHARIO_PRODUCTS = false
 export const entryProduct = {
   id: "caixa-laboratorio",
   name: "Caixa Laboratório daTeca",
-  priceBRL: 129,
+  priceBRL: 129.9,
   shippingBRL: 9.9,
   shippingScope: "todo o Brasil",
   firstBatchUnits: 100,
