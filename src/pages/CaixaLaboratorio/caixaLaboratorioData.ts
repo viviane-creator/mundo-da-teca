@@ -12,7 +12,7 @@ const IMG = "/images/caixa-laboratorio"
  * Subir este valor sempre que trocar os WebPs da landing.
  * Evita cache do CDN/navegador servir a imagem antiga sob o mesmo nome.
  */
-export const CAIXA_IMAGE_VERSION = "20260921l"
+export const CAIXA_IMAGE_VERSION = "20260922a"
 
 function caixaImg(fileName: string): string {
   return `${IMG}/${fileName}?v=${CAIXA_IMAGE_VERSION}`
@@ -20,12 +20,11 @@ function caixaImg(fileName: string): string {
 
 export const caixaLaboratorioImages = {
   /** Abertura da campanha — criança explorando (hero). */
-  presente: caixaImg("presente.webp"),
-  /** Poster de campanha — caixa e materiais. */
-  convite: caixaImg("caixa-convite.webp"),
+  abertura: caixaImg("abertura-crianca-9-guiadas.webp"),
+  /** Caixa fechada — logo após o CTA do hero. */
+  caixaFechada: caixaImg("caixa-fechada-9-guiadas.webp"),
   /** Vista de cima da caixa aberta — conteúdos da campanha. */
   materiais: caixaImg("caixa-materiais.webp"),
-  experienciasCompletas: caixaImg("experiencias-completas.webp"),
 } as const
 
 export const caixaLaboratorioData = {
@@ -34,7 +33,7 @@ export const caixaLaboratorioData = {
   metaDescription:
     "Presente de Dia das Crianças: Caixa Laboratório daTeca com 9 experiências guiadas. É só acrescentar água — materiais organizados, manual ilustrado e convite para explorar e inventar. R$ 129,00.",
   canonicalPath: "/caixa-laboratorio",
-  ogImage: caixaLaboratorioImages.presente,
+  ogImage: caixaLaboratorioImages.abertura,
   /** Sempre o link central Hotmart — ver `caixaLaboratorioCheckout.ts`. */
   orderUrl: HOTMART_CHECKOUT_URL,
 
@@ -92,10 +91,10 @@ export const caixaLaboratorioData = {
       "Manual ilustrado passo a passo",
       "Materiais que convidam a explorar e inventar",
     ],
-    image: caixaLaboratorioImages.presente,
+    image: caixaLaboratorioImages.abertura,
     imageAlt:
-      "Criança explorando uma experiência com a Caixa Laboratório daTeca — presente de Dia das Crianças que desperta a curiosidade",
-    conviteImage: caixaLaboratorioImages.convite,
+      "Criança explorando uma experiência com a Caixa Laboratório daTeca — 9 experiências guiadas",
+    conviteImage: caixaLaboratorioImages.caixaFechada,
     conviteImageAlt:
       "Caixa Laboratório daTeca fechada, com materiais das experiências organizados ao redor da embalagem",
     cta: "Quero presentear com a Caixa Laboratório",
@@ -164,7 +163,7 @@ export const caixaLaboratorioData = {
         name: "Monstro que Respira",
         hint: "Ele realmente parece respirar.",
         hintExtra: "Uma reação silenciosa que prende o olhar de perto.",
-        image: caixaImg("experiencia-monstro.webp"),
+        image: caixaImg("experiencia-monstro-que-respira.webp"),
       },
       {
         num: 7,
