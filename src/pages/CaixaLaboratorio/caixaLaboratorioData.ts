@@ -174,8 +174,8 @@ export const caixaLaboratorioData = {
         image: caixaImg("experiencia-neve-dagua.webp"),
       },
       {
-        name: "Agora é sua vez de inventar",
-        hint: "Depois das experiências guiadas, explore os materiais e crie novas descobertas com supervisão de um adulto.",
+        name: "Invente do seu jeito",
+        hint: "Com os materiais da caixa, a brincadeira continua.",
         image: caixaImg("decima.webp"),
         imageAlt:
           "Materiais da Caixa Laboratório daTeca para explorar e inventar novas descobertas",
