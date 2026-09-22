@@ -78,7 +78,8 @@ export function HeroLaboratorio() {
           className="clx-hero__image clx-hero__image--poster-9"
           src={hero.poster9Guiadas}
           alt={hero.poster9GuiadasAlt}
-          loading="lazy"
+          loading="eager"
+          fetchPriority="high"
         />
       </figure>
     </section>
