@@ -10,7 +10,6 @@ export type CaixaLandingBlockId =
   | "floripaIntro"
   | "hero"
   | "experiences"
-  | "freeExploration"
   | "contents"
   | "water"
   | "brandMoment"
@@ -23,7 +22,6 @@ export const CAIXA_SALES_BLOCKS: CaixaLandingBlockId[] = [
   "hero",
   "contents",
   "experiences",
-  "freeExploration",
   "water",
   "brandMoment",
   "pricing",
@@ -36,7 +34,6 @@ export const CAIXA_FLORIPA_BLOCKS: CaixaLandingBlockId[] = [
   "hero",
   "contents",
   "experiences",
-  "freeExploration",
   "water",
   "brandMoment",
   "howToOrder",
@@ -73,7 +70,6 @@ export function resolveCaixaLandingBlocks(
       "hero",
       "contents",
       "experiences",
-      "freeExploration",
       "water",
       "brandMoment",
       "howToOrder",

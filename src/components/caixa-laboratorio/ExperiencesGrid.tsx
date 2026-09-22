@@ -2,8 +2,42 @@ import { caixaLaboratorioData } from "../../pages/CaixaLaboratorio/caixaLaborato
 import { BalancedLines } from "./BalancedLines"
 import { LandingImage } from "./LandingImage"
 
+function DiscoveryCard({
+  name,
+  hint,
+  image,
+  imageAlt,
+  num,
+}: {
+  name: string
+  hint: string
+  image: string
+  imageAlt: string
+  num?: number
+}) {
+  return (
+    <>
+      {num != null ? (
+        <span className="clx-discovery-card__num">
+          {String(num).padStart(2, "0")}
+        </span>
+      ) : null}
+      <figure className="clx-discovery-card__media">
+        <LandingImage
+          className="clx-discovery-card__image"
+          src={image}
+          alt={imageAlt}
+          loading="lazy"
+        />
+      </figure>
+      <h3 className="clx-discovery-card__name">{name}</h3>
+      <p className="clx-discovery-card__hint">{hint}</p>
+    </>
+  )
+}
+
 export function ExperiencesGrid() {
-  const { discoveries } = caixaLaboratorioData
+  const { discoveries, freeExploration } = caixaLaboratorioData
 
   return (
     <section
@@ -34,44 +68,24 @@ export function ExperiencesGrid() {
 
       <ol className="clx-discoveries__grid">
         {discoveries.items.map((item) => (
-          <li
-            key={item.name}
-            className={[
-              "clx-discovery-card",
-              "variant" in item &&
-              (item.variant === "tenth" || item.variant === "invent")
-                ? "clx-discovery-card--tenth"
-                : "",
-            ]
-              .filter(Boolean)
-              .join(" ")}
-          >
-            {"hideNum" in item && item.hideNum ? null : (
-              <span className="clx-discovery-card__num">
-                {String(item.num).padStart(2, "0")}
-              </span>
-            )}
-            <figure className="clx-discovery-card__media">
-              {"image" in item && item.image ? (
-                <LandingImage
-                  className="clx-discovery-card__image"
-                  src={item.image}
-                  alt={
-                    "imageAlt" in item && item.imageAlt ? item.imageAlt : item.name
-                  }
-                  loading="lazy"
-                />
-              ) : (
-                <div
-                  className="clx-discovery-card__placeholder clx-placeholder"
-                  aria-hidden="true"
-                />
-              )}
-            </figure>
-            <h3 className="clx-discovery-card__name">{item.name}</h3>
-            <p className="clx-discovery-card__hint">{item.hint}</p>
+          <li key={item.name} className="clx-discovery-card">
+            <DiscoveryCard
+              num={item.num}
+              name={item.name}
+              hint={item.hint}
+              image={item.image}
+              imageAlt={item.name}
+            />
           </li>
         ))}
+        <li className="clx-discovery-card clx-discovery-card--continue">
+          <DiscoveryCard
+            name={freeExploration.titleLines.join(" ")}
+            hint={freeExploration.text}
+            image={freeExploration.image}
+            imageAlt={freeExploration.imageAlt}
+          />
+        </li>
       </ol>
     </section>
   )

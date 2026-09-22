@@ -77,7 +77,7 @@ export const caixaLaboratorioData = {
       "Neste Dia das Crianças, dê um presente que vira um laboratório de descobertas.",
     subtitle:
       "Tudo organizado, identificado e guiado para a criança abrir a caixa, escolher uma experiência e começar. Para crianças de 6 a 10 anos, com supervisão de um adulto.",
-    dispatchNote: "Envio em até 5 dias úteis.",
+    dispatchNote: "Envio em até 3 dias úteis.",
     cards: {
       ready: {
         title: "Abriu a caixa, escolheu uma experiência e começou.",
@@ -104,7 +104,7 @@ export const caixaLaboratorioData = {
     priceValue: entryProduct.priceBRL.toFixed(2),
     shippingLine1: "Frete fixo de R$ 10 para Sul e Sudeste.",
     shippingLine2: "Frete e prazo calculados no checkout.",
-    dispatchNote: "Envio em até 5 dias úteis.",
+    dispatchNote: "Envio em até 3 dias úteis.",
     purchaseTypeNote: "Compra única. Não é assinatura.",
   },
 
@@ -257,7 +257,7 @@ export const caixaLaboratorioData = {
       {
         question: "Em quanto tempo a caixa é enviada?",
         answer:
-          "O pedido é preparado e enviado em até 5 dias úteis após a confirmação do pagamento.",
+          "O pedido é preparado e enviado em até 3 dias úteis após a confirmação do pagamento.",
       },
       {
         question: "Precisa de supervisão de um adulto?",
