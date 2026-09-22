@@ -1292,6 +1292,13 @@
   border-radius: 12px;
 }
 
+/* Invente do seu jeito — menina-decima preenche o card (crop nas laterais). */
+.clx-discovery-card--tenth .clx-discovery-card__image {
+  object-fit: cover;
+  object-position: center 38%;
+  transform: scale(1.14);
+}
+
 .clx-discoveries__observation {
   margin: 14px auto 0;
   max-width: 42ch;
