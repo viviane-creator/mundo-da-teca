@@ -12,7 +12,7 @@ const IMG = "/images/caixa-laboratorio"
  * Subir este valor sempre que trocar os WebPs da landing.
  * Evita cache do CDN/navegador servir a imagem antiga sob o mesmo nome.
  */
-export const CAIXA_IMAGE_VERSION = "20260922q"
+export const CAIXA_IMAGE_VERSION = "20260922r"
 
 function caixaImg(fileName: string): string {
   return `${IMG}/${fileName}?v=${CAIXA_IMAGE_VERSION}`
