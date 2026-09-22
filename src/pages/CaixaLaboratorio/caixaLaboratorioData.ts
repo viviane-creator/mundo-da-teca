@@ -12,7 +12,7 @@ const IMG = "/images/caixa-laboratorio"
  * Subir este valor sempre que trocar os WebPs da landing.
  * Evita cache do CDN/navegador servir a imagem antiga sob o mesmo nome.
  */
-export const CAIXA_IMAGE_VERSION = "20260922b"
+export const CAIXA_IMAGE_VERSION = "20260922c"
 
 function caixaImg(fileName: string): string {
   return `${IMG}/${fileName}?v=${CAIXA_IMAGE_VERSION}`
@@ -346,12 +346,35 @@ function setJsonLd(data: Record<string, unknown>) {
   script.textContent = JSON.stringify(data)
 }
 
+const CAIXA_HERO_PRELOAD_ID = "caixa-laboratorio-hero-preload"
+
+function setHeroImagePreloads(urls: string[]) {
+  clearHeroImagePreloads()
+  urls.forEach((href, index) => {
+    const link = document.createElement("link")
+    link.id = `${CAIXA_HERO_PRELOAD_ID}-${index}`
+    link.rel = "preload"
+    link.as = "image"
+    link.href = href
+    document.head.appendChild(link)
+  })
+}
+
+function clearHeroImagePreloads() {
+  document
+    .querySelectorAll(`link[id^="${CAIXA_HERO_PRELOAD_ID}"]`)
+    .forEach((el) => el.remove())
+}
+
 export function applyCaixaLaboratorioMeta() {
   const { documentTitle, metaDescription, ogImage, canonicalPath, buy, pricing } =
     caixaLaboratorioData
   const origin = window.location.origin
   const pageUrl = new URL(canonicalPath, origin).href
   const imageUrl = new URL(ogImage, origin).href
+  const caixaFechadaUrl = new URL(caixaLaboratorioImages.caixaFechada, origin).href
+
+  setHeroImagePreloads([imageUrl, caixaFechadaUrl])
 
   document.title = documentTitle
   setMeta("name", "description", metaDescription)
@@ -371,7 +394,7 @@ export function applyCaixaLaboratorioMeta() {
     "@type": "Product",
     name: buy.titleLines.join(" "),
     description: metaDescription,
-    image: [imageUrl],
+    image: [imageUrl, caixaFechadaUrl],
     brand: { "@type": "Brand", name: "daTeca" },
     offers: {
       "@type": "Offer",
@@ -389,4 +412,5 @@ export function clearCaixaLaboratorioMeta() {
   }
   document.querySelector('link[rel="canonical"]')?.remove()
   document.getElementById("caixa-laboratorio-jsonld")?.remove()
+  clearHeroImagePreloads()
 }
