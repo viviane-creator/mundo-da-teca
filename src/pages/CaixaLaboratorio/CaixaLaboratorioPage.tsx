@@ -9,7 +9,6 @@ import {
   HeroLaboratorio,
   KitContents,
   LandingFooter,
-  LandingHeader,
   ManualGiftHero,
   ManualOfferBridge,
   PricingSection,
@@ -74,7 +73,6 @@ export function CaixaLaboratorioPage() {
         .join(" ")}
     >
       {floripaActive ? <FloripaLaunchBanner /> : null}
-      <LandingHeader />
       {blocks.map((blockId) => (
         <div key={blockId} data-clx-block={blockId}>
           {blockRenderers[blockId]()}
