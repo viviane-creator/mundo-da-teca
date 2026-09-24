@@ -2085,30 +2085,44 @@
   max-width: 100%;
 }
 
-.clx-page:not(.clx-page--floripa) .clx-cta.clx-cta--purchase.clx-cta--primary {
-  flex-direction: column;
-  gap: 4px;
+.clx-page:not(.clx-page--floripa) .clx-purchase-cta-wrap {
+  position: relative;
+  z-index: 2;
   width: 100%;
   max-width: 100%;
-  min-height: 58px;
-  padding: 14px 18px 13px;
+  margin-inline: 0;
+}
+
+.clx-page:not(.clx-page--floripa) .clx-cta.clx-cta--purchase.clx-cta--primary {
+  flex-direction: column;
+  gap: 5px;
+  width: 100%;
+  max-width: 100%;
+  min-height: 60px;
+  padding: 16px 20px 15px;
   border-radius: 999px;
-  border: 2px solid rgba(255, 250, 242, 0.42);
-  font-size: clamp(15px, 4vw, 17px);
+  border: 2px solid rgba(255, 250, 242, 0.55);
+  font-size: clamp(16px, 4.3vw, 18px);
   font-weight: 700;
-  line-height: 1.15;
-  letter-spacing: 0.05em;
+  line-height: 1.12;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   color: #fffdf9;
-  background: linear-gradient(180deg, #c87935 0%, #9a5520 100%);
+  background: linear-gradient(180deg, #d2843f 0%, #8f4a18 100%);
   box-shadow:
-    0 3px 0 rgba(74, 55, 40, 0.28),
-    0 16px 32px rgba(118, 68, 28, 0.38);
-  animation: clxPurchaseCtaPulse 10s ease-in-out infinite;
+    0 0 0 3px rgba(200, 121, 53, 0.22),
+    0 4px 0 rgba(74, 55, 40, 0.34),
+    0 22px 44px rgba(100, 55, 20, 0.42);
+  animation: clxPurchaseCtaPulse 9s ease-in-out infinite;
   transition:
     filter 0.2s ease,
     transform 0.2s ease,
     box-shadow 0.2s ease;
+}
+
+.clx-page:not(.clx-page--floripa) .clx-buy .clx-cta.clx-cta--purchase.clx-cta--primary {
+  background: linear-gradient(180deg, #d2843f 0%, #8f4a18 100%);
+  color: #fffdf9;
 }
 
 .clx-page:not(.clx-page--floripa) .clx-cta.clx-cta--purchase .clx-cta__inner {
@@ -2124,47 +2138,54 @@
 }
 
 .clx-page:not(.clx-page--floripa) .clx-cta.clx-cta--purchase .clx-cta__price-hint {
-  font-size: clamp(13px, 3.4vw, 15px);
-  font-weight: 600;
+  font-size: clamp(14px, 3.6vw, 16px);
+  font-weight: 700;
   letter-spacing: 0.02em;
   line-height: 1.2;
   text-transform: none;
-  opacity: 0.96;
+  opacity: 1;
 }
 
 @keyframes clxPurchaseCtaPulse {
   0%,
-  82%,
+  78%,
   100% {
+    transform: scale(1);
     box-shadow:
-      0 3px 0 rgba(74, 55, 40, 0.28),
-      0 16px 32px rgba(118, 68, 28, 0.38);
+      0 0 0 3px rgba(200, 121, 53, 0.22),
+      0 4px 0 rgba(74, 55, 40, 0.34),
+      0 22px 44px rgba(100, 55, 20, 0.42);
   }
 
-  86% {
+  84% {
+    transform: scale(1.018);
     box-shadow:
-      0 3px 0 rgba(74, 55, 40, 0.28),
-      0 18px 36px rgba(118, 68, 28, 0.44),
-      0 0 0 6px rgba(200, 121, 53, 0.12);
+      0 0 0 5px rgba(200, 121, 53, 0.28),
+      0 4px 0 rgba(74, 55, 40, 0.34),
+      0 26px 48px rgba(100, 55, 20, 0.48);
   }
 
-  90% {
+  88% {
+    transform: scale(1.012);
     box-shadow:
-      0 3px 0 rgba(74, 55, 40, 0.28),
-      0 20px 40px rgba(118, 68, 28, 0.46),
-      0 0 0 10px rgba(200, 121, 53, 0.08);
+      0 0 0 4px rgba(200, 121, 53, 0.24),
+      0 4px 0 rgba(74, 55, 40, 0.34),
+      0 24px 46px rgba(100, 55, 20, 0.45);
   }
 
-  94% {
+  92% {
+    transform: scale(1);
     box-shadow:
-      0 3px 0 rgba(74, 55, 40, 0.28),
-      0 16px 32px rgba(118, 68, 28, 0.38);
+      0 0 0 3px rgba(200, 121, 53, 0.22),
+      0 4px 0 rgba(74, 55, 40, 0.34),
+      0 22px 44px rgba(100, 55, 20, 0.42);
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .clx-page:not(.clx-page--floripa) .clx-cta.clx-cta--purchase.clx-cta--primary {
     animation: none;
+    transform: none;
   }
 }
 
