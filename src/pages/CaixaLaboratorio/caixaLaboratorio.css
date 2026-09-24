@@ -2098,21 +2098,21 @@
   gap: 5px;
   width: 100%;
   max-width: 100%;
-  min-height: 60px;
-  padding: 16px 20px 15px;
+  min-height: 62px;
+  padding: 17px 20px 16px;
   border-radius: 999px;
-  border: 2px solid rgba(255, 250, 242, 0.55);
-  font-size: clamp(16px, 4.3vw, 18px);
+  border: 2px solid rgba(255, 250, 242, 0.6);
+  font-size: clamp(17px, 4.5vw, 19px);
   font-weight: 700;
   line-height: 1.12;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: #fffdf9;
-  background: linear-gradient(180deg, #d2843f 0%, #8f4a18 100%);
+  background: linear-gradient(180deg, #d88942 0%, #853f12 100%);
   box-shadow:
-    0 0 0 3px rgba(200, 121, 53, 0.22),
-    0 4px 0 rgba(74, 55, 40, 0.34),
-    0 22px 44px rgba(100, 55, 20, 0.42);
+    0 0 0 4px rgba(200, 121, 53, 0.26),
+    0 5px 0 rgba(74, 55, 40, 0.36),
+    0 24px 48px rgba(100, 55, 20, 0.46);
   animation: clxPurchaseCtaPulse 9s ease-in-out infinite;
   transition:
     filter 0.2s ease,
@@ -2120,9 +2120,35 @@
     box-shadow 0.2s ease;
 }
 
-.clx-page:not(.clx-page--floripa) .clx-buy .clx-cta.clx-cta--purchase.clx-cta--primary {
-  background: linear-gradient(180deg, #d2843f 0%, #8f4a18 100%);
-  color: #fffdf9;
+.clx-page:not(.clx-page--floripa) .clx-hero__offer .clx-purchase-cta-wrap {
+  margin-top: 2px;
+  padding: 4px 0 2px;
+}
+
+/* Botão final — contraste com o card laranja (.clx-buy) */
+.clx-page:not(.clx-page--floripa) .clx-buy .clx-purchase-cta-wrap {
+  margin-top: 4px;
+  padding: 6px 0 2px;
+}
+
+.clx-page:not(.clx-page--floripa)
+  .clx-buy
+  .clx-cta.clx-cta--purchase.clx-cta--primary.clx-cta--purchase-final {
+  color: #3d2410;
+  background: linear-gradient(180deg, #fffdf9 0%, #f3ebe0 100%);
+  border: 2px solid rgba(255, 253, 249, 0.98);
+  box-shadow:
+    0 0 0 4px rgba(74, 55, 40, 0.18),
+    0 5px 0 rgba(74, 55, 40, 0.3),
+    0 22px 44px rgba(40, 28, 18, 0.38);
+  animation-name: clxPurchaseCtaPulseFinal;
+}
+
+.clx-page:not(.clx-page--floripa)
+  .clx-buy
+  .clx-cta--purchase-final
+  .clx-cta__price-hint {
+  color: #5c3818;
 }
 
 .clx-page:not(.clx-page--floripa) .clx-cta.clx-cta--purchase .clx-cta__inner {
@@ -2152,33 +2178,61 @@
   100% {
     transform: scale(1);
     box-shadow:
-      0 0 0 3px rgba(200, 121, 53, 0.22),
-      0 4px 0 rgba(74, 55, 40, 0.34),
-      0 22px 44px rgba(100, 55, 20, 0.42);
+      0 0 0 4px rgba(200, 121, 53, 0.26),
+      0 5px 0 rgba(74, 55, 40, 0.36),
+      0 24px 48px rgba(100, 55, 20, 0.46);
   }
 
   84% {
-    transform: scale(1.018);
+    transform: scale(1.02);
     box-shadow:
-      0 0 0 5px rgba(200, 121, 53, 0.28),
-      0 4px 0 rgba(74, 55, 40, 0.34),
-      0 26px 48px rgba(100, 55, 20, 0.48);
+      0 0 0 6px rgba(200, 121, 53, 0.32),
+      0 5px 0 rgba(74, 55, 40, 0.36),
+      0 28px 52px rgba(100, 55, 20, 0.52);
   }
 
   88% {
     transform: scale(1.012);
     box-shadow:
-      0 0 0 4px rgba(200, 121, 53, 0.24),
-      0 4px 0 rgba(74, 55, 40, 0.34),
-      0 24px 46px rgba(100, 55, 20, 0.45);
+      0 0 0 5px rgba(200, 121, 53, 0.28),
+      0 5px 0 rgba(74, 55, 40, 0.36),
+      0 26px 50px rgba(100, 55, 20, 0.48);
   }
 
   92% {
     transform: scale(1);
     box-shadow:
-      0 0 0 3px rgba(200, 121, 53, 0.22),
-      0 4px 0 rgba(74, 55, 40, 0.34),
-      0 22px 44px rgba(100, 55, 20, 0.42);
+      0 0 0 4px rgba(200, 121, 53, 0.26),
+      0 5px 0 rgba(74, 55, 40, 0.36),
+      0 24px 48px rgba(100, 55, 20, 0.46);
+  }
+}
+
+@keyframes clxPurchaseCtaPulseFinal {
+  0%,
+  78%,
+  100% {
+    transform: scale(1);
+    box-shadow:
+      0 0 0 4px rgba(74, 55, 40, 0.18),
+      0 5px 0 rgba(74, 55, 40, 0.3),
+      0 22px 44px rgba(40, 28, 18, 0.38);
+  }
+
+  84% {
+    transform: scale(1.02);
+    box-shadow:
+      0 0 0 6px rgba(74, 55, 40, 0.22),
+      0 5px 0 rgba(74, 55, 40, 0.3),
+      0 26px 48px rgba(40, 28, 18, 0.44);
+  }
+
+  92% {
+    transform: scale(1);
+    box-shadow:
+      0 0 0 4px rgba(74, 55, 40, 0.18),
+      0 5px 0 rgba(74, 55, 40, 0.3),
+      0 22px 44px rgba(40, 28, 18, 0.38);
   }
 }
 
@@ -2187,22 +2241,34 @@
     animation: none;
     transform: none;
   }
+
+  .clx-page:not(.clx-page--floripa)
+    .clx-buy
+    .clx-cta.clx-cta--purchase.clx-cta--purchase-final {
+    animation: none;
+  }
 }
 
-.clx-page:not(.clx-page--floripa) .clx-cta.clx-cta--purchase.clx-cta--primary:hover {
-  filter: brightness(1.06);
+.clx-page:not(.clx-page--floripa)
+  .clx-cta.clx-cta--purchase.clx-cta--primary:not(.clx-cta--purchase-final):hover {
+  filter: brightness(1.07);
+  transform: translateY(-2px);
+}
+
+.clx-page:not(.clx-page--floripa)
+  .clx-buy
+  .clx-cta.clx-cta--purchase.clx-cta--purchase-final:hover {
+  filter: brightness(1.02);
   transform: translateY(-2px);
   box-shadow:
-    0 4px 0 rgba(74, 55, 40, 0.26),
-    0 20px 38px rgba(118, 68, 28, 0.42);
+    0 0 0 5px rgba(74, 55, 40, 0.22),
+    0 6px 0 rgba(74, 55, 40, 0.28),
+    0 26px 48px rgba(40, 28, 18, 0.42);
 }
 
 .clx-page:not(.clx-page--floripa) .clx-cta.clx-cta--purchase.clx-cta--primary:active {
   transform: translateY(1px);
   filter: brightness(0.98);
-  box-shadow:
-    0 1px 0 rgba(74, 55, 40, 0.3),
-    0 10px 22px rgba(118, 68, 28, 0.32);
 }
 
 .clx-page:not(.clx-page--floripa) .clx-cta.clx-cta--purchase.clx-cta--primary:focus-visible {
