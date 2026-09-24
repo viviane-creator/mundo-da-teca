@@ -62,7 +62,11 @@ export function OfferPricing({ origin }: OfferPricingProps) {
           label={hero.cta}
           origin={origin}
           purchaseHighlight
-          priceHint={"ctaPriceHint" in hero ? hero.ctaPriceHint : undefined}
+          priceHint={
+            origin !== "bloco_final" && "ctaPriceHint" in hero
+              ? hero.ctaPriceHint
+              : undefined
+          }
           className={
             origin === "bloco_final" ? "clx-cta--purchase-final" : undefined
           }
