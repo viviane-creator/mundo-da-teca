@@ -57,7 +57,12 @@ export function OfferPricing({ origin }: OfferPricingProps) {
           </li>
         ))}
       </ul>
-      <LandingCta label={hero.cta} origin={origin} />
+      <LandingCta
+        label={hero.cta}
+        origin={origin}
+        purchaseHighlight
+        priceHint={"ctaPriceHint" in hero ? hero.ctaPriceHint : undefined}
+      />
       {"dispatchNote" in pricing && pricing.dispatchNote ? (
         <p className="clx-dispatch-note">{pricing.dispatchNote}</p>
       ) : null}

@@ -40,7 +40,7 @@ export const caixaLaboratorioData = {
   header: {
     logoSrc: "/logo/logo.webp",
     logoAlt: "daTeca",
-    cta: "QUERO PRESENTEAR COM A CAIXA LABORATÓRIO",
+    cta: "QUERO MINHA CAIXA LABORATÓRIO",
   },
 
   /**
@@ -90,7 +90,8 @@ export const caixaLaboratorioData = {
     poster9Guiadas: caixaLaboratorioImages.caixaFechada9Guiadas,
     poster9GuiadasAlt:
       "Dia das Crianças — Caixa Laboratório daTeca: um presente que vira descoberta, 9 experiências guiadas",
-    cta: "QUERO PRESENTEAR COM A CAIXA LABORATÓRIO",
+    cta: "QUERO MINHA CAIXA LABORATÓRIO",
+    ctaPriceHint: "R$ 129,90 + frete fixo R$ 10",
     note: "Compra única. Não é assinatura.",
     paymentNote: "Pagamento seguro pela Hotmart.",
   },
@@ -217,7 +218,7 @@ export const caixaLaboratorioData = {
     image: caixaLaboratorioImages.caixaFechada2,
     imageAlt:
       "Caixa Laboratório daTeca fechada — vista alternativa antes da compra",
-    cta: "QUERO PRESENTEAR COM A CAIXA LABORATÓRIO",
+    cta: "QUERO MINHA CAIXA LABORATÓRIO",
     note: "Compra única. Não é assinatura.",
     paymentNote: "Pagamento seguro pela Hotmart.",
   },

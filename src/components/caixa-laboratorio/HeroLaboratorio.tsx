@@ -51,7 +51,12 @@ export function HeroLaboratorio() {
       </figure>
 
       <div className="clx-hero__offer clx-hero__offer--cta-only">
-        <LandingCta label={hero.cta} origin="hero" />
+        <LandingCta
+          label={hero.cta}
+          origin="hero"
+          purchaseHighlight
+          priceHint={"ctaPriceHint" in hero ? hero.ctaPriceHint : undefined}
+        />
         {hero.dispatchNote ? (
           <p className="clx-hero__dispatch">{hero.dispatchNote}</p>
         ) : null}
