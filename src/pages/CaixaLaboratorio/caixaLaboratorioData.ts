@@ -1,5 +1,9 @@
 import { HOTMART_CHECKOUT_URL } from "../../config/caixaLaboratorioCheckout"
-import { entryProduct } from "../../config/productStrategy"
+import {
+  entryProduct,
+  entryProductShippingConsultLabel,
+  entryProductShippingFaqAnswer,
+} from "../../config/productStrategy"
 import { socialLinks } from "../../data/socialLinks"
 
 const IMG = "/images/caixa-laboratorio"
@@ -8,7 +12,7 @@ const IMG = "/images/caixa-laboratorio"
  * Subir este valor sempre que trocar os WebPs da landing.
  * Evita cache do CDN/navegador servir a imagem antiga sob o mesmo nome.
  */
-export const CAIXA_IMAGE_VERSION = "20261004a"
+export const CAIXA_IMAGE_VERSION = "20261027a"
 
 function caixaImg(fileName: string): string {
   return `${IMG}/${fileName}?v=${CAIXA_IMAGE_VERSION}`
@@ -77,7 +81,7 @@ export const caixaLaboratorioData = {
       "Neste Dia das Crianças, dê um presente que vira um laboratório de descobertas.",
     subtitle:
       "Tudo organizado, identificado e guiado para a criança abrir a caixa, escolher uma experiência e começar. Para crianças de 5 a 10 anos, com supervisão de um adulto.",
-    dispatchNote: "Envio em até 3 dias úteis.",
+    dispatchNote: "Envio em até 5 dias úteis.",
     cards: {
       ready: {
         title: "Abriu a caixa, escolheu uma experiência e começou.",
@@ -91,7 +95,7 @@ export const caixaLaboratorioData = {
     poster9GuiadasAlt:
       "Dia das Crianças — Caixa Laboratório daTeca: um presente que vira descoberta, 9 experiências guiadas",
     cta: "QUERO MINHA CAIXA LABORATÓRIO",
-    ctaPriceHint: "R$ 129,90 + frete fixo R$ 10",
+    ctaPriceHint: "R$ 129,90",
     note: "Compra única. Não é assinatura.",
     paymentNote: "Pagamento seguro pela Hotmart.",
   },
@@ -103,9 +107,8 @@ export const caixaLaboratorioData = {
       currency: "BRL",
     }),
     priceValue: entryProduct.priceBRL.toFixed(2),
-    shippingLine1: "Frete fixo de R$ 10 para Sul e Sudeste.",
-    shippingLine2: "Frete e prazo calculados no checkout.",
-    dispatchNote: "Envio em até 3 dias úteis.",
+    shippingLine1: "",
+    dispatchNote: "Envio em até 5 dias úteis.",
     purchaseTypeNote: "Compra única. Não é assinatura.",
   },
 
@@ -253,12 +256,12 @@ export const caixaLaboratorioData = {
       {
         question: "Como funciona o frete?",
         answer:
-          "O frete é fixo em R$ 10 para Sul e Sudeste. Para as demais regiões, valor e prazo são calculados no checkout.",
+          entryProductShippingFaqAnswer,
       },
       {
         question: "Em quanto tempo a caixa é enviada?",
         answer:
-          "O pedido é preparado e enviado em até 3 dias úteis após a confirmação do pagamento.",
+          "O pedido é preparado e enviado em até 5 dias úteis após a confirmação do pagamento.",
       },
       {
         question: "Precisa de supervisão de um adulto?",
