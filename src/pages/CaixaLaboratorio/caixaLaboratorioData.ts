@@ -33,9 +33,9 @@ export const caixaLaboratorioImages = {
 
 export const caixaLaboratorioData = {
   documentTitle:
-    "Caixa Laboratório daTeca — presente de Dia das Crianças que vira laboratório em casa",
+    "Caixa Laboratório daTeca — um presente que vira laboratório em casa",
   metaDescription:
-    "Presente de Dia das Crianças: Caixa Laboratório daTeca com 9 experiências guiadas. É só acrescentar água — materiais organizados, manual ilustrado e convite para explorar e inventar. R$ 129,90.",
+    "Caixa Laboratório daTeca: um presente com 9 experiências guiadas. É só acrescentar água — materiais organizados, manual ilustrado e convite para explorar e inventar. R$ 129,90.",
   canonicalPath: "/caixa-laboratorio",
   ogImage: caixaLaboratorioImages.abertura,
   /** Sempre o link central Hotmart — ver `caixaLaboratorioCheckout.ts`. */
@@ -78,7 +78,7 @@ export const caixaLaboratorioData = {
 
   hero: {
     titleAccessible:
-      "Neste Dia das Crianças, dê um presente que vira um laboratório de descobertas.",
+      "Dê um presente que vira um laboratório de descobertas.",
     subtitle:
       "Tudo organizado, identificado e guiado para a criança abrir a caixa, escolher uma experiência e começar. Para crianças de 5 a 10 anos, com supervisão de um adulto.",
     dispatchNote: "Envio em até 5 dias úteis.",
@@ -93,7 +93,7 @@ export const caixaLaboratorioData = {
       "Criança explorando uma experiência com a Caixa Laboratório daTeca — 9 experiências guiadas",
     poster9Guiadas: caixaLaboratorioImages.caixaFechada9Guiadas,
     poster9GuiadasAlt:
-      "Dia das Crianças — Caixa Laboratório daTeca: um presente que vira descoberta, 9 experiências guiadas",
+      "Caixa Laboratório daTeca: um presente que vira descoberta, 9 experiências guiadas",
     cta: "QUERO MINHA CAIXA LABORATÓRIO",
     ctaPriceHint: "R$ 129,90",
     note: "Compra única. Não é assinatura.",
