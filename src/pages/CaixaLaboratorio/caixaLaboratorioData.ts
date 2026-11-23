@@ -85,7 +85,9 @@ export const caixaLaboratorioData = {
       "Dê um presente que vira um laboratório de descobertas.",
     subtitle:
       "Tudo organizado, identificado e guiado para a criança abrir a caixa, escolher uma experiência e começar. Para crianças de 5 a 10 anos, com supervisão de um adulto.",
-    dispatchNote: "Envio em até 3 dias úteis.",
+    dispatchNote: blackActive
+      ? `${blackPromo.freeShipping} · envio em até 3 dias úteis.`
+      : "Envio em até 3 dias úteis.",
     cards: {
       ready: {
         title: "Abriu a caixa, escolheu uma experiência e começou.",
@@ -111,7 +113,9 @@ export const caixaLaboratorioData = {
     priceWas: blackActive ? formatBRL(blackPromo.regularBRL) : "",
     priceValue: currentPriceBRL.toFixed(2),
     shippingLine1: "",
-    dispatchNote: "Envio em até 3 dias úteis.",
+    dispatchNote: blackActive
+      ? `${blackPromo.freeShipping} · envio em até 3 dias úteis.`
+      : "Envio em até 3 dias úteis.",
     purchaseTypeNote: "Compra única. Não é assinatura.",
   },
 

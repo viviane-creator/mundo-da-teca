@@ -13,6 +13,9 @@ export const blackPromo = {
   title: "Black daTeca",
   until: "até 30/11",
   note: "Preço especial só até o fim de novembro.",
+  /** Precisa bater com a regra de frete grátis da Nuvemshop (PAC, Sul e Sudeste). */
+  freeShipping: "Frete grátis para Sul e Sudeste",
+  freeShippingShort: "Sul e Sudeste",
 } as const
 
 export function isBlackPromoActive(now: Date = new Date()): boolean {

@@ -59,6 +59,12 @@ export function HeroLaboratorio() {
                 <span className="clx-hero__price-sticker-kicker">Black</span>
                 {formatBRL(blackPromo.promoBRL)}
               </span>
+              <span className="clx-hero__ship-sticker">
+                <span className="clx-hero__ship-sticker-title">Frete grátis</span>
+                <span className="clx-hero__ship-sticker-sub">
+                  {blackPromo.freeShippingShort}
+                </span>
+              </span>
             </>
           ) : null}
         </div>

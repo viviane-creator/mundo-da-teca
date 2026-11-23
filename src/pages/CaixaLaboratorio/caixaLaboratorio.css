@@ -2005,6 +2005,55 @@
   font-weight: 700;
 }
 
+.clx-black-banner__ship {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin: 4px auto 4px;
+  padding: 3px 12px 4px;
+  border-radius: 99px;
+  background: rgba(255, 250, 242, 0.95);
+  color: var(--clx-ocre-deep);
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(15px, 4vw, 17px);
+  font-weight: 700;
+}
+
+.clx-hero__ship-sticker {
+  position: absolute;
+  z-index: 2;
+  left: 4%;
+  top: 76%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.6cqw 3cqw 1.8cqw;
+  border-radius: 3cqw;
+  background: var(--clx-green-deep);
+  color: #fffaf2;
+  line-height: 1;
+  white-space: nowrap;
+  transform: rotate(5deg);
+  box-shadow:
+    0 0 0 0.5cqw rgba(255, 250, 242, 0.9),
+    0 1.2cqw 2.6cqw rgba(74, 55, 40, 0.3);
+}
+
+.clx-hero__ship-sticker-title {
+  font-family: var(--teca-font-page-title, "Caveat", cursive);
+  font-size: 5.2cqw;
+  font-weight: 700;
+}
+
+.clx-hero__ship-sticker-sub {
+  margin-top: 0.6cqw;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 2.6cqw;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
 .clx-black-banner__note {
   margin: 0 auto;
   font-family: "Cormorant Garamond", serif;
