@@ -1,4 +1,5 @@
 import { HOTMART_CHECKOUT_URL } from "../../config/caixaLaboratorioCheckout"
+import { blackPromo, formatBRL, isBlackPromoActive } from "../../config/blackPromo"
 import {
   entryProduct,
   entryProductShippingConsultLabel,
@@ -6,6 +7,10 @@ import {
 import { socialLinks } from "../../data/socialLinks"
 
 const IMG = "/images/caixa-laboratorio"
+
+/** Preço exibido agora: o da Black enquanto ela durar, depois o normal. */
+const blackActive = isBlackPromoActive()
+const currentPriceBRL = blackActive ? blackPromo.promoBRL : entryProduct.priceBRL
 
 /**
  * Subir este valor sempre que trocar os WebPs da landing.
@@ -94,18 +99,17 @@ export const caixaLaboratorioData = {
     poster9GuiadasAlt:
       "Caixa Laboratório daTeca: um presente que vira descoberta, 9 experiências guiadas",
     cta: "QUERO MINHA CAIXA LABORATÓRIO",
-    ctaPriceHint: "R$ 129,90",
+    ctaPriceHint: formatBRL(currentPriceBRL),
     note: "Compra única. Não é assinatura.",
     paymentNote: "Pagamento seguro pela Nuvemshop.",
   },
 
   /** Mesmo bloco de preço no hero e no fechamento. */
   pricing: {
-    price: entryProduct.priceBRL.toLocaleString("pt-BR", {
-      style: "currency",
-      currency: "BRL",
-    }),
-    priceValue: entryProduct.priceBRL.toFixed(2),
+    price: formatBRL(currentPriceBRL),
+    /** Preço "de" riscado — só durante a Black. */
+    priceWas: blackActive ? formatBRL(blackPromo.regularBRL) : "",
+    priceValue: currentPriceBRL.toFixed(2),
     shippingLine1: "",
     dispatchNote: "Envio em até 5 dias úteis.",
     purchaseTypeNote: "Compra única. Não é assinatura.",

@@ -1,4 +1,5 @@
 import { caixaLaboratorioData } from "../../pages/CaixaLaboratorio/caixaLaboratorioData"
+import { blackPromo, formatBRL, isBlackPromoActive } from "../../config/blackPromo"
 import { LandingImage } from "./LandingImage"
 import { LandingCta } from "./LandingCta"
 
@@ -32,8 +33,9 @@ function HeroDecor() {
 }
 
 export function HeroLaboratorio() {
-  const { hero } = caixaLaboratorioData
+  const { hero, pricing } = caixaLaboratorioData
   const { ready } = hero.cards
+  const blackActive = isBlackPromoActive()
 
   return (
     <section className="clx-hero clx-hero--presente-open" aria-labelledby="clx-hero-title">
@@ -41,13 +43,25 @@ export function HeroLaboratorio() {
       <HeroDecor />
 
       <figure className="clx-hero__media clx-hero__media--presente">
-        <LandingImage
-          className="clx-hero__image clx-hero__image--presente"
-          src={hero.image}
-          alt={hero.imageAlt}
-          loading="eager"
-          fetchPriority="high"
-        />
+        <div className="clx-hero__price-wrap">
+          <LandingImage
+            className="clx-hero__image clx-hero__image--presente"
+            src={hero.image}
+            alt={hero.imageAlt}
+            loading="eager"
+            fetchPriority="high"
+          />
+          {blackActive ? (
+            <>
+              {/* Risca o preço desenhado na imagem e mostra o da Black por cima. */}
+              <span className="clx-hero__price-strike" aria-hidden="true" />
+              <span className="clx-hero__price-sticker">
+                <span className="clx-hero__price-sticker-kicker">Black</span>
+                {formatBRL(blackPromo.promoBRL)}
+              </span>
+            </>
+          ) : null}
+        </div>
       </figure>
 
       <div className="clx-hero__offer clx-hero__offer--cta-only">
@@ -57,6 +71,7 @@ export function HeroLaboratorio() {
             origin="hero"
             purchaseHighlight
             priceHint={"ctaPriceHint" in hero ? hero.ctaPriceHint : undefined}
+            priceWas={pricing.priceWas || undefined}
           />
         </div>
         {hero.dispatchNote ? (

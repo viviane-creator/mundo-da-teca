@@ -15,9 +15,19 @@ type LandingCtaProps = {
   /** Destaque de compra na landing Caixa (hero + fechamento). */
   purchaseHighlight?: boolean
   priceHint?: string
+  /** Preço antigo riscado ao lado do priceHint (ex.: durante a Black). */
+  priceWas?: string
 }
 
-function CtaContent({ label, priceHint }: { label: string; priceHint?: string }) {
+function CtaContent({
+  label,
+  priceHint,
+  priceWas,
+}: {
+  label: string
+  priceHint?: string
+  priceWas?: string
+}) {
   if (!priceHint) {
     return <>{label}</>
   }
@@ -25,7 +35,10 @@ function CtaContent({ label, priceHint }: { label: string; priceHint?: string })
   return (
     <span className="clx-cta__inner">
       <span className="clx-cta__label">{label}</span>
-      <span className="clx-cta__price-hint">{priceHint}</span>
+      <span className="clx-cta__price-hint">
+        {priceWas ? <s className="clx-cta__price-was">{priceWas}</s> : null}
+        {priceHint}
+      </span>
     </span>
   )
 }
@@ -37,6 +50,7 @@ export function LandingCta({
   className = "",
   purchaseHighlight = false,
   priceHint,
+  priceWas,
 }: LandingCtaProps) {
   const salesOpen = isSalesOpen()
   const checkoutReady = isHotmartCheckoutReady
@@ -52,7 +66,9 @@ export function LandingCta({
     .filter(Boolean)
     .join(" ")
 
-  const content = <CtaContent label={label} priceHint={priceHint} />
+  const content = (
+    <CtaContent label={label} priceHint={priceHint} priceWas={priceWas} />
+  )
 
   if (!goToCheckout) {
     return (

@@ -1,5 +1,6 @@
 import { useEffect, useState, type ReactNode } from "react"
 import {
+  BlackPromoBanner,
   BrandMomentSection,
   ExperiencesGrid,
   FaqSection,
@@ -73,6 +74,7 @@ export function CaixaLaboratorioPage() {
         .join(" ")}
     >
       {floripaActive ? <FloripaLaunchBanner /> : null}
+      <BlackPromoBanner />
       {blocks.map((blockId) => (
         <div key={blockId} data-clx-block={blockId}>
           {blockRenderers[blockId]()}

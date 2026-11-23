@@ -42,6 +42,11 @@ export function OfferPricing({ origin }: OfferPricingProps) {
 
   return (
     <>
+      {pricing.priceWas ? (
+        <p className="clx-price-was">
+          De <s>{pricing.priceWas}</s> por
+        </p>
+      ) : null}
       <p className="clx-price">{pricing.price}</p>
       {"shippingLine1" in pricing && pricing.shippingLine1 ? (
         <p className="clx-shipping">{pricing.shippingLine1}</p>
@@ -67,6 +72,7 @@ export function OfferPricing({ origin }: OfferPricingProps) {
               ? hero.ctaPriceHint
               : undefined
           }
+          priceWas={pricing.priceWas || undefined}
           className={
             origin === "bloco_final" ? "clx-cta--purchase-final" : undefined
           }
