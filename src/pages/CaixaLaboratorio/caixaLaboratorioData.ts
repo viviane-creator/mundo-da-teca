@@ -2,7 +2,6 @@ import { HOTMART_CHECKOUT_URL } from "../../config/caixaLaboratorioCheckout"
 import {
   entryProduct,
   entryProductShippingConsultLabel,
-  entryProductShippingFaqAnswer,
 } from "../../config/productStrategy"
 import { socialLinks } from "../../data/socialLinks"
 
@@ -97,7 +96,7 @@ export const caixaLaboratorioData = {
     cta: "QUERO MINHA CAIXA LABORATÓRIO",
     ctaPriceHint: "R$ 129,90",
     note: "Compra única. Não é assinatura.",
-    paymentNote: "Pagamento seguro pela Hotmart.",
+    paymentNote: "Pagamento seguro pela Nuvemshop.",
   },
 
   /** Mesmo bloco de preço no hero e no fechamento. */
@@ -112,7 +111,7 @@ export const caixaLaboratorioData = {
     purchaseTypeNote: "Compra única. Não é assinatura.",
   },
 
-  offerTrust: ["Checkout seguro pela Hotmart"],
+  offerTrust: ["Compra segura pela Nuvemshop"],
 
   discoveries: {
     introImage: caixaImg("cartas.webp"),
@@ -223,7 +222,7 @@ export const caixaLaboratorioData = {
       "Caixa Laboratório daTeca fechada — vista alternativa antes da compra",
     cta: "QUERO MINHA CAIXA LABORATÓRIO",
     note: "Compra única. Não é assinatura.",
-    paymentNote: "Pagamento seguro pela Hotmart.",
+    paymentNote: "Pagamento seguro pela Nuvemshop.",
   },
 
   faq: {
@@ -256,7 +255,7 @@ export const caixaLaboratorioData = {
       {
         question: "Como funciona o frete?",
         answer:
-          entryProductShippingFaqAnswer,
+          "Na loja, antes de finalizar a compra, é só colocar seu CEP para ver o valor e o prazo do frete.",
       },
       {
         question: "Em quanto tempo a caixa é enviada?",

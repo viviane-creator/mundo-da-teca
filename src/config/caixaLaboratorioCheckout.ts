@@ -9,7 +9,9 @@ import { trackMetaInitiateCheckout, initMetaPixel } from "../analytics/metaPixel
  *
  * Também aceita override via VITE_HOTMART_CHECKOUT_URL no .env / Vercel.
  */
-const checkoutUrl = "https://pay.hotmart.com/D106988435D"
+// Desde 23/11/2026 a compra é pela loja Nuvemshop (antes: https://pay.hotmart.com/D106988435D)
+const checkoutUrl =
+  "https://dateca.lojavirtualnuvem.com.br/produtos/caixa-laboratorio-dateca-12k1g/"
 
 export const HOTMART_CHECKOUT_URL =
   checkoutUrl.trim() ||
