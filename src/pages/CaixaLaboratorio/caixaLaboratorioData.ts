@@ -85,7 +85,7 @@ export const caixaLaboratorioData = {
       "Dê um presente que vira um laboratório de descobertas.",
     subtitle:
       "Tudo organizado, identificado e guiado para a criança abrir a caixa, escolher uma experiência e começar. Para crianças de 5 a 10 anos, com supervisão de um adulto.",
-    dispatchNote: "Envio em até 5 dias úteis.",
+    dispatchNote: "Envio em até 3 dias úteis.",
     cards: {
       ready: {
         title: "Abriu a caixa, escolheu uma experiência e começou.",
@@ -111,7 +111,7 @@ export const caixaLaboratorioData = {
     priceWas: blackActive ? formatBRL(blackPromo.regularBRL) : "",
     priceValue: currentPriceBRL.toFixed(2),
     shippingLine1: "",
-    dispatchNote: "Envio em até 5 dias úteis.",
+    dispatchNote: "Envio em até 3 dias úteis.",
     purchaseTypeNote: "Compra única. Não é assinatura.",
   },
 
@@ -299,12 +299,25 @@ export const caixaLaboratorioData = {
       {
         question: "Como funciona o frete?",
         answer:
-          "Na loja, antes de finalizar a compra, é só colocar seu CEP para ver o valor e o prazo do frete.",
+          "Enviamos pelos Correios (PAC ou SEDEX), saindo de Florianópolis (SC). Na loja, antes de finalizar a compra, é só colocar seu CEP para ver o valor e o prazo de entrega." +
+          (blackActive
+            ? ` Na Black daTeca (${blackPromo.until}), o frete PAC é grátis para o Sul e o Sudeste.`
+            : ""),
       },
       {
         question: "Em quanto tempo a caixa é enviada?",
         answer:
-          "O pedido é preparado e enviado em até 5 dias úteis após a confirmação do pagamento.",
+          "O pedido é preparado e enviado em até 3 dias úteis após a confirmação do pagamento. Depois disso, o prazo de entrega é o dos Correios, que aparece na loja quando você coloca o CEP.",
+      },
+      {
+        question: "Quais são as formas de pagamento?",
+        answer:
+          "Cartão de crédito (em até 12x), Pix ou boleto, com pagamento seguro pela Nuvemshop.",
+      },
+      {
+        question: "Como acompanho meu pedido?",
+        answer:
+          "Quando a caixa for enviada, você recebe por e-mail o código de rastreio dos Correios para acompanhar a entrega.",
       },
       {
         question: "Precisa de supervisão de um adulto?",
@@ -320,6 +333,11 @@ export const caixaLaboratorioData = {
         question: "Posso dar de presente?",
         answer:
           "Sim. A Caixa Laboratório foi pensada também como presente e reúne as experiências e os materiais em uma única embalagem.",
+      },
+      {
+        question: "Fiquei com dúvida. Como falo com vocês?",
+        answer:
+          "É só chamar no WhatsApp: (48) 98860-0150. Vai ser um prazer ajudar!",
       },
     ],
   },
