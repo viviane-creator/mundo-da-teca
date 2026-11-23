@@ -212,6 +212,46 @@ export const caixaLaboratorioData = {
     note: "Um presente que também convida a um tempo fora das telas — sem pressa, só curiosidade compartilhada.",
   },
 
+  testimonials: {
+    title: "Quem já abriu a caixa",
+    lead: "Mais de 150 famílias já abriram a Caixa Laboratório.",
+    note: "Mensagens reais de mães e pais, sem nomes, para preservar as famílias.",
+    items: [
+      {
+        image: `${IMG}/depoimentos/aniversario-8-anos.webp`,
+        alt: "Mensagem de uma mãe: A minha filha de 8 anos ganhou de aniversário e amou! Nessa idade já fica difícil agradar e a caixa de experiências foi um sucesso. Agora estou comprando para presentear amigas que fazem aniversários! Parabéns, muito legal seu trabalho.",
+      },
+      {
+        image: `${IMG}/depoimentos/amaram-o-presente.webp`,
+        alt: "Mensagem de uma mãe: Eles simplesmente AMARAM o presente. Foi o mais legal que ela ganhou, fato!",
+      },
+      {
+        image: `${IMG}/depoimentos/manha-toda.webp`,
+        alt: "Mensagem de uma mãe: Ela se divertiu muito. Ficamos a manhã toda. Foi gostoso o momento. Eu que agradeço.",
+      },
+      {
+        image: `${IMG}/depoimentos/por-que-o-vermelho.webp`,
+        alt: "Áudio de uma mãe, transcrito: É muito legal isso aqui, parabéns, genial em tudo. Agora, por que o vermelho é mais rápido que o amarelo?",
+      },
+      {
+        image: `${IMG}/depoimentos/apaixonada.webp`,
+        alt: "Mensagem de uma mãe: Apaixonada nesse presente.",
+      },
+      {
+        image: `${IMG}/depoimentos/neve.webp`,
+        alt: "Mensagem de uma mãe: A neve ela amou também.",
+      },
+      {
+        image: `${IMG}/depoimentos/posto-no-insta.webp`,
+        alt: "Mensagem de uma mãe: Vou fazer mais uma experiência e posto lá no Instagram.",
+      },
+      {
+        image: `${IMG}/depoimentos/muito-legal.webp`,
+        alt: "Mensagem de um pai: Muito legal mesmo, parabéns.",
+      },
+    ],
+  },
+
   water: {
     titleLines: ["É só acrescentar água."],
     text: "Os ingredientes e materiais das experiências guiadas já estão na caixa.",

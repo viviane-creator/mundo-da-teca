@@ -14,6 +14,7 @@ export type CaixaLandingBlockId =
   | "water"
   | "brandMoment"
   | "howToOrder"
+  | "testimonials"
   | "pricing"
   | "faq"
 
@@ -24,6 +25,7 @@ export const CAIXA_SALES_BLOCKS: CaixaLandingBlockId[] = [
   "experiences",
   "water",
   "brandMoment",
+  "testimonials",
   "pricing",
   "faq",
 ]

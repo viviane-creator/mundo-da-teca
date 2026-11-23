@@ -13,6 +13,7 @@ import {
   ManualGiftHero,
   ManualOfferBridge,
   PricingSection,
+  TestimonialsSection,
   WaterOnlySection,
 } from "../../components/caixa-laboratorio"
 import { isFloripaSoftLaunchActive } from "../../config/floripaSoftLaunch"
@@ -37,6 +38,7 @@ const blockRenderers: Record<CaixaLandingBlockId, () => ReactNode> = {
   water: () => <WaterOnlySection />,
   brandMoment: () => <BrandMomentSection />,
   howToOrder: () => <FloripaHowToOrder />,
+  testimonials: () => <TestimonialsSection />,
   pricing: () => <PricingSection />,
   faq: () => <FaqSection />,
 }
