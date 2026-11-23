@@ -1,4 +1,11 @@
 {
+  "redirects": [
+    {
+      "source": "/",
+      "destination": "/caixa-laboratorio",
+      "permanent": false
+    }
+  ],
   "rewrites": [
     {
       "source": "/((?!assets/|images/|covers/|logo/|cards/|fonts/|favicon\\.svg|.*\\..*).*)",
